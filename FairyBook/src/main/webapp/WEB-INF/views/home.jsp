@@ -1,15 +1,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <html>
 <head>
-	<title>Home</title>
+<title>Home</title>
 </head>
 <body>
-<h1>
-	fairybook hahahahaaa Seokjin1
-	hankeon commin' at chu!
-</h1>
+	<h1>이제 한글이 지원 됩니다.</h1>
 
-<P>  The time on the server is ${serverTime}. </P>
+	<P>The time on the server is ${serverTime}.</P>
 </body>
 </html>
