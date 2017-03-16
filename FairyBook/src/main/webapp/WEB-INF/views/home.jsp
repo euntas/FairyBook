@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>
-	fairybook hahahahaaa
+	fairybook hahahahaaa Seokjin
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
