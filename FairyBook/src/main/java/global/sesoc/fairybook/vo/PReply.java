@@ -2,7 +2,7 @@ package global.sesoc.fairybook.vo;
 
 import java.util.Date;
 /**
- * PReplyVO
+ * 댓글용 VO
  * @author 이한건 170320 ver.1
  *
  */

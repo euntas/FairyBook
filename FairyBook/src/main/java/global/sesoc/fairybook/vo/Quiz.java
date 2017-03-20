@@ -1,6 +1,6 @@
 package global.sesoc.fairybook.vo;
 /**
- * QuizVO
+ * 퀴즈 VO
  * @author 이한건 170320 ver.1
  *
  */

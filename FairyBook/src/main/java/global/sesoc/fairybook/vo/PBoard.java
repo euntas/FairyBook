@@ -3,7 +3,7 @@ package global.sesoc.fairybook.vo;
 import java.util.Date;
 
 /**
- * PBoardVO
+ * 게시판 VO
  * @author 이한건 170320 ver.1
  *
  */
