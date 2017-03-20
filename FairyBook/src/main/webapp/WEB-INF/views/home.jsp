@@ -6,9 +6,7 @@
 <title>Fairy Book</title>
 </head>
 <body>
-<input type = 'text' name = 'id' id = 'id'>
-<input type = 'password' name = 'password' id = 'password'>
-<input type = 'submit' value = '로그인'>
+<input type = 'button' value = '로그인' onclick="location.href='login'">
 <input type = 'button' value = '회원가입' onclick ="location.href='join'">
 
 <ul>
