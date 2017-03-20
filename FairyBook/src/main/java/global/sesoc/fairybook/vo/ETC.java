@@ -8,7 +8,7 @@ package global.sesoc.fairybook.vo;
  */
 public class ETC {
 
-	private int storyNum;		// 스토리 번호
+	private int selectionNum;		// 셀렉션 번호
 	private int resourceNum;	// 리소스 번호
 	
 	public ETC() {
@@ -16,11 +16,11 @@ public class ETC {
 	}
 
 	public int getStoryNum() {
-		return storyNum;
+		return selectionNum;
 	}
 
-	public void setStoryNum(int storyNum) {
-		this.storyNum = storyNum;
+	public void setStoryNum(int selectionNum) {
+		this.selectionNum = selectionNum;
 	}
 
 	public int getResourceNum() {
@@ -33,7 +33,7 @@ public class ETC {
 
 	@Override
 	public String toString() {
-		return "ETC [storyNum=" + storyNum + ", resourceNum=" + resourceNum + "]";
+		return "ETC [selectionNum=" + selectionNum + ", resourceNum=" + resourceNum + "]";
 	}
 	
 }
