@@ -96,9 +96,9 @@
 			</export_image_setting>
 			<export_java_setting>
 				<java_output></java_output>
-				<package_name></package_name>
-				<class_name_suffix></class_name_suffix>
-				<src_file_encoding></src_file_encoding>
+				<package_name>global.sesoc.fairybook.vo</package_name>
+				<class_name_suffix>PBoard</class_name_suffix>
+				<src_file_encoding>UTF-8</src_file_encoding>
 				<with_hibernate>false</with_hibernate>
 			</export_java_setting>
 			<export_testdata_setting>
@@ -135,7 +135,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2017-03-14 09:32:09</creation_date>
-			<updated_date>2017-03-17 12:14:38</updated_date>
+			<updated_date>2017-03-20 11:18:23</updated_date>
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>
