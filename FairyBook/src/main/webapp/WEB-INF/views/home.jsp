@@ -3,20 +3,18 @@
     pageEncoding="UTF-8"%>
 <html>
 <head>
-<title>Home</title>
+<title>Fairy Book</title>
 </head>
 <body>
-<<<<<<< HEAD
-	<h1>이제 한글이 지원 됩니다.</h1>
-=======
-<h1>
-	fairybook hahahahaaa Seokjin2
-	hankeon commin' at chu!
-</h1>
->>>>>>> origin/master
+<input type = 'text' name = 'id' id = 'id'>
+<input type = 'password' name = 'password' id = 'password'>
+<input type = 'submit' value = '로그인'>
+<input type = 'button' value = '회원가입' onclick ="location.href='join'">
 
-이은지님
+<ul>
+<li><a href ="storymaker/select"> 동화선택 </a></li>
+<li><a href ="storymaker/show"> 동화감상 </a></li>
+</ul>
 
-	<P>The time on the server is ${serverTime}.</P>
 </body>
 </html>
