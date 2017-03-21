@@ -34,12 +34,12 @@ public class QuizController {
 	/**
 	 * Quiz Selection 사용자가 선택한 selection항목 db에 저장하기-Ajax
 	 * @param sceneNum - 
-	 * @param selection - jsp���� ������ ������� int�� number�� �����ϰ� ���õ� ���� ��������
+	 * @param selection - jsp에서 받아온 선택지 int로 받아오기
 	 */
 	@ResponseBody
 	@RequestMapping(value="quizSelection", method=RequestMethod.POST)
 	public void quizSelection(int sceneNum, int selection){
-		logger.debug("{}�� ���� ���� ��: {}",sceneNum, selection);
+		logger.debug("{}번 씬 문제의 답변: {}",sceneNum, selection);
 
 		//sceneNum을 이용해서 storyNum찾기
 		//storyNum과 ID를 이용해서  MySelection테이블의 selectionNum 찾기
