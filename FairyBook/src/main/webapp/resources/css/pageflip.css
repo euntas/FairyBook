@@ -107,7 +107,7 @@
     line-height: 30px;
     position: absolute;
     margin-top: -15px;
-    top: 50%;
+    top: 90%;
     z-index: 30;
     background: #fff;
     color: #333;
@@ -128,7 +128,7 @@
     line-height: 30px;
     position: absolute;
     margin-top: -15px;
-    top: 50%;
+    top: 90%;
     background: #fff;
     color: #333;
     padding: 0 10px;
@@ -170,3 +170,4 @@
       .pageflip .flip-navigation a.active {
         width: 20px;
         height: 20px; }
+        

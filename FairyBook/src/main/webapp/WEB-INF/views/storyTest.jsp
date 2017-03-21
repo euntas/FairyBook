@@ -19,8 +19,11 @@
 	<div class="container">
 		<h1>Rocket Page Flip 연습</h1>
 	</div>
-
+	<div class="fixed">
+			질문 들어갈자리 확인용
+	</div>
 	<div class="pageflip">
+		
 		<div class="page page-current" style="background: #209657 url('./resources/img/1.jpg') no-repeat center center">
 		</div>
 		<div class="page" style="background: #0387A5 url('./resources/img/2.jpg') no-repeat center center">

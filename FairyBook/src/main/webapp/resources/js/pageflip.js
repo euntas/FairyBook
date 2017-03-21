@@ -13,7 +13,7 @@ RocketPageFlip = function(selector, options){
 		navigation: true, // show pagination
 		directionalNav: true, // show prev/next navigation buttons
 		prevText: 'prev', // text for prev button
-		nextText: 'next' // text for next button
+		nextText: '다음' // text for next button
 	};
 
 	this.rotating = false;
@@ -69,7 +69,7 @@ RocketPageFlip.prototype.buildNavigation = function() {
 
 	// Build prev/next buttons
 	if(this.options.directionalNav){
-		prev = $('<a>')
+		/*prev = $('<a>')
 			.html(this.options.prevText)
 			.addClass('flip-directional flip-prev')
 			.attr('href', '#')
@@ -78,7 +78,7 @@ RocketPageFlip.prototype.buildNavigation = function() {
 				if(!self.rotating){
 					self.prev();
 				}
-			});
+			});*/
 
 		next = $('<a>')
 			.html(this.options.nextText)
