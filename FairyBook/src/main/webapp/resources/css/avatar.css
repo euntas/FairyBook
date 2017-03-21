@@ -1,0 +1,119 @@
+/* 아바타 페이지 css */
+@CHARSET "UTF-8";
+
+/*아바타를 표시하는 영역*/
+#avatar{
+	margin: 0px;
+	position: absolute;
+	width : 79%;
+	height: 59%;
+	border: 1px solid black;
+	left: 20%;
+}
+/*아바타의 신체부위 선택하는 영역*/
+#category{
+	margin: 0px;
+	position: absolute;
+	width : 79%;
+	height: 10%;
+	border: 1px solid black;
+	left: 20%;
+	top: 60%;
+}
+
+/* 해당 신체부위의 디테일 선택하는 영역 */
+#detail{
+	margin: 0px;
+	position: absolute;
+	width : 50%;
+	height: 30%;
+	border: 1px solid black;
+	left: 20%;
+	top: 70%;
+}
+
+/* 저장버튼이 있는 영역 */
+#savearea{
+	margin: 0px;
+	position: absolute;
+	right: 0.5%;
+	bottom: 0.5%;
+	width : 15%;
+	height: 15%;
+}
+	/* 저장 버튼 */
+	#save{
+		width : 99%;
+		height: 99%;
+	}
+
+/* 색 선택하는 영역 */
+#color{
+	margin: 0px;
+	position: absolute;
+	width : 29%;
+	height: 30%;
+	border: 1px solid black;
+	left: 70%;
+	top: 70%;
+}
+
+/* 색 버튼 클래스 */
+.color{
+	margin: 0px;
+	width : 33.3%;
+	height: 33.3%;
+}
+
+/* 대분류 버튼 클래스 */
+.category{
+	margin: 0px;
+	width : 11.1%;
+	height: 99%;
+
+}
+
+/* 빨강버튼 */
+#red{
+	background-color: red;
+}
+
+/* 주황버튼 */
+#orange{
+	background-color: orange;
+}
+
+/* 노랑버튼 */
+#yellow{
+	background-color: yellow;
+}
+
+/* 초록버튼 */
+#green{
+	background-color: green;
+}
+
+/* 파랑버튼 */
+#blue{
+	background-color: blue;
+}
+
+/* 보라버튼 */
+#purple{
+	background-color: purple;
+}
+
+/* 흰색버튼 */
+#white{
+	background-color: white;
+}
+
+/* 회색버튼 */
+#gray{
+	background-color: gray;
+}
+
+/* 검정버튼 */
+#black{
+	background-color: black;
+}
