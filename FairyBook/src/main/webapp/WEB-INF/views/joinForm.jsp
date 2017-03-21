@@ -15,10 +15,29 @@
 <tr><td rowspan="2" class="firstRow">비밀번호</td><td class="secondRow"><input type="password" id="pw1" name="pw1" style="width: 220px;"></td><td></td></tr>
 <tr><td class="secondRow"><input type="password" id="pw2" name="pw2" style="width: 220px;"></td><td></td></tr>
 <tr><td class="firstRow">아이 이름</td><td class="secondRow"><input type="text" id="cName" name="cName" style="width: 220px;"></td><td></td></tr>
-<tr><td class="firstRow">아이 생일</td><td class="secondRow"></td><td></td></tr>
+<tr><td class="firstRow">아이 생일</td><td class="secondRow"><select id="cBirthYear">
+<option selected="selected">년</option>
+<c:forEach var="i" begin="2005" end="2017"><option>${i}</option></c:forEach>
+</select>년 &nbsp; 
+<select id="cBirthMonth"><option selected="selected">월</option>
+<c:forEach var="i" begin="1" end="12"><option>${i}</option></c:forEach>
+</select>월 &nbsp;
+<select id="cBirthDate"><option selected="selected">일</option>
+<c:forEach var="i" begin="1" end="31"><option>${i}</option></c:forEach>
+</select>일</td><td></td></tr>
 <tr><td class="secondRow"></td><td class="secondRow"></td><td></td></tr>
 <tr><td class="firstRow">보호자 이름</td><td class="secondRow"><input type="text" id="pName" name="pName" style="width: 220px;"></td><td></td></tr>
-<tr><td class="firstRow">보호자 생일</td><td class="secondRow"></td><td></td></tr>
+<tr><td class="firstRow">보호자 생일</td><td class="secondRow"><select id="pBirthYear">
+<option selected="selected">년</option>
+<c:forEach var="i" begin="1960" end="1998"><option>${i}</option></c:forEach>
+</select>년 &nbsp; 
+<select id="pBirthMonth"><option selected="selected">월</option>
+<c:forEach var="i" begin="1" end="12"><option>${i}</option></c:forEach>
+</select>월 &nbsp;
+<select id="pBirthDate"><option selected="selected">일</option>
+<c:forEach var="i" begin="1" end="31"><option>${i}</option></c:forEach>
+</select>일
+</td><td></td></tr>
 <tr><td class="secondRow"></td><td class="secondRow"></td><td></td></tr>
 <tr><td class="firstRow">보호자 닉네임</td><td class="secondRow"><input type="text" id="pNick" name="pNick" style="width: 220px;"></td><td></td></tr>
 <tr><td class="firstRow">이메일</td><td class="secondRow"><input type="text" id="email" name="email" style="width: 220px;"></td><td></td></tr>
