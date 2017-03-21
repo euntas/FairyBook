@@ -2,6 +2,8 @@ package global.sesoc.fairybook.controller;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +21,9 @@ import global.sesoc.fairybook.vo.StoryMaker;
 @Controller
 public class IDController {
 
+	private static final Logger logger = LoggerFactory.getLogger(IDController.class);
+	
+	
 	@RequestMapping(value = "join", method = RequestMethod.GET)
 	public String join() {
 		return "joinForm";
