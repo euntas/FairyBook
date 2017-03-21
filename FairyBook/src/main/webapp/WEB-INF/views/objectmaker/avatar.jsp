@@ -24,7 +24,7 @@ $(document).ready(function(){
 	$('#body').on('click', callBody);
 	$('#skin').on('click', callSkin);
 	
-	
+	//뀨뀨꺄꺄꺄
 });
 </script>
 
