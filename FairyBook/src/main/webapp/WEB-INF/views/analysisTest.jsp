@@ -6,12 +6,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<link class="include" rel="stylesheet" type="text/css" href="jquery.jqplot.min.css">
-<script src="resources/js/jquery-1.11.0.min.js"></script><!--jquery연결  -->
-<script type="text/javascript" src="jquery.jqplot.min.js"></script>
+<script type="text/javascript" src="resources/js/jquery-3.1.1.min.js"></script>
+<link class="include" rel="stylesheet" type="text/css" href="resources/jqplot/jquery.jqplot.min.css"/>
+<script src="resources/jqplot/jquery.jqplot.min.js"></script>
 
-<script type="text/javascript" src="plugins/jqplot.categoryAxisRender.min.js"></script>
-<script type="text/javascript" src="plugins/jqplot.barRenderer.min.js"></script>
+<script src="resources/jqplot/plugins/jqplot.pieRenderer.min.js"></script>
 
 <script>
  $(function(){
