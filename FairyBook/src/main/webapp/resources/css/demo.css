@@ -114,3 +114,42 @@ body, html, .full {
   background-color: pink;
   z-index: 9999;
 }  
+
+div.mycontainer {
+    width: 100%;
+    border: 1px solid gray;
+}
+
+header, footer {
+    padding: 1em;
+    margin: 0;
+    max-width: 160px;
+    color: white;
+    background-color: lightblue;
+    clear: left;
+    text-align: center;
+}
+
+
+article {
+    margin-left: 170px;
+    border-left: 1px solid gray;
+    padding: 1em;
+    overflow: hidden;
+}
+
+nav {
+    float: left;
+    max-width: 160px;
+    margin: 0;
+    padding: 1em;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+   
+nav ul a {
+    text-decoration: none;
+}
