@@ -12,8 +12,10 @@
 <table>
 <tr><td class="firstRow">ID</td><td class="secondRow"><input type="text" id="userId" name="userId" style="width: 220px;"></td><td><input type="button" value="중복확인"></td></tr>
 <tr><td class="firstRow">닉네임</td><td class="secondRow"><input type="text" id="cNick" name="cNick" style="width: 220px;"></td><td><input type="button" value="중복확인"></td></tr>
-<tr><td rowspan="2" class="firstRow">비밀번호</td><td class="secondRow"><input type="password" id="pw1" name="pw1" style="width: 220px;"></td><td></td></tr>
-<tr><td class="secondRow"><input type="password" id="pw2" name="pw2" style="width: 220px;"></td><td></td></tr>
+<tr><td rowspan="2" class="firstRow">아이용 비밀번호</td><td class="secondRow"><input type="password" id="cPw1" name="cPw1" style="width: 220px;"></td><td></td></tr>
+<tr><td class="secondRow"><input type="password" id="cPw2" name="cPw2" style="width: 220px;"></td><td></td></tr>
+<tr><td rowspan="2" class="firstRow">보호자용 비밀번호</td><td class="secondRow"><input type="password" id="pPw1" name="pPw1" style="width: 220px;"></td><td></td></tr>
+<tr><td class="secondRow"><input type="password" id="pPw2" name="pPw2" style="width: 220px;"></td><td></td></tr>
 <tr><td class="firstRow">아이 이름</td><td class="secondRow"><input type="text" id="cName" name="cName" style="width: 220px;"></td><td></td></tr>
 <tr><td class="firstRow">아이 생일</td><td class="secondRow"><select id="cBirthYear">
 <option selected="selected">년</option>
@@ -25,7 +27,11 @@
 <select id="cBirthDate"><option selected="selected">일</option>
 <c:forEach var="i" begin="1" end="31"><option>${i}</option></c:forEach>
 </select>일</td><td></td></tr>
-<tr><td class="secondRow"></td><td class="secondRow"></td><td></td></tr>
+<tr><td class="secondRow"></td>
+<td class="secondRow">
+<input type="radio" name="cBirthCal" value="solar">양력 &nbsp;
+<input type="radio" name="cBirthCal" value="lunar">음력
+</td><td></td></tr>
 <tr><td class="firstRow">보호자 이름</td><td class="secondRow"><input type="text" id="pName" name="pName" style="width: 220px;"></td><td></td></tr>
 <tr><td class="firstRow">보호자 생일</td><td class="secondRow"><select id="pBirthYear">
 <option selected="selected">년</option>
@@ -38,7 +44,11 @@
 <c:forEach var="i" begin="1" end="31"><option>${i}</option></c:forEach>
 </select>일
 </td><td></td></tr>
-<tr><td class="secondRow"></td><td class="secondRow"></td><td></td></tr>
+<tr><td class="secondRow"></td>
+<td class="secondRow">
+<input type="radio" name="pBirthCal" value="solar">양력 &nbsp;
+<input type="radio" name="pBirthCal" value="lunar">음력
+</td><td></td></tr>
 <tr><td class="firstRow">보호자 닉네임</td><td class="secondRow"><input type="text" id="pNick" name="pNick" style="width: 220px;"></td><td></td></tr>
 <tr><td class="firstRow">이메일</td><td class="secondRow"><input type="text" id="email" name="email" style="width: 220px;"></td><td></td></tr>
 <tr><td class="firstRow">전화번호</td><td class="secondRow">

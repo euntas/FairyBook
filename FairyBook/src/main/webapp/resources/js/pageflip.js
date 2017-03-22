@@ -99,7 +99,7 @@ RocketPageFlip.prototype.buildNavigation = function() {
 		navigation = $('<div>').addClass('flip-navigation');
 
 		i = 0;
-		this.el.pages.each(function(){
+		/*this.el.pages.each(function(){
 			navigation.append($('<a>').attr('href', '#').data('page', i));
 			i++;
 		});
@@ -109,7 +109,7 @@ RocketPageFlip.prototype.buildNavigation = function() {
 			if(!self.rotating){
 				self.flip($(this).data('page'));
 			}
-		});
+		});*/
 
 		this.el.navigation = navigation;
 		this.el.main.append(navigation);
@@ -148,7 +148,8 @@ RocketPageFlip.prototype.flip = function(page) {
 		return;
 	}
 	if(page >= this.el.pages.length){
-		page = 0;
+		//this.options.prevText = '끝';
+		return;
 	}
 	if(page < 0){
 		page = this.el.pages.length-1;
