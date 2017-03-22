@@ -42,7 +42,7 @@ function callFace(){
 function list(resourceList){
 	var list = '';
 	for(var i in commentList){
-		list += '<input type="button" class="items" id="item'+resourceList[i].resourcenum+1+'">
+		list += '<input type="button" class="items" id="item'+resourceList[i].resourcenum+1+'">';
 		$('.items').on('click', draw);
 		$('.items').css('width', '10%');
 		$('.items').css('width', '10%');
