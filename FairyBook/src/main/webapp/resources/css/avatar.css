@@ -73,6 +73,13 @@
 
 }
 
+/* db에서 가져온 그림들 */
+.items{
+	margin: 0px;
+	width : 10%;
+	height: 10%;
+}
+
 /* 빨강버튼 */
 #red{
 	background-color: red;

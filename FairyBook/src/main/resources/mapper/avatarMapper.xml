@@ -16,4 +16,92 @@
 		name like '%FACE%'
 </select>
 
+<select id="readHair" resultType="FBResource">
+	select
+		resourcenum, name, analysis, path
+	from
+		fbresource
+	where
+		name like '%hair%'
+	or
+		name like '%HAIR%'
+</select>
+
+<select id="readEye" resultType="FBResource">
+	select
+		resourcenum, name, analysis, path
+	from
+		fbresource
+	where
+		name like '%eye%'
+	or
+		name like '%EYE%'
+</select>
+
+<select id="readNose" resultType="FBResource">
+	select
+		resourcenum, name, analysis, path
+	from
+		fbresource
+	where
+		name like '%nose%'
+	or
+		name like '%NOSE%'
+</select>
+
+<select id="readMouth" resultType="FBResource">
+	select
+		resourcenum, name, analysis, path
+	from
+		fbresource
+	where
+		name like '%mouth%'
+	or
+		name like '%MOUTH%'
+</select>
+
+<select id="readEar" resultType="FBResource">
+	select
+		resourcenum, name, analysis, path
+	from
+		fbresource
+	where
+		name like '%ear%'
+	or
+		name like '%EAR%'
+</select>
+
+<select id="readNeck" resultType="FBResource">
+	select
+		resourcenum, name, analysis, path
+	from
+		fbresource
+	where
+		name like '%neck%'
+	or
+		name like '%NECK%'
+</select>
+
+<select id="readBody" resultType="FBResource">
+	select
+		resourcenum, name, analysis, path
+	from
+		fbresource
+	where
+		name like '%body%'
+	or
+		name like '%BODY%'
+</select>
+
+<select id="readSkin" resultType="FBResource">
+	select
+		resourcenum, name, analysis, path
+	from
+		fbresource
+	where
+		name like '%skin%'
+	or
+		name like '%SKIN%'
+</select>
+
 </mapper>

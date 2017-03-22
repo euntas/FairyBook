@@ -15,14 +15,15 @@
 $(document).ready(function(){
 	//id가 신체부위인 버튼을 클릭하면 해당 함수 호출
 	$('#face').on('click', callFace);
-/* 	$('#hair').on('click', callHair);
-	$('#eye').on('click', callEye);
+	$('#hair').on('click', callHair);
+ 	$('#eye').on('click', callEye);
 	$('#nose').on('click', callNose);
 	$('#mouth').on('click', callMouth);
 	$('#ear').on('click', callEar);
 	$('#neck').on('click', callNeck);
 	$('#body').on('click', callBody);
-	$('#skin').on('click', callSkin); */
+	$('#skin').on('click', callSkin);
+	$('#color').on('click', draw);
 });
 
 //얼굴 불러오기
@@ -31,27 +32,144 @@ function callFace(){
 		url: 'callFace',
 		type: 'GET',
 		dataType: 'json',
-		success: detail,
+		success: detailWithoutColor,
 		error: function(e){
 			alert(JSON.stringify(e));
 		}
 	});
 }
 
-//불러온 자료를 디테일 부분에 띄운다
-function detail(resourceList){
-	var list = '';
-	for(var i in resourceList){
-		list += '<img class="items" src="'+resourceList[i].path+'">';
-		$('.items').on('click', draw);
-		$('.items').css('width', '10%');
-		$('.items').css('height', '10%');
-	}
-	$('#items').html(list);
+//헤어 불러오기
+function callHair(){
+	$.ajax({
+		url: 'callHair',
+		type: 'GET',
+		dataType: 'json',
+		success: detailWithColor,
+		error: function(e){
+			alert(JSON.stringify(e));
+		}
+	});
 }
 
+//눈 불러오기
+function callEye(){
+	$.ajax({
+		url: 'callEye',
+		type: 'GET',
+		dataType: 'json',
+		success: detailWithColor,
+		error: function(e){
+			alert(JSON.stringify(e));
+		}
+	});
+}
+
+//코 불러오기
+function callNose(){
+	$.ajax({
+		url: 'callNose',
+		type: 'GET',
+		dataType: 'json',
+		success: detailWithoutColor,
+		error: function(e){
+			alert(JSON.stringify(e));
+		}
+	});
+}
+
+//입 불러오기
+function callMouth(){
+	$.ajax({
+		url: 'callMouth',
+		type: 'GET',
+		dataType: 'json',
+		success: detailWithoutColor,
+		error: function(e){
+			alert(JSON.stringify(e));
+		}
+	});
+}
+
+//귀 불러오기
+function callEar(){
+	$.ajax({
+		url: 'callEar',
+		type: 'GET',
+		dataType: 'json',
+		success: detailWithoutColor,
+		error: function(e){
+			alert(JSON.stringify(e));
+		}
+	});
+}
+
+//목 불러오기
+function callNeck(){
+	$.ajax({
+		url: 'callNeck',
+		type: 'GET',
+		dataType: 'json',
+		success: detailWithoutColor,
+		error: function(e){
+			alert(JSON.stringify(e));
+		}
+	});
+}
+
+//몸 불러오기
+function callBody(){
+	$.ajax({
+		url: 'callBody',
+		type: 'GET',
+		dataType: 'json',
+		success: detailWithColor,
+		error: function(e){
+			alert(JSON.stringify(e));
+		}
+	});
+}
+
+//피부 불러오기
+function callSkin(){
+	$.ajax({
+		url: 'callSkin',
+		type: 'GET',
+		dataType: 'json',
+		success: detailWithColor,
+		error: function(e){
+			alert(JSON.stringify(e));
+		}
+	});
+}
+
+//불러온 자료를 디테일 부분에 띄운다(색 선택 부분은 안보여줌)
+function detailWithoutColor(resourceList){
+	var list = '';
+	for(var i in resourceList){
+		list += '<img src="'+resourceList[i].path+'" class="items">';
+	}
+	$('.items').on('click', draw);
+	$('#items').html(list);
+	$('#color').css('display','none');
+	$('#detail').css('width','79%');
+}
+
+//불러온 자료를 디테일 부분에 띄운다(색 선택 부분은 보여줌)
+function detailWithColor(resourceList){
+	var list = '';
+	for(var i in resourceList){
+		list += '<img src="'+resourceList[i].path+'" class="items">';
+	}
+	$('.items').on('click', draw);
+	$('#items').html(list);
+	$('#color').css('display','block');
+	$('#detail').css('width','50%');
+}
+
+
 function draw(){
-	alert('그린다요!');
+	confirm('그린다요!');
 }
 
 </script>
