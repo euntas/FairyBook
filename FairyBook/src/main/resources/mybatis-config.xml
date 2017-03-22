@@ -3,15 +3,22 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	<!--
 	<typeAliases>
-		<typeAlias type="global.sesoc.web5.vo.Member" alias="Member" />
+		<typeAlias type="global.sesoc.fairybook.vo.FBResource" alias="FBResource" />
+		<typeAlias type="global.sesoc.fairybook.vo.ETC" alias="ETC" />
+		<typeAlias type="global.sesoc.fairybook.vo.Fairytale" alias="Fairytale" />
+		<typeAlias type="global.sesoc.fairybook.vo.House" alias="House" />
+		<typeAlias type="global.sesoc.fairybook.vo.Item" alias="Item" />
+		<typeAlias type="global.sesoc.fairybook.vo.PBoard" alias="PBoard" />
+		<typeAlias type="global.sesoc.fairybook.vo.PReply" alias="PReply" />
+		<typeAlias type="global.sesoc.fairybook.vo.Quiz" alias="Quiz" />
+		<typeAlias type="global.sesoc.fairybook.vo.Scene" alias="Scene" />
+		<typeAlias type="global.sesoc.fairybook.vo.StoryMaker" alias="StoryMaker" />
 	</typeAliases>
 	
 	<mappers>
-		<mapper resource="memberMapper.xml" />
+		<mapper resource="mapper/avatarMapper.xml" />
 	</mappers>
-	-->
 	
 	
 </configuration>

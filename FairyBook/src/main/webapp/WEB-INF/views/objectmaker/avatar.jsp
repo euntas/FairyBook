@@ -23,9 +23,42 @@ $(document).ready(function(){
 	$('#neck').on('click', callNeck);
 	$('#body').on('click', callBody);
 	$('#skin').on('click', callSkin);
-	
-	//뀨뀨꺄꺄꺄
 });
+
+//얼굴 불러오기
+function callFace(){
+	$.ajax({
+		url: 'callFace',
+		type: 'GET',
+		dataType: 'json',
+		success: detail,
+		error: function(e){
+			alert(JSON.stringify(e));
+		}
+	});
+}
+
+//불러온 자료를 디테일 부분에 띄운다
+function list(resourceList){
+	var list = '';
+	for(var i in commentList){
+		list += '<input type="button" class="items" id="item'+resourceList[i].resourcenum+1+'">
+		$('.items').on('click', draw);
+		$('.items').css('width', '10%');
+		$('.items').css('width', '10%');
+		
+		+ commentList[i].name + '</td><td class="tdText">'
+		+ commentList[i].text + '</td><td>'
+		+ '<input type="button" class="btnDel" num="'+commentList[i].num+'" value="삭제"></td></tr>';
+	}
+	list += '</table>';
+	$('#listDiv').html(list);
+	$('.btnDel').on('click', del);
+	$('th').css('border','1px solid');
+	$('td').css('border','1px solid');
+	$('table').css('border-collapse','collapse');
+}
+
 </script>
 
 
@@ -51,6 +84,8 @@ $(document).ready(function(){
 <!-- 실제로 쓸 신체부위 선택하는 소분류 div태그 -->
 <div id="detail">
 만들 부위를 선택해 주세요
+<div id="items">
+</div>
 </div>
 
 <!-- 색깔 선택하는 div태그 -->
