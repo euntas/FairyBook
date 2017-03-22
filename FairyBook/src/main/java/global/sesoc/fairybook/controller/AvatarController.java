@@ -39,9 +39,10 @@ public class AvatarController {
 	 * @return 얼굴 이미지 경로가 담긴 arrayList
 	 */
 	@ResponseBody
-	@RequestMapping(value = "callface", method = RequestMethod.GET)
+	@RequestMapping(value = "callFace", method = RequestMethod.GET)
 	public ArrayList<FBResource> select() {
 		ArrayList<FBResource> faceList = dao.readFace();
+		logger.debug(faceList.toString());
 		return faceList;
 	}	
 	

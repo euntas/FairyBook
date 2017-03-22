@@ -8,51 +8,59 @@ package global.sesoc.fairybook.vo;
  */
 public class FBResource {
 	
-	private int fbResourceNum;			// 리소스 번호
-	private String fbResourceName;		// 리소스 이름
-	private String fbResourceAnalysis;	// 리소스 설명
-	private String fbResourcePath;		// 리소스 이미지 경로
+	private int resourceNum;			// 리소스 번호
+	private String name;		// 리소스 이름
+	private String analysis;	// 리소스 설명
+	private String path;		// 리소스 이미지 경로
 
 	public FBResource() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getFbResourceNum() {
-		return fbResourceNum;
+	public FBResource(int resourceNum, String name, String analysis, String path) {
+		super();
+		this.resourceNum = resourceNum;
+		this.name = name;
+		this.analysis = analysis;
+		this.path = path;
 	}
 
-	public void setFbResourceNum(int fbResourceNum) {
-		this.fbResourceNum = fbResourceNum;
+	public int getResourceNum() {
+		return resourceNum;
 	}
 
-	public String getFbResourceName() {
-		return fbResourceName;
+	public void setResourceNum(int resourceNum) {
+		this.resourceNum = resourceNum;
 	}
 
-	public void setFbResourceName(String fbResourceName) {
-		this.fbResourceName = fbResourceName;
+	public String getName() {
+		return name;
 	}
 
-	public String getFbResourceAnalysis() {
-		return fbResourceAnalysis;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public void setFbResourceAnalysis(String fbResourceAnalysis) {
-		this.fbResourceAnalysis = fbResourceAnalysis;
+	public String getAnalysis() {
+		return analysis;
 	}
 
-	public String getFbResourcePath() {
-		return fbResourcePath;
+	public void setAnalysis(String analysis) {
+		this.analysis = analysis;
 	}
 
-	public void setFbResourcePath(String fbResourcePath) {
-		this.fbResourcePath = fbResourcePath;
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
 	}
 
 	@Override
 	public String toString() {
-		return "FBResource [fbResourceNum=" + fbResourceNum + ", fbResourceName=" + fbResourceName
-				+ ", fbResourceAnalysis=" + fbResourceAnalysis + ", fbResourcePath=" + fbResourcePath + "]";
+		return "FBResource [resourceNum=" + resourceNum + ", name=" + name + ", analysis=" + analysis + ", path=" + path
+				+ "]";
 	}
 	
 }

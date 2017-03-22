@@ -15,14 +15,14 @@
 $(document).ready(function(){
 	//id가 신체부위인 버튼을 클릭하면 해당 함수 호출
 	$('#face').on('click', callFace);
-	$('#hair').on('click', callHair);
+/* 	$('#hair').on('click', callHair);
 	$('#eye').on('click', callEye);
 	$('#nose').on('click', callNose);
 	$('#mouth').on('click', callMouth);
 	$('#ear').on('click', callEar);
 	$('#neck').on('click', callNeck);
 	$('#body').on('click', callBody);
-	$('#skin').on('click', callSkin);
+	$('#skin').on('click', callSkin); */
 });
 
 //얼굴 불러오기
@@ -39,24 +39,19 @@ function callFace(){
 }
 
 //불러온 자료를 디테일 부분에 띄운다
-function list(resourceList){
+function detail(resourceList){
 	var list = '';
-	for(var i in commentList){
-		list += '<input type="button" class="items" id="item'+resourceList[i].resourcenum+1+'">';
+	for(var i in resourceList){
+		list += '<img class="items" src="'+resourceList[i].path+'">';
 		$('.items').on('click', draw);
 		$('.items').css('width', '10%');
-		$('.items').css('width', '10%');
-		
-		+ commentList[i].name + '</td><td class="tdText">'
-		+ commentList[i].text + '</td><td>'
-		+ '<input type="button" class="btnDel" num="'+commentList[i].num+'" value="삭제"></td></tr>';
+		$('.items').css('height', '10%');
 	}
-	list += '</table>';
-	$('#listDiv').html(list);
-	$('.btnDel').on('click', del);
-	$('th').css('border','1px solid');
-	$('td').css('border','1px solid');
-	$('table').css('border-collapse','collapse');
+	$('#items').html(list);
+}
+
+function draw(){
+	alert('그린다요!');
 }
 
 </script>
