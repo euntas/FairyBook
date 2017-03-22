@@ -1,4 +1,4 @@
-package global.sesoc.fairybook;
+package global.sesoc.fairybook.controller;
 
 import java.util.Locale;
 
@@ -19,6 +19,7 @@ import global.sesoc.fairybook.vo.Item;
  */
 
 @Controller
+@RequestMapping(value="story")
 public class StoryController {
 
 	private static final Logger logger = LoggerFactory.getLogger(StoryController.class);
