@@ -19,7 +19,7 @@
 <li><a href ="storymaker/show"> 동화감상 </a></li>
 <li><a href ="avatar"> 아바타만들기 </a></li>
 
-<li><a href ="storyTest"> 동화진행 - test 용 </a></li>
+<li><a href ="story/storyTest"> 동화진행 - test 용 </a></li>
 </ul>
 </nav>
 
