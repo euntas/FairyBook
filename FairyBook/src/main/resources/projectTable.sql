@@ -268,6 +268,8 @@ CREATE TABLE STORYMAKER
 	PRIMARY KEY (ID)
 );
 
+--임시방편의 가입절차
+insert into STORYMAKER values ('ryan', '1234', '12345', '라훈아', '라이언', (TO_DATE('2012-12-12','YYYY-MM-DD')), 'ryan@naver.com', '송파구 삼전동', '010-1111-1111', '라이언맘', '라이언', null, null);
 
 
 /* Create Foreign Keys */

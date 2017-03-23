@@ -8,149 +8,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  
-  
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
-<link href='https://fonts.googleapis.com/css?family=RobotoDraft' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><style>
-html,body,h1,h2,h3,h4,h5 {font-family: "RobotoDraft", "Roboto", sans-serif;}
-.w3-bar-block .w3-bar-item{padding:16px}
-.bg-1 { 
-	    background-color: #1abc9c; /* Green */
-	    color: #ffffff;
-		}
-.bg-2 { 
-		    background-color: #474e5d; /* Dark Blue */
-		    color: #ffffff;
-		}
-</style>
-
-
-
-<body>
-<div class="container-fluid bg-2 text-center">
-  <h3>Fairytale Book</h3>
-  <br>
-  <a href="#" class="btn btn-default btn-lg">
-  <span class="glyphicon glyphicon-search"></span>
-  Search</a>
-</div>
-
-<!-- Side Navigation -->
-<nav class="w3-sidebar w3-bar-block w3-collapse w3-white w3-animate-left w3-card-2" style="z-index:3;width:250px;" id="mySidebar">
-  <div class="container-fluid bg-1 text-center">
-  <h3>Who Am I?</h3>
-  <img src="resources/image/pc.jpg" alt="img" style="height: 150px" class="img-responsive img-circle" style="display:inline"> <!--circle image  -->
-  <h3>I'm an adventurer</h3>
-	</div>
-  <a href="javascript:void(0)" onclick="w3_close()" title="Close Sidemenu" 
-  class="w3-bar-item w3-button w3-hide-large w3-large">Close <i class="fa fa-remove"></i></a>
-  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-dark-grey w3-button w3-hover-black w3-left-align" onclick="document.getElementById('id01').style.display='block'">New Message <i class="w3-padding-left fa fa-pencil"></i></a>
-  
-  <!-- Inbox -->
-  <a id="myBtn" onclick="myFunc('Demo1')" href="javascript:void(0)" class="w3-bar-item w3-button"><i class="fa fa-inbox w3-padding-right"></i>Inbox (3)<i class="w3-padding-left fa fa-caret-down"></i></a>
-  <div id="Demo1" class="w3-hide w3-animate-left">
-    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom test w3-hover-light-grey" onclick="openMail('Borge');w3_close();" id="firstTab">
-      <div class="w3-container">
-        <img class="w3-round w3-margin-right" src="resources/image/pc.jpg" style="width:15%;"><span class="w3-opacity w3-large">Borge Refsnes</span>
-        <h6>Subject: Remember Me</h6>
-        <p>Hello, i just wanted to let you know that i'll be home at...</p>
-      </div>
-    </a>
-     <a href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom test w3-hover-light-grey" onclick="openMail('Jane');w3_close();">
-      <div class="w3-container">
-        <img class="w3-round w3-margin-right" src="resources/image/pc.jpg" style="width:15%;"><span class="w3-opacity w3-large">Jane Doe</span>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-      </div>
-    </a>
-    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom test w3-hover-light-grey" onclick="openMail('John');w3_close();">
-      <div class="w3-container">
-        <img class="w3-round w3-margin-right" src="resources/image/pc.jpg" style="width:15%;"><span class="w3-opacity w3-large">John Doe</span>
-        <p>Welcome!</p>
-      </div>
-    </a>
-  </div>
-  <a href="" class="w3-bar-item w3-button"><i class="fa fa-paper-plane w3-padding-right"></i>동화선택</a>
-  <a href="#" class="w3-bar-item w3-button"><i class="fa fa-hourglass-end w3-padding-right"></i>동화감상</a>
-  <a href="#" class="w3-bar-item w3-button"><i class="fa fa-trash w3-padding-right"></i>아바타만들기</a>
-</nav>
-
-<!-- Modal that pops up when you click on "New Message" -->
-<div id="id01" class="w3-modal" style="z-index:4">
-  <div class="w3-modal-content w3-animate-zoom">
-    <div class="w3-container w3-padding w3-red">
-       <span onclick="document.getElementById('id01').style.display='none'"
-       class="w3-button w3-red w3-right w3-xxlarge"><i class="fa fa-remove"></i></span>
-      <h2>Send Mail</h2>
-    </div>
-    <div class="w3-panel">
-      <label>To</label>
-      <input class="w3-input w3-border w3-margin-bottom" type="text">
-      <label>From</label>
-      <input class="w3-input w3-border w3-margin-bottom" type="text">
-      <label>Subject</label>
-      <input class="w3-input w3-border w3-margin-bottom" type="text">
-      <input class="w3-input w3-border w3-margin-bottom" style="height:150px" placeholder="What's on your mind?">
-      <div class="w3-section">
-        <a class="w3-button w3-red" onclick="document.getElementById('id01').style.display='none'">Cancel  <i class="fa fa-remove"></i></a>
-        <a class="w3-button w3-right" onclick="document.getElementById('id01').style.display='none'">Send  <i class="fa fa-paper-plane"></i></a> 
-      </div>    
-    </div>
-  </div>
-</div>
-
-<!-- Overlay effect when opening the side navigation on small screens -->
-<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="Close Sidemenu" id="myOverlay"></div>
-
-<!-- Page content -->
-<div class="w3-main" style="margin-left:300px;">
-<i class="fa fa-bars w3-button w3-white w3-hide-large w3-xlarge w3-margin-left w3-margin-top" onclick="w3_open()"></i>
-<a href="javascript:void(0)" class="w3-hide-large w3-red w3-button w3-right w3-margin-top w3-margin-right" onclick="document.getElementById('id01').style.display='block'"><i class="fa fa-pencil"></i></a>
-
-<div id="Borge" class="w3-container person">
-  <br>
-  <h5 class="w3-opacity">Subject: Remember Me</h5>
-  <h4><i class="fa fa-clock-o"></i> From Borge Refsnes, Sep 27, 2015.</h4>
-  <a class="w3-button" href="#">Reply<i class="w3-padding-left fa fa-mail-reply"></i></a>
-  <a class="w3-button" href="#">Forward<i class="w3-padding-left fa fa-arrow-right"></i></a>
-  <hr>
-  <p>Hello, i just wanted to let you know that i'll be home at lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-  <p>Best Regards, <br>Borge Refsnes</p>
-</div>
-
-<!-- image -->
- <div class="w3-row-padding w3-padding-16">
-    <div class="w3-third w3-margin-bottom">
-      <img src="resources/image/pp2.jpg" alt="Norway" style="width:100%">
-      <div class="w3-container w3-white">
-        <h3>Single Room</h3>
-        <h6 class="w3-opacity">From $99</h6>
-        <p class="w3-large"><i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i></p>
-        <button class="w3-button w3-block w3-black w3-margin-bottom">Choose Room</button>
-      </div>
-    </div>
-    <div class="w3-third w3-margin-bottom">
-      <img src="resources/image/pp1.png" alt="Norway" style="width:100%">
-      <div class="w3-container w3-white">
-        <h3>Double Room</h3>
-        <h6 class="w3-opacity">From $149</h6>
-        <p class="w3-large"><i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i> <i class="fa fa-tv"></i></p>
-        <button class="w3-button w3-block w3-black w3-margin-bottom">Choose Room</button>
-      </div>
-    </div>
-    <div class="w3-third w3-margin-bottom">
-      <img src="resources/image/pp3.jpg" alt="Norway" style="width:100%">
-      <div class="w3-container w3-white">
-        <h3>Deluxe Room</h3>
-        <h6 class="w3-opacity">From $199</h6>
-        <p class="w3-large"><i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i> <i class="fa fa-tv"></i> <i class="fa fa-glass"></i> <i class="fa fa-cutlery"></i></p>
-        <button class="w3-button w3-block w3-black w3-margin-bottom">Choose Room</button>
-      </div>
-    </div>
-  </div>
-
-</div>
 
 <script>
 var openInbox = document.getElementById("myBtn");
@@ -197,6 +54,213 @@ function openMail(personName) {
 var openTab = document.getElementById("firstTab");
 openTab.click();
 </script>
+  
+  
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
+<link href='https://fonts.googleapis.com/css?family=RobotoDraft' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><style>
+html,body,h1,h2,h3,h4,h5 {font-family: "RobotoDraft", "Roboto", sans-serif;}
+.w3-bar-block .w3-bar-item{padding:16px}
+.bg-1 { 
+	    background-color: rgb(0,147,205); /* Green */
+	    color: #ffffff;
+	    text-align:center;
+		}
+.bg-2 { 
+		    background-color: rgb(255,255,70); /* yellow */
+		    color: rgb(0,76,112);
+		    padding-top: 20px;
+		    padding-bottom: 20px;
+		    font-variant: small-caps;
+		    letter-spacing: 5px;
+		}
+img{
+	display: -webkit-flex;
+     display: flex; /* 플렉스박스로 지정 */
+     -webkit-align-items: center;
+     align-items: center; /* 세로 중앙정렬 */
+  	-webkit-justify-content: center;
+     justify-content: center; /* 가로 중앙정렬 */
+}
+.navbar-nav li a:hover {
+		    color: #1abc9c !important;
+		}
+#under{
+	padding-top:100px;
+}
+</style>
+
+
+
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+<!--배너  -->
+<nav class="navbar-fixed-top">
+<div class="container-fluid bg-2 text-center">
+  <h1>Fairytale Book</h1>
+</div>
+</nav>
+
+<div id="under">
+<!-- Side Navigation -->
+
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-white w3-animate-left w3-card-2" style="z-index:3;width:220px;" id="mySidebar">
+  <div class="container-fluid bg-1">
+  <h3>Who Am I?</h3>
+  <center><img src="resources/image/yo.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"></center><br><!--circle image  -->
+  <button type="button" class="btn btn-success">LOGIN</button>
+  <button type="button" class="btn btn-warning">JOIN</button>
+  <br><br>
+  </div>
+  <a href="javascript:void(0)" onclick="w3_close()" title="Close Sidemenu" 
+  class="w3-bar-item w3-button w3-hide-large w3-large">Close <i class="fa fa-remove"></i></a>
+  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-dark-grey w3-button w3-hover-black w3-left-align" onclick="document.getElementById('id01').style.display='block'">New Message <i class="w3-padding-left fa fa-pencil"></i></a>
+  
+  <a href="" class="w3-bar-item w3-button"><i class="fa fa-paper-plane w3-padding-right"></i>동화선택</a>
+  <a href="#" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>동화감상</a>
+</nav>
+
+<!-- Modal that pops up when you click on "New Message" -->
+<div id="id01" class="w3-modal" style="z-index:4">
+  <div class="w3-modal-content w3-animate-zoom">
+    <div class="w3-container w3-padding w3-red">
+       <span onclick="document.getElementById('id01').style.display='none'"
+       class="w3-button w3-red w3-right w3-xxlarge"><i class="fa fa-remove"></i></span>
+      <h2>Send Mail</h2>
+    </div>
+    <div class="w3-panel">
+      <label>To</label>
+      <input class="w3-input w3-border w3-margin-bottom" type="text">
+      <label>From</label>
+      <input class="w3-input w3-border w3-margin-bottom" type="text">
+      <label>Subject</label>
+      <input class="w3-input w3-border w3-margin-bottom" type="text">
+      <input class="w3-input w3-border w3-margin-bottom" style="height:150px" placeholder="What's on your mind?">
+      <div class="w3-section">
+        <a class="w3-button w3-red" onclick="document.getElementById('id01').style.display='none'">Cancel  <i class="fa fa-remove"></i></a>
+        <a class="w3-button w3-right" onclick="document.getElementById('id01').style.display='none'">Send  <i class="fa fa-paper-plane"></i></a> 
+      </div>    
+    </div>
+  </div>
+</div>
+
+<!-- Overlay effect when opening the side navigation on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="Close Sidemenu" id="myOverlay"></div>
+
+
+<!-- Page content -->
+<div class="w3-main" style="margin-left:230px;">
+
+
+
+
+
+
+
+<!--###########여기부터 각 페이지에 맞는내용 넣으면 되요!!!!!!!!!!!###########  -->
+	<i class="fa fa-bars w3-button w3-white w3-hide-large w3-xlarge w3-margin-left w3-margin-top" onclick="w3_open()"></i>
+	<a href="javascript:void(0)" class="w3-hide-large w3-red w3-button w3-right w3-margin-top w3-margin-right" onclick="document.getElementById('id01').style.display='block'"><i class="fa fa-pencil"></i></a>
+	
+	<div id="Borge" class="w3-container person">
+	  <br>
+	  <h4>이 주의 업데이트</h4>
+	  <hr>
+	</div>
+	<!-- image -->
+	 <div class="w3-row-padding w3-padding-16">
+	    <div class="w3-third w3-margin-bottom">
+	      <img src="resources/image/book.jpg" alt="Norway" style="width:100%">
+	      <div class="w3-container w3-white">
+	        <h3>헨젤과 그레텔</h3>
+	        <h6 class="w3-opacity">2017.3.22</h6>
+	        <button class="w3-button w3-block w3-yellow w3-margin-bottom">Play</button>
+	      </div>
+	    </div>
+	    <div class="w3-third w3-margin-bottom">
+	      <img src="resources/image/pp1.png" alt="Norway" style="width:100%">
+	      <div class="w3-container w3-white">
+	        <h3>Double Room</h3>
+	        <h6 class="w3-opacity">From $149</h6>
+	        <button class="w3-button w3-block w3-yellow w3-margin-bottom">Play</button>
+	      </div>
+	    </div>
+	    <div class="w3-third w3-margin-bottom">
+	      <img src="resources/image/pp3.jpg" alt="Norway" style="width:100%">
+	      <div class="w3-container w3-white">
+	        <h3>Deluxe Room</h3>
+	        <h6 class="w3-opacity">From $199</h6>
+	        <button class="w3-button w3-block w3-yellow w3-margin-bottom">Play</button>
+	      </div>
+	    </div>
+	  </div>
+
+	  <div id="Borge" class="w3-container person">
+	  <br>
+	  <h4>다른 어린이들의 동화</h4>
+	  <hr>
+	  </div>
+	  <div class="w3-row-padding w3-padding-16">
+	    <div class="w3-third w3-margin-bottom">
+	      <img src="resources/image/book.jpg" alt="Norway" style="width:100%">
+	      <div class="w3-container w3-white">
+	        <h3>헨젤과 그레텔</h3>
+	        <h6 class="w3-opacity">2017.3.22</h6>
+	        <button class="w3-button w3-block w3-green w3-margin-bottom">Play</button>
+	      </div>
+	    </div>
+	    <div class="w3-third w3-margin-bottom">
+	      <img src="resources/image/pp1.png" alt="Norway" style="width:100%">
+	      <div class="w3-container w3-white">
+	        <h3>Double Room</h3>
+	        <h6 class="w3-opacity">From $149</h6>
+	        <button class="w3-button w3-block w3-green w3-margin-bottom">Play</button>
+	      </div>
+	    </div>
+	    <div class="w3-third w3-margin-bottom">
+	      <img src="resources/image/pp3.jpg" alt="Norway" style="width:100%">
+	      <div class="w3-container w3-white">
+	        <h3>Deluxe Room</h3>
+	        <h6 class="w3-opacity">From $199</h6>
+	        <button class="w3-button w3-block w3-green w3-margin-bottom">Play</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+<!--###########여기까지!!!!!!!!!#############  -->
+	
+	
+	
+	
+	
+	
+</div>
+
+<!--Add a navar  -->
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="#">Me</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">WHO</a></li>
+        <li><a href="#">WHAT</a></li>
+        <li><a href="#">WHERE</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<footer class="container-fluid bg-4 text-center">
+  <p>Made By <a href="localhost:8888/fairybook">FairyBook.com</a></p> 
+</footer>
+
+
 
 </body>
 </html> 

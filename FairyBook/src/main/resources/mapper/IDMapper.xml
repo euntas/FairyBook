@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 회원정보 처리 SQL -->
+<mapper namespace="global.sesoc.fairybook.mapper.IDMapper">
+	
+	<insert id="insert" parameterType="StoryMaker">
+	 insert into storymaker
+	 (ID, PASSWORD1, PASSWORD2, PNAME, CNAME, 
+	 CBIRTH, EMAIL, ADDRESS, PHONE, PNICKNAME, CNICKNAME 
+	 <if test="originalProfile != null and savedProfile!= null">
+	,
+	ORIGINALPROFILE, 
+	SAVEDPROFILE 	 
+	</if>) values 
+	 (#{userId},#{cPw1},#{pPw1},#{pName},#{cName}
+	 ,(TO_DATE('#{cBirthYear}-#{cBirthMonth}-#{cBirthDate}','YYYY-MM-DD') )
+	 ,#{email},#{address},('#{phone1}-#{phone2}-#{phone3}'),#{pNick},#{cNick} 
+	 <if test="originalProfile != null and savedProfile!= null">
+	,
+	#{originalProfile}, 
+	#{savedProfile}
+	</if>)
+	</insert>
+	
+	<select id="selectStoryMaker" parameterType="string" resultType="StoryMaker">
+	select * from StoryMaker where id=#{searchId}
+	</select>
+	
+	<select id="selectStoryMaker1" parameterType="string" resultType="StoryMaker">
+	select * from StoryMaker where CNICKNAME=#{searchcNick}
+	</select>
+	
+	<select id="selectStoryMaker2" parameterType="string" resultType="StoryMaker">
+	select * from StoryMaker where PNICKNAME=#{searchpNick}
+	</select>
+	
+	
+	<update id="update" parameterType="StoryMaker">
+	update storymaker set password=#{password}, name=#{name}, email=#{email}, idno=#{idNo}, address=#{address} where custid=#{custId}
+	</update>
+	
+	<select id="findID" parameterType="string" resultType="StoryMaker">
+		select 
+			*
+		from
+			StoryMaker
+		where
+			id=#{id}
+	</select>
+</mapper>
