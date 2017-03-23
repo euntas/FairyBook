@@ -10,18 +10,18 @@
 	 insert into storymaker
 	 (ID, PASSWORD1, PASSWORD2, PNAME, CNAME, 
 	 CBIRTH, EMAIL, ADDRESS, PHONE, PNICKNAME, CNICKNAME 
-	 <if test="originalfile != null and savedfile!= null">
+	 <if test="originalProfile != null and savedProfile!= null">
 	,
-	originalfile, 
-	savedfile 	 
+	ORIGINALPROFILE, 
+	SAVEDPROFILE 	 
 	</if>) values 
 	 (#{userId},#{cPw1},#{pPw1},#{pName},#{cName}
 	 ,(TO_DATE('#{cBirthYear}-#{cBirthMonth}-#{cBirthDate}','YYYY-MM-DD') )
 	 ,#{email},#{address},('#{phone1}-#{phone2}-#{phone3}'),#{pNick},#{cNick} 
-	 <if test="originalfile != null and savedfile!= null">
+	 <if test="originalProfile != null and savedProfile!= null">
 	,
-	#{originalfile}, 
-	#{savedfile}
+	#{originalProfile}, 
+	#{savedProfile}
 	</if>)
 	</insert>
 	

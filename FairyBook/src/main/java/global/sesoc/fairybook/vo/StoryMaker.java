@@ -29,20 +29,18 @@ public class StoryMaker {
 		// TODO Auto-generated constructor stub
 	}
 
+   public String getId() {
+      return id;
+   }
 
-	public String getId() {
-		return id;
-	}
 
-
-	public void setId(String id) {
-		this.id = id;
-	}
+   public void setId(String id) {
+      this.id = id;
+   }
 
 	public String getCnickName() {
 		return cnickName;
 	}
-
 
 	public void setCnickName(String cnickName) {
 		this.cnickName = cnickName;
@@ -58,51 +56,48 @@ public class StoryMaker {
 		this.pnickName = pnickName;
 	}
 
-
-	public String getPassword1() {
-		return password1;
-	}
-
-
-	public void setPassword1(String password) {
-		this.password1 = password;
-	}
+   public String getPassword1() {
+      return password1;
+   }
 
 
-	public String getPassword2() {
-		return password2;
-	}
+   public void setPassword1(String password) {
+      this.password1 = password;
+   }
 
 
-	public void setPassword2(String parentPassword) {
-		this.password2 = parentPassword;
-	}
+   public String getPassword2() {
+      return password2;
+   }
 
 
-	public String getcName() {
-		return cName;
-	}
+   public void setPassword2(String parentPassword) {
+      this.password2 = parentPassword;
+   }
 
 
-	public void setcName(String cName) {
-		this.cName = cName;
-	}
+   public String getcName() {
+      return cName;
+   }
 
 
-	public String getpName() {
-		return pName;
-	}
+   public void setcName(String cName) {
+      this.cName = cName;
+   }
 
 
-	public void setpName(String pName) {
-		this.pName = pName;
-	}
+   public String getpName() {
+      return pName;
+   }
 
+
+   public void setpName(String pName) {
+      this.pName = pName;
+   }
 
 	public Date getcBirth() {
 		return cBirth;
 	}
-
 
 	public void setcBirth(Date cBirthday) {
 		this.cBirth = cBirthday;
@@ -111,51 +106,44 @@ public class StoryMaker {
 	public String getEmail() {
 		return email;
 	}
+	
+   public void setEmail(String email) {
+      this.email = email;
+   }
 
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+   public String getAddress() {
+      return address;
+   }
+
+   public void setAddress(String address) {
+      this.address = address;
+   }
+
+   public String getPhone() {
+      return phone;
+   }
+
+   public void setPhone(String phone) {
+      this.phone = phone;
+   }
+
+   public String getOriginalProfile() {
+      return originalProfile;
+   }
+
+   public void setOriginalProfile(String originalProfile) {
+      this.originalProfile = originalProfile;
+   }
+
+   public String getSavedProfile() {
+      return savedProfile;
+   }
 
 
-	public String getAddress() {
-		return address;
-	}
-
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-
-	public String getPhone() {
-		return phone;
-	}
-
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-
-
-	public String getOriginalProfile() {
-		return originalProfile;
-	}
-
-
-	public void setOriginalProfile(String originalProfile) {
-		this.originalProfile = originalProfile;
-	}
-
-
-	public String getSavedProfile() {
-		return savedProfile;
-	}
-
-
-	public void setSavedProfile(String savedProfile) {
-		this.savedProfile = savedProfile;
-	}
+   public void setSavedProfile(String savedProfile) {
+      this.savedProfile = savedProfile;
+   }
 
 
 	@Override

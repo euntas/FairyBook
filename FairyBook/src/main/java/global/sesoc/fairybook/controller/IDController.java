@@ -1,5 +1,7 @@
 package global.sesoc.fairybook.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -10,9 +12,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import global.sesoc.fairybook.dao.IDDAO;
+import global.sesoc.fairybook.util.FileService;
 import global.sesoc.fairybook.vo.StoryMaker;
 
 /**
@@ -27,7 +31,7 @@ public class IDController {
 	IDDAO dao;
 	
 	private static final Logger logger = LoggerFactory.getLogger(IDController.class);
-	
+	final String uploadPath = "/boardfile"; // 파일 업로드 경로
 	
 	@RequestMapping(value = "join", method = RequestMethod.GET)
 	public String join() {
@@ -62,7 +66,7 @@ public class IDController {
 	public String cNickCheck(String searchcNick, Model model){
 		
 		
-		StoryMaker c = dao.selectStoryMaker(searchcNick);
+		StoryMaker c = dao.selectStoryMaker1(searchcNick);
 		boolean search = true;
 		model.addAttribute("checkedGuy", c);
 		model.addAttribute("search", search);
@@ -80,7 +84,7 @@ public class IDController {
 	public String pNickCheck(String searchpNick, Model model){
 		
 		
-		StoryMaker c = dao.selectStoryMaker(searchpNick);
+		StoryMaker c = dao.selectStoryMaker2(searchpNick);
 		boolean search = true;
 		model.addAttribute("checkedGuy", c);
 		model.addAttribute("search", search);
@@ -90,10 +94,20 @@ public class IDController {
 
 	@RequestMapping(value = "join", method = RequestMethod.POST)
 	public String join(StoryMaker maker
-			, Model model) {
+			, ArrayList<MultipartFile> upload, Model model) {
 		logger.debug("가입데이터 : {}", maker);	
 		//검증, DB저장
+		if (upload.size() != 0) {
+			for (MultipartFile file : upload) {
+				String savedFile = FileService.saveFile(file, uploadPath);
+
+				// 원래 파일명과 저장된 파일명을 board객체에 담아 DB에 저장
+				maker.setOriginalProfile(file.getOriginalFilename());
+				maker.setSavedProfile(savedFile);
+			}
+		}
 		int result = 0;
+		
 		try{
 		 result = dao.insert(maker);
 		}catch (Exception e){

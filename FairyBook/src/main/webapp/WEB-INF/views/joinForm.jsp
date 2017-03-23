@@ -25,17 +25,18 @@ function pNickCheckOpen() {
 </script>
 </head>
 <body>
+<form  enctype="multipart/form-data" action="join" method="post">
 	<table>
 		<tr>
 			<td class="firstRow">ID</td>
 			<td class="secondRow"><input type="text" id="userId"
-				name="userId" style="width: 220px;"></td>
+				name="userId" readonly="readonly" style="width: 220px;"></td>
 			<td><input type="button" value="중복확인" id="idCheck" onclick="idcheckOpen()"></td>
 		</tr>
 		<tr>
 			<td class="firstRow">닉네임</td>
 			<td class="secondRow"><input type="text" id="cNick" name="cNick"
-				style="width: 220px;"></td>
+				 readonly="readonly" style="width: 220px;"></td>
 			<td><input type="button" value="중복확인" id="cNickCheck" onclick="cNickCheckOpen()"></td>
 		</tr>
 		<tr>
@@ -107,8 +108,8 @@ function pNickCheckOpen() {
 		<tr>
 			<td class="firstRow">보호자 닉네임</td>
 			<td class="secondRow"><input type="text" id="pNick" name="pNick"
-				style="width: 220px;"></td>
-			<td><input type="button" value="중복확인" id="pNickCheck" onclick="cNickCheckOpen()"></td>
+				 readonly="readonly" style="width: 220px;"></td>
+			<td><input type="button" value="중복확인" id="pNickCheck" onclick="pNickCheckOpen()"></td>
 		</tr>
 		<tr>
 			<td class="firstRow">이메일</td>
@@ -142,17 +143,18 @@ function pNickCheckOpen() {
 		<tr>
 			<td class="firstRow">사진 업로드</td>
 			<td class="secondRow">
-			<input type="file" name="upload" id="upload">
+			<input type="file" name="upload" id="upload" multiple="multiple">
 			</td>
 			<td>
 			</td>
 		</tr>
 		<tr>
-			<td colspan="3" style="text-align: center;"><input type="button"
-				value="아바타 제작으로" onclick="formCheck()")>
+			<td colspan="3" style="text-align: center;">
+			<input type="submit" value="아바타 제작으로" >
 				<input type="button" value="취소" onclick="location.href="></td>
 		</tr>
 
 	</table>
+	</form>
 </body>
 </html>

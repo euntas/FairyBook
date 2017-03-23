@@ -5,19 +5,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>보호자 닉네임 중복 확인</title>
+<title>아동 닉네임 중복 확인</title>
 <script>
-function nickSelect(pNick){
-	opener.document.getElementById('pNick').value = pNick;//가입폼의 ID입력란에 전달받은 ID입력
+function nickSelect(cNick){
+	opener.document.getElementById('cNick').value = cNick;//가입폼의 ID입력란에 전달받은 ID입력
 	this.window.close();//현재 창 닫기
 }
 </script>
 </head>
 <body>
 <h1>[ 닉네임 중복 확인 ]</h1>
-<form action="pNickCheck" method="post">
+<form action="cNickCheck" method="post">
 검색할 닉네임
-	<input type="text" id="searchpNick" name="searchpNick" value="${searchpNick}">
+	<input type="text" id="searchcNick" name="searchcNick" value="${searchcNick}">
 	<input type="submit" value="검색">
 </form>
 <br><br>
