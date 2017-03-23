@@ -150,9 +150,15 @@ public class IDController {
 		switch (result) {
 		case 1:
 			message = user.getcName()+"님 로그인!";
+			//아이 로그인 성공시 id와 userType:child 세션에 저장
+			session.setAttribute("id", user.getId());
+			session.setAttribute("userType", "child");
 			break;
 		case 2:
 			message = user.getpName()+"님 로그인!";
+			//부모 로그인 성공시 id와 userType:parent 세션에 저장
+			session.setAttribute("id", user.getId());
+			session.setAttribute("userType", "parent");
 			break;
 		case 3:
 			message = "존재하지 않는 아이디입니다.";

@@ -58,13 +58,20 @@
 				type: 'POST',
 				data: {id,pw},
 				dataType: 'text',
-				success: function(message){
-					alert(message);
-				},
+				success: loginResult,
 				error: function(e){
 					alert(JSON.stringify(e));
 				}
 			})
+		}
+		
+		function loginResult(message){
+			//어린이 로그인 1, 부모로그인 2, ID없음 3, PW불일치 4
+			alert(message);
+			//로그인 성공할 경우
+			if(message.indexOf("않는")<0){
+				location.href = "../fairybook";
+			}
 		}
 	</script>
 </head>

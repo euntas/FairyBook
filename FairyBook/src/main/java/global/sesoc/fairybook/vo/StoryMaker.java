@@ -11,7 +11,8 @@ import java.util.Date;
 public class StoryMaker {
 	
 	private String id;				// 아이디
-	private String nickName;		// 닉네임 
+	private String cnickName;		// 아이 닉네임 
+	private String pnickName;		// 부모 닉네임 
 	private String password1;		// 아동용 비밀번호
 	private String password2;		// 부모용 비밀번호
 	private String cName;			// 아이 이름
@@ -38,14 +39,23 @@ public class StoryMaker {
 		this.id = id;
 	}
 
-
-	public String getNickName() {
-		return nickName;
+	public String getCnickName() {
+		return cnickName;
 	}
 
 
-	public void setNickName(String nickName) {
-		this.nickName = nickName;
+	public void setCnickName(String cnickName) {
+		this.cnickName = cnickName;
+	}
+
+
+	public String getPnickName() {
+		return pnickName;
+	}
+
+
+	public void setPnickName(String pnickName) {
+		this.pnickName = pnickName;
 	}
 
 
@@ -89,12 +99,12 @@ public class StoryMaker {
 	}
 
 
-	public Date getcBirthday() {
+	public Date getcBirth() {
 		return cBirth;
 	}
 
 
-	public void setcBirthday(Date cBirthday) {
+	public void setcBirth(Date cBirthday) {
 		this.cBirth = cBirthday;
 	}
 
@@ -150,10 +160,10 @@ public class StoryMaker {
 
 	@Override
 	public String toString() {
-		return "StoryMaker [id=" + id + ", nickName=" + nickName + ", password1=" + password1 + ", password2="
-				+ password2 + ", cName=" + cName + ", pName=" + pName + ", cBirth=" + cBirth + ", email=" + email
-				+ ", address=" + address + ", phone=" + phone + ", originalProfile=" + originalProfile
-				+ ", savedProfile=" + savedProfile + "]";
+		return "StoryMaker [id=" + id + ", cnickName=" + cnickName + ", pnickName=" + pnickName + ", password1="
+				+ password1 + ", password2=" + password2 + ", cName=" + cName + ", pName=" + pName + ", cBirth="
+				+ cBirth + ", email=" + email + ", address=" + address + ", phone=" + phone + ", originalProfile="
+				+ originalProfile + ", savedProfile=" + savedProfile + "]";
 	}
 
 

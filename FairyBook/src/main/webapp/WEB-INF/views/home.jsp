@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <title>FairyBook</title>
@@ -88,6 +89,7 @@ img{
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
+
 <!--배너  -->
 <nav class="navbar-fixed-top">
 <div class="container-fluid bg-2 text-center">
@@ -97,6 +99,8 @@ img{
 
 <div id="under">
 <!-- Side Navigation -->
+<!--로그인하지 않았을 때  -->
+<c:if test="${session.id == null }">
 <nav class="w3-sidebar w3-bar-block w3-collapse w3-white w3-animate-left w3-card-2" style="z-index:3;width:220px;" id="mySidebar">
   <div class="container-fluid bg-1">
   <h3>Who Am I?</h3>
@@ -112,6 +116,7 @@ img{
   <a href="" class="w3-bar-item w3-button"><i class="fa fa-paper-plane w3-padding-right"></i>동화선택</a>
   <a href="#" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>동화감상</a>
 </nav>
+</c:if>
 
 <!-- Modal that pops up when you click on "New Message" -->
 <div id="id01" class="w3-modal" style="z-index:4">
