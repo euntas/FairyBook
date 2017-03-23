@@ -88,7 +88,6 @@ public class StoryMaker {
       this.pName = pName;
    }
 
-
    public Date getcBirthday() {
       return cBirth;
    }
@@ -111,7 +110,6 @@ public class StoryMaker {
    public String getAddress() {
       return address;
    }
-
 
    public void setAddress(String address) {
       this.address = address;
@@ -155,6 +153,5 @@ public class StoryMaker {
             + ", address=" + address + ", phone=" + phone + ", originalProfile=" + originalProfile
             + ", savedProfile=" + savedProfile + "]";
    }
-
 
 }

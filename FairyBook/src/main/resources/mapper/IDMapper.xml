@@ -39,5 +39,15 @@
 	
 	
 	<update id="update" parameterType="StoryMaker">
-	update storymaker set password=#{password}, name=#{name}, email=#{email}, idno=#{idNo}, address=#{address} where custid=#{custId}</update>
+	update storymaker set password=#{password}, name=#{name}, email=#{email}, idno=#{idNo}, address=#{address} where custid=#{custId}
+	</update>
+	
+	<select id="findID" parameterType="string" resultType="StoryMaker">
+		select 
+			*
+		from
+			StoryMaker
+		where
+			id=#{id}
+	</select>
 </mapper>

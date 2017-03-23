@@ -61,8 +61,8 @@ public class IDDAO {
 		IDMapper mapper = sqlSession.getMapper(IDMapper.class);
 		ArrayList<StoryMaker> allUser = mapper.infoAll();
 		return allUser;
-	};
-	
+	}
+
 	/**
 	 * 회원정보 삭제
 	 * @param id 삭제할 회원의 계정
@@ -72,7 +72,7 @@ public class IDDAO {
 		IDMapper mapper = sqlSession.getMapper(IDMapper.class);
 		int result = mapper.delete(id);
 		return result;
-	};
+	}
 	
 	/**
 	 * 회원정보 수정
@@ -83,9 +83,40 @@ public class IDDAO {
 		IDMapper mapper = sqlSession.getMapper(IDMapper.class);
 		int result = mapper.update(maker);
 		return result;
-	};
+	}
 	
+	/**
+	 * 로그인
+	 * @param id
+	 * @param pw
+	 * @return 어린이 로그인 1, 부모로그인 2, ID없음 3, PW불일치 4
+	 */
+	public int login(String id, String pw){
+		StoryMaker sm = findID(id);
+		System.out.println(sm);
+		if (sm == null) {
+			return 3;
+		}
+		if (pw.equals(sm.getPassword2())) {
+			return 2;
+		}else if(pw.equals(sm.getPassword1())){
+			return 1;
+		}else{
+			return 4;
+		}
+	}
 	
+	/**
+	 * ID검색
+	 * @param id
+	 * @return StoryMaker VO
+	 */
+	public StoryMaker findID(String id){
+		StoryMaker result = new StoryMaker();
+		IDMapper mapper = sqlSession.getMapper(IDMapper.class);
+		result = mapper.findID(id);
+		return result;
+	}
 	
 	
 }
