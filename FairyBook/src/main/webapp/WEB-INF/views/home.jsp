@@ -20,6 +20,11 @@ $(function(){
 	$('#join').on('click',function(){
 		location.href='join';
 	});
+	//logout버튼 이벤트
+	$('#logout').on('click',function(){
+		if(confirm('로그아웃 하시겠습니까?'))
+			location.href='logout';
+	});
 });
 
 function w3_open() {
@@ -100,11 +105,11 @@ img{
 <div id="under">
 <!-- Side Navigation -->
 <!--로그인하지 않았을 때  -->
-<c:if test="${session.id == null }">
+<c:if test="${loginUser == null }">
 <nav class="w3-sidebar w3-bar-block w3-collapse w3-white w3-animate-left w3-card-2" style="z-index:3;width:220px;" id="mySidebar">
   <div class="container-fluid bg-1">
-  <h3>Who Am I?</h3>
-  <center><img src="resources/image/yo.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"></center><br><!--circle image  -->
+  <h3>로그인 하세요</h3>
+  <center><img src="resources/image/pp5.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"></center><br><!--circle image  -->
   <button type="button" id="login" class="btn btn-success">LOGIN</button>
   <button type="button" id="join" class="btn btn-warning">JOIN</button>
   <br><br>
@@ -116,6 +121,46 @@ img{
   <a href="" class="w3-bar-item w3-button"><i class="fa fa-paper-plane w3-padding-right"></i>동화선택</a>
   <a href="#" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>동화감상</a>
 </nav>
+</c:if>
+<!--로그인 했을 때  -->
+<c:if test="${loginUser != null }">
+<!--아이로그인  -->
+<c:if test="${userType == 'child'}">
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-white w3-animate-left w3-card-2" style="z-index:3;width:220px;" id="mySidebar">
+  <div class="container-fluid bg-1">
+  <h3>${loginUser.cnickName}</h3>
+  <center><img src="resources/image/yo.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"></center><br><!--circle image  -->
+  <button type="button" id="update" class="btn btn-success">개인정보</button>
+  <button type="button" id="logout" class="btn btn-warning">LOGOUT</button>
+  <br><br>
+  </div>
+  <a href="javascript:void(0)" onclick="w3_close()" title="Close Sidemenu" 
+  class="w3-bar-item w3-button w3-hide-large w3-large">Close <i class="fa fa-remove"></i></a>
+  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-dark-grey w3-button w3-hover-black w3-left-align" onclick="document.getElementById('id01').style.display='block'">New Message <i class="w3-padding-left fa fa-pencil"></i></a>
+  
+  <a href="" class="w3-bar-item w3-button"><i class="fa fa-paper-plane w3-padding-right"></i>동화선택</a>
+  <a href="#" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>동화감상</a>
+</nav>
+</c:if>
+<!--부모 로그인했을때  -->
+<c:if test="${userType == 'parent'}">
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-white w3-animate-left w3-card-2" style="z-index:3;width:220px;" id="mySidebar">
+  <div class="container-fluid bg-1">
+  <h3>${loginUser.pnickName}</h3>
+  <center><img src="resources/image/pp4.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"></center><br><!--circle image  -->
+  <button type="button" id="update" class="btn btn-success">개인정보</button>
+  <button type="button" id="logout" class="btn btn-warning">LOGOUT</button>
+  <br><br>
+  </div>
+  <a href="javascript:void(0)" onclick="w3_close()" title="Close Sidemenu" 
+  class="w3-bar-item w3-button w3-hide-large w3-large">Close <i class="fa fa-remove"></i></a>
+  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-dark-grey w3-button w3-hover-black w3-left-align" onclick="document.getElementById('id01').style.display='block'">New Message <i class="w3-padding-left fa fa-pencil"></i></a>
+  
+  <a href="" class="w3-bar-item w3-button"><i class="fa fa-paper-plane w3-padding-right"></i>내 아이 동화 목록</a>
+  <a href="#" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>게시판</a>
+  <a href="#" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>상담요청 결과보기</a>
+</nav>
+</c:if>
 </c:if>
 
 <!-- Modal that pops up when you click on "New Message" -->

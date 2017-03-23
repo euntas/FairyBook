@@ -165,13 +165,13 @@ public class IDController {
 		case 1:
 			message = user.getcName()+"님 로그인!";
 			//아이 로그인 성공시 id와 userType:child 세션에 저장
-			session.setAttribute("id", user.getId());
+			session.setAttribute("loginUser", user);
 			session.setAttribute("userType", "child");
 			break;
 		case 2:
 			message = user.getpName()+"님 로그인!";
 			//부모 로그인 성공시 id와 userType:parent 세션에 저장
-			session.setAttribute("id", user.getId());
+			session.setAttribute("loginUser", user);
 			session.setAttribute("userType", "parent");
 			break;
 		case 3:
@@ -185,8 +185,9 @@ public class IDController {
 	}
 
 	@RequestMapping(value = "logout", method = RequestMethod.GET)
-	public String logout() {
-
+	public String logout(HttpSession session) {
+		session.removeAttribute("loginUser");
+		session.removeAttribute("userType");
 		return "redirect:/";
 
 	}
