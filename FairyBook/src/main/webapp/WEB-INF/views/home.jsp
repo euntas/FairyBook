@@ -162,7 +162,7 @@ img{
 	      <div class="w3-container w3-white">
 	        <h3>헨젤과 그레텔</h3>
 	        <h6 class="w3-opacity">2017.3.22</h6>
-	        <button class="w3-button w3-block w3-yellow w3-margin-bottom">Play</button>
+	        <button class="w3-button w3-block w3-yellow w3-margin-bottom" onclick="location.href='story/storyTest'">Play</button>
 	      </div>
 	    </div>
 	    <div class="w3-third w3-margin-bottom">

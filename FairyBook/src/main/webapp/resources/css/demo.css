@@ -91,12 +91,18 @@ pre, code {
   display: inline-block; }
 
 .pageflip {
-  height: 500px;
+	height: 650px;
+	max-width: 100%; 
+  /* 
+  height: 500px; 
+  max-width: 800px;
+  height: 650px;
+  */
   background: #abc;
   position: relative;
-  max-width: 800px;
   margin: 0 auto; }
-  .pageflip .page {
+  
+.pageflip .page {
     overflow: hidden; }
 
 body, html, .full {
@@ -115,7 +121,7 @@ body, html, .full {
 }  
 <<<<<<< HEAD
 
-div.mycontainer {
+/* div.mycontainer {
     width: 100%;
     border: 1px solid gray;
 }
@@ -152,6 +158,6 @@ nav ul {
    
 nav ul a {
     text-decoration: none;
-}
+} */
 =======
 >>>>>>> refs/remotes/origin/master
