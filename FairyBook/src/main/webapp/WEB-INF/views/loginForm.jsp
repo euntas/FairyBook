@@ -39,12 +39,27 @@
 		    color: #ffffff;
 		}
 	</style>
+	
+	<script>
+		$(function(){
+			//login버튼 이벤트
+			$('#login').on('click',function(){
+				location.href="login";
+			});
+			//home버튼 이벤트
+			$('#home').on('click',function(){
+				location.href = "../fairybook";
+			});
+		});
+	</script>
 </head>
 <body class="container-fluid bg-1 text-center">
 
 <div class="container-fluid bg-1 text-center">
   <h3>Who Am I?</h3>
   <img src="resources/image/pc.jpg" alt="img" class="img-responsive img-circle" style="display:inline"><br><br> <!--circle image  -->
+  <!-- 아이디,패스워드 입력란 -->
+   <center>
    <div class="input-group col-xs-4">
     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
     <input id="id" type="text" class="form-control" name="id" placeholder="id">
@@ -52,9 +67,13 @@
   <div class="input-group col-xs-4">
     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
     <input id="password" type="password" class="form-control" name="password" placeholder="Password">
-  </div>
+  </div><br>
+  </center>
+  <!--버튼 및 링크  -->
   <button type="button" id="login" class="btn btn-success">LOGIN</button>
   <button type="button" id="home" class="btn btn-warning">HOME</button>
+  <p><b><a href="....">ID/패스워드 찾기</a></b> 
+  <b><a href="....">회원가입</a></b></p>
 </div>
 
 

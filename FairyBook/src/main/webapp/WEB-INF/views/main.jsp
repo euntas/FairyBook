@@ -107,7 +107,7 @@ img{
 <nav class="w3-sidebar w3-bar-block w3-collapse w3-white w3-animate-left w3-card-2" style="z-index:3;width:220px;" id="mySidebar">
   <div class="container-fluid bg-1">
   <h3>Who Am I?</h3>
-  <img src="resources/image/yo.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"><br><!--circle image  -->
+  <center><img src="resources/image/yo.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"></center><br><!--circle image  -->
   <button type="button" class="btn btn-success">LOGIN</button>
   <button type="button" class="btn btn-warning">JOIN</button>
   <br><br>
