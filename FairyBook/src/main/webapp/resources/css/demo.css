@@ -109,9 +109,8 @@ body, html, .full {
 .fixed {
   position: fixed;
   top: 50%;
-  right: 50%;
+  right: 15%;
   width: 200px;
-  background-color: pink;
   z-index: 9999;
 }  
 <<<<<<< HEAD
