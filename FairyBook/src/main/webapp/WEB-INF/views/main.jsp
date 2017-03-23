@@ -147,8 +147,17 @@ img{
 <!-- Overlay effect when opening the side navigation on small screens -->
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="Close Sidemenu" id="myOverlay"></div>
 
+
 <!-- Page content -->
 <div class="w3-main" style="margin-left:230px;">
+
+
+
+
+
+
+
+<!--###########여기부터 각 페이지에 맞는내용 넣으면 되요!!!!!!!!!!!###########  -->
 	<i class="fa fa-bars w3-button w3-white w3-hide-large w3-xlarge w3-margin-left w3-margin-top" onclick="w3_open()"></i>
 	<a href="javascript:void(0)" class="w3-hide-large w3-red w3-button w3-right w3-margin-top w3-margin-right" onclick="document.getElementById('id01').style.display='block'"><i class="fa fa-pencil"></i></a>
 	
@@ -216,7 +225,14 @@ img{
 	      </div>
 	    </div>
 	  </div>
-</div>
+	</div>
+<!--###########여기까지!!!!!!!!!#############  -->
+	
+	
+	
+	
+	
+	
 </div>
 
 <!--Add a navar  -->

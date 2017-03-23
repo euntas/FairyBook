@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<title>W3.CSS Template</title>
+<title>FairyBook</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -11,9 +11,11 @@
 
 <script>
 $(function(){
+	//login버튼 이벤트
 	$('#login').on('click',function(){
 		location.href='login';
 	});
+	//join버튼 이벤트
 	$('#join').on('click',function(){
 		location.href='join';
 	});
@@ -95,7 +97,6 @@ img{
 
 <div id="under">
 <!-- Side Navigation -->
-
 <nav class="w3-sidebar w3-bar-block w3-collapse w3-white w3-animate-left w3-card-2" style="z-index:3;width:220px;" id="mySidebar">
   <div class="container-fluid bg-1">
   <h3>Who Am I?</h3>

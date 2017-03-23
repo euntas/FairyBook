@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import global.sesoc.fairybook.dao.IDDAO;
 import global.sesoc.fairybook.vo.StoryMaker;
@@ -138,9 +138,30 @@ public class IDController {
 		return "loginForm";
 	}
 
-	@RequestMapping(value = "login", method = RequestMethod.POST)
-	public void login(String id, String pw, Model model, HttpSession session) {
-
+	@ResponseBody
+	@RequestMapping(value = "login", method = RequestMethod.POST,
+			produces="application/json;charset=UTF-8")
+	public String login(String id, String pw, HttpSession session) {
+		String message = "";
+		logger.debug("ID: {}, PW: {}",id,pw);
+		StoryMaker user = dao.findID(id);
+		int result = dao.login(id, pw);
+		//어린이 로그인 1, 부모로그인 2, ID없음 3, PW불일치 4
+		switch (result) {
+		case 1:
+			message = user.getcName()+"님 로그인!";
+			break;
+		case 2:
+			message = user.getpName()+"님 로그인!";
+			break;
+		case 3:
+			message = "존재하지 않는 아이디입니다.";
+			break;
+		case 4:
+			message = "일치하지 않는 비밀번호입니다.";
+			break;
+		}
+		return message;
 	}
 
 	@RequestMapping(value = "logout", method = RequestMethod.GET)

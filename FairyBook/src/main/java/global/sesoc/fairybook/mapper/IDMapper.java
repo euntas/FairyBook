@@ -30,4 +30,11 @@ public interface IDMapper {
 	
 	//계정정보 수정
 	public int update(StoryMaker maker);
+	
+	
+	//로그인
+	public int login(String id, String pw);
+	
+	//아이디 검색
+	public StoryMaker findID(String id);
 }

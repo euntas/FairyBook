@@ -43,18 +43,32 @@
 	<script>
 		$(function(){
 			//login버튼 이벤트
-			$('#login').on('click',function(){
-				location.href="login";
-			});
+			$('#login').on('click',login);
 			//home버튼 이벤트
 			$('#home').on('click',function(){
 				location.href = "../fairybook";
 			});
 		});
+		
+		function login(){
+			var id = $('#id').val();
+			var pw = $('#password').val();
+			$.ajax({
+				url: 'login',
+				type: 'POST',
+				data: {id,pw},
+				dataType: 'text',
+				success: function(message){
+					alert(message);
+				},
+				error: function(e){
+					alert(JSON.stringify(e));
+				}
+			})
+		}
 	</script>
 </head>
 <body class="container-fluid bg-1 text-center">
-
 <div class="container-fluid bg-1 text-center">
   <h3>Who Am I?</h3>
   <img src="resources/image/pc.jpg" alt="img" class="img-responsive img-circle" style="display:inline"><br><br> <!--circle image  -->

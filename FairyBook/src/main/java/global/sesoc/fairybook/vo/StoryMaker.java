@@ -12,12 +12,11 @@ public class StoryMaker {
 	
 	private String id;				// 아이디
 	private String nickName;		// 닉네임 
-	private String password;		// 공통 비밀번호
-	private String parentPassword;	// 부모용 비밀번호
+	private String password1;		// 아동용 비밀번호
+	private String password2;		// 부모용 비밀번호
 	private String cName;			// 아이 이름
 	private String pName;			// 부모 이름
-	private Date cBirthday;			// 아이 생일
-	private Date pBirthday;			// 부모 생일
+	private Date cBirth;			// 아이 생일
 	private String email;			// 이메일
 	private String address;			// 주소
 	private String phone;			// 전화번호
@@ -50,23 +49,23 @@ public class StoryMaker {
 	}
 
 
-	public String getPassword() {
-		return password;
+	public String getPassword1() {
+		return password1;
 	}
 
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPassword1(String password) {
+		this.password1 = password;
 	}
 
 
-	public String getParentPassword() {
-		return parentPassword;
+	public String getPassword2() {
+		return password2;
 	}
 
 
-	public void setParentPassword(String parentPassword) {
-		this.parentPassword = parentPassword;
+	public void setPassword2(String parentPassword) {
+		this.password2 = parentPassword;
 	}
 
 
@@ -91,24 +90,13 @@ public class StoryMaker {
 
 
 	public Date getcBirthday() {
-		return cBirthday;
+		return cBirth;
 	}
 
 
 	public void setcBirthday(Date cBirthday) {
-		this.cBirthday = cBirthday;
+		this.cBirth = cBirthday;
 	}
-
-
-	public Date getpBirthday() {
-		return pBirthday;
-	}
-
-
-	public void setpBirthday(Date pBirthday) {
-		this.pBirthday = pBirthday;
-	}
-
 
 	public String getEmail() {
 		return email;
@@ -162,12 +150,11 @@ public class StoryMaker {
 
 	@Override
 	public String toString() {
-		return "StoryMaker [id=" + id + ", nickName=" + nickName + ", password=" + password + ", parentPassword="
-				+ parentPassword + ", cName=" + cName + ", pName=" + pName + ", cBirthday=" + cBirthday + ", pBirthday="
-				+ pBirthday + ", email=" + email + ", address=" + address + ", phone=" + phone + ", originalProfile="
-				+ originalProfile + ", savedProfile=" + savedProfile + "]";
+		return "StoryMaker [id=" + id + ", nickName=" + nickName + ", password1=" + password1 + ", password2="
+				+ password2 + ", cName=" + cName + ", pName=" + pName + ", cBirth=" + cBirth + ", email=" + email
+				+ ", address=" + address + ", phone=" + phone + ", originalProfile=" + originalProfile
+				+ ", savedProfile=" + savedProfile + "]";
 	}
-	
-	
+
 
 }
