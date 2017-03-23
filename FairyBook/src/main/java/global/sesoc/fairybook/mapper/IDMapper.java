@@ -1,4 +1,4 @@
-package global.sesoc.fairybook.dao;
+package global.sesoc.fairybook.mapper;
 
 import java.util.ArrayList;
 
@@ -18,6 +18,9 @@ public interface IDMapper {
 	
 	//특정회원정보꺼내오기
 	public StoryMaker selectStoryMaker(String id);
+	public StoryMaker selectStoryMaker1(String cNick);
+	public StoryMaker selectStoryMaker2(String pNick);
+
 	
 	//전체회원정보꺼내오기
 	public ArrayList<StoryMaker> infoAll();
