@@ -185,8 +185,6 @@
 <!-- Page content -->
 <div class="w3-main" style="margin-left:230px;">
 	<div class="pageflip">
-<<<<<<< HEAD
-=======
 		<!-- 질문 나오는 부분 -->
 		<div class="fixed">
 				asdfsdf ${quiz.question } <br><br>	
@@ -197,7 +195,6 @@
 		</div>
 		
 		<!-- 책 내용 부분 -->
->>>>>>> branch 'master' of https://github.com/euntas/FairyBook.git
 		<div class="page page-current" style="background: #209657 url('./../resources/img/scene/scene01.jpg') no-repeat center center; background-size: 100%;">
 		</div>
 		<div class="page" style="background: #0387A5 url('./../resources/img/scene/scene04.jpg') no-repeat center center;  background-size: 100%;">
