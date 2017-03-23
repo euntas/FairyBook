@@ -30,7 +30,6 @@
 			질문 들어갈자리 확인용
 	</div>
 	<div class="pageflip">
-		
 		<div class="page page-current" style="background: #209657 url('./../resources/img/scene/scene01.jpg') no-repeat center center; background-size: 100%;">
 		</div>
 		<div class="page" style="background: #0387A5 url('./../resources/img/scene/scene04.jpg') no-repeat center center;  background-size: 100%;">

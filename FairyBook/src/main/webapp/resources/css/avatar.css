@@ -9,7 +9,38 @@
 	height: 59%;
 	border: 1px solid black;
 	left: 20%;
+	background-image: url("./resources/img/avatar/background.jpg");
 }
+
+img{
+	max-width : 100%;
+	height: auto;
+}
+
+/* 아바타의 얼굴이미지 */
+#face{
+	position: absolute;
+	left: 40%;
+	top: 20%;
+	z-index: 1;
+}
+
+/* 아바타의 헤어이미지 */
+#hair{
+	position: absolute;
+	left: 40%;
+	top: 18%;
+	z-index: 2;
+}
+
+/* 아바타의 눈이미지 */
+#eye{
+	position: absolute;
+	left: 50%;
+	top: 40%;
+	z-index: 3;
+}
+
 /*아바타의 신체부위 선택하는 영역*/
 #category{
 	margin: 0px;
@@ -33,7 +64,7 @@
 }
 
 /* 저장버튼이 있는 영역 */
-#savearea{
+#saveArea{
 	margin: 0px;
 	position: absolute;
 	right: 0.5%;
