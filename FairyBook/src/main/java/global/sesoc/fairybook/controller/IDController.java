@@ -73,7 +73,7 @@ public class IDController {
 
 	@RequestMapping(value = "login", method = RequestMethod.GET)
 	public String login() {
-		return "customer/loginForm";
+		return "loginForm";
 	}
 
 	@RequestMapping(value = "login", method = RequestMethod.POST)
