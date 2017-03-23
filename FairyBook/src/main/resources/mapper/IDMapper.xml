@@ -15,9 +15,9 @@
 	ORIGINALPROFILE, 
 	SAVEDPROFILE 	 
 	</if>) values 
-	 (#{userId},#{cPw1},#{pPw1},#{pName},#{cName}
-	 ,(TO_DATE('#{cBirthYear}-#{cBirthMonth}-#{cBirthDate}','YYYY-MM-DD') )
-	 ,#{email},#{address},('#{phone1}-#{phone2}-#{phone3}'),#{pNick},#{cNick} 
+	 (#{id},#{password1},#{password2},#{pName},#{cName}
+	 ,(TO_DATE('#{cBirth}','YYYY-MM-DD') )
+	 ,#{email},#{address},#{phone},#{pnickName},#{cnickName} 
 	 <if test="originalProfile != null and savedProfile!= null">
 	,
 	#{originalProfile}, 

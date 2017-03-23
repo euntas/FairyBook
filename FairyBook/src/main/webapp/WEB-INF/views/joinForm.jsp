@@ -26,39 +26,40 @@ function pNickCheckOpen() {
 </head>
 <body>
 <form  enctype="multipart/form-data" action="join" method="post">
+
 	<table>
 		<tr>
 			<td class="firstRow">ID</td>
-			<td class="secondRow"><input type="text" id="userId"
-				name="userId" readonly="readonly" style="width: 220px;"></td>
+			<td class="secondRow"><input type="text" id="id"
+				name="id" readonly="readonly" style="width: 220px;"></td>
 			<td><input type="button" value="중복확인" id="idCheck" onclick="idcheckOpen()"></td>
 		</tr>
 		<tr>
 			<td class="firstRow">닉네임</td>
-			<td class="secondRow"><input type="text" id="cNick" name="cNick"
+			<td class="secondRow"><input type="text" id="cnickName" name="cnickName"
 				 readonly="readonly" style="width: 220px;"></td>
 			<td><input type="button" value="중복확인" id="cNickCheck" onclick="cNickCheckOpen()"></td>
 		</tr>
 		<tr>
 			<td rowspan="2" class="firstRow">아이용 비밀번호</td>
-			<td class="secondRow"><input type="password" id="cPw1"
-				name="cPw1" style="width: 220px;"></td>
+			<td class="secondRow"><input type="password" id="password1"
+				name="password1" style="width: 220px;"></td>
 			<td></td>
 		</tr>
 		<tr>
-			<td class="secondRow"><input type="password" id="cPw2"
-				name="cPw2" style="width: 220px;"></td>
+			<td class="secondRow"><input type="password" id="password1check"
+				name="password1check" style="width: 220px;"></td>
 			<td></td>
 		</tr>
 		<tr>
 			<td rowspan="2" class="firstRow">보호자용 비밀번호</td>
-			<td class="secondRow"><input type="password" id="pPw1"
-				name="pPw1" style="width: 220px;"></td>
+			<td class="secondRow"><input type="password" id="password2"
+				name="password2" style="width: 220px;"></td>
 			<td></td>
 		</tr>
 		<tr>
-			<td class="secondRow"><input type="password" id="pPw2"
-				name="pPw2" style="width: 220px;"></td>
+			<td class="secondRow"><input type="password" id="password2check"
+				name="password2check" style="width: 220px;"></td>
 			<td></td>
 		</tr>
 		<tr>
@@ -107,7 +108,7 @@ function pNickCheckOpen() {
 		</tr>
 		<tr>
 			<td class="firstRow">보호자 닉네임</td>
-			<td class="secondRow"><input type="text" id="pNick" name="pNick"
+			<td class="secondRow"><input type="text" id="pnickName" name="pnickName"
 				 readonly="readonly" style="width: 220px;"></td>
 			<td><input type="button" value="중복확인" id="pNickCheck" onclick="pNickCheckOpen()"></td>
 		</tr>

@@ -93,7 +93,8 @@ public class IDController {
 	}
 
 	@RequestMapping(value = "join", method = RequestMethod.POST)
-	public String join(StoryMaker maker
+	public String join(String cBirthYear, String cBirthMonth, String cBirthDate, 
+			String phone1, String phone2, String phone3, StoryMaker maker
 			, ArrayList<MultipartFile> upload, Model model) {
 		logger.debug("가입데이터 : {}", maker);	
 		//검증, DB저장
@@ -109,6 +110,11 @@ public class IDController {
 		int result = 0;
 		
 		try{
+		String cBirthday = cBirthYear+ "-" + cBirthMonth + "-" + cBirthDate;
+		maker.setcBirth(cBirthday);
+		String phone = phone1 + "-" + phone2 + "-" + phone3;
+		maker.setPhone(phone);
+		System.out.println(maker);
 		 result = dao.insert(maker);
 		}catch (Exception e){
 			e.printStackTrace();

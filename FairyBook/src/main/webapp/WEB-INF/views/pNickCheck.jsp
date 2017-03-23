@@ -8,7 +8,7 @@
 <title>보호자 닉네임 중복 확인</title>
 <script>
 function nickSelect(pNick){
-	opener.document.getElementById('pNick').value = pNick;//가입폼의 ID입력란에 전달받은 ID입력
+	opener.document.getElementById('pnickName').value = pNick;//가입폼의 ID입력란에 전달받은 ID입력
 	this.window.close();//현재 창 닫기
 }
 </script>

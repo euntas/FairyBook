@@ -17,7 +17,7 @@
 	</typeAliases>
 	
 	<mappers>
-		<mapper resource="mapper/IDMapper.xml"/>
+		<mapper resource="mapper/IDMapper.xml" />
 		<mapper resource="mapper/avatarMapper.xml" />
 		<mapper resource="mapper/storyMapper.xml"/>
 	</mappers>
