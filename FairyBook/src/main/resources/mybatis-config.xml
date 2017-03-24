@@ -8,6 +8,7 @@
 		<typeAlias type="global.sesoc.fairybook.vo.ETC" alias="ETC" />
 		<typeAlias type="global.sesoc.fairybook.vo.Fairytale" alias="Fairytale" />
 		<typeAlias type="global.sesoc.fairybook.vo.House" alias="House" />
+		<typeAlias type="global.sesoc.fairybook.vo.Avatar" alias="Avatar" />
 		<typeAlias type="global.sesoc.fairybook.vo.Item" alias="Item" />
 		<typeAlias type="global.sesoc.fairybook.vo.PBoard" alias="PBoard" />
 		<typeAlias type="global.sesoc.fairybook.vo.PReply" alias="PReply" />

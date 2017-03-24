@@ -1,8 +1,8 @@
-/* 아바타 페이지 css */
+/* 집만들기 페이지 css */
 @CHARSET "UTF-8";
 
-/*아바타를 표시하는 영역*/
-#avatar{
+/*집 표시하는 영역*/
+#house{
 	margin: 0px;
 	position: absolute;
 	width : 79%;
@@ -18,7 +18,7 @@ img{
 	height: auto;
 }
 
-/* 아바타의 얼굴이미지 */
+/* 집의 굴뚝이미지 */
 #face{
 	position: absolute;
 	left: 40%;

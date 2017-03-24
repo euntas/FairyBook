@@ -3,6 +3,8 @@ package global.sesoc.fairybook.controller;
 import java.util.ArrayList;
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import global.sesoc.fairybook.dao.AvatarDAO;
+import global.sesoc.fairybook.vo.Avatar;
 import global.sesoc.fairybook.vo.FBResource;
 
 /**
@@ -141,6 +144,20 @@ public class AvatarController {
 		ArrayList<FBResource> skinList = dao.readSkin();
 		logger.debug(skinList.toString());
 		return skinList;
-	}	
+	}
+	
+	@RequestMapping(value = "save", method = RequestMethod.POST)
+	public String save(Avatar avatar, HttpSession session) {
+		session.setAttribute("selectionNum", 1);
+		avatar.setSelectionNum((int) session.getAttribute("selectionNum"));
+		logger.debug(avatar.toString());
+		int result = 0;
+		result = dao.save(avatar);
+		if(result==1){
+			return "redirect:house";
+		}else{
+			return "avatar";
+		}
+	}
 	
 }
