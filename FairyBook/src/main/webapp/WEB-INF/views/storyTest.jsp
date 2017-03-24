@@ -82,7 +82,6 @@
 			
 			
 			init();
-			eunjifunc();
 			
 		});
 		
@@ -107,19 +106,7 @@
 				else{
 					alert(item.question);
 					
-					
-					/* var str = $('.pageflip').html();
-					str += '<div class="page" style="background: #209657 url(\'./../resources/img/scene/';
-					str += 'scene05.jpg';
-					str += '\') no-repeat center center; background-size: 100%;"></div>';
-					
-					str += '<div class="page" style="background: #209657 url(\'./../resources/img/scene/';
-					str += 'scene06.jpg';
-					str += '\') no-repeat center center; background-size: 100%;"></div>';
-					
-					alert(str);
-					
-					$('.pageflip').html(str);  */
+					//changePage('scene08.jpg');
 				}
 			});
 		}
@@ -199,23 +186,23 @@
 		</div>
 		<div class="page" style="background: #0387A5 url('./../resources/img/scene/scene04.jpg') no-repeat center center;  background-size: 100%;">
 		</div>
-		<div class="page" style="background: #A5C8CB url('./../resources/img/scene/scene05.jpg') no-repeat center center;  background-size: 100%;">
+		<!-- <div class="page" style="background: #A5C8CB url('./../resources/img/scene/scene05.jpg') no-repeat center center;  background-size: 100%;">
 		</div>
 		<div class="page" id="eunjipage" style="background: #0B0B0B url('./../resources/img/scene/scene06.jpg') no-repeat center center;  background-size: 100%;">
 		</div>
 		<div class="page" style="background: #82BDC4 url('./../resources/img/5.jpg') no-repeat center center">
-		</div>
+		</div> -->
 	</div>
 </div>
 </div>
 
-<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script src="./../resources/js/pageflip.js"></script>
-<script src="./../resources/js/demo.js"></script>
-
 <footer class="container-fluid bg-4 text-center">
   <p>Made By <a href=".././">FairyBook.com</a></p> 
 </footer>
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="./../resources/js/pageflip.js"></script>
+<script src="./../resources/js/demo.js"></script>
 
 </body>
 </html>
