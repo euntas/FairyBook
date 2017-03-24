@@ -38,58 +38,65 @@ public class IDController {
 		return "joinForm";
 	}
 
-	@RequestMapping(value="idCheck", method=RequestMethod.GET)
-	public String idCheck(Model model){
+
+	/**
+	 * 아이디 중복검사
+	 * @param id
+	 * @return 아이디 사용가능 여부 메세지 리턴
+	 */
+	@ResponseBody
+	@RequestMapping(value="idCheck", method=RequestMethod.POST,
+					produces="application/json;charset=UTF-8")
+	public String idCheck(String id){
+		String message = null;
 		
-		return "idCheck";
+		StoryMaker c = dao.selectStoryMaker(id);
+		if(c!=null){
+			message = "false";
+		}else{
+			message = "true";
+		}
+		return message;
 	}
 	
-	@RequestMapping(value="idCheck", method=RequestMethod.POST)
-	public String idCheck(String searchId, Model model){
+	/**
+	 * 아동 닉네임 중복 검사
+	 * @param cNick
+	 * @return 닉네임 사용가능 여부 메세지 리턴
+	 */
+	@ResponseBody
+	@RequestMapping(value="cNickCheck", method=RequestMethod.POST,
+					produces="application/json;charset=UTF-8")
+	public String cNickCheck(String cNick){
+		String message = null;
 		
-		
-		StoryMaker c = dao.selectStoryMaker(searchId);
-		boolean search = true;
-		model.addAttribute("checkedGuy", c);
-		model.addAttribute("search", search);
-		model.addAttribute("whatda", searchId);
-		return "idCheck";
+		StoryMaker c = dao.selectStoryMaker1(cNick);
+		if(c!=null){
+			message = "false";
+		}else{
+			message = "true";
+		}
+		return message;
 	}
 	
-	@RequestMapping(value="cNickCheck", method=RequestMethod.GET)
-	public String cNickCheck(Model model){
+	/**
+	 * 보호자 닉네임 중복 검사
+	 * @param pNick
+	 * @return 닉네임 사용가능 여부 메세지 리턴
+	 */
+	@ResponseBody
+	@RequestMapping(value="pNickCheck", method=RequestMethod.POST,
+					produces="application/json;charset=UTF-8")
+	public String pNickCheck(String pNick){
+		String message = null;
 		
-		return "cNickCheck";
-	}
-	
-	@RequestMapping(value="cNickCheck", method=RequestMethod.POST)
-	public String cNickCheck(String searchcNick, Model model){
-		
-		
-		StoryMaker c = dao.selectStoryMaker1(searchcNick);
-		boolean search = true;
-		model.addAttribute("checkedGuy", c);
-		model.addAttribute("search", search);
-		model.addAttribute("whatda", searchcNick);
-		return "cNickCheck";
-	}
-	
-	@RequestMapping(value="pNickCheck", method=RequestMethod.GET)
-	public String pNickCheck(Model model){
-		
-		return "pNickCheck";
-	}
-	
-	@RequestMapping(value="pNickCheck", method=RequestMethod.POST)
-	public String pNickCheck(String searchpNick, Model model){
-		
-		
-		StoryMaker c = dao.selectStoryMaker2(searchpNick);
-		boolean search = true;
-		model.addAttribute("checkedGuy", c);
-		model.addAttribute("search", search);
-		model.addAttribute("whatda", searchpNick);
-		return "pNickCheck";
+		StoryMaker c = dao.selectStoryMaker2(pNick);
+		if(c!=null){
+			message = "false";
+		}else{
+			message = "true";
+		}
+		return message;
 	}
 
 	@RequestMapping(value = "join", method = RequestMethod.POST)
