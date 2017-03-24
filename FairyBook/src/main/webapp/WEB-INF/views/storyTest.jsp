@@ -186,12 +186,12 @@
 		</div>
 		<div class="page" style="background: #0387A5 url('./../resources/img/scene/scene04.jpg') no-repeat center center;  background-size: 100%;">
 		</div>
-		<!-- <div class="page" style="background: #A5C8CB url('./../resources/img/scene/scene05.jpg') no-repeat center center;  background-size: 100%;">
+		<div class="page" style="background: #A5C8CB url('./../resources/img/scene/scene05.jpg') no-repeat center center;  background-size: 100%;">
 		</div>
 		<div class="page" id="eunjipage" style="background: #0B0B0B url('./../resources/img/scene/scene06.jpg') no-repeat center center;  background-size: 100%;">
 		</div>
 		<div class="page" style="background: #82BDC4 url('./../resources/img/5.jpg') no-repeat center center">
-		</div> -->
+		</div>
 	</div>
 </div>
 </div>

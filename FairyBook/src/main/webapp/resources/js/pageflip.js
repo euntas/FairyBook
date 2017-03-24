@@ -132,14 +132,14 @@ RocketPageFlip.prototype.showCurrent = function() {
 
 RocketPageFlip.prototype.flip = function(page) {
 	
-	//------------ 내가 추가한 코드
+	/*//------------ 내가 추가한 코드
 	var originpage, newpagediv;
 
 	alert('다음 버튼 눌림 원본');
 	
 	alert('현재 페이지 확인 : ' + this.el.pages);
 	
-	/* $.ajax({
+	 $.ajax({
 	        url:'testeunji',
 	        type:'GET',
 	        data: {eunjinum: 10},
@@ -160,7 +160,7 @@ RocketPageFlip.prototype.flip = function(page) {
 	        error: function(e){
 	            alert(JSON.stringify(e));
 	        }
-	    });*/
+	    });
 	
 	this.el.main.removeClass('flip-directional flip-next');
 	this.el.main.removeClass('flip-navigation');
@@ -203,7 +203,7 @@ RocketPageFlip.prototype.flip = function(page) {
 		
 		this.init();
 	};
-	
+	*/
 	//----------------------------
 	
 	var backwards,
@@ -299,8 +299,18 @@ RocketPageFlip.prototype.flip = function(page) {
 
 RocketPageFlip.prototype.next = function() {
 	
-	
-	this.flip(this.options.current + 1);
+	alert('현재' + this.options.current);
+	if(this.options.current == 1){
+		alert('2으로 이동합니다.');
+		this.flip(2);
+	}
+	else if(this.options.current == 2){
+		alert('0으로 이동합니다.');
+		this.flip(0);
+	}
+	else
+		this.flip(this.options.current + 1);
+	//this.flip(this.options.current + 1);
 };
 
 RocketPageFlip.prototype.prev = function() {
