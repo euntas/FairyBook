@@ -1,0 +1,28 @@
+@CHARSET "UTF-8";
+/*메인화면 css  */
+
+html,body,h1,h2,h3,h4,h5 {font-family: "RobotoDraft", "Roboto", sans-serif;}
+.w3-bar-block .w3-bar-item{padding:16px}
+.bg-1 { 
+	    background-color: rgb(0,147,205); /* Green */
+	    color: #ffffff;
+	    text-align:center;
+		}
+.bg-2 { 
+		    background-color: rgb(255,255,70); /* yellow */
+		    color: rgb(0,76,112);
+		    padding-top: 20px;
+		    padding-bottom: 20px;
+		    font-variant: small-caps;
+		    letter-spacing: 5px;
+		}
+.navbar-nav li a:hover {
+		    color: #1abc9c !important;
+		}
+#under{
+	padding-top:100px;
+}
+.bg-4 { 
+		    background-color: #2f2f2f;
+		    color: #ffffff;
+		}

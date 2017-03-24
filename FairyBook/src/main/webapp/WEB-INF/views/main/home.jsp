@@ -9,9 +9,17 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
+<link href='https://fonts.googleapis.com/css?family=RobotoDraft' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<!--적용 자바스크립트와 스타일  -->
+<link rel="stylesheet" href="./resources/css/main.css">
 <script>
 $(function(){
+	//profile사진 경로 설정
+	$('#profile').attr('src','./resources/image/yo.jpg')
+
 	//login버튼 이벤트
 	$('#login').on('click',function(){
 		location.href='login';
@@ -50,51 +58,11 @@ function myFunc(id) {
 
 </script>
 
-  
-  
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
-<link href='https://fonts.googleapis.com/css?family=RobotoDraft' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><style>
-html,body,h1,h2,h3,h4,h5 {font-family: "RobotoDraft", "Roboto", sans-serif;}
-.w3-bar-block .w3-bar-item{padding:16px}
-.bg-1 { 
-	    background-color: rgb(0,147,205); /* Green */
-	    color: #ffffff;
-	    text-align:center;
-		}
-.bg-2 { 
-		    background-color: rgb(255,255,70); /* yellow */
-		    color: rgb(0,76,112);
-		    padding-top: 20px;
-		    padding-bottom: 20px;
-		    font-variant: small-caps;
-		    letter-spacing: 5px;
-		}
-img{
-	display: -webkit-flex;
-     display: flex; /* 플렉스박스로 지정 */
-     -webkit-align-items: center;
-     align-items: center; /* 세로 중앙정렬 */
-  	-webkit-justify-content: center;
-     justify-content: center; /* 가로 중앙정렬 */
-}
-.navbar-nav li a:hover {
-		    color: #1abc9c !important;
-		}
-#under{
-	padding-top:100px;
-}
-.bg-4 { 
-		    background-color: #2f2f2f;
-		    color: #ffffff;
-		}
-</style>
-
 
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
-
+<!--상단, 사이드 메뉴  -->
 <!--배너  -->
 <nav class="navbar-fixed-top">
 <div class="container-fluid bg-2 text-center">
@@ -109,7 +77,7 @@ img{
 <nav class="w3-sidebar w3-bar-block w3-collapse w3-white w3-animate-left w3-card-2" style="z-index:3;width:220px;" id="mySidebar">
   <div class="container-fluid bg-1">
   <h3>로그인 하세요</h3>
-  <center><img src="./resources/image/pp5.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"></center><br><!--circle image  -->
+  <center><img src="./resources/image/pp3.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"></center><br><!--circle image  -->
   <button type="button" id="login" class="btn btn-success">LOGIN</button>
   <button type="button" id="join" class="btn btn-warning">JOIN</button>
   <br><br>
@@ -191,6 +159,9 @@ img{
 <!-- Overlay effect when opening the side navigation on small screens -->
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="Close Sidemenu" id="myOverlay"></div>
 
+
+ 
+ 
 <!-- Page content -->
 <div class="w3-main" style="margin-left:230px;">
 	<c:if test="${url == 'board/list' }">
@@ -266,6 +237,7 @@ img{
 </div>
 </div>
 
+<!--Footer  -->
 <!--Add a navar  -->
 <nav class="navbar navbar-default">
   <div class="container">
@@ -288,10 +260,8 @@ img{
 </nav>
 
 <footer class="container-fluid bg-4 text-center">
-  <p>Made By <a href="203.233.196.122:8888/fairybook">FairyBook.com</a></p> 
+  <p>Made By <a href="localhost:8888/fairybook">FairyBook.com</a></p> 
 </footer>
-
-
 
 </body>
 </html> 
