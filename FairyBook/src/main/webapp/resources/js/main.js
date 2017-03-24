@@ -4,20 +4,20 @@
 
 $(function(){
 	//profile사진 경로 설정
-	$('#profile').attr('src','./../resources/image/yo.jpg')
+	$('#profile').attr('src','./../resources/image/pp3.jpg')
 
 	//login버튼 이벤트
 	$('#login').on('click',function(){
-		location.href='../login';
+		location.href='../id/login';
 	});
 	//join버튼 이벤트
 	$('#join').on('click',function(){
-		location.href='../join';
+		location.href='../id/join';
 	});
 	//logout버튼 이벤트
 	$('#logout').on('click',function(){
 		if(confirm('로그아웃 하시겠습니까?'))
-			location.href='../logout';
+			location.href='../id/logout';
 	});
 });
 

@@ -70,7 +70,7 @@
 			alert(message);
 			//로그인 성공할 경우
 			if(message.indexOf("않는")<0){
-				location.href = "../fairybook";
+				location.href = "../../fairybook";
 			}
 		}
 	</script>
@@ -78,7 +78,7 @@
 <body class="container-fluid bg-1 text-center">
 <div class="container-fluid bg-1 text-center">
   <h3>Who Am I?</h3>
-  <img src="resources/image/pc.jpg" alt="img" class="img-responsive img-circle" style="display:inline"><br><br> <!--circle image  -->
+  <img src="../resources/image/pc.jpg" alt="img" class="img-responsive img-circle" style="display:inline"><br><br> <!--circle image  -->
   <!-- 아이디,패스워드 입력란 -->
    <center>
    <div class="input-group col-xs-4">
@@ -118,7 +118,7 @@
     </div>
   </div>
 	<footer class="container-fluid bg-4 text-center">
-	  <p>Made By <a href="203.233.196.122:8888/fairybook">FairyBook.com</a></p> 
+	  <p>Made By <a href="./">FairyBook.com</a></p> 
 	</footer>
 </nav>
 

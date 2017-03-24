@@ -25,6 +25,7 @@ public class IDDAO {
 	 * @return 저장성공은 1, 실패는 0
 	 */
 	public int insert(StoryMaker maker){
+		System.out.println("DAO: "+maker);
 		IDMapper mapper = sqlSession.getMapper(IDMapper.class);
 		int result = mapper.insert(maker);
 		return result;

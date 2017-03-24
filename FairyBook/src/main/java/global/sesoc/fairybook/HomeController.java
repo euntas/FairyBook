@@ -36,4 +36,30 @@ public class HomeController {
 		return "main/home";
 	}
 	
+	@RequestMapping(value="menu/storySelect", method=RequestMethod.GET)
+	public String storySelect(){
+		return "main/storySelect";
+	}
+	
+	@RequestMapping(value="menu/storyPlay", method=RequestMethod.GET)
+	public String storyPlay(){
+		return "main/storyPlay";
+	}
+	@RequestMapping(value="menu/quizSolve", method=RequestMethod.GET)
+	public String quizSolve(){
+		return "main/quizSolve";
+	}
+	@RequestMapping(value="menu/myChildStory", method=RequestMethod.GET)
+	public String myChildStory(){
+		return "main/myChildStory";
+	}
+	@RequestMapping(value="menu/storyMake", method=RequestMethod.GET)
+	public String storyMake(){
+		return "main/storyMake";
+	}
+	@RequestMapping(value="menu/counselResult", method=RequestMethod.GET)
+	public String counselResult(){
+		return "main/counselResult";
+	}
+	
 }
