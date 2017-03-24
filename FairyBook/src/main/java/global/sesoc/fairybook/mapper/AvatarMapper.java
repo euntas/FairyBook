@@ -2,6 +2,7 @@ package global.sesoc.fairybook.mapper;
 
 import java.util.ArrayList;
 
+import global.sesoc.fairybook.vo.Avatar;
 import global.sesoc.fairybook.vo.FBResource;
 
 /**
@@ -28,4 +29,6 @@ public interface AvatarMapper {
 	public ArrayList<FBResource> readBody();
 	
 	public ArrayList<FBResource> readSkin();
+	
+	public int save(Avatar avatar);
 }

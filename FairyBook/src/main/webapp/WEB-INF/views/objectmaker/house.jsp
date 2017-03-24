@@ -8,27 +8,24 @@
 <meta charset="UTF-8">
 
 <!-- css 링크 -->
-<link rel="stylesheet" type="text/css" href="./resources/css/avatar.css">
+<link rel="stylesheet" type="text/css" href="./resources/css/house.css">
 
 <!-- jquery 링크 -->
 <script src="./resources/js/jquery-3.1.1.js"></script>
 
 <script>
 $(document).ready(function(){
-	//id가 신체부위인 버튼을 클릭하면 해당 함수 호출
-	$('#facebtn').on('click', callFace);
-	$('#hairbtn').on('click', callHair);
- 	$('#eyebtn').on('click', callEye);
-	$('#nosebtn').on('click', callNose);
-	$('#mouthbtn').on('click', callMouth);
-	$('#earbtn').on('click', callEar);
-	$('#neckbtn').on('click', callNeck);
-	$('#bodybtn').on('click', callBody);
-	$('#skinbtn').on('click', callSkin);
+	//id가 집 부위인 버튼을 클릭하면 해당 함수 호출
+	$('#roofbtn').on('click', callRoof);
+	$('#doorbtn').on('click', callDoor);
+ 	$('#windowbtn').on('click', callWindow);
+	$('#chimneybtn').on('click', callChimney);
+	$('#yardbtn').on('click', callYard);
+	$('#wallbtn').on('click', callWall);
 });
 
-//얼굴 불러오기
-function callFace(){
+//지붕 불러오기
+function callRoof(){
 	$.ajax({
 		url: 'callFace',
 		type: 'GET',
@@ -40,8 +37,8 @@ function callFace(){
 	});
 }
 
-//헤어 불러오기
-function callHair(){
+//문 불러오기
+function callDoor(){
 	$.ajax({
 		url: 'callHair',
 		type: 'GET',
@@ -223,8 +220,7 @@ function save(){
 		type: 'POST',
 		data: {face:face,hair:hair,eye:eye,nose:nose,mouth:mouth,ear:ear,neck:neck,body:body,skin:skin},
 		success: function(){
-			alert('저장 완료!');
-			location.href='house';
+			alert('Profit!');
 		},
 		error: function(e){
 			alert(JSON.stringify(e));
@@ -235,12 +231,12 @@ function save(){
 </script>
 
 
-<title>아바타 만들기</title>
+<title>집 만들기</title>
 </head>
 <body>
 
-<!-- 만들어진 아바타가 보이는 div 태그 -->
-<div id="avatar">
+<!-- 만들어진 집이 보이는 div 태그 -->
+<div id="house">
 <input type="button" value="초기화" id="resetbtn">
 
 	<!-- 저장버튼 및 초기화버튼이 보이는 div태그 -->
@@ -249,9 +245,9 @@ function save(){
 	</div>
 </div>
 
-<!-- 아바타 신체부위 선택하는 대분류 div태그 -->
+<!-- 집 부위 선택하는 대분류 div태그 -->
 <div id="category">
-<input id="facebtn" class="category" type="button" value="얼굴"><input id="hairbtn" class="category" type="button" value="헤어"><input id="eyebtn" class="category" type="button" value="눈"><input id="nosebtn" class="category" type="button" value="코"><input id="mouthbtn" class="category" type="button" value="입"><input id="earbtn" class="category" type="button" value="귀"><input id="neckbtn" class="category" type="button" value="목"><input id="bodybtn" class="category" type="button" value="몸"><input id="skinbtn" class="category" type="button" value="피부">
+<input id="roofbtn" class="category" type="button" value="지붕"><input id="doorbtn" class="category" type="button" value="문"><input id="windowbtn" class="category" type="button" value="창문"><input id="chimney" class="category" type="button" value="굴뚝"><input id="yard" class="category" type="button" value="기타"><input id="wallbtn" class="category" type="button" value="벽">
 </div>
 
 <!-- 실제로 쓸 신체부위 선택하는 소분류 div태그 -->

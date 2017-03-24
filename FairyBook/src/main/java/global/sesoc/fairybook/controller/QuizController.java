@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * 아이 회원으로 로그인 되어 있을때만
  */
 @Controller
+@RequestMapping("quiz")
 public class QuizController {
 
 	private static final Logger logger = LoggerFactory.getLogger(QuizController.class);

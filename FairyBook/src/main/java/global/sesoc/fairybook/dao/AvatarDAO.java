@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import global.sesoc.fairybook.mapper.AvatarMapper;
+import global.sesoc.fairybook.vo.Avatar;
 import global.sesoc.fairybook.vo.FBResource;
 
 /**
@@ -21,6 +22,10 @@ public class AvatarDAO {
 	@Autowired
 	SqlSession sqlSession;
 	
+	/**
+	 * 얼굴 부르기 버튼을 눌렀을시
+	 * @return 얼굴 이미지 경로가 담긴 arrayList
+	 */
 	public ArrayList<FBResource> readFace(){
 		ArrayList<FBResource> faceList = null;
 		AvatarMapper mapper = sqlSession.getMapper(AvatarMapper.class); 
@@ -28,6 +33,10 @@ public class AvatarDAO {
 		return faceList;
 	}
 	
+	/**
+	 * 헤어 부르기 버튼을 눌렀을시
+	 * @return 헤어 이미지 경로가 담긴 arrayList
+	 */
 	public ArrayList<FBResource> readHair(){
 		ArrayList<FBResource> hairList = null;
 		AvatarMapper mapper = sqlSession.getMapper(AvatarMapper.class); 
@@ -35,6 +44,10 @@ public class AvatarDAO {
 		return hairList;
 	}
 	
+	/**
+	 * 눈 부르기 버튼을 눌렀을시
+	 * @return 눈 이미지 경로가 담긴 arrayList
+	 */
 	public ArrayList<FBResource> readEye(){
 		ArrayList<FBResource> eyeList = null;
 		AvatarMapper mapper = sqlSession.getMapper(AvatarMapper.class); 
@@ -42,6 +55,10 @@ public class AvatarDAO {
 		return eyeList;
 	}
 	
+	/**
+	 * 코 부르기 버튼을 눌렀을시
+	 * @return 코 이미지 경로가 담긴 arrayList
+	 */
 	public ArrayList<FBResource> readNose(){
 		ArrayList<FBResource> noseList = null;
 		AvatarMapper mapper = sqlSession.getMapper(AvatarMapper.class); 
@@ -49,6 +66,10 @@ public class AvatarDAO {
 		return noseList;
 	}
 	
+	/**
+	 * 입 부르기 버튼을 눌렀을시
+	 * @return 입 이미지 경로가 담긴 arrayList
+	 */
 	public ArrayList<FBResource> readMouth(){
 		ArrayList<FBResource> mouthList = null;
 		AvatarMapper mapper = sqlSession.getMapper(AvatarMapper.class); 
@@ -56,6 +77,10 @@ public class AvatarDAO {
 		return mouthList;
 	}
 	
+	/**
+	 * 귀 부르기 버튼을 눌렀을시
+	 * @return 귀 이미지 경로가 담긴 arrayList
+	 */
 	public ArrayList<FBResource> readEar(){
 		ArrayList<FBResource> earList = null;
 		AvatarMapper mapper = sqlSession.getMapper(AvatarMapper.class); 
@@ -63,6 +88,10 @@ public class AvatarDAO {
 		return earList;
 	}
 	
+	/**
+	 * 목 부르기 버튼을 눌렀을시
+	 * @return 목 이미지 경로가 담긴 arrayList
+	 */
 	public ArrayList<FBResource> readNeck(){
 		ArrayList<FBResource> neckList = null;
 		AvatarMapper mapper = sqlSession.getMapper(AvatarMapper.class); 
@@ -70,6 +99,10 @@ public class AvatarDAO {
 		return neckList;
 	}
 	
+	/**
+	 * 몸 부르기 버튼을 눌렀을시
+	 * @return 몸 이미지 경로가 담긴 arrayList
+	 */
 	public ArrayList<FBResource> readBody(){
 		ArrayList<FBResource> bodyList = null;
 		AvatarMapper mapper = sqlSession.getMapper(AvatarMapper.class); 
@@ -77,10 +110,22 @@ public class AvatarDAO {
 		return bodyList;
 	}
 	
+	/**
+	 * 피부 부르기 버튼을 눌렀을시
+	 * @return 피부 이미지 경로가 담긴 arrayList
+	 */
 	public ArrayList<FBResource> readSkin(){
 		ArrayList<FBResource> skinList = null;
 		AvatarMapper mapper = sqlSession.getMapper(AvatarMapper.class); 
 		skinList = mapper.readSkin();
 		return skinList;
 	}
+	
+	public int save(Avatar avatar){
+		int result = 0;
+		AvatarMapper mapper = sqlSession.getMapper(AvatarMapper.class);
+		result = mapper.save(avatar);
+		return result;
+	}
+	
 }

@@ -5,6 +5,7 @@
 
 <mapper namespace="global.sesoc.fairybook.mapper.AvatarMapper">
  
+<!-- DB에서 얼굴자료의 경로를 가져옵니다 -->
 <select id="readFace" resultType="FBResource">
 	select
 		resourcenum, name, analysis, path
@@ -16,6 +17,7 @@
 		name like '%FACE%'
 </select>
 
+<!-- DB에서 헤어자료의 경로를 가져옵니다 -->
 <select id="readHair" resultType="FBResource">
 	select
 		resourcenum, name, analysis, path
@@ -27,6 +29,7 @@
 		name like '%HAIR%'
 </select>
 
+<!-- DB에서 눈 자료의 경로를 가져옵니다 -->
 <select id="readEye" resultType="FBResource">
 	select
 		resourcenum, name, analysis, path
@@ -38,6 +41,7 @@
 		name like '%EYE%'
 </select>
 
+<!-- DB에서 코 자료의 경로를 가져옵니다 -->
 <select id="readNose" resultType="FBResource">
 	select
 		resourcenum, name, analysis, path
@@ -49,6 +53,7 @@
 		name like '%NOSE%'
 </select>
 
+<!-- DB에서 입 자료의 경로를 가져옵니다 -->
 <select id="readMouth" resultType="FBResource">
 	select
 		resourcenum, name, analysis, path
@@ -60,6 +65,7 @@
 		name like '%MOUTH%'
 </select>
 
+<!-- DB에서 귀 자료의 경로를 가져옵니다 -->
 <select id="readEar" resultType="FBResource">
 	select
 		resourcenum, name, analysis, path
@@ -71,6 +77,7 @@
 		name like '%EAR%'
 </select>
 
+<!-- DB에서 목 자료의 경로를 가져옵니다 -->
 <select id="readNeck" resultType="FBResource">
 	select
 		resourcenum, name, analysis, path
@@ -82,6 +89,7 @@
 		name like '%NECK%'
 </select>
 
+<!-- DB에서 몸 자료의 경로를 가져옵니다 -->
 <select id="readBody" resultType="FBResource">
 	select
 		resourcenum, name, analysis, path
@@ -93,6 +101,7 @@
 		name like '%BODY%'
 </select>
 
+<!-- DB에서 피부 자료의 경로를 가져옵니다 -->
 <select id="readSkin" resultType="FBResource">
 	select
 		resourcenum, name, analysis, path
@@ -103,5 +112,22 @@
 	or
 		name like '%SKIN%'
 </select>
+
+<!-- DB에 내가 만든 아바타를 저장합니다 -->
+<insert id="save" parameterType="Avatar">
+	insert into madeavatar
+	values
+	(#{selectionNum},
+	 #{face},
+	 #{hair},
+	 #{eye},
+	 #{nose},
+	 #{mouth},
+	 #{ear},
+	 #{neck},
+	 #{body},
+	 #{skin}) 
+</insert>
+
 
 </mapper>

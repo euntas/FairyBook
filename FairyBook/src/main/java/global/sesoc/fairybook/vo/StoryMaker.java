@@ -11,16 +11,16 @@ import java.util.Date;
 public class StoryMaker {
 	
 	private String id;				// 아이디
-	private String cnickName;		// 아이 닉네임 
-	private String pnickName;		// 부모 닉네임 
 	private String password1;		// 아동용 비밀번호
 	private String password2;		// 부모용 비밀번호
-	private String cName;			// 아이 이름
 	private String pName;			// 부모 이름
+	private String cName;			// 아이 이름
 	private String cBirth;			// 아이 생일
 	private String email;			// 이메일
 	private String address;			// 주소
 	private String phone;			// 전화번호
+	private String pnickName;		// 부모 닉네임 
+	private String cnickName;		// 아이 닉네임 
 	private String originalProfile;	// 오리지날 프로필그림
 	private String savedProfile;	// 저장된 프로필그림
 	
@@ -28,8 +28,27 @@ public class StoryMaker {
 	public StoryMaker() {
 		// TODO Auto-generated constructor stub
 	}
+	public StoryMaker(String id, String password1, String password2, String pName, String cName, String cBirth,
+			String email, String address, String phone, String pnickName, String cnickName, String originalProfile,
+			String savedProfile) {
+		super();
+		this.id = id;
+		this.password1 = password1;
+		this.password2 = password2;
+		this.pName = pName;
+		this.cName = cName;
+		this.cBirth = cBirth;
+		this.email = email;
+		this.address = address;
+		this.phone = phone;
+		this.pnickName = pnickName;
+		this.cnickName = cnickName;
+		this.originalProfile = originalProfile;
+		this.savedProfile = savedProfile;
+	}
 
-   public String getId() {
+
+public String getId() {
       return id;
    }
 

@@ -7,22 +7,43 @@
 <mapper namespace="global.sesoc.fairybook.mapper.IDMapper">
 	
 	<insert id="insert" parameterType="StoryMaker">
-	 insert into storymaker
-	 (ID, PASSWORD1, PASSWORD2, PNAME, CNAME, 
-	 CBIRTH, EMAIL, ADDRESS, PHONE, PNICKNAME, CNICKNAME 
-	 <if test="originalProfile != null and savedProfile!= null">
-	,
-	ORIGINALPROFILE, 
-	SAVEDPROFILE 	 
-	</if>) values 
-	 (#{id},#{password1},#{password2},#{pName},#{cName}
-	 ,(TO_DATE('#{cBirth}','YYYY-MM-DD') )
-	 ,#{email},#{address},#{phone},#{pnickName},#{cnickName} 
-	 <if test="originalProfile != null and savedProfile!= null">
-	,
-	#{originalProfile}, 
-	#{savedProfile}
-	</if>)
+	insert into
+		STORYMAKER
+	(
+		id			
+		,password1
+		,password2
+		,pName
+		,cName
+		,cBirth
+		,email
+		,address
+		,phone
+		,pnickName
+		,cnickName
+	<if test="originalProfile != null and savedProfile != null">
+		,originalProfile
+		,savedProfile
+	</if>
+	)
+	values 
+	(
+		#{id}				
+		,#{password1}
+		,#{password2}
+		,#{pName}
+		,#{cName}
+		,#{cBirth}
+		,#{email}
+		,#{address}
+		,#{phone}
+		,#{pnickName}
+		,#{cnickName}
+	<if test="originalProfile != null and savedProfile != null">
+		,#{originalProfile}
+		,#{savedProfile}
+	</if>
+	)
 	</insert>
 	
 	<select id="selectStoryMaker" parameterType="string" resultType="StoryMaker">

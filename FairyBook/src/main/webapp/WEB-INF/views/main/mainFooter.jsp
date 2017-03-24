@@ -43,7 +43,7 @@
 </nav>
 
 <footer class="container-fluid bg-4 text-center">
-  <p>Made By <a href="localhost:8888/fairybook">FairyBook.com</a></p> 
+  <p>Made By <a href="./../">FairyBook.com</a></p> 
 </footer>
 
 </body>

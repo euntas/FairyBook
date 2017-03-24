@@ -1,6 +1,7 @@
 package global.sesoc.fairybook.controller;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.servlet.http.HttpSession;
 
@@ -26,6 +27,7 @@ import global.sesoc.fairybook.vo.StoryMaker;
  */
 
 @Controller
+@RequestMapping(value="id")
 public class IDController {
 	@Autowired
 	IDDAO dao;
@@ -102,17 +104,15 @@ public class IDController {
 	@RequestMapping(value = "join", method = RequestMethod.POST)
 	public String join(String cBirthYear, String cBirthMonth, String cBirthDate, 
 			String phone1, String phone2, String phone3, StoryMaker maker
-			, ArrayList<MultipartFile> upload, Model model) {
+			, MultipartFile upload, Model model) {
 		logger.debug("가입데이터 : {}", maker);	
 		//검증, DB저장
-		if (upload.size() != 0) {
-			for (MultipartFile file : upload) {
-				String savedFile = FileService.saveFile(file, uploadPath);
+		if (!upload.getOriginalFilename().equals("")) {
+			String savedFile = FileService.saveFile(upload, uploadPath);
 
-				// 원래 파일명과 저장된 파일명을 board객체에 담아 DB에 저장
-				maker.setOriginalProfile(file.getOriginalFilename());
-				maker.setSavedProfile(savedFile);
-			}
+			// 원래 파일명과 저장된 파일명을 board객체에 담아 DB에 저장
+			maker.setOriginalProfile(upload.getOriginalFilename());
+			maker.setSavedProfile(savedFile);
 		}
 		int result = 0;
 		

@@ -3,7 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
-<title>BoardList</title>
+<title>Counsel Result</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -18,59 +18,12 @@
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
 <!--상단, 사이드 메뉴  -->
-<c:import url="../main/main.jsp"></c:import>
+<c:import url="main.jsp"></c:import>
 <!-- Page content -->
 <div class="w3-main" style="margin-left:230px;">
 
 <!--####################여기부터  -->
-<div class="container">
-<table class="table table-striped table-hover">
-	<thead>
-	<tr>
-		<td>글번호</td>
-		<td>제목</td>
-		<td>닉네임</td>
-		<td>조회수</td>
-		<td>작성일</td>
-	</tr>
-	</thead>
-	<tbody>
-	<tr>
-		<td>1</td>
-		<td>sample</td>
-		<td>라이언맘</td>
-		<td>0</td>
-		<td>오늘</td>
-	</tr>
-	<tr>
-		<td>2</td>
-		<td>sample</td>
-		<td>라이언맘</td>
-		<td>0</td>
-		<td>오늘</td>
-	</tr>
-	<tr>
-		<td>3</td>
-		<td>sample</td>
-		<td>라이언맘</td>
-		<td>0</td>
-		<td>오늘</td>
-	</tr>
-	</tbody>
-</table>
-<!-- 글쓰기 버튼 -->
-<a href="board" class="btn btn-default">글쓰기</a>
-<!--페이지 이동 버튼  -->
-<div class="text-center">
-	<ul class="pagination">
-		<li><a href="">1</a></li>
-		<li><a href="">2</a></li>
-		<li><a href="">3</a></li>
-		<li><a href="">4</a></li>
-		<li><a href="">5</a></li>
-	</ul>
-</div>
-</div>
+<h1>상담 결과</h1>
 
 
 
@@ -79,8 +32,7 @@
 </div>
 
 <!--Footer  -->
-<c:import url="../main/mainFooter.jsp"></c:import>
+<c:import url="mainFooter.jsp"></c:import>
 
 </body>
 </html> 
-

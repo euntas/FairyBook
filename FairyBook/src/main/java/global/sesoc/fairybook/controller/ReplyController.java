@@ -20,6 +20,7 @@ import global.sesoc.fairybook.vo.PReply;
  */
 
 @Controller
+@RequestMapping(value="reply")
 public class ReplyController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ReplyController.class);

@@ -16,6 +16,7 @@ import global.sesoc.fairybook.vo.FBResource;
  * 부모 회원으로 로그인 되어있을 경우에만
  */
 @Controller
+@RequestMapping(value="analysis")
 public class AnalysisController {
 
 	private static final Logger logger = LoggerFactory.getLogger(AnalysisController.class);
