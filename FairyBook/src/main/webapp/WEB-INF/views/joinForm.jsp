@@ -7,38 +7,137 @@
 <meta charset="UTF-8">
 <title>회원가입</title>
 <link href="./resources/css/joinForm.css" rel="stylesheet">
+<script type="text/javascript" src="./resources/js/jquery-3.1.1.min.js"></script>
 <script>
-<c:if test="${errorMsg != null}">
-alert('${errorMsg}');
-</c:if>
+$(document).ready(function() {
+	//id가 formButton1인 버튼을 클릭하면 formSubmit1() 함수 실행	
+	$('#idCheck').on('click', formSubmit1);
+	$('#cNickCheck').on('click', formSubmit2);
+	$('#pNickCheck').on('click', formSubmit3);
+});
 
-//ID 중복확인 창 열기
-function idcheckOpen() {
-	window.open('idCheck','brandnewshit','top=200,left=400,width=300,height=225');//open메소드 파라미터 세개 들어감
+function formSubmit1() {
+
+	var id = $('#id').val();
+	
+	if(id=="") {
+		alert('아이디를 입력해주세요.')
+		return false;
+	}
+	
+	$.ajax({
+		url : 'idCheck',
+		type : 'POST',
+		data : {
+			id : id
+		},
+		dataType: 'text',
+		success : function(text) {
+			
+			if(text=="true"){
+			$('#checkedId').html('사용 가능한 아이디입니다.');
+			
+			
+			}else{
+			$('#checkedId').html('이미 가입된 아이디입니다.');	
+			$('#id').val("");
+			$('#id').focus();
+			}
+		},
+		error : function() {
+			alert(JSON.stringify(e));
+		}
+	});
 }
-function cNickCheckOpen() {
-	window.open('cNickCheck','brandnewshit','top=200,left=400,width=300,height=225');//open메소드 파라미터 세개 들어감
+
+function formSubmit2() {
+
+	var cNick = $('#cnickName').val();
+	
+	if(cNick=="") {
+		alert('닉네임을 입력해주세요.')
+		return false;
+	}
+	
+	$.ajax({
+		url : 'cNickCheck',
+		type : 'POST',
+		data : {
+			cNick : cNick
+		},
+		dataType: 'text',
+		success : function(text) {
+			if(text=="true"){
+				$('#checkedcNick').html('사용 가능한 닉네임입니다.');
+				
+				
+				}else{
+					$('#checkedcNick').html('이미 사용중인 닉네임입니다.');	
+				$('#cnickName').val("");
+				$('#cnickName').focus();
+				}
+			
+		},
+		error : function() {
+			alert(JSON.stringify(e));
+		}
+	});
 }
-function pNickCheckOpen() {
-	window.open('pNickCheck','brandnewshit','top=200,left=400,width=300,height=225');//open메소드 파라미터 세개 들어감
+
+function formSubmit3() {
+
+	var pNick = $('#pnickName').val();
+	
+	if(pNick=="") {
+		alert('아이디를 입력해주세요.')
+		return false;
+	}
+	
+	$.ajax({
+		url : 'pNickCheck',
+		type : 'POST',
+		data : {
+			pNick : pNick
+		},
+		dataType: 'text',
+		success : function(text) {
+			if(text=="true"){
+				$('#checkedpNick').html('사용 가능한 닉네임입니다.');
+				
+				
+				}else{
+					$('#checkedpNick').html('이미 사용중인 닉네임입니다.');	
+				$('#pnickName').val("");
+				$('#pnickName').focus();
+				}
+			
+		},
+		error : function() {
+			alert(JSON.stringify(e));
+		}
+	});
 }
+
+
 </script>
 </head>
 <body>
-<form  enctype="multipart/form-data" action="join" method="post">
+<form  enctype="multipart/form-data" action="join" method="post" onsubmit="return formcheck">
 
 	<table>
 		<tr>
 			<td class="firstRow">ID</td>
 			<td class="secondRow"><input type="text" id="id"
-				name="id" readonly="readonly" style="width: 220px;"></td>
-			<td><input type="button" value="중복확인" id="idCheck" onclick="idcheckOpen()"></td>
+				name="id" style="width: 220px;">
+				<div id="checkedId"></div></td>
+			<td><input type="button" value="중복확인" id="idCheck"></td>
 		</tr>
 		<tr>
 			<td class="firstRow">닉네임</td>
 			<td class="secondRow"><input type="text" id="cnickName" name="cnickName"
-				 readonly="readonly" style="width: 220px;"></td>
-			<td><input type="button" value="중복확인" id="cNickCheck" onclick="cNickCheckOpen()"></td>
+			 style="width: 220px;">
+			 <div id="checkedcNick"></div></td>
+			<td><input type="button" value="중복확인" id="cNickCheck"></td>
 		</tr>
 		<tr>
 			<td rowspan="2" class="firstRow">아이용 비밀번호</td>
@@ -109,8 +208,9 @@ function pNickCheckOpen() {
 		<tr>
 			<td class="firstRow">보호자 닉네임</td>
 			<td class="secondRow"><input type="text" id="pnickName" name="pnickName"
-				 readonly="readonly" style="width: 220px;"></td>
-			<td><input type="button" value="중복확인" id="pNickCheck" onclick="pNickCheckOpen()"></td>
+				 style="width: 220px;">
+				 <div id="checkedpNick"></div></td>
+			<td><input type="button" value="중복확인" id="pNickCheck"></td>
 		</tr>
 		<tr>
 			<td class="firstRow">이메일</td>
@@ -151,11 +251,11 @@ function pNickCheckOpen() {
 		</tr>
 		<tr>
 			<td colspan="3" style="text-align: center;">
-			<input type="submit" value="아바타 제작으로" >
-				<input type="button" value="취소" onclick="location.href="></td>
+			<input type="submit" value="가입하기">
+				<input type="button" value="취소" onclick="location.href='/'"></td>
 		</tr>
 
 	</table>
-	</form>
+</form>
 </body>
 </html>
