@@ -36,27 +36,46 @@ public class HomeController {
 		return "main/home";
 	}
 	
+	/**
+	 * 동화선택
+	 * @return main/storySelect.jsp
+	 */
 	@RequestMapping(value="menu/storySelect", method=RequestMethod.GET)
 	public String storySelect(){
 		return "main/storySelect";
 	}
 	
+	/**
+	 * 동화감상
+	 * @return main/storyPlay.jsp
+	 */
 	@RequestMapping(value="menu/storyPlay", method=RequestMethod.GET)
 	public String storyPlay(){
 		return "main/storyPlay";
 	}
+	
+	/**
+	 * 문제풀기
+	 * @return main/quizSolve.jsp
+	 */
 	@RequestMapping(value="menu/quizSolve", method=RequestMethod.GET)
 	public String quizSolve(){
 		return "main/quizSolve";
 	}
+	
+	/**
+	 * 내아이동화감상
+	 * @return main/myChildStory.jsp
+	 */
 	@RequestMapping(value="menu/myChildStory", method=RequestMethod.GET)
 	public String myChildStory(){
 		return "main/myChildStory";
 	}
-	@RequestMapping(value="menu/storyMake", method=RequestMethod.GET)
-	public String storyMake(){
-		return "main/storyMake";
-	}
+	
+	/**
+	 * 상담요청결과
+	 * @return main/counselResult.jsp
+	 */
 	@RequestMapping(value="menu/counselResult", method=RequestMethod.GET)
 	public String counselResult(){
 		return "main/counselResult";
