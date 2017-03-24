@@ -109,7 +109,7 @@ img{
 <nav class="w3-sidebar w3-bar-block w3-collapse w3-white w3-animate-left w3-card-2" style="z-index:3;width:220px;" id="mySidebar">
   <div class="container-fluid bg-1">
   <h3>로그인 하세요</h3>
-  <center><img src="resources/image/pp5.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"></center><br><!--circle image  -->
+  <center><img src="./resources/image/pp5.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"></center><br><!--circle image  -->
   <button type="button" id="login" class="btn btn-success">LOGIN</button>
   <button type="button" id="join" class="btn btn-warning">JOIN</button>
   <br><br>
@@ -129,7 +129,7 @@ img{
 <nav class="w3-sidebar w3-bar-block w3-collapse w3-white w3-animate-left w3-card-2" style="z-index:3;width:220px;" id="mySidebar">
   <div class="container-fluid bg-1">
   <h3>${loginUser.cnickName}</h3>
-  <center><img src="resources/image/yo.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"></center><br><!--circle image  -->
+  <center><img src="./resources/image/yo.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"></center><br><!--circle image  -->
   <button type="button" id="update" class="btn btn-success">개인정보</button>
   <button type="button" id="logout" class="btn btn-warning">LOGOUT</button>
   <br><br>
@@ -138,8 +138,9 @@ img{
   class="w3-bar-item w3-button w3-hide-large w3-large">Close <i class="fa fa-remove"></i></a>
   <a href="javascript:void(0)" class="w3-bar-item w3-button w3-dark-grey w3-button w3-hover-black w3-left-align" onclick="document.getElementById('id01').style.display='block'">New Message <i class="w3-padding-left fa fa-pencil"></i></a>
   
-  <a href="" class="w3-bar-item w3-button"><i class="fa fa-paper-plane w3-padding-right"></i>동화선택</a>
+  <a href="" class="w3-bar-item w3-button"><i class="fa fa-paper-plane w3-padding-right"></i>동화진행</a>
   <a href="#" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>동화감상</a>
+  <a href="#" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>문제풀기</a>
 </nav>
 </c:if>
 <!--부모 로그인했을때  -->
@@ -147,7 +148,7 @@ img{
 <nav class="w3-sidebar w3-bar-block w3-collapse w3-white w3-animate-left w3-card-2" style="z-index:3;width:220px;" id="mySidebar">
   <div class="container-fluid bg-1">
   <h3>${loginUser.pnickName}</h3>
-  <center><img src="resources/image/pp4.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"></center><br><!--circle image  -->
+  <center><img src="./resources/image/pp4.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"></center><br><!--circle image  -->
   <button type="button" id="update" class="btn btn-success">개인정보</button>
   <button type="button" id="logout" class="btn btn-warning">LOGOUT</button>
   <br><br>
@@ -157,7 +158,7 @@ img{
   <a href="javascript:void(0)" class="w3-bar-item w3-button w3-dark-grey w3-button w3-hover-black w3-left-align" onclick="document.getElementById('id01').style.display='block'">New Message <i class="w3-padding-left fa fa-pencil"></i></a>
   
   <a href="" class="w3-bar-item w3-button"><i class="fa fa-paper-plane w3-padding-right"></i>내 아이 동화 목록</a>
-  <a href="#" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>게시판</a>
+  <a href="pboard/list" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>게시판</a>
   <a href="#" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>상담요청 결과보기</a>
 </nav>
 </c:if>
@@ -192,6 +193,9 @@ img{
 
 <!-- Page content -->
 <div class="w3-main" style="margin-left:230px;">
+	<c:if test="${url == 'board/list' }">
+		<c:import url="pboard/list"></c:import>
+	</c:if>
 	<i class="fa fa-bars w3-button w3-white w3-hide-large w3-xlarge w3-margin-left w3-margin-top" onclick="w3_open()"></i>
 	<a href="javascript:void(0)" class="w3-hide-large w3-red w3-button w3-right w3-margin-top w3-margin-right" onclick="document.getElementById('id01').style.display='block'"><i class="fa fa-pencil"></i></a>
 	
@@ -203,7 +207,7 @@ img{
 	<!-- image -->
 	 <div class="w3-row-padding w3-padding-16">
 	    <div class="w3-third w3-margin-bottom">
-	      <img src="resources/image/book.jpg" alt="Norway" style="width:100%">
+	      <img src="./resources/image/book.jpg" alt="Norway" style="width:100%">
 	      <div class="w3-container w3-white">
 	        <h3>헨젤과 그레텔</h3>
 	        <h6 class="w3-opacity">2017.3.22</h6>
@@ -211,7 +215,7 @@ img{
 	      </div>
 	    </div>
 	    <div class="w3-third w3-margin-bottom">
-	      <img src="resources/image/pp1.png" alt="Norway" style="width:100%">
+	      <img src="./resources/image/pp1.png" alt="Norway" style="width:100%">
 	      <div class="w3-container w3-white">
 	        <h3>Double Room</h3>
 	        <h6 class="w3-opacity">From $149</h6>
@@ -219,7 +223,7 @@ img{
 	      </div>
 	    </div>
 	    <div class="w3-third w3-margin-bottom">
-	      <img src="resources/image/pp3.jpg" alt="Norway" style="width:100%">
+	      <img src="./resources/image/pp3.jpg" alt="Norway" style="width:100%">
 	      <div class="w3-container w3-white">
 	        <h3>Deluxe Room</h3>
 	        <h6 class="w3-opacity">From $199</h6>
@@ -235,7 +239,7 @@ img{
 	  </div>
 	  <div class="w3-row-padding w3-padding-16">
 	    <div class="w3-third w3-margin-bottom">
-	      <img src="resources/image/book.jpg" alt="Norway" style="width:100%">
+	      <img src="./resources/image/book.jpg" alt="Norway" style="width:100%">
 	      <div class="w3-container w3-white">
 	        <h3>헨젤과 그레텔</h3>
 	        <h6 class="w3-opacity">2017.3.22</h6>
@@ -243,7 +247,7 @@ img{
 	      </div>
 	    </div>
 	    <div class="w3-third w3-margin-bottom">
-	      <img src="resources/image/pp1.png" alt="Norway" style="width:100%">
+	      <img src="./resources/image/pp1.png" alt="Norway" style="width:100%">
 	      <div class="w3-container w3-white">
 	        <h3>Double Room</h3>
 	        <h6 class="w3-opacity">From $149</h6>
@@ -251,7 +255,7 @@ img{
 	      </div>
 	    </div>
 	    <div class="w3-third w3-margin-bottom">
-	      <img src="resources/image/pp3.jpg" alt="Norway" style="width:100%">
+	      <img src="./resources/image/pp3.jpg" alt="Norway" style="width:100%">
 	      <div class="w3-container w3-white">
 	        <h3>Deluxe Room</h3>
 	        <h6 class="w3-opacity">From $199</h6>
