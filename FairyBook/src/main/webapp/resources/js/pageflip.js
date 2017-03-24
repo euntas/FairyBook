@@ -100,7 +100,7 @@ RocketPageFlip.prototype.buildNavigation = function() {
 		navigation = $('<div>').addClass('flip-navigation');
 		
 		i = 0;
-		/*this.el.pages.each(function(){
+		this.el.pages.each(function(){
 		navigation.append($('<a>').attr('href', '#').data('page', i));
 		i++;
 	});
@@ -110,7 +110,7 @@ RocketPageFlip.prototype.buildNavigation = function() {
 		if(!self.rotating){
 			self.flip($(this).data('page'));
 		}
-	});*/
+	});
 		
 		this.el.navigation = navigation;
 		this.el.main.append(navigation);
@@ -131,6 +131,81 @@ RocketPageFlip.prototype.showCurrent = function() {
 };
 
 RocketPageFlip.prototype.flip = function(page) {
+	
+	//------------ 내가 추가한 코드
+	var originpage, newpagediv;
+
+	alert('다음 버튼 눌림 원본');
+	
+	alert('현재 페이지 확인 : ' + this.el.pages);
+	
+	/* $.ajax({
+	        url:'testeunji',
+	        type:'GET',
+	        data: {eunjinum: 10},
+	        dataType: 'text',
+	        success: function(text){
+	        	alert(text);
+	        	
+	        	var str = $('.pageflip').html();
+	        	
+	        	str += '<div class="page" style="background: #209657 url(\'./../resources/img/scene/';
+	        	str += text;
+	        	str += '\') no-repeat center center; background-size: 100%;"></div>';
+	        	
+	        	$('.pageflip').html(str);
+	        	
+	        	//pageflip = new RocketPageFlip('.pageflip', { current: 0 });
+	        },
+	        error: function(e){
+	            alert(JSON.stringify(e));
+	        }
+	    });*/
+	
+	this.el.main.removeClass('flip-directional flip-next');
+	this.el.main.removeClass('flip-navigation');
+	
+	originpage = $('<div>')
+	.html(this.el.pages.nextText)
+	.addClass('page page-current')
+	.attr('style', 'background: #209657 url(\'./../resources/img/scene/scene10.jpg\') no-repeat center center; background-size: 100%;"></div>');
+	
+	newpage = $('<div>')
+		.html(this.el.pages.nextText)
+		.addClass('page')
+		.attr('style', 'background: #209657 url(\'./../resources/img/scene/scene11.jpg\') no-repeat center center; background-size: 100%;"></div>');
+		
+	//this.el.main.append(newpage);
+	this.el.main.html(originpage);
+	this.el.main.append(newpage);
+	
+	RocketPageFlip = function(selector, options){
+		var defaultOptions = {
+				current: 0, // page to display
+				navigation: true, // show pagination
+				directionalNav: true, // show prev/next navigation buttons
+				prevText: 'prev', // text for prev button
+				nextText: '다음' // text for next button
+		};
+		
+		this.rotating = false;
+		
+		options = options || {};
+		
+		this.options = $.extend(defaultOptions, options);
+		
+		// Main elements
+		this.el = {
+				main: $(selector)
+		};
+		
+		this.el.pages = this.el.main.find('> .page');
+		
+		this.init();
+	};
+	
+	//----------------------------
+	
 	var backwards,
 	prev,
 	next,
@@ -223,6 +298,8 @@ RocketPageFlip.prototype.flip = function(page) {
 };
 
 RocketPageFlip.prototype.next = function() {
+	
+	
 	this.flip(this.options.current + 1);
 };
 

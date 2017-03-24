@@ -69,4 +69,15 @@ public class StoryController {
 	
 	}
 	
+	// 테스트용
+	@ResponseBody 
+	@RequestMapping(value = "testeunji", method = RequestMethod.GET)
+	public String testeunji(int eunjinum) {
+		String str = "scene";
+		str += String.valueOf(eunjinum);
+		str += ".jpg";
+		
+		return str;
+	}
+	
 }
