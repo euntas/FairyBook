@@ -38,14 +38,14 @@
 	        <h3>헨젤과 그레텔</h3>
 	        
 	        <h6 class="w3-opacity">2017.3.22</h6>
-	        <button class="w3-button w3-block w3-yellow w3-margin-bottom" onclick="location.href='story/storyTest'">Play</button>
+	        <button class="w3-button w3-block w3-yellow w3-margin-bottom" onclick="location.href='../story/storyTest'">Play</button>
 	      </div>
 	    </div>
 	    
 	    <div class="w3-third w3-margin-bottom">
 	      <img src="../resources/image/pp1.png" alt="Norway" style="width:100%">
 	      <div class="w3-container w3-white">
-	        <h3>Double Room</h3>
+	        <h3>백설공주</h3>
 	        <h6 class="w3-opacity">From $149</h6>
 	        <button class="w3-button w3-block w3-yellow w3-margin-bottom">play</button>
 	      </div>
@@ -54,7 +54,7 @@
 	    <div class="w3-third w3-margin-bottom">
 	      <img src="../resources/image/pp3.jpg" alt="Norway" style="width:100%">
 	      <div class="w3-container w3-white">
-	        <h3>Deluxe Room</h3>
+	        <h3>신데렐라</h3>
 	        <h6 class="w3-opacity">From $199</h6>
 	        <button class="w3-button w3-block w3-yellow w3-margin-bottom">play</button>
 	      </div>
