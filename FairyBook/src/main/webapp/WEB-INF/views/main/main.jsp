@@ -61,6 +61,8 @@
   <a href="../menu/storyMake" class="w3-bar-item w3-button"><i class="fa fa-paper-plane w3-padding-right"></i>동화진행</a>
   <a href="../menu/storyPlay" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>동화감상</a>
   <a href="../menu/quizSolve" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>문제풀기</a>
+  <a href="../menu/fairytaleList" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>동화목록</a>
+  
 </nav>
 </c:if>
 <!--부모 로그인했을때  -->
