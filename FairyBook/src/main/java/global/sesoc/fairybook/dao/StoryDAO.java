@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import global.sesoc.fairybook.mapper.AvatarMapper;
 import global.sesoc.fairybook.mapper.StoryMapper;
+import global.sesoc.fairybook.vo.Fairytale;
 import global.sesoc.fairybook.vo.Quiz;
 import global.sesoc.fairybook.vo.Scene;
 
@@ -37,5 +38,11 @@ public class StoryDAO {
 		scene = mapper.getScene(map);
 		
 		return scene;
+	}
+	
+	public int insertFairyTale(Fairytale fairytale){
+		StoryMapper mapper = sqlSession.getMapper(StoryMapper.class);
+		int result = mapper.insertFairytale(fairytale);
+		return result;
 	}
 }
