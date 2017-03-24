@@ -23,8 +23,45 @@
 <div class="w3-main" style="margin-left:230px;">
 
 <!--####################여기부터  -->
+<c:if test="${loginUser != null }">
+<!-- 동화책 '헨젤과 그레텔'-->		
+<div id="Borge" class="w3-container person">
+	  <br>
 <h1>동화 선택</h1>
+	  <hr>
+	</div>
+	<!-- image -->
+	 <div class="w3-row-padding w3-padding-16">
+	    <div class="w3-third w3-margin-bottom">
+	      <img src="../resources/image/book.jpg" alt="Norway" style="width:100%">
+	      <div class="w3-container w3-white">
+	        <h3>헨젤과 그레텔</h3>
+	        <h6 class="w3-opacity">2017.3.22</h6>
+	        <button class="w3-button w3-block w3-yellow w3-margin-bottom" onclick="location.href='story/storyTest'">Play</button>
+	      </div>
+	    </div>
+	    
+	    <div class="w3-third w3-margin-bottom">
+	      <img src="../resources/image/pp1.png" alt="Norway" style="width:100%">
+	      <div class="w3-container w3-white">
+	        <h3>Double Room</h3>
+	        <h6 class="w3-opacity">From $149</h6>
+	        <button class="w3-button w3-block w3-yellow w3-margin-bottom">play</button>
+	      </div>
+	    </div>
+	    
+	    <div class="w3-third w3-margin-bottom">
+	      <img src="../resources/image/pp3.jpg" alt="Norway" style="width:100%">
+	      <div class="w3-container w3-white">
+	        <h3>Deluxe Room</h3>
+	        <h6 class="w3-opacity">From $199</h6>
+	        <button class="w3-button w3-block w3-yellow w3-margin-bottom">play</button>
+	      </div>
+	    </div>
+	  </div>
 
+	    
+</c:if>
 
 
 <!--여기까지###########################  -->
