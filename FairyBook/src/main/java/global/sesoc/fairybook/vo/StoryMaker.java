@@ -17,7 +17,7 @@ public class StoryMaker {
 	private String password2;		// 부모용 비밀번호
 	private String cName;			// 아이 이름
 	private String pName;			// 부모 이름
-	private Date cBirth;			// 아이 생일
+	private String cBirth;			// 아이 생일
 	private String email;			// 이메일
 	private String address;			// 주소
 	private String phone;			// 전화번호
@@ -95,11 +95,11 @@ public class StoryMaker {
       this.pName = pName;
    }
 
-	public Date getcBirth() {
+	public String getcBirth() {
 		return cBirth;
 	}
 
-	public void setcBirth(Date cBirthday) {
+	public void setcBirth(String cBirthday) {
 		this.cBirth = cBirthday;
 	}
 

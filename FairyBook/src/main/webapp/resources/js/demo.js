@@ -1,1 +1,4 @@
-var pageflip = new RocketPageFlip('.pageflip', { current: 0 });
+function eunjifunc(){
+	
+	var pageflip = new RocketPageFlip('.pageflip', { current: 0 });
+}

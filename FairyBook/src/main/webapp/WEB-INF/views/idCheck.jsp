@@ -8,7 +8,7 @@
 <title>ID 중복 확인</title>
 <script>
 function idSelect(id){
-	opener.document.getElementById('userId').value = id;//가입폼의 ID입력란에 전달받은 ID입력
+	opener.document.getElementById('id').value = id;//가입폼의 ID입력란에 전달받은 ID입력
 	this.window.close();//현재 창 닫기
 }
 </script>
