@@ -24,7 +24,17 @@
 </select>
 
 <insert id = "insertFairytale" parameterType = "fairytale">
-
+	insert
+	into
+		fairytale(
+			storynum,
+			storytitle
+		)
+	values(
+		storynum_seq.nextval,
+		#{storyTitle}
+	)
 </insert>
+
 
 </mapper>

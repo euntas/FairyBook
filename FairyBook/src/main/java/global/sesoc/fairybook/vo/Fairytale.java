@@ -14,6 +14,10 @@ public class Fairytale {
 	public Fairytale() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Fairytale(String storyTitle) {
+		this.storyTitle = storyTitle;
+	}
 
 	public int getStoryNum() {
 		return storyNum;

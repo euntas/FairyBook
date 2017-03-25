@@ -45,4 +45,5 @@ public class StoryDAO {
 		int result = mapper.insertFairytale(fairytale);
 		return result;
 	}
+	
 }

@@ -7,6 +7,7 @@
 <html>
 <head>
 	<title>동화 진행 화면 - test</title>
+	
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -62,24 +63,8 @@
 
 	<script>
 		$(document).ready(function(){
-			
-			$("myselection").click(function(){
-			
-				if($("myselection").attr('selnum') == '1'){
-					$('#eunjipage').attr("class", "page page-current");
-					alert("1번을 선택했습니다.");
-				}
-				else if($("myselection").attr('selnum') == '2'){
-		        	alert("2번을 선택했습니다.");
-				}
-				else if($("myselection").attr('selnum') == '3'){
-		        	alert("3번을 선택했습니다.");
-				}
-				else if($("myselection").attr('selnum') == '4'){
-		        	alert("4번을 선택했습니다.");
-				}
-		    });
-			
+
+			var currentScene, currentQuiz;
 			
 			init();
 			
@@ -89,26 +74,105 @@
 		    $.ajax({
 		        url:'sceneLoading',
 		        type:'GET',
-		        data: {storyNum: 0, sceneNum:0},
+		        data: {storyNum: 0, sceneNum: pageflip.options.current},
 		        dataType:'json',
-		        success: output,
+		        success: outputForScene,
+		        error: function(e){
+		            alert(JSON.stringify(e));
+		        }
+		    });
+		    
+		    $.ajax({
+		        url:'quizLoading',
+		        type:'GET',
+		        dataType:'json',
+		        data: {storyNum: 0, sceneNum: pageflip.options.current},
+		        success: outputForQuiz,
 		        error: function(e){
 		            alert(JSON.stringify(e));
 		        }
 		    });
 		}
 		
-		function output(list){
-			$.each(list, function(i, item){
-				if(i == 0){
-					alert(item.sceneNum);					
-				}
-				else{
-					alert(item.question);
+		function outputForScene(scene){
+			currentScene = scene;
+			alert('씬번호: ' + currentScene.sceneNum);					
+		}
+		
+		function outputForQuiz(quiz){
+			currentQuiz = quiz;
+			alert('퀴즈 : ' + currentQuiz.quizNum );
+			
+			$.ajax({
+		        url:'quizValidCheck',
+		        type:'GET',
+		        dataType:'json',
+		        data: {storyNum: ${currentStoryNum}, sceneNum: pageflip.options.current },
+		        success: outputForQuizValidCheck,
+		        error: function(e){
+		            alert(JSON.stringify(e));
+		        }
+		    }); 
+		}
+		
+		function outputForQuizValidCheck(check){
+			alert('check ' + check);
+			if(check == 0){
+				alert('이 씬에서 퀴즈는 없습니다.');
+			}
+			
+			else if(check == 1){
+				alert('퀴즈를 활성화 합니다.');
+				
+				var str = currentQuiz.question +"<br><br>";
+				str += "<myselection selnum='1'>" + currentQuiz.select1 + "</myselection><br>";
+				str += "<myselection selnum='2'>" + currentQuiz.select2 + "</myselection><br>";
+				str += "<myselection selnum='3'>" + currentQuiz.select3 + "</myselection><br>";
+				str += "<myselection selnum='4'>" + currentQuiz.select4 + "</myselection><br>";
+				
+				$("#divForQuiz").html(str); 
+				
+				$("myselection").click(function(){
 					
-					//changePage('scene08.jpg');
-				}
-			});
+					if($(this).attr('selnum') == '1'){
+						alert("1번을 선택했습니다.");
+					}
+					else if($(this).attr('selnum') == '2'){
+			        	alert("2번을 선택했습니다.");
+					}
+					else if($(this).attr('selnum') == '3'){
+			        	alert("3번을 선택했습니다.");
+					}
+					else if($(this).attr('selnum') == '4'){
+			        	alert("4번을 선택했습니다.");
+					}
+					
+					$.ajax({
+				        url:'getNextSceneNum',
+				        type:'GET',
+				        data: {currentSceneNum: pageflip.options.current, answerNum: $(this).attr('selnum')},
+				        dataType: 'json',
+				        success: function(nextSceneNum){
+				        	alert('다음은 ' + nextSceneNum + '번 페이지로 이동합니다.');
+							pageflip.next(nextSceneNum);
+							
+							$.ajax({
+						        url:'quizLoading',
+						        type:'GET',
+						        dataType:'json',
+						        data: {storyNum: 0, sceneNum: pageflip.options.current},
+						        success: outputForQuiz,
+						        error: function(e){
+						            alert(JSON.stringify(e));
+						        }
+						    });
+				        },
+				        error: function(e){
+				            alert(JSON.stringify(e));
+				        }
+				    });
+			    }); 
+			}
 		}
 	</script>
 </head>
@@ -173,12 +237,7 @@
 <div class="w3-main" style="margin-left:230px;">
 	<div class="pageflip">
 		<!-- 질문 나오는 부분 -->
-		<div class="fixed">
-				asdfsdf ${quiz.question } <br><br>	
-				<myselection selnum="1">11111 ${quiz.select1 }</my><br>
-				<myselection selnum="2">${quiz.select2 }</my><br>
-				<myselection selnum="3">${quiz.select3 }</my><br>
-				<myselection selnum="4">${quiz.select4 }</my><br>
+		<div id="divForQuiz" class="fixed">
 		</div>
 		
 		<!-- 책 내용 부분 -->

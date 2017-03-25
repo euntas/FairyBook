@@ -299,7 +299,30 @@ RocketPageFlip.prototype.flip = function(page) {
 
 RocketPageFlip.prototype.next = function() {
 	
-	alert('현재' + this.options.current);
+	/*$.ajax({
+        url:'getNextSceneNum',
+        type:'GET',
+        data: {currentSceneNum: , answerNum: },
+        dataType: 'text',
+        success: function(text){
+        	alert(text);
+        	
+        	var str = $('.pageflip').html();
+        	
+        	str += '<div class="page" style="background: #209657 url(\'./../resources/img/scene/';
+        	str += text;
+        	str += '\') no-repeat center center; background-size: 100%;"></div>';
+        	
+        	$('.pageflip').html(str);
+        	
+        	//pageflip = new RocketPageFlip('.pageflip', { current: 0 });
+        },
+        error: function(e){
+            alert(JSON.stringify(e));
+        }
+    });*/
+	
+	/*alert('현재' + this.options.current);
 	if(this.options.current == 1){
 		alert('2으로 이동합니다.');
 		this.flip(2);
@@ -308,7 +331,7 @@ RocketPageFlip.prototype.next = function() {
 		alert('0으로 이동합니다.');
 		this.flip(0);
 	}
-	else
+	else*/
 		this.flip(this.options.current + 1);
 	//this.flip(this.options.current + 1);
 };
