@@ -1,5 +1,6 @@
 package global.sesoc.fairybook.mapper;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import global.sesoc.fairybook.vo.Fairytale;
@@ -14,5 +15,6 @@ public interface StoryMapper {
 	public Scene getScene(Map map);
 	// 동화를 생성한다.
 	public int insertFairytale(Fairytale fairytale);
-	
+	//selectionDetail을 저장한다.
+	public int saveSD(HashMap<String, Object> selection);
 }

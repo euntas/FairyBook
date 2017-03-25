@@ -139,5 +139,22 @@ public class StoryController {
 		return result;
 	}
 	
+	//selectionDetail 테이블 저장 테스트용
+	@ResponseBody 
+	@RequestMapping(value = "saveSD", method = RequestMethod.GET)
+	public int saveSD() {
+		int result = -1;
+		
+		HashMap<String, Object> selection = new HashMap<>();
+		selection.put("selectionNum", 1);
+		selection.put("sceneNum", 0);
+		selection.put("myAnswer", 3);
+		selection.put("inputdate", null);
+		selection.put("item", "item");
+		result = dao.saveSD(selection);
+		
+		return result;
+	}
+	
 	
 }

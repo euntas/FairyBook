@@ -36,5 +36,23 @@
 	)
 </insert>
 
-
+<insert id = "saveSD" parameterType = "map">
+	insert 
+	into
+	selectionDetail(
+		selectionNum
+		,sceneNum
+		,myAnswer
+		,inputdate
+		,item
+	)
+	values(
+		#{selectionNum}
+		,#{sceneNum}
+		,#{myAnswer}
+		,sysdate
+		,#{item}
+	)
+</insert>
+	
 </mapper>
