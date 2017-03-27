@@ -96,6 +96,7 @@ RocketPageFlip.prototype.buildNavigation = function() {
 	}
 	
 	// Build pagination
+	// 페이지 하단의 동그란 버튼으로 되어있는 네비게이션, 테스트 끝나면 지워야 함.
 	if(this.options.navigation){
 		navigation = $('<div>').addClass('flip-navigation');
 		
@@ -131,81 +132,6 @@ RocketPageFlip.prototype.showCurrent = function() {
 };
 
 RocketPageFlip.prototype.flip = function(page) {
-	
-	/*//------------ 내가 추가한 코드
-	var originpage, newpagediv;
-
-	alert('다음 버튼 눌림 원본');
-	
-	alert('현재 페이지 확인 : ' + this.el.pages);
-	
-	 $.ajax({
-	        url:'testeunji',
-	        type:'GET',
-	        data: {eunjinum: 10},
-	        dataType: 'text',
-	        success: function(text){
-	        	alert(text);
-	        	
-	        	var str = $('.pageflip').html();
-	        	
-	        	str += '<div class="page" style="background: #209657 url(\'./../resources/img/scene/';
-	        	str += text;
-	        	str += '\') no-repeat center center; background-size: 100%;"></div>';
-	        	
-	        	$('.pageflip').html(str);
-	        	
-	        	//pageflip = new RocketPageFlip('.pageflip', { current: 0 });
-	        },
-	        error: function(e){
-	            alert(JSON.stringify(e));
-	        }
-	    });
-	
-	this.el.main.removeClass('flip-directional flip-next');
-	this.el.main.removeClass('flip-navigation');
-	
-	originpage = $('<div>')
-	.html(this.el.pages.nextText)
-	.addClass('page page-current')
-	.attr('style', 'background: #209657 url(\'./../resources/img/scene/scene10.jpg\') no-repeat center center; background-size: 100%;"></div>');
-	
-	newpage = $('<div>')
-		.html(this.el.pages.nextText)
-		.addClass('page')
-		.attr('style', 'background: #209657 url(\'./../resources/img/scene/scene11.jpg\') no-repeat center center; background-size: 100%;"></div>');
-		
-	//this.el.main.append(newpage);
-	this.el.main.html(originpage);
-	this.el.main.append(newpage);
-	
-	RocketPageFlip = function(selector, options){
-		var defaultOptions = {
-				current: 0, // page to display
-				navigation: true, // show pagination
-				directionalNav: true, // show prev/next navigation buttons
-				prevText: 'prev', // text for prev button
-				nextText: '다음' // text for next button
-		};
-		
-		this.rotating = false;
-		
-		options = options || {};
-		
-		this.options = $.extend(defaultOptions, options);
-		
-		// Main elements
-		this.el = {
-				main: $(selector)
-		};
-		
-		this.el.pages = this.el.main.find('> .page');
-		
-		this.init();
-	};
-	*/
-	//----------------------------
-	
 	var backwards,
 	prev,
 	next,
@@ -223,6 +149,7 @@ RocketPageFlip.prototype.flip = function(page) {
 	if(prevPage === page){
 		return;
 	}
+	// 페이지가 전체 페이지 수를 넘어가면 그냥 return.
 	if(page >= this.el.pages.length){
 		return;
 	}
@@ -267,6 +194,20 @@ RocketPageFlip.prototype.flip = function(page) {
 	
 	this.el.main.append(leftHalf, rightHalf, flipPart, pageOverlay);
 	
+	
+	/*
+	 * ================================================================
+	 *  페이지마다의 문제 출력을 위한 코드  eunji 3.27
+	 * ================================================================
+	 */
+	
+	var currentScene, currentQuiz, quizCheck;
+	
+	quizLoading();
+	
+	
+	//=================================================================
+	
 	this.showCurrent();
 	
 	
@@ -298,45 +239,77 @@ RocketPageFlip.prototype.flip = function(page) {
 };
 
 RocketPageFlip.prototype.next = function() {
-	
-	/*$.ajax({
-        url:'getNextSceneNum',
-        type:'GET',
-        data: {currentSceneNum: , answerNum: },
-        dataType: 'text',
-        success: function(text){
-        	alert(text);
-        	
-        	var str = $('.pageflip').html();
-        	
-        	str += '<div class="page" style="background: #209657 url(\'./../resources/img/scene/';
-        	str += text;
-        	str += '\') no-repeat center center; background-size: 100%;"></div>';
-        	
-        	$('.pageflip').html(str);
-        	
-        	//pageflip = new RocketPageFlip('.pageflip', { current: 0 });
-        },
-        error: function(e){
-            alert(JSON.stringify(e));
-        }
-    });*/
-	
-	/*alert('현재' + this.options.current);
-	if(this.options.current == 1){
-		alert('2으로 이동합니다.');
-		this.flip(2);
-	}
-	else if(this.options.current == 2){
-		alert('0으로 이동합니다.');
-		this.flip(0);
-	}
-	else*/
 		this.flip(this.options.current + 1);
-	//this.flip(this.options.current + 1);
 };
 
 RocketPageFlip.prototype.prev = function() {
 	this.flip(this.options.current - 1);
 };
 
+
+//========================== 문제 출력을 위한 함수들 eunji 3.27 ======================
+
+function quizLoading(){
+	$.ajax({
+        url:'quizLoading',
+        type:'GET',
+        dataType:'json',
+        data: {storyNum: 0, sceneNum: pageflip.options.current},
+        success: function(quiz){
+        	currentQuiz = quiz;
+			alert('퀴즈 : ' + currentQuiz.quizNum );
+			
+			// 퀴즈가 있을 때
+			if(currentQuiz.quizNum != -1){
+				writeQuizDiv();
+			}
+			
+			// 퀴즈가 없을 때
+			else{
+				$("#divForQuiz").html(''); 
+			}
+        },
+        error: function(e){
+            alert(JSON.stringify(e));
+        }
+    });
+}
+
+function writeQuizDiv(){
+	var str = currentQuiz.question +"<br><br>";
+	str += "<myselection selnum='1'>" + currentQuiz.select1 + "</myselection><br>";
+	str += "<myselection selnum='2'>" + currentQuiz.select2 + "</myselection><br>";
+	str += "<myselection selnum='3'>" + currentQuiz.select3 + "</myselection><br>";
+	str += "<myselection selnum='4'>" + currentQuiz.select4 + "</myselection><br>";
+	
+	$("#divForQuiz").html(str); 
+	
+	$("myselection").addClass('out');
+	
+	$("myselection").mouseover(function(){
+		$(this).addClass('over');		
+	});
+	$("myselection").mouseout(function(){
+		$(this).removeClass('over');		
+	});
+
+	$("myselection").click(function(){
+		
+		var selectNum = $(this).attr('selnum');
+		
+		$.ajax({
+	        url:'getNextSceneNum',
+	        type:'GET',
+	        data: {currentSceneNum: pageflip.options.current, answerNum: $(this).attr('selnum')},
+	        dataType: 'json',
+	        success: function(nextSceneNum){
+	        	alert(selectNum + '을 선택했습니다. 다음은 ' + nextSceneNum + '번 페이지로 이동합니다.');
+				pageflip.flip(nextSceneNum);
+	        },
+	        error: function(e){
+	            alert(JSON.stringify(e));
+	        }
+	    });
+    }); 
+}
+//=================================================================

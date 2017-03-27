@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.support.SessionStatus;
 
 import global.sesoc.fairybook.dao.IDDAO;
 import global.sesoc.fairybook.util.FileService;
@@ -36,7 +37,9 @@ public class IDController {
 	final String uploadPath = "/boardfile"; // 파일 업로드 경로
 	
 	@RequestMapping(value = "join", method = RequestMethod.GET)
-	public String join() {
+	public String join(Model model) {
+		StoryMaker maker = new StoryMaker();
+		model.addAttribute("storymaker", maker); 
 		return "joinForm";
 	}
 
@@ -103,7 +106,9 @@ public class IDController {
 
 	@RequestMapping(value = "join", method = RequestMethod.POST)
 	public String join(String cBirthYear, String cBirthMonth, String cBirthDate, 
-			String phone1, String phone2, String phone3, StoryMaker maker
+			String phone1, String phone2, String phone3, 
+			String email, String email2,
+			@ModelAttribute("storymaker") StoryMaker maker
 			, MultipartFile upload, Model model) {
 		logger.debug("가입데이터 : {}", maker);	
 		//검증, DB저장
@@ -121,8 +126,12 @@ public class IDController {
 		maker.setcBirth(cBirthday);
 		String phone = phone1 + "-" + phone2 + "-" + phone3;
 		maker.setPhone(phone);
+		String fullmail = email + "@" + email2;
+		maker.setEmail(fullmail);
 		System.out.println(maker);
-		 result = dao.insert(maker);
+		model.addAttribute("storymaker", maker); 
+		result = dao.insert(maker);
+		 
 		}catch (Exception e){
 			e.printStackTrace();
 		}
@@ -130,6 +139,7 @@ public class IDController {
 			model.addAttribute("errorMsg", "가입 실패");
 			return "joinForm";
 		}
+		
 		return "redirect:joinComplete";
 		
 	}
@@ -137,12 +147,27 @@ public class IDController {
 	@RequestMapping(value="joinComplete", method=RequestMethod.GET)
 	public String joinComplete(
 			@ModelAttribute("storymaker") StoryMaker maker
-			){
-		
+			, SessionStatus status
+			, Model model){
+		logger.info("maker:{}",maker);
+		model.addAttribute("joinedid", maker.getId());
+		status.setComplete();
 		return "joinComplete";
 	}
 	
+	@RequestMapping(value = "userInfo", method = RequestMethod.GET)
+	public String userInfo(HttpSession session) {
+		StoryMaker user = (StoryMaker)session.getAttribute("loginUser");
+		if(user!=null){
+		session.setAttribute("info", user);
+		return "userInfo";
+		}else{
+			return "loginForm";
+		}
+	}
 
+	
+	
 	@RequestMapping(value = "update", method = RequestMethod.GET)
 	public String userUpdate() {
 

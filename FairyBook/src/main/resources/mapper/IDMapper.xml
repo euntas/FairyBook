@@ -60,12 +60,24 @@
 	
 	
 	<update id="update" parameterType="StoryMaker">
-	update storymaker set password=#{password}, name=#{name}, email=#{email}, idno=#{idNo}, address=#{address} where custid=#{custId}
+	update storymaker set password=#{password}, name=#{name}, email=#{email}, idno=#{idNo}, address=#{address} where id=#{id}
 	</update>
 	
 	<select id="findID" parameterType="string" resultType="StoryMaker">
 		select 
-			*
+		id			
+		,password1
+		,password2
+		,pName
+		,cName
+		,TO_CHAR(cBirth,'YYYY-MM-DD') cBirth
+		,email
+		,address
+		,phone
+		,pnickName
+		,cnickName
+		,originalProfile
+		,savedProfile
 		from
 			StoryMaker
 		where

@@ -33,6 +33,9 @@ $(function(){
 		if(confirm('로그아웃 하시겠습니까?'))
 			location.href='id/logout';
 	});
+	$('#update').on('click',function(){
+		location.href='id/userInfo';
+	});
 });
 
 function w3_open() {
@@ -182,7 +185,7 @@ function myFunc(id) {
 	      <div class="w3-container w3-white">
 	        <h3>헨젤과 그레텔</h3>
 	        <h6 class="w3-opacity">2017.3.22</h6>
-	        <button class="w3-button w3-block w3-yellow w3-margin-bottom" onclick="location.href='story/storyTest?storyNum=0'">Play</button>
+	        <button class="w3-button w3-block w3-yellow w3-margin-bottom" onclick="location.href='story/storyStart?storyNum=0'">Play</button>
 	      </div>
 	    </div>
 	    <div class="w3-third w3-margin-bottom">
