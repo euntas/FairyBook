@@ -146,13 +146,18 @@ public class AvatarController {
 		return skinList;
 	}
 	
-	@RequestMapping(value = "save", method = RequestMethod.POST)
+	/**
+	 * 저장 버튼을 눌렀을시 
+	 * 지금까지 선택한 아바타의 정보를 저장
+	 * @return 올바르게 저장되면 house페이지로 이동, 아니면 다시 avatar페이지로 돌아감
+	 */
+	@RequestMapping(value = "saveAvatar", method = RequestMethod.POST)
 	public String save(Avatar avatar, HttpSession session) {
 		session.setAttribute("selectionNum", 1);
 		avatar.setSelectionNum((int) session.getAttribute("selectionNum"));
 		logger.debug(avatar.toString());
 		int result = 0;
-		result = dao.save(avatar);
+		result = dao.saveAvatar(avatar);
 		if(result==1){
 			return "redirect:house";
 		}else{

@@ -17,4 +17,7 @@ public interface StoryMapper {
 	public int insertFairytale(Fairytale fairytale);
 	//selectionDetail을 저장한다.
 	public int saveSD(HashMap<String, Object> selection);
+	//myselection을 저장한다.
+	public int insertMySelection(HashMap<String, Object> myselection);
+
 }

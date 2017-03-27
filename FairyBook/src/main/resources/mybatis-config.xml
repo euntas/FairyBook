@@ -20,6 +20,7 @@
 	<mappers>
 		<mapper resource="mapper/IDMapper.xml" />
 		<mapper resource="mapper/avatarMapper.xml" />
+		<mapper resource="mapper/houseMapper.xml" />
 		<mapper resource="mapper/storyMapper.xml"/>
 		<mapper resource="mapper/boardMapper.xml"/>
 	</mappers>
