@@ -41,8 +41,8 @@ public class StoryController {
 
 	private static final Logger logger = LoggerFactory.getLogger(StoryController.class);
 	
-	@RequestMapping(value = "storyTest", method = RequestMethod.GET)
-	public String storytest(HttpServletRequest request, Model model, HttpSession session) {
+	@RequestMapping(value = "storyStart", method = RequestMethod.GET)
+	public String storyStart(HttpServletRequest request, Model model, HttpSession session) {
 	
 		int storyNum = Integer.parseInt(request.getParameter("storyNum"));
 		logger.debug("반아온 스토리 번호는 : {}" + storyNum);
@@ -50,7 +50,7 @@ public class StoryController {
 		// 현재 진행하고 있는 스토리 번호를 세션에 저장한다.
 		session.setAttribute("currentStoryNum", storyNum);
 		
-		return "storyTest";
+		return "story/storyStart";
 	}
 	
 	@ResponseBody 
