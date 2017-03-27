@@ -10,6 +10,9 @@
 <!-- css 링크 -->
 <link rel="stylesheet" type="text/css" href="./resources/css/avatar.css">
 
+<!-- favicon 링크 -->
+<link rel="shortcut icon" type="image/x-icon" href="./resources/img/favicon.ico">
+
 <!-- jquery 링크 -->
 <script src="./resources/js/jquery-3.1.1.js"></script>
 
@@ -142,31 +145,35 @@ function callSkin(){
 			alert(JSON.stringify(e));
 		}
 	});
+	
 }
 
 //불러온 자료를 디테일 부분에 띄운다(색 선택 부분은 안보여줌)
 function detailWithoutColor(resourceList){
 	var list = '';
 	for(var i in resourceList){
-		list += '<img src="'+resourceList[i].path+'" class="items" num="'+resourceList[i].resourceNum+'" name="'+resourceList[i].name+'">';
+		list += '<img src="'+resourceList[i].path+'" class="items" num="'+resourceList[i].resourceNum+'" name="'+resourceList[i].name+'" id="'+resourceList[i].resourceNum+'">';
 	}
 	$('#items').html(list);
 	$('.items').on('click', draw);
 	$('#color').css('display','none');
 	$('#detail').css('width','79%');
 	
+	checkSelection();
 }
 
 //불러온 자료를 디테일 부분에 띄운다(색 선택 부분은 보여줌)
 function detailWithColor(resourceList){
 	var list = '';
 	for(var i in resourceList){
-		list += '<img src="'+resourceList[i].path+'" class="items" num="'+resourceList[i].resourceNum+'" name="'+resourceList[i].name+'">';
+		list += '<img src="'+resourceList[i].path+'" class="items" num="'+resourceList[i].resourceNum+'" name="'+resourceList[i].name+'" id="'+resourceList[i].resourceNum+'">';
 	}
 	$('#items').html(list);
 	$('.items').on('click', draw);
 	$('#color').css('display','block');
 	$('#detail').css('width','50%');
+	
+	checkSelection();
 }
 
 //디테일에서 선택하면 아바타가 그려진다
@@ -198,6 +205,24 @@ function draw(){
 		$('#savebtn').css('display','block');
 		$('#savebtn').on('click',save);
 	}
+	checkSelection();
+}
+
+//내가 선택한 이미지를 강조해준다
+function checkSelection(){
+	var avatar = $('#avatar').html();
+	var arr = ['face', 'hair', 'eye', 'nose', 'mouth', 'ear', 'neck', 'body', 'skin'];
+	//일단 전체에 아무것도 없게 만들고
+	$('#items img').css('border','none');
+	for(var i in arr){
+		//위의 부위가 아바타 영역에 그려져있을때
+		if(avatar.indexOf(arr[i])!=-1){
+			//해당 부위의 넘버를 가져와서
+			var myselection = $('#'+arr[i]).attr('num');
+			//그놈꺼 빨갛게
+			$('#'+myselection).css('border','2px solid red');
+		}
+	}
 }
 
 
@@ -219,7 +244,7 @@ function save(){
 	var body = $('#body').attr('num');
 	var skin = $('#skin').attr('num');
 	$.ajax({
-		url: 'save',
+		url: 'saveAvatar',
 		type: 'POST',
 		data: {face:face,hair:hair,eye:eye,nose:nose,mouth:mouth,ear:ear,neck:neck,body:body,skin:skin},
 		success: function(){
@@ -268,6 +293,7 @@ function save(){
 <input id="white" class="color" type="button"><input id="gray" class="color" type="button"><input id="black" class="color" type="button">
 </div>
 
+<div id="test"></div>
 
 </body>
 </html>

@@ -114,7 +114,7 @@
 </select>
 
 <!-- DB에 내가 만든 아바타를 저장합니다 -->
-<insert id="save" parameterType="Avatar">
+<insert id="saveAvatar" parameterType="Avatar">
 	insert into madeavatar
 	values
 	(#{selectionNum},

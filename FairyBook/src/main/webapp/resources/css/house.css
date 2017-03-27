@@ -18,71 +18,55 @@ img{
 	height: auto;
 }
 
-/* 집의 굴뚝이미지 */
-#face{
+/* 집의 지붕이미지 */
+#roof{
 	position: absolute;
 	left: 40%;
 	top: 20%;
 	z-index: 1;
 }
 
-/* 아바타의 헤어이미지 */
-#hair{
+/* 집의 문이미지 */
+#door{
 	position: absolute;
 	left: 40%;
 	top: 18%;
 	z-index: 2;
 }
 
-/* 아바타의 눈이미지 */
-#eye{
+/* 집의 창문이미지 */
+#window{
 	position: absolute;
 	left: 50%;
 	top: 40%;
 	z-index: 3;
 }
 
-/* 아바타의 코이미지 */
-#nose{
+/* 집의 굴뚝이미지 */
+#chimney{
 	position: absolute;
 	left: 50%;
 	top: 45%;
 	z-index: 4;
 }
 
-/* 아바타의 입이미지 */
-#mouth{
+/* 집의 마당이미지 */
+#yard{
 	position: absolute;
 	left: 50%;
 	top: 50%;
 	z-index: 5;
 }
 
-/* 아바타의 귀이미지 */
-#ear{
+/* 집의 벽이미지 */
+#wall{
 	position: absolute;
 	left: 55%;
 	top: 45%;
 	z-index: 5;
 }
 
-/* 아바타의 목이미지 */
-#neck{
-	position: absolute;
-	left: 50%;
-	top: 55%;
-	z-index: 6;
-}
-
-/* 아바타의 몸이미지 */
-#body{
-	position: absolute;
-	left: 50%;
-	top: 60%;
-	z-index: 7;
-}
-
-/*아바타의 신체부위 선택하는 영역*/
+/*집의 부위 선택하는 영역*/
 #category{
 	margin: 0px;
 	position: absolute;
@@ -93,7 +77,7 @@ img{
 	top: 60%;
 }
 
-/* 해당 신체부위의 디테일 선택하는 영역 */
+/* 해당 부위의 디테일 선택하는 영역 */
 #detail{
 	margin: 0px;
 	position: absolute;
@@ -141,7 +125,7 @@ img{
 /* 대분류 버튼 클래스 */
 .category{
 	margin: 0px;
-	width : 11.1%;
+	width : 16.65%;
 	height: 99%;
 
 }

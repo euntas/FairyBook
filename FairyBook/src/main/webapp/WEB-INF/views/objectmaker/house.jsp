@@ -1,11 +1,14 @@
 <!-- 아바타만들기 페이지 -->
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+
+<!-- favicon 링크 -->
+<link rel="shortcut icon" type="image/x-icon" href="./resources/img/favicon.ico">
 
 <!-- css 링크 -->
 <link rel="stylesheet" type="text/css" href="./resources/css/house.css">
@@ -27,7 +30,7 @@ $(document).ready(function(){
 //지붕 불러오기
 function callRoof(){
 	$.ajax({
-		url: 'callFace',
+		url: 'callRoof',
 		type: 'GET',
 		dataType: 'json',
 		success: detailWithoutColor,
@@ -40,7 +43,7 @@ function callRoof(){
 //문 불러오기
 function callDoor(){
 	$.ajax({
-		url: 'callHair',
+		url: 'callDoor',
 		type: 'GET',
 		dataType: 'json',
 		success: detailWithColor,
@@ -50,10 +53,10 @@ function callDoor(){
 	});
 }
 
-//눈 불러오기
-function callEye(){
+//창문 불러오기
+function callWindow(){
 	$.ajax({
-		url: 'callEye',
+		url: 'callWindow',
 		type: 'GET',
 		dataType: 'json',
 		success: detailWithColor,
@@ -63,10 +66,10 @@ function callEye(){
 	});
 }
 
-//코 불러오기
-function callNose(){
+//굴뚝 불러오기
+function callChimney(){
 	$.ajax({
-		url: 'callNose',
+		url: 'callChimney',
 		type: 'GET',
 		dataType: 'json',
 		success: detailWithoutColor,
@@ -76,10 +79,10 @@ function callNose(){
 	});
 }
 
-//입 불러오기
-function callMouth(){
+//마당 불러오기
+function callYard(){
 	$.ajax({
-		url: 'callMouth',
+		url: 'callYard',
 		type: 'GET',
 		dataType: 'json',
 		success: detailWithoutColor,
@@ -89,10 +92,10 @@ function callMouth(){
 	});
 }
 
-//귀 불러오기
-function callEar(){
+//벽 불러오기
+function callWall(){
 	$.ajax({
-		url: 'callEar',
+		url: 'callWall',
 		type: 'GET',
 		dataType: 'json',
 		success: detailWithoutColor,
@@ -102,55 +105,19 @@ function callEar(){
 	});
 }
 
-//목 불러오기
-function callNeck(){
-	$.ajax({
-		url: 'callNeck',
-		type: 'GET',
-		dataType: 'json',
-		success: detailWithoutColor,
-		error: function(e){
-			alert(JSON.stringify(e));
-		}
-	});
-}
-
-//몸 불러오기
-function callBody(){
-	$.ajax({
-		url: 'callBody',
-		type: 'GET',
-		dataType: 'json',
-		success: detailWithColor,
-		error: function(e){
-			alert(JSON.stringify(e));
-		}
-	});
-}
-
-//피부 불러오기
-function callSkin(){
-	$.ajax({
-		url: 'callSkin',
-		type: 'GET',
-		dataType: 'json',
-		success: detailWithColor,
-		error: function(e){
-			alert(JSON.stringify(e));
-		}
-	});
-}
 
 //불러온 자료를 디테일 부분에 띄운다(색 선택 부분은 안보여줌)
 function detailWithoutColor(resourceList){
 	var list = '';
 	for(var i in resourceList){
-		list += '<img src="'+resourceList[i].path+'" class="items" num="'+resourceList[i].resourceNum+'" name="'+resourceList[i].name+'">';
+		list += '<img src="'+resourceList[i].path+'" class="items" num="'+resourceList[i].resourceNum+'" name="'+resourceList[i].name+'" id="'+resourceList[i].resourceNum+'">';
 	}
 	$('#items').html(list);
 	$('.items').on('click', draw);
 	$('#color').css('display','none');
 	$('#detail').css('width','79%');
+	
+	checkSelection();
 	
 }
 
@@ -158,23 +125,25 @@ function detailWithoutColor(resourceList){
 function detailWithColor(resourceList){
 	var list = '';
 	for(var i in resourceList){
-		list += '<img src="'+resourceList[i].path+'" class="items" num="'+resourceList[i].resourceNum+'" name="'+resourceList[i].name+'">';
+		list += '<img src="'+resourceList[i].path+'" class="items" num="'+resourceList[i].resourceNum+'" name="'+resourceList[i].name+'" id="'+resourceList[i].resourceNum+'">';
 	}
 	$('#items').html(list);
 	$('.items').on('click', draw);
 	$('#color').css('display','block');
 	$('#detail').css('width','50%');
+	
+	checkSelection();
 }
 
 //디테일에서 선택하면 아바타가 그려진다
 function draw(){
-	var avatar = $('#avatar').html();
-	var arr = ['face', 'hair', 'eye', 'nose', 'mouth', 'ear', 'neck', 'body', 'skin'];
+	var house = $('#house').html();
+	var arr = ['roof', 'door', 'window', 'chimney', 'yard', 'wall'];
 	for(var i in arr){
 		if($(this).attr('name').indexOf(arr[i])!=-1){
-			if(avatar.indexOf(arr[i])==-1){
-				avatar += '<img src="'+$(this).attr('src')+'" num="'+$(this).attr('num')+'" name="'+$(this).attr('name')+'" id="'+arr[i]+'">';
-				$('#avatar').html(avatar);
+			if(house.indexOf(arr[i])==-1){
+				house += '<img src="'+$(this).attr('src')+'" num="'+$(this).attr('num')+'" name="'+$(this).attr('name')+'" id="'+arr[i]+'">';
+				$('#house').html(house);
 			}else{
 				$('#'+arr[i]).attr('src',$(this).attr('src'));
 				$('#'+arr[i]).attr('num',$(this).attr('num'));
@@ -187,40 +156,58 @@ function draw(){
 	//모든 디테일을 선택하면 저장버튼을 활성화한다
 	var count = 0;
 	for(var i in arr){
-		if(avatar.indexOf(arr[i])!=-1){
+		if(house.indexOf(arr[i])!=-1){
 			count += 1;
 		}
 	}
-	if(count == 9){
+	if(count == 6){
 		$('#savebtn').css('display','block');
 		$('#savebtn').on('click',save);
+	}
+	
+	checkSelection();
+}
+
+
+//내가 선택한 이미지를 강조해준다
+function checkSelection(){
+	var house = $('#house').html();
+	var arr = ['roof', 'door', 'window', 'chimney', 'yard', 'wall'];
+	//일단 전체에 아무것도 없게 만들고
+	$('#items img').css('border','none');
+	for(var i in arr){
+		//위의 부위가 하우스 영역에 그려져있을때
+		if(house.indexOf(arr[i])!=-1){
+			//해당 부위의 넘버를 가져와서
+			var myselection = $('#'+arr[i]).attr('num');
+			//그놈꺼 빨갛게
+			$('#'+myselection).css('border','2px solid red');
+		}
 	}
 }
 
 
-//reset버튼을 누르면 그리던 아바타를 초기화한다
+//reset버튼을 누르면 그리던 집을 초기화한다
 function reset(){
-	var avatar = '<input type="button" value="초기화" id="reset">';
-	$('#avatar').html(avatar);
+	var house = '<input type="button" value="초기화" id="reset">';
+	$('#house').html(house);
 }
 
-//save버튼을 누르면 완성된 아바타를 DB에 저장한다
+//save버튼을 누르면 완성된 집을 DB에 저장한다
 function save(){
-	var face = $('#face').attr('num');
-	var hair = $('#hair').attr('num');
-	var eye = $('#eye').attr('num');
-	var nose = $('#nose').attr('num');
-	var mouth = $('#mouth').attr('num');
-	var ear = $('#ear').attr('num');
-	var neck = $('#neck').attr('num');
-	var body = $('#body').attr('num');
-	var skin = $('#skin').attr('num');
+	var roof = $('#roof').attr('num');
+	var door = $('#door').attr('num');
+	var window = $('#window').attr('num');
+	var chimney = $('#chimney').attr('num');
+	var yard = $('#yard').attr('num');
+	var wall = $('#wall').attr('num');
 	$.ajax({
-		url: 'save',
+		url: 'saveHouse',
 		type: 'POST',
-		data: {face:face,hair:hair,eye:eye,nose:nose,mouth:mouth,ear:ear,neck:neck,body:body,skin:skin},
+		data: {roof:roof,door:door,window:window,chimney:chimney,yard:yard,wall:wall,},
 		success: function(){
-			alert('Profit!');
+			alert('저장완료!');
+			location.href='story/storyTest'
 		},
 		error: function(e){
 			alert(JSON.stringify(e));
@@ -247,10 +234,10 @@ function save(){
 
 <!-- 집 부위 선택하는 대분류 div태그 -->
 <div id="category">
-<input id="roofbtn" class="category" type="button" value="지붕"><input id="doorbtn" class="category" type="button" value="문"><input id="windowbtn" class="category" type="button" value="창문"><input id="chimney" class="category" type="button" value="굴뚝"><input id="yard" class="category" type="button" value="기타"><input id="wallbtn" class="category" type="button" value="벽">
+<input id="roofbtn" class="category" type="button" value="지붕"><input id="doorbtn" class="category" type="button" value="문"><input id="windowbtn" class="category" type="button" value="창문"><input id="chimneybtn" class="category" type="button" value="굴뚝"><input id="yardbtn" class="category" type="button" value="마당"><input id="wallbtn" class="category" type="button" value="벽">
 </div>
 
-<!-- 실제로 쓸 신체부위 선택하는 소분류 div태그 -->
+<!-- 실제로 쓸 부위 선택하는 소분류 div태그 -->
 <div id="detail">
 만들 부위를 선택해 주세요
 	<div id="items">
