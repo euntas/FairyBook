@@ -21,6 +21,7 @@
 
 <script>
 		$(document).ready(function(){
+			// 가장 처음 씬과 문제를 가져온다.
 			init();
 		});
 		
