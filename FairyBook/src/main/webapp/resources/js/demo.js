@@ -12,10 +12,6 @@ function buildNav(){
 	str += 'scene06.jpg';
 	str += '\') no-repeat center center; background-size: 100%;"></div>';
 	
-	//str += '<a class="flip-directional flip-next" href="#">다음</a>';
-	//str += '<div class="flip-navigation"></div>';
-	
-	
 	$('.pageflip').html(str);
 	
 	pageflip.buildNavigation();
@@ -42,17 +38,3 @@ function changePage(imgsource){
 	pageflip = new RocketPageFlip('.pageflip', { current: 0 });
 }
 
-/*function changePage(){
-	var str = $('.pageflip').html();
-	str += '<div class="page" style="background: #209657 url(\'./../resources/img/scene/';
-	str += 'scene12.jpg';
-	str += '\') no-repeat center center; background-size: 100%;"></div>';
-	
-	str += '<div class="page" style="background: #209657 url(\'./../resources/img/scene/';
-	str += 'scene13.jpg';
-	str += '\') no-repeat center center; background-size: 100%;"></div>';
-	
-	$('.pageflip').html(str);
-	
-	pageflip = new RocketPageFlip('.pageflip', { current: 0 });
-}*/

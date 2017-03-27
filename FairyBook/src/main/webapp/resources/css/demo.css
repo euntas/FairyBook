@@ -113,11 +113,21 @@ body, html, .full {
   
   
 .fixed {
-  position: fixed;
-  top: 50%;
-  right: 15%;
-  width: 200px;
-  z-index: 9999;
+	color: #333;
+	background-color: #E8FFFF;
+	text-decoration: none;
+	opacity: 0.5;
+	position: fixed;
+	top: 50%;
+	right: 15%;
+	width: 200px;
+	z-index: 9999;
+	vertical-align: middle;
+      text-align: center;
+	-webkit-transition: all 0.25s;
+              transition: all 0.25s;
+	border-radius: 20%;
+	margin: 0.2%;
 }  
 <<<<<<< HEAD
 
@@ -161,3 +171,14 @@ nav ul a {
 } */
 =======
 >>>>>>> refs/remotes/origin/master
+
+/*
+문제 꾸미기 위한 코드
+*/
+.out {
+	color: #333;
+}
+
+.over {
+	color: #00FF99;
+}

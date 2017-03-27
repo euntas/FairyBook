@@ -14,6 +14,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	
+	<!-- 로켓페이지플립 사용 위한 파일 -->
 	<link rel="stylesheet" href="./../resources/css/demo.css">
 	<link rel="stylesheet" href="./../resources/css/pageflip.css">
 
@@ -110,7 +111,7 @@
 		        url:'quizValidCheck',
 		        type:'GET',
 		        dataType:'json',
-		        data: {storyNum: ${currentStoryNum}, sceneNum: pageflip.options.current },
+		        data: {storyNum: ${ currentStoryNum}, sceneNum: pageflip.options.current },
 		        success: outputForQuizValidCheck,
 		        error: function(e){
 		            alert(JSON.stringify(e));
@@ -157,13 +158,13 @@
 				        dataType: 'json',
 				        success: function(nextSceneNum){
 				        	alert('다음은 ' + nextSceneNum + '번 페이지로 이동합니다.');
-							pageflip.next(nextSceneNum);
+							pageflip.flip(nextSceneNum);
 							
 							$.ajax({
 						        url:'quizLoading',
 						        type:'GET',
 						        dataType:'json',
-						        data: {storyNum: 0, sceneNum: pageflip.options.current},
+						        data: {storyNum: 0, sceneNum: nextSceneNum},
 						        success: outputForQuiz,
 						        error: function(e){
 						            alert(JSON.stringify(e));

@@ -147,7 +147,7 @@ CREATE TABLE PBOARD
 	-- 게시글 제목
 	TITLE varchar2(100) NOT NULL,
 	-- 게시글 내용
-	CONTENT varchar2(5000) NOT NULL,
+	CONTENT varchar2(4000) NOT NULL,
 	-- 글 쓴 시간
 	INPUTDATE date DEFAULT SYSDATE,
 	-- 게시판 조회수
