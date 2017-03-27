@@ -123,7 +123,7 @@ body, html, .full {
 	top: 50%;
 	right: 15%;
 	width: 200px;
-	z-index: 9999;
+	z-index: 99;
 	vertical-align: middle;
       text-align: center;
 	-webkit-transition: all 0.25s;
@@ -131,6 +131,7 @@ body, html, .full {
 	border-radius: 20%;
 	margin: 0.2%;
 }  
+
 <<<<<<< HEAD
 
 /* div.mycontainer {
@@ -178,9 +179,13 @@ nav ul a {
 문제 꾸미기 위한 코드
 */
 .out {
+	z-index: 10000;
 	color: #333;
 }
 
 .over {
+	cursor: url(http://gfmarket.phinf.naver.net/sally_special/original_1.png?type=p50_50), pointer; 
+	/* cursor: url(http://cfs.tistory.com/custom/blog/38/389140/skin/images/cursor2.png), pointer; */
+	z-index: 10000;
 	color: #00FF99;
 }
