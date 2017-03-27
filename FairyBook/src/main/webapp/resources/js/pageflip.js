@@ -203,6 +203,8 @@ RocketPageFlip.prototype.flip = function(page) {
 	
 	var currentScene, currentQuiz, quizCheck;
 	
+	// selectiondetail 테이블에 insert 해주어야 하는 부분
+	
 	quizLoading();
 	
 	
@@ -248,7 +250,7 @@ RocketPageFlip.prototype.prev = function() {
 
 
 //========================== 문제 출력을 위한 함수들 eunji 3.27 ======================
-
+// 퀴즈를 가져온다. 
 function quizLoading(){
 	$.ajax({
         url:'quizLoading',
@@ -259,13 +261,19 @@ function quizLoading(){
         	currentQuiz = quiz;
 			alert('퀴즈 : ' + currentQuiz.quizNum );
 			
-			// 퀴즈가 있을 때
+			// 해당 씬에 퀴즈가 있을 때
 			if(currentQuiz.quizNum != -1){
+				// '다음' 버튼을 숨긴다.
+				$('.pageflip').find('a.flip-directional.flip-next').hide();
+				// 퀴즈의 내용을 jsp에 출력한다.
 				writeQuizDiv();
 			}
 			
-			// 퀴즈가 없을 때
+			// 해당 씬에 퀴즈가 없을 때
 			else{
+				// '다음' 버튼을 보이게 한다.
+				$('.pageflip').find('a.flip-directional.flip-next').show();
+				// 퀴즈 div의 내용을 지운다.
 				$("#divForQuiz").html(''); 
 			}
         },
@@ -276,6 +284,8 @@ function quizLoading(){
 }
 
 function writeQuizDiv(){
+	
+	// 퀴즈의 내용을 읽어 jsp의 퀴즈 div에 내용을 넣어준다.
 	var str = currentQuiz.question +"<br><br>";
 	str += "<myselection selnum='1'>" + currentQuiz.select1 + "</myselection><br>";
 	str += "<myselection selnum='2'>" + currentQuiz.select2 + "</myselection><br>";
@@ -286,6 +296,7 @@ function writeQuizDiv(){
 	
 	$("myselection").addClass('out');
 	
+	// 마우스를 대면 글자 색이 바뀌게끔 한다. css는 demo.css 파일에 있다.
 	$("myselection").mouseover(function(){
 		$(this).addClass('over');		
 	});
@@ -293,6 +304,7 @@ function writeQuizDiv(){
 		$(this).removeClass('over');		
 	});
 
+	// 선택지를 클릭하면 다음 페이지 번호를 디비에서 읽어 이동한다.
 	$("myselection").click(function(){
 		
 		var selectNum = $(this).attr('selnum');
@@ -303,8 +315,11 @@ function writeQuizDiv(){
 	        data: {currentSceneNum: pageflip.options.current, answerNum: $(this).attr('selnum')},
 	        dataType: 'json',
 	        success: function(nextSceneNum){
+	        	// selectiondetail 테이블에 update 해 주어야 함.
+	        	
 	        	alert(selectNum + '을 선택했습니다. 다음은 ' + nextSceneNum + '번 페이지로 이동합니다.');
-				pageflip.flip(nextSceneNum);
+				// 다음페이지로 이동한다.
+	        	pageflip.flip(nextSceneNum);
 	        },
 	        error: function(e){
 	            alert(JSON.stringify(e));

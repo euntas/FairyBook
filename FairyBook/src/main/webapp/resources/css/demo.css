@@ -111,7 +111,9 @@ body, html, .full {
   margin: 0 !important;
   max-width: 100%; }
   
-  
+/*
+문제가 들어가는 div 스타일 지정
+*/
 .fixed {
 	color: #333;
 	background-color: #E8FFFF;
