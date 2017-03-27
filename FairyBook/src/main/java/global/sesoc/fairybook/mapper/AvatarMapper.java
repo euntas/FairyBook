@@ -30,5 +30,5 @@ public interface AvatarMapper {
 	
 	public ArrayList<FBResource> readSkin();
 	
-	public int save(Avatar avatar);
+	public int saveAvatar(Avatar avatar);
 }

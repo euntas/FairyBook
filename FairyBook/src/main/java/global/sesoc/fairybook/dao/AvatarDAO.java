@@ -121,10 +121,14 @@ public class AvatarDAO {
 		return skinList;
 	}
 	
-	public int save(Avatar avatar){
+	/**
+	 * 세이브 버튼을 눌렀을시
+	 * 지금까지 선택한 아바타의 정보를 테이블에 저장
+	 */
+	public int saveAvatar(Avatar avatar){
 		int result = 0;
 		AvatarMapper mapper = sqlSession.getMapper(AvatarMapper.class);
-		result = mapper.save(avatar);
+		result = mapper.saveAvatar(avatar);
 		return result;
 	}
 	

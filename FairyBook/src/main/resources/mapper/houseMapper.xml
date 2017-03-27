@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="global.sesoc.fairybook.mapper.HouseMapper">
+ 
+<!-- DB에서 지붕자료의 경로를 가져옵니다 -->
+<select id="readRoof" resultType="FBResource">
+	select
+		resourcenum, name, analysis, path
+	from
+		fbresource
+	where
+		name like '%roof%'
+	or
+		name like '%ROOF%'
+</select>
+
+<!-- DB에서 문자료의 경로를 가져옵니다 -->
+<select id="readDoor" resultType="FBResource">
+	select
+		resourcenum, name, analysis, path
+	from
+		fbresource
+	where
+		name like '%door%'
+	or
+		name like '%DOOR%'
+</select>
+
+<!-- DB에서 창문 자료의 경로를 가져옵니다 -->
+<select id="readWindow" resultType="FBResource">
+	select
+		resourcenum, name, analysis, path
+	from
+		fbresource
+	where
+		name like '%window%'
+	or
+		name like '%WINDOW%'
+</select>
+
+<!-- DB에서 굴뚝 자료의 경로를 가져옵니다 -->
+<select id="readChimney" resultType="FBResource">
+	select
+		resourcenum, name, analysis, path
+	from
+		fbresource
+	where
+		name like '%chimney%'
+	or
+		name like '%CHIMNEY%'
+</select>
+
+<!-- DB에서 마당 자료의 경로를 가져옵니다 -->
+<select id="readYard" resultType="FBResource">
+	select
+		resourcenum, name, analysis, path
+	from
+		fbresource
+	where
+		name like '%yard%'
+	or
+		name like '%YARD%'
+</select>
+
+<!-- DB에서 벽 자료의 경로를 가져옵니다 -->
+<select id="readWall" resultType="FBResource">
+	select
+		resourcenum, name, analysis, path
+	from
+		fbresource
+	where
+		name like '%wall%'
+	or
+		name like '%WALL%'
+</select>
+
+<!-- DB에 내가 만든 집을 저장합니다 -->
+<insert id="saveHouse" parameterType="House">
+	insert into madehouse
+	values
+	(#{selectionNum},
+	 #{roof},
+	 #{door},
+	 #{window},
+	 #{chimney},
+	 #{yard},
+	 #{wall})
+</insert>
+
+
+</mapper>
