@@ -9,23 +9,33 @@ import java.util.Date;
  */
 public class PBoard {
 	
+	private int boardnum; 		//게시글 번호
 	private String id;			//작성자 아이디
 	private String title;		//게시글 제목
 	private String content;		//게시글 내용
-	private Date inputdate;		//게시글 작성시간 
+	private String inputdate;	//게시글 작성시간 
 	private int hit;			//게시글 추천수
 	
 	public PBoard() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public PBoard(String id, String title, String content, Date inputdate, int hit) {
+	public PBoard(int boardnum, String id, String title, String content, String inputdate, int hit) {
 		super();
+		this.boardnum = boardnum;
 		this.id = id;
 		this.title = title;
 		this.content = content;
 		this.inputdate = inputdate;
 		this.hit = hit;
+	}
+
+	public int getBoardnum() {
+		return boardnum;
+	}
+
+	public void setBoardnum(int boardnum) {
+		this.boardnum = boardnum;
 	}
 
 	public PBoard(String id, String title, String content) {
@@ -59,11 +69,11 @@ public class PBoard {
 		this.content = content;
 	}
 
-	public Date getInputdate() {
+	public String getInputdate() {
 		return inputdate;
 	}
 
-	public void setInputdate(Date inputdate) {
+	public void setInputdate(String inputdate) {
 		this.inputdate = inputdate;
 	}
 
@@ -77,10 +87,8 @@ public class PBoard {
 
 	@Override
 	public String toString() {
-		return "PBoard [id=" + id + ", title=" + title + ", content=" + content + ", inputdate=" + inputdate + ", hit="
-				+ hit + "]";
+		return "PBoard [boardnum=" + boardnum + ", id=" + id + ", title=" + title + ", content=" + content
+				+ ", inputdate=" + inputdate + ", hit=" + hit + "]";
 	}
-	
-	
-	
+
 }

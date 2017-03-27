@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="global.sesoc.fairybook.mapper.BoardMapper">
+ 
+ 	<insert id="insertBoard" parameterType="PBoard">
+ 		insert into
+ 			PBOARD
+ 		values
+ 		(
+ 			boardnum_seq.nextval
+			,#{id}
+			,#{title}
+			,#{content}
+			,sysdate
+			,0
+ 		)
+ 	</insert>
+
+	<select id="list" resultType="PBoard">
+		select
+			boardnum
+			, id
+			, title
+			, content
+			, to_char(inputdate, 'yyyy/mm/dd') as inputdate 
+			, hit
+		from
+			pboard
+		order by
+			boardnum desc
+	</select>
+	
+	<select id="count" resultType="int">
+		select
+			count(*)
+		from
+			pboard
+	</select>
+
+</mapper>

@@ -14,6 +14,41 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!--적용 자바스크립트와 스타일  -->
+<script>
+	$(function(){
+		bring();
+	});
+	
+	function bring(){
+		$.ajax({
+			url:'list',
+			type: 'GET',
+			dataType: 'json',
+			success: output,
+			error: function(e){
+				alert(JSON.stringify(e));
+			}
+		});
+	}
+	
+	function output(list){
+		var input='<table class="table table-striped table-hover">';
+		input+='<thead><tr>';
+		input+='<td>글번호</td><td>제목</td><td>작성자</td><td>조회수</td><td>작성일</td>';
+		input+='</tr></thead>';
+		
+		$.each(list, function(i,b){
+			input+='<tr>';
+			input+='<td>'+b.boardnum+'</td>';
+			input+='<td>'+b.title+'</td>';
+			input+='<td>'+b.id+'</td>';
+			input+='<td>'+b.hit+'</td>';
+			input+='<td>'+b.inputdate+'</td>';
+			input+='</tr>';
+		});
+		$('#list').html(input);
+	}
+</script>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
@@ -24,41 +59,7 @@
 
 <!--####################여기부터  -->
 <div class="container">
-<table class="table table-striped table-hover">
-	<thead>
-	<tr>
-		<td>글번호</td>
-		<td>제목</td>
-		<td>닉네임</td>
-		<td>조회수</td>
-		<td>작성일</td>
-	</tr>
-	</thead>
-	<tbody>
-	<tr>
-		<td>1</td>
-		<td>sample</td>
-		<td>라이언맘</td>
-		<td>0</td>
-		<td>오늘</td>
-	</tr>
-	<tr>
-		<td>2</td>
-		<td>sample</td>
-		<td>라이언맘</td>
-		<td>0</td>
-		<td>오늘</td>
-	</tr>
-	<tr>
-		<td>3</td>
-		<td>sample</td>
-		<td>라이언맘</td>
-		<td>0</td>
-		<td>오늘</td>
-	</tr>
-	</tbody>
-</table>
-<!-- 글쓰기 버튼 -->
+<div id="list"></div>
 <a href="board" class="btn btn-default">글쓰기</a>
 <!--페이지 이동 버튼  -->
 <div class="text-center">

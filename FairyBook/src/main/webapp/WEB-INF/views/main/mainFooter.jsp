@@ -22,7 +22,7 @@
 <body>
 
 <!--Add a navar  -->
-<nav class="navbar navbar-default">
+<nav class="navbar">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -45,6 +45,7 @@
 <footer class="container-fluid bg-4 text-center">
   <p>Made By <a href="./../">FairyBook.com</a></p> 
 </footer>
+
 
 </body>
 </html>
