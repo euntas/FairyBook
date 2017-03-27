@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import global.sesoc.fairybook.dao.BoardDAO;
+import global.sesoc.fairybook.util.PageNavigator;
 import global.sesoc.fairybook.vo.PBoard;
 import global.sesoc.fairybook.vo.StoryMaker;
 /**
@@ -52,7 +53,12 @@ public class BoardController {
 			//,@SessionAttribute("loginUser") StoryMaker maker
 			) {
 		//로그인 안했으면 막기
+		
+		
+		int count = dao.count(); //총 게시글 수
 		ArrayList<PBoard> list = new ArrayList<>();
+		PageNavigator pn = new PageNavigator(15, 5, page, count);
+		int startRecored = pn.getStartRecord();
 		list = dao.list();
 		return list;
 	}
