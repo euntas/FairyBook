@@ -4,11 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<title>동화 표지</title>
 </head>
 <body>
 <h1>동화 표지</h1>
-
-<a href='../story/storyTest?storyNum=0'>동화시작</a>
+동화 표지 
 </body>
 </html>
