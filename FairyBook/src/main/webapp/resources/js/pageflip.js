@@ -283,6 +283,15 @@ function writeQuizDiv(){
 	str += "<myselection selnum='4'>" + currentQuiz.select4 + "</myselection><br>";
 	
 	$("#divForQuiz").html(str); 
+	
+	$("myselection").addClass('out');
+	
+	$("myselection").mouseover(function(){
+		$(this).addClass('over');		
+	});
+	$("myselection").mouseout(function(){
+		$(this).removeClass('over');		
+	});
 
 	$("myselection").click(function(){
 		
