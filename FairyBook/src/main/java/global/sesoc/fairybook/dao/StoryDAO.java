@@ -51,4 +51,11 @@ public class StoryDAO {
 		int result = mapper.saveSD(selection);
 		return result;
 	}
+	
+	public int insertMySelection(HashMap<String, Object> myselection){
+		StoryMapper mapper = sqlSession.getMapper(StoryMapper.class);
+		int result = mapper.insertMySelection(myselection);
+		return result;
+	}
+	
 }

@@ -26,27 +26,32 @@
 <insert id = "insertFairytale" parameterType = "fairytale">
 	insert
 	into
-		fairytale(
+		fairytale
+		(
 			storynum,
 			storytitle
 		)
-	values(
+	values
+	(
 		storynum_seq.nextval,
 		#{storyTitle}
 	)
 </insert>
 
+<!-- selectionDatail 저장 -->
 <insert id = "saveSD" parameterType = "map">
 	insert 
 	into
-	selectionDetail(
+	selectionDetail
+	(
 		selectionNum
 		,sceneNum
 		,myAnswer
 		,inputdate
 		,item
 	)
-	values(
+	values
+	(
 		#{selectionNum}
 		,#{sceneNum}
 		,#{myAnswer}
@@ -54,5 +59,30 @@
 		,#{item}
 	)
 </insert>
+
+<!-- Myselection 저장 -->
+<insert id = "insertMySelection" parameterType = "map">
+	insert
+	into
+	myselection
+	(
+		selectionNum
+		,id
+		,storynum
+		,startdate
+		,enddate
+		,finished
+	)
+	values
+	(
+		#{selectionNum}
+		,#{id}
+		,#{storyNum}
+		,sysdate
+		,null
+		,#{finished}
+	)
+</insert>
+
 	
 </mapper>

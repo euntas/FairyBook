@@ -67,11 +67,21 @@
 			var currentScene, currentQuiz;
 			
 			init();
-			
-			
-			
-			
+			/* //테스트용
+			  $.ajax({
+			        url:'insertMySelection',
+			        type:'GET',
+			        dataType:'json',
+			        success: function(){
+			        	alert('myselection 생성');
+			        },
+			        error: function(e){
+			            alert(JSON.stringify(e));
+			        }
+			    });
+			// */
 		});
+		
 		
 		function init(){
 		    $.ajax({
@@ -169,6 +179,8 @@
 						            alert(JSON.stringify(e));
 						        }
 						    });
+							
+							
 				        },
 				        error: function(e){
 				            alert(JSON.stringify(e));

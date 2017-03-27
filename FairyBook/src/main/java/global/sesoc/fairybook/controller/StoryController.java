@@ -24,6 +24,7 @@ import global.sesoc.fairybook.vo.Fairytale;
 import global.sesoc.fairybook.vo.Item;
 import global.sesoc.fairybook.vo.Quiz;
 import global.sesoc.fairybook.vo.Scene;
+import global.sesoc.fairybook.vo.StoryMaker;
 
 /**
  * 스토리 진행을 위한 콘트롤러
@@ -146,15 +147,40 @@ public class StoryController {
 		int result = -1;
 		
 		HashMap<String, Object> selection = new HashMap<>();
-		selection.put("selectionNum", 1);
-		selection.put("sceneNum", 0);
+		selection.put("selectionNum", null);
+		selection.put("sceneNum", 3);
 		selection.put("myAnswer", 3);
 		selection.put("inputdate", null);
-		selection.put("item", "item");
+		selection.put("item", "test");
 		result = dao.saveSD(selection);
 		
 		return result;
 	}
+	
+	//myselection 테이블 저장 테스트용
+		@ResponseBody 
+		@RequestMapping(value = "insertMySelection", method = RequestMethod.GET)
+		public int insertMySelection(HttpSession session) {
+			int result = -1;
+			StoryMaker loginUser = (StoryMaker) session.getAttribute("loginUser");
+			String id = loginUser.getId();
+			HashMap<String, Object> myselection = new HashMap<>();
+			myselection.put("selectionNum", 103);
+			myselection.put("id", id);
+			myselection.put("storyNum", 1);
+			myselection.put("startdate", null);
+			myselection.put("enddate", null);
+			myselection.put("finished", "N");
+			result = dao.insertMySelection(myselection);
+			
+			return result;
+		}
+		
+		@RequestMapping(value = "title", method = RequestMethod.GET)
+		public String goTitle() {
+			
+			return "title";
+		}
 	
 	
 }
