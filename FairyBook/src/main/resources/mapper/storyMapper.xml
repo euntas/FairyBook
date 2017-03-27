@@ -75,11 +75,9 @@
 	)
 	values
 	(
-		#{selectionNum}
+		selectionnum_seq.nextval
 		,#{id}
 		,#{storyNum}
-		,sysdate
-		,null
 		,#{finished}
 	)
 </insert>

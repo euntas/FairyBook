@@ -164,12 +164,10 @@ public class StoryController {
 			int result = -1;
 			StoryMaker loginUser = (StoryMaker) session.getAttribute("loginUser");
 			String id = loginUser.getId();
+			int storyNum = (int) session.getAttribute("currentStoryNum");
 			HashMap<String, Object> myselection = new HashMap<>();
-			myselection.put("selectionNum", 103);
 			myselection.put("id", id);
-			myselection.put("storyNum", 1);
-			myselection.put("startdate", null);
-			myselection.put("enddate", null);
+			myselection.put("storyNum", storyNum);
 			myselection.put("finished", "N");
 			result = dao.insertMySelection(myselection);
 			
