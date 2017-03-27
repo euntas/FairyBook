@@ -33,6 +33,9 @@ $(function(){
 		if(confirm('로그아웃 하시겠습니까?'))
 			location.href='id/logout';
 	});
+	$('#update').on('click',function(){
+		location.href='id/userInfo';
+	});
 });
 
 function w3_open() {
