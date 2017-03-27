@@ -110,7 +110,7 @@
 		        url:'quizValidCheck',
 		        type:'GET',
 		        dataType:'json',
-		        data: {storyNum: ${currentStoryNum}, sceneNum: pageflip.options.current },
+		        data: {storyNum: ${ currentStoryNum}, sceneNum: pageflip.options.current },
 		        success: outputForQuizValidCheck,
 		        error: function(e){
 		            alert(JSON.stringify(e));
@@ -157,13 +157,13 @@
 				        dataType: 'json',
 				        success: function(nextSceneNum){
 				        	alert('다음은 ' + nextSceneNum + '번 페이지로 이동합니다.');
-							pageflip.next(nextSceneNum);
+							pageflip.flip(nextSceneNum);
 							
 							$.ajax({
 						        url:'quizLoading',
 						        type:'GET',
 						        dataType:'json',
-						        data: {storyNum: 0, sceneNum: pageflip.options.current},
+						        data: {storyNum: 0, sceneNum: nextSceneNum},
 						        success: outputForQuiz,
 						        error: function(e){
 						            alert(JSON.stringify(e));
