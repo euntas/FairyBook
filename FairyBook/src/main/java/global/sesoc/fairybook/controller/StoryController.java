@@ -174,10 +174,10 @@ public class StoryController {
 			return result;
 		}
 		
-		@RequestMapping(value = "title", method = RequestMethod.GET)
-		public String goTitle() {
-			
-			return "title";
+		@RequestMapping(value = "storyTitle", method = RequestMethod.GET)
+		public String goTitle(int storyNum, Model model) {
+			model.addAttribute("storyNum", storyNum);
+			return "story/storyTitle";
 		}
 	
 	

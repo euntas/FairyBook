@@ -129,7 +129,7 @@ function myFunc(id) {
   <a href="javascript:void(0)" class="w3-bar-item w3-button w3-dark-grey w3-button w3-hover-black w3-left-align" onclick="document.getElementById('id01').style.display='block'">New Message <i class="w3-padding-left fa fa-pencil"></i></a>
   
   <a href="menu/myChildStory" class="w3-bar-item w3-button"><i class="fa fa-paper-plane w3-padding-right"></i>내 아이 동화 목록</a>
-  <a href="pboard/list" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>게시판</a>
+  <a href="pboard/listForm" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>게시판</a>
   <a href="menu/counselResult" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>상담요청 결과보기</a>
 </nav>
 </c:if>
@@ -185,7 +185,7 @@ function myFunc(id) {
 	      <div class="w3-container w3-white">
 	        <h3>헨젤과 그레텔</h3>
 	        <h6 class="w3-opacity">2017.3.22</h6>
-	        <button class="w3-button w3-block w3-yellow w3-margin-bottom" onclick="location.href='story/storyStart?storyNum=0'">Play</button>
+	        <button class="w3-button w3-block w3-yellow w3-margin-bottom" onclick="location.href='story/storyTitle?storyNum=0'">Play</button>
 	      </div>
 	    </div>
 	    <div class="w3-third w3-margin-bottom">

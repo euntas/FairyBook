@@ -46,23 +46,33 @@
 			$('#login').on('click',login);
 			//home버튼 이벤트
 			$('#home').on('click',function(){
-				location.href = "../fairybook";
+				location.href = "../../fairybook";
 			});
 		});
 		
+		function checkEnter() {
+			var keycode = event.keyCode;
+			if( keycode == 13 ){
+			 login(); // 엔터키 입력시 실행할 구문이 담긴 function
+			}
+		}
+		
 		function login(){
-			var id = $('#id').val();
-			var pw = $('#password').val();
-			$.ajax({
-				url: 'login',
-				type: 'POST',
-				data: {id,pw},
-				dataType: 'text',
-				success: loginResult,
-				error: function(e){
-					alert(JSON.stringify(e));
-				}
-			})
+			var input = inputCheck();
+			if (input) {
+				var id = $('#id').val();
+				var pw = $('#password').val();
+				$.ajax({
+					url: 'login',
+					type: 'POST',
+					data: {id,pw},
+					dataType: 'text',
+					success: loginResult,
+					error: function(e){
+						alert(JSON.stringify(e));
+					}
+				});
+			}
 		}
 		
 		function loginResult(message){
@@ -72,6 +82,20 @@
 			if(message.indexOf("않는")<0){
 				location.href = "../../fairybook";
 			}
+		}
+		
+		function inputCheck(){
+			var id = $('#id').val();
+			var pw = $('#password').val();
+			if (id.length == 0) {
+				alert('아이디를 입력하세요.');
+				return false;
+			}
+			if(pw.length == 0){
+				alert('패스워드를 입력하세요.');
+				return false;
+			}
+			return true;
 		}
 	</script>
 </head>
@@ -83,11 +107,11 @@
    <center>
    <div class="input-group col-xs-4">
     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-    <input id="id" type="text" class="form-control" name="id" placeholder="id">
+    <input id="id" type="text" class="form-control" name="id" placeholder="id" onkeydown="checkEnter();">
   </div>
   <div class="input-group col-xs-4">
     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-    <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+    <input id="password" type="password" class="form-control" name="password" placeholder="Password" onkeydown="checkEnter();">
   </div><br>
   </center>
   <!--버튼 및 링크  -->
