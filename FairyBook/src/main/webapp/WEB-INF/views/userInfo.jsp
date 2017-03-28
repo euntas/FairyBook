@@ -15,6 +15,7 @@
 <!--적용 자바스크립트와 스타일  -->
 <link rel="stylesheet" href="../resources/css/joinForm.css">
 
+
 <title>userInfo</title>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -36,7 +37,7 @@
 			<tr>
 				<td class="firstRow">ID</td>
 				<td class="secondRow">
-				${info.id}</td>
+				<span id="id">${info.id}</span></td>
 			</tr>
 			<tr>
 				<td class="firstRow">닉네임</td>
@@ -98,6 +99,7 @@
 				<td colspan="2" style="text-align: center;">
 				<c:if test="${userType == 'parent'}">
 				<input type="button" value="수정하기" onclick="location.href='update'"> 
+				
 				</c:if>
 					<input type="button" value="메인으로"
 					onclick="location.href='/fairybook/'"></td>
