@@ -2,12 +2,14 @@ package global.sesoc.fairybook.mapper;
 
 import java.util.ArrayList;
 
+import org.apache.ibatis.session.RowBounds;
+
 import global.sesoc.fairybook.vo.PBoard;
 
 public interface BoardMapper {
 	
 	//게시글 목록
-	public ArrayList<PBoard> list();
+	public ArrayList<PBoard> list(RowBounds rb);
 	
 	//게시글 입력
 	public int insertBoard(PBoard b);

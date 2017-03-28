@@ -2,6 +2,7 @@ package global.sesoc.fairybook.dao;
 
 import java.util.ArrayList;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -16,10 +17,13 @@ public class BoardDAO {
 	SqlSession sqlSession;
 	
 	//게시글 목록
-	public ArrayList<PBoard> list(){
+	public ArrayList<PBoard> list(int startRecored, int countPerPage){
+		//일부분만 가져오기
+		RowBounds rb = new RowBounds(startRecored, countPerPage);
+		
 		ArrayList<PBoard> result = new ArrayList<>();
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
-		result = mapper.list();
+		result = mapper.list(rb);
 		return result;
 	}
 	

@@ -33,6 +33,10 @@ public class BoardController {
 	@Autowired
 	BoardDAO dao;
 	
+	//게시판 정보
+	private final int countPerPage = 10;  //페이지 별 레코드 개수
+	private final int pagePerGroup = 5;	  //그룹 별 페이지 수
+	
 	/**
 	 * 게시판 목록 화면 가져오기
 	 */
@@ -57,9 +61,9 @@ public class BoardController {
 		
 		int count = dao.count(); //총 게시글 수
 		ArrayList<PBoard> list = new ArrayList<>();
-		PageNavigator pn = new PageNavigator(15, 5, page, count);
+		PageNavigator pn = new PageNavigator(countPerPage, pagePerGroup, page, count);
 		int startRecored = pn.getStartRecord();
-		list = dao.list();
+		list = dao.list(startRecored,countPerPage);
 		return list;
 	}
 
