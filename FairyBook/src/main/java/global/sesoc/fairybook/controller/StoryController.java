@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import global.sesoc.fairybook.dao.AvatarDAO;
 import global.sesoc.fairybook.dao.StoryDAO;
+import global.sesoc.fairybook.util.PoiForData;
 import global.sesoc.fairybook.vo.Fairytale;
 import global.sesoc.fairybook.vo.Item;
 import global.sesoc.fairybook.vo.Quiz;

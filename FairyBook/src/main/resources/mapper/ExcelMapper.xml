@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="global.sesoc.fairybook.mapper.ExcelMapper">
+
+	<delete id="clearQuizTable">
+		delete quiz;
+	</delete>
+	
+	<insert id="insertQuizTable" parameterType="Quiz">
+		insert 
+		into quiz(quiznum, question, select1, select2, select3, select4, answer) 
+		values(#{quizNum}, #{question}, #{select1}, #{select2}, #{select3}, #{select4}, #{answer})
+	</insert>
+
+</mapper>

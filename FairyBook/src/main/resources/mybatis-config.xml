@@ -15,6 +15,7 @@
 		<typeAlias type="global.sesoc.fairybook.vo.Quiz" alias="Quiz" />
 		<typeAlias type="global.sesoc.fairybook.vo.Scene" alias="Scene" />
 		<typeAlias type="global.sesoc.fairybook.vo.StoryMaker" alias="StoryMaker" />
+		<typeAlias type="global.sesoc.fairybook.util.PoiForData" alias="PoiForData" />
 	</typeAliases>
 	
 	<mappers>
@@ -23,6 +24,7 @@
 		<mapper resource="mapper/houseMapper.xml" />
 		<mapper resource="mapper/storyMapper.xml"/>
 		<mapper resource="mapper/boardMapper.xml"/>
+		<mapper resource="mapper/ExcelMapper.xml"/>
 	</mappers>
 	
 	
