@@ -184,6 +184,7 @@ nav ul a {
 }
 
 .over {
+	/*커서 바꾸기*/
 	cursor: url(http://gfmarket.phinf.naver.net/sally_special/original_1.png?type=p50_50), pointer; 
 	/* cursor: url(http://cfs.tistory.com/custom/blog/38/389140/skin/images/cursor2.png), pointer; */
 	z-index: 10000;
