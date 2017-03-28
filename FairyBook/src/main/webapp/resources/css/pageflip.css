@@ -119,7 +119,8 @@
             transition: opacity 0.25s; }
     .pageflip a.flip-directional:hover {
     /*커서 바꾸기*/
-    cursor: url(http://gfmarket.phinf.naver.net/sally_special/original_1.png?type=p50_50), pointer; 
+    cursor: url(http://postfiles9.naver.net/MjAxNzAzMjhfMjY0/MDAxNDkwNjYyMTYyMTE4.bCGt0pjpam6jrn7YyvKpRaoCHx1CbRsmS23hIdkmQ40g.s8ATCxA34KfiheIts97FQHgpOE2q1YD9mmF95aD_W8Eg.PNG.tavstaus/farian.png?type=w3), pointer;
+    /* cursor: url(http://gfmarket.phinf.naver.net/sally_special/original_1.png?type=p50_50), pointer;  */
       opacity: 0.8; }
     .pageflip a.flip-directional.flip-next {
       right: 10px; }
