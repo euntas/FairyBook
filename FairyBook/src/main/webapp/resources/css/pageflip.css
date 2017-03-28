@@ -118,6 +118,8 @@
     -webkit-transition: opacity 0.25s;
             transition: opacity 0.25s; }
     .pageflip a.flip-directional:hover {
+    /* 커서 바꾸기
+    cursor: url(http://gfmarket.phinf.naver.net/sally_special/original_1.png?type=p50_50), pointer; */
       opacity: 0.8; }
     .pageflip a.flip-directional.flip-next {
       right: 10px; }
