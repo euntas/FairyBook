@@ -97,7 +97,7 @@
 			<tr>
 				<td colspan="2" style="text-align: center;">
 				<c:if test="${userType == 'parent'}">
-				<input type="button" value="수정하기"> 
+				<input type="button" value="수정하기" onclick="location.href='update'"> 
 				</c:if>
 					<input type="button" value="메인으로"
 					onclick="location.href='/fairybook/'"></td>
