@@ -150,8 +150,8 @@ public class StoryController {
 		selection.put("selectionNum", null);
 		selection.put("sceneNum", 3);
 		selection.put("myAnswer", 3);
-		selection.put("inputdate", null);
 		selection.put("item", "test");
+		
 		result = dao.saveSD(selection);
 		
 		return result;
@@ -166,18 +166,36 @@ public class StoryController {
 			String id = loginUser.getId();
 			int storyNum = (int) session.getAttribute("currentStoryNum");
 			HashMap<String, Object> myselection = new HashMap<>();
+			myselection.put("selectionNum", 103);
 			myselection.put("id", id);
 			myselection.put("storyNum", storyNum);
 			myselection.put("finished", "N");
+			System.out.println("aaaaaaaaaa" + storyNum);
 			result = dao.insertMySelection(myselection);
-			
 			return result;
 		}
 		
+		//타이틀 페이지로 이동
 		@RequestMapping(value = "storyTitle", method = RequestMethod.GET)
 		public String goTitle(int storyNum, Model model) {
 			model.addAttribute("storyNum", storyNum);
-			return "story/storyTitle";
+			return "story/storyStart";
+		}
+		
+		
+		@ResponseBody 
+		@RequestMapping(value = "getSelectionNum", method = RequestMethod.GET)
+		public int getSelectionNum(HttpSession session) {
+			int result = -1;
+			StoryMaker loginUser = (StoryMaker) session.getAttribute("loginUser");
+			String id = loginUser.getId();
+			HashMap<String, Object> myselection = new HashMap<>();
+			myselection.put("id", id);
+			myselection.put("storyNum", 1);
+			myselection.put("finished", "N");
+			result = dao.getSelectionNum(myselection);
+			System.out.println("bbbbbbbbbb " + result);
+			return result;
 		}
 	
 	

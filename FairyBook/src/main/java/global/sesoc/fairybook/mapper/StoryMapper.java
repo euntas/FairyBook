@@ -19,5 +19,7 @@ public interface StoryMapper {
 	public int saveSD(HashMap<String, Object> selection);
 	//myselection을 저장한다.
 	public int insertMySelection(HashMap<String, Object> myselection);
+	//selectionNum을 가져온다.
+	public int getSelectionNum(HashMap<String, Object> myselection);
 
 }

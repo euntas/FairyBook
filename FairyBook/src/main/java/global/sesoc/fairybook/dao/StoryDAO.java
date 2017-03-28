@@ -58,4 +58,10 @@ public class StoryDAO {
 		return result;
 	}
 	
+	public int getSelectionNum(HashMap<String, Object> myselection){
+		StoryMapper mapper = sqlSession.getMapper(StoryMapper.class);
+		int result = mapper.getSelectionNum(myselection);
+		return result;
+	}
+	
 }

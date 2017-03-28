@@ -75,12 +75,26 @@
 	)
 	values
 	(
-		selectionnum_seq.nextval
+		#{selectionNum}
 		,#{id}
 		,#{storyNum}
+		,sysdate
+		,null
 		,#{finished}
 	)
 </insert>
+
+<select id="getSelectionNum" resultType="int" parameterType="map">
+select
+		selectionNum
+	from
+		myselection
+	where
+		id = #{id}
+		and storyNum = #{storyNum}
+		and startdate = (select max(startdate) from myselection);
+		
+</select>
 
 	
 </mapper>

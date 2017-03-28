@@ -206,7 +206,19 @@ RocketPageFlip.prototype.flip = function(page) {
 	// selectiondetail 테이블에 insert 해주어야 하는 부분
 	
 	quizLoading();
-	
+	//selectiondetail 테스트용
+	 $.ajax({
+	        url:'saveSD',
+	        type:'GET',
+	        dataType:'json',
+	        success: function(){
+	        	alert('selectionDetail 생성');
+	        },
+	        error: function(e){
+	            alert(JSON.stringify(e));
+	        }
+	    });
+	//여기까지
 	
 	//=================================================================
 	

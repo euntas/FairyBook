@@ -16,6 +16,39 @@
 
 <!--적용 자바스크립트와 스타일  -->
 <script>
+$(document).ready(function(){
+	//myselection 테스트용
+	  $.ajax({
+	        url:'insertMySelection',
+	        type:'GET',
+	        dataType:'json',
+	        success: function(){
+	        	alert('myselection 생성');
+	        },
+	        error: function(e){
+	            alert(JSON.stringify(e));
+	        }
+	    });
+	//여기까지
+	
+	//getSelectionNum 테스트용
+	 $.ajax({
+	        url:'getSelectionNum',
+	        type:'GET',
+	        dataType:'json',
+	        success: function(){
+	        	alert('getSelectionNum 생성');
+	        },
+	        error: function(e){
+	            alert(JSON.stringify(e));
+	        }
+	    }); 
+	//여기까지
+});
+
+</script>
+
+<script>
 	$(function(){
 		$('#start').on('click',function(){
 			location.href='storyStart?storyNum='+$('#storyNum').val();
