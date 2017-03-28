@@ -169,14 +169,51 @@ public class IDController {
 	
 	
 	@RequestMapping(value = "update", method = RequestMethod.GET)
-	public String userUpdate() {
-
+	public String userUpdate(HttpSession session) {
+		StoryMaker user = (StoryMaker)session.getAttribute("info");
+		if(user!=null){
+		session.setAttribute("update", user);
 		return "updateForm";
+		}else{
+			return "loginForm";
+		}
 	}
 
 	@RequestMapping(value = "update", method = RequestMethod.POST)
-	public void userUpdate(StoryMaker maker) {
+	public String userUpdate(
+			String phone1, String phone2, String phone3, 
+			String email, String email2,
+			StoryMaker maker
+			, MultipartFile upload
+			,Model model
+			,HttpSession session) {
+		
+		if (!upload.getOriginalFilename().equals("")) {
+			String savedFile = FileService.saveFile(upload, uploadPath);
 
+			// 원래 파일명과 저장된 파일명을 board객체에 담아 DB에 저장
+			maker.setOriginalProfile(upload.getOriginalFilename());
+			maker.setSavedProfile(savedFile);
+		}
+		int result = 0;
+		try{
+		String phone = phone1 + "-" + phone2 + "-" + phone3;
+		maker.setPhone(phone);
+		String fullmail = email + "@" + email2;
+		maker.setEmail(fullmail);
+		result=dao.update(maker);
+		session.removeAttribute("info");
+		session.removeAttribute("loginUser");
+		session.setAttribute("loginUser", maker);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		if(result == 0){
+			model.addAttribute("errorMsg", "가입 실패");
+			return "updateForm";
+		}
+		
+		return "userInfo";
 	}
 
 	@RequestMapping(value = "delete", method = RequestMethod.GET)
