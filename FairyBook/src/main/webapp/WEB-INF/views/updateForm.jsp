@@ -18,7 +18,14 @@
 
 <!--적용 자바스크립트와 스타일  -->
 <link rel="stylesheet" href="../resources/css/joinForm.css">
-
+<script>
+  $(document).ready(function(){
+	$('#userDelete').on('click',function(){
+		if(confirm('정말 삭제 하시겠습니까?'))
+			location.href='delete';
+	});
+	});
+</script>
 <script>
 <c:if test="${errorMsg != null}">
 alert('${errorMsg}');
@@ -463,7 +470,9 @@ function formcheck(){
 				<td class="secondRow">
 				<span id="cBirthYear"></span>년 &nbsp; 
 				<span id="cBirthMonth"></span>월 &nbsp;
-				<span id="cBirthDate"></span>일</td>
+				<span id="cBirthDate"></span>일
+				<input type="hidden" id="cBirth" name="cBirth" value="${update.cBirth}">
+				</td>
 		
 			</tr>
 			<tr>
@@ -533,8 +542,9 @@ function formcheck(){
 				
 			</tr>
 			<tr>
-				<td colspan="3" style="text-align: center;"><input
-					type="submit" value="수정하기"> 
+				<td colspan="3" style="text-align: center;">
+				<input type="submit" value="수정하기">&nbsp; 
+				<input type="button" value="삭제하기" id="userDelete">&nbsp; 
 					<input type="button" value="취소"
 					onclick="location.href='/fairybook/'"></td>
 			</tr>

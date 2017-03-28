@@ -98,4 +98,9 @@
 		where
 			id=#{id}
 	</select>
+	
+	<delete id="delete" parameterType="string">
+	delete from StoryMaker
+	where id=#{id}
+	</delete>
 </mapper>

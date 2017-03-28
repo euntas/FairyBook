@@ -158,8 +158,11 @@ public class IDController {
 	@RequestMapping(value = "userInfo", method = RequestMethod.GET)
 	public String userInfo(HttpSession session) {
 		StoryMaker user = (StoryMaker)session.getAttribute("loginUser");
+		
 		if(user!=null){
 		session.setAttribute("info", user);
+		
+		
 		return "userInfo";
 		}else{
 			return "loginForm";
@@ -187,6 +190,7 @@ public class IDController {
 			, MultipartFile upload
 			,Model model
 			,HttpSession session) {
+		logger.info("birth:{}",maker);
 		
 		if (!upload.getOriginalFilename().equals("")) {
 			String savedFile = FileService.saveFile(upload, uploadPath);
@@ -200,27 +204,43 @@ public class IDController {
 		String phone = phone1 + "-" + phone2 + "-" + phone3;
 		maker.setPhone(phone);
 		String fullmail = email + "@" + email2;
+		
 		maker.setEmail(fullmail);
+		
 		result=dao.update(maker);
-		session.removeAttribute("info");
-		session.removeAttribute("loginUser");
-		session.setAttribute("loginUser", maker);
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 		if(result == 0){
-			model.addAttribute("errorMsg", "가입 실패");
+			model.addAttribute("errorMsg", "수정 실패");
 			return "updateForm";
 		}
-		
-		return "userInfo";
+		session.removeAttribute("info");
+		logger.info("update:{}",maker);
+		session.setAttribute("loginUser", maker);
+		return "redirect:userInfo";
 	}
 
 	@RequestMapping(value = "delete", method = RequestMethod.GET)
-	public String userDelete(String id) {
-
-		return "redirect:/";
+	public String userDelete(Model model, HttpSession session) {
+		StoryMaker maker = (StoryMaker)session.getAttribute("loginUser");
+		String id = maker.getId();
+		int result = 0;
+		result = dao.delete(id);
+		if(result == 0){
+			model.addAttribute("errorMsg", "삭제 실패");
+			return "userInfo";
+		}
+		
+		return "redirect:deleteComplete";
 	}
+	
+	@RequestMapping(value="deleteComplete", method=RequestMethod.GET)
+	public String deleteComplete(HttpSession session){
+		session.invalidate();
+		return "deleteComplete";
+	}
+	
 
 	@RequestMapping(value = "login", method = RequestMethod.GET)
 	public String login() {
