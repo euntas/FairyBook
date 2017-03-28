@@ -3,7 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
-<title>WriteBoard</title>
+<title>UpdateForm</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -20,43 +20,39 @@ tinyMCE.init({
 	selector: "textarea"
 });
 </script>
-<script type="text/javascript">
+<script>
 	$(function(){
 		$('#cancel').on('click',function(){
-			document.getElementById('id01').style.display='none';
-			redirect:listForm
-		});
-		$('#send').on('click',submit);
-	});
-	
-	function submit(){
-		document.getElementById('id01').style.display='none';
-		tinyMCE.triggerSave();
-		var title = $('#title').val();
-		var content = tinyMCE.get("content").getContent();
-		console.log(content);
-		if (title.length == 0) {
-			alert('제목을 입력하세요.');
-			return;
-		}
-		if(content.length == 0){
-			alert('내용을 입력하세요.');
-			return;
-		}
-		$.ajax({
-			url: 'board',
-			type: 'POST',
-			data: {title:title, content:content},
-			success: function(){
-				alert('저장성공');
-				location.href="listForm";
-			},
-			error: function(e){
-				alert(JSON.stringify(e));
+			history.go(-1);
+		});		
+		$('#send').on('click',function(){
+			tinyMCE.triggerSave();
+			var id = $('#id').val();
+			var boardnum = $('#boardnum').val();
+			var title = $('#title').val();
+			var content = tinyMCE.get("content").getContent();
+			console.log(content);
+			if (title.length == 0) {
+				alert('제목을 입력하세요.');
+				return;
 			}
+			if(content.length == 0){
+				alert('내용을 입력하세요.');
+				return;
+			}
+			$.ajax({
+				url:'update',
+				type:'post',
+				data: {title:title, content:content,id:id,boardnum:boardnum},
+				success: function(){
+					location.href="read?boardnum="+$('#boardnum').val();
+				},
+				error: function(e){
+					alert(JSON.stringify(e));
+				}
+			});
 		});
-	}
-
+	});
 </script>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -71,12 +67,20 @@ tinyMCE.init({
 <div class="w3-panel">
 <form class="form-horizontal">
 	<div class="form-group">
-    	<label class="col-sm-2 control-label">Title</label>
+    	<label class="col-sm-2 control-label">글번호</label>
     <div class="col-sm-8">
-    	<input class="form-control" id="title" type="text">
+    	<label class="col-sm-1 control-label">${board.boardnum}</label>
+    	<input class="form-control" id="boardnum" type="hidden" value="${board.boardnum}">
+    	<input class="form-control" id="id" type="hidden" value="${board.id}">
     </div>
   	</div>
-    <textarea id="content" class="form-control" style="height:300px"></textarea>
+	<div class="form-group">
+    	<label class="col-sm-2 control-label">Title</label>
+    <div class="col-sm-8">
+    	<input class="form-control" id="title" type="text" value="${board.title}">
+    </div>
+  	</div>
+    <textarea id="content" class="form-control" style="height:300px">${board.content}</textarea>
 	<div class="form-group w3-margin-top w3-margin-bottom">
     	<label class="col-sm-2 control-label">첨부파일</label>
    		<div class="col-sm-5">
@@ -89,7 +93,6 @@ tinyMCE.init({
     </div>   
 </form> 
 </div>
-
 
 
 <!--여기까지###########################  -->

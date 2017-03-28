@@ -27,7 +27,7 @@ public class BoardDAO {
 		return result;
 	}
 	
-	//게시글 입력
+	//게시글 입력- 성공이면 1, 실패면 0
 	public int insertBoard(PBoard b){
 		int result = 0;
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
@@ -40,6 +40,29 @@ public class BoardDAO {
 		int result = 0;
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 		result = mapper.count();
+		return result;
+	}
+
+	//게시글 읽기
+	public PBoard read(int boardnum) {
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		PBoard board = mapper.read(boardnum);
+		return board;
+	}
+
+	//게시글 삭제- 성공이면 1, 실패면 0
+	public int delete(int boardnum) {
+		int result = 0;
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		result = mapper.delete(boardnum);
+		return result;
+	}
+
+	//게시글 수정 - 성공이면 1, 실패면 0
+	public int update(PBoard b) {
+		int result = 0;
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		result = mapper.update(b);
 		return result;
 	}
 	

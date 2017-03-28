@@ -5,6 +5,7 @@
 
 <mapper namespace="global.sesoc.fairybook.mapper.BoardMapper">
  
+ <!-- 게시글 등록 -->
  	<insert id="insertBoard" parameterType="PBoard">
  		insert into
  			PBOARD
@@ -19,6 +20,7 @@
  		)
  	</insert>
 
+<!--게시글 목록 불러오기  -->
 	<select id="list" resultType="PBoard">
 		select
 			boardnum
@@ -33,11 +35,43 @@
 			boardnum desc
 	</select>
 	
+<!-- 게시글 개수  -->
 	<select id="count" resultType="int">
 		select
 			count(*)
 		from
 			pboard
 	</select>
+	
+<!-- 게시글 읽기 -->
+	<select id="read" parameterType="int" resultType="PBoard">
+		select
+			*
+		from
+			pboard
+		where
+			boardnum = #{boardnum}
+	</select>
 
+<!-- 게시글 삭제 -->
+	<delete id="delete" parameterType="int">
+		delete
+		from
+			pboard
+		where
+			boardnum = #{boardnum}
+	</delete>
+
+<!--게시글 수정  -->
+	<update id="update" parameterType="PBoard">
+		update
+			pboard
+		set
+			title = #{title}
+			, content = #{content}
+		where
+			boardnum = #{boardnum}
+		and
+			id= #{id}
+	</update>
 </mapper>

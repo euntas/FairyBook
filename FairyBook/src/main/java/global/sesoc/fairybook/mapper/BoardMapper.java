@@ -16,4 +16,13 @@ public interface BoardMapper {
 
 	//게시글 개수
 	public int count();
+
+	//게시글 읽기
+	public PBoard read(int boardnum);
+
+	//게시글 삭제
+	public int delete(int boardnum);
+
+	//게시글 수정
+	public int update(PBoard b);
 }

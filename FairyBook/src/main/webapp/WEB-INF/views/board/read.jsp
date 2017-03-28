@@ -3,7 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
-<title>WriteBoard</title>
+<title>ReadBoard</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -14,50 +14,27 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!--적용 자바스크립트와 스타일  -->
-<script src="//cloud.tinymce.com/stable/tinymce.min.js"></script>
 <script>
-tinyMCE.init({ 
-	selector: "textarea"
-});
-</script>
-<script type="text/javascript">
 	$(function(){
-		$('#cancel').on('click',function(){
-			document.getElementById('id01').style.display='none';
-			redirect:listForm
+		$('#list').on('click',function(){
+			history.go(-1);
 		});
-		$('#send').on('click',submit);
+		$('#deleteB').on('click',deleteB);
+		$('#updateB').on('click',updateB);
 	});
 	
-	function submit(){
-		document.getElementById('id01').style.display='none';
-		tinyMCE.triggerSave();
-		var title = $('#title').val();
-		var content = tinyMCE.get("content").getContent();
-		console.log(content);
-		if (title.length == 0) {
-			alert('제목을 입력하세요.');
-			return;
+	function deleteB(){
+		if(confirm('삭제하시겠습니까?')){
+			location.href="delete?boardnum="+$('#boardnum').val();
 		}
-		if(content.length == 0){
-			alert('내용을 입력하세요.');
-			return;
-		}
-		$.ajax({
-			url: 'board',
-			type: 'POST',
-			data: {title:title, content:content},
-			success: function(){
-				alert('저장성공');
-				location.href="listForm";
-			},
-			error: function(e){
-				alert(JSON.stringify(e));
-			}
-		});
 	}
-
+	
+	function updateB(){
+		location.href="update?boardnum="+$('#boardnum').val();
+	}
 </script>
+
+
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
@@ -70,13 +47,24 @@ tinyMCE.init({
 
 <div class="w3-panel">
 <form class="form-horizontal">
+<input type="hidden" id="boardnum" value="${board.boardnum}">
 	<div class="form-group">
-    	<label class="col-sm-2 control-label">Title</label>
-    <div class="col-sm-8">
-    	<input class="form-control" id="title" type="text">
-    </div>
+    	<label class="col-sm-2 control-label">제목 </label>
+    	<label class="control-label">${board.title}</label>
   	</div>
-    <textarea id="content" class="form-control" style="height:300px"></textarea>
+	<div class="form-group">
+    	<label class="col-sm-2 control-label">작성자</label>
+    	<label class="control-label">${board.id}</label>
+  	</div>
+	<div class="form-group">
+    	<label class="col-sm-2 control-label">작성일</label>
+    	<label class="control-label">${board.inputdate}</label>
+  	</div>
+	<div class="form-group">
+    	<label class="col-sm-2 control-label">조회수</label>
+    	<label class="control-label">${board.hit}</label>
+  	</div>
+    <textarea id="content" class="form-control" style="height:300px" value="${board.content}" readonly="readonly">${board.content}</textarea>
 	<div class="form-group w3-margin-top w3-margin-bottom">
     	<label class="col-sm-2 control-label">첨부파일</label>
    		<div class="col-sm-5">
@@ -84,12 +72,14 @@ tinyMCE.init({
     	</div>
   	</div>
     <div class="w3-section">
-      <a class="w3-button w3-red" id="cancel">Cancel  <i class="fa fa-remove"></i></a>
-      <a class="w3-button w3-right" id="send">Send  <i class="fa fa-paper-plane"></i></a> 
+      <a class="w3-button" id="list">목록 </a> 
+    <c:if test="${loginUser.id == board.id}">
+      <a class="w3-button w3-red w3-right" id="deleteB">삭제  <i class="fa fa-remove"></i></a>
+      <a class="w3-button w3-right" id="updateB">수정  <i class="fa fa-paper-plane"></i></a> 
+    </c:if>
     </div>   
 </form> 
 </div>
-
 
 
 <!--여기까지###########################  -->

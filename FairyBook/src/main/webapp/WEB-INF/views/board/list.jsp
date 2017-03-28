@@ -16,29 +16,32 @@
 <!--적용 자바스크립트와 스타일  -->
 <script>
 	$(function(){
-		bring();
+		bringList(1); //처음엔 page : 1
 	});
 	
-	function bring(){
+	//게시판 목록 불러오기
+	function bringList(page){
 		$.ajax({
 			url:'list',
 			type: 'GET',
+			data: {page: page},
 			dataType: 'json',
-			success: output,
+			success: listOutput,
 			error: function(e){
 				alert(JSON.stringify(e));
 			}
 		});
 	}
 	
-	function output(list){
+	//게시판 목록 불러온 결과
+	function listOutput(result){
+		var list = result.list;
 		var input='<table class="table table-striped table-hover">';
 		input+='<thead><tr>';
 		input+='<td>글번호</td><td>제목</td><td>작성자</td><td>조회수</td><td>작성일</td>';
 		input+='</tr></thead>';
-		
 		$.each(list, function(i,b){
-			input+='<tr>';
+			input+='<tr class="select" num="'+b.boardnum+'">';
 			input+='<td>'+b.boardnum+'</td>';
 			input+='<td>'+b.title+'</td>';
 			input+='<td>'+b.id+'</td>';
@@ -46,7 +49,88 @@
 			input+='<td>'+b.inputdate+'</td>';
 			input+='</tr>';
 		});
+		
+		//page버튼 만들기
+		pageOutput(result.pn);
 		$('#list').html(input);
+		$('.select').on('click',readBoard);
+	}
+	
+	function readBoard(){
+		var boardnum = parseInt($(this).attr('num'));
+		location.href="read?boardnum="+boardnum;
+	}
+	
+	//페이지 불러온 결과
+	function pageOutput(pn){
+		var startPage = pn.startPageGroup;
+		var endPage = pn.endPageGroup;
+		var totalPage = pn.totalPageCount;
+		var currentPage = pn.currentPage;
+		console.log(typeof currentPage);
+		console.log(currentPage);
+		var input = '<ul class="pagination">';
+		input += '<li id="previousGroup" num="'+currentPage+'"><a>&lt;&lt;</a></li>';
+		input += '<li id="previousPage" num="'+currentPage+'"><a>&lt;</a></li>';
+		for (var i =startPage; i <= endPage; i++) {
+			if (i == currentPage) {
+				input += '<li class="pageNum" num="'+i+'"><a style="font-weight: bold;color: black;">'+i+'</a></li>';
+			}else{
+				input += '<li class="pageNum" num="'+i+'"><a>'+i+'</a></li>';
+			}
+		}
+		input += '<li id="nextPage" num="'+currentPage+'" total="'+totalPage+'"><a>&gt;</a></li>';
+		input += '<li id="nextGroup" num="'+currentPage+'"  total="'+totalPage+'"><a>&gt;&gt;</a></li>';
+		input += '</ul>';
+		$('#pageBtns').html(input);
+		
+		$('li.pageNum').on('click',pageMove);
+		$('#previousGroup').on('click',previousGroup);
+		$('#previousPage').on('click',previousPage);
+		$('#nextGroup').on('click',nextGroup);
+		$('#nextPage').on('click',nextPage);
+	}
+	
+	//페이지 이동
+	function pageMove(){
+		var page = parseInt($(this).attr('num'));
+		bringList(page);
+	}
+	
+	function previousGroup(){
+		var page = parseInt($(this).attr('num'));
+		if (page <= 5) 
+			alert('마지막입니다.');
+		else
+			bringList(page-5);
+	}
+	
+	function previousPage(){
+		var page = parseInt($(this).attr('num'));
+		console.log(page);
+		console.log(typeof page);
+		if (page <= 1) 
+			alert('마지막입니다.');
+		else
+			bringList(page-1);
+	}
+	
+	function nextGroup(){
+		var page = parseInt($(this).attr('num'));
+		var total = parseInt($(this).attr('total'));
+		if (page > total-5) 
+			alert('마지막입니다.');
+		else
+			bringList(page+5);
+	}
+	
+	function nextPage(){
+		var page = parseInt($(this).attr('num'));
+		var total = parseInt($(this).attr('total'));
+		if (page >= total) 
+			alert('마지막입니다.');
+		else
+			bringList(page+1);
 	}
 </script>
 
@@ -59,21 +143,17 @@
 
 <!--####################여기부터  -->
 <div class="container">
-<div id="list"></div>
-<a href="board" class="btn btn-default">글쓰기</a>
-<!--페이지 이동 버튼  -->
-<div class="text-center">
-	<ul class="pagination">
-		<li><a href="">1</a></li>
-		<li><a href="">2</a></li>
-		<li><a href="">3</a></li>
-		<li><a href="">4</a></li>
-		<li><a href="">5</a></li>
-	</ul>
+	<h3>[게시판]</h3>
+	
+	<!--게시판 들어올 div  -->
+	<div id="list"></div>
+	
+	<!--글쓰기 버튼  -->
+	<a href="board" class="btn btn-default">글쓰기</a>
+	
+	<!--페이지 이동 버튼  -->
+	<div id="pageBtns" class="text-center"></div>
 </div>
-</div>
-
-
 
 <!--여기까지###########################  -->
 
