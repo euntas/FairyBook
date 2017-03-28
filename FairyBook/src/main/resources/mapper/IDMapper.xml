@@ -60,7 +60,22 @@
 	
 	
 	<update id="update" parameterType="StoryMaker">
-	update storymaker set password=#{password}, name=#{name}, email=#{email}, idno=#{idNo}, address=#{address} where id=#{id}
+	update storymaker 
+	set 
+	password1 = #{password1},
+	password2 = #{password2},
+	pName = #{pName},
+	cName = #{cName},
+	email = #{email},
+	address = #{address},
+	phone = #{phone},
+	pnickName = #{pnickName},
+	cnickName = #{cnickName}			
+	<if test="originalProfile != null and savedProfile != null">
+		,#{originalProfile}
+		,#{savedProfile}
+	</if>
+	where id=#{id}
 	</update>
 	
 	<select id="findID" parameterType="string" resultType="StoryMaker">
