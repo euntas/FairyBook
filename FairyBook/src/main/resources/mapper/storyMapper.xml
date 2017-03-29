@@ -92,7 +92,7 @@ select
 	where
 		id = #{id}
 		and storyNum = #{storyNum}
-		and startdate = (select max(startdate) from myselection);
+		and startdate = (select max(startdate) from myselection where id = #{id})
 		
 </select>
 

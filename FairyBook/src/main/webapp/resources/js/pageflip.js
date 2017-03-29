@@ -203,9 +203,8 @@ RocketPageFlip.prototype.flip = function(page) {
 	
 	var currentScene, currentQuiz, quizCheck;
 	
-	// selectiondetail 테이블에 insert 해주어야 하는 부분
 	
-	quizLoading();
+	
 	//selectiondetail 테스트용
 	 $.ajax({
 	        url:'saveSD',
@@ -219,6 +218,8 @@ RocketPageFlip.prototype.flip = function(page) {
 	        }
 	    });
 	//여기까지
+
+	 quizLoading();
 	
 	//=================================================================
 	
