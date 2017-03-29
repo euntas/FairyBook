@@ -34,7 +34,7 @@
 		        success: function(scene){
 		        	currentScene = scene;
 					alert('씬번호: ' + currentScene.sceneNum);	
-<<<<<<< HEAD
+
 					//selectiondetail 테스트용
 					 $.ajax({
 					        url:'saveSD',
@@ -49,10 +49,10 @@
 					        }
 					    });
 					//여기까지
-=======
+
 					
 					// selectionDetail에 첫번째 페이지를 인서트해주기.
->>>>>>> branch 'master' of https://github.com/euntas/FairyBook.git
+
 		        },
 		        error: function(e){
 		            alert(JSON.stringify(e));
