@@ -38,7 +38,7 @@
 		var list = result.list;
 		var input='<table class="table table-striped table-hover">';
 		input+='<thead><tr>';
-		input+='<td>글번호</td><td>제목</td><td>작성자</td><td>조회수</td><td>작성일</td>';
+		input+='<th>글번호</th><th>제목</th><th>작성자</th><th>조회수</th><th>작성일</th>';
 		input+='</tr></thead>';
 		$.each(list, function(i,b){
 			input+='<tr class="select" num="'+b.boardnum+'">';
@@ -140,7 +140,7 @@
 <c:import url="../main/main.jsp"></c:import>
 <!-- Page content -->
 <div class="w3-main" style="margin-left:230px;">
-
+	<i class="fa fa-bars w3-button w3-white w3-hide-large w3-xlarge w3-margin-left w3-margin-top" onclick="w3_open()"></i>
 <!--####################여기부터  -->
 <div class="container">
 	<h3>[게시판]</h3>
@@ -151,9 +151,22 @@
 	<!--글쓰기 버튼  -->
 	<a href="board" class="btn btn-default">글쓰기</a>
 	
-	<!--페이지 이동 버튼  -->
-	<div id="pageBtns" class="text-center"></div>
+	
 </div>
+
+ <center>
+  <!--페이지 이동 버튼  -->
+	<div id="pageBtns" class="text-center"></div>
+<!--검색  -->
+ 	 <div class="input-group col-sm-4">
+	    <input type="text" class="form-control" placeholder="Search">
+	    <div class="input-group-btn">
+	      <button class="btn btn-default" type="button">
+	        <i class="glyphicon glyphicon-search"></i>
+	      </button>
+	    </div>
+	  </div>
+ </center>
 
 <!--여기까지###########################  -->
 
