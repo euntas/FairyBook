@@ -34,6 +34,20 @@
 		        success: function(scene){
 		        	currentScene = scene;
 					alert('씬번호: ' + currentScene.sceneNum);	
+					//selectiondetail 테스트용
+					 $.ajax({
+					        url:'saveSD',
+					        type:'GET',
+					        data: {sceneNum: pageflip.options.current},
+					        dataType:'json',
+					        success: function(){
+					        	alert('selectionDetail 생성');
+					        },
+					        error: function(e){
+					            alert(JSON.stringify(e));
+					        }
+					    });
+					//여기까지
 		        },
 		        error: function(e){
 		            alert(JSON.stringify(e));

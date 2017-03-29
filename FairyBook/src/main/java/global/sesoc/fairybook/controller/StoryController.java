@@ -144,14 +144,16 @@ public class StoryController {
 	//selectionDetail 테이블 저장 테스트용
 	@ResponseBody 
 	@RequestMapping(value = "saveSD", method = RequestMethod.GET)
-	public int saveSD(HttpSession session) {
+	public int saveSD(HttpSession session, int sceneNum) {
 		int result = -1;
-		int selectionNum = (int) session.getAttribute("selectionNum");
-		
+		int selectionNum = (int) session.getAttribute("myselectionNum");
 		HashMap<String, Object> selection = new HashMap<>();
+		System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaa " + selectionNum);
+		System.out.println("bbbbbbbbbbbbbbbbbbbbbbbbbbb " + sceneNum);
 		selection.put("selectionNum", selectionNum);
-		selection.put("sceneNum", 0);
+		selection.put("sceneNum", sceneNum);
 		selection.put("myAnswer", null);
+		selection.put("inputdate", null);
 		selection.put("item", null);
 		
 		result = dao.saveSD(selection);

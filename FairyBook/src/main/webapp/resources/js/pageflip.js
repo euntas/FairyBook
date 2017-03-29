@@ -209,6 +209,7 @@ RocketPageFlip.prototype.flip = function(page) {
 	 $.ajax({
 	        url:'saveSD',
 	        type:'GET',
+	        data: {sceneNum: pageflip.options.current},
 	        dataType:'json',
 	        success: function(){
 	        	alert('selectionDetail 생성');
