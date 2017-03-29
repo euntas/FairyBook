@@ -101,17 +101,18 @@
 		name like '%BODY%'
 </select>
 
-<!-- DB에서 피부 자료의 경로를 가져옵니다 -->
-<select id="readSkin" resultType="FBResource">
+<!-- DB에서 색깔 자료의 경로를 가져옵니다 -->
+<select id="readColor" parameterType="map" resultType="string">
 	select
-		resourcenum, name, analysis, path
+		path
 	from
-		fbresource
+		resourcecolor
 	where
-		name like '%skin%'
-	or
-		name like '%SKIN%'
+		name like '%'||#{name}||'%'
+	and
+		name like '%'||#{color}||'%'
 </select>
+
 
 <!-- DB에 내가 만든 아바타를 저장합니다 -->
 <insert id="saveAvatar" parameterType="Avatar">

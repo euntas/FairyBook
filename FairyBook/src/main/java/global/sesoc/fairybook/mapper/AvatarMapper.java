@@ -1,6 +1,7 @@
 package global.sesoc.fairybook.mapper;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import global.sesoc.fairybook.vo.Avatar;
 import global.sesoc.fairybook.vo.FBResource;
@@ -28,7 +29,7 @@ public interface AvatarMapper {
 	
 	public ArrayList<FBResource> readBody();
 	
-	public ArrayList<FBResource> readSkin();
+	public String readColor(HashMap<String, String> map);
 	
 	public int saveAvatar(Avatar avatar);
 }

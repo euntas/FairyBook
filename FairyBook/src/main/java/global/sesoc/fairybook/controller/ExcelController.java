@@ -29,9 +29,9 @@ import global.sesoc.fairybook.vo.Scene;
 import global.sesoc.fairybook.vo.StoryMaker;
 
 /**
- * 스토리 진행을 위한 콘트롤러
+ * 엑셀 이용, 디비에 저장을 위한 콘트롤러
  * 
- * @author 이은지(2017.03.20 - ver1)
+ * @author 이은지(2017.03.28 - ver1)
  *
  */
 

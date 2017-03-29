@@ -34,6 +34,25 @@
 		        success: function(scene){
 		        	currentScene = scene;
 					alert('씬번호: ' + currentScene.sceneNum);	
+
+					//selectiondetail 테스트용
+					 $.ajax({
+					        url:'saveSD',
+					        type:'GET',
+					        data: {sceneNum: pageflip.options.current},
+					        dataType:'json',
+					        success: function(){
+					        	alert('selectionDetail 생성');
+					        },
+					        error: function(e){
+					            alert(JSON.stringify(e));
+					        }
+					    });
+					//여기까지
+
+					
+					// selectionDetail에 첫번째 페이지를 인서트해주기.
+
 		        },
 		        error: function(e){
 		            alert(JSON.stringify(e));
@@ -56,7 +75,11 @@
 <!--####################여기부터  -->
 
 <div class="pageflip">
-	<!-- 질문 나오는 부분 -->
+	<!-- 질문 버튼 나오는 부분 -->
+	<div id="divForQuizBtn" class="fixed2">
+	</div>
+
+	<!-- 실제 질문 내용 나오는 부분 -->
 	<div id="divForQuiz" class="fixed">
 	</div>
 	

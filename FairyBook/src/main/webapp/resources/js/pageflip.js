@@ -204,12 +204,12 @@ RocketPageFlip.prototype.flip = function(page) {
 	var currentScene, currentQuiz, quizCheck;
 	
 	// selectiondetail 테이블에 insert 해주어야 하는 부분
-	
-	quizLoading();
 	//selectiondetail 테스트용
+
 	 $.ajax({
 	        url:'saveSD',
 	        type:'GET',
+	        data: {sceneNum: pageflip.options.current},
 	        dataType:'json',
 	        success: function(){
 	        	alert('selectionDetail 생성');
@@ -218,7 +218,17 @@ RocketPageFlip.prototype.flip = function(page) {
 	            alert(JSON.stringify(e));
 	        }
 	    });
+	 
+	 // 퀴즈 버튼과 퀴즈 내용 초기화
+	 $("#divForQuizBtn").html('');
+	 $("#divForQuiz").html(''); 
+	 
+	 // 퀴즈 로딩
+	 quizLoading();
+	 
 	//여기까지
+
+	 quizLoading();
 	
 	//=================================================================
 	
@@ -277,8 +287,11 @@ function quizLoading(){
 			if(currentQuiz.quizNum != -1){
 				// '다음' 버튼을 숨긴다.
 				$('.pageflip').find('a.flip-directional.flip-next').hide();
+				
+				writePreBtnForQuizDiv();
+				
 				// 퀴즈의 내용을 jsp에 출력한다.
-				writeQuizDiv();
+				//writeQuizDiv();
 			}
 			
 			// 해당 씬에 퀴즈가 없을 때
@@ -295,6 +308,35 @@ function quizLoading(){
     });
 }
 
+// 이미지 버튼을 만든다. 이 버튼을 누르면 퀴즈가 나옴.
+function writePreBtnForQuizDiv(){
+	var str = "<img src='./../resources/image/hiyoko.png'>";
+	
+	// 1초 후에 버튼이 생기게 한다.
+	setTimeout(function(){
+		$('#divForQuizBtn').html(str);
+		
+		// 마우스를 대면 그림이 바뀐다.
+		$("#divForQuizBtn img").mouseover(function(){
+			$(this).attr('src', './../resources/image/farian_move.gif');
+		});
+		$("#divForQuizBtn img").mouseout(function(){
+			$(this).attr('src', './../resources/image/hiyoko.png');
+		});
+		
+		// 클릭 이벤트를 설정한다.
+		$('#divForQuizBtn').click(function(){
+			// 버튼 이미지를 지운다.
+			$('#divForQuizBtn').html('');
+			// 퀴즈의 내용을 보인다.
+			writeQuizDiv();
+		});
+		
+    }, 1000);
+	
+}
+
+// 퀴즈의 내용을 쓰는 함수
 function writeQuizDiv(){
 	
 	// 퀴즈의 내용을 읽어 jsp의 퀴즈 div에 내용을 넣어준다.

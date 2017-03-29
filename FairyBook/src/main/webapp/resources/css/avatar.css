@@ -10,6 +10,9 @@
 	border: 1px solid black;
 	left: 20%;
 	background-image: url("../img/avatar/background.jpg");
+	background-size: 100% 100%; 
+	background-repeat: no-repeat;
+	background-color: rgba( 255, 255, 255, 0.8 );
 }
 
 /* 이미지 크기 자동 조정 */
@@ -30,39 +33,39 @@ img{
 #hair{
 	position: absolute;
 	left: 40%;
-	top: 18%;
+	top: 20%;
 	z-index: 2;
 }
 
 /* 아바타의 눈이미지 */
 #eye{
 	position: absolute;
-	left: 50%;
-	top: 40%;
+	left: 40%;
+	top: 20%;
 	z-index: 3;
 }
 
 /* 아바타의 코이미지 */
 #nose{
 	position: absolute;
-	left: 50%;
-	top: 45%;
+	left: 40%;
+	top: 20%;
 	z-index: 4;
 }
 
 /* 아바타의 입이미지 */
 #mouth{
 	position: absolute;
-	left: 50%;
-	top: 50%;
+	left: 40%;
+	top: 20%;
 	z-index: 5;
 }
 
 /* 아바타의 귀이미지 */
 #ear{
 	position: absolute;
-	left: 55%;
-	top: 45%;
+	left: 40%;
+	top: 20%;
 	z-index: 5;
 }
 
@@ -141,7 +144,7 @@ img{
 /* 대분류 버튼 클래스 */
 .category{
 	margin: 0px;
-	width : 11.1%;
+	width : 12.5%;
 	height: 99%;
 
 }
