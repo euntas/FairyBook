@@ -44,21 +44,11 @@ public class PoiForData {
 	public ArrayList<Quiz> DataForQuiz(){
 
 		// 엑셀파일
-		//File file = new File("quizData.xlsx");
+		//File file = new File(".");
 		File file = new File("C:/Users/kita/git/FairyBook/FairyBook/src/main/webapp/WEB-INF/quizData.xlsx");
 
 		// 엑셀 파일 오픈
 		XSSFWorkbook wb = null;
-		/*Workbook wb = null;
-		try {
-			wb = new XSSFWorkbook(new FileInputStream("quizData.xlsx"));
-		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}*/
 		try {
 			wb = new XSSFWorkbook(new FileInputStream(file));
 		} catch (FileNotFoundException e) {
@@ -94,13 +84,6 @@ public class PoiForData {
 		for(int i=0; i<listQuizData.size(); i++){
 			System.out.println(i +"번째 : " + listQuizData.get(i));
 		}
-		
-		/*ExcelMapper mapper = sqlSession.getMapper(ExcelMapper.class);
-		mapper.insertQuizTable(listQuizData);*/
-		// 테이블에 이미 들어가 있는 데이터들을 삭제한다.
-		//dao.clearQuizTable();
-		// 테이블에 데이터를 새로 입력한다.
-		//int resInsert = dao.insertQuizTable(listQuizData);
 		
 		return listQuizData;
 	}
