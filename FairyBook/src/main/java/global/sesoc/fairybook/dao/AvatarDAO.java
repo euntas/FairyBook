@@ -1,6 +1,7 @@
 package global.sesoc.fairybook.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -110,15 +111,19 @@ public class AvatarDAO {
 		return bodyList;
 	}
 	
+	
 	/**
-	 * 피부 부르기 버튼을 눌렀을시
-	 * @return 피부 이미지 경로가 담긴 arrayList
+	 * 색깔 부르기 버튼을 눌렀을시
+	 * @return 색깔 이미지 경로
 	 */
-	public ArrayList<FBResource> readSkin(){
-		ArrayList<FBResource> skinList = null;
-		AvatarMapper mapper = sqlSession.getMapper(AvatarMapper.class); 
-		skinList = mapper.readSkin();
-		return skinList;
+	public String readColor(String name, String color){
+		String colorResult = null;
+		AvatarMapper mapper = sqlSession.getMapper(AvatarMapper.class);
+		HashMap<String, String> map = new HashMap<>();
+		map.put("name", name);
+		map.put("color", color);
+		colorResult = mapper.readColor(map);
+		return colorResult;
 	}
 	
 	/**
