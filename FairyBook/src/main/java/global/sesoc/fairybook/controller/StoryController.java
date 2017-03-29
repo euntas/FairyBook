@@ -50,7 +50,7 @@ public class StoryController {
 		logger.debug("반아온 스토리 번호는 : {}" + storyNum);
 		System.out.println("받아온 스토리 번호 : " + storyNum);
 		// 현재 진행하고 있는 스토리 번호를 세션에 저장한다.
-		session.setAttribute("currentStoryNum", storyNum);
+		//session.setAttribute("currentStoryNum", storyNum);
 		
 		return "story/storyStart";
 	}
@@ -144,14 +144,15 @@ public class StoryController {
 	//selectionDetail 테이블 저장 테스트용
 	@ResponseBody 
 	@RequestMapping(value = "saveSD", method = RequestMethod.GET)
-	public int saveSD() {
+	public int saveSD(HttpSession session) {
 		int result = -1;
+		int selectionNum = (int) session.getAttribute("selectionNum");
 		
 		HashMap<String, Object> selection = new HashMap<>();
-		selection.put("selectionNum", null);
-		selection.put("sceneNum", 3);
-		selection.put("myAnswer", 3);
-		selection.put("item", "test");
+		selection.put("selectionNum", selectionNum);
+		selection.put("sceneNum", 0);
+		selection.put("myAnswer", null);
+		selection.put("item", null);
 		
 		result = dao.saveSD(selection);
 		
@@ -167,19 +168,20 @@ public class StoryController {
 			String id = loginUser.getId();
 			int storyNum = (int) session.getAttribute("currentStoryNum");
 			HashMap<String, Object> myselection = new HashMap<>();
-			myselection.put("selectionNum", 103);
+			myselection.put("selectionNum", 104);
 			myselection.put("id", id);
 			myselection.put("storyNum", storyNum);
 			myselection.put("finished", "N");
-			System.out.println("aaaaaaaaaa" + storyNum);
 			result = dao.insertMySelection(myselection);
 			return result;
 		}
 		
 		//타이틀 페이지로 이동
 		@RequestMapping(value = "storyTitle", method = RequestMethod.GET)
-		public String goTitle(int storyNum, Model model) {
-			model.addAttribute("storyNum", storyNum);
+		public String goTitle(int storyNum, Model model, HttpSession session) {
+//			model.addAttribute("storyNum", storyNum);
+			session.setAttribute("currentStoryNum", storyNum);
+
 			return "story/storyTitle";
 		}
 		
@@ -189,13 +191,14 @@ public class StoryController {
 		public int getSelectionNum(HttpSession session) {
 			int result = -1;
 			StoryMaker loginUser = (StoryMaker) session.getAttribute("loginUser");
+			int storyNum = (int) session.getAttribute("currentStoryNum");
 			String id = loginUser.getId();
 			HashMap<String, Object> myselection = new HashMap<>();
 			myselection.put("id", id);
-			myselection.put("storyNum", 1);
+			myselection.put("storyNum", storyNum);
 			myselection.put("finished", "N");
 			result = dao.getSelectionNum(myselection);
-			System.out.println("bbbbbbbbbb " + result);
+			session.setAttribute("myselectionNum", result);
 			return result;
 		}
 	

@@ -32,18 +32,20 @@ $(document).ready(function(){
 	//여기까지
 	
 	//getSelectionNum 테스트용
-	 $.ajax({
-	        url:'getSelectionNum',
-	        type:'GET',
-	        dataType:'json',
-	        success: function(){
-	        	alert('getSelectionNum 생성');
-	        },
-	        error: function(e){
-	            alert(JSON.stringify(e));
-	        }
-	    }); 
-	//여기까지
+		 $.ajax({
+		        url:'getSelectionNum',
+		        type:'GET',
+		        dataType:'json',
+		        success: function(){
+		        	alert('getSelectionNum 가져오기');
+		        },
+		        error: function(e){
+		            alert(JSON.stringify(e));
+		        }
+		    });
+	
+	
+	
 });
 
 </script>
@@ -66,7 +68,7 @@ $(document).ready(function(){
 <!--####################여기부터  -->
 
 <!--선택한 동화의  storyNum  -->
-<input type="hidden" id="storyNum" value="${storyNum}">
+<input type="hidden" id="storyNum" value="${currentStoryNum}">
 
 <div class="text-center">
 <img alt="title" src="./../resources/image/book.jpg" style="height:700px;"><br>
