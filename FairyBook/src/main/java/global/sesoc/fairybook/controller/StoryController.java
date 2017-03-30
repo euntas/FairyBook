@@ -148,13 +148,8 @@ public class StoryController {
 		int result = -1;
 		int selectionNum = (int) session.getAttribute("myselectionNum");
 		HashMap<String, Object> selection = new HashMap<>();
-		System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaa " + selectionNum);
-		System.out.println("bbbbbbbbbbbbbbbbbbbbbbbbbbb " + sceneNum);
 		selection.put("selectionNum", selectionNum);
 		selection.put("sceneNum", sceneNum);
-		selection.put("myAnswer", null);
-		selection.put("inputdate", null);
-		selection.put("item", null);
 		
 		result = dao.saveSD(selection);
 		
@@ -203,6 +198,19 @@ public class StoryController {
 			session.setAttribute("myselectionNum", result);
 			return result;
 		}
-	
+		
+		@ResponseBody 
+		@RequestMapping(value = "updateSelectiondetail", method = RequestMethod.GET)
+		public int updateSelectiondetail(HttpSession session, int sceneNum, int answerNum) {
+			int result = -1;
+			int selectionnum = (int) session.getAttribute("myselectionNum");
+			HashMap<String, Object> updateSD = new HashMap<>();
+			updateSD.put("selectionnum", selectionnum);
+			updateSD.put("sceneNum", sceneNum);
+			updateSD.put("myAnswer", answerNum);
+			result=dao.updateSelectiondetail(updateSD);
+			System.out.println("aaaaaaaaaaaaaaaaaaaa" + result);
+			return result;
+		}
 	
 }

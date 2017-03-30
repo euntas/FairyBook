@@ -46,17 +46,11 @@
 	(
 		selectionNum
 		,sceneNum
-		,myAnswer
-		,inputdate
-		,item
 	)
 	values
 	(
 		#{selectionNum}
 		,#{sceneNum}
-		,#{myAnswer}
-		,sysdate
-		,#{item}
 	)
 </insert>
 
@@ -96,5 +90,14 @@ select
 		
 </select>
 
+<update id="updateSelectiondetail" parameterType="map">
+	update
+		selectiondetail
+	set
+		myAnswer = #{myAnswer}
+		,inputdate = sysdate	
+	where selectionnum = #{selectionnum}
+	and	sceneNum = #{sceneNum} 	
+</update>
 	
 </mapper>

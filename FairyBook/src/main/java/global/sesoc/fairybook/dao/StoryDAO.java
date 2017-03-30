@@ -3,6 +3,8 @@ package global.sesoc.fairybook.dao;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -64,4 +66,9 @@ public class StoryDAO {
 		return result;
 	}
 	
+	public int updateSelectiondetail(HashMap<String, Object> updateSD) {
+		StoryMapper mapper = sqlSession.getMapper(StoryMapper.class);
+		int result = mapper.updateSelectiondetail(updateSD);
+		return result;
+	}
 }

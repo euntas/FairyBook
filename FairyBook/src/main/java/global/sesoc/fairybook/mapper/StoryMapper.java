@@ -21,5 +21,7 @@ public interface StoryMapper {
 	public int insertMySelection(HashMap<String, Object> myselection);
 	//selectionNum을 가져온다.
 	public int getSelectionNum(HashMap<String, Object> myselection);
+	//selectionDEtail을 업데이트한다.
+	public int updateSelectiondetail(HashMap<String, Object> updateSD);
 
 }
