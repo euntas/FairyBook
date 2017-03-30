@@ -66,7 +66,7 @@ public class StoryDAO {
 		return result;
 	}
 	
-	public int updateSelectiondetail(HashMap<String, Object> updateSD) {
+	public int updateSelectiondetail(HashMap<String, Integer> updateSD) {
 		StoryMapper mapper = sqlSession.getMapper(StoryMapper.class);
 		int result = mapper.updateSelectiondetail(updateSD);
 		return result;

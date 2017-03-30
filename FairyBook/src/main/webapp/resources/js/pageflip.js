@@ -374,7 +374,7 @@ function writeQuizDiv(){
 	        	$.ajax({
 	    	        url:'updateSelectiondetail',
 	    	        type:'GET',
-	    	        data: {sceneNum: pageflip.options.current, answerNum: $(this).attr('selnum')},
+	    	        data: {sceneNum: pageflip.options.current, answerNum: selectNum},
 	    	        dataType: 'json',
 	    	        success: function(){
 	    	        	alert('selectiondetail 업데이트');

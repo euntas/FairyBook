@@ -204,7 +204,7 @@ public class StoryController {
 		public int updateSelectiondetail(HttpSession session, int sceneNum, int answerNum) {
 			int result = -1;
 			int selectionnum = (int) session.getAttribute("myselectionNum");
-			HashMap<String, Object> updateSD = new HashMap<>();
+			HashMap<String, Integer> updateSD = new HashMap<>();
 			updateSD.put("selectionnum", selectionnum);
 			updateSD.put("sceneNum", sceneNum);
 			updateSD.put("myAnswer", answerNum);
