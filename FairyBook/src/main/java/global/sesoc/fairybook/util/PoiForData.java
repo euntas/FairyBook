@@ -26,6 +26,7 @@ import global.sesoc.fairybook.dao.ExcelDAO;
 import global.sesoc.fairybook.dao.StoryDAO;
 import global.sesoc.fairybook.mapper.ExcelMapper;
 import global.sesoc.fairybook.vo.Quiz;
+import global.sesoc.fairybook.vo.Scene;
 
 public class PoiForData {
 	
@@ -86,6 +87,58 @@ public class PoiForData {
 		}
 		
 		return listQuizData;
+	}
+	
+	/*
+	 * Scene 테이블에 데이터 저장 위함.
+	 */
+	public ArrayList<Scene> DataForScene(){
+
+		// 엑셀파일
+		File file = new File("C:/Users/kita/git/FairyBook/FairyBook/src/main/webapp/WEB-INF/sceneData.xlsx");
+
+		// 엑셀 파일 오픈
+		XSSFWorkbook wb = null;
+		try {
+			wb = new XSSFWorkbook(new FileInputStream(file));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		// HashMap 으로 이루어진 List 객체 생성 
+		ArrayList<Scene> listSceneData = new ArrayList<Scene>();
+
+		for (Row row : wb.getSheetAt(0)) {
+
+			// 위의 1줄은 건너뛴다.
+			if (row.getRowNum() < 1) {
+				continue;
+			}
+			
+			int scenenum = (int) row.getCell(0).getNumericCellValue();
+			int storynum = (int) row.getCell(1).getNumericCellValue();
+			int quiznum = (int) row.getCell(2).getNumericCellValue();
+			int nextscene1 = (int) row.getCell(3).getNumericCellValue();
+			int nextscene2 = (int) row.getCell(4).getNumericCellValue();
+			int nextscene3 = (int) row.getCell(5).getNumericCellValue(); 
+			int nextscene4 = (int) row.getCell(6).getNumericCellValue();
+			String fbexplain = row.getCell(7).getStringCellValue(); 
+			String storytext1 = row.getCell(8).getStringCellValue(); 
+			String storytext2 = row.getCell(9).getStringCellValue(); 
+			
+			listSceneData.add(new Scene(scenenum, storynum, quiznum, nextscene1, nextscene2, nextscene3, nextscene4, fbexplain, storytext1, storytext2));
+			
+		}
+		
+		for(int i=0; i<listSceneData.size(); i++){
+			System.out.println(i +"번째 : " + listSceneData.get(i));
+		}
+		
+		return listSceneData;
 	}
 	
 	public void testtest(){

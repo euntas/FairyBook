@@ -16,11 +16,28 @@ public class Scene {
 	private int nextScene4;			// 선택지 4을 선택했을 때의 다음 장면
 	private String FBExplain;		// 아바타의 설명 혹은 질문
 	private String storyText1;		// 스토리 내용(장면 전환 후 바로 나오는 텍스트)
-	private String srotyText2;		// 스토리 내용(장면 내에서 전환되는 텍스트 - null 일 수도 있음)
+	private String storyText2;		// 스토리 내용(장면 내에서 전환되는 텍스트 - null 일 수도 있음)
 	
 	public Scene() {
 		// TODO Auto-generated constructor stub
 	}
+
+	public Scene(int sceneNum, int storyNum, int quizNum, int nextScene1, int nextScene2, int nextScene3,
+			int nextScene4, String fBExplain, String storyText1, String srotyText2) {
+		super();
+		this.sceneNum = sceneNum;
+		this.storyNum = storyNum;
+		this.quizNum = quizNum;
+		this.nextScene1 = nextScene1;
+		this.nextScene2 = nextScene2;
+		this.nextScene3 = nextScene3;
+		this.nextScene4 = nextScene4;
+		this.FBExplain = fBExplain;
+		this.storyText1 = storyText1;
+		this.storyText2 = srotyText2;
+	}
+
+
 
 	public int getSceneNum() {
 		return sceneNum;
@@ -94,19 +111,19 @@ public class Scene {
 		this.storyText1 = storyText1;
 	}
 
-	public String getSrotyText2() {
-		return srotyText2;
+	public String getStoryText2() {
+		return storyText2;
 	}
 
-	public void setSrotyText2(String srotyText2) {
-		this.srotyText2 = srotyText2;
+	public void setStoryText2(String storyText2) {
+		this.storyText2 = storyText2;
 	}
 
 	@Override
 	public String toString() {
 		return "Scene [sceneNum=" + sceneNum + ", storyNum=" + storyNum + ", quizNum=" + quizNum + ", nextScene1="
 				+ nextScene1 + ", nextScene2=" + nextScene2 + ", nextScene3=" + nextScene3 + ", nextScene4="
-				+ nextScene4 + ", FBExplain=" + FBExplain + ", storyText1=" + storyText1 + ", srotyText2=" + srotyText2
+				+ nextScene4 + ", FBExplain=" + FBExplain + ", storyText1=" + storyText1 + ", srotyText2=" + storyText2
 				+ "]";
 	}
 	

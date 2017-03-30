@@ -12,5 +12,9 @@ public interface ExcelMapper {
 
 	public void clearQuizTable();
 	
-	public int insertQuizTable(ArrayList<Quiz> quizList);
+	public int insertQuizTable(Quiz quizList);
+	
+	public void clearSceneTable();
+	
+	public int insertSceneTable(Scene sceneList);
 }

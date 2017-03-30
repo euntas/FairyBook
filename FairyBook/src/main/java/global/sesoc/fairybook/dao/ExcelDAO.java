@@ -26,14 +26,36 @@ public class ExcelDAO {
 	public int insertQuizTable(ArrayList<Quiz> quizList){
 		
 		ExcelMapper mapper = sqlSession.getMapper(ExcelMapper.class);
-		int result = mapper.insertQuizTable(quizList);
+		
+		int result = -1;
+		
+		for (Quiz quiz : quizList) {
+			result = mapper.insertQuizTable(quiz);
+		}
 		
 		return result;
 	}
 	
 	public void clearQuizTable(){
-		System.out.println("클리어 퀴즈 테이블 안에 들어옴");
 		ExcelMapper mapper = sqlSession.getMapper(ExcelMapper.class);
 		mapper.clearQuizTable();
+	}
+	
+	public int insertSceneTable(ArrayList<Scene> sceneList){
+		
+		ExcelMapper mapper = sqlSession.getMapper(ExcelMapper.class);
+
+		int result = -1;
+		
+		for (Scene scene : sceneList) {
+			result = mapper.insertSceneTable(scene);
+		}
+		
+		return result;
+	}
+	
+	public void clearSceneTable(){
+		ExcelMapper mapper = sqlSession.getMapper(ExcelMapper.class);
+		mapper.clearSceneTable();
 	}
 }

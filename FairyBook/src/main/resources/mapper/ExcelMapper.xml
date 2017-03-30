@@ -11,8 +11,18 @@
 	
 	<insert id="insertQuizTable" parameterType="Quiz">
 		insert 
-		into quiz(quiznum, question, select1, select2, select3, select4, answer) 
+		into quiz(quizNum, question, select1, select2, select3, select4, answer) 
 		values(#{quizNum}, #{question}, #{select1}, #{select2}, #{select3}, #{select4}, #{answer})
+	</insert>
+	
+	<delete id="clearSceneTable">
+		delete scene;
+	</delete>
+	
+	<insert id="insertSceneTable" parameterType="Scene">
+		insert 
+		into scene(sceneNum, storyNum, quizNum, nextscene1, nextscene2, nextscene3, nextscene4, FBExplain, storytext1, storytext2) 
+		values(#{sceneNum}, #{storyNum}, #{quizNum}, #{nextScene1}, #{nextScene2}, #{nextScene3}, #{nextScene4}, #{FBExplain}, #{storytext1}, #{storytext2})
 	</insert>
 
 </mapper>
