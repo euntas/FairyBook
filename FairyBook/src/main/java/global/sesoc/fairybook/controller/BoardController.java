@@ -123,6 +123,11 @@ public class BoardController {
 	public String read(int boardnum, Model model
 			,@SessionAttribute("loginUser") StoryMaker maker
 			) {
+		PBoard b = dao.read(boardnum);
+		if (!b.getId().equals(maker.getId())) {
+			b.setHit(b.getHit()+1);
+			dao.update(b);
+		}
 			logger.info("읽을 글번호:{}",boardnum);
 			PBoard board = dao.read(boardnum);
 			logger.info("읽어온 글:{}",board);
@@ -194,6 +199,11 @@ public class BoardController {
 		b.setTitle(title);
 		
 		int result = dao.update(b);
+	}
+	
+	@RequestMapping(value="backToList",method=RequestMethod.GET)
+	public String backToList(){
+		return "redirect:listForm";
 	}
 
 }

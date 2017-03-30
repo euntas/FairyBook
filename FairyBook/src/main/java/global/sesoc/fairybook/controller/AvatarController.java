@@ -135,15 +135,15 @@ public class AvatarController {
 	}	
 	
 	/**
-	 * 피부 부르기 버튼을 눌렀을시
-	 * @return 피부 이미지 경로가 담긴 arrayList
+	 * 색깔 버튼을 눌렀을시
+	 * @return 해당 색깔 이미지 경로
 	 */
 	@ResponseBody
-	@RequestMapping(value = "callSkin", method = RequestMethod.GET)
-	public ArrayList<FBResource> callSkin() {
-		ArrayList<FBResource> skinList = dao.readSkin();
-		logger.debug(skinList.toString());
-		return skinList;
+	@RequestMapping(value = "callColor", method = RequestMethod.GET)
+	public String callColor(String name, String color) {
+		String result = dao.readColor(name, color);
+		logger.debug(result);
+		return result;
 	}
 	
 	/**

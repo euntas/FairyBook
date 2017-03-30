@@ -69,6 +69,7 @@
 		set
 			title = #{title}
 			, content = #{content}
+			, hit=#{hit}
 		where
 			boardnum = #{boardnum}
 		and
