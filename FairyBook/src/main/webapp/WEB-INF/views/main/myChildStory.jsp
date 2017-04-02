@@ -33,6 +33,7 @@
 
 <!--Footer  -->
 <c:import url="mainFooter.jsp"></c:import>
+<a href = "makebook">책 만들기</a>
 
 </body>
 </html> 
