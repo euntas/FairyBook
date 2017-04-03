@@ -1,12 +1,18 @@
 package global.sesoc.fairybook.controller;
 
+import java.util.ArrayList;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import global.sesoc.fairybook.dao.AnalysisDAO;
+import global.sesoc.fairybook.vo.Counselor;
 import global.sesoc.fairybook.vo.FBResource;
 
 /**
@@ -21,6 +27,8 @@ public class AnalysisController {
 
 	private static final Logger logger = LoggerFactory.getLogger(AnalysisController.class);
 	
+	@Autowired
+	AnalysisDAO dao;
 	/**
 	 * color에 대한 그래프
 	 * @param selectionNum
@@ -102,5 +110,37 @@ public class AnalysisController {
 		return result;
 	}
 	
+	@RequestMapping(value="counsel", method=RequestMethod.GET)
+	public String counsel(){
+		
+		return "analysis/counsel";
+		
+	}
 	
+	@ResponseBody
+	@RequestMapping(value="counsel", method=RequestMethod.POST)
+	public ArrayList<Counselor> counsel(String region, Model model){
+		ArrayList<Counselor> hospital = dao.selectHospital(region);	
+		return hospital;
+		
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="counsel1", method=RequestMethod.POST)
+	public Counselor counsel1(String country, Model model){
+		
+		Counselor hospital = dao.selectHospital1(country);
+		
+		
+		return hospital;
+		
+	}
+	
+	
+	@RequestMapping(value="counselResult", method=RequestMethod.GET)
+	public String counselResult(){
+		
+		return "analysis/counselResult";
+		
+	}
 }
