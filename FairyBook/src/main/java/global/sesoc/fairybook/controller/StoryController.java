@@ -209,7 +209,6 @@ public class StoryController {
 			updateSD.put("sceneNum", sceneNum);
 			updateSD.put("myAnswer", answerNum);
 			result=dao.updateSelectiondetail(updateSD);
-			System.out.println("aaaaaaaaaaaaaaaaaaaa" + result);
 			return result;
 		}
 	
