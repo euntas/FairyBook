@@ -81,6 +81,14 @@ public class HomeController {
 	public String counselResult(){
 		return "main/counselResult";
 	}
+	/**
+	 * 책만들기
+	 * @return main/makebook.jsp
+	 */
+	@RequestMapping(value="menu/makebook", method=RequestMethod.GET)
+	public String makebook(){
+		return "main/makebook";
+	}
 	
 	// SNS 테스트용 - 나중에 지워야 함
 	@RequestMapping(value="util/snsTest", method=RequestMethod.GET)
