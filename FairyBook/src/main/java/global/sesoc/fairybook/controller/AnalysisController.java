@@ -22,6 +22,15 @@ public class AnalysisController {
 	private static final Logger logger = LoggerFactory.getLogger(AnalysisController.class);
 	
 	/**
+	 * 결과 페이지로 이동
+	 * @return
+	 */
+	@RequestMapping(value="storyAnalysis", method=RequestMethod.GET)
+	public String analysisPage(){
+		return "story/storyAnalysis";
+	}
+	
+	/**
 	 * color에 대한 그래프
 	 * @param selectionNum
 	 */

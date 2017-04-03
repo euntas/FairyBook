@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.multipart.MultipartFile;
 
 import global.sesoc.fairybook.dao.BoardDAO;
+import global.sesoc.fairybook.util.FileService;
 import global.sesoc.fairybook.util.PageNavigator;
 import global.sesoc.fairybook.vo.PBoard;
 import global.sesoc.fairybook.vo.StoryMaker;
@@ -94,12 +96,10 @@ public class BoardController {
 	 * @return listForm
 	 */
 	@RequestMapping(value = "board", method = RequestMethod.POST)
-	public String insertBoard(PBoard b, 
+	public String insertBoard(PBoard b,
 			@SessionAttribute("loginUser") StoryMaker maker
 			) {
 		String id = maker.getId();
-		//로그인 안했으면 막기
-		
 		String content = b.getContent().substring(3, b.getContent().length()-4);
 		content = content.replaceAll("<br>", "\n");
 		content = content.replaceAll("<", "&lt;");

@@ -229,6 +229,9 @@
 </form> 
 <br>
 
+
+
+<!-- reply -->
 <center>
 	<!-- 댓글작성 -->
     <input type="hidden" id="rid" value="${loginUser.id}">
