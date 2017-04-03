@@ -60,6 +60,20 @@ public class ExcelController {
 		
 		return "redirect:/";
 	}
+	
+	@RequestMapping(value = "sceneTable", method = RequestMethod.GET)
+	public String sceneTable() {
+	
+		PoiForData pd = new PoiForData();
+		ArrayList<Scene> list = new ArrayList<>();
+		list = pd.DataForScene();
+		System.out.println("콘트롤러 안에서의 리스트 ");
+		System.out.println(list);
+		
+		dao.insertSceneTable(list);
+		
+		return "redirect:/";
+	}
 
 	
 	

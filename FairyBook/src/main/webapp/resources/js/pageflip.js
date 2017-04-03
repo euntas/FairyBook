@@ -369,7 +369,21 @@ function writeQuizDiv(){
 	        data: {currentSceneNum: pageflip.options.current, answerNum: $(this).attr('selnum')},
 	        dataType: 'json',
 	        success: function(nextSceneNum){
+	        	
 	        	// selectiondetail 테이블에 update 해 주어야 함.
+	        	$.ajax({
+	    	        url:'updateSelectiondetail',
+	    	        type:'GET',
+	    	        data: {sceneNum: pageflip.options.current, answerNum: selectNum},
+	    	        dataType: 'json',
+	    	        success: function(){
+	    	        	alert('selectiondetail 업데이트');
+	    	        },
+	    	        error: function(e){
+	    	            alert(JSON.stringify(e));
+	    	        }
+	    	    });
+	        	//여기까지
 	        	
 	        	alert(selectNum + '을 선택했습니다. 다음은 ' + nextSceneNum + '번 페이지로 이동합니다.');
 				// 다음페이지로 이동한다.

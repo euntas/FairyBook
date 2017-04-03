@@ -24,25 +24,26 @@ $(document).ready(function(){
 	        dataType:'json',
 	        success: function(){
 	        	alert('myselection 생성');
+	        	 $.ajax({
+	 		        url:'getSelectionNum',
+	 		        type:'GET',
+	 		        dataType:'json',
+	 		        success: function(){
+	 		        	alert('getSelectionNum 가져오기');
+	 		        },
+	 		        error: function(e){
+	 		            alert(JSON.stringify(e));
+	 		        }
+	 		    });
 	        },
 	        error: function(e){
 	            alert(JSON.stringify(e));
 	        }
 	    });
-	//여기까지
+	//여기까지 하고 끝낼거야?
 	
 	//getSelectionNum 테스트용
-		 $.ajax({
-		        url:'getSelectionNum',
-		        type:'GET',
-		        dataType:'json',
-		        success: function(){
-		        	alert('getSelectionNum 가져오기');
-		        },
-		        error: function(e){
-		            alert(JSON.stringify(e));
-		        }
-		    });
+		
 	
 	
 	
