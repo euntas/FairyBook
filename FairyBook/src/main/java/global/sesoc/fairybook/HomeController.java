@@ -82,4 +82,10 @@ public class HomeController {
 		return "main/counselResult";
 	}
 	
+	// SNS 테스트용 - 나중에 지워야 함
+	@RequestMapping(value="util/snsTest", method=RequestMethod.GET)
+	public String snsTest(){
+		return "util/snsTest2";
+	}
+	
 }
