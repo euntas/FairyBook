@@ -36,6 +36,12 @@ public class IDController {
 	private static final Logger logger = LoggerFactory.getLogger(IDController.class);
 	final String uploadPath = "/boardfile"; // 파일 업로드 경로
 	
+	
+	/**
+	 * 회원가입 버튼 클릭시
+	 * @param model
+	 * @return 조인폼으로 이동!
+	 */
 	@RequestMapping(value = "join", method = RequestMethod.GET)
 	public String join(Model model) {
 		StoryMaker maker = new StoryMaker();
@@ -103,7 +109,12 @@ public class IDController {
 		}
 		return message;
 	}
-
+	
+	/**
+	 * 회원가입
+	 * @param maker
+	 * @return 가입이 완료되면 가입완료창이, 가입실패시 가입실패 경고창을 띄우고 조인폼 지속적으로 보여줌
+	 */
 	@RequestMapping(value = "join", method = RequestMethod.POST)
 	public String join(String cBirthYear, String cBirthMonth, String cBirthDate, 
 			String phone1, String phone2, String phone3, 
@@ -144,6 +155,13 @@ public class IDController {
 		
 	}
 	
+	/**
+	 * 가입완료창
+	 * @param maker
+	 * @param status
+	 * @param model
+	 * @return 가입완료시 가입성공 메세지를 보여줌
+	 */
 	@RequestMapping(value="joinComplete", method=RequestMethod.GET)
 	public String joinComplete(
 			@ModelAttribute("storymaker") StoryMaker maker
@@ -155,6 +173,11 @@ public class IDController {
 		return "joinComplete";
 	}
 	
+	/**
+	 * 회원정보창
+	 * @param session
+	 * @return 로그인이 된 경우 회원정보를 보여주고 비정상적으로 접근시 로그인폼으로 강제 이동
+	 */
 	@RequestMapping(value = "userInfo", method = RequestMethod.GET)
 	public String userInfo(HttpSession session) {
 		StoryMaker user = (StoryMaker)session.getAttribute("loginUser");
@@ -170,7 +193,11 @@ public class IDController {
 	}
 
 	
-	
+	/**
+	 * 수정하기버튼 클릭시
+	 * @param session
+	 * @return 수정폼으로 이동, 역시 비정상적접근시 로그인폼으로 강제이동 
+	 */
 	@RequestMapping(value = "update", method = RequestMethod.GET)
 	public String userUpdate(HttpSession session) {
 		StoryMaker user = (StoryMaker)session.getAttribute("info");
@@ -181,7 +208,20 @@ public class IDController {
 			return "loginForm";
 		}
 	}
-
+	
+	/**
+	 * 회원 정보 수정
+	 * @param phone1
+	 * @param phone2
+	 * @param phone3
+	 * @param email
+	 * @param email2
+	 * @param maker
+	 * @param upload
+	 * @param model
+	 * @param session
+	 * @return 수정완료시 회원정보창에 수정된 정보를 보여줌, 오류발생시 메세지 띄우고 수정폼에 잔류
+	 */
 	@RequestMapping(value = "update", method = RequestMethod.POST)
 	public String userUpdate(
 			String phone1, String phone2, String phone3, 
@@ -220,7 +260,13 @@ public class IDController {
 		session.setAttribute("loginUser", maker);
 		return "redirect:userInfo";
 	}
-
+	
+	/**
+	 * 회원 삭제
+	 * @param model
+	 * @param session
+	 * @return 삭제시 삭제완료창 보여줌
+	 */
 	@RequestMapping(value = "delete", method = RequestMethod.GET)
 	public String userDelete(Model model, HttpSession session) {
 		StoryMaker maker = (StoryMaker)session.getAttribute("loginUser");
@@ -235,18 +281,33 @@ public class IDController {
 		return "redirect:deleteComplete";
 	}
 	
+	/**
+	 * 삭제완료창
+	 * @param session
+	 * @return 삭제완료창
+	 */
 	@RequestMapping(value="deleteComplete", method=RequestMethod.GET)
 	public String deleteComplete(HttpSession session){
 		session.invalidate();
 		return "deleteComplete";
 	}
 	
-
+	/**
+	 * 로그인버튼 클릭시
+	 * @return 로그인폼 보여준다
+	 */
 	@RequestMapping(value = "login", method = RequestMethod.GET)
 	public String login() {
 		return "loginForm";
 	}
-
+	
+	/**
+	 * 아이디와 비밀번호를 입력받아 로그인 한다.
+	 * @param id
+	 * @param pw
+	 * @param session
+	 * @return 유저타입에 따라 로그인한다.
+	 */
 	@ResponseBody
 	@RequestMapping(value = "login", method = RequestMethod.POST,
 			produces="application/json;charset=UTF-8")
@@ -278,7 +339,12 @@ public class IDController {
 		}
 		return message;
 	}
-
+	
+	/**
+	 * 로그아웃
+	 * @param session
+	 * @return 세션 정보 삭제 후 로그아웃하고 메인화면으로 간다.
+	 */
 	@RequestMapping(value = "logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.removeAttribute("loginUser");

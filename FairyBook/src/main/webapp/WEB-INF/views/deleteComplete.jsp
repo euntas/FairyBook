@@ -29,7 +29,7 @@
 
 <div id="under">
 <p>계정이 삭제되었습니다.</p>
-<p>이용해주셔서 감사합니다.</p>
+<p>Fairytale Book을 이용해주셔서 감사합니다.</p>
 <p>
 	<input type="button" value="메인으로" onclick="location.href='/fairybook/'">
 </p>

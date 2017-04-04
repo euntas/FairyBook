@@ -109,10 +109,12 @@ function callWall(){
 //불러온 자료를 디테일 부분에 띄운다(색 선택 부분은 안보여줌)
 function detailWithoutColor(resourceList){
 	var list = '';
+	var color =''
 	for(var i in resourceList){
 		list += '<img src="'+resourceList[i].path+'" class="items" num="'+resourceList[i].resourceNum+'" name="'+resourceList[i].name+'" id="'+resourceList[i].resourceNum+'">';
 	}
 	$('#items').html(list);
+	$('#color').html(color);
 	$('.items').on('click', draw);
 	$('#color').css('display','none');
 	$('#detail').css('width','79%');
@@ -124,10 +126,12 @@ function detailWithoutColor(resourceList){
 //불러온 자료를 디테일 부분에 띄운다(색 선택 부분은 보여줌)
 function detailWithColor(resourceList){
 	var list = '';
+	var color =''
 	for(var i in resourceList){
 		list += '<img src="'+resourceList[i].path+'" class="items" num="'+resourceList[i].resourceNum+'" name="'+resourceList[i].name+'" id="'+resourceList[i].resourceNum+'">';
 	}
 	$('#items').html(list);
+	$('#color').html(color);
 	$('.items').on('click', draw);
 	$('#color').css('display','block');
 	$('#detail').css('width','50%');
@@ -135,10 +139,31 @@ function detailWithColor(resourceList){
 	checkSelection();
 }
 
+//칼라 버튼을 눌렀을 때
+function colorbtn(){
+	var name = $(this).attr('id').split('Color')[0];
+	var color = $(this).attr('id').split('Color')[1];
+	
+	$.ajax({
+		url: 'callColor',
+		type: 'GET',
+		data: {name:name, color:color},
+		dataType: 'text',
+		success: function(str){
+			$('#'+name.slice(0, -2)).attr('src', str);
+		},
+		error: function(e){
+			alert(JSON.stringify(e));
+		}
+	});
+}
+
+
 //디테일에서 선택하면 아바타가 그려진다
 function draw(){
 	var house = $('#house').html();
 	var arr = ['roof', 'door', 'window', 'chimney', 'yard', 'wall'];
+	var colorObject = ['door','window'];
 	for(var i in arr){
 		if($(this).attr('name').indexOf(arr[i])!=-1){
 			if(house.indexOf(arr[i])==-1){
@@ -151,7 +176,23 @@ function draw(){
 			}
 		}
 	}
+	var color = '';
+	for(var i in colorObject){
+		if($(this).attr('name').indexOf(colorObject[i])!=-1){
+			color += '<input id="'+$(this).attr('name')+'ColorRed" class="color" type="button" style="background-color: red;">';
+			color += '<input id="'+$(this).attr('name')+'ColorOrange" class="color" type="button" style="background-color: orange;">';
+			color += '<input id="'+$(this).attr('name')+'ColorYellow" class="color" type="button" style="background-color: yellow;"><br>';
+			color += '<input id="'+$(this).attr('name')+'ColorGreen" class="color" type="button" style="background-color: green;">';
+			color += '<input id="'+$(this).attr('name')+'ColorBlue" class="color" type="button" style="background-color: blue;">';
+			color += '<input id="'+$(this).attr('name')+'ColorPurple" class="color" type="button" style="background-color: purple;"><br>';
+			color += '<input id="'+$(this).attr('name')+'ColorWhite" class="color" type="button" style="background-color: white;">';
+			color += '<input id="'+$(this).attr('name')+'ColorGray" class="color" type="button" style="background-color: gray;">';
+			color += '<input id="'+$(this).attr('name')+'ColorBlack" class="color" type="button" style="background-color: black;">';
+		}
+	}
+	$('#color').html(color);
 	$('#resetbtn').on('click', reset);
+	$('.color').on('click', colorbtn);
 
 	//모든 디테일을 선택하면 저장버튼을 활성화한다
 	var count = 0;
@@ -246,9 +287,7 @@ function save(){
 
 <!-- 색깔 선택하는 div태그 -->
 <div id="color">
-<input id="red" class="color" type="button"><input id="orange" class="color" type="button"><input id="yellow" class="color" type="button"><br>
-<input id="green" class="color" type="button"><input id="blue" class="color" type="button"><input id="purple" class="color" type="button"><br>
-<input id="white" class="color" type="button"><input id="gray" class="color" type="button"><input id="black" class="color" type="button">
+
 </div>
 
 
