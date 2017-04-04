@@ -5,8 +5,8 @@
 <html>
 <head>
 
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
 
 <!-- 스크릿샷 테스트  -->
@@ -58,6 +58,9 @@ $(init);
 	<h1> 그냥 돈주고 사면 안되겠니?</h1>
 <br>	
 
+
+<!-- 스크린샷 테스트1 -->
+<div id="bookcover">
 	<table>
 		<tr>
 			<td id='obj'><img src="../resources/img/book/yo.jpg" id='yo'
@@ -70,8 +73,7 @@ $(init);
 				id='gretel' width='100' height='100'></td>
 		</tr>
 	</table>
-<!-- 스크린샷 테스트1 -->
-<div id="bookcover"></div>
+</div>
 
 <br>
 	<input type="button" value="Take Screenshot Of Div" onclick="capture();" />
