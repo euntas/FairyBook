@@ -71,6 +71,7 @@ $(init);
 	</table>
 <!-- 스크린샷 테스트1 -->
 <div id="bookcover"></div>
+
 <br>
 	<input type="button" value="Take Screenshot Of Div" onclick="capture();" />
 
