@@ -36,28 +36,35 @@ $(init);
 		$('#hiyoko').draggable();
 		$('#hansel').draggable();
 		$('#gretel').draggable();
+		$('#gugugugu').draggable();
+		$('#emblem').draggable();
 
 	}
 </script>
 
 <style>
+
 #bookcover {
 	width: 421px;
 	height: 595px;
 	padding: 10px;
-	border: 2px solid red;
+	border: 2px solid blue;
 }
 
-#obj {
+/* #obj {
 	border: 1px solid #aaaaaa;
-}
+} */
 </style>
 
 </head>
 <body>
 	<h1> 그냥 돈주고 사면 안되겠니?</h1>
 <br>	
-
+<div id="bookcover"><img src="../resources/img/book/titletest.jpg">
+	<br>	
+	<br>	
+	<br>	
+	<br>	
 	<table>
 		<tr>
 			<td id='obj'><img src="../resources/img/book/yo.jpg" id='yo'
@@ -68,13 +75,17 @@ $(init);
 				id='hansel' width='100' height='100'></td>
 			<td id='obj'><img src="../resources/img/book/gretel.png"
 				id='gretel' width='100' height='100'></td>
+			<td id='obj'><img src="../resources/img/book/gugugugu.jpg"
+				id='gugugugu' width='100' height='100'></td>
+			<td id='obj'><img src="../resources/img/book/emblem.png"
+				id='emblem' width='100' height='100'></td>
 		</tr>
 	</table>
 <!-- 스크린샷 테스트1 -->
-<div id="bookcover"></div>
+</div>
 
-<br>
 	<input type="button" value="Take Screenshot Of Div" onclick="capture();" />
+<br>
 
 	<div id="target2">
 	</div>
