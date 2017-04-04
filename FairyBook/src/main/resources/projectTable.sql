@@ -268,6 +268,48 @@ CREATE TABLE STORYMAKER
 	PRIMARY KEY (ID)
 );
 
+--병원 테이블
+create table counselor(
+	--병원고유번호
+	hospId number primary key,
+	--지역구분(시,도)
+	region varchar2(30) not null,
+	--지역구분(시,군,구)
+	country varchar2(30) not null,
+	--병원명
+	hospital varchar2(30) not null,
+	--담당의사
+	doctor  varchar2(20) not null,
+	--전화번호
+	phoneNum varchar2(30) not null,
+	--이메일
+	email varchar2(50) not null
+);
+
+
+create sequence seq_counselor start with 1 increment by 1;
+
+insert into counselor values (seq_counselor.nextval, '서울', '마포' , '우리들병원', '고정기', '02-458-3215', 'junggigo@naver.com');
+insert into counselor values (seq_counselor.nextval, '서울', '강동', 'jnLee아동정신의학과', '이지나', '02-749-2511', 'jnlee@gmail.com');
+insert into counselor values (seq_counselor.nextval, '서울', '강남', '크는아이병원', '김태준', '02-6656-8123', 'scmaster01@softengineer.school');
+insert into counselor values (seq_counselor.nextval, '서울', '관악', '연세아동정신과병원', '우지원', '02-337-5634', 'woo3point@hanmail.net');
+insert into counselor values (seq_counselor.nextval, '경기인천', '인천', '송도은지병원', '이은지', '032-796-1902', 'eunta@naver.com');
+insert into counselor values (seq_counselor.nextval, '경기인천', '수원', '경희아동정신과병원', '김경희', '031-592-9012', 'kkh9012@naver.com');
+insert into counselor values (seq_counselor.nextval, '경기인천', '의정부', '튼튼병원', '박흥부', '031-2291-2910', 'swallow@chosun.com');
+insert into counselor values (seq_counselor.nextval, '강원', '원주', '연세아동정신과병원', '전원주', '033-972-0438', 'soondae@hotmail.com');
+insert into counselor values (seq_counselor.nextval, '충청', '대전', '성심소아정신과', '성심당', '042-582-3952', 'soboro@nate.com');
+insert into counselor values (seq_counselor.nextval, '충청', '충주', '호반의원', '고바우', '043-433-4333', 'lakecity@nate.com');
+insert into counselor values (seq_counselor.nextval, '충청', '천안', '삼거리정신의학과', '천안삼', '041-290-6821', 'hodoo@yahoo.co.kr');
+insert into counselor values (seq_counselor.nextval, '전라', '광주', '민주정신의학과', '김홍걸', '062-902-6729', 'pumpthisparty@nate.com');
+insert into counselor values (seq_counselor.nextval, '전라', '전주', '쑥쑥아이병원', '전동성', '063-673-5424', 'bibimbap@naver.com');
+insert into counselor values (seq_counselor.nextval, '전라', '목포', '하성걸의원', '하성걸', '061-529-4230', 'drfrog@hanmail.net');
+insert into counselor values (seq_counselor.nextval, '경상', '대구', '대구카톨릭병원', '김마리아', '053-554-1243', 'amen@naver.com');
+insert into counselor values (seq_counselor.nextval, '경상', '구미', '이한건의원', '이한건', '054-455-1923', 'kstylez3@naver.com');
+insert into counselor values (seq_counselor.nextval, '경상', '포항', '포항i-병원', '이승엽', '054-728-1901', 'homerun@naver.com');
+insert into counselor values (seq_counselor.nextval, '경상', '부산', '석진정신의학과', '김석진', '051-834-0042', 'sjkim@gmail.com');
+insert into counselor values (seq_counselor.nextval, '경상', '울산', '현대병원', '정주영', '052-492-1820', 'sonata@hyundai.co.kr');
+insert into counselor values (seq_counselor.nextval, '경상', '창원', '우리아이정신의학과', '안상수', '055-931-1818', 'bottlebomb@saenuri.com');
+insert into counselor values (seq_counselor.nextval, '제주', '제주', '감수광의원', '혜은이', '064-583-9345', 'hanganggyo@nate.com');
 --임시방편의 가입절차
 insert into STORYMAKER values ('ryan', '1234', '12345', '라훈아', '라이언', (TO_DATE('2012-12-12','YYYY-MM-DD')), 'ryan@naver.com', '송파구 삼전동', '010-1111-1111', '라이언맘', '라이언', null, null);
 
