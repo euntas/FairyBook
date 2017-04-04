@@ -38,6 +38,7 @@ public class AnalysisController {
 	@RequestMapping(value="colorGraph", method=RequestMethod.GET)
 	public void colorGraph(int selectionNum){
 		//colorcount테이블에서 selectionNum으로 colorname과 colorcount가져오기 colorcount내림차순으로
+		//이때 colorcount가 0인 것은 가져오지 않는다.
 		
 		//colorname, colorcount보내기 - 결과jsp로
 	}
