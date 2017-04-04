@@ -57,6 +57,7 @@ $(init);
 <body>
 	<h1> 그냥 돈주고 사면 안되겠니?</h1>
 <br>	
+
 	<table>
 		<tr>
 			<td id='obj'><img src="../resources/img/book/yo.jpg" id='yo'
