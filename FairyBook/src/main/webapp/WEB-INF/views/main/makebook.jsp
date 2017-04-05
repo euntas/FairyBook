@@ -16,7 +16,6 @@
 			onrendered: function(canvas) { 
 				var img = canvas.toDataURL("image/png");
 				console.log(img); 
-				//$("#target2").html('<img src=' + img + '>'); // capture 내용이 보여짐
 				window.open(img); // 이미지를 윈도우 팝업으로..
  
 			}
@@ -51,6 +50,11 @@ $(init);
 	border: 2px solid blue;
 }
 
+
+#makemenu {
+	margin: 0 auto;
+	border: 2px solid red;
+}
 /* #obj {
 	border: 1px solid #aaaaaa;
 } */
@@ -65,34 +69,24 @@ $(init);
 	<br>	
 	<br>	
 	<br>	
-
-
 <!-- 스크린샷 테스트1 -->
-	<table>
-		<tr>
-			<td id='obj'><img src="../resources/img/book/yo.jpg" id='yo'
-				width='100' height='100'></td>
-			<td id='obj'><img src="../resources/img/book/hiyoko.png"
-				id='hiyoko' width='100' height='100'></td>
-			<td id='obj'><img src="../resources/img/book/hansel.png"
-				id='hansel' width='100' height='100'></td>
-			<td id='obj'><img src="../resources/img/book/gretel.png"
-				id='gretel' width='100' height='100'></td>
-			<td id='obj'><img src="../resources/img/book/gugugugu.jpg"
-				id='gugugugu' width='100' height='100'></td>
-			<td id='obj'><img src="../resources/img/book/emblem.png"
-				id='emblem' width='100' height='100'></td>
-		</tr>
-	</table>
-<!-- 스크린샷 테스트1 -->
+<div id="makemenu">
+<table>
+<tr>
+<td id='obj'><img src="../resources/img/book/yo.jpg" id='yo' width='100' height='100'></td>
+<td id='obj'><img src="../resources/img/book/hiyoko.png" id='hiyoko' width='100' height='100'></td>
+<td id='obj'><img src="../resources/img/book/hansel.png" id='hansel' width='100' height='100'></td>
+<td id='obj'><img src="../resources/img/book/gretel.png" id='gretel' width='100' height='100'></td>
+<td id='obj'><img src="../resources/img/book/gugugugu.jpg" id='gugugugu' width='100' height='100'></td>
+<td id='obj'><img src="../resources/img/book/emblem.png" id='emblem' width='100' height='100'></td>
+</tr>
+</table>
+</div>
 </div>
 
 	<input type="button" value="Take Screenshot Of Div" onclick="capture();" />
 <br>
 
-	<div id="target2">
-	</div>
-<!-- 스크린샷 테스트1 -->
 
 </body>
 </html>
