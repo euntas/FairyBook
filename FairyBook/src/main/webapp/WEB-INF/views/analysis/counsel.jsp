@@ -6,6 +6,9 @@
 <meta charset="UTF-8">
 <title>상담 연결</title>
 <script src="../resources/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=d1ca5afd82e10d2f847ea34d2c399b10">
+</script>
+<script type="text/javascript" src="../resources/js/map.js"></script>
 <script>
 $(document).ready(function(){
 	$('#region').on('change', selectChange);
@@ -34,12 +37,13 @@ function selectChange(){
 			
 			for(var i=0;i<data.length;i++){
 				hospital += "<tr><td style='text-align:center;'>"+data[i].country+"</td>";
-				hospital += "<td>"+data[i].hospital+"</td>";
+				hospital += "<td id='selectedhosp'>"+data[i].hospital+"</td>";
 				hospital += "<td style='text-align:center;'>"+data[i].doctor+"</td>";
 				hospital += "<td style='text-align:center;'>"+data[i].phoneNum+"</td>";
 				hospital += "<td>"+data[i].email+"</td></tr>";
 			}
 			$('#hospital').html(hospital);
+			map(region);
 		}
 		,
 		error : function() {
@@ -67,6 +71,7 @@ function selectChange1(){
 				hospital += "<td>"+data.email+"</td></tr>";
 			
 			$('#hospital').html(hospital);
+			map2(country);
 		}
 		,
 		error : function() {
@@ -74,7 +79,9 @@ function selectChange1(){
 		}
 	});
 }
-	
+
+
+
 	
 </script>
 </head>
@@ -94,8 +101,11 @@ function selectChange1(){
 <select id="country">
 <option value="">--선택--
 </select></span><br>
-<div id="hospital">
-</table>
+<div id="hospital" style="height:200px; width:auto;">
+</div>
+<div id="map" style="width:500px;height:400px;">
+
+
 </div>
 </body>
 </html>
