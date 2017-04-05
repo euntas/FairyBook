@@ -101,7 +101,6 @@ public class HomeController {
 	public String makebook() {
 		return "main/makebook";
 	}
-<<<<<<< HEAD
 	
 	// SNS 테스트용 - 나중에 지워야 함
 	@RequestMapping(value="util/snsTest", method=RequestMethod.GET)
@@ -109,7 +108,6 @@ public class HomeController {
 		return "util/snsTest2";
 	}
 	
-=======
 
 	/** * 캡쳐된 화면 서버 저장 * @param request * @return * @throws Exception */
 	@RequestMapping(value = "imageCreate", method = RequestMethod.POST)
@@ -142,5 +140,4 @@ public class HomeController {
 		return mav;
 	}
 
->>>>>>> origin/master
 }
