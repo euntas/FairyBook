@@ -20,6 +20,8 @@
 <!-- 페이스북 로그인 연결 -->
 <script>
 
+var accessToken;
+
   // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
@@ -30,6 +32,7 @@
     // for FB.getLoginStatus().
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
+      accessToken = response.authResponse.accessToken;
       testAPI();
     } else {
       // The person is not logged into your app or we are unable to tell.
@@ -53,6 +56,7 @@
     appId      : '176801956172556',
     cookie     : true,  // enable cookies to allow the server to access 
                         // the session
+    oauth: true,
     xfbml      : true,  // parse social plugins on this page
     version    : 'v2.8' // use graph api version 2.8
   });
@@ -100,34 +104,43 @@
   }
   
   function myVideoWrite(){
+	  FB.api(
+			    "/me/videos",
+			    "POST",
+			    {	  
+					message: "테스트로 동영상 올리기4",
+					description: "테스트용 영상입니다.4",
+					source: "https://player.vimeo.com/external/200092486.sd.mp4?s=613baf0e2aaeb3cd49fcc342b3fbb12f71a3acaf&profile_id=165"
+					//source: "./../resources/video/star.mp4"
+				  },
+			    function (response) {
+			      if (response && !response.error) {
+			        alert('정상');
+			      }
+			      
+			      else{
+			    	  alert('에러');
+			    	  alert(JSON.stringify(response.error));
+			      }
+			    }
+			);
 	  
-	  FB.getLoginStatus(function(response) {
-	      statusChangeCallback(response);
-	      var accessToken = response.authResponse.accessToken;
-		  
-		  FB.api(
-				    "/me/feed",
-				    "POST",
-				    {	  
-						message: "테스트로 동영상 올리기4",
-						description: "테스트용 영상입니다.4",
-						//source: "https://player.vimeo.com/external/200092486.sd.mp4?s=613baf0e2aaeb3cd49fcc342b3fbb12f71a3acaf&profile_id=165"
-						source: "./../resources/video/star.mp4",
-						//access_token: 
-					  },
-				    function (response) {
-				      if (response && !response.error) {
-				        alert('정상');
-				      }
-				      
-				      else{
-				    	  alert('에러');
-				    	  alert(JSON.stringify(response.error));
-				      }
-				    }
-				);
-	    });
-	  
+  }
+  
+//UPLOAD A LOCAL IMAGE FILE, BUT THIS CAN NOT BE DONE WITHOUT USER'S MANUAL OPERATION BECAUSE OF SECURITY REASONS
+  function fileUpload() {
+    FB.api('/me/albums', function(response) {
+      var album = response.data[0]; // Now, upload the image to first found album for easiness.
+      var action_url = 'https://graph.facebook.com/' + album.id + '/photos?access_token=' +  accessToken;
+      var form = document.getElementById('upload-photo-form');
+      form.setAttribute('action', action_url);
+
+      // This does not work because of security reasons. Choose the local file manually.
+      // var file = document.getElementById('upload-photo-form-file');
+      // file.setAttribute('value', "/Users/nseo/Desktop/test_title_03.gif")
+
+      form.submit();
+    });
   }
   
   
@@ -154,6 +167,16 @@
 
 <button onclick="myWrite()">글쓰기 테스트</button>
 <button onclick="myVideoWrite()">글쓰기(동영상 추가) 테스트</button>
+
+<br>
+
+<div>
+  <a href="#" id="upload-trigger" onClick="javascript:fileUpload();">File Upload!</a>
+  <form id="upload-photo-form" target="upload_iframe" method="post" enctype="multipart/form-data">
+    <input id="upload-photo-form-file" name="file" size="27" type="file" />
+  </form>
+  <iframe id="upload_iframe" name="upload_iframe" witdh="0px" height="0px" border="0" style="width:0; height:0; border:none;"></iframe>
+</div>
 
 <!--여기까지###########################  -->
 
