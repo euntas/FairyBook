@@ -169,6 +169,7 @@ function detailWithColor(resourceList){
 
 //칼라 버튼을 눌렀을 때
 function colorbtn(){
+	var fullName = $(this).attr('id');
 	var name = $(this).attr('id').split('Color')[0];
 	var color = $(this).attr('id').split('Color')[1];
 	
@@ -179,6 +180,7 @@ function colorbtn(){
 		dataType: 'text',
 		success: function(str){
 			$('#'+name.slice(0, -2)).attr('src', str);
+			$('#'+name.slice(0, -2)).attr('name', fullName);
 		},
 		error: function(e){
 			alert(JSON.stringify(e));
@@ -272,10 +274,26 @@ function save(){
 	var ear = $('#ear').attr('num');
 	var neck = $('#neck').attr('num');
 	var body = $('#body').attr('num');
+	var hairColor = $('#hair').attr('name').split('Color')[1];
+	var eyeColor = $('#eye').attr('name').split('Color')[1];
+	var bodyColor = $('#body').attr('name').split('Color')[1];
+	
+	var arr = ['Black', 'Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Purple','White','Gray'];
+		for(var i in arr){
+			if(hairColor == arr[i]){
+				hairColor = i;
+			}
+			if(eyeColor == arr[i]){
+				eyeColor = i;
+			}
+			if(bodyColor == arr[i]){
+				bodyColor = i;
+			}
+		}
 	$.ajax({
 		url: 'saveAvatar',
 		type: 'POST',
-		data: {face:face,hair:hair,eye:eye,nose:nose,mouth:mouth,ear:ear,neck:neck,body:body},
+		data: {face:face,hair:hair,eye:eye,nose:nose,mouth:mouth,ear:ear,neck:neck,body:body,hairColor:hairColor,eyeColor:eyeColor,bodyColor:bodyColor},
 		success: function(){
 			alert('저장 완료!');
 			location.href='house';

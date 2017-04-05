@@ -3,7 +3,7 @@ package global.sesoc.fairybook.vo;
 /**
  * 아바타 정보
  * 
- * @author 하성걸(2017.03.24 - ver2)
+ * @author 하성걸(2017.04.05 - ver3)
  *
  */
 public class Avatar {
@@ -17,14 +17,16 @@ public class Avatar {
 	private int ear;
 	private int neck;
 	private int body;
-	private int skin;
+	private int hairColor;
+	private int eyeColor;
+	private int bodyColor;
 	
 	public Avatar() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public Avatar(int selectionNum, int face, int hair, int eye, int nose, int mouth, int ear, int neck, int body,
-			int skin) {
+			int hairColor, int eyeColor, int bodyColor) {
 		super();
 		this.selectionNum = selectionNum;
 		this.face = face;
@@ -35,7 +37,9 @@ public class Avatar {
 		this.ear = ear;
 		this.neck = neck;
 		this.body = body;
-		this.skin = skin;
+		this.hairColor = hairColor;
+		this.eyeColor = eyeColor;
+		this.bodyColor = bodyColor;
 	}
 
 	public int getSelectionNum() {
@@ -110,20 +114,36 @@ public class Avatar {
 		this.body = body;
 	}
 
-	public int getSkin() {
-		return skin;
+	public int getHairColor() {
+		return hairColor;
 	}
 
-	public void setSkin(int skin) {
-		this.skin = skin;
+	public void setHairColor(int hairColor) {
+		this.hairColor = hairColor;
+	}
+
+	public int getEyeColor() {
+		return eyeColor;
+	}
+
+	public void setEyeColor(int eyeColor) {
+		this.eyeColor = eyeColor;
+	}
+
+	public int getBodyColor() {
+		return bodyColor;
+	}
+
+	public void setBodyColor(int bodyColor) {
+		this.bodyColor = bodyColor;
 	}
 
 	@Override
 	public String toString() {
 		return "Avatar [selectionNum=" + selectionNum + ", face=" + face + ", hair=" + hair + ", eye=" + eye + ", nose="
-				+ nose + ", mouth=" + mouth + ", ear=" + ear + ", neck=" + neck + ", body=" + body + ", skin=" + skin
-				+ "]";
+				+ nose + ", mouth=" + mouth + ", ear=" + ear + ", neck=" + neck + ", body=" + body + ", hairColor="
+				+ hairColor + ", eyeColor=" + eyeColor + ", bodyColor=" + bodyColor + "]";
 	}
 	
-	
+
 }
