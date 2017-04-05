@@ -15,6 +15,7 @@
 
 <!-- jquery 링크 -->
 <script src="./resources/js/jquery-3.1.1.js"></script>
+<script src="./resources/js/html2canvas.js"></script>
 
 <script>
 $(document).ready(function(){
@@ -196,6 +197,7 @@ function draw(){
 			if(avatar.indexOf(arr[i])==-1){
 				avatar += '<img src="'+$(this).attr('src')+'" num="'+$(this).attr('num')+'" name="'+$(this).attr('name')+'" id="'+arr[i]+'">';
 				$('#avatar').html(avatar);
+				
 			}else{
 				$('#'+arr[i]).attr('src',$(this).attr('src'));
 				$('#'+arr[i]).attr('num',$(this).attr('num'));

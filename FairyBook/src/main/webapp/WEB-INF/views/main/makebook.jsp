@@ -5,8 +5,8 @@
 <html>
 <head>
 
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
 
 <!-- 스크릿샷 테스트  -->
@@ -65,6 +65,9 @@ $(init);
 	<br>	
 	<br>	
 	<br>	
+
+
+<!-- 스크린샷 테스트1 -->
 	<table>
 		<tr>
 			<td id='obj'><img src="../resources/img/book/yo.jpg" id='yo'
