@@ -9,7 +9,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
 
-<!-- 스크릿샷 테스트  -->
+<!-- 표지 캡쳐 -->
 <script>
 	function capture() { 
 		html2canvas($("#bookcover"), {
@@ -17,19 +17,19 @@
 				var img = canvas.toDataURL("image/png");
 				console.log(img); 
 				window.open(img); // 이미지를 윈도우 팝업으로..
- 
 			}
 		}); 
 	} 
 	</script>
-<!-- 스트린샷 테스트 -->
 
-
+<script type="text/javascript">
+$(document).ready(function(){
+	$(init);
+});
+</script>
 
 
 <script type="text/javascript">
-$(init);
-
 	function init() {
 		$('#yo').draggable();
 		$('#hiyoko').draggable();
@@ -37,54 +37,60 @@ $(init);
 		$('#gretel').draggable();
 		$('#gugugugu').draggable();
 		$('#emblem').draggable();
-
+		$('#title1').draggable();
 	}
+	
 </script>
 
 <style>
-
 #bookcover {
 	width: 421px;
 	height: 595px;
-	padding: 10px;
-	border: 2px solid blue;
+	border: 1px solid blue;
+	background-color: white;
+	margin: 10px;
 }
 
 
 #makemenu {
-	margin: 0 auto;
-	border: 2px solid red;
+	width: 1200px;
+	height: 595px;
+	float: left;
 }
-/* #obj {
-	border: 1px solid #aaaaaa;
-} */
+
+
+#table {
+	float: right;
+	
+} 
+
 </style>
 
 </head>
 <body>
 	<h1> 그냥 돈주고 사면 안되겠니?</h1>
 <br>	
-<div id="bookcover"><img src="../resources/img/book/titletest.jpg">
-	<br>	
-	<br>	
-	<br>	
-	<br>	
+<div id="bookcover">
+	
 <!-- 스크린샷 테스트1 -->
 <div id="makemenu">
-<table>
+<table id="table">
 <tr>
-<td id='obj'><img src="../resources/img/book/yo.jpg" id='yo' width='100' height='100'></td>
-<td id='obj'><img src="../resources/img/book/hiyoko.png" id='hiyoko' width='100' height='100'></td>
-<td id='obj'><img src="../resources/img/book/hansel.png" id='hansel' width='100' height='100'></td>
-<td id='obj'><img src="../resources/img/book/gretel.png" id='gretel' width='100' height='100'></td>
-<td id='obj'><img src="../resources/img/book/gugugugu.jpg" id='gugugugu' width='100' height='100'></td>
-<td id='obj'><img src="../resources/img/book/emblem.png" id='emblem' width='100' height='100'></td>
+<td><img src="../resources/img/book/yo.jpg" id='yo' width='100' height='100'></td>
+<td><img src="../resources/img/book/hiyoko.png" id='hiyoko' width='100' height='100'></td>
+<td><img src="../resources/img/book/hansel.png" id='hansel' width='100' height='100'></td>
+<td><img src="../resources/img/book/gretel.png" id='gretel' width='100' height='100'></td>
+<td><img src="../resources/img/book/gugugugu.jpg" id='gugugugu' width='100' height='100'></td>
+<td><img src="../resources/img/book/emblem.png" id='emblem' width='100' height='100'></td>
+<td><img src="../resources/img/book/title1.png" id='title1' width='100' height='100'></td>
+
 </tr>
 </table>
-</div>
-</div>
 
-	<input type="button" value="Take Screenshot Of Div" onclick="capture();" />
+</div>
+</div>
+<br>
+	<input type="button" value="표지 미리보기" onclick="capture();" />
 <br>
 
 
