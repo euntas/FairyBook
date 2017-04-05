@@ -113,7 +113,7 @@
 						description: "테스트용 영상입니다.4",
 						//source: "https://player.vimeo.com/external/200092486.sd.mp4?s=613baf0e2aaeb3cd49fcc342b3fbb12f71a3acaf&profile_id=165"
 						source: "./../resources/video/star.mp4",
-						access_token: 
+						//access_token: 
 					  },
 				    function (response) {
 				      if (response && !response.error) {
