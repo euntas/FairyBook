@@ -19,6 +19,7 @@
 
 <!-- 페이스북 로그인 연결 -->
 <script>
+
   // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
@@ -43,6 +44,7 @@
   function checkLoginState() {
     FB.getLoginStatus(function(response) {
       statusChangeCallback(response);
+      accessToken = response.authResponse.accessToken;
     });
   }
 
@@ -94,8 +96,41 @@
   }
   
   function myWrite(){
-	  FB.api('/me/feed', 'post', {message: '글써라!!!!'});
+	  FB.api('/me/feed', 'post', { message: '글써라!!!!'});
   }
+  
+  function myVideoWrite(){
+	  
+	  FB.getLoginStatus(function(response) {
+	      statusChangeCallback(response);
+	      var accessToken = response.authResponse.accessToken;
+		  
+		  FB.api(
+				    "/me/feed",
+				    "POST",
+				    {	  
+						message: "테스트로 동영상 올리기4",
+						description: "테스트용 영상입니다.4",
+						//source: "https://player.vimeo.com/external/200092486.sd.mp4?s=613baf0e2aaeb3cd49fcc342b3fbb12f71a3acaf&profile_id=165"
+						source: "./../resources/video/star.mp4",
+						access_token: 
+					  },
+				    function (response) {
+				      if (response && !response.error) {
+				        alert('정상');
+				      }
+				      
+				      else{
+				    	  alert('에러');
+				    	  alert(JSON.stringify(response.error));
+				      }
+				    }
+				);
+	    });
+	  
+  }
+  
+  
 </script>
 
 	
@@ -118,6 +153,7 @@
 <br>
 
 <button onclick="myWrite()">글쓰기 테스트</button>
+<button onclick="myVideoWrite()">글쓰기(동영상 추가) 테스트</button>
 
 <!--여기까지###########################  -->
 

@@ -24,6 +24,14 @@
 		if(confirm('정말 삭제 하시겠습니까?'))
 			location.href='delete';
 	});
+	$('#counsel').on('click',function(){
+		
+			location.href='counsel';
+	});
+	$('#counselResult').on('click',function(){
+		
+		location.href='counselResult';
+});
 	});
 </script>
 <script>
@@ -49,7 +57,15 @@ $(document).ready(function() {
 	
 	$('#email').val(emails[0]);
 	$('#email2').val(emails[1]);
-	$('#emailcom').val(emails[1]);
+
+	if(emails[1]=="naver.com"||emails[1]=="gmail.com"||
+			emails[1]=="hanmail.net"||emails[1]=="nate.com"
+			||emails[1]=="yahoo.co.kr"||emails[1]=="dreamwiz.com"){
+	$('#emailCom').val(emails[1]);
+	}else{
+		$('#emailCom').val("직접작성");
+		$('#email2').attr("readonly", false);
+	}
 	
 	var phone = '<c:out value="${update.phone}"/>';
 	var phones = phone.split('-');
@@ -413,9 +429,8 @@ function formcheck(){
 			<tr>
 				<td class="firstRow">ID</td>
 				<td class="secondRow">
-				<input type="text" id="id"
-					name="id" style="width: 220px;" 
-					value="${update.id}" readonly="readonly"></td>
+				${update.id}
+				<input type="hidden" id="id" name="id" value="${update.id}"></td>
 			</tr>
 			<tr>
 				<td class="firstRow">닉네임</td>
@@ -544,7 +559,9 @@ function formcheck(){
 			<tr>
 				<td colspan="3" style="text-align: center;">
 				<input type="submit" value="수정하기">&nbsp; 
-				<input type="button" value="삭제하기" id="userDelete">&nbsp; 
+				<input type="button" value="삭제하기" id="userDelete">
+				<input type="button" value="상담하기" id="counsel">&nbsp; 
+				<input type="button" value="상담결과 확인" id="counselResult">&nbsp; 
 					<input type="button" value="취소"
 					onclick="location.href='/fairybook/'"></td>
 			</tr>
