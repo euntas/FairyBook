@@ -290,6 +290,7 @@ function save(){
 				bodyColor = i;
 			}
 		}
+		
 	$.ajax({
 		url: 'saveAvatar',
 		type: 'POST',
