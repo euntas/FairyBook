@@ -37,6 +37,8 @@ img{
   </div>  
 </body>
 
-<div id="menu"></div>
+<div id="menu">
+<button id="slideShowButton"></button>
+</div>
 
 </html>

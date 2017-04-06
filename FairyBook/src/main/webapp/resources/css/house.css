@@ -9,7 +9,10 @@
 	height: 59%;
 	border: 1px solid black;
 	left: 20%;
-	background-image: url("../img/background.jpg");
+	background-image: url("../img/house/background.jpg");
+	background-size: 100% 100%; 
+	background-repeat: no-repeat;
+	background-color: rgba( 255, 255, 255, 0.8 );
 }
 
 /* 이미지 크기 자동 조정 */

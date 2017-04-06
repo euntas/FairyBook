@@ -121,9 +121,10 @@ public class HouseController {
 		house.setSelectionNum((int) session.getAttribute("selectionNum"));
 		logger.debug(house.toString());
 		int result = 0;
+		System.out.println(house);
 		result = dao.saveHouse(house);
 		if(result==1){
-			return "redirect:story/storyTest?storyNum=0";
+			return "redirect:avatar";
 		}else{
 			return "house";
 		}
