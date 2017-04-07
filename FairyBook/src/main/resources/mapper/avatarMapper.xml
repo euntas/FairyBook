@@ -132,6 +132,4 @@
 	 #{bodyColor}
 	 ) 
 </insert>
-
-
 </mapper>

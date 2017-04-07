@@ -27,6 +27,7 @@
 		<mapper resource="mapper/avatarMapper.xml" />
 		<mapper resource="mapper/houseMapper.xml" />
 		<mapper resource="mapper/storyMapper.xml"/>
+		<mapper resource="mapper/slideMapper.xml"/>
 		<mapper resource="mapper/boardMapper.xml"/>
 		<mapper resource="mapper/replyMapper.xml"/>
 		<mapper resource="mapper/ExcelMapper.xml"/>

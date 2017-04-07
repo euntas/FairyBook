@@ -34,7 +34,7 @@ public class HouseController {
 	 * 아바타 만들기 종료 후 하우스로 이동
 	 */
 	@RequestMapping(value = "house", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
+	public String house() {
 		return "objectmaker/house";
 	}
 	

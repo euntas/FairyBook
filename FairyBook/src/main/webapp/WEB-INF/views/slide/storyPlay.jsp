@@ -18,7 +18,7 @@
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
 <!--상단, 사이드 메뉴  -->
-<c:import url="main.jsp"></c:import>
+<c:import url="../main/main.jsp"></c:import>
 <!-- Page content -->
 <div class="w3-main" style="margin-left:230px;">
 	<i class="fa fa-bars w3-button w3-white w3-hide-large w3-xlarge w3-margin-left w3-margin-top" onclick="w3_open()"></i>
@@ -26,16 +26,28 @@
 
 <!--####################여기부터  -->
 <h1>동화 감상</h1>
+<table>
+<c:forEach var="story" items="${myStoryList}">
+	<tr>
+		<c:if test="${story.storyNum==1}">
+		<td>헨젤과그레텔</td>
+		</c:if>
+		<c:if test="${story.storyNum==0}">
+		<td><a href="storySlide?selectionNum=${story.selectionNum}">테스트개굴 </a></td>
+		</c:if>
+		<td>${story.startDate}</td>
+	</tr>
+</c:forEach>
+</table>
 
-
-<a href = "makebook">책 만들기</a>
+<a href = "../menu/makebook">책 만들기</a>
 
 <!--여기까지###########################  -->
 
 </div>
 
 <!--Footer  -->
-<c:import url="mainFooter.jsp"></c:import>
+<c:import url="../main/mainFooter.jsp"></c:import>
 
 </body>
 </html> 
