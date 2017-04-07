@@ -105,12 +105,13 @@ var accessToken;
   
   function myVideoWrite(){
 	  FB.api(
-			    "/me/videos",
+			    "/me/feed",
 			    "POST",
 			    {	  
 					message: "테스트로 동영상 올리기4",
 					description: "테스트용 영상입니다.4",
 					source: "https://player.vimeo.com/external/200092486.sd.mp4?s=613baf0e2aaeb3cd49fcc342b3fbb12f71a3acaf&profile_id=165"
+					
 					//source: "./../resources/video/star.mp4"
 				  },
 			    function (response) {
@@ -124,6 +125,20 @@ var accessToken;
 			      }
 			    }
 			);
+	  
+  }
+  
+  function myVideoWrite2(){
+	  FB.ui(
+			  {
+			    method: 'feed',
+			    name: 'testing',
+			    link: 'http://www.facebook.com',
+			    picture: 'http://img.youtube.com/vi/1CE6W5BubQo/0.jpg',
+			    //caption: '',
+			    description: '',
+			    source: 'https://www.youtube.com/v/1CE6W5BubQo?version=3&autohide=1&autoplay=1'
+			  });
 	  
   }
   
@@ -141,8 +156,8 @@ var accessToken;
 
       form.submit();
     });
-  }
-  
+  } 
+ 
   
 </script>
 
@@ -167,17 +182,20 @@ var accessToken;
 
 <button onclick="myWrite()">글쓰기 테스트</button>
 <button onclick="myVideoWrite()">글쓰기(동영상 추가) 테스트</button>
+<button onclick="myVideoWrite2()">글쓰기(동영상 추가) 테스트2</button>
 
 <br>
 
 <div>
   <a href="#" id="upload-trigger" onClick="javascript:fileUpload();">File Upload!</a>
+  
   <form id="upload-photo-form" target="upload_iframe" method="post" enctype="multipart/form-data">
     <input id="upload-photo-form-file" name="file" size="27" type="file" />
   </form>
   <iframe id="upload_iframe" name="upload_iframe" witdh="0px" height="0px" border="0" style="width:0; height:0; border:none;"></iframe>
-</div>
+</div> 
 
+<!-- Go to www.addthis.com/dashboard to customize your tools --> <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58e45cf68c351e8d"></script> 
 <!--여기까지###########################  -->
 
 </div>

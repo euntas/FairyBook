@@ -12,8 +12,10 @@ import org.springframework.stereotype.Repository;
 import global.sesoc.fairybook.mapper.AvatarMapper;
 import global.sesoc.fairybook.mapper.StoryMapper;
 import global.sesoc.fairybook.vo.Fairytale;
+import global.sesoc.fairybook.vo.MySelection;
 import global.sesoc.fairybook.vo.Quiz;
 import global.sesoc.fairybook.vo.Scene;
+import global.sesoc.fairybook.vo.SelectionDetail;
 
 @Repository
 public class StoryDAO {
@@ -66,9 +68,74 @@ public class StoryDAO {
 		return result;
 	}
 	
-	public int updateSelectiondetail(HashMap<String, Integer> updateSD) {
+	public int updateSelectiondetail(HashMap<String, Object> updateSD) {
 		StoryMapper mapper = sqlSession.getMapper(StoryMapper.class);
 		int result = mapper.updateSelectiondetail(updateSD);
+		return result;
+	}
+	
+	public MySelection getLatestMySelection(String id, int storyNum){
+		StoryMapper mapper = sqlSession.getMapper(StoryMapper.class);
+		
+		MySelection result = null;
+		
+		HashMap<String, Object> myinfo = new HashMap<>();
+		myinfo.put("id", id);
+		myinfo.put("storyNum", storyNum);
+		
+		result = mapper.getLatestMySelection(myinfo);
+		
+		return result;
+	}
+	
+	public ArrayList<SelectionDetail> getSelectionDetail(int selectionNum){
+		StoryMapper mapper = sqlSession.getMapper(StoryMapper.class);
+		ArrayList<SelectionDetail> result = new ArrayList<>();
+		result = mapper.getSelectionDetailAll(selectionNum);
+		
+		return result;
+	}
+	
+	public int getLatestSceneNum(int selectionNum){
+		StoryMapper mapper = sqlSession.getMapper(StoryMapper.class);
+		ArrayList<SelectionDetail> sdlist = new ArrayList<>(); 
+		sdlist = mapper.getSelectionDetailAll(selectionNum);
+		
+		// 디폴트 씬 번호 지정해둔다.
+		int result = 0;
+		
+		System.out.println("리스트 사이즈 : " + sdlist.size());
+		
+		if(sdlist.size() != 0)
+			result = (sdlist.get(sdlist.size()-1)).getSceneNum();
+		
+		return result;
+	}
+	
+	public  SelectionDetail getSelectionDetailBySceneNum(int selectionNum, int sceneNum){
+		StoryMapper mapper = sqlSession.getMapper(StoryMapper.class);
+		SelectionDetail result = null;
+		
+		HashMap<String, Object> myinfo = new HashMap<>();
+		myinfo.put("selectionNum", selectionNum);
+		myinfo.put("sceneNum", sceneNum);
+		
+		result = mapper.getSelectionDetailBySceneNum(myinfo);
+		
+		return result;
+	}
+	
+	public int updateFinished(int selectionNum, String id, int storyNum){
+		StoryMapper mapper = sqlSession.getMapper(StoryMapper.class);
+		int result = -1;
+		
+		HashMap<String, Object> myinfo = new HashMap<>();
+		myinfo.put("selectionNum", selectionNum);
+		myinfo.put("id", id);
+		myinfo.put("storyNum", storyNum);
+		
+		result = mapper.updateFinished(myinfo);
+		
 		return result;
 	}
 }

@@ -23,8 +23,10 @@ import global.sesoc.fairybook.dao.StoryDAO;
 import global.sesoc.fairybook.util.PoiForData;
 import global.sesoc.fairybook.vo.Fairytale;
 import global.sesoc.fairybook.vo.Item;
+import global.sesoc.fairybook.vo.MySelection;
 import global.sesoc.fairybook.vo.Quiz;
 import global.sesoc.fairybook.vo.Scene;
+import global.sesoc.fairybook.vo.SelectionDetail;
 import global.sesoc.fairybook.vo.StoryMaker;
 
 /**
@@ -46,13 +48,59 @@ public class StoryController {
 	@RequestMapping(value = "storyStart", method = RequestMethod.GET)
 	public String storyStart(HttpServletRequest request, Model model, HttpSession session) {
 	
-		int storyNum = Integer.parseInt(request.getParameter("storyNum"));
+		//int storyNum = Integer.parseInt(request.getParameter("storyNum"));
+		StoryMaker user = (StoryMaker) session.getAttribute("loginUser");
+		int storyNum = (int) session.getAttribute("currentStoryNum");
+		// 처음 나오는 페이지 번호
+		int firstPageNum = 0;
+		
 		logger.debug("반아온 스토리 번호는 : {}" + storyNum);
 		System.out.println("받아온 스토리 번호 : " + storyNum);
-		// 현재 진행하고 있는 스토리 번호를 세션에 저장한다.
-		//session.setAttribute("currentStoryNum", storyNum);
+		
+		// 디비에서 해당 동화의 기존 회차가 있는지 검색한다. 
+		MySelection mySelection = null;
+		mySelection = dao.getLatestMySelection(user.getId(), storyNum);
+		System.out.println("가져온 회차 : " + mySelection);
+		
+		// 처음 시작하는 회차일 때
+		if(mySelection == null){
+			System.out.println("처음 회차");
+			HashMap<String, Object> hm = new HashMap<>();
+			hm.put("id", user.getId());
+			hm.put("storyNum", storyNum);
+			hm.put("finished", "N");
+			
+			dao.insertMySelection(hm);
+			
+			mySelection = dao.getLatestMySelection(user.getId(), storyNum);
+			System.out.println("만든 회차 : " + mySelection);
+		}
+		// 기존 회차가 있을 때
+		else{
+			System.out.println("기존회차");
+			firstPageNum = dao.getLatestSceneNum(mySelection.getSelectionNum());
+			System.out.println("firstPageNum : " + firstPageNum);
+		}
+		
+		session.setAttribute("myselectionNum", mySelection.getSelectionNum());
+		
+		// 처음 페이지 번호를 모델에 저장
+		model.addAttribute("firstPageNum", firstPageNum);
 		
 		return "story/storyStart";
+	}
+	
+	// 마지막 페이지일 때 이 메소드를 호출한다. myselection 수정 후 동화 종료 페이지로 이동.
+	@RequestMapping(value = "storyEnd", method = RequestMethod.GET)
+	public String storyEnd(HttpSession session) {
+		int storyNum = (int) session.getAttribute("currentStoryNum");
+		int selectionNum = (int) session.getAttribute("myselectionNum");
+		StoryMaker user = (StoryMaker) session.getAttribute("loginUser");
+		
+		dao.updateFinished(selectionNum, user.getId(), storyNum);
+		System.out.println("종료 저장함.");
+		
+		return "story/storyEnd";
 	}
 	
 	@ResponseBody 
@@ -60,6 +108,7 @@ public class StoryController {
 	public Scene sceneLoading(int storyNum, int sceneNum, Model model) {
 		// 해당 씬을 가지고 온다.
 		Scene scene = dao.getScene(storyNum, sceneNum); 
+		System.out.println("가져온 씬: " + scene);
 		
 		return scene;
 	}
@@ -147,11 +196,30 @@ public class StoryController {
 	public int saveSD(HttpSession session, int sceneNum) {
 		int result = -1;
 		int selectionNum = (int) session.getAttribute("myselectionNum");
-		HashMap<String, Object> selection = new HashMap<>();
-		selection.put("selectionNum", selectionNum);
-		selection.put("sceneNum", sceneNum);
 		
-		result = dao.saveSD(selection);
+		// 해당 씬 넘버가 selectionDetail 테이블에 있는지 조사
+		SelectionDetail sdInDB = dao.getSelectionDetailBySceneNum(selectionNum, sceneNum);
+		
+		// 존재하지 않으면, 새로 생성
+		if(sdInDB == null){
+			System.out.println("생성!!!!!!!!!!");
+			HashMap<String, Object> selection = new HashMap<>();
+			selection.put("selectionNum", selectionNum);
+			selection.put("sceneNum", sceneNum);
+			
+			result = dao.saveSD(selection);			
+		}
+		// 이미 존재하면, 업데이트
+		else{
+			System.out.println("업뎃!!!!!!!!!!");
+			HashMap<String, Object> updateSD = new HashMap<>();
+			updateSD.put("selectionnum", selectionNum);
+			updateSD.put("sceneNum", sceneNum);
+			updateSD.put("myAnswer", null);
+			
+			result = dao.updateSelectiondetail(updateSD);
+		}
+		
 		
 		return result;
 	}
@@ -161,15 +229,20 @@ public class StoryController {
 		@RequestMapping(value = "insertMySelection", method = RequestMethod.GET)
 		public int insertMySelection(HttpSession session) {
 			int result = -1;
+			
 			StoryMaker loginUser = (StoryMaker) session.getAttribute("loginUser");
 			String id = loginUser.getId();
+			
 			int storyNum = (int) session.getAttribute("currentStoryNum");
+			
 			HashMap<String, Object> myselection = new HashMap<>();
 			myselection.put("selectionNum", 104);
 			myselection.put("id", id);
 			myselection.put("storyNum", storyNum);
 			myselection.put("finished", "N");
+			
 			result = dao.insertMySelection(myselection);
+			
 			return result;
 		}
 		
@@ -204,7 +277,7 @@ public class StoryController {
 		public int updateSelectiondetail(HttpSession session, int sceneNum, int answerNum) {
 			int result = -1;
 			int selectionnum = (int) session.getAttribute("myselectionNum");
-			HashMap<String, Integer> updateSD = new HashMap<>();
+			HashMap<String, Object> updateSD = new HashMap<>();
 			updateSD.put("selectionnum", selectionnum);
 			updateSD.put("sceneNum", sceneNum);
 			updateSD.put("myAnswer", answerNum);

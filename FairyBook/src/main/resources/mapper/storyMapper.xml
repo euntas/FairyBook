@@ -69,17 +69,17 @@
 	)
 	values
 	(
-		#{selectionNum}
-		,#{id}
-		,#{storyNum}
-		,sysdate
-		,null
-		,#{finished}
+		selectionnum_seq.nextval
+		, #{id}
+		, #{storyNum}
+		, sysdate
+		, null
+		, #{finished}
 	)
 </insert>
 
 <select id="getSelectionNum" resultType="int" parameterType="map">
-select
+	select
 		selectionNum
 	from
 		myselection
@@ -94,10 +94,57 @@ select
 	update
 		selectiondetail
 	set
-		myAnswer = #{myAnswer}
-		,inputdate = sysdate	
-	where selectionnum = #{selectionnum}
-	and	sceneNum = #{sceneNum} 	
+		<if test="myAnswer != null">
+			myAnswer = #{myAnswer},
+		</if>
+		inputdate = sysdate	
+	where 
+		selectionnum = #{selectionnum}
+		and	sceneNum = #{sceneNum} 	
+</update>
+
+<select id="getLatestMySelection" resultType="MySelection" parameterType="map">
+	select * from (
+		select 
+			selectionNum, id, storyNum, startDate, endDate, finished
+		from 
+			myselection
+		where 
+			id = #{id} and storyNum = #{storyNum} and finished='N'
+		order by 
+			startDate desc
+	) where rownum=1
+	
+</select>
+
+<select id="getSelectionDetailAll" resultType="SelectionDetail" parameterType="int">
+	select
+		selectionNum, sceneNum, myAnswer, inputDate, item
+	from
+		selectiondetail
+	where
+		selectionNum = #{selectionNum}
+</select>
+
+<select id="getSelectionDetailBySceneNum" resultType="SelectionDetail" parameterType="map">
+	select
+		selectionNum, sceneNum, myAnswer, inputDate, item
+	from
+		selectiondetail
+	where
+		selectionNum = #{selectionNum} and scenenum = #{sceneNum}
+</select>
+
+<update id="updateFinished" parameterType="map">
+	update
+		myselection
+	set
+		enddate = sysdate,
+		finished='Y'
+	where
+		selectionNum = #{selectionNum}
+		and id = #{id}
+		and storyNum = #{storyNum}
 </update>
 	
 </mapper>
