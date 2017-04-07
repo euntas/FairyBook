@@ -22,14 +22,22 @@
 <script>
 		$(document).ready(function(){
 			// 가장 처음 씬과 문제를 가져온다.
-			init();
+			var sceneNum = pageflip.options.current;
+			
+			//기존 진행 중 씬이 있을 경우
+			if(${firstPageNum != 0}){
+				sceneNum = ${firstPageNum};
+				pageflip.flip(sceneNum);
+			}
+			else
+				init(sceneNum);
 		});
 		
-		function init(){
+		function init(sn){
 		    $.ajax({
 		        url:'sceneLoading',
 		        type:'GET',
-		        data: {storyNum: 0, sceneNum: pageflip.options.current},
+		        data: {storyNum: 0, sceneNum: sn},
 		        dataType:'json',
 		        success: function(scene){
 		        	currentScene = scene;
@@ -141,5 +149,8 @@
 <!-- 다음 버튼 활성화/비활성화 -->
 <script>
 </script>
+
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58e45cf68c351e8d"></script> 
 </body>
 </html> 

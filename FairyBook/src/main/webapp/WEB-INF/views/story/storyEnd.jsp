@@ -3,7 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
-<title>동화표지</title>
+<title>FairyBook</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -13,51 +13,7 @@
 <link href='https://fonts.googleapis.com/css?family=RobotoDraft' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-
 <!--적용 자바스크립트와 스타일  -->
-<script>
-/* $(document).ready(function(){
-	//myselection 테스트용
-	  $.ajax({
-	        url:'insertMySelection',
-	        type:'GET',
-	        dataType:'json',
-	        success: function(){
-	        	alert('myselection 생성');
-	        	 $.ajax({
-	 		        url:'getSelectionNum',
-	 		        type:'GET',
-	 		        dataType:'json',
-	 		        success: function(){
-	 		        	alert('getSelectionNum 가져오기');
-	 		        },
-	 		        error: function(e){
-	 		            alert(JSON.stringify(e));
-	 		        }
-	 		    });
-	        },
-	        error: function(e){
-	            alert(JSON.stringify(e));
-	        }
-	    });
-	//여기까지 하고 끝낼거야?
-	
-	//getSelectionNum 테스트용
-		
-	
-	
-	
-}); */
-
-</script>
-
-<script>
-	$(function(){
-		$('#start').on('click',function(){
-			location.href='storyStart?storyNum='+$('#storyNum').val();
-		})
-	})
-</script>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
@@ -68,13 +24,7 @@
 
 <!--####################여기부터  -->
 
-<!--선택한 동화의  storyNum  -->
-<input type="hidden" id="storyNum" value="${currentStoryNum}">
-
-<div class="text-center">
-<img alt="title" src="./../resources/image/book.jpg" style="height:700px;"><br>
-<button type="button" class="btn btn-primary btn-lg" id="start">Start</button>
-</div>
+동화 종료 화면 입니다.
 
 <!--여기까지###########################  -->
 
@@ -83,5 +33,8 @@
 <!--Footer  -->
 <c:import url="../main/mainFooter.jsp"></c:import>
 
+
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58e45cf68c351e8d"></script> 
 </body>
 </html> 
