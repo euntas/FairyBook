@@ -25,7 +25,7 @@
 			var sceneNum = pageflip.options.current;
 			
 			//기존 진행 중 씬이 있을 경우
-			if(${firstPageNum != 0}){
+			if( ${firstPageNum != 0}){
 				sceneNum = ${firstPageNum};
 				pageflip.flip(sceneNum);
 			}
@@ -41,25 +41,29 @@
 		        dataType:'json',
 		        success: function(scene){
 		        	currentScene = scene;
-					alert('씬번호: ' + currentScene.sceneNum);	
+					//alert('씬번호: ' + currentScene.sceneNum);	
 
-					//selectiondetail 테스트용
-					 $.ajax({
-					        url:'saveSD',
-					        type:'GET',
-					        data: {sceneNum: pageflip.options.current},
-					        dataType:'json',
-					        success: function(){
-					        	alert('selectionDetail 생성');
-					        },
-					        error: function(e){
-					            alert(JSON.stringify(e));
-					        }
-					    });
-					//여기까지
+					// 첫번째 씬 일 때
+					if(currentScene.sceneNum == 0){
+						//selectiondetail 테스트용
+					// selectionDetail에 첫번째 페이지를 인서트해주기.
+						 $.ajax({
+						        url:'saveSD',
+						        type:'GET',
+						        data: {sceneNum: pageflip.options.current},
+						        dataType:'json',
+						        success: function(){
+						        	//alert('selectionDetail 생성');
+						        },
+						        error: function(e){
+						            alert(JSON.stringify(e));
+						        }
+						    });
+						//여기까지
+					    quizLoading();
+					}
 
 					
-					// selectionDetail에 첫번째 페이지를 인서트해주기.
 
 		        },
 		        error: function(e){
@@ -67,7 +71,6 @@
 		        }
 		    });
 		    
-		    quizLoading();
 
 		}
 

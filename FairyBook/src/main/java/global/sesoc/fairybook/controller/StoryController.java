@@ -90,15 +90,23 @@ public class StoryController {
 		return "story/storyStart";
 	}
 	
-	// 마지막 페이지일 때 이 메소드를 호출한다. myselection 수정 후 동화 종료 페이지로 이동.
+	// 마지막 페이지일 때 이 메소드를 호출한다. myselection 수정.
+	@ResponseBody 
 	@RequestMapping(value = "storyEnd", method = RequestMethod.GET)
-	public String storyEnd(HttpSession session) {
+	public String storyEnd(Model model, HttpSession session) {
 		int storyNum = (int) session.getAttribute("currentStoryNum");
 		int selectionNum = (int) session.getAttribute("myselectionNum");
 		StoryMaker user = (StoryMaker) session.getAttribute("loginUser");
 		
 		dao.updateFinished(selectionNum, user.getId(), storyNum);
 		System.out.println("종료 저장함.");
+		
+		return "story/storyEndPage";
+	}
+	
+	// 마지막 페이지일 경우, 종료 페이로 이동한다.
+	@RequestMapping(value = "storyEndPage", method = RequestMethod.GET)
+	public String storyEndPage(Model model, HttpSession session) {
 		
 		return "story/storyEnd";
 	}
