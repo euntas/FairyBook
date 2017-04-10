@@ -34,7 +34,7 @@ public class AvatarController {
 	 * 아바타 만들기 버튼을 눌렀을시
 	 */
 	@RequestMapping(value = "avatar", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
+	public String avatar(Locale locale, Model model) {
 		return "objectmaker/avatar";
 	}
 	

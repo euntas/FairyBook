@@ -71,12 +71,17 @@ public class AnalysisController {
 	 */
 	@ResponseBody
 	@RequestMapping(value="avatarAnalysis", method=RequestMethod.GET)
-	public void avatarAnalysis(int selectionNum){
+	public ArrayList<FBResource> avatarAnalysis(int selectionNum){
 		//selectionNum으로 MADEAVATAR테이블에서 resourcenum가져오기
 		int resourcenum = 0;
 		//resourcenum 이용해서 fbresource테이블의 name, analysis가져와서 FBResource VO에 담기
-		FBResource fb = getAnalysis(resourcenum);
+		ArrayList<FBResource> resources = new ArrayList<>();
+		resources = dao.avatarAnalysis(selectionNum);
+		for (FBResource fbResource : resources) {
+			System.out.println(fbResource);
+		}
 		//FBResource VO 결과 jsp에 전송
+		return resources;
 	}
 	
 	/**

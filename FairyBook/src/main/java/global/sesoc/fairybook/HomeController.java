@@ -101,4 +101,9 @@ public class HomeController {
 	public String makebook() {
 		return "main/makebook";
 	}
+	
+	@RequestMapping(value = "util/snsTest", method = RequestMethod.GET)
+	public String snsTest() {
+		return "util/snsTest2";
+	}
 }

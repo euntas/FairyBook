@@ -110,7 +110,7 @@ function myFunc(id) {
   <a href="javascript:void(0)" class="w3-bar-item w3-button w3-dark-grey w3-button w3-hover-black w3-left-align" onclick="document.getElementById('id01').style.display='block'">New Message <i class="w3-padding-left fa fa-pencil"></i></a>
   
   <a href="menu/storySelect" class="w3-bar-item w3-button"><i class="fa fa-paper-plane w3-padding-right"></i>동화선택</a>
-  <a href="menu/storyPlay" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>동화감상</a>
+  <a href="slide/storyPlay" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>동화감상</a>
   <a href="menu/quizSolve" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>문제풀기</a>
   <a href="menu/makebook" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>책만들기</a>
   
@@ -197,7 +197,7 @@ function myFunc(id) {
 	      <div class="w3-container w3-white">
 	        <h3>Double Room</h3>
 	        <h6 class="w3-opacity">From $149</h6>
-	        <button class="w3-button w3-block w3-yellow w3-margin-bottom">Play</button>
+	        <button class="w3-button w3-block w3-yellow w3-margin-bottom" onclick="location.href='util/snsTest'">SNS-Test</button>
 	      </div>
 	    </div>
 	    <div class="w3-third w3-margin-bottom">

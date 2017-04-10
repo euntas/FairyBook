@@ -14,4 +14,30 @@ select * from counselor where region = #{region}
 <select id="selectHospital1" parameterType="String" resultType="Counselor">
 select * from counselor where country = #{country}
 </select>
+
+<!-- 아바타 가져오기 -->
+<select id="avatarAnalysis" parameterType="int" resultType="FBResource">
+	select f.resourcenum, f.analysis, f.path, f.name
+	from fbresource f, madeavatar m
+	where f.resourcenum in(m.face, m.nose, m.mouth, m.ear, m.neck)
+	union
+	select f.resourcenum, f.analysis, c.path, c.name
+	from fbresource f, resourcecolor c, (select * from madeavatar where selectionnum = #{selectionNum}) m
+	where f.resourcenum = m.hair 
+		and m.hair = c.resourcenum
+		and m.hairColor = c.color
+	union
+	select f.resourcenum, f.analysis, c.path, c.name
+	from fbresource f, resourcecolor c, (select * from madeavatar where selectionnum = #{selectionNum}) m
+	where f.resourcenum = m.eye 
+		and m.eye = c.resourcenum
+		and m.eyeColor = c.color
+	union
+	select f.resourcenum, f.analysis, c.path, c.name
+	from fbresource f, resourcecolor c, (select * from madeavatar where selectionnum = #{selectionNum}) m
+	where f.resourcenum = m.body 
+		and m.body = c.resourcenum
+		and m.bodyColor = c.color
+</select>
+
 </mapper>

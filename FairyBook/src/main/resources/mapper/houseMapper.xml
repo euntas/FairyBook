@@ -87,7 +87,10 @@
 	 #{window},
 	 #{chimney},
 	 #{yard},
-	 #{wall})
+	 #{wall},
+	 #{roofColor},
+	 #{wallColor}
+	 )
 </insert>
 
 

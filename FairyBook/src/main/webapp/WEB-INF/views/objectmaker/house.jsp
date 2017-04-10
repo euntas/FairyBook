@@ -33,7 +33,7 @@ function callRoof(){
 		url: 'callRoof',
 		type: 'GET',
 		dataType: 'json',
-		success: detailWithoutColor,
+		success: detailWithColor,
 		error: function(e){
 			alert(JSON.stringify(e));
 		}
@@ -46,7 +46,7 @@ function callDoor(){
 		url: 'callDoor',
 		type: 'GET',
 		dataType: 'json',
-		success: detailWithColor,
+		success: detailWithoutColor,
 		error: function(e){
 			alert(JSON.stringify(e));
 		}
@@ -59,7 +59,7 @@ function callWindow(){
 		url: 'callWindow',
 		type: 'GET',
 		dataType: 'json',
-		success: detailWithColor,
+		success: detailWithoutColor,
 		error: function(e){
 			alert(JSON.stringify(e));
 		}
@@ -98,7 +98,7 @@ function callWall(){
 		url: 'callWall',
 		type: 'GET',
 		dataType: 'json',
-		success: detailWithoutColor,
+		success: detailWithColor,
 		error: function(e){
 			alert(JSON.stringify(e));
 		}
@@ -141,6 +141,7 @@ function detailWithColor(resourceList){
 
 //칼라 버튼을 눌렀을 때
 function colorbtn(){
+	var fullName = $(this).attr('id');
 	var name = $(this).attr('id').split('Color')[0];
 	var color = $(this).attr('id').split('Color')[1];
 	
@@ -151,6 +152,7 @@ function colorbtn(){
 		dataType: 'text',
 		success: function(str){
 			$('#'+name.slice(0, -2)).attr('src', str);
+			$('#'+name.slice(0, -2)).attr('name', fullName);
 		},
 		error: function(e){
 			alert(JSON.stringify(e));
@@ -159,11 +161,11 @@ function colorbtn(){
 }
 
 
-//디테일에서 선택하면 아바타가 그려진다
+//디테일에서 선택하면 집이 그려진다
 function draw(){
 	var house = $('#house').html();
 	var arr = ['roof', 'door', 'window', 'chimney', 'yard', 'wall'];
-	var colorObject = ['door','window'];
+	var colorObject = ['roof','wall'];
 	for(var i in arr){
 		if($(this).attr('name').indexOf(arr[i])!=-1){
 			if(house.indexOf(arr[i])==-1){
@@ -242,13 +244,32 @@ function save(){
 	var chimney = $('#chimney').attr('num');
 	var yard = $('#yard').attr('num');
 	var wall = $('#wall').attr('num');
+	var roofColor = $('#roof').attr('name').split('Color')[1];
+	var wallColor = $('#wall').attr('name').split('Color')[1];
+	
+	var arr = ['Black', 'Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Purple','White','Gray'];
+	for(var i in arr){
+		if(roofColor == arr[i]){
+			roofColor = i;
+		}
+		if(wallColor == arr[i]){
+			wallColor = i;
+		}
+	}
+	if(roofColor == null){
+		roofColor = 7;
+	}
+	if(wallColor == null){
+		wallColor = 7;
+	}
+	
 	$.ajax({
 		url: 'saveHouse',
 		type: 'POST',
-		data: {roof:roof,door:door,window:window,chimney:chimney,yard:yard,wall:wall,},
+		data: {roof:roof,door:door,window:window,chimney:chimney,yard:yard,wall:wall,roofColor:roofColor,wallColor:wallColor},
 		success: function(){
 			alert('저장완료!');
-			location.href='story/storyTest'
+			location.href='avatar'
 		},
 		error: function(e){
 			alert(JSON.stringify(e));

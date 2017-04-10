@@ -15,7 +15,6 @@
 
 <!-- jquery 링크 -->
 <script src="./resources/js/jquery-3.1.1.js"></script>
-<script src="./resources/js/html2canvas.js"></script>
 
 <script>
 $(document).ready(function(){

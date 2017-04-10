@@ -35,6 +35,7 @@
 	        <h6 class="w3-opacity">2017.3.22</h6>
 	        <button class="w3-button w3-red w3-margin-bottom" onclick="location.href='story/storyTitle?storyNum=0'">감상</button>
 	        <button class="w3-button w3-green w3-margin-bottom" onclick="location.href='../analysis/storyAnalysis'">결과보기</button>
+	        <button class="w3-button w3-yellow w3-margin-bottom" onclick="location.href='../orderBook/makeCover'">책으로 주문하기</button>
 	      </div>
 	    </div>
 	   

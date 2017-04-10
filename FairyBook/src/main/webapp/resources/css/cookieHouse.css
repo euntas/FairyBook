@@ -1,15 +1,15 @@
-/* 집만들기 페이지 css */
+/* 과자집 페이지 css */
 @CHARSET "UTF-8";
 
-/*집 표시하는 영역*/
-#house{
+/*과자집 그림이 나타나는 영역*/
+#avatar{
 	margin: 0px;
 	position: absolute;
 	width : 79%;
 	height: 59%;
 	border: 1px solid black;
 	left: 20%;
-	background-image: url("../img/house/background.jpg");
+	background-image: url("../img/cookieHouse/background.png");
 	background-size: 100% 100%; 
 	background-repeat: no-repeat;
 	background-color: rgba( 255, 255, 255, 0.8 );
@@ -21,55 +21,71 @@ img{
 	height: auto;
 }
 
-/* 집의 지붕이미지 */
-#roof{
+/* 아바타의 얼굴이미지 */
+#face{
 	position: absolute;
 	left: 40%;
 	top: 20%;
 	z-index: 1;
 }
 
-/* 집의 문이미지 */
-#door{
+/* 아바타의 헤어이미지 */
+#hair{
 	position: absolute;
 	left: 40%;
-	top: 18%;
+	top: 20%;
 	z-index: 2;
 }
 
-/* 집의 창문이미지 */
-#window{
+/* 아바타의 눈이미지 */
+#eye{
 	position: absolute;
-	left: 50%;
-	top: 40%;
+	left: 40%;
+	top: 20%;
 	z-index: 3;
 }
 
-/* 집의 굴뚝이미지 */
-#chimney{
+/* 아바타의 코이미지 */
+#nose{
 	position: absolute;
-	left: 50%;
-	top: 45%;
+	left: 40%;
+	top: 20%;
 	z-index: 4;
 }
 
-/* 집의 마당이미지 */
-#yard{
+/* 아바타의 입이미지 */
+#mouth{
+	position: absolute;
+	left: 40%;
+	top: 20%;
+	z-index: 5;
+}
+
+/* 아바타의 귀이미지 */
+#ear{
+	position: absolute;
+	left: 40%;
+	top: 20%;
+	z-index: 5;
+}
+
+/* 아바타의 목이미지 */
+#neck{
 	position: absolute;
 	left: 50%;
-	top: 50%;
-	z-index: 5;
+	top: 55%;
+	z-index: 6;
 }
 
-/* 집의 벽이미지 */
-#wall{
+/* 아바타의 몸이미지 */
+#body{
 	position: absolute;
-	left: 55%;
-	top: 45%;
-	z-index: 5;
+	left: 50%;
+	top: 60%;
+	z-index: 7;
 }
 
-/*집의 부위 선택하는 영역*/
+/*아바타의 신체부위 선택하는 영역*/
 #category{
 	margin: 0px;
 	position: absolute;
@@ -80,7 +96,7 @@ img{
 	top: 60%;
 }
 
-/* 해당 부위의 디테일 선택하는 영역 */
+/* 해당 신체부위의 디테일 선택하는 영역 */
 #detail{
 	margin: 0px;
 	position: absolute;
@@ -128,7 +144,7 @@ img{
 /* 대분류 버튼 클래스 */
 .category{
 	margin: 0px;
-	width : 16.65%;
+	width : 12.5%;
 	height: 99%;
 
 }

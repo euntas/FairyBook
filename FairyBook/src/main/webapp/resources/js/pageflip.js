@@ -212,7 +212,7 @@ RocketPageFlip.prototype.flip = function(page) {
 	        data: {sceneNum: pageflip.options.current},
 	        dataType:'json',
 	        success: function(){
-	        	alert('selectionDetail 생성');
+	        	alert('selectionDetail 생성1');
 	        },
 	        error: function(e){
 	            alert(JSON.stringify(e));
@@ -281,7 +281,6 @@ function quizLoading(){
         data: {storyNum: 0, sceneNum: pageflip.options.current},
         success: function(quiz){
         	currentQuiz = quiz;
-			alert('퀴즈 : ' + currentQuiz.quizNum );
 			
 			// 해당 씬에 퀴즈가 있을 때
 			if(currentQuiz.quizNum != -1){
@@ -369,25 +368,56 @@ function writeQuizDiv(){
 	        data: {currentSceneNum: pageflip.options.current, answerNum: $(this).attr('selnum')},
 	        dataType: 'json',
 	        success: function(nextSceneNum){
+	        	// 지금 씬이 마지막 페이지가 아닐 때.
+	        	if(nextSceneNum != -1){
+		        	// selectiondetail 테이블에 update 해 주어야 함.
+		        	$.ajax({
+		    	        url:'updateSelectiondetail',
+		    	        type:'GET',
+		    	        data: {sceneNum: pageflip.options.current, answerNum: selectNum},
+		    	        dataType: 'json',
+		    	        success: function(){
+		    	        	alert('selectiondetail 업데이트--');
+		    	        },
+		    	        error: function(e){
+		    	            alert(JSON.stringify(e));
+		    	        }
+		    	    });
+		        	//여기까지
+		        	
+		        	alert(selectNum + '을 선택했습니다. 다음은 ' + nextSceneNum + '번 페이지로 이동합니다.');
+	
+	        		// 다음페이지로 이동한다.
+	        		pageflip.flip(nextSceneNum);
+	        	}
 	        	
-	        	// selectiondetail 테이블에 update 해 주어야 함.
-	        	$.ajax({
-	    	        url:'updateSelectiondetail',
-	    	        type:'GET',
-	    	        data: {sceneNum: pageflip.options.current, answerNum: selectNum},
-	    	        dataType: 'json',
-	    	        success: function(){
-	    	        	alert('selectiondetail 업데이트');
-	    	        },
-	    	        error: function(e){
-	    	            alert(JSON.stringify(e));
-	    	        }
-	    	    });
-	        	//여기까지
+	        	// 지금 씬이 마지막 페이지일 때
+	        	else{
+	        		
+        			alert('else 여기로 옴 : ' + location.href);
+        			
+        			// 종료 화면으로 이동
+        			$.ajax({
+        		        url:'storyEnd',
+        		        type:'GET',
+        		        dataType: 'json',
+        		        success: function(result){
+        		        	//alert('종료화면으로 이동' + result);
+        		        	
+        		        },
+        		        error: function(e){
+        		            //alert('저장실패' + JSON.stringify(e));
+        		        	// 지금 상황 : 디비에 종료 저장도 하고, "storyEnd" 라는 문자열을 반환하기는 하지만
+        		        	// 무조건 error 안으로 들어온다. ajax 밖에서 처리하도록 함.
+        		        }
+        		    });
+        			
+        			// 스토리 종료 화면으로 이동하게 한다.
+        			location.href = "storyEndPage";
+        			
+        			return;
+	        	}
 	        	
-	        	alert(selectNum + '을 선택했습니다. 다음은 ' + nextSceneNum + '번 페이지로 이동합니다.');
-				// 다음페이지로 이동한다.
-	        	pageflip.flip(nextSceneNum);
 	        },
 	        error: function(e){
 	            alert(JSON.stringify(e));

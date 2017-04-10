@@ -16,7 +16,9 @@
 		<typeAlias type="global.sesoc.fairybook.vo.Scene" alias="Scene" />
 		<typeAlias type="global.sesoc.fairybook.vo.StoryMaker" alias="StoryMaker" />
 		<typeAlias type="global.sesoc.fairybook.vo.Counselor" alias="Counselor" />
-		<typeAlias type="global.sesoc.fairybook.util.PoiForData" alias="PoiForData" />		
+		<typeAlias type="global.sesoc.fairybook.util.PoiForData" alias="PoiForData" />	
+		<typeAlias type="global.sesoc.fairybook.vo.MySelection" alias="MySelection" />	
+		<typeAlias type="global.sesoc.fairybook.vo.SelectionDetail" alias="SelectionDetail" />
 	</typeAliases>
 	
 	<mappers>
@@ -25,6 +27,7 @@
 		<mapper resource="mapper/avatarMapper.xml" />
 		<mapper resource="mapper/houseMapper.xml" />
 		<mapper resource="mapper/storyMapper.xml"/>
+		<mapper resource="mapper/slideMapper.xml"/>
 		<mapper resource="mapper/boardMapper.xml"/>
 		<mapper resource="mapper/replyMapper.xml"/>
 		<mapper resource="mapper/ExcelMapper.xml"/>

@@ -3,7 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
-<title>동화표지</title>
+<title>Story Play</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -13,51 +13,7 @@
 <link href='https://fonts.googleapis.com/css?family=RobotoDraft' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-
 <!--적용 자바스크립트와 스타일  -->
-<script>
-/* $(document).ready(function(){
-	//myselection 테스트용
-	  $.ajax({
-	        url:'insertMySelection',
-	        type:'GET',
-	        dataType:'json',
-	        success: function(){
-	        	alert('myselection 생성');
-	        	 $.ajax({
-	 		        url:'getSelectionNum',
-	 		        type:'GET',
-	 		        dataType:'json',
-	 		        success: function(){
-	 		        	alert('getSelectionNum 가져오기');
-	 		        },
-	 		        error: function(e){
-	 		            alert(JSON.stringify(e));
-	 		        }
-	 		    });
-	        },
-	        error: function(e){
-	            alert(JSON.stringify(e));
-	        }
-	    });
-	//여기까지 하고 끝낼거야?
-	
-	//getSelectionNum 테스트용
-		
-	
-	
-	
-}); */
-
-</script>
-
-<script>
-	$(function(){
-		$('#start').on('click',function(){
-			location.href='storyStart?storyNum='+$('#storyNum').val();
-		})
-	})
-</script>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
@@ -65,16 +21,26 @@
 <c:import url="../main/main.jsp"></c:import>
 <!-- Page content -->
 <div class="w3-main" style="margin-left:230px;">
+	<i class="fa fa-bars w3-button w3-white w3-hide-large w3-xlarge w3-margin-left w3-margin-top" onclick="w3_open()"></i>
+	
 
 <!--####################여기부터  -->
+<h1>동화 감상</h1>
+<table>
+<c:forEach var="story" items="${myStoryList}">
+	<tr>
+		<c:if test="${story.storyNum==1}">
+		<td>헨젤과그레텔</td>
+		</c:if>
+		<c:if test="${story.storyNum==0}">
+		<td><a href="storySlide?selectionNum=${story.selectionNum}">테스트개굴 </a></td>
+		</c:if>
+		<td>${story.startDate}</td>
+	</tr>
+</c:forEach>
+</table>
 
-<!--선택한 동화의  storyNum  -->
-<input type="hidden" id="storyNum" value="${currentStoryNum}">
-
-<div class="text-center">
-<img alt="title" src="./../resources/image/book.jpg" style="height:700px;"><br>
-<button type="button" class="btn btn-primary btn-lg" id="start">Start</button>
-</div>
+<a href = "../menu/makebook">책 만들기</a>
 
 <!--여기까지###########################  -->
 

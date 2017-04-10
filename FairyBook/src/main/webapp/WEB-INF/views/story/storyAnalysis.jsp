@@ -22,9 +22,29 @@
 
 #face{
 	left: 20%;
-	margin-left: 20%;
+	margin-left: 10%;
 	z-index: 0;
 }
+.nav-pills {
+  overflow: hidden;
+  background-color: #333;
+  width: 200%;
+}
+.nav-pills a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+.f-nav {
+	z-index:9999; 
+	position:fixed; 
+	width:100%;
+}
+
 </style>
 
 <script>
@@ -65,27 +85,31 @@ function home(){
 		        hideHover: 'auto',
 		        colors: existColor //set colors for each bar
 		      }).on('click', function (i, row) {  //click했을 때 row-i번째 줄의 {label:..,value:..}
-		      	  $('#colorLabel').html(row.label);
-		    	  $('#colorSpecific').html('설명설명설명');
+		      	  $('.colorLabel').html(row.label);
+		    	  $('.colorSpecific').html('설명설명설명');
 		        });
 		//맨 처음에 선택될 index 지정
 		donut.select(1); 
-		$('#colorLabel').html(colorArray[1]);
-  	 	$('#colorSpecific').html('설명설명설명');
+		$('.colorLabel').html(colorArray[1]);
+  	 	$('.colorSpecific').html('설명설명설명');
 }
 
 function menu1(){
 	clear();
 	$('#colorGraph').html('');
 	$('#menu1').attr('class','on active');
-		 Morris.Donut({
+	var donut = Morris.Donut({
 		        element: 'colorGraph',
 		        data: data,
 		        colors: existColor
 		      }).on('click', function (i, row) {  //row-i번째 줄의 {label:..,value:..}
-		    	  alert(row.label);
-		    	  console.log(i, row);
+		    	  $('.colorLabel').html(row.label);
+		    	  $('.colorSpecific').html('설명설명설명');
 		        });
+		//맨 처음에 선택될 index 지정
+			donut.select(1); 
+			$('.colorLabel').html(colorArray[1]);
+	  	 	$('.colorSpecific').html('설명설명설명');
 	
 }
 
@@ -102,12 +126,33 @@ function menu3(){
 //내 아바타 가져오기
 function bringAvatar(){
 	$.ajax({
-		url: ''
+		url: 'avatarAnalysis',
+		type: 'GET',
+		data: {selectionNum: 1}, //data바꿔줘야
+		dataType: 'json',
+		success: showAvatar,
+		error: function(e){
+			alert(JSON.stringify(e));
+		}
 	});
+}
+
+function showAvatar(r){
+	var input = '';
+	var analysis = '';
+	for (var i = 0; i < r.length; i++) {
+		console.log(r[i].path);
+		console.log(r[i].name.substring(0,3));
+		input += '<img src=".'+r[i].path+'" style="position: absolute;"/>';
+		analysis += r[i].analysis+'<br>';
+	}
+	$('#showAvatar').html(input);
+	$('#htpSpecific').html(analysis);
 }
 
 //활성화 tab페이지 초기화
 function clear(){
+	window.scrollTo(0,0);
 	$('#home,#menu1,#menu2,#menu3').attr('class','');
 	$('#home,#menu1,#menu2,#menu3').attr('class','tab-pane fade');
 }
@@ -123,17 +168,19 @@ function clear(){
 	
 <!--####################여기부터  -->
 
-<div class="container">
-<ul class="nav nav-tabs" style="position: fixed;">
-    <li class="active"><a data-toggle="tab" href="#home" id="all">전체</a></li>
-    <li><a data-toggle="tab" href="#menu1" id="color">심리-색</a></li>
-    <li><a data-toggle="tab" href="#menu2" id="htp">심리-HTP</a></li>
-    <li><a data-toggle="tab" href="#menu3" id="quiz">퀴즈</a></li>
+<div class="container-fluid">
+<div class="f-nav">
+<ul class="nav nav-pills">
+    <li class="active"><a data-toggle="pill" href="#home" id="all">전체</a></li>
+    <li><a data-toggle="pill" href="#menu1" id="color">심리-색</a></li>
+    <li><a data-toggle="pill" href="#menu2" id="htp">심리-HTP</a></li>
+    <li><a data-toggle="pill" href="#menu3" id="quiz">퀴즈</a></li>
   </ul>
-
-  <div class="tab-content" style="padding-top: 40px;">
+</div>
+  <div class="tab-content">
     <div id="home">
     	<div class="row col-sm-12"><h3>종합 결과</h3><hr></div>
+    	<!-- 색 -->
 		  <div class="row">
 		    <div class="col-sm-12">
 		    	<h5>심리-색</h5>  
@@ -144,12 +191,13 @@ function clear(){
 		    <div class="col-md-4" style="width: 500px;">
 		        <div id="colorGraphH" style="height: 250px;"></div>
 		    </div>
-	        <div class="panel panel-default" style="height:250px;width: 400px;float:left;">
-		      <div class="panel-heading" id="colorLabel"></div>
-		      <div class="panel-body" id="colorSpecific"></div>
+	        <div class="panel panel-warning" style="height:250px;width: 400px;float:left;">
+		      <div class="panel-heading colorLabel"></div>
+		      <div class="panel-body colorSpecific"></div>
 		    </div>
 		  </div>
 		  <hr>
+		  <!-- htp -->
 		  <div class="row">
 		    <div class="col-sm-12">
 		    	<h5>심리-HTP</h5>  
@@ -157,33 +205,95 @@ function clear(){
 		  </div>
 		  <hr>
 		  <div class="row">
-		  	<div id="myAvatar"></div>
-		  	<img alt="myAvatar" src="../resources/img/avatar/face/face01.png" id="face">
+		  	<div class="col-md-4" style="width: 500px;">
+		  		<div id="showAvatar" style="position: relative;"></div>
+		    </div>
+		  	<div class="panel panel-warning" style="padding: 10px;width: 400px;float:left;">
+		      <div class="panel-heading" id="htpLabel">htp</div>
+		      <div class="panel-body" id="htpSpecific"></div>
+		    </div>
 		  </div>
+		  <hr>
+		  <!-- quiz -->
+		  <div class="row">
+		    <div class="col-sm-12">
+		    	<h5>QUIZ</h5>  
+		    </div>
+		  </div>
+		  <hr>
+		  <div class="row">
+		  	<div class="col-md-4" style="width: 500px;">
+		    </div>
+		  	<div class="panel panel-warning" style="height:250px;width: 400px;float:left;">
+		      <div class="panel-heading" id="quizLabel">문제</div>
+		      <div class="panel-body" id="quizSpecific">답</div>
+		    </div>
+		  </div>
+		  <hr>
     </div>
     
     <div id="menu1">
 		<div class="row">
 		    <div class="col-sm-12">
-		    	<h3>심리-색</h3>  
+		    	<h5>심리-색</h5>  
 		    </div>
 		  </div>
 		  <hr>
 		  <div class="row">
-		    <div class="col-md-4">
+		    <div class="col-md-4" style="width: 500px;">
 		        <div id="colorGraph" style="height: 250px;"></div>
 		    </div>
+	        <div class="panel panel-warning" style="height:250px;width: 400px;float:left;">
+		      <div class="panel-heading colorLabel"></div>
+		      <div class="panel-body colorSpecific"></div>
+		    </div>
+		  </div>
+		  <div style="width: 900px; height: 50px; padding: 20px; border: 1px solid black;">
+		  	색채검사는 ....................................................
+		  </div>
+		  <hr>
+		  <div class="row" style="width: 500px; padding-left:100px;">
+		  	<button class="btn-default">다른 색 정보보기</button>
 		  </div>
     </div>
     
     <div id="menu2">
       <h3>심리-HTP</h3>
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+		<div class="row">
+		    <div class="col-sm-12">
+		    	<h5>심리-HTP</h5>  
+		    </div>
+		  </div>
+		  <hr>
+		  <div class="row">
+		  	<div class="col-md-4" style="width: 500px;">
+		  		<img alt="myAvatar" src="../resources/img/avatar/face/face01.png" id="face">
+		    </div>
+		  	<div class="panel panel-warning" style="height:250px;width: 400px;float:left;">
+		      <div class="panel-heading" id="htpLabel">htp</div>
+		      <div class="panel-body" id="htpSpecific"></div>
+		    </div>
+		  </div>
+		  <hr>
     </div>
     
     <div id="menu3">
       <h3>퀴즈</h3>
-      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+		<div class="row">
+		    <div class="col-sm-12">
+		    	<h5>QUIZ</h5>  
+		    </div>
+		  </div>
+		  <hr>
+		  <div class="row">
+		  	<div class="col-md-4" style="width: 500px;">
+		    </div>
+		  	<div class="panel panel-warning" style="height:250px;width: 400px;float:left;">
+		      <div class="panel-heading" id="quizLabel">문제</div>
+		      <div class="panel-body" id="quizSpecific">답</div>
+		    </div>
+		  </div>
+		  <hr>
     </div>
     
   </div>
