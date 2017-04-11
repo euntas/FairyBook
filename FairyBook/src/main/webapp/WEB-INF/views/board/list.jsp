@@ -17,6 +17,7 @@
 <script>
 	$(function(){
 		bringList(1); //처음엔 page : 1
+		$('#searchBtn').on('click',search);
 	});
 	
 	//게시판 목록 불러오기
@@ -132,6 +133,10 @@
 		else
 			bringList(page+1);
 	}
+	
+	function search(){
+		var sel = $('#searchSel').val();
+	}
 </script>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -159,9 +164,17 @@
 	<div id="pageBtns" class="text-center"></div>
 <!--검색  -->
  	 <div class="input-group col-sm-4">
-	    <input type="text" class="form-control" placeholder="Search">
+ 	 	<span class="input-group-addon"> 
+ 	 		<select id="searchSel">
+			    <option>제목+내용</option>
+			    <option>제목</option>
+			    <option>내용</option>
+			    <option>작성자</option>
+			  </select>
+		</span>
+	    <input type="text" class="form-control" placeholder="Search" id="searchText">
 	    <div class="input-group-btn">
-	      <button class="btn btn-default" type="button">
+	      <button class="btn btn-default" type="button" id="searchBtn">
 	        <i class="glyphicon glyphicon-search"></i>
 	      </button>
 	    </div>
@@ -169,7 +182,6 @@
  </center>
 
 <!--여기까지###########################  -->
-
 </div>
 
 <!--Footer  -->

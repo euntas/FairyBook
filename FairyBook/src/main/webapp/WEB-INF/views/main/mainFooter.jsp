@@ -22,6 +22,7 @@
 <body>
 
 <!--Add a navar  -->
+<div id="footer">
 <nav class="navbar">
   <div class="container">
     <div class="navbar-header">
@@ -45,7 +46,7 @@
 <footer class="container-fluid bg-4 text-center">
   <p>Made By <a href="./../">FairyBook.com</a></p> 
 </footer>
-
+</div>
 
 </body>
 </html>

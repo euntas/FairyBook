@@ -15,12 +15,15 @@ public class House {
 	private int chimney;
 	private int yard;
 	private int wall;
+	private int roofColor;
+	private int wallColor;
 	
 	public House() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public House(int selectionNum, int roof, int door, int window, int chimney, int yard, int wall) {
+	public House(int selectionNum, int roof, int door, int window, int chimney, int yard, int wall, int roofColor,
+			int wallColor) {
 		super();
 		this.selectionNum = selectionNum;
 		this.roof = roof;
@@ -29,6 +32,8 @@ public class House {
 		this.chimney = chimney;
 		this.yard = yard;
 		this.wall = wall;
+		this.roofColor = roofColor;
+		this.wallColor = wallColor;
 	}
 
 	public int getSelectionNum() {
@@ -87,10 +92,27 @@ public class House {
 		this.wall = wall;
 	}
 
+	public int getRoofColor() {
+		return roofColor;
+	}
+
+	public void setRoofColor(int roofColor) {
+		this.roofColor = roofColor;
+	}
+
+	public int getWallColor() {
+		return wallColor;
+	}
+
+	public void setWallColor(int wallColor) {
+		this.wallColor = wallColor;
+	}
+
 	@Override
 	public String toString() {
 		return "House [selectionNum=" + selectionNum + ", roof=" + roof + ", door=" + door + ", window=" + window
-				+ ", chimney=" + chimney + ", yard=" + yard + ", wall=" + wall + "]";
+				+ ", chimney=" + chimney + ", yard=" + yard + ", wall=" + wall + ", roofColor=" + roofColor
+				+ ", wallColor=" + wallColor + "]";
 	}
 
 	

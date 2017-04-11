@@ -16,7 +16,7 @@
 
 <!--적용 자바스크립트와 스타일  -->
 <script>
-$(document).ready(function(){
+/* $(document).ready(function(){
 	//myselection 테스트용
 	  $.ajax({
 	        url:'insertMySelection',
@@ -47,7 +47,7 @@ $(document).ready(function(){
 	
 	
 	
-});
+}); */
 
 </script>
 

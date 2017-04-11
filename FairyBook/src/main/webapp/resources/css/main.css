@@ -1,6 +1,12 @@
 @CHARSET "UTF-8";
 /*메인화면 css  */
-
+html {
+height: 100%;
+}
+body {
+margin: 0;
+height: 100%;
+}
 html,body,h1,h2,h3,h4,h5 {font-family: "RobotoDraft", "Roboto", sans-serif;}
 .w3-bar-block .w3-bar-item{padding:16px}
 .bg-1 { 
@@ -26,3 +32,9 @@ html,body,h1,h2,h3,h4,h5 {font-family: "RobotoDraft", "Roboto", sans-serif;}
 		    background-color: #2f2f2f;
 		    color: #ffffff;
 		}
+#footer{
+	position: relative;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}

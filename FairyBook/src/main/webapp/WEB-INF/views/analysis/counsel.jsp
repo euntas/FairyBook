@@ -107,7 +107,7 @@ function sendMail123(email){
 	
 
 	
-			window.open('sendMail?email='+email,"sendMail", "top=200,left=400,width=400,height=530");
+			window.open('sendMail?email='+email,"sendMail", "top=200,left=400,width=430,height=590");
 		
 }
 
@@ -126,9 +126,9 @@ function sendMail123(email){
 <div id="under">
 <div id="container">
 
-<h1>[상담 연결]</h1>
-<p>지역을 선택하세요.</p>
-<span><select id="region">
+<h1 style="text-align: center;">[상담 연결]</h1>
+<p style="text-align: center;">지역을 선택하세요.</p>
+<span><div  style="text-align: center; margin: auto;"><select id="region">
 <option value="">--지역 선택--</option>
 	<option value="서울">서울</option>
 	<option value="경기인천">경기인천</option>
@@ -140,7 +140,7 @@ function sendMail123(email){
 </select>&nbsp;
 <select id="country">
 <option value="">--선택--
-</select></span><br>
+</select></div></span><br>
 <div id="hospital" style="height:300px; width:auto;">
 </div>
 <div id="map" style="width:500px;height:300px; margin: auto;">

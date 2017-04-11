@@ -14,8 +14,8 @@ function slideShow() {
     fadeDelay: 30, // The time interval between individual opacity changes. This should always be much smaller than slideDelay.  
     wrapperID: "slideShowImages", // The ID of the <div> element that contains all of the <img> elements to be shown as a slide show.
     buttonID: "slideShowButton", // The ID of the <button> element that toggles the slide show on and off.
-    buttonStartText: "Start Slides", // Text used in the slide show toggle button.
-    buttonStopText: "Stop Slides", // Text used in the slide show toggle button.    
+    buttonStartText: "Start", // Text used in the slide show toggle button.
+    buttonStopText: "Stop", // Text used in the slide show toggle button.    
     wrapperObject: null, // Will contain a reference to the <div> element that contains all of the <img> elements to be shown as a slide show.
     buttonObject: null, // If present, will contain a reference to the <button> element that toggles the slide show on and off. The initial assumption is that there is no such button element (hence the false value).
     slideImages: [], // Will contain all of the slide image objects.

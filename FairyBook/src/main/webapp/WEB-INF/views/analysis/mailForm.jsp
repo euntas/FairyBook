@@ -1,27 +1,81 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>상담메일보내기</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="../resources/js/jquery-3.1.1.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$('#send').on('click', sendMail123);
+	});
+
+	function sendMail123() {
+
+		var receiver = $('#receiver').val();
+		var title = $('#title').val();
+		var content = $('#content').val();
+
+		$.ajax({
+			url : 'sendMail',
+			type : 'POST',
+			data : {
+				receiver : receiver,
+				title : title,
+				content : content
+			},
+			success : function(data) {
+				alert('전송되었습니다.');
+
+				window.open("about:blank","_self").close();
+			},
+			error : function(e) {
+				alert(JSON.stringify(e));
+			}
+		});
+	}
+</script>
 </head>
-<body style='text-align: center;'>
+<body style='text-align: center; background-color: #ffff80;'>
+<br>
+	<table style="margin: auto;">
+		<tr>
+			<th style="width: 80px;">수신인</th>
+			<td><input type="text" id="receiver" name="receiver"
+				readonly="readonly" value="${emailAddress }" style="width: 280px;"
+				class="form-control"></td>
+		</tr>
 
+		<tr>
+			<th>제&nbsp;&nbsp;&nbsp;목</th>
+			<td><input type="text" id="title" name="title"
+				style="width: 280px;"
+				class="form-control"></td>
+		</tr>
 
-<h2>메일 보내기 </h2>
-<table>
-<tr><th style="width:80px;">수신인</th><td><input type="text" id="receiver" name="receiver" readonly="readonly" value="${emailAddress }" style="width: 280px;"></td></tr>
+		<tr>
+			<th colspan="2" style="text-align: left; height: 30px;">내&nbsp;&nbsp;&nbsp; 용
+			
+		</tr>
+		<tr>
+			<td colspan="2"><textarea rows="20" cols="50" id="content" class="form-control"></textarea></td>
+		</tr>
 
-<tr><th>제 목</th><td><input type="text" id="title" name="title" style="width: 280px;"></td></tr>
+		<tr>
+			<td colspan="2" style="height: 50px;"><input type="button" value="보내기" id="send" class="btn btn-info">&nbsp;<input
+				type="button" value="취소하기" onclick="javascript:window.close()" class="btn btn-warning"></td>
+		</tr>
 
-<tr><th colspan="2" style="text-align: left;">&nbsp;&nbsp;&nbsp;내 용</tr>
-<tr><td colspan="2"><textarea rows="20" cols="50"></textarea></td></tr>
-
-<tr><td colspan="2"><input type="button" value="보내기">&nbsp;<input type="button" value="취소하기" onclick="javascript:window.close()"></td></tr>
-
-</table>
+	</table>
 </body>
 
 </html>

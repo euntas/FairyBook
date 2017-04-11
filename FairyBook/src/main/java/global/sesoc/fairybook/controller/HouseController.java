@@ -34,7 +34,7 @@ public class HouseController {
 	 * 아바타 만들기 종료 후 하우스로 이동
 	 */
 	@RequestMapping(value = "house", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
+	public String house() {
 		return "objectmaker/house";
 	}
 	
@@ -121,9 +121,10 @@ public class HouseController {
 		house.setSelectionNum((int) session.getAttribute("selectionNum"));
 		logger.debug(house.toString());
 		int result = 0;
+		System.out.println(house);
 		result = dao.saveHouse(house);
 		if(result==1){
-			return "redirect:story/storyTest?storyNum=0";
+			return "redirect:avatar";
 		}else{
 			return "house";
 		}
