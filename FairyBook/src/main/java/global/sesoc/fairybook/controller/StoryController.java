@@ -292,5 +292,16 @@ public class StoryController {
 			result=dao.updateSelectiondetail(updateSD);
 			return result;
 		}
+		
+		@ResponseBody
+		@RequestMapping(value="getAvatarText", method = RequestMethod.POST, produces="text/plain;charset=UTF-8")
+		public String getAvatarText(HttpSession session, int currentSceneNum, Model model){
+			int storyNum = (int) session.getAttribute("currentStoryNum");
+			Scene currentScene = dao.getScene(storyNum, currentSceneNum);
+			
+			String avatarText = currentScene.getFBExplain();
+			
+			return avatarText;
+		}
 	
 }
