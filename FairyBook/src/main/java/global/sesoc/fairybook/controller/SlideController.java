@@ -41,6 +41,9 @@ public class SlideController {
 	@RequestMapping(value = "storyPlay", method = RequestMethod.GET)
 	public String storyPlay(Model model, HttpSession session) {
 		StoryMaker user = (StoryMaker) session.getAttribute("loginUser");
+		if(user==null){
+			return "redirect:../id/login";
+		}
 		String id = user.getId();
 		ArrayList<MySelection> myStoryList = null;
 		myStoryList = dao.getMyStoryList(id);
@@ -50,9 +53,10 @@ public class SlideController {
 	
 	
 	@RequestMapping(value = "storySlide", method = RequestMethod.GET)
-	public String storyStart(HttpSession session) {
-		String id = (String) session.getAttribute("");
-		
+	public String storyStart(HttpSession session, int selectionNum, Model model) {
+		ArrayList<Integer> slideList = null;
+		slideList = dao.getSlide(selectionNum);
+		model.addAttribute("slideList", slideList);
 		return "slide/storySlide";
 	}
 }

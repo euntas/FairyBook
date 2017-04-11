@@ -27,16 +27,27 @@
 <!--####################여기부터  -->
 <h1>동화 감상</h1>
 <table>
-<c:forEach var="story" items="${myStoryList}">
 	<tr>
-		<c:if test="${story.storyNum==1}">
-		<td>헨젤과그레텔</td>
-		</c:if>
-		<c:if test="${story.storyNum==0}">
-		<td><a href="storySlide?selectionNum=${story.selectionNum}">테스트개굴 </a></td>
-		</c:if>
-		<td>${story.startDate}</td>
-	</tr>
+<c:forEach var="story" items="${myStoryList}" varStatus="status">
+	<td>
+	<!-- 여기엔 썸네일이 들어간다 -->
+	<c:if test="${story.storyNum==0}">
+		<img src="../resources/image/hiyoko.png"><br>
+	</c:if>
+	<c:if test="${story.storyNum==1}">
+		<img src="../resources/image/pc.jpg"><br>
+	</c:if>
+	<a href="storySlide?selectionNum=${story.selectionNum}">${story.storyNum}번 동화</a><br>
+	시작 날짜: ${story.startDate}<BR>
+	끝난 날짜: ${story.endDate}<BR>
+	</td>
+	<c:if test="${status.count%4==0}">
+		</tr>
+		<tr>	
+	</c:if>
+	<c:if test="${status.last}">
+		</tr>
+	</c:if>
 </c:forEach>
 </table>
 
