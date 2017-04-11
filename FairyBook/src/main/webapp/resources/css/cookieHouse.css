@@ -2,13 +2,10 @@
 @CHARSET "UTF-8";
 
 /*과자집 그림이 나타나는 영역*/
-#avatar{
+#cookiehouse{
 	margin: 0px;
-	position: absolute;
-	width : 79%;
-	height: 59%;
+	height: 700px;
 	border: 1px solid black;
-	left: 20%;
 	background-image: url("../img/cookieHouse/background.png");
 	background-size: 100% 100%; 
 	background-repeat: no-repeat;
@@ -21,90 +18,13 @@ img{
 	height: auto;
 }
 
-/* 아바타의 얼굴이미지 */
-#face{
-	position: absolute;
-	left: 40%;
-	top: 20%;
-	z-index: 1;
-}
-
-/* 아바타의 헤어이미지 */
-#hair{
-	position: absolute;
-	left: 40%;
-	top: 20%;
-	z-index: 2;
-}
-
-/* 아바타의 눈이미지 */
-#eye{
-	position: absolute;
-	left: 40%;
-	top: 20%;
-	z-index: 3;
-}
-
-/* 아바타의 코이미지 */
-#nose{
-	position: absolute;
-	left: 40%;
-	top: 20%;
-	z-index: 4;
-}
-
-/* 아바타의 입이미지 */
-#mouth{
-	position: absolute;
-	left: 40%;
-	top: 20%;
-	z-index: 5;
-}
-
-/* 아바타의 귀이미지 */
-#ear{
-	position: absolute;
-	left: 40%;
-	top: 20%;
-	z-index: 5;
-}
-
-/* 아바타의 목이미지 */
-#neck{
-	position: absolute;
-	left: 50%;
-	top: 55%;
-	z-index: 6;
-}
-
-/* 아바타의 몸이미지 */
-#body{
-	position: absolute;
-	left: 50%;
-	top: 60%;
-	z-index: 7;
-}
-
 /*아바타의 신체부위 선택하는 영역*/
 #category{
+	bottom: 0%;
 	margin: 0px;
-	position: absolute;
-	width : 79%;
+	width : 100%;
 	height: 10%;
 	border: 1px solid black;
-	left: 20%;
-	top: 60%;
-}
-
-/* 해당 신체부위의 디테일 선택하는 영역 */
-#detail{
-	margin: 0px;
-	position: absolute;
-	width : 50%;
-	height: 30%;
-	border: 1px solid black;
-	left: 20%;
-	top: 70%;
 }
 
 /* 저장버튼이 있는 영역 */
@@ -146,7 +66,6 @@ img{
 	margin: 0px;
 	width : 12.5%;
 	height: 99%;
-
 }
 
 /* db에서 가져온 그림들 */

@@ -165,9 +165,5 @@ public class AvatarController {
 		}
 	}
 	
-	@RequestMapping(value = "storySlide", method = RequestMethod.GET)
-	public String storySlide() {
-		return "storySlide";
-	}
 	
 }
