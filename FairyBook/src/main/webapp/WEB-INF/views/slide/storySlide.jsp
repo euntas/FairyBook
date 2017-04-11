@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,8 +30,16 @@ img{
 </head>
 
 <body>
-  <div id="slideShowImages">
-    <img src="../resources/img/scene/scene01.jpg">
+	<div id="slideShowImages">
+	<c:forEach var="slide" items="${slideList}">
+		<c:if test="${slide<10}">
+			<img src="../resources/img/scene/scene0${slide}.jpg">
+		</c:if>
+		<c:if test="${slide>=10}">
+			<img src="../resources/img/scene/scene${slide}.jpg">
+		</c:if>
+	</c:forEach>
+<!--     <img src="../resources/img/scene/scene01.jpg">
     <img src="../resources/img/scene/scene04.jpg">
     <img src="../resources/img/scene/scene05.jpg">    
     <img src="../resources/img/scene/scene06.jpg">
@@ -47,7 +56,7 @@ img{
     <img src="../resources/img/scene/scene17.jpg">
     <img src="../resources/img/scene/scene18.jpg">
     <img src="../resources/img/scene/scene45.jpg">
-    <img src="../resources/img/scene/scene46.jpg">
+    <img src="../resources/img/scene/scene46.jpg"> -->
   </div>  
 </body>
 
