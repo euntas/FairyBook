@@ -153,6 +153,31 @@ body, html, .full {
 	margin: 0.2%;
 }
 
+/*
+아바타 내용이 들어가는 div 스타일 지정
+*/
+.myimage{
+	
+	position: fixed;
+	top: 63%;
+	right: 15%;
+	z-index: 98;
+	-webkit-transition: all 0.25s;
+              transition: all 0.25s;
+}
+
+/*
+실제 아바타 대사 부분
+*/
+.myimage .mytext{
+	position: absolute;
+	top:100px;
+	left:10px;
+	color:#FFF;
+	-webkit-transition: all 0.25s;
+              transition: all 0.25s;
+}
+
 <<<<<<< HEAD
 
 /* div.mycontainer {
