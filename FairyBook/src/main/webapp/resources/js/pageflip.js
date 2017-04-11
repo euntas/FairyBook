@@ -329,9 +329,35 @@ function writePreBtnForQuizDiv(){
 			$('#divForQuizBtn').html('');
 			// 퀴즈의 내용을 보인다.
 			writeQuizDiv();
+			// 아바타 말의 내용을 보인다.
+			writeAvatarDiv();
 		});
 		
     }, 1000);
+	
+}
+
+// 아바타 말 내용을 쓰는 함수
+function writeAvatarDiv(){
+	$.ajax({
+        url:'getAvatarText',
+        type:'POST',
+        data: {currentSceneNum: pageflip.options.current},
+        dataType: 'text',
+        success: function(avatarText){
+        	// 배경에 이미지 넣는다.
+        	var str = "<img src='./../resources/image/the-button-1161316_640.png'>";
+        	str += "<div class='mytext'><p>";
+        	// 디비에서 읽어온 아바타 대사를 삽입.
+        	str += avatarText;
+        	str += "</p></div>"
+        		
+        		$('#divForAvatar').html(str);        	
+        },
+        error: function(e){
+            alert(JSON.stringify(e));
+        }
+    });
 	
 }
 
@@ -359,6 +385,9 @@ function writeQuizDiv(){
 
 	// 선택지를 클릭하면 다음 페이지 번호를 디비에서 읽어 이동한다.
 	$("myselection").click(function(){
+		
+		// 아바타 말을 지운다.
+		$('#divForAvatar').html('');
 		
 		var selectNum = $(this).attr('selnum');
 		

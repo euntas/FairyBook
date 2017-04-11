@@ -94,6 +94,10 @@
 	<div id="divForQuiz" class="fixed">
 	</div>
 	
+	<!-- 아바타 내용 나오는 부분 -->
+	<div id="divForAvatar" class="myimage">
+	</div>
+	
 	<!-- 책 내용 부분 -->
 	<div class="page page-current" style="background: #209657 url('./../resources/img/scene/scene01.jpg') no-repeat center center; background-size: 100%;">
 	</div>
