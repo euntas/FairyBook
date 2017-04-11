@@ -389,6 +389,8 @@ function formcheck(){
 	var month = $('#cBirthMonth').val();
 	var date = $('#cBirthDate').val();
 	var address = $('#address').val();
+	var cpw = $('#password1').val();
+	var pw = $('#password2').val();
 	
 	if(emailCom=="선택"){
 		alert('이메일을 올바르게 입력해주세요.');
@@ -417,6 +419,10 @@ function formcheck(){
 	
 	if(address==""){
 		alert('주소를 입력해주세요.');
+		return false;
+	}
+	if(cpw==pw){
+		alert('아이용 비밀번호와 다르게 입력해주세요.');
 		return false;
 	}
 	return true;

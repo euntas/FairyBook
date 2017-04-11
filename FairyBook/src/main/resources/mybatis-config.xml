@@ -16,7 +16,8 @@
 		<typeAlias type="global.sesoc.fairybook.vo.Scene" alias="Scene" />
 		<typeAlias type="global.sesoc.fairybook.vo.StoryMaker" alias="StoryMaker" />
 		<typeAlias type="global.sesoc.fairybook.vo.Counselor" alias="Counselor" />
-		<typeAlias type="global.sesoc.fairybook.util.PoiForData" alias="PoiForData" />		
+		<typeAlias type="global.sesoc.fairybook.util.PoiForData" alias="PoiForData" />
+				
 	</typeAliases>
 	
 	<mappers>
