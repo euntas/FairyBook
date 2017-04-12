@@ -14,6 +14,7 @@ import global.sesoc.fairybook.dao.AvatarDAO;
  * 과자집 색칠을 관리하는 컨트롤러입니다
  */
 @Controller
+@RequestMapping(value="story")
 public class CookieController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(CookieController.class);

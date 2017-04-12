@@ -151,7 +151,7 @@ public class AnalysisController {
 		
 	}
 	
-	
+		
 	@RequestMapping(value="counselResult", method=RequestMethod.GET)
 	public String counselResult(){
 		

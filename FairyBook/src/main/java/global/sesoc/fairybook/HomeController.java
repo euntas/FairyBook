@@ -1,21 +1,15 @@
 package global.sesoc.fairybook;
 
-import java.io.FileOutputStream;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
-import java.util.UUID;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.commons.codec.binary.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Handles requests for the application home page.
@@ -107,3 +101,4 @@ public class HomeController {
 		return "util/snsTest2";
 	}
 }
+

@@ -54,7 +54,7 @@ public class StoryController {
 		// 처음 나오는 페이지 번호
 		int firstPageNum = 0;
 		
-		logger.debug("반아온 스토리 번호는 : {}" + storyNum);
+		logger.debug("받아온 스토리 번호는 : {}" + storyNum);
 		System.out.println("받아온 스토리 번호 : " + storyNum);
 		
 		// 디비에서 해당 동화의 기존 회차가 있는지 검색한다. 
@@ -291,6 +291,17 @@ public class StoryController {
 			updateSD.put("myAnswer", answerNum);
 			result=dao.updateSelectiondetail(updateSD);
 			return result;
+		}
+		
+		@ResponseBody
+		@RequestMapping(value="getAvatarText", method = RequestMethod.POST, produces="text/plain;charset=UTF-8")
+		public String getAvatarText(HttpSession session, int currentSceneNum, Model model){
+			int storyNum = (int) session.getAttribute("currentStoryNum");
+			Scene currentScene = dao.getScene(storyNum, currentSceneNum);
+			
+			String avatarText = currentScene.getFBExplain();
+			
+			return avatarText;
 		}
 	
 }

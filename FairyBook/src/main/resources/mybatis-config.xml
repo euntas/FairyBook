@@ -18,8 +18,12 @@
 		<typeAlias type="global.sesoc.fairybook.vo.Counselor" alias="Counselor" />
 		<typeAlias type="global.sesoc.fairybook.util.PoiForData" alias="PoiForData" />	
 		<typeAlias type="global.sesoc.fairybook.vo.MySelection" alias="MySelection" />	
+<<<<<<< HEAD
 		<typeAlias type="global.sesoc.fairybook.vo.SelectionDetail" alias="SelectionDetail" />
 		<typeAlias type="global.sesoc.fairybook.vo.OrderBook" alias="OrderBook" />
+=======
+		<typeAlias type="global.sesoc.fairybook.vo.SelectionDetail" alias="SelectionDetail" />
+>>>>>>> refs/remotes/origin/master
 	</typeAliases>
 	
 	<mappers>

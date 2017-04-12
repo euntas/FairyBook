@@ -1,3 +1,125 @@
+<<<<<<< HEAD
+/* 과자집 페이지 css */
+@CHARSET "UTF-8";
+
+/*과자집 그림이 나타나는 영역*/
+#cookiehouse{
+	margin: 0px;
+	height: 700px;
+	border: 1px solid black;
+	background-image: url("../img/cookieHouse/background.png");
+	background-size: 100% 100%; 
+	background-repeat: no-repeat;
+	background-color: rgba( 255, 255, 255, 0.8 );
+}
+
+/* 이미지 크기 자동 조정 */
+img{
+	max-width : 100%;
+	height: auto;
+}
+
+/*아바타의 신체부위 선택하는 영역*/
+#category{
+	bottom: 0%;
+	margin: 0px;
+	width : 100%;
+	height: 10%;
+	border: 1px solid black;
+}
+
+/* 저장버튼이 있는 영역 */
+#saveArea{
+	margin: 0px;
+	position: absolute;
+	right: 0.5%;
+	bottom: 0.5%;
+	width : 15%;
+	height: 15%;
+}
+	/* 저장 버튼 */
+	#savebtn{
+		width : 99%;
+		height: 99%;
+		display: none;
+	}
+
+/* 색 선택하는 영역 */
+#color{
+	margin: 0px;
+	position: absolute;
+	width : 29%;
+	height: 30%;
+	border: 1px solid black;
+	left: 70%;
+	top: 70%;
+}
+
+/* 색 버튼 클래스 */
+.color{
+	margin: 0px;
+	width : 33.3%;
+	height: 33.3%;
+}
+
+/* 대분류 버튼 클래스 */
+.category{
+	margin: 0px;
+	width : 12.5%;
+	height: 99%;
+}
+
+/* db에서 가져온 그림들 */
+.items{
+	margin: 0px;
+	width : 10%;
+	height: 10%;
+}
+
+/* 빨강버튼 */
+#red{
+	background-color: red;
+}
+
+/* 주황버튼 */
+#orange{
+	background-color: orange;
+}
+
+/* 노랑버튼 */
+#yellow{
+	background-color: yellow;
+}
+
+/* 초록버튼 */
+#green{
+	background-color: green;
+}
+
+/* 파랑버튼 */
+#blue{
+	background-color: blue;
+}
+
+/* 보라버튼 */
+#purple{
+	background-color: purple;
+}
+
+/* 흰색버튼 */
+#white{
+	background-color: white;
+}
+
+/* 회색버튼 */
+#gray{
+	background-color: gray;
+}
+
+/* 검정버튼 */
+#black{
+	background-color: black;
+=======
 /* 과자집 페이지 css */
 @CHARSET "UTF-8";
 
@@ -199,4 +321,5 @@ img{
 /* 검정버튼 */
 #black{
 	background-color: black;
+>>>>>>> refs/remotes/origin/master
 }

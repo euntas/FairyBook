@@ -34,7 +34,8 @@ public class SlideDAO {
 	
 	public ArrayList<Integer> getSlide(int selectionNum){
 		ArrayList<Integer> slideList = null;
-		SlideMapper mapper = sqlSession.getMapper(SlideMapper.class); 
+		SlideMapper mapper = sqlSession.getMapper(SlideMapper.class);
+		slideList = mapper.getSlide(selectionNum);
 		return slideList;
 	}
 }

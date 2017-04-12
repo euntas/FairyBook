@@ -23,9 +23,10 @@ function map(region) {
 			latlng : new daum.maps.LatLng(37.483780, 126.930109)
 		} ];
 		
-		console.log('맵1' + container);
+		
 		
 		break;
+		
 	case "경기인천":
 		var container = document.getElementById('map');
 		var options = {
@@ -47,6 +48,7 @@ function map(region) {
 
 		];
 		break;
+		
 	case "강원":
 		var container = document.getElementById('map');
 		var options = {
@@ -67,7 +69,7 @@ function map(region) {
 		var container = document.getElementById('map');
 		var options = {
 			center : new daum.maps.LatLng(36.694534, 127.601860),
-			level : 11
+			level : 12
 		};
 
 		var map = new daum.maps.Map(container, options);
@@ -455,6 +457,9 @@ function map2(country){
 				latlng : new daum.maps.LatLng(33.500680, 126.529804)
 		};
 		break;
+	default:
+		break;
+
 	}
 
 	var imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
@@ -477,3 +482,4 @@ function map2(country){
 		});
 	
 }
+
