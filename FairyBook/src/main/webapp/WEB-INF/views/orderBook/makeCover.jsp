@@ -73,25 +73,35 @@ background: #000;filter:alpha(opacity=10); opacity:0.1; -moz-opacity:0.1;
 		if (selectedImg.attr('sel') == 'bg') { //배경일때
 			$('#cover').css('background-image','url("'+selectedImg.attr('src')+'")');
 			$('#cover').css('background-size','100% 100%');
-		}else{ //제목, 캐릭터 일때
+		}else if(selectedImg.attr('sel') == 'tt'){ //제목
+			input += "<div class='selected ui-widget-content' style='display:inline-block;background-image: url("
+			input += '"'+selectedImg.attr('src')+'"';
+			input += ");width: 400px;height: 100px;border: 0px solid #c5c5c5;' onmouseover='javascript:editImg($(this))'></div>"; //onmouseover='javascript:editImg()'
+		}else{ //캐릭터 일때
 			input += "<div class='selected ui-widget-content' style='display:inline-block;background-image: url("
 			input += '"'+selectedImg.attr('src')+'"';
 			input += ");width: 200px;height: 200px;border: 0px solid #c5c5c5;' onmouseover='javascript:editImg($(this))'></div>"; //onmouseover='javascript:editImg()'
 		}
 		$('#cover').html(input);
 		$('.selected').css('background-color','transparent');
-		$('.selected').css('background-size','100% 100%');
+		$('.selected').css('background-size','contain');
+		$('.selected').css('background-repeat','no-repeat');
 		$('.selected').dblclick(deleteItem); //더블클릭하면 삭제
 	}
 	
 	function editImg(a){
 		a.resizable();
 		a.resizable({
-			//aspectRatio: true
-			containment: '.container'
+			aspectRatio: true,
+			ghost: true,
+			helper: "resizable-helper"
+			//autoHide: true
+			//containment: '.container'
 		});
+		a.resizable( "option", "aspectRatio", true );
+		a.resizable( "enable" );
 		a.draggable({
-			containment: '.container'
+			//containment: '.container'
 		}); //사이즈 조절, 드래그 가능
 	} 
 	
@@ -103,31 +113,50 @@ background: #000;filter:alpha(opacity=10); opacity:0.1; -moz-opacity:0.1;
 	}
 	
 	function capture() {
-		alert('dddd');
         html2canvas($(".container"), {
               onrendered: function(canvas) {
                 document.body.appendChild(canvas);
                 
                 $("#imgSrc").val(canvas.toDataURL("image/png")); //이미지 파일 만들어서 input에 넣기
+            	//표지 생성되면 책 주문하기 버튼 활성화
+                $('#makeOrder').removeAttr('disabled');
                 
-                $.ajax({
+               /*  $.ajax({
                     type:"post",
                     data : $("form").serialize(),
                     url:     "saveCover",
                     error: function(a, b, c){        
-                        alert("fail!!");
+                       // alert("fail!!");
                     },
                     success: function (data) {
                         try{
-                            
                         }catch(e){                
                             alert('server Error!!');
                         }
                     }
-                }); //ajax
+                }); //ajax */
               }
         }); //html2canvas
-    }     
+    }  
+	
+	function order(){
+		var form = $('#capturedForm');
+		 $.ajax({
+             type:"post",
+             data : $("form").serialize(),
+             url:     "saveCover",
+             error: function(a, b, c){        
+                // alert("fail!!");
+             },
+             success: function (data) {
+                 try{
+                 }catch(e){                
+                     alert('server Error!!');
+                 }
+             }
+         }); //ajax
+         form.submit();
+	}
 </script>
 
 <title>Make Cover</title>
@@ -156,11 +185,14 @@ background: #000;filter:alpha(opacity=10); opacity:0.1; -moz-opacity:0.1;
 <br>
 
 
-
 <!--표지 완성 확인 버튼  -->
 <input type="button" value="표지 만들기" id="makeCover" onclick="capture();">
-<form id="capturedForm" action="imageCreate" method="post">
+<input type="button" value="책 주문하기" id="makeOrder" onclick="order();" disabled="disabled">
+
+<!-- 생성된 표지 -->
+<form id="capturedForm" action="order" method="post">
 <input type="hidden" name="imgSrc" id="imgSrc" />
+<input type="hidden" name="selectionnum" id="selectionnum" value="${selectionnum}"/>
 </form>
 </body>
 </html>
