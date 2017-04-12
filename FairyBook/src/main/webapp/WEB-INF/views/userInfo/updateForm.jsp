@@ -6,7 +6,7 @@
 <html>
 
 
-<title>회원가입</title>
+<title>회원정보수정</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -26,12 +26,9 @@
 	});
 	$('#counsel').on('click',function(){
 		
-			location.href='counsel';
+			location.href='../analysis/counsel';
 	});
-	$('#counselResult').on('click',function(){
-		
-		location.href='counselResult';
-});
+	
 	});
 </script>
 <script>
@@ -423,9 +420,9 @@ function formcheck(){
 
 <div id="under">
 	<form enctype="multipart/form-data" action="update" method="post"
-		onsubmit="return formcheck()">
-
-		<table>
+		onsubmit="return formcheck()" class="form-inline">
+<br>
+		<table style="margin: auto;">
 			<tr>
 				<td class="firstRow">ID</td>
 				<td class="secondRow">
@@ -436,7 +433,8 @@ function formcheck(){
 				<td class="firstRow">닉네임</td>
 				<td class="secondRow"><input type="text" id="cnickName"
 					name="cnickName" style="width: 220px;" 
-					value="${update.cnickName }" onkeyup="formSubmit2()">
+					value="${update.cnickName }" onkeyup="formSubmit2()"
+					class="form-control">
 					<div id="checkedcNick"></div></td>
 			</tr>
 			<tr>
@@ -445,14 +443,16 @@ function formcheck(){
 				<input type="password" id="password1"
 				name="password1" value="${update.password1}"
 					style="width: 220px;"
-					onkeyup="formSubmit4()">
+					onkeyup="formSubmit4()"
+					class="form-control">
 				<div id="checkedcPw1"></div></td>
 			</tr>
 			<tr>
 				<td class="secondRow"><input type="password"
 					id="password1check" name="password1check" 
 					value="${update.password1}" style="width: 220px;"
-					onkeyup="formSubmit5()">
+					onkeyup="formSubmit5()"
+					class="form-control">
 				<div id="checkedcPw2"></div></td>
 			</tr>
 			<tr>
@@ -460,7 +460,8 @@ function formcheck(){
 				<td class="secondRow"><input type="password" id="password2"
 					name="password2" value="${update.password2 }"
 					style="width: 220px;"
-					onkeyup="formSubmit6()">
+					onkeyup="formSubmit6()"
+					class="form-control">
 				<div id="checkedpPw1"></div></td>
 				
 			</tr>
@@ -468,7 +469,8 @@ function formcheck(){
 				<td class="secondRow"><input type="password"
 					id="password2check" name="password2check"
 					value="${update.password2 }" style="width: 220px;"
-					onkeyup="formSubmit7()">
+					onkeyup="formSubmit7()"
+					class="form-control">
 				<div id="checkedpPw2"></div></td>
 				
 			</tr>
@@ -477,7 +479,8 @@ function formcheck(){
 				<td class="secondRow"><input type="text" id="cName"
 					name="cName" 
 					value="${update.cName }"
-					style="width: 220px;"></td>
+					style="width: 220px;"
+					class="form-control"></td>
 				
 			</tr>
 			<tr>
@@ -494,14 +497,16 @@ function formcheck(){
 				<td class="firstRow">보호자 이름</td>
 				<td class="secondRow"><input type="text" id="pName"
 					name="pName" 
-					value="${update.pName}" style="width: 220px;"></td>
+					value="${update.pName}" style="width: 220px;"
+					class="form-control"></td>
 			
 			</tr>
 			<tr>
 				<td class="firstRow">보호자 닉네임</td>
 				<td class="secondRow"><input type="text" id="pnickName"
 					name="pnickName" style="width: 220px;" 
-					value="${update.pnickName}" onkeyup="formSubmit3()">
+					value="${update.pnickName}" onkeyup="formSubmit3()"
+					class="form-control">
 					<div id="checkedpNick"></div></td>
 				
 			</tr>
@@ -510,13 +515,16 @@ function formcheck(){
 				<td class="secondRow"><input type="text" id="email"
 					name="email" style="width: 150px;"
 					
-					onkeyup="formSubmit8()">&nbsp;@&nbsp;
+					onkeyup="formSubmit8()"
+					class="form-control">&nbsp;@&nbsp;
 				<input type="text" id="email2"
-					name="email2" style="width: 150px;" 
+					name="email2" style="width: 120px;" 
 					
 					readonly="readonly"
-					onkeyup="formSubmit10()">&nbsp;
-				<select id="emailCom" name="emailCom" onchange="formSubmit9()">
+					onkeyup="formSubmit10()"
+					class="form-control">&nbsp;
+				<select id="emailCom" name="emailCom" onchange="formSubmit9()"
+				class="form-control" style="width: 140px;">
 				<option selected="selected">선택</option>
 						<option>naver.com</option>
 						<option>gmail.com</option>
@@ -532,7 +540,8 @@ function formcheck(){
 			<tr>
 				<td class="firstRow">전화번호</td>
 				<td class="secondRow"><select id="phone1" name="phone1"
-					style="width: 70px;">
+					style="width: 80px;"
+					class="form-control">
 						<option selected="selected">선택</option>
 						<option>010</option>
 						<option>011</option>
@@ -540,14 +549,17 @@ function formcheck(){
 						<option>017</option>
 						<option>018</option>
 						<option>019</option>
-				</select>-<input type="text" id="phone2" name="phone2" style="width: 75px;">
-					-<input type="text" id="phone3" name="phone3" style="width: 75px;"></td>
+				</select>&nbsp;&nbsp;-&nbsp;&nbsp;<input type="text" id="phone2" name="phone2" style="width: 75px;"
+				class="form-control">
+					&nbsp;&nbsp;-&nbsp;&nbsp;<input type="text" id="phone3" name="phone3" style="width: 75px;"
+					class="form-control"></td>
 				
 			</tr>
 			<tr>
 				<td class="firstRow">주소</td>
 				<td class="secondRow"><input type="text" id="address"
-					name="address" value="${update.address}" style="width: 300px;"></td>
+					name="address" value="${update.address}" style="width: 450px;"
+					class="form-control"></td>
 				
 			</tr>
 			<tr>
@@ -556,17 +568,22 @@ function formcheck(){
 					id="upload" multiple="multiple"></td>
 				
 			</tr>
-			<tr>
-				<td colspan="3" style="text-align: center;">
-				<input type="submit" value="수정하기">&nbsp; 
-				<input type="button" value="삭제하기" id="userDelete">
-				<input type="button" value="상담하기" id="counsel">&nbsp; 
-				<input type="button" value="상담결과 확인" id="counselResult">&nbsp; 
-					<input type="button" value="취소"
-					onclick="location.href='/fairybook/'"></td>
-			</tr>
-
+			
 		</table>
+		<br>
+		<div style="text-align: center;">
+				
+				<input type="submit" value="수정하기"
+				class="btn btn-info">&nbsp; 
+				<input type="button" value="삭제하기" id="userDelete"
+				class="btn btn-info">&nbsp;
+				<input type="button" value="상담하기" id="counsel"
+				class="btn btn-info">&nbsp;  
+					<input type="button" value="취소"
+					onclick="location.href='/fairybook/'" class="btn btn-info">
+			</div>
+		
+		
 	</form>
 </div>
 </body>

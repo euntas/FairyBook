@@ -30,10 +30,10 @@
 </nav>
 
 <div id="under">
-<p>[ 회원정보 ]</p>
-<p>
+<h1  style="text-align: center;">[ 회원정보 ]</h1>
+<br>
 	
-		<table>
+		<table style="margin:auto; border: 1px solid black; width: 40%; height:350px;">
 			<tr>
 				<td class="firstRow">ID</td>
 				<td class="secondRow">
@@ -95,19 +95,19 @@
 			</tr>
 			</c:if>
 
-			
-			<tr>
-				<td colspan="2" style="text-align: center;">
+			</table>
+			<br>
+				<div style="text-align: center;">
 				<c:if test="${userType == 'parent'}">
-				<input type="button" value="수정하기" onclick="location.href='update'"> 
+				<input type="button" value="수정하기" onclick="location.href='update'" class="btn btn-info"> 
 				
 				</c:if>
 					<input type="button" value="메인으로"
-					onclick="location.href='/fairybook/'"></td>
-			</tr>
+					onclick="location.href='/fairybook/'" class="btn btn-info"></div>
+			
 
-		</table>
-</p>
+		
+
 </div>
 </body>
 </html>

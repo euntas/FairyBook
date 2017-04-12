@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="global.sesoc.fairybook.mapper.OrderBookMapper">
+ 
+<insert id="saveBookCover" parameterType="OrderBook">
+	insert into 
+		orderbook
+	values
+	(
+		#{selectionnum}
+		,sysdate
+		,#{bookcover}
+		,'주문'
+	)
+</insert>
+
+<select id="getOrder" parameterType="int" resultType="OrderBook">
+	select 
+		* 
+	from
+		orderbook
+	where
+		selectionnum = #{selectionnum} 
+</select>
+
+</mapper>

@@ -19,6 +19,7 @@
 		<typeAlias type="global.sesoc.fairybook.util.PoiForData" alias="PoiForData" />	
 		<typeAlias type="global.sesoc.fairybook.vo.MySelection" alias="MySelection" />	
 		<typeAlias type="global.sesoc.fairybook.vo.SelectionDetail" alias="SelectionDetail" />
+		<typeAlias type="global.sesoc.fairybook.vo.OrderBook" alias="OrderBook" />
 	</typeAliases>
 	
 	<mappers>
@@ -31,6 +32,7 @@
 		<mapper resource="mapper/boardMapper.xml"/>
 		<mapper resource="mapper/replyMapper.xml"/>
 		<mapper resource="mapper/ExcelMapper.xml"/>
+		<mapper resource="mapper/orderBookMapper.xml"/>
 	</mappers>
 	
 	

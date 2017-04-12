@@ -2,7 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-	
+
 	<!-- db.properties 읽어오기 -->
 	<bean
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -34,13 +34,29 @@
 
 	<!-- sqlSession -->
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg index="0" name="sqlSessionFactory" ref="sqlSessionFactory" />
+		<constructor-arg index="0" name="sqlSessionFactory"
+			ref="sqlSessionFactory" />
 	</bean>
 
 	<!-- file upload를 위한 bean 설정 -->
 	<bean name="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="10485760"></property>
-	</bean>	
-		
+	</bean>
+
+	<!-- 메일 발신을 위한 bean 설정 -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="587" />
+		<property name="username" value="scit32c1@gmail.com" />
+		<property name="password" value="13151719" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+			</props>
+		</property>
+	</bean>
+
+
+
 </beans>

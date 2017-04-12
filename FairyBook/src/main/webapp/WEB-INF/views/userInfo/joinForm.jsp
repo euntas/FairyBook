@@ -389,6 +389,8 @@ function formcheck(){
 	var month = $('#cBirthMonth').val();
 	var date = $('#cBirthDate').val();
 	var address = $('#address').val();
+	var cpw = $('#password1').val();
+	var pw = $('#password2').val();
 	
 	if(emailCom=="선택"){
 		alert('이메일을 올바르게 입력해주세요.');
@@ -419,6 +421,10 @@ function formcheck(){
 		alert('주소를 입력해주세요.');
 		return false;
 	}
+	if(cpw==pw){
+		alert('아이용 비밀번호와 다르게 입력해주세요.');
+		return false;
+	}
 	return true;
 }
 </script>
@@ -436,64 +442,64 @@ function formcheck(){
 
 <div id="under">
 	<form enctype="multipart/form-data" action="join" method="post"
-		onsubmit="return formcheck()">
-
-		<table>
+		onsubmit="return formcheck()" class="form-inline">
+<br>
+		<table style="margin: auto; width:auto;" cellpadding="20px">
 			<tr>
 				<td class="firstRow">ID</td>
 				<td class="secondRow"><input type="text" id="id" name="id"
-					style="width: 220px;" onkeyup="formSubmit1()">
+					style="width: 220px;" onkeyup="formSubmit1()" class="form-control">
 					<div id="checkedId"></div></td>
 			</tr>
 			<tr>
 				<td class="firstRow">닉네임</td>
 				<td class="secondRow"><input type="text" id="cnickName"
-					name="cnickName" style="width: 220px;" onkeyup="formSubmit2()">
+					name="cnickName" style="width: 220px;" onkeyup="formSubmit2()" class="form-control">
 					<div id="checkedcNick"></div></td>
 			</tr>
 			<tr>
 				<td rowspan="2" class="firstRow">아이용 비밀번호</td>
 				<td class="secondRow"><input type="password" id="password1"
 					name="password1" style="width: 220px;"
-					onkeyup="formSubmit4()">
+					onkeyup="formSubmit4()" class="form-control">
 				<div id="checkedcPw1"></div></td>
 			</tr>
 			<tr>
 				<td class="secondRow"><input type="password"
 					id="password1check" name="password1check" style="width: 220px;"
-					onkeyup="formSubmit5()">
+					onkeyup="formSubmit5()" class="form-control">
 				<div id="checkedcPw2"></div></td>
 			</tr>
 			<tr>
 				<td rowspan="2" class="firstRow">보호자용 비밀번호</td>
 				<td class="secondRow"><input type="password" id="password2"
 					name="password2" style="width: 220px;"
-					onkeyup="formSubmit6()">
+					onkeyup="formSubmit6()" class="form-control">
 				<div id="checkedpPw1"></div></td>
 				
 			</tr>
 			<tr>
 				<td class="secondRow"><input type="password"
 					id="password2check" name="password2check" style="width: 220px;"
-					onkeyup="formSubmit7()">
+					onkeyup="formSubmit7()" class="form-control">
 				<div id="checkedpPw2"></div></td>
 				
 			</tr>
 			<tr>
 				<td class="firstRow">아이 이름</td>
 				<td class="secondRow"><input type="text" id="cName"
-					name="cName" style="width: 220px;"></td>
+					name="cName" style="width: 220px;" class="form-control"></td>
 				
 			</tr>
 			<tr>
 				<td class="firstRow">아이 생일</td>
 				<td class="secondRow"><select id="cBirthYear" name="cBirthYear">
-						<option selected="selected">년</option>
+						<option selected="selected" class="form-control">년</option>
 						<c:forEach var="i" begin="2005" end="2017">
 							<option>${i}</option>
 						</c:forEach>
 				</select>년 &nbsp; <select id="cBirthMonth" name="cBirthMonth">
-						<option selected="selected">월</option>
+						<option selected="selected" class="form-control">월</option>
 						<c:forEach var="i" begin="1" end="12">
 							<c:if test="${i<10 }">
 								<option>0${i}</option>
@@ -503,7 +509,7 @@ function formcheck(){
 							</c:if>
 						</c:forEach>
 				</select>월 &nbsp; <select id="cBirthDate" name="cBirthDate">
-						<option selected="selected">일</option>
+						<option selected="selected" class="form-control">일</option>
 						<c:forEach var="i" begin="1" end="31">
 							<c:if test="${i<10 }">
 								<option>0${i}</option>
@@ -518,25 +524,27 @@ function formcheck(){
 			<tr>
 				<td class="firstRow">보호자 이름</td>
 				<td class="secondRow"><input type="text" id="pName"
-					name="pName" style="width: 220px;"></td>
+					name="pName" style="width: 220px;" class="form-control"></td>
 			
 			</tr>
 			<tr>
 				<td class="firstRow">보호자 닉네임</td>
 				<td class="secondRow"><input type="text" id="pnickName"
-					name="pnickName" style="width: 220px;" onkeyup="formSubmit3()">
+					name="pnickName" style="width: 220px;" onkeyup="formSubmit3()" class="form-control">
 					<div id="checkedpNick"></div></td>
 				
 			</tr>
 			<tr>
 				<td class="firstRow">이메일</td>
-				<td class="secondRow"><input type="text" id="email"
+				<td class="secondRow" align="left"><input type="text" id="email"
 					name="email" style="width: 150px;"
-					onkeyup="formSubmit8()">&nbsp;@&nbsp;
+					onkeyup="formSubmit8()" class="form-control">&nbsp;@&nbsp;
 				<input type="text" id="email2"
-					name="email2" style="width: 150px;" readonly="readonly"
-					onkeyup="formSubmit10()">&nbsp;
-				<select id="emailCom" name="emailCom" onchange="formSubmit9()">
+					name="email2" style="width: 120px;" readonly="readonly"
+					onkeyup="formSubmit10()" 
+					class="form-control">&nbsp;
+				<select id="emailCom" name="emailCom" onchange="formSubmit9()" style="width: 140px;"
+				class="form-control">
 				<option selected="selected">선택</option>
 						<option>naver.com</option>
 						<option>gmail.com</option>
@@ -550,9 +558,10 @@ function formcheck(){
 			
 			</tr>
 			<tr>
+				
 				<td class="firstRow">전화번호</td>
 				<td class="secondRow"><select id="phone1" name="phone1"
-					style="width: 70px;">
+					style="width: 80px;" class="form-control">
 						<option selected="selected">선택</option>
 						<option>010</option>
 						<option>011</option>
@@ -560,14 +569,14 @@ function formcheck(){
 						<option>017</option>
 						<option>018</option>
 						<option>019</option>
-				</select>-<input type="text" id="phone2" name="phone2" style="width: 75px;">
-					-<input type="text" id="phone3" name="phone3" style="width: 75px;"></td>
+				</select>&nbsp;&nbsp;-&nbsp;&nbsp;<input type="text" id="phone2" name="phone2" style="width: 75px;" class="form-control">
+					&nbsp;&nbsp;-&nbsp;&nbsp;<input type="text" id="phone3" name="phone3" style="width: 75px;" class="form-control"></td>
 				
 			</tr>
 			<tr>
 				<td class="firstRow">주소</td>
 				<td class="secondRow"><input type="text" id="address"
-					name="address" style="width: 300px;"></td>
+					name="address" style="width: 450px;" class="form-control"></td>
 				
 			</tr>
 			<tr>
@@ -576,14 +585,16 @@ function formcheck(){
 					id="upload" multiple="multiple"></td>
 				
 			</tr>
-			<tr>
-				<td colspan="3" style="text-align: center;"><input
-					type="submit" value="가입하기"> 
-					<input type="button" value="취소"
-					onclick="location.href='/fairybook/'"></td>
-			</tr>
+			
 
 		</table>
+		<br>
+		<div style="text-align: center;">
+				<input
+					type="submit" value="가입하기" class="btn btn-info"> 
+					&nbsp;<input type="button" value="취소"
+					onclick="location.href='/fairybook/'" class="btn btn-info">
+			</div>
 	</form>
 </div>
 </body>
