@@ -138,4 +138,13 @@ public class StoryDAO {
 		
 		return result;
 	}
+	
+	public int getPageNum(int sceneNum){
+		StoryMapper mapper = sqlSession.getMapper(StoryMapper.class);
+		int pageNum = -1;
+		
+		pageNum = mapper.getPageNum(sceneNum);
+		
+		return pageNum;
+	}
 }

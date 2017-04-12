@@ -286,6 +286,14 @@ create table counselor(
 	email varchar2(50) not null
 );
 
+-- 씬 번호와 실제 페이지 번호 확인을 위한 테이블(페이지번호는 flipbook 안의 페이지 번호를 뜻함. 0번부터 시작됨)
+create table pagelist(
+	-- 씬 번호
+	scenenum number references scene,
+	-- 페이지 번호
+	pagenum number
+);
+
 
 create sequence seq_counselor start with 1 increment by 1;
 
