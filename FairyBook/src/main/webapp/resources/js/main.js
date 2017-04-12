@@ -19,6 +19,10 @@ $(function(){
 		if(confirm('로그아웃 하시겠습니까?'))
 			location.href='../id/logout';
 	});
+	//update버튼 이벤트
+	$('#update').on('click',function(){
+		location.href='../id/userInfo';
+	});
 	//banner클릭시 home으로 이동
 	$('#banner').on('click',function(){
 		location.href='../../fairybook/';
