@@ -49,6 +49,12 @@ public class OrderBookController {
 	private static final Logger logger = LoggerFactory.getLogger(OrderBookController.class);
 	private final String uploadPath = "/FairyBook/bookCover"; //파일 업로드 경로
 	
+	/**
+	 * 책 주문 페이지로 이동
+	 * @param selectionnum
+	 * @param model
+	 * @return order.jsp
+	 */
 	@RequestMapping(value="order", method=RequestMethod.POST)
 	public String order(
 			int selectionnum, Model model
@@ -58,10 +64,19 @@ public class OrderBookController {
 		//제목
 		String title = dao.getStoryTitle(selectionnum);
 		//db에서 표지와 스토리 및 개인정보 불러오기
-		OrderBook ob = dao.getOrder(selectionnum);
-		logger.info("orderbook: {}", ob);
+		OrderBook ob = dao.existCover(selectionnum);
+		int ordernum = 0;
+		logger.info("order???ㅠㅠㅠ orderbook: {}", ob);
+		if (ob == null) {
+			ordernum = dao.setOrdernum();
+			logger.info("오더번호:{}",ordernum);
+			OrderBook newob = new OrderBook(ordernum, selectionnum, "ryan", "default", "default", "default", 0);
+			logger.info("order neworderbook: {}", newob);
+			dao.saveOrder(newob);
+			ob = newob;
+		}
+		logger.info("order orderbook: {}", ob);
 		
-		model.addAttribute("selectionnum", selectionnum);
 		model.addAttribute("title",title);
 		model.addAttribute("order", ob);
 		return "orderBook/order";
@@ -75,10 +90,10 @@ public class OrderBookController {
 	 * @return makeCover JSP
 	 */
 	@RequestMapping(value="makeCover", method=RequestMethod.GET)
-	public String makeCover(int selectionnum, Model model
+	public String makeCover(int ordernum, Model model
 			//,@SessionAttribute("loginUser") StoryMaker maker
 			){
-		model.addAttribute("selectionnum", selectionnum);
+		model.addAttribute("ordernum", ordernum);
 		return "orderBook/makeCover";
 	}
 	
@@ -98,14 +113,14 @@ public class OrderBookController {
 			) throws IOException{
 		String coverPath="";
 		String binaryData = request.getParameter("imgSrc");
-		int selectionnum = Integer.parseInt(request.getParameter("selectionnum"));
+		int ordernum = Integer.parseInt(request.getParameter("ordernum"));
 		
 		//db에 표지 저장 - 이미 저장된 파일이 있으면 update
         //이미 저장된 파일있어?
-        OrderBook ob = dao.getOrder(selectionnum);
+        OrderBook ob = dao.getOrder(ordernum);
         logger.info("savecover ob:{}",ob);
         if (ob != null) { //저장된 표지 있으면 삭제하고 새로 저장
-			dao.deleteBookCover(selectionnum); //db에서 삭제
+			dao.deleteBookCover(ordernum); //db에서 삭제
 			FileService.deleteFile(uploadPath+"/"+ob.getBookcover()); //파일 삭제
 		}
 		
@@ -139,24 +154,29 @@ public class OrderBookController {
             return mav;
         }finally{
 	        //OrderBook b = new OrderBook(selectionnum, maker.getId(), "", coverPath, "");
-	        OrderBook b = new OrderBook(selectionnum, "ryan", "", coverPath, "");
-	        int result = dao.saveBookCover(b);
+	        OrderBook b = new OrderBook(0,ordernum, "ryan", "", coverPath, "표지",0);
+	        int result = dao.updateOrder(b);
         }
 
         return mav;
 	}
 	
-	
+	/**
+	 * order.jsp의 책표지 불러오기
+	 * @param response
+	 * @param ordernum
+	 * @return
+	 * @throws IOException
+	 */
 	@RequestMapping(value="getBookCover")
-	public String getBookCover(HttpServletResponse response, int selectionnum) throws IOException{
+	public String getBookCover(HttpServletResponse response, int ordernum) throws IOException{
 		//db에서 표지와 스토리 및 개인정보 불러오기
-		logger.info("selectionnum:{}",selectionnum);
-		OrderBook ob = dao.getOrder(selectionnum);
-		while (ob == null) {
-			ob = dao.getOrder(selectionnum);
+		logger.info("getcover ordernum:{}",ordernum);
+		OrderBook ob = dao.getOrder(ordernum);
+		logger.info("getcover orderbook: {}", ob);
+		if (ob.getBookcover().equals("default")) {
+			return null;
 		}
-		logger.info("orderbook: {}", ob);
-		
 		//책 표지 이미지 가져오기
 		//원래의 파일명을 보여줄 준비. 
 		response.setHeader("Content-Disposition", "attachment;filename="
@@ -170,5 +190,12 @@ public class OrderBookController {
 		in.close();
 		out.close();
 		return null;
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value="updateOrder",method=RequestMethod.POST)
+	public void updateOrder(int ordernum, int cost, int count, int currentstate){
+		
 	}
 }

@@ -194,7 +194,7 @@ background: #000;filter:alpha(opacity=10); opacity:0.1; -moz-opacity:0.1;
 <!-- 생성된 표지 -->
 <form id="capturedForm" action="order" method="post">
 <input type="hidden" name="imgSrc" id="imgSrc" />
-<input type="hidden" name="selectionnum" id="selectionnum" value="${selectionnum}"/>
+<input type="hidden" name="ordernum" id="ordernum" value="${ordernum}"/>
 </form>
 </body>
 </html>

@@ -5,21 +5,38 @@
 
 <mapper namespace="global.sesoc.fairybook.mapper.OrderBookMapper">
  
-<insert id="saveBookCover" parameterType="OrderBook">
+<insert id="saveOrder" parameterType="OrderBook">
 	insert into 
 		orderbook
 	values
 	(
-		#{selectionnum}
+		#{ordernum}
+		,#{selectionnum}
 		,sysdate
 		,#{bookcover}
-		,'주문'
+		,#{currentstate}
+		,#{price}
 	)
 </insert>
 
-<select id="getOrder" parameterType="int" resultType="OrderBook">
+<select id="getOrdernum" resultType="int">
+	select
+		seq_orderbook.currval
+	from
+		dual
+</select>
+
+<select id="setOrdernum" resultType="int">
+	select
+		seq_orderbook.nextval
+	from
+		dual
+</select>
+
+<select id="existCover" parameterType="int" resultType="OrderBook">
 	select 
-		o.selectionnum as selectionnum
+		o.ordernum as ordernum
+		,o.selectionnum as selectionnum
 		,m.id as id
 		,o.orderdate as orderdate
 		,o.bookcover as bookcover
@@ -30,13 +47,31 @@
 		o.selectionnum = m.selectionnum
 	and
 		o.selectionnum = #{selectionnum} 
+	and 
+		o.currentstate not in('장바구니','주문')
+</select>
+
+<select id="getOrder" parameterType="int" resultType="OrderBook">
+	select 
+		o.ordernum as ordernum
+		,o.selectionnum as selectionnum
+		,m.id as id
+		,o.orderdate as orderdate
+		,o.bookcover as bookcover
+		,o.currentstate as currentstate
+	from
+		orderbook o, myselection m
+	where
+		o.selectionnum = m.selectionnum
+	and
+		o.ordernum = #{ordernum} 
 </select>
 
 <delete id="deleteBookCover" parameterType="int">
 	delete from
 		orderbook
 	where
-		selectionnum = #{selectionnum}
+		ordernum = #{ordernum}
 </delete>
 
 <select id="getStoryTitle" parameterType="int" resultType="string">
@@ -54,5 +89,17 @@
 				selectionnum = #{selectionnum}
 			)
 </select>
+
+<update id="updateOrder" parameterType="OrderBook">
+	update
+		orderbook
+	set
+		orderdate=sysdate
+		,bookcover=#{bookcover}
+		,currentstate=#{currentstate}
+		,price=#{price}
+	where
+		ordernum=#{ordernum}
+</update>
 
 </mapper>
