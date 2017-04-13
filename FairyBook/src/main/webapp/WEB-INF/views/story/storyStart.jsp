@@ -22,7 +22,7 @@
 <script>
 		$(document).ready(function(){
 			// 가장 처음 씬과 문제를 가져온다.
-			var sceneNum = pageflip.options.current;
+			var pageNum = pageflip.options.current;
 			var myStoryNum = ${currentStoryNum};
 			
 			// pageflip.js 페이지에 있는 myStoryNum 변수를 초기화해준다.
@@ -31,9 +31,9 @@
 			//기존 진행 중 씬이 있을 경우
 			if( ${firstPageNum != 0}){
 				alert('기존 진행중 씬이 있는 경우');
-				sceneNum = ${firstPageNum};
+				pageNum = ${firstPageNum};
 				
-				// 다음 씬 번호를 이용해 실제 다음 페이지 번호를 읽어온다.
+				/* // 다음 씬 번호를 이용해 실제 다음 페이지 번호를 읽어온다.
 	        	$.ajax({
     		        url:'getPageNum',
     		        type:'GET',
@@ -47,33 +47,35 @@
     		        error: function(e){
     		            alert('start에서 페이지 번호 읽어오기 실패' + JSON.stringify(e));
     		        }
-    		    });
+    		    }); */
+    		    
+    		    pageflip.flip(pageNum);
 				
 			}
 			else{
 				alert('기존 진행중 씬이 없는 경우');				
-				init(${currentStoryNum}, sceneNum);
+				init(${currentStoryNum}, pageNum);
 			}
 		});
 		
-		function init(storyNo, sceneNo){
+		function init(storyNo, pageNo){
 		    $.ajax({
 		        url:'sceneLoading',
 		        type:'GET',
-		        data: {storyNum: storyNo, sceneNum: sceneNo},
+		        data: {storyNum: storyNo, pageNum: pageNo},
 		        dataType:'json',
 		        success: function(scene){
 		        	currentScene = scene;
 					//alert('씬번호: ' + currentScene.sceneNum);
 					
 					// 첫번째 씬 일 때
-					if(currentScene.sceneNum == 0){
+					if(pageNo == 0){
 						//selectiondetail 테스트용
 					// selectionDetail에 첫번째 페이지를 인서트해주기.
 						 $.ajax({
 						        url:'saveSD',
 						        type:'GET',
-						        data: {sceneNum: pageflip.options.current},
+						        data: {pageNum: pageflip.options.current},
 						        dataType:'json',
 						        success: function(){
 						        	alert('첫번째 씬 saveDetail에 저장 완료');

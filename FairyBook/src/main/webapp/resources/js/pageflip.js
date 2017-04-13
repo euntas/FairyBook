@@ -220,7 +220,7 @@ RocketPageFlip.prototype.flip = function(page) {
 	 $.ajax({
 	        url:'saveSD',
 	        type:'GET',
-	        data: {sceneNum: pageflip.options.current},
+	        data: {pageNum: pageflip.options.current},
 	        dataType:'json',
 	        success: function(){
 	        	alert("플립 성공 들어옴");
@@ -288,7 +288,7 @@ function quizLoading(){
         url:'quizLoading',
         type:'GET',
         dataType:'json',
-        data: {storyNum: myStoryNum, sceneNum: pageflip.options.current},
+        data: {storyNum: myStoryNum, pageNum: pageflip.options.current},
         success: function(quiz){
         	
         	
@@ -361,7 +361,7 @@ function writeAvatarDiv(){
 	$.ajax({
         url:'getAvatarText',
         type:'POST',
-        data: {currentSceneNum: pageflip.options.current},
+        data: {currentPageNum: pageflip.options.current},
         dataType: 'text',
         success: function(avatarText){
         	// 배경에 이미지 넣는다.
@@ -413,7 +413,7 @@ function writeQuizDiv(){
 		$.ajax({
 	        url:'getNextSceneNum',
 	        type:'GET',
-	        data: {currentSceneNum: pageflip.options.current, answerNum: $(this).attr('selnum')},
+	        data: {currentPageNum: pageflip.options.current, answerNum: $(this).attr('selnum')},
 	        dataType: 'json',
 	        success: function(nextSceneNum){
 	        	// 지금 씬이 마지막 페이지가 아닐 때.
@@ -422,7 +422,7 @@ function writeQuizDiv(){
 		        	$.ajax({
 		    	        url:'updateSelectiondetail',
 		    	        type:'GET',
-		    	        data: {sceneNum: pageflip.options.current, answerNum: selectNum},
+		    	        data: {pageNum: pageflip.options.current, answerNum: selectNum},
 		    	        dataType: 'json',
 		    	        success: function(){
 		    	        	alert('selectiondetail 업데이트--');
