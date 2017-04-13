@@ -151,7 +151,7 @@ public class IDController {
 			return "joinForm";
 		}
 		
-		return "redirect:userInfo/joinComplete";
+		return "redirect:joinComplete";
 		
 	}
 	
@@ -278,7 +278,7 @@ public class IDController {
 			return "userInfo/userInfo";
 		}
 		
-		return "redirect:userInfo/deleteComplete";
+		return "redirect:deleteComplete";
 	}
 	
 	/**
