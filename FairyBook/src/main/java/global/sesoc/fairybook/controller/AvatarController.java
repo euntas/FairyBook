@@ -23,6 +23,7 @@ import global.sesoc.fairybook.vo.FBResource;
  * 아바타를 관리하는 컨트롤러입니다
  */
 @Controller
+@RequestMapping(value="objectMaker")
 public class AvatarController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(AvatarController.class);
@@ -35,7 +36,7 @@ public class AvatarController {
 	 */
 	@RequestMapping(value = "avatar", method = RequestMethod.GET)
 	public String avatar(Locale locale, Model model) {
-		return "objectmaker/avatar";
+		return "objectMaker/avatar";
 	}
 	
 	/**

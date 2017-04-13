@@ -23,6 +23,7 @@ import global.sesoc.fairybook.vo.House;
  * 집을 관리하는 컨트롤러입니다
  */
 @Controller
+@RequestMapping(value="objectMaker")
 public class HouseController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HouseController.class);
@@ -35,7 +36,7 @@ public class HouseController {
 	 */
 	@RequestMapping(value = "house", method = RequestMethod.GET)
 	public String house() {
-		return "objectmaker/house";
+		return "objectMaker/house";
 	}
 	
 	/**

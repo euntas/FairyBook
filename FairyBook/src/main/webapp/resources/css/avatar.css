@@ -4,11 +4,9 @@
 /*아바타를 표시하는 영역*/
 #avatar{
 	margin: 0px;
-	position: absolute;
-	width : 79%;
-	height: 59%;
+	width : auto;
+	height: 500px;
 	border: 1px solid black;
-	left: 20%;
 	background-image: url("../img/avatar/background.jpg");
 	background-size: 100% 100%; 
 	background-repeat: no-repeat;
@@ -24,7 +22,7 @@ img{
 /* 아바타의 얼굴이미지 */
 #face{
 	position: absolute;
-	left: 40%;
+	left: 48%;
 	top: 20%;
 	z-index: 1;
 }
@@ -32,7 +30,7 @@ img{
 /* 아바타의 헤어이미지 */
 #hair{
 	position: absolute;
-	left: 40%;
+	left: 48%;
 	top: 20%;
 	z-index: 2;
 }
@@ -40,7 +38,7 @@ img{
 /* 아바타의 눈이미지 */
 #eye{
 	position: absolute;
-	left: 40%;
+	left: 48%;
 	top: 20%;
 	z-index: 3;
 }
@@ -48,7 +46,7 @@ img{
 /* 아바타의 코이미지 */
 #nose{
 	position: absolute;
-	left: 40%;
+	left: 48%;
 	top: 20%;
 	z-index: 4;
 }
@@ -56,7 +54,7 @@ img{
 /* 아바타의 입이미지 */
 #mouth{
 	position: absolute;
-	left: 40%;
+	left: 48%;
 	top: 20%;
 	z-index: 5;
 }
@@ -64,7 +62,7 @@ img{
 /* 아바타의 귀이미지 */
 #ear{
 	position: absolute;
-	left: 40%;
+	left: 48%;
 	top: 20%;
 	z-index: 5;
 }
@@ -88,50 +86,48 @@ img{
 /*아바타의 신체부위 선택하는 영역*/
 #category{
 	margin: 0px;
-	position: absolute;
-	width : 79%;
-	height: 10%;
+	width : auto;
+	height: 100px;
 	border: 1px solid black;
-	left: 20%;
 	top: 60%;
 }
 
 /* 해당 신체부위의 디테일 선택하는 영역 */
 #detail{
 	margin: 0px;
-	position: absolute;
-	width : 50%;
-	height: 30%;
+	width : auto;
+	height: 157px;
 	border: 1px solid black;
-	left: 20%;
-	top: 70%;
+	top: 400px;
 }
 
 /* 저장버튼이 있는 영역 */
 #saveArea{
 	margin: 0px;
-	position: absolute;
-	right: 0.5%;
-	bottom: 0.5%;
+	width : 15%;
+	height: 15%;
+	float: right;
+}
+/* 저장 버튼 */
+#savebtn{
+	width : 99%;
+	height: 99%;
+	display: none;
+}
+
+/* 리셋 버튼 */
+#resetbtn{
 	width : 15%;
 	height: 15%;
 }
-	/* 저장 버튼 */
-	#savebtn{
-		width : 99%;
-		height: 99%;
-		display: none;
-	}
+
 
 /* 색 선택하는 영역 */
 #color{
 	margin: 0px;
-	position: absolute;
 	width : 29%;
-	height: 30%;
-	border: 1px solid black;
-	left: 70%;
-	top: 70%;
+	height: 150px;
+	float: right;
 }
 
 /* 색 버튼 클래스 */
@@ -152,8 +148,8 @@ img{
 /* db에서 가져온 그림들 */
 .items{
 	margin: 0px;
-	width : 10%;
-	height: 10%;
+	width : 100px;
+	height: 100px;
 }
 
 /* 빨강버튼 */
