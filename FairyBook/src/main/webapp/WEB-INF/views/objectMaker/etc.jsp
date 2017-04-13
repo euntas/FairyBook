@@ -59,6 +59,7 @@ alert('됨??????');
 </script>
 </c:if>
 
+
 </div>
 
 <!--Footer  -->
