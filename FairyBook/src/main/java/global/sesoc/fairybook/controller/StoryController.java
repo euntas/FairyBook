@@ -78,7 +78,8 @@ public class StoryController {
 		// 기존 회차가 있을 때
 		else{
 			System.out.println("기존회차");
-			firstPageNum = dao.getLatestSceneNum(mySelection.getSelectionNum());
+			int lastSceneNum = dao.getLatestSceneNum(mySelection.getSelectionNum());
+			firstPageNum = dao.getPageNum(lastSceneNum);
 			System.out.println("firstPageNum : " + firstPageNum);
 		}
 		
