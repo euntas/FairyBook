@@ -159,9 +159,10 @@ body, html, .full {
 .myimage{
 	
 	position: fixed;
-	top: 63%;
+	top: 75%;
 	right: 15%;
 	z-index: 98;
+	opacity: 0.9;
 	-webkit-transition: all 0.25s;
               transition: all 0.25s;
 }
@@ -171,9 +172,10 @@ body, html, .full {
 */
 .myimage .mytext{
 	position: absolute;
-	top:100px;
+	top:25px;
 	left:10px;
-	color:#FFF;
+	right:10px;
+	color:#000000;
 	-webkit-transition: all 0.25s;
               transition: all 0.25s;
 }

@@ -293,6 +293,9 @@ function quizLoading(){
         	
         	
         	currentQuiz = quiz;
+        	
+        	// 아바타 말을 지운다.
+        	$('#divForAvatar').html('');
 			
 			// 해당 씬에 퀴즈가 있을 때
 			if(currentQuiz.quizNum != -1){
@@ -313,6 +316,10 @@ function quizLoading(){
 				$('.pageflip').find('a.flip-directional.flip-next').show();
 				// 퀴즈 div의 내용을 지운다.
 				$("#divForQuiz").html(''); 
+				
+				setTimeout(function(){
+					writeAvatarDiv();
+				}, 1000);
 			}
         },
         error: function(e){
@@ -322,6 +329,10 @@ function quizLoading(){
 			$('.pageflip').find('a.flip-directional.flip-next').show();
 			// 퀴즈 div의 내용을 지운다.
 			$("#divForQuiz").html(''); 
+			
+			setTimeout(function(){
+				writeAvatarDiv();
+			}, 1000);
         }
     });
 }
@@ -358,20 +369,28 @@ function writePreBtnForQuizDiv(){
 
 // 아바타 말 내용을 쓰는 함수
 function writeAvatarDiv(){
+	
+	// 아바타 말을 지운다.
+	$('#divForAvatar').html('');
+	
 	$.ajax({
         url:'getAvatarText',
         type:'POST',
         data: {currentPageNum: pageflip.options.current},
         dataType: 'text',
         success: function(avatarText){
-        	// 배경에 이미지 넣는다.
-        	var str = "<img src='./../resources/image/the-button-1161316_640.png'>";
-        	str += "<div class='mytext'><p>";
-        	// 디비에서 읽어온 아바타 대사를 삽입.
-        	str += avatarText;
-        	str += "</p></div>"
-        		
+        	
+        	if(avatarText != ''){        		
+        		// 배경에 이미지 넣는다.
+        		var str = "<img src='./../resources/image/avatarBg.png'>";
+        		str += "<div class='mytext'><p>";
+        		// 디비에서 읽어온 아바타 대사를 삽입.
+        		str += avatarText;
+        		str += "</p></div>";
+        			
         		$('#divForAvatar').html(str);        	
+        	}
+        	
         },
         error: function(e){
             alert("getAvatarText실패함 : " + JSON.stringify(e));
