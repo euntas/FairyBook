@@ -30,6 +30,7 @@
 
 <!-- 만들어진 기타요소가 보이는 div 태그 -->
 <div id="etc">
+
 <input type="button" value="초기화" id="resetbtn">
 
 	<!-- 저장버튼 및 초기화버튼이 보이는 div태그 -->
