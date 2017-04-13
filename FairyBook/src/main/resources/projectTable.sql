@@ -286,8 +286,29 @@ create table counselor(
 	email varchar2(50) not null
 );
 
+-- 씬 번호와 실제 페이지 번호 확인을 위한 테이블(페이지번호는 flipbook 안의 페이지 번호를 뜻함. 0번부터 시작됨)
+create table pagelist(
+	-- 씬 번호
+	scenenum number references scene,
+	-- 페이지 번호
+	pagenum number
+);
+
 
 create sequence seq_counselor start with 1 increment by 1;
+
+--책 주문 정보
+create table ORDERBOOK(
+	--선택 동화
+	selectionnum number not null,
+	--주문한 날짜
+	orderdate date not null,
+	--책 표지(경로저장)
+	bookcover varchar2(100) not null,
+	--주문 상황
+	currentstate varchar2(50),
+	foreign key (selectionnum) references MYSELECTION(selectionnum)
+);
 
 insert into counselor values (seq_counselor.nextval, '서울', '마포' , '우리들병원', '고정기', '02-458-3215', 'junggigo@naver.com');
 insert into counselor values (seq_counselor.nextval, '서울', '강동', 'jnLee아동정신의학과', '이지나', '02-749-2511', 'jnlee@gmail.com');

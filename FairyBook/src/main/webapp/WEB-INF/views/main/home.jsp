@@ -77,7 +77,7 @@ function myFunc(id) {
 <!-- Side Navigation -->
 <!--로그인하지 않았을 때  -->
 <c:if test="${loginUser == null }">
-<nav class="w3-sidebar w3-bar-block w3-collapse w3-white w3-animate-left w3-card-2" style="z-index:3;width:220px;" id="mySidebar">
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-white w3-card-2" style="z-index:3;width:220px;" id="mySidebar">
   <div class="container-fluid bg-1">
   <h3>로그인 하세요</h3>
   <center><img src="./resources/image/pp3.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"></center><br><!--circle image  -->
@@ -97,7 +97,7 @@ function myFunc(id) {
 <c:if test="${loginUser != null }">
 <!--아이로그인  -->
 <c:if test="${userType == 'child'}">
-<nav class="w3-sidebar w3-bar-block w3-collapse w3-white w3-animate-left w3-card-2" style="z-index:3;width:220px;" id="mySidebar">
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-white <!-- w3-animate-left  -->w3-card-2" style="z-index:3;width:220px;" id="mySidebar">
   <div class="container-fluid bg-1">
   <h3>${loginUser.cnickName}</h3>
   <center><img src="./resources/image/yo.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"></center><br><!--circle image  -->
@@ -118,7 +118,7 @@ function myFunc(id) {
 </c:if>
 <!--부모 로그인했을때  -->
 <c:if test="${userType == 'parent'}">
-<nav class="w3-sidebar w3-bar-block w3-collapse w3-white w3-animate-left w3-card-2" style="z-index:3;width:220px;" id="mySidebar">
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-white <!-- w3-animate-left --> w3-card-2" style="z-index:3;width:220px;" id="mySidebar">
   <div class="container-fluid bg-1">
   <h3>${loginUser.pnickName}</h3>
   <center><img src="./resources/image/pp4.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"></center><br><!--circle image  -->
@@ -189,7 +189,7 @@ function myFunc(id) {
 	      <div class="w3-container w3-white">
 	        <h3>헨젤과 그레텔</h3>
 	        <h6 class="w3-opacity">2017.3.22</h6>
-	        <button class="w3-button w3-block w3-yellow w3-margin-bottom" onclick="location.href='story/storyTitle?storyNum=0'">Play</button>
+	        <button class="w3-button w3-block w3-yellow w3-margin-bottom" onclick="location.href='story/storyTitle?storyNum=1'">Play</button>
 	      </div>
 	    </div>
 	    <div class="w3-third w3-margin-bottom">

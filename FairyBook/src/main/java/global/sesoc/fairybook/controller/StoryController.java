@@ -86,6 +86,7 @@ public class StoryController {
 		
 		// 처음 페이지 번호를 모델에 저장
 		model.addAttribute("firstPageNum", firstPageNum);
+		model.addAttribute("storyNo", storyNum);
 		
 		return "story/storyStart";
 	}
@@ -123,10 +124,18 @@ public class StoryController {
 	
 	@ResponseBody 
 	@RequestMapping(value = "quizLoading", method = RequestMethod.GET)
-	public Quiz quizLoading(int storyNum, int sceneNum, Model model) {
+	public Quiz quizLoading(HttpSession session, int sceneNum, Model model) {
+		int storyNum = (int) session.getAttribute("currentStoryNum");
+		System.out.println("스토리넘버: " + storyNum + ", 씬넘버: " + sceneNum);
 		Scene scene = dao.getScene(storyNum, sceneNum); 
-		// 해당 씬의 퀴즈를 가져온다
-		Quiz quiz = dao.getQuiz(scene.getQuizNum());
+		System.out.println("읽어온 씬: " + scene);
+
+		Quiz quiz = null;
+		
+		// 해당 씬의 퀴즈를 가져온다 (퀴즈 번호가 -1일 경우 퀴즈가 없는 것으로 간주)
+		if(scene.getQuizNum() != -1){
+			quiz = dao.getQuiz(scene.getQuizNum());			
+		}
 		
 		return quiz;
 	}
@@ -302,6 +311,16 @@ public class StoryController {
 			String avatarText = currentScene.getFBExplain();
 			
 			return avatarText;
+		}
+		
+		// pageList 테이블에서 씬넘버에 해당하는 페이지 번호를 찾아온다.
+		@ResponseBody
+		@RequestMapping(value="getPageNum", method = RequestMethod.GET)
+		public int getPageNum(HttpSession session, int currentSceneNum, Model model){
+			
+			int pageNum = dao.getPageNum(currentSceneNum);
+			
+			return pageNum;
 		}
 	
 }

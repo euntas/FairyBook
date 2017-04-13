@@ -146,5 +146,14 @@
 		and id = #{id}
 		and storyNum = #{storyNum}
 </update>
+
+<select id="getPageNum" parameterType="int" resultType="int">
+	select
+		pageNum
+	from
+		pageList
+	where
+		sceneNum = #{sceneNum}
+</select>
 	
 </mapper>

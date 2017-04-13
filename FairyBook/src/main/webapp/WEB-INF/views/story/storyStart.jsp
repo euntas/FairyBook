@@ -23,26 +23,49 @@
 		$(document).ready(function(){
 			// 가장 처음 씬과 문제를 가져온다.
 			var sceneNum = pageflip.options.current;
+			var myStoryNum = ${currentStoryNum};
+			
+			// pageflip.js 페이지에 있는 myStoryNum 변수를 초기화해준다.
+			setMyStoryNum(myStoryNum);
 			
 			//기존 진행 중 씬이 있을 경우
 			if( ${firstPageNum != 0}){
+				alert('기존 진행중 씬이 있는 경우');
 				sceneNum = ${firstPageNum};
-				pageflip.flip(sceneNum);
+				
+				// 다음 씬 번호를 이용해 실제 다음 페이지 번호를 읽어온다.
+	        	$.ajax({
+    		        url:'getPageNum',
+    		        type:'GET',
+    		        data: {currentSceneNum: sceneNum},
+    		        dataType: 'json',
+    		        success: function(pageNum){
+    		        	alert(pageNum +  '번 페이지로 이동합니다.');
+    		        	// 다음페이지로 이동한다.
+    		        	pageflip.flip(pageNum);        		        	
+    		        },
+    		        error: function(e){
+    		            alert('start에서 페이지 번호 읽어오기 실패' + JSON.stringify(e));
+    		        }
+    		    });
+				
 			}
-			else
-				init(sceneNum);
+			else{
+				alert('기존 진행중 씬이 없는 경우');				
+				init(${currentStoryNum}, sceneNum);
+			}
 		});
 		
-		function init(sn){
+		function init(storyNo, sceneNo){
 		    $.ajax({
 		        url:'sceneLoading',
 		        type:'GET',
-		        data: {storyNum: 0, sceneNum: sn},
+		        data: {storyNum: storyNo, sceneNum: sceneNo},
 		        dataType:'json',
 		        success: function(scene){
 		        	currentScene = scene;
-					//alert('씬번호: ' + currentScene.sceneNum);	
-
+					//alert('씬번호: ' + currentScene.sceneNum);
+					
 					// 첫번째 씬 일 때
 					if(currentScene.sceneNum == 0){
 						//selectiondetail 테스트용
@@ -53,14 +76,17 @@
 						        data: {sceneNum: pageflip.options.current},
 						        dataType:'json',
 						        success: function(){
-						        	//alert('selectionDetail 생성');
+						        	alert('첫번째 씬 saveDetail에 저장 완료');
+						        	alert('init 함수 안의 sceneLoadig 안의 success  안의 saveSD 의 성공 ㅎㅎ....');
 						        },
 						        error: function(e){
+						        	alert('init 함수 안의 sceneLoadig 안의 success  안의 saveSD 의 실패 ㅎㅎ....');
 						            alert(JSON.stringify(e));
 						        }
 						    });
-						//여기까지
-					    quizLoading();
+					    	
+						quizLoading();
+						
 					}
 
 					

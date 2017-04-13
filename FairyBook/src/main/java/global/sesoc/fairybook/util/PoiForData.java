@@ -46,7 +46,7 @@ public class PoiForData {
 
 		// 엑셀파일
 		//File file = new File(".");
-		File file = new File("C:/Users/kita/git/FairyBook/FairyBook/src/main/webapp/WEB-INF/quizData.xlsx");
+		File file = new File("C:/Users/kita/git/FairyBook/FairyBook/src/main/webapp/WEB-INF/quizData2.xlsx");
 
 		// 엑셀 파일 오픈
 		XSSFWorkbook wb = null;
@@ -95,7 +95,7 @@ public class PoiForData {
 	public ArrayList<Scene> DataForScene(){
 
 		// 엑셀파일
-		File file = new File("C:/Users/kita/git/FairyBook/FairyBook/src/main/webapp/WEB-INF/sceneData.xlsx");
+		File file = new File("C:/Users/kita/git/FairyBook/FairyBook/src/main/webapp/WEB-INF/sceneData3.xlsx");
 
 		// 엑셀 파일 오픈
 		XSSFWorkbook wb = null;
