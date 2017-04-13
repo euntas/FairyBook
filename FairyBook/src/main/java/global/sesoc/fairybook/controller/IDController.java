@@ -46,7 +46,7 @@ public class IDController {
 	public String join(Model model) {
 		StoryMaker maker = new StoryMaker();
 		model.addAttribute("storymaker", maker); 
-		return "joinForm";
+		return "userInfo/joinForm";
 	}
 
 
@@ -151,7 +151,7 @@ public class IDController {
 			return "joinForm";
 		}
 		
-		return "redirect:joinComplete";
+		return "redirect:userInfo/joinComplete";
 		
 	}
 	
@@ -170,7 +170,7 @@ public class IDController {
 		logger.info("maker:{}",maker);
 		model.addAttribute("joinedid", maker.getId());
 		status.setComplete();
-		return "joinComplete";
+		return "userInfo/joinComplete";
 	}
 	
 	/**
@@ -186,9 +186,9 @@ public class IDController {
 		session.setAttribute("info", user);
 		
 		
-		return "userInfo";
+		return "userInfo/userInfo";
 		}else{
-			return "loginForm";
+			return "userInfo/loginForm";
 		}
 	}
 
@@ -203,9 +203,9 @@ public class IDController {
 		StoryMaker user = (StoryMaker)session.getAttribute("info");
 		if(user!=null){
 		session.setAttribute("update", user);
-		return "updateForm";
+		return "userInfo/updateForm";
 		}else{
-			return "loginForm";
+			return "userInfo/loginForm";
 		}
 	}
 	
@@ -253,12 +253,12 @@ public class IDController {
 		}
 		if(result == 0){
 			model.addAttribute("errorMsg", "수정 실패");
-			return "updateForm";
+			return "userInfo/updateForm";
 		}
 		session.removeAttribute("info");
 		logger.info("update:{}",maker);
 		session.setAttribute("loginUser", maker);
-		return "redirect:userInfo";
+		return "redirect:userInfo/userInfo";
 	}
 	
 	/**
@@ -275,10 +275,10 @@ public class IDController {
 		result = dao.delete(id);
 		if(result == 0){
 			model.addAttribute("errorMsg", "삭제 실패");
-			return "userInfo";
+			return "userInfo/userInfo";
 		}
 		
-		return "redirect:deleteComplete";
+		return "redirect:userInfo/deleteComplete";
 	}
 	
 	/**
@@ -289,7 +289,7 @@ public class IDController {
 	@RequestMapping(value="deleteComplete", method=RequestMethod.GET)
 	public String deleteComplete(HttpSession session){
 		session.invalidate();
-		return "deleteComplete";
+		return "userInfo/deleteComplete";
 	}
 	
 	/**
@@ -298,7 +298,7 @@ public class IDController {
 	 */
 	@RequestMapping(value = "login", method = RequestMethod.GET)
 	public String login() {
-		return "loginForm";
+		return "userInfo/loginForm";
 	}
 	
 	/**

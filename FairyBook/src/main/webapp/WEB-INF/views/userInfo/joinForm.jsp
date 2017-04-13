@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 
@@ -19,22 +18,6 @@
 <!--적용 자바스크립트와 스타일  -->
 <link rel="stylesheet" href="../resources/css/joinForm.css">
 <script>
-  $(document).ready(function(){
-	$('#userDelete').on('click',function(){
-		if(confirm('정말 삭제 하시겠습니까?'))
-			location.href='delete';
-	});
-	$('#counsel').on('click',function(){
-		
-			location.href='counsel';
-	});
-	$('#counselResult').on('click',function(){
-		
-		location.href='counselResult';
-});
-	});
-</script>
-<script>
 <c:if test="${errorMsg != null}">
 alert('${errorMsg}');
 </c:if>
@@ -42,45 +25,74 @@ alert('${errorMsg}');
 
 $(document).ready(function() {
 	
-	var cBirth = '<c:out value="${update.cBirth}"/>';
-	console.log("ready");
-	console.log(cBirth);
-	var year = cBirth.substring(0,4);
-	var month = cBirth.substring(5,7);
-	var date = cBirth.substring(8,10);
-	$('#cBirthYear').html(year);
-	$('#cBirthMonth').html(month);
-	$('#cBirthDate').html(date);
-	
-	var email = '<c:out value="${update.email}"/>';
-	var emails = email.split('@');
-	
-	$('#email').val(emails[0]);
-	$('#email2').val(emails[1]);
-
-	if(emails[1]=="naver.com"||emails[1]=="gmail.com"||
-			emails[1]=="hanmail.net"||emails[1]=="nate.com"
-			||emails[1]=="yahoo.co.kr"||emails[1]=="dreamwiz.com"){
-	$('#emailCom').val(emails[1]);
-	}else{
-		$('#emailCom').val("직접작성");
-		$('#email2').attr("readonly", false);
-	}
-	
-	var phone = '<c:out value="${update.phone}"/>';
-	var phones = phone.split('-');
-	
-	$('#phone1').val(phones[0]);
-	$('#phone2').val(phones[1]);
-	$('#phone3').val(phones[2]);
-
 });
 
+function formSubmit1() {
+
+	var id = $('#id').val();
+	var blank_pattern = /[\s]/g;
+	if( blank_pattern.test(id) == true){
+	    alert(' 공백은 사용할 수 없습니다. ');
+	    $('#id').val("");	    
+	    $('#id').focus();
+	    return false;
+	}
+
+
+	var special_pattern = /[`~!@#$%^&*|\\\'\";:\/?]/gi;
+
+	if( special_pattern.test(id) == true ){
+	    alert('특수문자는 사용할 수 없습니다.');
+	    $('#id').val("");	    
+	    $('#id').focus();
+	    return false;
+	}
+
+	var check = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+	if( check.test(id) == true ){
+	    alert('아이디는 영문자와 숫자로만 입력가능합니다.');
+	    $('#id').val("");	    
+	    $('#id').focus();
+	    return false;
+	}
+	
+	if(id=="") {
+		$('#checkedId').html('아이디를 입력해주세요.');
+		return false;
+	}
+	
+	if(id.length<4||id.length>10){
+		$('#checkedId').html('아이디를 4자 이상 10자이하로 입력해주세요.');
+		return false;
+	}
+	
+	
+	$.ajax({
+		url : 'idCheck',
+		type : 'POST',
+		data : {
+			id : id
+		},
+		dataType: 'text',
+		success : function(text) {
+			
+			if(text=="true"){
+			$('#checkedId').html('사용 가능한 아이디입니다.');
+			
+			
+			}else{
+			$('#checkedId').html('이미 가입된 아이디입니다.');	
+			}
+		},
+		error : function() {
+			alert(JSON.stringify(e));
+		}
+	});
+}
 
 function formSubmit2() {
 
 	var cNick = $('#cnickName').val();
-	var ucNick = '<c:out value="${update.cnickName}"/>';
 	
 	if(cNick=="") {
 		$('#checkedcNick').html('닉네임을 입력해주세요.');
@@ -104,9 +116,7 @@ function formSubmit2() {
 	    $('#cnickName').focus();
 	    return false;
 	}
-	if(cNick==ucNick){
-		$('#checkedcNick').html('변경되지않았습니다.');
-	}
+	
 	if(cNick.length<2||cNick.length>8){
 		$('#checkedcNick').html('닉네임은 두글자 이상 여덟글자 이하로 입력해주세요.');
 	}
@@ -138,7 +148,6 @@ function formSubmit2() {
 function formSubmit3() {
 
 	var pNick = $('#pnickName').val();
-	var upNick = '<c:out value="${update.pnickName}"/>';
 	
 	if(pNick=="") {
 		$('#checkedpNick').html('닉네임을 입력해주세요.');
@@ -162,8 +171,6 @@ function formSubmit3() {
 	    $('#pnickName').focus();
 	    return false;
 	}
-	
-
 	
 	if(pNick.length<2||pNick.length>8){
 		$('#checkedpNick').html('닉네임은 두글자 이상 여덟글자 이하로 입력해주세요.');
@@ -190,14 +197,11 @@ function formSubmit3() {
 			alert(JSON.stringify(e));
 		}
 	});
-	
-	
 }
 
 function formSubmit4() {
 
 	var pw = $('#password1').val();
-	var upw = '<c:out value="${update.password1}"/>';
 	
 	if(pw=="") {
 		$('#checkedcPw1').html('비밀번호를 입력해주세요.');
@@ -220,10 +224,6 @@ function formSubmit4() {
 	    $('#password1').val("");	    
 	    $('#password1').focus();
 	    return false;
-	}
-	
-	if(pw==upw){
-		$('#checkedcPw1').html('변경되지않았습니다.');
 	}
 	
 	if(pw.length<8||pw.length>13){
@@ -385,7 +385,12 @@ function formcheck(){
 	var phone1 = $('#phone1').val(); 
 	var phone2 = $('#phone2').val();
 	var phone3 = $('#phone3').val();
+	var year = $('#cBirthYear').val();
+	var month = $('#cBirthMonth').val();
+	var date = $('#cBirthDate').val();
 	var address = $('#address').val();
+	var cpw = $('#password1').val();
+	var pw = $('#password2').val();
 	
 	if(emailCom=="선택"){
 		alert('이메일을 올바르게 입력해주세요.');
@@ -397,13 +402,27 @@ function formcheck(){
 		return false;
 	}
 	
+	if(year=="년"||month=="월"||date=="일"){
+		alert('생년월일을 올바르게 입력해주세요.');
+		return false;
+	}
+	
 	if(isNaN(phone1)||isNaN(phone2)||isNaN(phone3)){
 		alert('전화번호를 올바르게 입력해주세요.');
 		return false;
 	}
 	
+	if(isNaN(month)||isNaN(date)){
+		alert('생년월일을 올바르게 입력해주세요.');
+		return false;
+	}
+	
 	if(address==""){
 		alert('주소를 입력해주세요.');
+		return false;
+	}
+	if(cpw==pw){
+		alert('아이용 비밀번호와 다르게 입력해주세요.');
 		return false;
 	}
 	return true;
@@ -422,101 +441,110 @@ function formcheck(){
 </nav>
 
 <div id="under">
-	<form enctype="multipart/form-data" action="update" method="post"
-		onsubmit="return formcheck()">
-
-		<table>
+	<form enctype="multipart/form-data" action="join" method="post"
+		onsubmit="return formcheck()" class="form-inline">
+<br>
+		<table style="margin: auto; width:auto;" cellpadding="20px">
 			<tr>
 				<td class="firstRow">ID</td>
-				<td class="secondRow">
-				${update.id}
-				<input type="hidden" id="id" name="id" value="${update.id}"></td>
+				<td class="secondRow"><input type="text" id="id" name="id"
+					style="width: 220px;" onkeyup="formSubmit1()" class="form-control">
+					<div id="checkedId"></div></td>
 			</tr>
 			<tr>
 				<td class="firstRow">닉네임</td>
 				<td class="secondRow"><input type="text" id="cnickName"
-					name="cnickName" style="width: 220px;" 
-					value="${update.cnickName }" onkeyup="formSubmit2()">
+					name="cnickName" style="width: 220px;" onkeyup="formSubmit2()" class="form-control">
 					<div id="checkedcNick"></div></td>
 			</tr>
 			<tr>
 				<td rowspan="2" class="firstRow">아이용 비밀번호</td>
-				<td class="secondRow">
-				<input type="password" id="password1"
-				name="password1" value="${update.password1}"
-					style="width: 220px;"
-					onkeyup="formSubmit4()">
+				<td class="secondRow"><input type="password" id="password1"
+					name="password1" style="width: 220px;"
+					onkeyup="formSubmit4()" class="form-control">
 				<div id="checkedcPw1"></div></td>
 			</tr>
 			<tr>
 				<td class="secondRow"><input type="password"
-					id="password1check" name="password1check" 
-					value="${update.password1}" style="width: 220px;"
-					onkeyup="formSubmit5()">
+					id="password1check" name="password1check" style="width: 220px;"
+					onkeyup="formSubmit5()" class="form-control">
 				<div id="checkedcPw2"></div></td>
 			</tr>
 			<tr>
 				<td rowspan="2" class="firstRow">보호자용 비밀번호</td>
 				<td class="secondRow"><input type="password" id="password2"
-					name="password2" value="${update.password2 }"
-					style="width: 220px;"
-					onkeyup="formSubmit6()">
+					name="password2" style="width: 220px;"
+					onkeyup="formSubmit6()" class="form-control">
 				<div id="checkedpPw1"></div></td>
 				
 			</tr>
 			<tr>
 				<td class="secondRow"><input type="password"
-					id="password2check" name="password2check"
-					value="${update.password2 }" style="width: 220px;"
-					onkeyup="formSubmit7()">
+					id="password2check" name="password2check" style="width: 220px;"
+					onkeyup="formSubmit7()" class="form-control">
 				<div id="checkedpPw2"></div></td>
 				
 			</tr>
 			<tr>
 				<td class="firstRow">아이 이름</td>
 				<td class="secondRow"><input type="text" id="cName"
-					name="cName" 
-					value="${update.cName }"
-					style="width: 220px;"></td>
+					name="cName" style="width: 220px;" class="form-control"></td>
 				
 			</tr>
 			<tr>
 				<td class="firstRow">아이 생일</td>
-				<td class="secondRow">
-				<span id="cBirthYear"></span>년 &nbsp; 
-				<span id="cBirthMonth"></span>월 &nbsp;
-				<span id="cBirthDate"></span>일
-				<input type="hidden" id="cBirth" name="cBirth" value="${update.cBirth}">
-				</td>
+				<td class="secondRow"><select id="cBirthYear" name="cBirthYear">
+						<option selected="selected" class="form-control">년</option>
+						<c:forEach var="i" begin="2005" end="2017">
+							<option>${i}</option>
+						</c:forEach>
+				</select>년 &nbsp; <select id="cBirthMonth" name="cBirthMonth">
+						<option selected="selected" class="form-control">월</option>
+						<c:forEach var="i" begin="1" end="12">
+							<c:if test="${i<10 }">
+								<option>0${i}</option>
+							</c:if>
+							<c:if test="${i>=10 }">
+								<option>${i}</option>
+							</c:if>
+						</c:forEach>
+				</select>월 &nbsp; <select id="cBirthDate" name="cBirthDate">
+						<option selected="selected" class="form-control">일</option>
+						<c:forEach var="i" begin="1" end="31">
+							<c:if test="${i<10 }">
+								<option>0${i}</option>
+							</c:if>
+							<c:if test="${i>=10 }">
+								<option>${i}</option>
+							</c:if>
+						</c:forEach>
+				</select>일</td>
 		
 			</tr>
 			<tr>
 				<td class="firstRow">보호자 이름</td>
 				<td class="secondRow"><input type="text" id="pName"
-					name="pName" 
-					value="${update.pName}" style="width: 220px;"></td>
+					name="pName" style="width: 220px;" class="form-control"></td>
 			
 			</tr>
 			<tr>
 				<td class="firstRow">보호자 닉네임</td>
 				<td class="secondRow"><input type="text" id="pnickName"
-					name="pnickName" style="width: 220px;" 
-					value="${update.pnickName}" onkeyup="formSubmit3()">
+					name="pnickName" style="width: 220px;" onkeyup="formSubmit3()" class="form-control">
 					<div id="checkedpNick"></div></td>
 				
 			</tr>
 			<tr>
 				<td class="firstRow">이메일</td>
-				<td class="secondRow"><input type="text" id="email"
+				<td class="secondRow" align="left"><input type="text" id="email"
 					name="email" style="width: 150px;"
-					
-					onkeyup="formSubmit8()">&nbsp;@&nbsp;
+					onkeyup="formSubmit8()" class="form-control">&nbsp;@&nbsp;
 				<input type="text" id="email2"
-					name="email2" style="width: 150px;" 
-					
-					readonly="readonly"
-					onkeyup="formSubmit10()">&nbsp;
-				<select id="emailCom" name="emailCom" onchange="formSubmit9()">
+					name="email2" style="width: 120px;" readonly="readonly"
+					onkeyup="formSubmit10()" 
+					class="form-control">&nbsp;
+				<select id="emailCom" name="emailCom" onchange="formSubmit9()" style="width: 140px;"
+				class="form-control">
 				<option selected="selected">선택</option>
 						<option>naver.com</option>
 						<option>gmail.com</option>
@@ -530,9 +558,10 @@ function formcheck(){
 			
 			</tr>
 			<tr>
+				
 				<td class="firstRow">전화번호</td>
 				<td class="secondRow"><select id="phone1" name="phone1"
-					style="width: 70px;">
+					style="width: 80px;" class="form-control">
 						<option selected="selected">선택</option>
 						<option>010</option>
 						<option>011</option>
@@ -540,14 +569,14 @@ function formcheck(){
 						<option>017</option>
 						<option>018</option>
 						<option>019</option>
-				</select>-<input type="text" id="phone2" name="phone2" style="width: 75px;">
-					-<input type="text" id="phone3" name="phone3" style="width: 75px;"></td>
+				</select>&nbsp;&nbsp;-&nbsp;&nbsp;<input type="text" id="phone2" name="phone2" style="width: 75px;" class="form-control">
+					&nbsp;&nbsp;-&nbsp;&nbsp;<input type="text" id="phone3" name="phone3" style="width: 75px;" class="form-control"></td>
 				
 			</tr>
 			<tr>
 				<td class="firstRow">주소</td>
 				<td class="secondRow"><input type="text" id="address"
-					name="address" value="${update.address}" style="width: 300px;"></td>
+					name="address" style="width: 450px;" class="form-control"></td>
 				
 			</tr>
 			<tr>
@@ -556,17 +585,16 @@ function formcheck(){
 					id="upload" multiple="multiple"></td>
 				
 			</tr>
-			<tr>
-				<td colspan="3" style="text-align: center;">
-				<input type="submit" value="수정하기">&nbsp; 
-				<input type="button" value="삭제하기" id="userDelete">
-				<input type="button" value="상담하기" id="counsel">&nbsp; 
-				<input type="button" value="상담결과 확인" id="counselResult">&nbsp; 
-					<input type="button" value="취소"
-					onclick="location.href='/fairybook/'"></td>
-			</tr>
+			
 
 		</table>
+		<br>
+		<div style="text-align: center;">
+				<input
+					type="submit" value="가입하기" class="btn btn-info"> 
+					&nbsp;<input type="button" value="취소"
+					onclick="location.href='/fairybook/'" class="btn btn-info">
+			</div>
 	</form>
 </div>
 </body>

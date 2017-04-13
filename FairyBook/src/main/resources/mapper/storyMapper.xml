@@ -135,6 +135,15 @@
 		selectionNum = #{selectionNum} and scenenum = #{sceneNum}
 </select>
 
+<select id="getSelectionDetailByPageNum" resultType="SelectionDetail" parameterType="map">
+	select
+		selectionNum, sceneNum, myAnswer, inputDate, item
+	from
+		selectiondetail join pagelist using(scenenum)
+	where
+		selectionNum = #{selectionNum} and pagenum = #{pageNum}
+</select>
+
 <update id="updateFinished" parameterType="map">
 	update
 		myselection
@@ -146,5 +155,23 @@
 		and id = #{id}
 		and storyNum = #{storyNum}
 </update>
+
+<select id="getPageNum" parameterType="int" resultType="int">
+	select
+		pageNum
+	from
+		pageList
+	where
+		sceneNum = #{sceneNum}
+</select>
+
+<select id="getSceneNumByPageNum" parameterType="map" resultType="int">
+	select
+		sceneNum
+	from
+		scene join pagelist using(scenenum)
+	where
+		pagenum = #{pageNum} and storynum = #{storyNum}
+</select>
 	
 </mapper>

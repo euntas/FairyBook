@@ -100,5 +100,10 @@ public class HomeController {
 	public String snsTest() {
 		return "util/snsTest2";
 	}
+	
+	@RequestMapping(value = "pageForData", method = RequestMethod.GET)
+	public String pageForData() {
+		return "pageForData";
+	}
 }
 

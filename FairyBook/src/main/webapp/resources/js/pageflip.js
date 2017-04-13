@@ -5,6 +5,16 @@
 	http://www.rocketlaunch.me
 */
 
+//==============================
+// 현재 스토리 번호 저장 위함
+var myStoryNum;
+
+// myStoryNum 변수에 값을 넣어준다.
+function setMyStoryNum(storyNum){
+	alert(storyNum + '으로 초기화 해줌');
+	myStoryNum = storyNum;
+}
+//================================
 
 var RocketPageFlip;
 
@@ -201,6 +211,7 @@ RocketPageFlip.prototype.flip = function(page) {
 	 * ================================================================
 	 */
 	
+	
 	var currentScene, currentQuiz, quizCheck;
 	
 	// selectiondetail 테이블에 insert 해주어야 하는 부분
@@ -209,12 +220,14 @@ RocketPageFlip.prototype.flip = function(page) {
 	 $.ajax({
 	        url:'saveSD',
 	        type:'GET',
-	        data: {sceneNum: pageflip.options.current},
+	        data: {pageNum: pageflip.options.current},
 	        dataType:'json',
 	        success: function(){
+	        	alert("플립 성공 들어옴");
 	        	alert('selectionDetail 생성1');
 	        },
 	        error: function(e){
+	        	alert("플립 실패 들어옴");
 	            alert(JSON.stringify(e));
 	        }
 	    });
@@ -226,10 +239,6 @@ RocketPageFlip.prototype.flip = function(page) {
 	 // 퀴즈 로딩
 	 quizLoading();
 	 
-	//여기까지
-
-	 quizLoading();
-	
 	//=================================================================
 	
 	this.showCurrent();
@@ -274,16 +283,20 @@ RocketPageFlip.prototype.prev = function() {
 //========================== 문제 출력을 위한 함수들 eunji 3.27 ======================
 // 퀴즈를 가져온다. 
 function quizLoading(){
+	
 	$.ajax({
         url:'quizLoading',
         type:'GET',
         dataType:'json',
-        data: {storyNum: 0, sceneNum: pageflip.options.current},
+        data: {storyNum: myStoryNum, pageNum: pageflip.options.current},
         success: function(quiz){
+        	
+        	
         	currentQuiz = quiz;
 			
 			// 해당 씬에 퀴즈가 있을 때
 			if(currentQuiz.quizNum != -1){
+				alert("퀴즈로딩 성공 들어옴 if");
 				// '다음' 버튼을 숨긴다.
 				$('.pageflip').find('a.flip-directional.flip-next').hide();
 				
@@ -295,6 +308,7 @@ function quizLoading(){
 			
 			// 해당 씬에 퀴즈가 없을 때
 			else{
+				alert("퀴즈로딩 성공 들어옴 else");
 				// '다음' 버튼을 보이게 한다.
 				$('.pageflip').find('a.flip-directional.flip-next').show();
 				// 퀴즈 div의 내용을 지운다.
@@ -302,7 +316,12 @@ function quizLoading(){
 			}
         },
         error: function(e){
-            alert(JSON.stringify(e));
+        	// 콘트롤러에서 반환해준 quiz가 null일 경우 무조건 여기로 들어오는 듯 함. 퀴즈 없는 경우의 처리를 여기서도 해 준다.
+        	
+        	// '다음' 버튼을 보이게 한다.
+			$('.pageflip').find('a.flip-directional.flip-next').show();
+			// 퀴즈 div의 내용을 지운다.
+			$("#divForQuiz").html(''); 
         }
     });
 }
@@ -342,7 +361,7 @@ function writeAvatarDiv(){
 	$.ajax({
         url:'getAvatarText',
         type:'POST',
-        data: {currentSceneNum: pageflip.options.current},
+        data: {currentPageNum: pageflip.options.current},
         dataType: 'text',
         success: function(avatarText){
         	// 배경에 이미지 넣는다.
@@ -355,7 +374,7 @@ function writeAvatarDiv(){
         		$('#divForAvatar').html(str);        	
         },
         error: function(e){
-            alert(JSON.stringify(e));
+            alert("getAvatarText실패함 : " + JSON.stringify(e));
         }
     });
 	
@@ -394,7 +413,7 @@ function writeQuizDiv(){
 		$.ajax({
 	        url:'getNextSceneNum',
 	        type:'GET',
-	        data: {currentSceneNum: pageflip.options.current, answerNum: $(this).attr('selnum')},
+	        data: {currentPageNum: pageflip.options.current, answerNum: $(this).attr('selnum')},
 	        dataType: 'json',
 	        success: function(nextSceneNum){
 	        	// 지금 씬이 마지막 페이지가 아닐 때.
@@ -403,21 +422,35 @@ function writeQuizDiv(){
 		        	$.ajax({
 		    	        url:'updateSelectiondetail',
 		    	        type:'GET',
-		    	        data: {sceneNum: pageflip.options.current, answerNum: selectNum},
+		    	        data: {pageNum: pageflip.options.current, answerNum: selectNum},
 		    	        dataType: 'json',
 		    	        success: function(){
 		    	        	alert('selectiondetail 업데이트--');
+		    	        	
+		    	        	// 다음 씬 번호를 이용해 실제 다음 페이지 번호를 읽어온다.
+				        	$.ajax({
+		        		        url:'getPageNum',
+		        		        type:'GET',
+		        		        data: {currentSceneNum: nextSceneNum},
+		        		        dataType: 'json',
+		        		        success: function(nextPageNum){
+		        		        	alert(selectNum + '을 선택했습니다. 다음은 ' + nextSceneNum + '번 씬, ' + nextPageNum +  '번 페이지로 이동합니다.');
+		        		        	// 다음페이지로 이동한다.
+		        		        	pageflip.flip(nextPageNum);     
+		        		        	
+		        		        	return;
+		        		        },
+		        		        error: function(e){
+		        		            alert('페이지 번호 읽어오기 실패' + JSON.stringify(e));
+		        		        }
+		        		    });
 		    	        },
 		    	        error: function(e){
 		    	            alert(JSON.stringify(e));
 		    	        }
 		    	    });
 		        	//여기까지
-		        	
-		        	alert(selectNum + '을 선택했습니다. 다음은 ' + nextSceneNum + '번 페이지로 이동합니다.');
-	
-	        		// 다음페이지로 이동한다.
-	        		pageflip.flip(nextSceneNum);
+	        		return;
 	        	}
 	        	
 	        	// 지금 씬이 마지막 페이지일 때

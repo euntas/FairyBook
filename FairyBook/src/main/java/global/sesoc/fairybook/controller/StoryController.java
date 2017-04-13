@@ -86,6 +86,7 @@ public class StoryController {
 		
 		// 처음 페이지 번호를 모델에 저장
 		model.addAttribute("firstPageNum", firstPageNum);
+		model.addAttribute("storyNo", storyNum);
 		
 		return "story/storyStart";
 	}
@@ -113,8 +114,9 @@ public class StoryController {
 	
 	@ResponseBody 
 	@RequestMapping(value = "sceneLoading", method = RequestMethod.GET)
-	public Scene sceneLoading(int storyNum, int sceneNum, Model model) {
+	public Scene sceneLoading(HttpSession session, int storyNum, int pageNum, Model model) {
 		// 해당 씬을 가지고 온다.
+		int sceneNum = dao.getSceneNumByPageNum(storyNum, pageNum);
 		Scene scene = dao.getScene(storyNum, sceneNum); 
 		System.out.println("가져온 씬: " + scene);
 		
@@ -123,10 +125,19 @@ public class StoryController {
 	
 	@ResponseBody 
 	@RequestMapping(value = "quizLoading", method = RequestMethod.GET)
-	public Quiz quizLoading(int storyNum, int sceneNum, Model model) {
+	public Quiz quizLoading(HttpSession session, int pageNum, Model model) {
+		int storyNum = (int) session.getAttribute("currentStoryNum");
+		int sceneNum = dao.getSceneNumByPageNum(storyNum, pageNum);
+		System.out.println("스토리넘버: " + storyNum + ", 씬넘버: " + sceneNum);
 		Scene scene = dao.getScene(storyNum, sceneNum); 
-		// 해당 씬의 퀴즈를 가져온다
-		Quiz quiz = dao.getQuiz(scene.getQuizNum());
+		System.out.println("읽어온 씬: " + scene);
+
+		Quiz quiz = null;
+		
+		// 해당 씬의 퀴즈를 가져온다 (퀴즈 번호가 -1일 경우 퀴즈가 없는 것으로 간주)
+		if(scene.getQuizNum() != -1){
+			quiz = dao.getQuiz(scene.getQuizNum());			
+		}
 		
 		return quiz;
 	}
@@ -164,11 +175,12 @@ public class StoryController {
 	// 현재 씬 번호와 선택지 번호에 따른 다음 씬의 페이지 번호를 알아낸다.
 	@ResponseBody 
 	@RequestMapping(value = "getNextSceneNum", method = RequestMethod.GET)
-	public int getSceneNum(int currentSceneNum, int answerNum, HttpSession session) {
+	public int getSceneNum(int currentPageNum, int answerNum, HttpSession session) {
 		// 현재 진행중인 동화 번호
 		int storyNum = (int) session.getAttribute("currentStoryNum");
 		
 		// 현재 씬을 가져온다.
+		int currentSceneNum = dao.getSceneNumByPageNum(storyNum, currentPageNum);
 		Scene currentScene = dao.getScene(storyNum, currentSceneNum);
 		
 		// 다음 씬 번호를 가져온다. (없으면 -1)
@@ -201,12 +213,15 @@ public class StoryController {
 	//selectionDetail 테이블 저장 테스트용
 	@ResponseBody 
 	@RequestMapping(value = "saveSD", method = RequestMethod.GET)
-	public int saveSD(HttpSession session, int sceneNum) {
+	public int saveSD(HttpSession session, int pageNum) {
 		int result = -1;
 		int selectionNum = (int) session.getAttribute("myselectionNum");
+		int storyNum = (int) session.getAttribute("currentStoryNum");
 		
 		// 해당 씬 넘버가 selectionDetail 테이블에 있는지 조사
-		SelectionDetail sdInDB = dao.getSelectionDetailBySceneNum(selectionNum, sceneNum);
+		SelectionDetail sdInDB = dao.getSelectionDetailByPageNum(selectionNum, pageNum);
+		
+		int sceneNum = dao.getSceneNumByPageNum(storyNum, pageNum);
 		
 		// 존재하지 않으면, 새로 생성
 		if(sdInDB == null){
@@ -240,11 +255,11 @@ public class StoryController {
 			
 			StoryMaker loginUser = (StoryMaker) session.getAttribute("loginUser");
 			String id = loginUser.getId();
-			
+						
 			int storyNum = (int) session.getAttribute("currentStoryNum");
+			System.out.println("현재 유저: " + loginUser + ", 지금 스토리 번호:" + storyNum);
 			
 			HashMap<String, Object> myselection = new HashMap<>();
-			myselection.put("selectionNum", 104);
 			myselection.put("id", id);
 			myselection.put("storyNum", storyNum);
 			myselection.put("finished", "N");
@@ -282,11 +297,13 @@ public class StoryController {
 		
 		@ResponseBody 
 		@RequestMapping(value = "updateSelectiondetail", method = RequestMethod.GET)
-		public int updateSelectiondetail(HttpSession session, int sceneNum, int answerNum) {
+		public int updateSelectiondetail(HttpSession session, int pageNum, int answerNum) {
 			int result = -1;
 			int selectionnum = (int) session.getAttribute("myselectionNum");
+			int storyNum = (int) session.getAttribute("currentStoryNum");
 			HashMap<String, Object> updateSD = new HashMap<>();
 			updateSD.put("selectionnum", selectionnum);
+			int sceneNum = dao.getSceneNumByPageNum(storyNum, pageNum);
 			updateSD.put("sceneNum", sceneNum);
 			updateSD.put("myAnswer", answerNum);
 			result=dao.updateSelectiondetail(updateSD);
@@ -295,13 +312,24 @@ public class StoryController {
 		
 		@ResponseBody
 		@RequestMapping(value="getAvatarText", method = RequestMethod.POST, produces="text/plain;charset=UTF-8")
-		public String getAvatarText(HttpSession session, int currentSceneNum, Model model){
+		public String getAvatarText(HttpSession session, int currentPageNum, Model model){
 			int storyNum = (int) session.getAttribute("currentStoryNum");
+			int currentSceneNum = dao.getSceneNumByPageNum(storyNum, currentPageNum);
 			Scene currentScene = dao.getScene(storyNum, currentSceneNum);
 			
 			String avatarText = currentScene.getFBExplain();
 			
 			return avatarText;
+		}
+		
+		// pageList 테이블에서 씬넘버에 해당하는 페이지 번호를 찾아온다.
+		@ResponseBody
+		@RequestMapping(value="getPageNum", method = RequestMethod.GET)
+		public int getPageNum(HttpSession session, int currentSceneNum, Model model){
+			
+			int pageNum = dao.getPageNum(currentSceneNum);
+			
+			return pageNum;
 		}
 	
 }

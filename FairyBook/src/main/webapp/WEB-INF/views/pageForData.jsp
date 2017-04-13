@@ -12,6 +12,10 @@
 <body>
 
 <a href="quizTable">퀴즈 테이블 새로 쓰기</a>
+<a href="sceneTable">씬 테이블 새로 쓰기</a>
+
+
+
 
 </body>
 </html>

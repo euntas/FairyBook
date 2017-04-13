@@ -125,12 +125,23 @@ public class AnalysisController {
 		return result;
 	}
 	
+	/**
+	 * 병원 검색 및 상담신청으로 이동
+	 * @return 병원검색페이지
+	 */
 	@RequestMapping(value="counsel", method=RequestMethod.GET)
 	public String counsel(){
 		
 		return "analysis/counsel";
 		
 	}
+	
+	/**
+	 * 지역(대분류)에 따른 병원 검색
+	 * @param region
+	 * @param model
+	 * @return 해당 지역 병원
+	 */
 	
 	@ResponseBody
 	@RequestMapping(value="counsel", method=RequestMethod.POST)
@@ -140,6 +151,12 @@ public class AnalysisController {
 		
 	}
 	
+	/**
+	 * 지역(소분류)에 따른 병원 검색
+	 * @param country
+	 * @param model
+	 * @return 해당 지역 병원
+	 */
 	@ResponseBody
 	@RequestMapping(value="counsel1", method=RequestMethod.POST)
 	public Counselor counsel1(String country, Model model){
@@ -151,11 +168,4 @@ public class AnalysisController {
 		
 	}
 	
-		
-	@RequestMapping(value="counselResult", method=RequestMethod.GET)
-	public String counselResult(){
-		
-		return "analysis/counselResult";
-		
-	}
 }

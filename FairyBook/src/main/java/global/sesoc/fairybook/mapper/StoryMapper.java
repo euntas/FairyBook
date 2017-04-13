@@ -44,5 +44,14 @@ public interface StoryMapper {
 	
 	// 종료 업데이트
 	public int updateFinished(HashMap<String, Object> myinfo);
+	
+	// 씬넘버를 주어 해당 페이지 번호를 가져온다
+	public int getPageNum(int sceneNum);
+	
+	// selectionDetail 한 항목을 가져온다. pagenum 이용
+	public SelectionDetail getSelectionDetailByPageNum(HashMap<String, Object> myinfo);
+	
+	// sceneNum 을 가져온다. storyNum과 pageNum 이용
+	public int getSceneNumByPageNum(HashMap<String, Object> myinfo);
 
 }

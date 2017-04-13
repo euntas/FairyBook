@@ -1,3 +1,4 @@
+
 function map(region) {
 	
 	switch (region) {
@@ -457,7 +458,9 @@ function map2(country){
 				latlng : new daum.maps.LatLng(33.500680, 126.529804)
 		};
 		break;
+	
 	default:
+		alert('지역을 선택해주세요.');
 		break;
 
 	}

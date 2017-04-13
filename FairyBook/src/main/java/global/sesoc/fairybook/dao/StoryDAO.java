@@ -138,4 +138,39 @@ public class StoryDAO {
 		
 		return result;
 	}
+	
+	public int getPageNum(int sceneNum){
+		StoryMapper mapper = sqlSession.getMapper(StoryMapper.class);
+		int pageNum = -1;
+		
+		pageNum = mapper.getPageNum(sceneNum);
+		
+		return pageNum;
+	}
+	
+	public SelectionDetail getSelectionDetailByPageNum(int selectionNum, int pageNum){
+		StoryMapper mapper = sqlSession.getMapper(StoryMapper.class);
+		SelectionDetail result = null;
+		
+		HashMap<String, Object> myinfo = new HashMap<>();
+		myinfo.put("selectionNum", selectionNum);
+		myinfo.put("pageNum", pageNum);
+		
+		result = mapper.getSelectionDetailByPageNum(myinfo);
+		
+		return result;
+	}
+	
+	public int getSceneNumByPageNum(int storyNum, int pageNum){
+		StoryMapper mapper = sqlSession.getMapper(StoryMapper.class);
+		int sceneNum = -1;
+		
+		HashMap<String, Object> myinfo = new HashMap<>();
+		myinfo.put("storyNum", storyNum);
+		myinfo.put("pageNum", pageNum);
+		
+		sceneNum = mapper.getSceneNumByPageNum(myinfo);
+		
+		return sceneNum;
+	}
 }
