@@ -2,12 +2,11 @@
 @CHARSET "UTF-8";
 
 /*쿠키집 표시하는 영역*/
-#cookieHouse{
+#etc{
 	margin: 0px;
 	width : auto;
 	height: 600px;
 	border: 1px solid black;
-	background-image: url("../img/cookieHouse/background.png");
 	background-size: 100% 100%; 
 	background-repeat: no-repeat;
 	background-color: rgba( 255, 255, 255, 0.8 );

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="global.sesoc.fairybook.mapper.ETCMapper">
+ 
+<!-- DB에서 얼굴자료의 경로를 가져옵니다 -->
+<select id="readFace" resultType="FBResource">
+	select
+		resourcenum, name, analysis, path
+	from
+		fbresource
+	where
+		name like '%face%'
+	or
+		name like '%FACE%'
+</select>
+
+<!-- DB에서 헤어자료의 경로를 가져옵니다 -->
+<select id="readHair" resultType="FBResource">
+	select
+		resourcenum, name, analysis, path
+	from
+		fbresource
+	where
+		name like '%hair%'
+	or
+		name like '%HAIR%'
+</select>
+
+<!-- DB에서 눈 자료의 경로를 가져옵니다 -->
+<select id="readEye" resultType="FBResource">
+	select
+		resourcenum, name, analysis, path
+	from
+		fbresource
+	where
+		name like '%eye%'
+	or
+		name like '%EYE%'
+</select>
+
+<!-- DB에서 코 자료의 경로를 가져옵니다 -->
+<select id="readNose" resultType="FBResource">
+	select
+		resourcenum, name, analysis, path
+	from
+		fbresource
+	where
+		name like '%nose%'
+	or
+		name like '%NOSE%'
+</select>
+
+<!-- DB에서 입 자료의 경로를 가져옵니다 -->
+<select id="readMouth" resultType="FBResource">
+	select
+		resourcenum, name, analysis, path
+	from
+		fbresource
+	where
+		name like '%mouth%'
+	or
+		name like '%MOUTH%'
+</select>
+
+<!-- DB에서 귀 자료의 경로를 가져옵니다 -->
+<select id="readEar" resultType="FBResource">
+	select
+		resourcenum, name, analysis, path
+	from
+		fbresource
+	where
+		name like '%ear%'
+	or
+		name like '%EAR%'
+</select>
+
+<!-- DB에서 목 자료의 경로를 가져옵니다 -->
+<select id="readNeck" resultType="FBResource">
+	select
+		resourcenum, name, analysis, path
+	from
+		fbresource
+	where
+		name like '%neck%'
+	or
+		name like '%NECK%'
+</select>
+
+<!-- DB에서 몸 자료의 경로를 가져옵니다 -->
+<select id="readBody" resultType="FBResource">
+	select
+		resourcenum, name, analysis, path
+	from
+		fbresource
+	where
+		name like '%body%'
+	or
+		name like '%BODY%'
+</select>
+
+<!-- DB에서 색깔 자료의 경로를 가져옵니다 -->
+<select id="readColor" parameterType="map" resultType="string">
+	select
+		path
+	from
+		resourcecolor
+	where
+		name like '%'||#{name}||'%'
+	and
+		name like '%'||#{color}||'%'
+</select>
+
+
+<!-- DB에 내가 만든 아바타를 저장합니다 -->
+<insert id="saveAvatar" parameterType="Avatar">
+	insert into madeavatar
+	values
+	(#{selectionNum},
+	 #{face},
+	 #{hair},
+	 #{eye},
+	 #{nose},
+	 #{mouth},
+	 #{ear},
+	 #{neck},
+	 #{body},
+	 #{hairColor},
+	 #{eyeColor},
+	 #{bodyColor}
+	 ) 
+</insert>
+</mapper>

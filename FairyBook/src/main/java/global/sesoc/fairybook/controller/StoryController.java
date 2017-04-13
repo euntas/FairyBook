@@ -105,7 +105,7 @@ public class StoryController {
 		return "story/storyEndPage";
 	}
 	
-	// 마지막 페이지일 경우, 종료 페이로 이동한다.
+	// 마지막 페이지일 경우, 종료 페이지로 이동한다.
 	@RequestMapping(value = "storyEndPage", method = RequestMethod.GET)
 	public String storyEndPage(Model model, HttpSession session) {
 		
