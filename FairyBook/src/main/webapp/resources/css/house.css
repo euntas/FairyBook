@@ -4,11 +4,9 @@
 /*집 표시하는 영역*/
 #house{
 	margin: 0px;
-	position: absolute;
-	width : 79%;
-	height: 59%;
+	width : auto;
+	height: 500px;
 	border: 1px solid black;
-	left: 20%;
 	background-image: url("../img/house/background.jpg");
 	background-size: 100% 100%; 
 	background-repeat: no-repeat;
@@ -24,7 +22,7 @@ img{
 /* 집의 지붕이미지 */
 #roof{
 	position: absolute;
-	left: 40%;
+	left: 48%;
 	top: 20%;
 	z-index: 1;
 }
@@ -32,7 +30,7 @@ img{
 /* 집의 문이미지 */
 #door{
 	position: absolute;
-	left: 40%;
+	left: 48%;
 	top: 18%;
 	z-index: 2;
 }
@@ -40,7 +38,7 @@ img{
 /* 집의 창문이미지 */
 #window{
 	position: absolute;
-	left: 50%;
+	left: 48%;
 	top: 40%;
 	z-index: 3;
 }
@@ -48,7 +46,7 @@ img{
 /* 집의 굴뚝이미지 */
 #chimney{
 	position: absolute;
-	left: 50%;
+	left: 48%;
 	top: 45%;
 	z-index: 4;
 }
@@ -56,7 +54,7 @@ img{
 /* 집의 마당이미지 */
 #yard{
 	position: absolute;
-	left: 50%;
+	left: 48%;
 	top: 50%;
 	z-index: 5;
 }
@@ -64,7 +62,7 @@ img{
 /* 집의 벽이미지 */
 #wall{
 	position: absolute;
-	left: 55%;
+	left: 48%;
 	top: 45%;
 	z-index: 5;
 }
@@ -72,50 +70,47 @@ img{
 /*집의 부위 선택하는 영역*/
 #category{
 	margin: 0px;
-	position: absolute;
-	width : 79%;
-	height: 10%;
+	width : auto;
+	height: 100px;
 	border: 1px solid black;
-	left: 20%;
 	top: 60%;
 }
 
 /* 해당 부위의 디테일 선택하는 영역 */
 #detail{
 	margin: 0px;
-	position: absolute;
-	width : 50%;
-	height: 30%;
+	width : auto;
+	height: 157px;
 	border: 1px solid black;
-	left: 20%;
-	top: 70%;
+	top: 400px;
 }
 
 /* 저장버튼이 있는 영역 */
 #saveArea{
 	margin: 0px;
-	position: absolute;
-	right: 0.5%;
-	bottom: 0.5%;
+	width : 15%;
+	height: 15%;
+	float: right;
+}
+/* 저장 버튼 */
+#savebtn{
+	width : 99%;
+	height: 99%;
+	display: none;
+}
+
+/* 리셋 버튼 */
+#resetbtn{
 	width : 15%;
 	height: 15%;
 }
-	/* 저장 버튼 */
-	#savebtn{
-		width : 99%;
-		height: 99%;
-		display: none;
-	}
 
 /* 색 선택하는 영역 */
 #color{
 	margin: 0px;
-	position: absolute;
 	width : 29%;
-	height: 30%;
-	border: 1px solid black;
-	left: 70%;
-	top: 70%;
+	height: 150px;
+	float: right;
 }
 
 /* 색 버튼 클래스 */
@@ -136,8 +131,8 @@ img{
 /* db에서 가져온 그림들 */
 .items{
 	margin: 0px;
-	width : 10%;
-	height: 10%;
+	width : 100px;
+	height: 100px;
 }
 
 /* 빨강버튼 */
