@@ -78,7 +78,8 @@ public class StoryController {
 		// 기존 회차가 있을 때
 		else{
 			System.out.println("기존회차");
-			firstPageNum = dao.getLatestSceneNum(mySelection.getSelectionNum());
+			int lastSceneNum = dao.getLatestSceneNum(mySelection.getSelectionNum());
+			firstPageNum = dao.getPageNum(lastSceneNum);
 			System.out.println("firstPageNum : " + firstPageNum);
 		}
 		
@@ -105,7 +106,7 @@ public class StoryController {
 		return "story/storyEndPage";
 	}
 	
-	// 마지막 페이지일 경우, 종료 페이로 이동한다.
+	// 마지막 페이지일 경우, 종료 페이지로 이동한다.
 	@RequestMapping(value = "storyEndPage", method = RequestMethod.GET)
 	public String storyEndPage(Model model, HttpSession session) {
 		
