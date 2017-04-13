@@ -19,11 +19,40 @@
 
 <select id="getOrder" parameterType="int" resultType="OrderBook">
 	select 
-		* 
+		o.selectionnum as selectionnum
+		,m.id as id
+		,o.orderdate as orderdate
+		,o.bookcover as bookcover
+		,o.currentstate as currentstate
 	from
+		orderbook o, myselection m
+	where
+		o.selectionnum = m.selectionnum
+	and
+		o.selectionnum = #{selectionnum} 
+</select>
+
+<delete id="deleteBookCover" parameterType="int">
+	delete from
 		orderbook
 	where
-		selectionnum = #{selectionnum} 
+		selectionnum = #{selectionnum}
+</delete>
+
+<select id="getStoryTitle" parameterType="int" resultType="string">
+	select 
+		storytitle
+	from
+		fairytale
+	where
+		storynum = (
+			select 
+				storynum 
+			from 
+				myselection 
+			where 
+				selectionnum = #{selectionnum}
+			)
 </select>
 
 </mapper>

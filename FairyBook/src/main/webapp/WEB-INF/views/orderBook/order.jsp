@@ -26,13 +26,31 @@
 <!--####################여기부터  -->
 
 <form>
-<table>
+<table border="1">
 <tr>
-<td><img alt="cover" src=""></td>
+<c:if test="${order == null}"> <!--책표지 아직 안만들었을때  -->
+<td rowspan="4"><img height="400px" alt="cover" src="../resources/img/bookCover/defaultCover.png"></td>
+</c:if>
+<c:if test="${order != null}"><!--책표지 만들었을때  -->
+<td rowspan="4"><img height="400px" alt="cover" src="getBookCover?selectionnum=${selectionnum}"></td>
+</c:if>
+</tr>
+<tr>
 <td>제목</td>
+<td>${title}</td>
+</tr>
+<tr>
 <td>가격</td>
-
-
+<td>5000</td>
+</tr>
+<tr>
+<td>수량</td>
+<td><input type="text"></td>
+</tr>
+<tr>
+<td><input type="button" value="표지 만들기" 
+	onclick="location.href='makeCover?selectionnum=${selectionnum}'"></td>
+<td><input type="button" value="주문하기"></td>
 </tr>
 </table>
 </form>

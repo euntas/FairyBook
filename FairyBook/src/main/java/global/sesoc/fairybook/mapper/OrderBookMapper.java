@@ -8,4 +8,8 @@ public interface OrderBookMapper {
 
 	public OrderBook getOrder(int selectionnum);
 
+	public int deleteBookCover(int selectionnum);
+
+	public String getStoryTitle(int selectionnum);
+
 }
