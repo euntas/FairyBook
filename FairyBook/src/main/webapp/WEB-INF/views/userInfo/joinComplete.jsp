@@ -23,15 +23,18 @@
 <!--배너  -->
 <nav class="navbar-fixed-top">
 <div class="container-fluid bg-2 text-center">
-  <h1>Fairytale Book</h1>
+  <h1 onclick="location.href='/fairybook/'"
+  style="cursor: pointer;">Fairytale Book</h1>
 </div>
 </nav>
 
-<div id="under">
-<p>FAIRY BOOK 가입을 환영합니다.</p>
+<div id="under" style="text-align: center; margin: auto;">
+<img src="../resources/image/yo.jpg">
+<h1 style="font-family: fantasy; ">FAIRY BOOK</h2>
+<h2 style="font-family: fantasy; font-stretch: inherit;">가입을 환영합니다.</h2>
 <p>
-	<input type="button" value="로그인" onclick="location.href='login'"> &nbsp;
-	<input type="button" value="메인으로" onclick="location.href='/fairybook/'">
+	<input type="button" value="로그인" onclick="location.href='login'" class="btn btn-info"> &nbsp;
+	<input type="button" value="메인으로" onclick="location.href='/fairybook/'" class="btn btn-info">
 
 </p>
 </div>

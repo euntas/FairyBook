@@ -1,4 +1,8 @@
-
+/**
+ * 병원검색시 지역별(대구분)로 검색결과를 보여줌
+ * @param region
+ * @returns
+ */
 function map(region) {
 	
 	switch (region) {
@@ -181,6 +185,11 @@ function map(region) {
 	}
 }
 
+/**
+ * 병원검색시 지역별(소구분)로 검색결과를 보여줌
+ * @param country
+ * @returns
+ */
 function map2(country){
 
 	switch (country) {
