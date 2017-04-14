@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import global.sesoc.fairybook.dao.StoryDAO;
+import global.sesoc.fairybook.vo.MySelection;
 import global.sesoc.fairybook.vo.SelectionDetail;
 import global.sesoc.fairybook.vo.StoryMaker;
 
@@ -51,7 +52,7 @@ public class QuizController {
 	
 	@RequestMapping(value = "quizSolve", method = RequestMethod.GET)
 	public String quizSolve(HttpSession session, Model model) {
-		ArrayList<Integer> selectionList = getFinishedSelectionList(session, model);
+		ArrayList<MySelection> selectionList = getFinishedSelectionList(session, model);
 		
 		return "quiz/quizSolve";
 	}
@@ -83,11 +84,12 @@ public class QuizController {
 	 */
 	@ResponseBody
 	@RequestMapping(value="getFinishedSelectionList", method=RequestMethod.POST)
-	public ArrayList<Integer> getFinishedSelectionList(HttpSession session, Model model){
+	public ArrayList<MySelection> getFinishedSelectionList(HttpSession session, Model model){
 		StoryMaker user = (StoryMaker) session.getAttribute("loginUser");
 		
-		ArrayList<Integer> selectionNumList = new ArrayList<>();
+		ArrayList<MySelection> selectionNumList = new ArrayList<>();
 		selectionNumList = dao.getSelectionNumListById(user.getId());
+		
 		
 		return selectionNumList;
 	}

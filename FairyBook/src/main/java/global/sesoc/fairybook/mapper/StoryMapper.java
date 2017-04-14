@@ -55,6 +55,6 @@ public interface StoryMapper {
 	public int getSceneNumByPageNum(HashMap<String, Object> myinfo);
 	
 	// 한 사용자의 selectionNum 리스트를 전부 가져온다.(완료된 동화 회차만 해당)
-	public ArrayList<Integer> getSelectionNumListById(String id);
+	public ArrayList<MySelection> getSelectionNumListById(String id);
 
 }

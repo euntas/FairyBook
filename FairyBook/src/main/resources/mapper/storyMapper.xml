@@ -174,9 +174,9 @@
 		pagenum = #{pageNum} and storynum = #{storyNum}
 </select>
 
-<select id="getSelectionNumListById" parameterType="String" resultType="int">
+<select id="getSelectionNumListById" parameterType="String" resultType="MySelection">
 	select
-		selectionNum
+		*
 	from
 		myselection
 	where
