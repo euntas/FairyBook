@@ -35,7 +35,10 @@
 	        <h6 class="w3-opacity">2017.3.22</h6>
 	        <button class="w3-button w3-red w3-margin-bottom" onclick="location.href='story/storyTitle?storyNum=0'">감상</button>
 	        <button class="w3-button w3-green w3-margin-bottom" onclick="location.href='../analysis/storyAnalysis'">결과보기</button>
-	        <button class="w3-button w3-yellow w3-margin-bottom" onclick="location.href='../orderBook/makeCover?selectionNum=1'">책으로 주문하기</button>
+	        <form action="../orderBook/order" method="post">
+	        	<input type="hidden" class="orderSelectionnum" name="selectionnum" value="1">
+	        	<button type="submit" class="w3-button w3-yellow w3-margin-bottom">책으로 주문하기</button>
+	        </form>
 	      </div>
 	    </div>
 	   

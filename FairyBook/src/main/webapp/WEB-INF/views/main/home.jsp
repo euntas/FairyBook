@@ -97,7 +97,7 @@ function myFunc(id) {
 <c:if test="${loginUser != null }">
 <!--아이로그인  -->
 <c:if test="${userType == 'child'}">
-<nav class="w3-sidebar w3-bar-block w3-collapse w3-white <!-- w3-animate-left  -->w3-card-2" style="z-index:3;width:220px;" id="mySidebar">
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-white w3-animate-left w3-card-2" style="z-index:3;width:220px;" id="mySidebar">
   <div class="container-fluid bg-1">
   <h3>${loginUser.cnickName}</h3>
   <center><img src="./resources/image/yo.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"></center><br><!--circle image  -->
@@ -111,14 +111,14 @@ function myFunc(id) {
   
   <a href="menu/storySelect" class="w3-bar-item w3-button"><i class="fa fa-paper-plane w3-padding-right"></i>동화선택</a>
   <a href="slide/storyPlay" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>동화감상</a>
-  <a href="menu/quizSolve" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>문제풀기</a>
+  <a href="menu/quizList" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>문제풀기</a>
   <a href="menu/makebook" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>책만들기</a>
   
 </nav>
 </c:if>
 <!--부모 로그인했을때  -->
 <c:if test="${userType == 'parent'}">
-<nav class="w3-sidebar w3-bar-block w3-collapse w3-white <!-- w3-animate-left --> w3-card-2" style="z-index:3;width:220px;" id="mySidebar">
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-white w3-animate-left w3-card-2" style="z-index:3;width:220px;" id="mySidebar">
   <div class="container-fluid bg-1">
   <h3>${loginUser.pnickName}</h3>
   <center><img src="./resources/image/pp4.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"></center><br><!--circle image  -->

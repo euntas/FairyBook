@@ -113,6 +113,7 @@ background: #000;filter:alpha(opacity=10); opacity:0.1; -moz-opacity:0.1;
 	}
 	
 	function capture() {
+        $("canvas").remove();
         html2canvas($(".container"), {
               onrendered: function(canvas) {
                 document.body.appendChild(canvas);
@@ -145,17 +146,18 @@ background: #000;filter:alpha(opacity=10); opacity:0.1; -moz-opacity:0.1;
              type:"post",
              data : $("form").serialize(),
              url:     "saveCover",
-             error: function(a, b, c){        
+             error: function(a, b, c){
+            	 form.submit();
                 // alert("fail!!");
              },
              success: function (data) {
+            	 form.submit();
                  try{
                  }catch(e){                
                      alert('server Error!!');
                  }
              }
          }); //ajax
-         form.submit();
 	}
 </script>
 
@@ -192,7 +194,7 @@ background: #000;filter:alpha(opacity=10); opacity:0.1; -moz-opacity:0.1;
 <!-- 생성된 표지 -->
 <form id="capturedForm" action="order" method="post">
 <input type="hidden" name="imgSrc" id="imgSrc" />
-<input type="hidden" name="selectionnum" id="selectionnum" value="${selectionnum}"/>
+<input type="hidden" name="ordernum" id="ordernum" value="${ordernum}"/>
 </form>
 </body>
 </html>

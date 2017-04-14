@@ -299,6 +299,8 @@ create sequence seq_counselor start with 1 increment by 1;
 
 --책 주문 정보
 create table ORDERBOOK(
+	--주문번호
+	ordernum number primary key,
 	--선택 동화
 	selectionnum number not null,
 	--주문한 날짜
@@ -307,8 +309,12 @@ create table ORDERBOOK(
 	bookcover varchar2(100) not null,
 	--주문 상황
 	currentstate varchar2(50),
+	--가격
+	price number,
 	foreign key (selectionnum) references MYSELECTION(selectionnum)
 );
+
+create sequence seq_orderbook start with 1 increment by 1;
 
 insert into counselor values (seq_counselor.nextval, '서울', '마포' , '우리들병원', '고정기', '02-458-3215', 'junggigo@naver.com');
 insert into counselor values (seq_counselor.nextval, '서울', '강동', 'jnLee아동정신의학과', '이지나', '02-749-2511', 'jnlee@gmail.com');
