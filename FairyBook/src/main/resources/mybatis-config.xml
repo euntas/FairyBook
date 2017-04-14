@@ -20,6 +20,7 @@
 		<typeAlias type="global.sesoc.fairybook.vo.MySelection" alias="MySelection" />	
 		<typeAlias type="global.sesoc.fairybook.vo.SelectionDetail" alias="SelectionDetail" />
 		<typeAlias type="global.sesoc.fairybook.vo.OrderBook" alias="OrderBook" />
+		<typeAlias type="java.util.Map" alias="Map" />
 	</typeAliases>
 	
 	<mappers>

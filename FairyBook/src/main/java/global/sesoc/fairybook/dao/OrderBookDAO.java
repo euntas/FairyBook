@@ -1,5 +1,8 @@
 package global.sesoc.fairybook.dao;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -19,7 +22,7 @@ public class OrderBookDAO {
 	
 	/**
 	 * 책표지 저장하기
-	 * @param ob currentstate:(표지만 만든 상황: '표지')(장바구니: '장바구니')(주문: '주문')
+	 * @param ob currentstate:(처음엔:'default')(표지만 만든 상황: '표지')(장바구니: '장바구니')(주문: '주문')
 	 * @return
 	 */
 	public int saveOrder(OrderBook ob){
@@ -29,29 +32,17 @@ public class OrderBookDAO {
 		return result;
 	}
 
-	/**
-	 * 책 주문 객체 가져오기
-	 * @param ordernum
-	 * @return
-	 */
-	public OrderBook existCover(int ordernum) {
-		OrderBook result = new OrderBook();
-		OrderBookMapper mapper = sqlSession.getMapper(OrderBookMapper.class);
-		result = mapper.existCover(ordernum);
-		return result;
-	}
-	
-	/**
-	 * 전에 만들어놓은 표지있는지 확인하기
-	 * @param ordernum
-	 * @return
-	 */
-	public int deleteBookCover(int ordernum){
-		int result = 0;
-		OrderBookMapper mapper = sqlSession.getMapper(OrderBookMapper.class);
-		result = mapper.deleteBookCover(ordernum);
-		return result;
-	}
+//	/**
+//	 * 전에 만들어놓은 표지있는지 확인하기
+//	 * @param ordernum
+//	 * @return
+//	 */
+//	public int deleteBookCover(int ordernum){
+//		int result = 0;
+//		OrderBookMapper mapper = sqlSession.getMapper(OrderBookMapper.class);
+//		result = mapper.deleteBookCover(ordernum);
+//		return result;
+//	}
 
 	/**
 	 * 주문 할 책 제목 가져오기
@@ -64,19 +55,21 @@ public class OrderBookDAO {
 		return result;
 	}
 
+	/**
+	 * 주문 변경하기
+	 * @param b
+	 * @return
+	 */
 	public int updateOrder(OrderBook b) {
 		OrderBookMapper mapper = sqlSession.getMapper(OrderBookMapper.class);
 		int result = mapper.updateOrder(b);
 		return result;
 	}
 
-	public int getOrdernum() {
-		int result = 0;
-		OrderBookMapper mapper = sqlSession.getMapper(OrderBookMapper.class);
-		result = mapper.getOrdernum();
-		return result;
-	}
-
+	/**
+	 * 처음 주문할때 ordernum 만들어주기
+	 * @return
+	 */
 	public int setOrdernum() {
 		int result = 0;
 		OrderBookMapper mapper = sqlSession.getMapper(OrderBookMapper.class);
@@ -84,10 +77,29 @@ public class OrderBookDAO {
 		return result;
 	}
 
-	public OrderBook getOrder(int ordernum) {
+	/**
+	 * orderbook 객체 불러오기
+	 * @param num 'ordernum''selectionnum': 안 가져오면 -1 가져옴
+	 * @return
+	 */
+	public OrderBook getOrder(Map<String, Integer> num) {
 		OrderBook result = new OrderBook();
 		OrderBookMapper mapper = sqlSession.getMapper(OrderBookMapper.class);
-		result = mapper.getOrder(ordernum);
+		result = mapper.getOrder(num);
+		return result;
+	}
+
+	public ArrayList<OrderBook> cartList(String id) {
+		ArrayList<OrderBook> result = new ArrayList<>();
+		OrderBookMapper mapper = sqlSession.getMapper(OrderBookMapper.class);
+		result = mapper.cartList(id);
+		return result;
+	}
+
+	public ArrayList<Integer> lastBookCover(Map<String, Object> data) {
+		ArrayList<Integer> result = new ArrayList<>();
+		OrderBookMapper mapper = sqlSession.getMapper(OrderBookMapper.class);
+		result = mapper.lastBookCover(data);
 		return result;
 	}
 }

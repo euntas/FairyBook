@@ -311,7 +311,7 @@ create table ORDERBOOK(
 	currentstate varchar2(50),
 	--가격
 	price number,
-	foreign key (selectionnum) references MYSELECTION(selectionnum)
+	foreign key (selectionnum) references MYSELECTION(selectionnum),
 );
 
 create sequence seq_orderbook start with 1 increment by 1;
