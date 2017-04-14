@@ -61,6 +61,7 @@ public class QuizController {
 		//SelectionDetail 테이블에서 sceneNum, selectionNum, selection 저장하기
 		//insert into SELECTIONDETAIL (SCENENUM, SELECTIONNUM, SELECTION) values (?,?,?);
 		
+		
 	}
 	
 	/**
