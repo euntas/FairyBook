@@ -173,5 +173,14 @@
 	where
 		pagenum = #{pageNum} and storynum = #{storyNum}
 </select>
+
+<select id="getSelectionNumListById" parameterType="String" resultType="int">
+	select
+		selectionNum
+	from
+		myselection
+	where
+		id = #{id} and finished='Y'
+</select>
 	
 </mapper>
