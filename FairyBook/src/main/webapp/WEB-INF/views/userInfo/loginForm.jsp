@@ -117,7 +117,7 @@
   <!--버튼 및 링크  -->
   <button type="button" id="login" class="btn btn-success">LOGIN</button>
   <button type="button" id="home" class="btn btn-warning">HOME</button>
-  <p><b><a href="....">ID/패스워드 찾기</a></b> 
+  <p><b><a href="findMyInfo">ID/패스워드 찾기</a></b> 
   <b><a href="join">회원가입</a></b></p>
 </div>
 

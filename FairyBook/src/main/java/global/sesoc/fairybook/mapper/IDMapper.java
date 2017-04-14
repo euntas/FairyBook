@@ -37,4 +37,9 @@ public interface IDMapper {
 	
 	//아이디 검색
 	public StoryMaker findID(String id);
+	
+	//이메일로 아이디 검색
+	public String findId(String email);
+	
+	public String findPW(String id, String email);
 }
