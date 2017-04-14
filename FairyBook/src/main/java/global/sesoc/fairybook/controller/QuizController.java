@@ -1,11 +1,21 @@
 package global.sesoc.fairybook.controller;
 
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import global.sesoc.fairybook.dao.StoryDAO;
+import global.sesoc.fairybook.vo.SelectionDetail;
+import global.sesoc.fairybook.vo.StoryMaker;
 
 /**
  * QuizController
@@ -16,6 +26,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("quiz")
 public class QuizController {
+	
+	@Autowired
+	StoryDAO dao;
 
 	private static final Logger logger = LoggerFactory.getLogger(QuizController.class);
 	
@@ -48,6 +61,23 @@ public class QuizController {
 		//SelectionDetail 테이블에서 sceneNum, selectionNum, selection 저장하기
 		//insert into SELECTIONDETAIL (SCENENUM, SELECTIONNUM, SELECTION) values (?,?,?);
 		
+	}
+	
+	/**
+	 * 현재 사용자의 완료된 동화 목록을 불러온다.
+	 * 
+	 * @param session
+	 * @param model
+	 */
+	@ResponseBody
+	@RequestMapping(value="getFinishedSelectionList", method=RequestMethod.POST)
+	public ArrayList<Integer> getFinishedSelectionList(HttpSession session, Model model){
+		StoryMaker user = (StoryMaker) session.getAttribute("loginUser");
+		
+		ArrayList<Integer> selectionNumList = new ArrayList<>();
+		selectionNumList = dao.getSelectionNumListById(user.getId());
+		
+		return selectionNumList;
 	}
 	
 	

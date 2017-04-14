@@ -173,4 +173,13 @@ public class StoryDAO {
 		
 		return sceneNum;
 	}
+	
+	public ArrayList<Integer> getSelectionNumListById(String id){
+		StoryMapper mapper = sqlSession.getMapper(StoryMapper.class);
+		
+		ArrayList<Integer> result = new ArrayList<>();
+		result = mapper.getSelectionNumListById(id);
+		
+		return result;
+	}
 }
