@@ -60,11 +60,11 @@ public class HomeController {
 	 * 문제풀기
 	 * 
 	 * @return main/quizSolve.jsp
-	 */
-	@RequestMapping(value = "menu/quizList", method = RequestMethod.GET)
-	public String quizSolve() {
-		return "main/quizList";
-	}
+	 *//*
+	@RequestMapping(value = "quiz/quizList", method = RequestMethod.GET)
+	public String quizList() {
+		return "quiz/quizList";
+	}*/
 
 	/**
 	 * 내아이동화감상

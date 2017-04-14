@@ -1,11 +1,15 @@
 package global.sesoc.fairybook.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import global.sesoc.fairybook.vo.StoryMaker;
 
 /**
  * QuizController
@@ -30,6 +34,18 @@ public class QuizController {
 		
 		//Quiz 테이블에서  quizNum의  Quiz객체 가져와서 jsp에 출력
 		
+	}
+	
+	@RequestMapping(value = "quizList", method = RequestMethod.GET)
+	public String quizList() {
+		return "quiz/quizList";
+	}
+	
+	@RequestMapping(value = "quizSolve", method = RequestMethod.GET)
+	public String quizSolve(HttpSession session) {
+		StoryMaker loginUser = (StoryMaker) session.getAttribute("loginUser");
+		String id = loginUser.getId();
+		return "quiz/quizSolve";
 	}
 	
 	/**
