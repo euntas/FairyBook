@@ -61,9 +61,9 @@ public class HomeController {
 	 * 
 	 * @return main/quizSolve.jsp
 	 */
-	@RequestMapping(value = "menu/quizSolve", method = RequestMethod.GET)
+	@RequestMapping(value = "menu/quizList", method = RequestMethod.GET)
 	public String quizSolve() {
-		return "main/quizSolve";
+		return "main/quizList";
 	}
 
 	/**
@@ -105,5 +105,6 @@ public class HomeController {
 	public String pageForData() {
 		return "pageForData";
 	}
+	
 }
 
