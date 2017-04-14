@@ -50,9 +50,9 @@ public class QuizController {
 	}
 	
 	@RequestMapping(value = "quizSolve", method = RequestMethod.GET)
-	public String quizSolve(HttpSession session) {
-		StoryMaker loginUser = (StoryMaker) session.getAttribute("loginUser");
-		String id = loginUser.getId();
+	public String quizSolve(HttpSession session, Model model) {
+		ArrayList<Integer> selectionList = getFinishedSelectionList(session, model);
+		
 		return "quiz/quizSolve";
 	}
 	
