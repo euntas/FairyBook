@@ -272,7 +272,83 @@ RocketPageFlip.prototype.flip = function(page) {
 };
 
 RocketPageFlip.prototype.next = function() {
-		this.flip(this.options.current + 1);
+		//this.flip(this.options.current + 1);
+	// 다음 버튼을 눌렀을 때는 무조건 1번 선택지를 고른 것으로 한다. 꼭 디비에서 다음으로 갈 씬번회를 nextScene1에 저장해 두어야 한다.
+	$.ajax({
+        url:'getNextSceneNum',
+        type:'GET',
+        data: {currentPageNum: pageflip.options.current, answerNum: 1},
+        dataType: 'json',
+        success: function(nextSceneNum){
+        	// 지금 씬이 마지막 페이지가 아닐 때.
+        	if(nextSceneNum != -1){
+	        	// selectiondetail 테이블에 update 해 주어야 함.
+	        	$.ajax({
+	    	        url:'updateSelectiondetail',
+	    	        type:'GET',
+	    	        data: {pageNum: pageflip.options.current, answerNum: 1},
+	    	        dataType: 'json',
+	    	        success: function(){
+	    	        	alert('selectiondetail 업데이트(다음 눌렀을 때)--');
+	    	        	
+	    	        	// 다음 씬 번호를 이용해 실제 다음 페이지 번호를 읽어온다.
+			        	$.ajax({
+	        		        url:'getPageNum',
+	        		        type:'GET',
+	        		        data: {currentSceneNum: nextSceneNum},
+	        		        dataType: 'json',
+	        		        success: function(nextPageNum){
+	        		        	alert("다음 눌렀을때! 다음은 " + nextSceneNum + '번 씬, ' + nextPageNum +  '번 페이지로 이동합니다.');
+	        		        	// 다음페이지로 이동한다.
+	        		        	pageflip.flip(nextPageNum);     
+	        		        	
+	        		        	return;
+	        		        },
+	        		        error: function(e){
+	        		            alert('다음 눌렀을 때! 페이지 번호 읽어오기 실패' + JSON.stringify(e));
+	        		        }
+	        		    });
+	    	        },
+	    	        error: function(e){
+	    	            alert(JSON.stringify(e));
+	    	        }
+	    	    });
+	        	//여기까지
+        		return;
+        	}
+        	
+        	// 지금 씬이 마지막 페이지일 때
+        	else{
+        		
+    			alert('else 여기로 옴 : ' + location.href);
+    			
+    			// 종료 화면으로 이동
+    			$.ajax({
+    		        url:'storyEnd',
+    		        type:'GET',
+    		        dataType: 'json',
+    		        success: function(result){
+    		        	//alert('종료화면으로 이동' + result);
+    		        	
+    		        },
+    		        error: function(e){
+    		            //alert('저장실패' + JSON.stringify(e));
+    		        	// 지금 상황 : 디비에 종료 저장도 하고, "storyEnd" 라는 문자열을 반환하기는 하지만
+    		        	// 무조건 error 안으로 들어온다. ajax 밖에서 처리하도록 함.
+    		        }
+    		    });
+    			
+    			// 스토리 종료 화면으로 이동하게 한다.
+    			location.href = "storyEndPage";
+    			
+    			return;
+        	}
+        	
+        },
+        error: function(e){
+            alert(JSON.stringify(e));
+        }
+    });
 };
 
 RocketPageFlip.prototype.prev = function() {

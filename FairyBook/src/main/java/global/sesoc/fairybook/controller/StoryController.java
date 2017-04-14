@@ -196,6 +196,8 @@ public class StoryController {
 		else if(answerNum == 4)
 			nextSceneNum = currentScene.getNextScene4();
 		
+		System.out.println("다음 씬번호는 : " + nextSceneNum + "입니다.");
+		
 		return nextSceneNum;
 	}
 	
@@ -329,6 +331,8 @@ public class StoryController {
 		public int getPageNum(HttpSession session, int currentSceneNum, Model model){
 			
 			int pageNum = dao.getPageNum(currentSceneNum);
+			
+			System.out.println("씬번호: " + currentSceneNum + " 에 해당하는 페이지 넘버는 : " + pageNum + "입니다.");
 			
 			return pageNum;
 		}
