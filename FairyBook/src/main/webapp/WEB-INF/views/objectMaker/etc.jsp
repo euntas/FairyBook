@@ -188,19 +188,21 @@ function save(){
 				selection12Color:colors[11]
 				},
 				success: function(){
-					 $.ajax({
-		                  url:'../story/updateSelectiondetail',
-		                  type:'GET',
-		                  data: {pageNum: 13, answerNum: 1},
-		                  dataType: 'json',
-		                  success: function(){
-		                     alert('selectiondetail (16번 씬 - 페이지번호(13)) 업데이트');
-		                     location.href='../story/storyStart?storyNum=1';
-		                  },
-		                  error: function(e){
-		                      alert(JSON.stringify(e));
-		                  }
-		              });
+					$.ajax({
+				        url:'saveSD',
+				        type:'GET',
+				        data: {pageNum: 13},
+				        dataType:'json',
+				        success: function(){
+				        	alert("플립 성공 들어옴");
+				        	alert('selectionDetail 생성====');
+				        },
+				        error: function(e){
+				        	alert("플립 실패 들어옴");
+				            alert(JSON.stringify(e));
+				        }
+				    });
+					
 				},
 				error: function(e){
 					alert(JSON.stringify(e));
