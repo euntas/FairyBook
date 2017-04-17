@@ -4,101 +4,16 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="global.sesoc.fairybook.mapper.ETCMapper">
- 
-<!-- DB에서 얼굴자료의 경로를 가져옵니다 -->
-<select id="readFace" resultType="FBResource">
-	select
-		resourcenum, name, analysis, path
-	from
-		fbresource
-	where
-		name like '%face%'
-	or
-		name like '%FACE%'
-</select>
 
-<!-- DB에서 헤어자료의 경로를 가져옵니다 -->
-<select id="readHair" resultType="FBResource">
-	select
-		resourcenum, name, analysis, path
+<!-- StoryNum에 따른 ETC 자료들을 불러옵니다 -->
+<select id="readETC" parameterType="int" resultType="FBResource">
+	select 
+		resourcenum, name, path
 	from
 		fbresource
 	where
-		name like '%hair%'
-	or
-		name like '%HAIR%'
-</select>
-
-<!-- DB에서 눈 자료의 경로를 가져옵니다 -->
-<select id="readEye" resultType="FBResource">
-	select
-		resourcenum, name, analysis, path
-	from
-		fbresource
-	where
-		name like '%eye%'
-	or
-		name like '%EYE%'
-</select>
-
-<!-- DB에서 코 자료의 경로를 가져옵니다 -->
-<select id="readNose" resultType="FBResource">
-	select
-		resourcenum, name, analysis, path
-	from
-		fbresource
-	where
-		name like '%nose%'
-	or
-		name like '%NOSE%'
-</select>
-
-<!-- DB에서 입 자료의 경로를 가져옵니다 -->
-<select id="readMouth" resultType="FBResource">
-	select
-		resourcenum, name, analysis, path
-	from
-		fbresource
-	where
-		name like '%mouth%'
-	or
-		name like '%MOUTH%'
-</select>
-
-<!-- DB에서 귀 자료의 경로를 가져옵니다 -->
-<select id="readEar" resultType="FBResource">
-	select
-		resourcenum, name, analysis, path
-	from
-		fbresource
-	where
-		name like '%ear%'
-	or
-		name like '%EAR%'
-</select>
-
-<!-- DB에서 목 자료의 경로를 가져옵니다 -->
-<select id="readNeck" resultType="FBResource">
-	select
-		resourcenum, name, analysis, path
-	from
-		fbresource
-	where
-		name like '%neck%'
-	or
-		name like '%NECK%'
-</select>
-
-<!-- DB에서 몸 자료의 경로를 가져옵니다 -->
-<select id="readBody" resultType="FBResource">
-	select
-		resourcenum, name, analysis, path
-	from
-		fbresource
-	where
-		name like '%body%'
-	or
-		name like '%BODY%'
+		name like '%storyNum'||#{storyNum}||'%'
+	order by resourcenum
 </select>
 
 <!-- DB에서 색깔 자료의 경로를 가져옵니다 -->
@@ -108,28 +23,44 @@
 	from
 		resourcecolor
 	where
-		name like '%'||#{name}||'%'
+		name like '%storyNum'|| #{storyNum} ||'%'
+	and
+	<choose>
+	<when test="currentNum >= 10">
+		name like '%selection'|| #{currentNum} ||'%'
+	</when>
+	<otherwise>
+		name like '%selection0'|| #{currentNum} ||'%'
+	</otherwise>
+</choose>
 	and
 		name like '%'||#{color}||'%'
 </select>
-
-
-<!-- DB에 내가 만든 아바타를 저장합니다 -->
-<insert id="saveAvatar" parameterType="Avatar">
-	insert into madeavatar
+ 
+<!-- DB에 ETC를 저장합니다 -->
+<insert id="insertETC" parameterType="map">
+	insert into etc
+	(selectionnum,
+	selection1,
+	selection2,
+	selection3,
+	selection4,
+	selection5,
+	selection6,
+	selection7,
+	selection8,
+	selection9,
+	selection10,
+	selection11,
+	selection12
+	)
 	values
 	(#{selectionNum},
-	 #{face},
-	 #{hair},
-	 #{eye},
-	 #{nose},
-	 #{mouth},
-	 #{ear},
-	 #{neck},
-	 #{body},
-	 #{hairColor},
-	 #{eyeColor},
-	 #{bodyColor}
+	<if test="storyNum == 1">
+	,
+	
+	</if>
 	 ) 
 </insert>
+
 </mapper>

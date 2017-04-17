@@ -1,3 +1,5 @@
+// avatar.jsp 자바스크립트 파일
+
 $(document).ready(function(){
 	//id가 신체부위인 버튼을 클릭하면 해당 함수 호출
 	$('#facebtn').on('click', callFace);

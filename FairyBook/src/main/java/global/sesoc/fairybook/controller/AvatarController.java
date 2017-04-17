@@ -140,7 +140,7 @@ public class AvatarController {
 	 * @return 해당 색깔 이미지 경로
 	 */
 	@ResponseBody
-	@RequestMapping(value = "callColor", method = RequestMethod.GET)
+	@RequestMapping(value = "callAvatarColor", method = RequestMethod.GET)
 	public String callColor(String name, String color) {
 		String result = dao.readColor(name, color);
 		logger.debug(result);
@@ -153,7 +153,7 @@ public class AvatarController {
 	 * @return 올바르게 저장되면 house페이지로 이동, 아니면 다시 avatar페이지로 돌아감
 	 */
 	@RequestMapping(value = "saveAvatar", method = RequestMethod.POST)
-	public String save(Avatar avatar, HttpSession session) {
+	public String saveAvatar(Avatar avatar, HttpSession session) {
 		session.setAttribute("selectionNum", 1);
 		avatar.setSelectionNum((int) session.getAttribute("selectionNum"));
 		logger.debug(avatar.toString());
