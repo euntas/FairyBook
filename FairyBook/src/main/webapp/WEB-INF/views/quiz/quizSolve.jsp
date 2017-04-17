@@ -25,13 +25,32 @@
 	
 <!--####################여기부터  -->
 
-<h1>퀴이이이이이이이즈</h1>
-<h1>퀴이이이이이이이즈</h1>
-<h1>퀴이이이이이이이즈</h1>
-<h1>퀴이이이이이이이즈</h1>
-<h1>퀴이이이이이이이즈</h1>
-<h1>퀴이이이이이이이즈</h1>
+<table>
+<tr>
+<td>${quiz.question }</td>
+</tr>
 
+<tr>
+<td>1</td><td>${quiz.select1 }</td>
+</tr>
+
+<tr>
+<td>2</td><td>${quiz.select2 }</td>
+</tr>
+
+<tr>
+<td>3</td><td>${quiz.select3 }</td>
+</tr>
+
+<tr>
+<td>4</td><td>${quiz.select4 }</td>
+</tr>
+
+<tr>
+<td>정답: <td><td>${quiz.answer }</td>
+</tr>
+
+</table>
 
 
 <!--여기까지###########################  -->

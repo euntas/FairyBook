@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import global.sesoc.fairybook.dao.StoryDAO;
 import global.sesoc.fairybook.vo.MySelection;
+import global.sesoc.fairybook.vo.Quiz;
+import global.sesoc.fairybook.vo.Scene;
 import global.sesoc.fairybook.vo.SelectionDetail;
 import global.sesoc.fairybook.vo.StoryMaker;
 
@@ -55,11 +57,23 @@ public class QuizController {
 	public String quizSolve(HttpSession session, Model model) {
 		ArrayList<MySelection> selectionList = getFinishedSelectionList(session, model);
 		int selectionNum = 0;
-		ArrayList<Integer> mySelectionNum = new ArrayList<>();
+		int storyNum = 0;
+		ArrayList<SelectionDetail> getSelectionDetail = new ArrayList<>();
+		
 		for (MySelection mySelection : selectionList) {
 			selectionNum = mySelection.getSelectionNum();
-			mySelectionNum.add(selectionNum);
+			storyNum = mySelection.getStoryNum();
+			getSelectionDetail = dao.getSelectionDetail(selectionNum);
 		}
+		
+		Scene getScene = new Scene(); 
+		for (SelectionDetail selectionDetail : getSelectionDetail) {
+			getScene = dao.getScene(storyNum, selectionDetail.getSceneNum());
+		}
+		
+		int quizNum = getScene.getQuizNum();
+		Quiz quiz = dao.getQuiz(quizNum);
+		model.addAttribute("quiz", quiz);
 		return "quiz/quizSolve";
 	}
 
