@@ -189,13 +189,14 @@ function save(){
 				},
 				success: function(){
 					$.ajax({
-				        url:'saveSD',
+				        url:'../story/saveSD',
 				        type:'GET',
 				        data: {pageNum: 13},
 				        dataType:'json',
 				        success: function(){
 				        	alert("플립 성공 들어옴");
 				        	alert('selectionDetail 생성====');
+				        	location.href='../story/storyStart?storyNum=1';
 				        },
 				        error: function(e){
 				        	alert("플립 실패 들어옴");
@@ -234,7 +235,7 @@ function save(){
 				},
 				success: function(){
 					 $.ajax({
-		                  url:'../story/updateSelectiondetail',
+		                  url:'../story/saveSD',
 		                  type:'GET',
 		                  data: {pageNum: 13, answerNum: 1},
 		                  dataType: 'json',

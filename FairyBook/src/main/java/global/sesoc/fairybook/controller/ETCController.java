@@ -40,11 +40,6 @@ public class ETCController {
 	@RequestMapping(value = "etc", method = RequestMethod.GET)
 	public String etcLoad(Model model, HttpSession session) {
 		
-		// 현재 스토리넘 1, 셀렉션넘 73으로 임의 설정
-		session.setAttribute("currentStoryNum", 1);
-		session.setAttribute("myselectionNum", 73);
-		// 나중에 지울것!!
-		
 		int storyNum = (int) session.getAttribute("currentStoryNum");
 		int selectionNum = (int) session.getAttribute("myselectionNum");
 		

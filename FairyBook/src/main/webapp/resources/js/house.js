@@ -251,7 +251,7 @@ function save(){
 		success: function(){
 			alert('저장완료!');
 			$.ajax({
-                url:'saveSD',
+                url:'../story/saveSD',
                 type:'GET',
                 data: {pageNum: 1},
                 dataType:'json',

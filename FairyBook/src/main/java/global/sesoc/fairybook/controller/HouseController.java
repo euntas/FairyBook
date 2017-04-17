@@ -116,18 +116,15 @@ public class HouseController {
 	 * 지금까지 선택한 집의 정보를 저장
 	 * @return 올바르게 저장되면 story페이지로 이동, 아니면 다시 house페이지로 돌아감
 	 */
+	@ResponseBody
 	@RequestMapping(value = "saveHouse", method = RequestMethod.POST)
-	public String save(House house, HttpSession session) {
+	public int save(House house, HttpSession session) {
 		session.setAttribute("selectionNum", 1);
 		house.setSelectionNum((int) session.getAttribute("selectionNum"));
 		logger.debug(house.toString());
 		int result = 0;
 		System.out.println(house);
 		result = dao.saveHouse(house);
-		if(result==1){
-			return "redirect:avatar";
-		}else{
-			return "house";
-		}
+		return result;
 	}
 }

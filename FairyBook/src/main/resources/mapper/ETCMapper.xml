@@ -41,25 +41,33 @@
 <insert id="saveETC" parameterType="ETC">
 	insert into etc
 	(selectionnum,
-	selection1,
-	selection2,
-	selection3,
-	selection4,
-	selection5,
-	selection6,
-	selection7,
-	selection8,
-	selection9,
-	selection10,
-	selection11,
-	selection12
+	selection1Color,
+	selection2Color,
+	selection3Color,
+	selection4Color,
+	selection5Color,
+	selection6Color,
+	selection7Color,
+	selection8Color,
+	selection9Color,
+	selection10Color,
+	selection11Color,
+	selection12Color
 	)
 	values
 	(#{selectionNum},
-	<if test="storyNum == 1">
-	,
-	
-	</if>
+	#{selection1Color},
+	#{selection2Color},
+	#{selection3Color},
+	#{selection4Color},
+	#{selection5Color},
+	#{selection6Color},
+	#{selection7Color},
+	#{selection8Color},
+	#{selection9Color},
+	#{selection10Color},
+	#{selection11Color},
+	#{selection12Color}
 	 ) 
 </insert>
 
