@@ -280,6 +280,15 @@ RocketPageFlip.prototype.next = function() {
         data: {currentPageNum: pageflip.options.current, answerNum: 1},
         dataType: 'json',
         success: function(nextSceneNum){
+        	
+        	// 46번 씬에서 16번 씬으로 넘어가는 중간에 과자집 색칠 페이지로 가야한다.
+        	if(nextSceneNum == 16){
+        		alert('과자집 색칠 화면으로 이동');
+        		console.log('과자집 색칠 화면으로 이동');
+        		location.href = "../objectMaker/etc";
+        		return;
+        	}
+        	
         	// 지금 씬이 마지막 페이지가 아닐 때.
         	if(nextSceneNum != -1){
 	        	// selectiondetail 테이블에 update 해 주어야 함.
