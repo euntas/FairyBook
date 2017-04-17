@@ -184,8 +184,17 @@ public class StoryController {
 		int currentSceneNum = dao.getSceneNumByPageNum(storyNum, currentPageNum);
 		Scene currentScene = dao.getScene(storyNum, currentSceneNum);
 		
+		/**
+		 * 여기서 혹시 아이템이 저장된 씬이면 다음씬을 알아서 지정해주기
+		 */
+		int selectionNum = (int) session.getAttribute("myselectionNum");
+
 		// 다음 씬 번호를 가져온다. (없으면 -1)
-		int nextSceneNum = -1;
+		int nextSceneNum = checkForNextScene(storyNum, selectionNum, currentSceneNum);
+		if(nextSceneNum != -1){
+			System.out.println("다음 씬번호는(옵션에 따른) : " + nextSceneNum + "입니다.");
+			return nextSceneNum;
+		}
 		
 		if(answerNum == 1)
 			nextSceneNum = currentScene.getNextScene1();
@@ -198,6 +207,68 @@ public class StoryController {
 		
 		System.out.println("다음 씬번호는 : " + nextSceneNum + "입니다.");
 		
+		return nextSceneNum;
+	}
+	
+	// 각 동화에서 특정 선택지에 따라 나중의 씬이 결정될 때를 판단하고 다음 씬 번호를 가져온다.
+	public int checkForNextScene(int storyNum, int selectionNum, int currentSceneNum){
+		int nextSceneNum = -1;
+		
+		ArrayList<SelectionDetail> selectionDetail = new ArrayList<>();
+		selectionDetail = dao.getSelectionDetail(selectionNum);
+		
+		// 헨젤과 그레텔 동화일 경우
+		if(storyNum == 1){
+			
+			int answerAt6 = -1;
+			int answerAt13 = -1;
+
+			for (int i=0; i<selectionDetail.size(); i++) {
+				System.out.println("for문 안입니다. selectionDetail.get("+ i +").getScene() : " + selectionDetail.get(i).getSceneNum());
+				if(selectionDetail.get(i).getSceneNum() == 6){
+					answerAt6 = selectionDetail.get(i).getMyAnswer();
+				}
+				
+				if(selectionDetail.get(i).getSceneNum() == 13){
+					answerAt13 = selectionDetail.get(i).getMyAnswer();
+				}
+				
+				//현재가 8번 씬 (소풍가자)일 때, 6번씬에서 선택한 돌 갯수가 30개(선택지 2번)이면 9번 씬으로 , 10개이면(선택지 1번) 10번 씬으로 간다.
+				if(selectionDetail.get(i).getSceneNum() == currentSceneNum && currentSceneNum == 8){
+					if(answerAt6 == 2){
+						nextSceneNum = 9;
+						break;
+					}
+					
+					else if(answerAt6 == 1){
+						nextSceneNum = 10;
+						break;
+					}
+					
+					System.out.println("8번일때 들어옴, answerAt6:" + answerAt6 );
+				}
+				
+				// 현재가 27번 씬(지불하기)일 때, 13번 씬에서 저금통(1번)or 인형(2번)을 선택했을 때 30번 씬으로, 소지품x(4번)은 31번으로, 지갑(3번)일 때 28번으로 간다.
+				if(selectionDetail.get(i).getSceneNum() == currentSceneNum && currentSceneNum == 27){
+					if(answerAt13 == 1 || answerAt13 == 2){
+						nextSceneNum = 30;
+						break;
+					}
+					
+					else if(answerAt13 == 4){
+						nextSceneNum = 31;
+						break;
+					}
+					
+					else if(answerAt13 == 3){
+						nextSceneNum = 28;
+						break;
+					}
+				}
+			}	
+			
+		}
+		System.out.println("체크 함수에서 , current:" + currentSceneNum + ", nextSceneNum:" + nextSceneNum);
 		return nextSceneNum;
 	}
 	
@@ -307,6 +378,11 @@ public class StoryController {
 			HashMap<String, Object> updateSD = new HashMap<>();
 			updateSD.put("selectionnum", selectionnum);
 			int sceneNum = dao.getSceneNumByPageNum(storyNum, pageNum);
+			
+			/*
+			 * 요기서 씬 읽어와서 아이템 저장하는 부분이면 아이템도 넣기.
+			 */
+			
 			updateSD.put("sceneNum", sceneNum);
 			updateSD.put("myAnswer", answerNum);
 			result=dao.updateSelectiondetail(updateSD);
