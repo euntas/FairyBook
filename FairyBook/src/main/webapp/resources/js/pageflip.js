@@ -281,6 +281,14 @@ RocketPageFlip.prototype.next = function() {
         dataType: 'json',
         success: function(nextSceneNum){
         	
+        	// 1번 씬에서 4번 씬으로 넘어가는 중간에 아바타 페이지로 가야한다.
+        	if(nextSceneNum == 4){
+        		alert('아바타 화면으로 이동');
+        		console.log('아바타 화면으로 이동');
+        		location.href = "../objectMaker/avatar";
+        		return;
+        	}
+        	
         	// 46번 씬에서 16번 씬으로 넘어가는 중간에 과자집 색칠 페이지로 가야한다.
         	if(nextSceneNum == 16){
         		alert('과자집 색칠 화면으로 이동');

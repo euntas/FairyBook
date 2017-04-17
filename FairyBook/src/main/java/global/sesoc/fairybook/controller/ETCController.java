@@ -79,7 +79,7 @@ public class ETCController {
 	public int saveETC(ETC etc, HttpSession session) {
 		logger.debug(etc.toString());
 		int result = 0;
-		//result = dao.saveETC(etc);
+		result = dao.saveETC(etc);
 		return result;
 	}
 }

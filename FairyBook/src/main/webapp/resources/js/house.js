@@ -250,7 +250,21 @@ function save(){
 		data: {roof:roof,door:door,window:window,chimney:chimney,yard:yard,wall:wall,roofColor:roofColor,wallColor:wallColor},
 		success: function(){
 			alert('저장완료!');
-			location.href='avatar'
+			$.ajax({
+                url:'saveSD',
+                type:'GET',
+                data: {pageNum: 1},
+                dataType:'json',
+                success: function(){
+                   alert("플립 성공 들어옴");
+                   alert('selectionDetail 생성====');
+                   location.href='../story/storyStart?storyNum=1';
+                },
+                error: function(e){
+                   alert("플립 실패 들어옴");
+                    alert(JSON.stringify(e));
+                }
+            });
 		},
 		error: function(e){
 			alert(JSON.stringify(e));

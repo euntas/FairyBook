@@ -3,6 +3,7 @@ package global.sesoc.fairybook.mapper;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import global.sesoc.fairybook.vo.ETC;
 import global.sesoc.fairybook.vo.FBResource;
 
 
@@ -17,5 +18,5 @@ public interface ETCMapper {
 	
 	public String readColor(HashMap<String, Object> map);
 	
-	public void insertETC(HashMap<String, Integer> map);
+	public int saveETC(ETC etc);
 }

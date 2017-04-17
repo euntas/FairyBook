@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import global.sesoc.fairybook.mapper.ETCMapper;
+import global.sesoc.fairybook.vo.ETC;
 import global.sesoc.fairybook.vo.FBResource;
 
 /**
@@ -48,6 +49,11 @@ public class ETCDAO {
 		return colorResult;
 	}
 	
-	
+	public int saveETC(ETC etc){
+		int result = 0;
+		ETCMapper mapper = sqlSession.getMapper(ETCMapper.class);
+		result = mapper.saveETC(etc);
+		return result;
+	}
 	
 }

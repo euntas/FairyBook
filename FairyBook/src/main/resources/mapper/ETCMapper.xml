@@ -38,7 +38,7 @@
 </select>
  
 <!-- DB에 ETC를 저장합니다 -->
-<insert id="insertETC" parameterType="map">
+<insert id="saveETC" parameterType="ETC">
 	insert into etc
 	(selectionnum,
 	selection1,

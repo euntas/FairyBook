@@ -81,6 +81,7 @@ function draw(){
 		}
 	}
 	
+	
 	// 젤리 누르는 곳 좌표값 
 	etc += '<map name="001">';
 	etc += '<area shape="rect" coords="327,153,372,200" onclick="point(1)" target="_blank">';
@@ -212,7 +213,43 @@ function save(){
 		}
 	}else{
 		if(confirm('확실합니까?')){
-			alert('save!')
+			$.ajax({
+				url: 'saveETC',
+				type: 'POST',
+				data:
+				{selectionNum: selectionNum,
+				selection1Color:colors[0],
+				selection2Color:colors[1],
+				selection3Color:colors[2],
+				selection4Color:colors[3],
+				selection5Color:colors[4],
+				selection6Color:colors[5],
+				selection7Color:colors[6],
+				selection8Color:colors[7],
+				selection9Color:colors[8],
+				selection10Color:colors[9],
+				selection11Color:colors[10],
+				selection12Color:colors[11]
+				},
+				success: function(){
+					 $.ajax({
+		                  url:'../story/updateSelectiondetail',
+		                  type:'GET',
+		                  data: {pageNum: 13, answerNum: 1},
+		                  dataType: 'json',
+		                  success: function(){
+		                     alert('selectiondetail (16번 씬 - 페이지번호(13)) 업데이트');
+		                     location.href='../story/storyStart?storyNum=1';
+		                  },
+		                  error: function(e){
+		                      alert(JSON.stringify(e));
+		                  }
+		              });
+				},
+				error: function(e){
+					alert(JSON.stringify(e));
+				}
+			});
 		}
 		else{
 			return;
