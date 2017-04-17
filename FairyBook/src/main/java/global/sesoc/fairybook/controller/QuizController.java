@@ -60,7 +60,6 @@ public class QuizController {
 			selectionNum = mySelection.getSelectionNum();
 			mySelectionNum.add(selectionNum);
 		}
-		System.out.println(mySelectionNum);
 		return "quiz/quizSolve";
 	}
 
