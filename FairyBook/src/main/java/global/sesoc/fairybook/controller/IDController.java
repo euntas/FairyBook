@@ -352,4 +352,19 @@ public class IDController {
 		return "redirect:/";
 
 	}
+	
+	@RequestMapping(value = "findMyInfo", method = RequestMethod.GET)
+	public String findMyInfo(){
+		return "userInfo/findMyInfo";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "findId", method = RequestMethod.POST,
+						produces="application/json;charset=UTF-8")
+	public String findId(String email){
+		String result = null;
+		result = dao.findId(email);
+		logger.info(result);
+		return result;
+	}
 }

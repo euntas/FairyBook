@@ -1,12 +1,13 @@
 package global.sesoc.fairybook.mapper;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 import global.sesoc.fairybook.vo.OrderBook;
 
 public interface OrderBookMapper {
 
 	public int saveOrder(OrderBook ob); //저장
-
-	public OrderBook existCover(int ordernum); //불러오기
 
 	public int deleteBookCover(int ordernum); //삭제
 
@@ -14,11 +15,13 @@ public interface OrderBookMapper {
 
 	public int updateOrder(OrderBook b); //업데이트
 
-	public int getOrdernum();
+	public int setOrdernum(); //주문번호 주기
 
-	public int setOrdernum();
+	public OrderBook getOrder(Map<String, Integer> num); //orderbook객체 불러오기
 
-	public OrderBook getOrder(int ordernum);
+	public ArrayList<OrderBook> cartList(String id);
+
+	public ArrayList<Integer> lastBookCover(Map<String, Object> data);
 
 
 

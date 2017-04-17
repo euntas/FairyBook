@@ -19,13 +19,6 @@
 	)
 </insert>
 
-<select id="getOrdernum" resultType="int">
-	select
-		seq_orderbook.currval
-	from
-		dual
-</select>
-
 <select id="setOrdernum" resultType="int">
 	select
 		seq_orderbook.nextval
@@ -33,7 +26,7 @@
 		dual
 </select>
 
-<select id="existCover" parameterType="int" resultType="OrderBook">
+<select id="getOrder" parameterType="Map" resultType="OrderBook">
 	select 
 		o.ordernum as ordernum
 		,o.selectionnum as selectionnum
@@ -46,25 +39,14 @@
 	where
 		o.selectionnum = m.selectionnum
 	and
+	<if test="selectionnum != -1">
 		o.selectionnum = #{selectionnum} 
 	and 
-		o.currentstate not in('장바구니','주문')
-</select>
-
-<select id="getOrder" parameterType="int" resultType="OrderBook">
-	select 
-		o.ordernum as ordernum
-		,o.selectionnum as selectionnum
-		,m.id as id
-		,o.orderdate as orderdate
-		,o.bookcover as bookcover
-		,o.currentstate as currentstate
-	from
-		orderbook o, myselection m
-	where
-		o.selectionnum = m.selectionnum
-	and
+		o.currentstate not in('addToCart','makeOrder')
+	</if>
+	<if test="ordernum != -1">
 		o.ordernum = #{ordernum} 
+	</if>
 </select>
 
 <delete id="deleteBookCover" parameterType="int">
@@ -95,11 +77,57 @@
 		orderbook
 	set
 		orderdate=sysdate
+		<if test="bookcover != ''">
 		,bookcover=#{bookcover}
+		</if>
 		,currentstate=#{currentstate}
 		,price=#{price}
 	where
 		ordernum=#{ordernum}
 </update>
+
+<select id="cartList" parameterType="string" resultType="OrderBook">
+	select
+		o.ordernum as ordernum
+		,o.selectionnum as selectionnum
+		,m.id as id
+		,o.orderdate as orderdate
+		,o.bookcover as bookcover
+		,o.currentstate as currentstate
+		,o.price as price
+	from
+		orderbook o, myselection m
+	where
+		o.selectionnum = m.selectionnum
+	and
+		m.id = #{id}
+</select>
+
+<select id="lastBookCover" parameterType="Map" resultType="integer">
+	select
+		ordernum
+	from 
+		orderbook
+	where 
+		selectionnum in(
+			select 
+				selectionnum
+			from 
+				myselection
+			where
+				storynum=(
+					select 
+						storynum 
+					from 
+						myselection 
+					where 
+						selectionnum = 1
+						)
+				and 
+					id='ryan'
+			)
+	and 
+		bookcover != 'default'
+</select>
 
 </mapper>

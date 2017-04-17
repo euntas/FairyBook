@@ -103,4 +103,16 @@
 	delete from StoryMaker
 	where id=#{id}
 	</delete>
+	
+	<select id="findId" parameterType="string" resultType="string">
+	select id from StoryMaker
+	where
+	email=#{email}
+	</select>
+	
+	<select id="findPW" parameterType="string" resultType="string">
+	select password2 from StoryMaker
+	where
+	id=#{0} and email=#{1}
+	</select>
 </mapper>

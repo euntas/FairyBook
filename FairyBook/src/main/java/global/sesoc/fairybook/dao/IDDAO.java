@@ -42,12 +42,22 @@ public class IDDAO {
 		return maker;
 	}
 	
+	/**
+	 * 특정회원정보 선택
+	 * @param cNick 자녀닉네임
+	 * @return 검색한 회원의 회원정보
+	 */
 	public StoryMaker selectStoryMaker1(String cNick){
 		IDMapper mapper = sqlSession.getMapper(IDMapper.class);
 		StoryMaker maker = mapper.selectStoryMaker1(cNick);
 		return maker;
 	}
 	
+	/**
+	 * 특정회원정보 선택
+	 * @param pNick 보호자닉네임
+	 * @return 검색한 회원의 회원정보
+	 */
 	public StoryMaker selectStoryMaker2(String pNick){
 		IDMapper mapper = sqlSession.getMapper(IDMapper.class);
 		StoryMaker maker = mapper.selectStoryMaker2(pNick);
@@ -119,5 +129,29 @@ public class IDDAO {
 		return result;
 	}
 	
+	/**
+	 * 이메일로 아이디 찾기
+	 * @param email
+	 * @return 검색한 아이디
+	 */
+	public String findId(String email){
+		String result = null;
+		IDMapper mapper = sqlSession.getMapper(IDMapper.class);
+		result = mapper.findId(email);
+		return result;
+	}
+	
+	/**
+	 * 
+	 * @param email
+	 * @return
+	 */
+	
+	public String findPW(String id, String email){
+		String result = null;
+		IDMapper mapper = sqlSession.getMapper(IDMapper.class);
+		result = mapper.findPW(id, email);
+		return result;
+	}
 	
 }
