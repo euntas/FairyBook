@@ -34,18 +34,65 @@ function cartList(){
 function printCartList(orders){
 	var input='<table class="table table-striped table-hover">';
 	input+='<thead><tr>';
-	input+='<th>주문번호</th><th>책표지</th><th>책제목</th><th>가격</th>';
+	input+='<th>확인</th><th>주문번호</th><th>책표지</th><th>책제목</th><th>가격</th>';
 	input+='</tr></thead>';
 	$.each(orders,function(i,o){
 		input += '<tr>';
+		input += '<td><input type="checkbox" class="selectionCart" price="'+o.price+'" value="'+o.ordernum+'"></td>';
 		input += '<td>'+o.ordernum+'</td>';
 		input += '<td><img width="100px" src="getBookCover?ordernum='+o.ordernum+'"></td>';
 		input += '<td>'+o.title+'</td>';
-		input += '<td>'+o.price+'</td>';
+		input += '<td>'+o.price+'(수량: '+(o.price/5000)+')'+'</td>';
 		input += '</tr>';
 	});
 	$('#cartList').html(input);
-	
+}
+
+function orderSelections(){
+	var s = $('.selectionCart');
+	var selections = [];
+	for (var i = 0; i < s.length; i++) {
+		if (s[i].checked) {
+			selections.push(s[i]);
+			$.ajax({
+				url: 'updateOrder',
+				type:'POST',
+				data: {price: s[i].getAttribute('price'), ordernum: s[i].value, currentstate: 'makeOrder'},
+				success: function(){
+					location.href= 'orderList';
+				},
+				error: function(e){
+					alert(JSON.stringify(e));
+				}
+			}); 
+		}
+	}
+	if (selections.length == 0) {
+		alert('구매하실 책을 선택해주세요.');
+	}
+}
+
+function deleteSelections(){
+	if (!confirm('삭제하시겠습니까?')) {
+		return;
+	}
+	var s = $('.selectionCart');
+	var selections = [];
+	for (var i = 0; i < s.length; i++) {
+		if (s[i].checked) {
+			$.ajax({
+				url: 'deleteOrder',
+				type:'POST',
+				data: {ordernum: s[i].value},
+				success: function(){
+					cartList();
+				},
+				error: function(e){
+					alert(JSON.stringify(e));
+				}
+			});
+		}
+	}
 }
 </script>
 
@@ -58,10 +105,11 @@ function printCartList(orders){
 	<i class="fa fa-bars w3-button w3-white w3-hide-large w3-xlarge w3-margin-left w3-margin-top" onclick="w3_open()"></i>
 	
 <!--####################여기부터  -->
+
 <h3>[장바구니 목록]</h3>
 <div id="cartList"></div>
-
-
+<input type="button" value="삭제" onclick="deleteSelections()">
+<input type="button" value="주문하기" onclick="orderSelections()">
 
 
 <!--여기까지###########################  -->

@@ -49,7 +49,7 @@ public class OrderBookController {
 	@Autowired OrderBookDAO dao;
 	
 	private static final Logger logger = LoggerFactory.getLogger(OrderBookController.class);
-	private final String uploadPath = "/FairyBook/bookCover"; //파일 업로드 경로
+	private final String uploadPath = "/Users/kita/git/FairyBook/FairyBook/src/main/webapp/resources/img/bookCover/"; //파일 업로드 경로
 	
 	/**
 	 * 책 주문 페이지로 이동 - 주문완료 되지 않으면 만들어놓은 표지 유지
@@ -96,9 +96,10 @@ public class OrderBookController {
 	
 	@ResponseBody
 	@RequestMapping(value="getLastBookCover") //selectionnum
-	public ArrayList<Integer> getLastBookCover(int selectionnum){
+	public ArrayList<Integer> getLastBookCover(int selectionnum/*String id*/){
 		logger.info("bookcovers selectionnum:{}",selectionnum);
 		String id="ryan";
+		selectionnum = 1; //지워야
 		ArrayList<Integer> bookcovers = new ArrayList<>();
 		Map<String, Object> data = new HashMap<>();
 		data.put("selectionnum", selectionnum);
@@ -244,12 +245,24 @@ public class OrderBookController {
 	 */
 	@ResponseBody
 	@RequestMapping(value="updateOrder",method=RequestMethod.POST)
-	public void updateOrder(int ordernum, int price, String currentstate
+	public void updateOrder(int ordernum
+			, @RequestParam(value="price",defaultValue="0")int price
+			, @RequestParam(value="currentstate", defaultValue="")String currentstate
 			,@RequestParam(value="bookcover", defaultValue="") String bookcover
 			){
 		logger.info("update:{},{},{}",ordernum,price,currentstate);
 		OrderBook ob = new OrderBook(ordernum, 0,"","", "",bookcover, currentstate, price);
+		Map<String, Integer> num = new HashMap<>();
+		num.put("ordernum", ordernum);
+		num.put("selectionnum", -1);
+		OrderBook b = dao.getOrder(num);
+		if (currentstate.equals("")){
+			ob.setCurrentstate(b.getCurrentstate());
+		}else if(price == 0){
+			ob.setPrice(b.getPrice());
+		}
 		int result = dao.updateOrder(ob);
+		logger.info("update result:{}",ob);
 	}
 	
 	@RequestMapping(value="orderCart")
@@ -274,5 +287,59 @@ public class OrderBookController {
 			logger.info("cartList ob: {}",orderBook);
 		}
 		return cart;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="makeOrderList")
+	public ArrayList<OrderBook> makeOrderList(){
+		String id = "ryan";
+		ArrayList<OrderBook> list = new ArrayList<>();
+		list = dao.orderList(id);
+		for (OrderBook orderBook : list) {
+			String title = dao.getStoryTitle(orderBook.getSelectionnum());
+			orderBook.setTitle(title);
+		}
+		return list;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="deleteOrder",method=RequestMethod.POST)
+	public void deleteOrder(int ordernum){
+		dao.deleteOrder(ordernum);
+		logger.info("delete ordernum:{}",ordernum);
+	}
+	
+	@RequestMapping(value="checkOrderInfo",method=RequestMethod.POST)
+	public String checkOrderInfo(String confirmList, Model model){
+		logger.info("check order: {}",confirmList);
+		String[] list = confirmList.split(",");
+		ArrayList<OrderBook> orderList = new ArrayList<>();
+		for (int i = 0; i < list.length; i++) {
+			Map<String, Integer> num = new HashMap<>();
+			num.put("selectionnum", -1);
+			num.put("ordernum", Integer.parseInt(list[i]));
+			OrderBook ob = dao.getOrder(num);
+			ob.setTitle(dao.getStoryTitle(ob.getSelectionnum()));
+			orderList.add(ob);
+			logger.info("checkORderInfo:{}",ob);
+		}
+		model.addAttribute("orderInfo", orderList);
+			
+		return "orderBook/checkOrderInfo";
+	}
+	
+	@RequestMapping(value="confirmOrder",method=RequestMethod.POST)
+	public String confirmOrder(int ordernum, String receiver, String phoneR, String addressR){
+		logger.info("confirmedORder:{},{},{},{}",ordernum,receiver,phoneR,addressR);
+		return "orderBook/confirmedOrder";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="confirmedList",method=RequestMethod.POST)
+	public ArrayList<OrderBook> confirmedList(/*StoryMaker maker*/){
+		String id = "ryan";
+		ArrayList<OrderBook> list = new ArrayList<>();
+		list = dao.getConfirmed(id);
+		return list;
 	}
 }

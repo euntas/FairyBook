@@ -3,7 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
-<title>Order List</title>
+<title>Confirmed Order</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -14,29 +14,25 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!--적용 자바스크립트와 스타일  -->
-<script type="text/javascript">
+<script>
 $(function(){
-	cartList();
-});
-
-function cartList(){
 	$.ajax({
-		url:'makeOrderList',
-		type:'GET',
-		dataType:'json',
-		success: printOrderList,
+		url:'confirmedList',
+		type:'POST',
+		dataType: 'jason',
+		success: printList,
 		error: function(e){
 			alert(JSON.stringify(e));
 		}
 	});
-}
+});
 
-function printOrderList(orders){
+function printList(list){
 	var input='<table class="table table-striped table-hover">';
 	input+='<thead><tr>';
 	input+='<th>확인</th><th>주문번호</th><th>책표지</th><th>책제목</th><th>가격</th>';
 	input+='</tr></thead>';
-	$.each(orders,function(i,o){
+	$.each(list,function(i,o){
 		input += '<tr>';
 		input += '<td><input type="checkbox" class="selectionCart" price="'+o.price+'" value="'+o.ordernum+'"></td>';
 		input += '<td>'+o.ordernum+'</td>';
@@ -45,60 +41,9 @@ function printOrderList(orders){
 		input += '<td>'+o.price+'</td>';
 		input += '</tr>';
 	});
-	$('#orderList').html(input);
-	
-}
-
-function orderSelections(){
-	var s = $('.selectionCart');
-	var selections = [];
-	for (var i = 0; i < s.length; i++) {
-		if (s[i].checked) {
-			selections.push(s[i].getAttribute('value'));
-			$.ajax({
-				url: 'updateOrder',
-				type:'POST',
-				data: {ordernum: s[i].value, price: s[i].getAttribute('price'), currentstate: 'makeOrder'},
-				success: function(){
-					if (selections.length == 0) {
-						alert('구매하실 책을 선택해주세요.');
-					}else{
-						$('#confirmList').attr('value',selections);
-						$('#confirmOrderForm').submit();
-					}
-				},
-				error: function(e){
-					alert(JSON.stringify(e));
-				}
-			}); 
-		}
-	}//for
-}
-
-function deleteSelections(){
-	if (!confirm('삭제하시겠습니까?')) {
-		return;
-	}
-	var s = $('.selectionCart');
-	var selections = [];
-	for (var i = 0; i < s.length; i++) {
-		if (s[i].checked) {
-			$.ajax({
-				url: 'updateOrder',
-				type:'POST',
-				data: {ordernum: s[i].value, currentstate: 'addToCart', price: s[i].getAttribute('price')},
-				success: function(){
-					cartList();
-				},
-				error: function(e){
-					alert(JSON.stringify(e));
-				}
-			});
-		}
-	}
+	$('#confirmedList').html(input);
 }
 </script>
-
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
@@ -109,14 +54,9 @@ function deleteSelections(){
 	<i class="fa fa-bars w3-button w3-white w3-hide-large w3-xlarge w3-margin-left w3-margin-top" onclick="w3_open()"></i>
 	
 <!--####################여기부터  -->
-<h3>[주문 목록]</h3>
-<div id="orderList"></div>
-<input type="button" value="삭제" onclick="deleteSelections()">
-<input type="button" value="주문하기" onclick="orderSelections()">
 
-<form id="confirmOrderForm" action="checkOrderInfo" method="post">
-<input type="hidden" id="confirmList" name="confirmList">
-</form>
+<div id="confirmedList"></div>
+
 
 
 <!--여기까지###########################  -->

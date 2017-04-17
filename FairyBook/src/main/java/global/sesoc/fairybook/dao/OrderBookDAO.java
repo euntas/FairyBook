@@ -96,10 +96,32 @@ public class OrderBookDAO {
 		return result;
 	}
 
+	public ArrayList<OrderBook> orderList(String id) {
+		ArrayList<OrderBook> result = new ArrayList<>();
+		OrderBookMapper mapper = sqlSession.getMapper(OrderBookMapper.class);
+		result = mapper.orderList(id);
+		return result;
+	}
+	
 	public ArrayList<Integer> lastBookCover(Map<String, Object> data) {
 		ArrayList<Integer> result = new ArrayList<>();
 		OrderBookMapper mapper = sqlSession.getMapper(OrderBookMapper.class);
 		result = mapper.lastBookCover(data);
 		return result;
 	}
+
+	public int deleteOrder(int ordernum) {
+		int result = 0;
+		OrderBookMapper mapper = sqlSession.getMapper(OrderBookMapper.class);
+		result = mapper.deleteOrder(ordernum);
+		return result;
+	}
+
+	public ArrayList<OrderBook> getConfirmed(String id) {
+		ArrayList<OrderBook> result = new ArrayList<>();
+		OrderBookMapper mapper = sqlSession.getMapper(OrderBookMapper.class);
+		result = mapper.getConfirmed(id);
+		return result;
+	}
+
 }

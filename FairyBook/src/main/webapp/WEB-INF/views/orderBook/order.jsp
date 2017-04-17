@@ -33,10 +33,17 @@ $(function(){
 	$('#countAdd').on('click',countAdd);
 	$('#countMinus').on('click',countMinus);
 	$('#orderCount').on('change',showCost);
+	
+	if ($('.cover').attr('isDefault')=='default') {
+		$('.cover').attr('src','../resources/img/bookCover/defaultCover.png');
+	}else{
+		$('.cover').attr('src','getBookCover?ordernum='+${order.ordernum});
+	}
 
 	$('.dropdown').on('click',lastBookCover);
 });
 
+//예전 표지 선택하기 눌렀을때 dropdown창 띄우기
 function lastBookCover(){
 	var selectionnum = ${order.selectionnum};
 	$('.dropdown-content').css('display','block');
@@ -52,8 +59,11 @@ function lastBookCover(){
 	});
 }
 
+//dropdown창에 표지 이미지 띄우기
 function showDropdown(bookCovers){
 	var input='<table class="table table-striped table-hover">';
+	input += '<tr><td colspan="3" style="text-align:right;">';
+	input += '<span class="glyphicon glyphicon-remove" id="cancelShow"></span></td></tr>';
 	$.each(bookCovers,function(i,b){
 		if ((i+1)%3 == 1) {
 			input += '<tr>';
@@ -64,8 +74,12 @@ function showDropdown(bookCovers){
 		}
 	});
 	$('.dropdown-content').html(input);
+	$('#cancelShow').on('click',function(){
+		$('.dropdown-content').css('display','none');
+	});
 }
 
+//예전 표지 중에 표지 선택하기
 function selectCover(ordernum){
 	var myordernum=$('#ordernum').val();
 	console.log(myordernum);
@@ -75,13 +89,13 @@ function selectCover(ordernum){
 		type: 'POST',
 		data: {myordernum: myordernum, coverordernum: ordernum},
 		success: function(){
-			
+			$('.cover').attr('src','getBookCover?ordernum='+ordernum);
+			$('.cover').attr('isDefault','getBookCover?ordernum='+ordernum);
 		},
 		error:function(e){
 			alert(JSON.stringify(e));
 		}
 	});
-	$('#cover').attr('src','getBookCover?ordernum='+ordernum);
 }
 
 //+버튼 눌렀을때 수량 늘리기
@@ -136,7 +150,7 @@ function showCost(){
 
 //장바구니 또는 주문하기 버튼 눌렀을 때
 function updateOrder(state){ //addToCart,makeOrder
-	if (${order.bookcover == 'default'}) {
+	if ($('.cover').attr('isDefault') == 'default') {
 		alert('표지를 만들어주세요');
 		return;
 	}
@@ -150,19 +164,20 @@ function updateOrder(state){ //addToCart,makeOrder
 		,type: 'POST'
 		,data: {ordernum: ordernum, price: totalcost, currentstate:state}
 		,success: function(){
-			if (state == 'addToCart') {
-				if (confirm('장바구니로 가시겠습니까?')){
-					location.href="orderCart";
-				}
-			}else{
-				location.href="orderList";
-			}
 		}
 		,error:function(e){
 			alert(JSON.stringify(e));
 		}
 	}); 
-	
+	if (state == 'addToCart') {
+		if (confirm('장바구니로 가시겠습니까?')){
+			location.href="orderCart";
+		}else{
+			$('#formOrder').submit();
+		}
+	}else if(state == 'makeOrder'){
+		location.href="orderList";
+	}
 }
 </script>
 
@@ -181,12 +196,7 @@ function updateOrder(state){ //addToCart,makeOrder
 <input type="hidden" id="ordernum" value="${order.ordernum}">
 <table border="1">
 <tr>
-<c:if test="${order.bookcover == 'default'}"> <!--책표지 아직 안만들었을때  -->
-<td rowspan="4"><img height="400px" alt="cover" src="../resources/img/bookCover/defaultCover.png"></td>
-</c:if>
-<c:if test="${order.bookcover != 'default'}"><!--책표지 만들었을때  -->
-<td rowspan="4"><img id="cover" height="400px" alt="cover" src="getBookCover?ordernum=${order.ordernum}"></td>
-</c:if>
+<td rowspan="4"><img class="cover" isDefault="${order.bookcover}" height="400px" alt="cover" src="getBookCover?ordernum=${order.ordernum}"></td>
 </tr>
 <tr>
 <td>제목</td>
@@ -212,13 +222,16 @@ function updateOrder(state){ //addToCart,makeOrder
 <span class="dropdown-content"></span>
 </td>
 <td>
-<input type="button" value="장바구니" onclick="updateOrder('addToCart')">
+<input type="button" value="장바구니에 담기" onclick="updateOrder('addToCart')">
 <input type="button" value="주문하기" onclick="updateOrder('makeOrder')">
 </td>
 </tr>
 </table>
 </form>
 
+<form id="formOrder" action="order" method="post">
+<input type="hidden" id="selectionnum" name="selectionnum" value="${order.selectionnum}">
+</form>
 
 <!--여기까지###########################  -->
 

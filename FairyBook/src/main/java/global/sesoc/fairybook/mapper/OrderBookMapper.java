@@ -23,6 +23,12 @@ public interface OrderBookMapper {
 
 	public ArrayList<Integer> lastBookCover(Map<String, Object> data);
 
+	public ArrayList<OrderBook> orderList(String id);
+
+	public int deleteOrder(int ordernum);
+
+	public ArrayList<OrderBook> getConfirmed(String id);
+
 
 
 }

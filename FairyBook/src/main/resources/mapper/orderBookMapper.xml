@@ -31,9 +31,10 @@
 		o.ordernum as ordernum
 		,o.selectionnum as selectionnum
 		,m.id as id
-		,o.orderdate as orderdate
+		,to_char(o.orderdate,'yyyy-mm-dd hh24miss') as orderdate
 		,o.bookcover as bookcover
 		,o.currentstate as currentstate
+		,o.price as price
 	from
 		orderbook o, myselection m
 	where
@@ -42,9 +43,9 @@
 	<if test="selectionnum != -1">
 		o.selectionnum = #{selectionnum} 
 	and 
-		o.currentstate not in('addToCart','makeOrder')
+		o.currentstate not in('addToCart','makeOrder','confirmedOrder')
 	</if>
-	<if test="ordernum != -1">
+	<if test="selectionnum == -1">
 		o.ordernum = #{ordernum} 
 	</if>
 </select>
@@ -101,14 +102,71 @@
 		o.selectionnum = m.selectionnum
 	and
 		m.id = #{id}
+	and
+		o.currentstate = 'addToCart'
+	order by
+		ordernum
+</select>
+
+<select id="orderList" parameterType="string" resultType="OrderBook">
+	select
+		o.ordernum as ordernum
+		,o.selectionnum as selectionnum
+		,m.id as id
+		,o.orderdate as orderdate
+		,o.bookcover as bookcover
+		,o.currentstate as currentstate
+		,o.price as price
+	from
+		orderbook o, myselection m
+	where
+		o.selectionnum = m.selectionnum
+	and
+		m.id = #{id}
+	and
+		o.currentstate = 'makeOrder'
+	order by
+		ordernum
+</select>
+
+<select id="getConfirmed" parameterType="string" resultType="OrderBook">
+	select
+		o.ordernum as ordernum
+		,o.selectionnum as selectionnum
+		,m.id as id
+		,o.orderdate as orderdate
+		,o.bookcover as bookcover
+		,o.currentstate as currentstate
+		,o.price as price
+	from
+		orderbook o, myselection m
+	where
+		o.selectionnum = m.selectionnum
+	and
+		m.id = #{id}
+	and
+		o.currentstate = 'confirmedOrder'
+	order by
+		ordernum
 </select>
 
 <select id="lastBookCover" parameterType="Map" resultType="integer">
 	select
-		ordernum
+		ordernum 
 	from 
-		orderbook
+		orderbook 
 	where 
+		ordernum
+			in 
+			(
+				select 
+					max(ordernum) 
+				from 
+					orderbook 
+				group by 
+					bookcover
+			)
+	and
 		selectionnum in(
 			select 
 				selectionnum
@@ -121,13 +179,20 @@
 					from 
 						myselection 
 					where 
-						selectionnum = 1
-						)
-				and 
-					id='ryan'
-			)
-	and 
+						selectionnum = #{selectionnum}
+					)
+			and 
+				id='ryan'
+		)
+	and
 		bookcover != 'default'
 </select>
+
+<delete id="deleteOrder" parameterType="integer">
+	delete from
+		orderbook
+	where
+		ordernum = #{ordernum}
+</delete>
 
 </mapper>
