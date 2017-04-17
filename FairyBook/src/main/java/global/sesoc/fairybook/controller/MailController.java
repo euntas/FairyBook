@@ -12,6 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import global.sesoc.fairybook.dao.IDDAO;
 
 /**
  * 메일 컨트롤러
@@ -27,6 +30,10 @@ public class MailController {
 
 	@Autowired
 	private JavaMailSender mailSender;
+	
+	@Autowired
+	IDDAO dao;
+	
 	
 	
 	/**
@@ -62,5 +69,29 @@ public class MailController {
 			System.out.println(e);
 		}
 		return "redirect:/analysis/counsel";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="findPW", method=RequestMethod.POST)
+	public String findPW(String id, String email, Model model){
+		String setfrom = "scit32c1@gmail.com"; 
+		String result =null;
+		result = dao.findPW(id, email);
+		
+		if(result!=null){
+		try {
+			MimeMessage message = mailSender.createMimeMessage();
+			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
+			messageHelper.setTo(email);
+			messageHelper.setText("귀하의 비밀번호는 "+result+"입니다.");
+			messageHelper.setFrom(setfrom);
+			messageHelper.setSubject("[FairyBook] "+id+"님 비밀번호 찾기 메일입니다."); 
+			mailSender.send(message);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		}
+		return result;
 	}
 }

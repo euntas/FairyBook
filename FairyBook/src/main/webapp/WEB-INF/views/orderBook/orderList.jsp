@@ -3,7 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
-<title>FairyBook</title>
+<title>Order List</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -18,39 +18,16 @@
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
 <!--상단, 사이드 메뉴  -->
-<c:import url="../main/main.jsp"></c:import>
+<c:import url="main.jsp"></c:import>
 <!-- Page content -->
 <div class="w3-main" style="margin-left:230px;">
 	<i class="fa fa-bars w3-button w3-white w3-hide-large w3-xlarge w3-margin-left w3-margin-top" onclick="w3_open()"></i>
 	
 <!--####################여기부터  -->
+<h3>[주문 목록]</h3>
+<div id="orderList"></div>
 
-<table>
-<tr>
-<td>${quiz.question }</td>
-</tr>
 
-<tr>
-<td>1</td><td>${quiz.select1 }</td>
-</tr>
-
-<tr>
-<td>2</td><td>${quiz.select2 }</td>
-</tr>
-
-<tr>
-<td>3</td><td>${quiz.select3 }</td>
-</tr>
-
-<tr>
-<td>4</td><td>${quiz.select4 }</td>
-</tr>
-
-<tr>
-<td>정답: <td><td>${quiz.answer }</td>
-</tr>
-
-</table>
 
 
 <!--여기까지###########################  -->
@@ -58,7 +35,7 @@
 </div>
 
 <!--Footer  -->
-<c:import url="../main/mainFooter.jsp"></c:import>
+<c:import url="mainFooter.jsp"></c:import>
 
 </body>
 </html> 

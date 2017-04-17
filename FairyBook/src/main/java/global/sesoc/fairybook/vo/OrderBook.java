@@ -9,6 +9,7 @@ public class OrderBook {
 
 	int ordernum; 		 //주문번호
 	int selectionnum;	 //선택 동화 번호
+	String title;		 //책 제목
 	String id; 			 //주문자
 	String orderdate;	 //주문 날짜
 	String bookcover;	 //책 표지 이미지 경로
@@ -17,11 +18,12 @@ public class OrderBook {
 	
 	public OrderBook(){}
 
-	public OrderBook(int ordernum, int selectionnum, String id, String orderdate, String bookcover,
+	public OrderBook(int ordernum, int selectionnum, String title, String id, String orderdate, String bookcover,
 			String currentstate, int price) {
 		super();
 		this.ordernum = ordernum;
 		this.selectionnum = selectionnum;
+		this.title = title;
 		this.id = id;
 		this.orderdate = orderdate;
 		this.bookcover = bookcover;
@@ -85,10 +87,19 @@ public class OrderBook {
 		this.price = price;
 	}
 
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
 	@Override
 	public String toString() {
-		return "OrderBook [ordernum=" + ordernum + ", selectionnum=" + selectionnum + ", id=" + id + ", orderdate="
-				+ orderdate + ", bookcover=" + bookcover + ", currentstate=" + currentstate + ", price=" + price + "]";
+		return "OrderBook [ordernum=" + ordernum + ", selectionnum=" + selectionnum + ", title=" + title + ", id=" + id
+				+ ", orderdate=" + orderdate + ", bookcover=" + bookcover + ", currentstate=" + currentstate
+				+ ", price=" + price + "]";
 	}
 
 }
