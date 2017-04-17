@@ -81,7 +81,6 @@ function draw(){
 		}
 	}
 	
-	
 	// 젤리 누르는 곳 좌표값 
 	etc += '<map name="001">';
 	etc += '<area shape="rect" coords="327,153,372,200" onclick="point(1)" target="_blank">';
