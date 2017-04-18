@@ -176,7 +176,18 @@ function updateOrder(state){ //addToCart,makeOrder
 			$('#formOrder').submit();
 		}
 	}else if(state == 'makeOrder'){
-		location.href="orderList";
+		$.ajax({
+			url: 'updateOrder',
+			type:'POST',
+			data: {ordernum: ordernum, price: totalcost,currentstate:state},
+			success: function(){
+			},
+			error: function(e){
+				alert(JSON.stringify(e));
+			}
+		}); 
+		$('#confirmList').attr('value',ordernum);
+		$('#confirmOrderForm').submit();
 	}
 }
 </script>
@@ -221,18 +232,25 @@ function updateOrder(state){ //addToCart,makeOrder
 <input type="button" class="dropdown" value="예전 표지 가져오기" <%-- onclick="location.href='getPreBookCover?selectionnum=${order.selectionnum}'" --%>>
 <span class="dropdown-content"></span>
 </td>
+<c:if test="${userType == 'parent'}">
 <td>
 <input type="button" value="장바구니에 담기" onclick="updateOrder('addToCart')">
 <input type="button" value="주문하기" onclick="updateOrder('makeOrder')">
 </td>
+</c:if>
 </tr>
 </table>
 </form>
 
+<!--장바구니로 안 갔을때 넘어가는 폼  -->
 <form id="formOrder" action="order" method="post">
 <input type="hidden" id="selectionnum" name="selectionnum" value="${order.selectionnum}">
 </form>
 
+<!--주문하기 눌렀을때 넘어가는 폼  -->
+<form id="confirmOrderForm" action="checkOrderInfo" method="post">
+<input type="hidden" id="confirmList" name="confirmList">
+</form>
 <!--여기까지###########################  -->
 
 </div>

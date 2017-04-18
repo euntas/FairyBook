@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
+<!--책표지 만들기 및 주문 mapper: 이지나  -->
 <mapper namespace="global.sesoc.fairybook.mapper.OrderBookMapper">
  
 <insert id="saveOrder" parameterType="OrderBook">
@@ -108,46 +108,20 @@
 		ordernum
 </select>
 
-<select id="orderList" parameterType="string" resultType="OrderBook">
+<select id="getConfirmed" parameterType="string" resultType="ConfirmedOrderInfo">
 	select
-		o.ordernum as ordernum
-		,o.selectionnum as selectionnum
-		,m.id as id
-		,o.orderdate as orderdate
-		,o.bookcover as bookcover
-		,o.currentstate as currentstate
-		,o.price as price
-	from
-		orderbook o, myselection m
-	where
-		o.selectionnum = m.selectionnum
-	and
-		m.id = #{id}
-	and
-		o.currentstate = 'makeOrder'
-	order by
 		ordernum
-</select>
-
-<select id="getConfirmed" parameterType="string" resultType="OrderBook">
-	select
-		o.ordernum as ordernum
-		,o.selectionnum as selectionnum
-		,m.id as id
-		,o.orderdate as orderdate
-		,o.bookcover as bookcover
-		,o.currentstate as currentstate
-		,o.price as price
-	from
-		orderbook o, myselection m
-	where
-		o.selectionnum = m.selectionnum
-	and
-		m.id = #{id}
-	and
-		o.currentstate = 'confirmedOrder'
+		, title
+		, receiver
+		, address
+		, phone
+		,to_char(orderdate,'yyyy-mm-dd hh24miss') as orderdate
+	from 
+		CONFIRMEDORDERINFO
+	where 
+		orderer = #{id}
 	order by
-		ordernum
+		orderdate
 </select>
 
 <select id="lastBookCover" parameterType="Map" resultType="integer">
@@ -194,5 +168,20 @@
 	where
 		ordernum = #{ordernum}
 </delete>
+
+<insert id="insertConfirmedOrder" parameterType="Map">
+	insert into 
+		CONFIRMEDORDERINFO
+	values
+	(
+		#{ordernum}
+		,#{title}
+		,#{orderer}
+		,#{receiver}
+		,#{address}
+		,#{phone}
+		,sysdate
+	)
+</insert>
 
 </mapper>
