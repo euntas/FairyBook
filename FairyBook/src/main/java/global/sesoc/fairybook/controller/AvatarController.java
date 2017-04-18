@@ -140,7 +140,7 @@ public class AvatarController {
 	 * @return 해당 색깔 이미지 경로
 	 */
 	@ResponseBody
-	@RequestMapping(value = "callAvatarColor", method = RequestMethod.GET)
+	@RequestMapping(value = "callColor", method = RequestMethod.GET)
 	public String callColor(String name, String color) {
 		String result = dao.readColor(name, color);
 		logger.debug(result);
