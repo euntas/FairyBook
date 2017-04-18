@@ -48,11 +48,21 @@ public class QuizController {
 
 	}
 
+	/**
+	 * 각 동화에 해당하는 Quiz를 선택하는 화면 
+	 * 
+	 * @param quizList
+	 */
 	@RequestMapping(value = "quizList", method = RequestMethod.GET)
 	public String quizList() {
 		return "quiz/quizList";
 	}
 
+	/**
+	 * 특정 동화의 퀴즈 목록 가져오기
+	 * 
+	 * @param quizSolve
+	 */
 	@RequestMapping(value = "quizSolve", method = RequestMethod.GET)
 	public String quizSolve(HttpSession session, Model model, int storyNum) {
 
@@ -63,6 +73,11 @@ public class QuizController {
 		return "quiz/quizSolve";
 	}
 
+	/**
+	 * 회차 번호에 맞는 동화를 리스트에 담아오기
+	 * 
+	 * @param quiz
+	 */
 	@ResponseBody
 	@RequestMapping(value = "quiz", method = RequestMethod.GET)
 	public ArrayList<Quiz> quiz(int selectionNum, HttpSession session, Model model) {
