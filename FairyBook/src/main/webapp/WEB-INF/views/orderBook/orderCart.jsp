@@ -53,22 +53,24 @@ function orderSelections(){
 	var selections = [];
 	for (var i = 0; i < s.length; i++) {
 		if (s[i].checked) {
-			selections.push(s[i]);
+			selections.push(s[i].getAttribute('value'));
 			$.ajax({
 				url: 'updateOrder',
 				type:'POST',
-				data: {price: s[i].getAttribute('price'), ordernum: s[i].value, currentstate: 'makeOrder'},
+				data: {ordernum: s[i].value, price: s[i].getAttribute('price')},
 				success: function(){
-					location.href= 'orderList';
 				},
 				error: function(e){
 					alert(JSON.stringify(e));
 				}
 			}); 
 		}
-	}
+	}//for
 	if (selections.length == 0) {
 		alert('구매하실 책을 선택해주세요.');
+	}else{
+		$('#confirmList').attr('value',selections);
+		$('#confirmOrderForm').submit();
 	}
 }
 
@@ -111,6 +113,9 @@ function deleteSelections(){
 <input type="button" value="삭제" onclick="deleteSelections()">
 <input type="button" value="주문하기" onclick="orderSelections()">
 
+<form id="confirmOrderForm" action="checkOrderInfo" method="post">
+<input type="hidden" id="confirmList" name="confirmList">
+</form>
 
 <!--여기까지###########################  -->
 

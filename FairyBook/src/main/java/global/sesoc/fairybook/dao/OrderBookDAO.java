@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import global.sesoc.fairybook.mapper.OrderBookMapper;
+import global.sesoc.fairybook.vo.ConfirmedOrderInfo;
 import global.sesoc.fairybook.vo.OrderBook;
 
 /**
@@ -31,18 +32,6 @@ public class OrderBookDAO {
 		result = mapper.saveOrder(ob);
 		return result;
 	}
-
-//	/**
-//	 * 전에 만들어놓은 표지있는지 확인하기
-//	 * @param ordernum
-//	 * @return
-//	 */
-//	public int deleteBookCover(int ordernum){
-//		int result = 0;
-//		OrderBookMapper mapper = sqlSession.getMapper(OrderBookMapper.class);
-//		result = mapper.deleteBookCover(ordernum);
-//		return result;
-//	}
 
 	/**
 	 * 주문 할 책 제목 가져오기
@@ -89,20 +78,23 @@ public class OrderBookDAO {
 		return result;
 	}
 
+	/**
+	 * 장바구니 리스트 가져오기
+	 * @param id
+	 * @return
+	 */
 	public ArrayList<OrderBook> cartList(String id) {
 		ArrayList<OrderBook> result = new ArrayList<>();
 		OrderBookMapper mapper = sqlSession.getMapper(OrderBookMapper.class);
 		result = mapper.cartList(id);
 		return result;
 	}
-
-	public ArrayList<OrderBook> orderList(String id) {
-		ArrayList<OrderBook> result = new ArrayList<>();
-		OrderBookMapper mapper = sqlSession.getMapper(OrderBookMapper.class);
-		result = mapper.orderList(id);
-		return result;
-	}
 	
+	/**
+	 * 예전 책표지 가져오기
+	 * @param data
+	 * @return
+	 */
 	public ArrayList<Integer> lastBookCover(Map<String, Object> data) {
 		ArrayList<Integer> result = new ArrayList<>();
 		OrderBookMapper mapper = sqlSession.getMapper(OrderBookMapper.class);
@@ -110,6 +102,11 @@ public class OrderBookDAO {
 		return result;
 	}
 
+	/**
+	 * 장바구니에서  삭제하기
+	 * @param ordernum
+	 * @return
+	 */
 	public int deleteOrder(int ordernum) {
 		int result = 0;
 		OrderBookMapper mapper = sqlSession.getMapper(OrderBookMapper.class);
@@ -117,10 +114,27 @@ public class OrderBookDAO {
 		return result;
 	}
 
-	public ArrayList<OrderBook> getConfirmed(String id) {
-		ArrayList<OrderBook> result = new ArrayList<>();
+	/**
+	 * 주문내역 가져오기
+	 * @param id
+	 * @return
+	 */
+	public ArrayList<ConfirmedOrderInfo> getConfirmed(String id) {
+		ArrayList<ConfirmedOrderInfo> result = new ArrayList<>();
 		OrderBookMapper mapper = sqlSession.getMapper(OrderBookMapper.class);
 		result = mapper.getConfirmed(id);
+		return result;
+	}
+
+	/**
+	 * 주문완료 내역 저장하기
+	 * @param data
+	 * @return
+	 */
+	public int insertConfirmedOrder(Map<String, Object> data) {
+		int result = 0;
+		OrderBookMapper mapper = sqlSession.getMapper(OrderBookMapper.class);
+		result = mapper.insertConfirmedOrder(data);
 		return result;
 	}
 

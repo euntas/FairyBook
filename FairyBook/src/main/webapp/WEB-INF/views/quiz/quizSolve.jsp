@@ -16,6 +16,8 @@
 <!--적용 자바스크립트와 스타일  -->
 
 <script>
+
+	// 회차 번호에 해당하는 퀴즈 불러오기
 	function select(selectionNum){
 		alert(selectionNum); 
 		$.ajax({
@@ -30,38 +32,44 @@
 		}); 
 	}
 	
+	//정답 판독
+	function selection(answer, sele, i){
+		if (answer != sele) {
+			alert("정답은 " + answer+"입니다.");
+			$('#answerda' + i).html("정답: " + answer); 
+			$('#answerda'+ i).css('background-color','#ff8566');
+		};
+	
+		if (answer == sele) {
+			alert("정답입니다.");
+			$('#answerda' + i).html("정답: " + answer); 
+			$('#answerda'+ i).css('background-color','#99ff66');
+		};
+	}
+	
+	//퀴즈 출력
 	function getQuizList(quizList){
 		
 		 var input='<table>';
 		$.each(quizList, function(i,b){
 			input+='<tr class="select">';
-			input+='<td>'+b.question+'</td>';
+			input+='<td style="background-color: #ccffff" width="800"><font size="5">'+b.question+'</font></td>';
 			input+='</tr>';
 			input+='<tr>';
-			input+='<td>①</td>';
-			input+='<td>'+b.select1+'</td>';
+			input+='<td><a href="javascript:selection(\''+b.answer+'\', '+ "1," + i +');"> ① '+'<font size="4">' +b.select1+'</font>'+'</a></td>';
 			input+='</tr>';
 			input+='<tr>';
-			input+='<td>②</td>';
-			input+='<td>'+b.select2+'</td>';
+			input+='<td><a href="javascript:selection(\''+b.answer+'\', '+ "2," +i+');"> ② '+'<font size="4">' +b.select2+'</font>'+'</a></td>';
 			input+='</tr>';
 			input+='<tr>';
-			input+='<td>③</td>';
-			input+='<td>'+b.select3+'</td>';
+			input+='<td><a href="javascript:selection(\''+b.answer+'\', '+ "3," +i+');"> ③ '+'<font size="4">' +b.select3+'</font>'+'</a></td>';
+			input+='</tr> ';
+			input+='<tr>';
+			input+='<td><a href="javascript:selection(\''+b.answer+'\', '+ "4," +i+');"> ④ '+'<font size="4">' +b.select4+'</font>'+'</a></td>';
 			input+='</tr>';
 			input+='<tr>';
-			input+='<td>④</td>';
-			input+='<td>'+b.select4+'</td>';
+			input+='<td><span id="'+ 'answerda' + i +'"></span></td>';
 			input+='</tr>';
-			input+='<tr>';
-			input+='<td>정답:</td>';
-			input+='<td>'+b.answer+'</td>';
-			input+='</tr>';
-			input+='<tr>';
-			input+='<td>-----------------------</td>';
-
-			input+='</tr>';
-
 		});
 	$('#quizda').html(input); 
 	}
@@ -80,19 +88,26 @@
 	<i class="fa fa-bars w3-button w3-white w3-hide-large w3-xlarge w3-margin-left w3-margin-top" onclick="w3_open()"></i>
 	
 <!--####################여기부터  -->
-<table border='1'>
-<c:forEach var="list" items="${selectionList }">
-<tr>
-<td><a href="javascript:select('${list.selectionNum }');">회차별 퀴즈문제</a></td>
-</tr>
-</c:forEach>
-</table>
 
-<!--여기까지###########################  -->
+
+<!-- 회차 선택 메뉴 -->
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+          <p class="navbar-brand">회차를 선택해 주세요</p>
+    </div>
+    <ul class="nav navbar-nav">
+    <c:forEach var="list" items="${selectionList}" varStatus="status">
+      <li><a href="javascript:select('${list.selectionNum}');">${status.count}회차</a></li>
+      </c:forEach>
+    </ul>
+  </div>
+</nav>
+
 
 <div id='quizda'></div>
 
-
+<!--여기까지###########################  -->
 </div>
 
 
