@@ -1,15 +1,23 @@
 package global.sesoc.fairybook;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import global.sesoc.fairybook.dao.SlideDAO;
+import global.sesoc.fairybook.vo.MySelection;
+import global.sesoc.fairybook.vo.StoryMaker;
 
 /**
  * Handles requests for the application home page.
@@ -17,6 +25,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HomeController {
 
+	@Autowired
+	SlideDAO dao;
+	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
 	/**
@@ -46,16 +57,42 @@ public class HomeController {
 		return "main/storySelect";
 	}
 
+	
 	/**
-	 * 동화감상
-	 * 
-	 * @return main/storyPlay.jsp
+	 * 동화 감상을 누르면 내가 끝까지 진행한 동화들의 목록을 가져온다
+	 * @param model 가져온 동화들을 담을 model
+	 * @param session 아이디를 가져올 session
+	 * @return slide/storyPlay.jsp 페이지로 이동
 	 */
 	@RequestMapping(value = "menu/storyPlay", method = RequestMethod.GET)
-	public String storyPlay() {
+	public String storyPlay(Model model, HttpSession session) {
+		StoryMaker user = (StoryMaker) session.getAttribute("loginUser");
+		if(user==null){
+			return "redirect:../id/login";
+		}
+		String id = user.getId();
+		ArrayList<MySelection> myStoryList = null;
+		myStoryList = dao.getMyStoryList(id);
+		model.addAttribute("myStoryList", myStoryList);
 		return "main/storyPlay";
 	}
 
+	/**
+	 * 동화 감상 슬라이드쇼 시작
+	 * @param session
+	 * @param selectionNum
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "menu/storySlide", method = RequestMethod.GET)
+	public String storyStart(HttpSession session, int selectionNum, Model model) {
+		ArrayList<Integer> slideList = null;
+		slideList = dao.getSlide(selectionNum);
+		model.addAttribute("slideList", slideList);
+		return "main/storySlide";
+	}
+	
+	
 	/**
 	 * 문제풀기
 	 * 
@@ -72,7 +109,15 @@ public class HomeController {
 	 * @return main/myChildStory.jsp
 	 */
 	@RequestMapping(value = "menu/myChildStory", method = RequestMethod.GET)
-	public String myChildStory() {
+	public String myChildStory(Model model, HttpSession session) {
+		StoryMaker user = (StoryMaker) session.getAttribute("loginUser");
+		if(user==null){
+			return "redirect:../id/login";
+		}
+		String id = user.getId();
+		ArrayList<MySelection> myStoryList = null;
+		myStoryList = dao.getMyStoryList(id);
+		model.addAttribute("myStoryList", myStoryList);
 		return "main/myChildStory";
 	}
 
