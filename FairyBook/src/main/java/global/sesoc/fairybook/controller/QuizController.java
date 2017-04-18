@@ -54,28 +54,75 @@ public class QuizController {
 	}
 
 	@RequestMapping(value = "quizSolve", method = RequestMethod.GET)
-	public String quizSolve(HttpSession session, Model model) {
+	public String quizSolve(HttpSession session, Model model, int storyNum) {
+
+		session.setAttribute("currentStoryNum", storyNum);
 		ArrayList<MySelection> selectionList = getFinishedSelectionList(session, model);
-		int selectionNum = 0;
-		int storyNum = 0;
-		ArrayList<SelectionDetail> getSelectionDetail = new ArrayList<>();
-		
-		for (MySelection mySelection : selectionList) {
-			selectionNum = mySelection.getSelectionNum();
-			storyNum = mySelection.getStoryNum();
-			getSelectionDetail = dao.getSelectionDetail(selectionNum);
-		}
-		
-		Scene getScene = new Scene(); 
-		for (SelectionDetail selectionDetail : getSelectionDetail) {
-			getScene = dao.getScene(storyNum, selectionDetail.getSceneNum());
-		}
-		
-		int quizNum = getScene.getQuizNum();
-		Quiz quiz = dao.getQuiz(quizNum);
-		model.addAttribute("quiz", quiz);
+		model.addAttribute("selectionList", selectionList);
+
 		return "quiz/quizSolve";
 	}
+
+	@ResponseBody
+	@RequestMapping(value = "quiz", method = RequestMethod.GET)
+	public ArrayList<Quiz> quiz(int selectionNum, HttpSession session, Model model) {
+
+		int storynum = (int) session.getAttribute("currentStoryNum");
+		ArrayList<SelectionDetail> getSelectionDetail = new ArrayList<>();
+
+		getSelectionDetail = dao.getSelectionDetail(selectionNum);
+
+		ArrayList<Scene> sceneList = new ArrayList<>();
+		ArrayList<Quiz> quizList = new ArrayList<>();
+		Quiz quiz = new Quiz();
+
+		for (SelectionDetail selectionDetail : getSelectionDetail) {
+			Scene getScene = dao.getScene(storynum, selectionDetail.getSceneNum());
+			sceneList.add(getScene);
+		}
+
+		for (Scene scene : sceneList) {
+			quiz = dao.getQuiz(scene.getQuizNum());
+			if (scene.getQuizNum() != -1) {
+				if (quiz.getAnswer() != -1) {
+					quizList.add(quiz);
+				}
+			}
+		}
+		System.out.println(selectionNum + "        " + quizList);
+		model.addAttribute("quizList", quizList);
+		return quizList;
+	}
+
+	// 임시 보류
+	/*
+	 * @RequestMapping(value = "quizSolve", method = RequestMethod.GET) public
+	 * String quizSolve(HttpSession session, Model model) {
+	 * ArrayList<MySelection> selectionList = getFinishedSelectionList(session,
+	 * model); ArrayList<Integer> getSelectionNum = new ArrayList<>();
+	 * ArrayList<Integer> getStoryNum = new ArrayList<>();
+	 * ArrayList<SelectionDetail> getSelectionDetail = new ArrayList<>();
+	 * ArrayList<ArrayList<SelectionDetail>> getSelectionDetailList = new
+	 * ArrayList<>();
+	 * 
+	 * for (MySelection mySelection : selectionList) {
+	 * getSelectionNum.add(mySelection.getSelectionNum());
+	 * getStoryNum.add(mySelection.getStoryNum()); for (Integer selectionNum :
+	 * getSelectionNum) { getSelectionDetail =
+	 * dao.getSelectionDetail(selectionNum);
+	 * getSelectionDetailList.add(getSelectionDetail); } }
+	 * 
+	 * ArrayList<Scene>SceneList = new ArrayList<>(); Scene getScene = new
+	 * Scene(); for (Integer storyNum : getStoryNum) { for
+	 * (ArrayList<SelectionDetail> arrayList : getSelectionDetailList) {
+	 * System.out.println(arrayList); for (SelectionDetail selectionDetail :
+	 * arrayList) { getScene = dao.getScene(storyNum,
+	 * selectionDetail.getSceneNum()); } } }
+	 * 
+	 * int quizNum = getScene.getQuizNum(); Quiz quiz = dao.getQuiz(quizNum);
+	 * model.addAttribute("quiz", quiz); return "quiz/quizSolve"; }
+	 */
+	// 임시 보류
 
 	/**
 	 * Quiz Selection 사용자가 선택한 selection항목 db에 저장하기-Ajax
