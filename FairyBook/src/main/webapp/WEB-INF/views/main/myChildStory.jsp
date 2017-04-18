@@ -48,7 +48,6 @@ td{
 	</c:if>
 	</a>
 	<!-- 여기까지 썸네일 -->
-	
 		<div class="w3-container w3-white">
 			<h3>
 			<c:choose>
