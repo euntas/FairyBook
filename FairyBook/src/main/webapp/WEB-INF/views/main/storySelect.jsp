@@ -36,7 +36,7 @@
 	<!-- image -->
 	 <div class="w3-row-padding w3-padding-16">
 	    <div class="w3-third w3-margin-bottom">
-	      <img src="../resources/image/book.jpg" alt="Norway" style="width:100%">
+	      <img src="../resources/image/hansel.jpg" alt="Norway" style="width:100%">
 	      <div class="w3-container w3-white">
 	        <h3>헨젤과 그레텔</h3>
 	        
@@ -50,7 +50,7 @@
 	      <div class="w3-container w3-white">
 	        <h3>coming soon</h3>
 	        <h6 class="w3-opacity">Please wait update</h6>
-	        <button class="w3-button w3-block w3-margin-bottom" disabled="disabled"></button>
+	        <button class="w3-button w3-block w3-margin-bottom" disabled="disabled">업데이트를 기대하세요</button>
 	      </div>
 	    </div>
 	    
@@ -59,7 +59,7 @@
 	      <div class="w3-container w3-white">
 	        <h3>coming soon</h3>
 	        <h6 class="w3-opacity">Please wait update</h6>
-	        <button class="w3-button w3-block w3-margin-bottom" disabled="disabled"></button>
+	        <button class="w3-button w3-block w3-margin-bottom" disabled="disabled">업데이트를 기대하세요</button>
 	      </div>
 	    </div>
 	  </div>
