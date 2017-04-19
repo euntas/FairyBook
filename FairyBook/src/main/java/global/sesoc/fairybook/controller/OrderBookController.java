@@ -33,6 +33,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import global.sesoc.fairybook.dao.OrderBookDAO;
 import global.sesoc.fairybook.util.FileService;
+import global.sesoc.fairybook.vo.ConfirmedOrderInfo;
 import global.sesoc.fairybook.vo.OrderBook;
 import global.sesoc.fairybook.vo.StoryMaker;
 
@@ -49,6 +50,8 @@ public class OrderBookController {
 	@Autowired OrderBookDAO dao;
 	
 	private static final Logger logger = LoggerFactory.getLogger(OrderBookController.class);
+	
+	//책 표지 저장 경로
 	private final String uploadPath = "/Users/kita/git/FairyBook/FairyBook/src/main/webapp/resources/img/bookCover/"; //파일 업로드 경로
 	
 	/**
@@ -62,10 +65,11 @@ public class OrderBookController {
 			@RequestParam(value="selectionnum",defaultValue="-1")int selectionnum
 			,@RequestParam(value="ordernum",defaultValue="-1")int ordernum
 			, Model model
-			//,@SessionAttribute("loginUser") StoryMaker maker
+			,@SessionAttribute("loginUser") StoryMaker maker
 			){
 		logger.info("order selectionnum:{}",selectionnum);
 		logger.info("order ordernum:{}",ordernum);
+		String id = maker.getId();
 		Map<String, Integer> num = new HashMap<>();
 		num.put("selectionnum", selectionnum);
 		num.put("ordernum", ordernum);
@@ -73,6 +77,7 @@ public class OrderBookController {
 		logger.info("order orderBook:{}",orderBook);
 		if (ordernum != -1) {	//표지 만들고 돌아온 경우
 			String title = dao.getStoryTitle(orderBook.getSelectionnum());
+			logger.info("title????????:{}",title);
 			orderBook.setTitle(title);
 			model.addAttribute("order", orderBook);
 			return "orderBook/order";
@@ -80,25 +85,34 @@ public class OrderBookController {
 		//storyPlay에서 책만들기 버튼 눌러서 들어온 경우
 		//제목
 		String title = dao.getStoryTitle(selectionnum);
+		logger.info("title????????:{}",title);
 		if (orderBook == null) {
 			ordernum = dao.setOrdernum();
 			logger.info("오더번호:{}",ordernum);
-			OrderBook newob = new OrderBook(ordernum, selectionnum, title, "ryan", "default", "default", "default", 0);
+			OrderBook newob = new OrderBook(ordernum, selectionnum, title, id, "default", "default", "default", 0);
 			logger.info("order neworderbook: {}", newob);
 			dao.saveOrder(newob);
 			orderBook = newob;
 		}
+		orderBook.setTitle(title);
 		logger.info("order orderbook: {}", orderBook);
 		
 		model.addAttribute("order", orderBook);
 		return "orderBook/order";
 	}
 	
+	/**
+	 * 예전 표지 가져오기
+	 * @param selectionnum
+	 * @return 경로
+	 */
 	@ResponseBody
 	@RequestMapping(value="getLastBookCover") //selectionnum
-	public ArrayList<Integer> getLastBookCover(int selectionnum/*String id*/){
+	public ArrayList<Integer> getLastBookCover(int selectionnum
+			,@SessionAttribute("loginUser") StoryMaker maker
+			){
 		logger.info("bookcovers selectionnum:{}",selectionnum);
-		String id="ryan";
+		String id=maker.getId();
 		selectionnum = 1; //지워야
 		ArrayList<Integer> bookcovers = new ArrayList<>();
 		Map<String, Object> data = new HashMap<>();
@@ -108,13 +122,23 @@ public class OrderBookController {
 		return bookcovers;
 	}
 	
+	/**
+	 * 예전 표지에서 선택하면 그 표지를 표지로 update
+	 * @param myordernum
+	 * @param coverordernum
+	 */
 	@ResponseBody
 	@RequestMapping(value="setCover", method=RequestMethod.POST)
-	public void setCover(int myordernum, int coverordernum){
+	public void setCover(int myordernum, int coverordernum
+			,@SessionAttribute("loginUser") StoryMaker maker
+			){
 		Map<String, Integer> num = new HashMap<>();
 		num.put("selectionnum", -1);
 		num.put("ordernum", myordernum);
 		OrderBook myorder = dao.getOrder(num);
+		if (!myorder.getId().equals(maker.getId())) {
+			return;
+		}
 		num.put("ordernum", coverordernum);
 		OrderBook cover = dao.getOrder(num);
 		myorder.setBookcover(cover.getBookcover());
@@ -131,7 +155,7 @@ public class OrderBookController {
 	 */
 	@RequestMapping(value="makeCover", method=RequestMethod.GET)
 	public String makeCover(int ordernum, Model model
-			//,@SessionAttribute("loginUser") StoryMaker maker
+			,@SessionAttribute("loginUser") StoryMaker maker
 			){
 		model.addAttribute("ordernum", ordernum);
 		return "orderBook/makeCover";
@@ -149,7 +173,7 @@ public class OrderBookController {
 	@RequestMapping(value="saveCover",method=RequestMethod.POST)
 	public ModelAndView captureAndSave(HttpServletRequest request,
 			String imgSrc, Model model
-			//,@SessionAttribute("loginUser") StoryMaker maker
+			,@SessionAttribute("loginUser") StoryMaker maker
 			) throws IOException{
 		String coverPath="";
 		String binaryData = request.getParameter("imgSrc");
@@ -211,7 +235,9 @@ public class OrderBookController {
 	 * @throws IOException
 	 */
 	@RequestMapping(value="getBookCover",method=RequestMethod.GET)
-	public String getBookCover(HttpServletResponse response, int ordernum) throws IOException{
+	public String getBookCover(HttpServletResponse response, int ordernum
+			,@SessionAttribute("loginUser") StoryMaker maker
+			) throws IOException{
 		//db에서 표지와 스토리 및 개인정보 불러오기
 		logger.info("getcover ordernum:{}",ordernum);
 		Map<String, Integer> num = new HashMap<>();
@@ -249,6 +275,7 @@ public class OrderBookController {
 			, @RequestParam(value="price",defaultValue="0")int price
 			, @RequestParam(value="currentstate", defaultValue="")String currentstate
 			,@RequestParam(value="bookcover", defaultValue="") String bookcover
+			,@SessionAttribute("loginUser") StoryMaker maker
 			){
 		logger.info("update:{},{},{}",ordernum,price,currentstate);
 		OrderBook ob = new OrderBook(ordernum, 0,"","", "",bookcover, currentstate, price);
@@ -265,20 +292,23 @@ public class OrderBookController {
 		logger.info("update result:{}",ob);
 	}
 	
+	/**
+	 * 장바구니 페이지로 넘어가기
+	 * @return orderCart.jsp
+	 */
 	@RequestMapping(value="orderCart")
-	public String orderCart(){
+	public String orderCart(@SessionAttribute("loginUser") StoryMaker maker){
 		return "orderBook/orderCart";
 	}
 	
-	@RequestMapping(value="orderList")
-	public String orderList(){
-		return "orderBook/orderList";
-	}
-	
+	/**
+	 * 장바구니 페이지에 정보 뿌려주기
+	 * @return ArrayList<OrderBook>
+	 */
 	@ResponseBody
 	@RequestMapping(value="cartList",method=RequestMethod.GET)
-	public ArrayList<OrderBook> cartList(/*@SessionAttribute("loginUser") StoryMaker maker*/){
-		String id = "ryan";
+	public ArrayList<OrderBook> cartList(@SessionAttribute("loginUser") StoryMaker maker){
+		String id = maker.getId();
 		ArrayList<OrderBook> cart = new ArrayList<>();
 		cart = dao.cartList(id);
 		for (OrderBook orderBook : cart) {
@@ -289,28 +319,29 @@ public class OrderBookController {
 		return cart;
 	}
 	
-	@ResponseBody
-	@RequestMapping(value="makeOrderList")
-	public ArrayList<OrderBook> makeOrderList(){
-		String id = "ryan";
-		ArrayList<OrderBook> list = new ArrayList<>();
-		list = dao.orderList(id);
-		for (OrderBook orderBook : list) {
-			String title = dao.getStoryTitle(orderBook.getSelectionnum());
-			orderBook.setTitle(title);
-		}
-		return list;
-	}
-	
+	/**
+	 * 장바구니에서 삭제
+	 * @param ordernum
+	 */
 	@ResponseBody
 	@RequestMapping(value="deleteOrder",method=RequestMethod.POST)
-	public void deleteOrder(int ordernum){
+	public void deleteOrder(int ordernum
+			,@SessionAttribute("loginUser") StoryMaker maker
+			){
 		dao.deleteOrder(ordernum);
 		logger.info("delete ordernum:{}",ordernum);
 	}
 	
+	/**
+	 * 주문 정보 확인 페이지로 가기
+	 * @param confirmList-주문번호 ','로 연결한 문자열
+	 * @param model checkOrderInfo.jsp
+	 * @return
+	 */
 	@RequestMapping(value="checkOrderInfo",method=RequestMethod.POST)
-	public String checkOrderInfo(String confirmList, Model model){
+	public String checkOrderInfo(String confirmList, Model model
+			,@SessionAttribute("loginUser") StoryMaker maker
+			){
 		logger.info("check order: {}",confirmList);
 		String[] list = confirmList.split(",");
 		ArrayList<OrderBook> orderList = new ArrayList<>();
@@ -328,18 +359,58 @@ public class OrderBookController {
 		return "orderBook/checkOrderInfo";
 	}
 	
+	/**
+	 * 주문정보 확정 및 저장
+	 * @param ordernum
+	 * @param receiver
+	 * @param phoneR
+	 * @param addressR
+	 */
+	@ResponseBody
 	@RequestMapping(value="confirmOrder",method=RequestMethod.POST)
-	public String confirmOrder(int ordernum, String receiver, String phoneR, String addressR){
+	public void confirmOrder(int ordernum, String receiver, String phoneR, String addressR
+			,@SessionAttribute("loginUser") StoryMaker maker
+			){
 		logger.info("confirmedORder:{},{},{},{}",ordernum,receiver,phoneR,addressR);
+		Map<String, Integer> num = new HashMap<>();
+		num.put("selectionnum", -1);
+		num.put("ordernum", ordernum);
+		OrderBook ob = dao.getOrder(num);
+		int selectionnum = ob.getSelectionnum();
+		String id = maker.getId();
+		Map<String, Object> data = new HashMap<>();
+		data.put("ordernum", ordernum);
+		data.put("title", dao.getStoryTitle(selectionnum));
+		data.put("receiver", receiver);
+		data.put("orderer", id);
+		data.put("phone", phoneR);
+		data.put("address", addressR);
+		//주문내역 정보 저장하기
+		int result = dao.insertConfirmedOrder(data);
+	}
+	
+	/**
+	 * 주문내역 페이지로 가기
+	 * @return confirmedOrder.jsp
+	 */
+	@RequestMapping(value="confirmOrder",method=RequestMethod.GET)
+	public String confirmOrder(@SessionAttribute("loginUser") StoryMaker maker){
 		return "orderBook/confirmedOrder";
 	}
 	
+	/**
+	 * 주문내역 정보뿌리기
+	 * @return ArrayList<ConfirmedOrderInfo>
+	 */
 	@ResponseBody
 	@RequestMapping(value="confirmedList",method=RequestMethod.POST)
-	public ArrayList<OrderBook> confirmedList(/*StoryMaker maker*/){
-		String id = "ryan";
-		ArrayList<OrderBook> list = new ArrayList<>();
+	public ArrayList<ConfirmedOrderInfo> confirmedList(@SessionAttribute("loginUser") StoryMaker maker){
+		String id = maker.getId();
+		ArrayList<ConfirmedOrderInfo> list = new ArrayList<>();
 		list = dao.getConfirmed(id);
+		for (ConfirmedOrderInfo orderBook : list) {
+			logger.info("kdkdkdkdkdkdkdk:{}",orderBook);
+		}
 		return list;
 	}
 }

@@ -34,16 +34,6 @@
      position : relative;
      width : 600px;
 }
-/* .selected{
-	
-background: #000;filter:alpha(opacity=10); opacity:0.1; -moz-opacity:0.1;
-
-} */
-/* .selected{
-	background-color: transparent;
-	resize: both;
- 	overflow: auto;
-} */
 </style>
 
 <script>

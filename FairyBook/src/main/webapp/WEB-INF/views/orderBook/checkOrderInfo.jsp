@@ -22,24 +22,41 @@ $(function(){
 function confirmOrder(){
 	var form = $('#confirmForm');
 	var ordernum = $('.ordernum').toArray();
+	var receiver = $('#receiver').val();
+	var addressR = $('#addressR').val();
+	var phoneR = $('#phoneR').val();
+	var selections = [];
 	for (var i = 0; i < ordernum.length; i++) {
-		console.log(ordernum[i].getAttribute('value'));
+		var num = ordernum[i].getAttribute('value');	
+		selections.push(num);
+		console.log(num);
 		$.ajax({
 			url:'updateOrder',
 			type:'POST',
-			data:{ordernum:ordernum[i].getAttribute('value'),currentstate:'confirmedOrder' },
+			data:{ordernum:num,currentstate:'confirmedOrder' },
 			success: function(){
-				$('#confirmForm').submit();
 			},
 			error: function(e){
 				alert(JSON.stringify(e));
 			}
 		});
+		$.ajax({
+			url: 'confirmOrder',
+			type: 'POST',
+			data:{ordernum:num, receiver:receiver, phoneR:phoneR, addressR:addressR},
+			success: function(){
+				
+			}, error: function(e){
+				alert(JSON.stringify(e));
+			}
+		});
+	}//for
+
+	if (selections.length == 0) {
+		alert('구매하실 책을 선택해주세요.');
+	}else{
+		location.href="confirmOrder";
 	}
-	/* $.ajax({
-		url:'updateOrder',
-		
-	}); */
 }
 </script>
 
@@ -54,7 +71,7 @@ function confirmOrder(){
 	
 <!--####################여기부터  -->
 
-<form id="confirmForm" action="confirmOrder" method="post">
+<form id="confirmForm">
 <table class="table table-striped table-hover">
 <thead><tr>
 <th>주문번호</th><th>책표지</th><th>책제목</th><th>가격</th>
@@ -75,15 +92,15 @@ function confirmOrder(){
 <table class="table table-striped table-hover">
 <tr>
 <td>받는사람</td>
-<td><input type="text" name="receiver" value="${user.pName }" width="100%"></td>
+<td><input type="text" id="receiver" name="receiver" value="${user.pName }" width="100%"></td>
 </tr>
 <tr>
 <td>전화번호</td>
-<td><input type="text" name="phoneR" value="${user.phone}"></td>
+<td><input type="text" id="phoneR" name="phoneR" value="${user.phone}"></td>
 </tr>
 <tr>
 <td>주소</td>
-<td><input type="text" name="addressR" value="${user.address}"></td>
+<td><input type="text" id="addressR" name="addressR" value="${user.address}"></td>
 </tr>
 </table>
 <input type="button" value="주문하기" id="confirmOrder">

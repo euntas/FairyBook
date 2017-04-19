@@ -19,29 +19,31 @@ $(function(){
 	$.ajax({
 		url:'confirmedList',
 		type:'POST',
-		dataType: 'jason',
+		dataType: 'json',
 		success: printList,
 		error: function(e){
 			alert(JSON.stringify(e));
 		}
-	});
+	}); 
 });
 
 function printList(list){
 	var input='<table class="table table-striped table-hover">';
 	input+='<thead><tr>';
-	input+='<th>확인</th><th>주문번호</th><th>책표지</th><th>책제목</th><th>가격</th>';
+	input+='<th>주문번호</th><th>책표지</th><th colspan="2">주문정보</th>';
 	input+='</tr></thead>';
 	$.each(list,function(i,o){
 		input += '<tr>';
-		input += '<td><input type="checkbox" class="selectionCart" price="'+o.price+'" value="'+o.ordernum+'"></td>';
-		input += '<td>'+o.ordernum+'</td>';
-		input += '<td><img width="100px" src="getBookCover?ordernum='+o.ordernum+'"></td>';
-		input += '<td>'+o.title+'</td>';
-		input += '<td>'+o.price+'</td>';
+		input += '<td rowspan="2">'+o.ordernum+'</td>';
+		input += '<td rowspan="2"><img width="100px" src="getBookCover?ordernum='+o.ordernum+'"></td>';
+		input += '<td>책제목:'+o.title+'</td>';
+		input += '<td>수취인: '+o.receiver+'</td>';
+		input += '</tr><tr>'
+		input += '<td>주소: '+o.address+'</td>';
+		input += '<td>전화번호: '+o.phone+'</td>';
 		input += '</tr>';
 	});
-	$('#confirmedList').html(input);
+	$('#cList').html(input);
 }
 </script>
 
@@ -54,8 +56,8 @@ function printList(list){
 	<i class="fa fa-bars w3-button w3-white w3-hide-large w3-xlarge w3-margin-left w3-margin-top" onclick="w3_open()"></i>
 	
 <!--####################여기부터  -->
-
-<div id="confirmedList"></div>
+<h3>[주문내역]</h3>
+<div id="cList"></div>
 
 
 

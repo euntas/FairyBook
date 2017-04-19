@@ -311,7 +311,26 @@ create table ORDERBOOK(
 	currentstate varchar2(50),
 	--가격
 	price number,
-	foreign key (selectionnum) references MYSELECTION(selectionnum),
+	foreign key (selectionnum) references MYSELECTION(selectionnum)
+);
+
+--주문 내역
+create table CONFIRMEDORDERINFO(
+	--주문번호
+	ordernum number not null,
+	--주문내용
+	title varchar2(50) not null,
+	--주문자
+	orderer varchar2(50) not null,
+	--수취인
+	receiver varchar2(50) not null,
+	-- 집 주소
+	ADDRESS varchar2(100) NOT NULL,
+	-- 핸드폰 번호
+	PHONE varchar2(20) NOT NULL,
+	--주문날짜
+	orderdate date,
+	foreign key (ordernum) references orderbook(ordernum)
 );
 
 create sequence seq_orderbook start with 1 increment by 1;
