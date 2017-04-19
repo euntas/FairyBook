@@ -140,7 +140,7 @@ function bringAvatar(){
 	$.ajax({
 		url: 'avatarAnalysis',
 		type: 'GET',
-		data: {selectionNum: 1}, //data바꿔줘야
+		data: {selectionNum: ${selectionNum}}, 
 		dataType: 'json',
 		success: showAvatar,
 		error: function(e){
@@ -155,7 +155,7 @@ function showAvatar(r){
 	for (var i = 0; i < r.length; i++) {
 		console.log(r[i].path);
 		console.log(r[i].name.substring(0,3));
-		input += '<img src=".'+r[i].path+'" style="position: absolute;"/>';
+		input += '<img src="'+r[i].path+'" style="position: absolute;"/>';
 		analysis += r[i].analysis+'<br>';
 	}
 	$('#showAvatar').html(input);

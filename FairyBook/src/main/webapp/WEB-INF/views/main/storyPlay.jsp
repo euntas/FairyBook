@@ -61,6 +61,11 @@ td{
 			
 			</h3>
 			<h6 class="w3-opacity">${story.endDate}</h6>
+<<<<<<< HEAD
+			<button class="w3-button w3-red w3-margin-bottom" onclick="location.href='../menu/storySlide?selectionNum=${story.selectionNum}'">감상</button>
+			<button class="w3-button w3-red w3-margin-bottom" onclick="location.href='../analysis/storyAnalysis?selectionNum=${story.selectionNum}'">결과보기</button>
+=======
+>>>>>>> branch 'master' of https://github.com/euntas/FairyBook.git
 			<form action="../orderBook/order" method="post">
 				<input type="button" class="w3-button w3-red w3-margin-bottom" onclick="location.href='../menu/storySlide?selectionNum=${story.selectionNum}'" value="감상">
 				<input type="hidden" class="orderSelectionnum" name="selectionnum" value="${story.selectionNum}">
