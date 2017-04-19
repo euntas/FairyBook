@@ -62,7 +62,6 @@
   <a href="../menu/storyPlay" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>동화감상</a>
   <a href="../quiz/quizList" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>문제풀기</a>
   
-  
 </nav>
 </c:if>
 <!--부모 로그인했을때  -->
