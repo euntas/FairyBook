@@ -59,13 +59,13 @@
 			input+='<td><a href="javascript:selection(\''+b.answer+'\', '+ "1," + i +');"> ① '+'<font size="4">' +b.select1+'</font>'+'</a></td>';
 			input+='</tr>';
 			input+='<tr>';
-			input+='<td><a href="javascript:selection(\''+b.answer+'\', '+ "2," +i+');"> ② '+'<font size="4">' +b.select2+'</font>'+'</a></td>';
+			input+='<td><a href="javascript:selection(\''+b.answer+'\', '+ "2," + i +');"> ② '+'<font size="4">' +b.select2+'</font>'+'</a></td>';
 			input+='</tr>';
 			input+='<tr>';
-			input+='<td><a href="javascript:selection(\''+b.answer+'\', '+ "3," +i+');"> ③ '+'<font size="4">' +b.select3+'</font>'+'</a></td>';
+			input+='<td><a href="javascript:selection(\''+b.answer+'\', '+ "3," + i +');"> ③ '+'<font size="4">' +b.select3+'</font>'+'</a></td>';
 			input+='</tr> ';
 			input+='<tr>';
-			input+='<td><a href="javascript:selection(\''+b.answer+'\', '+ "4," +i+');"> ④ '+'<font size="4">' +b.select4+'</font>'+'</a></td>';
+			input+='<td><a href="javascript:selection(\''+b.answer+'\', '+ "4," + i +');"> ④ '+'<font size="4">' +b.select4+'</font>'+'</a></td>';
 			input+='</tr>';
 			input+='<tr>';
 			input+='<td><span id="'+ 'answerda' + i +'"></span></td>';
