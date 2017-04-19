@@ -71,8 +71,10 @@ $(function(){
 	bringAvatar(); //아바타 불러오기
 	$('#all').on('click',home);
 	$('#color').on('click',menu1);
-	$('#htp').on('click',menu2);
-	$('#quiz').on('click',menu3);
+	$('#htp1').on('click',menu2);
+	$('#htp2').on('click',menu3);
+	$('#htp3').on('click',menu4);
+	$('#quiz').on('click',menu5);
 })
 
 function home(){
@@ -123,6 +125,16 @@ function menu3(){
 	$('#menu3').attr('class','on active');
 }
 
+function menu4(){
+	clear();
+	$('#menu4').attr('class','on active');
+}
+
+function menu5(){
+	clear();
+	$('#menu5').attr('class','on active');
+}
+
 //내 아바타 가져오기
 function bringAvatar(){
 	$.ajax({
@@ -153,8 +165,8 @@ function showAvatar(r){
 //활성화 tab페이지 초기화
 function clear(){
 	window.scrollTo(0,0);
-	$('#home,#menu1,#menu2,#menu3').attr('class','');
-	$('#home,#menu1,#menu2,#menu3').attr('class','tab-pane fade');
+	$('#home,#menu1,#menu2,#menu3,#menu4,#menu5').attr('class','');
+	$('#home,#menu1,#menu2,#menu3,#menu4,#menu5').attr('class','tab-pane fade');
 }
 </script>
 
@@ -173,8 +185,10 @@ function clear(){
 <ul class="nav nav-pills">
     <li class="active"><a data-toggle="pill" href="#home" id="all">전체</a></li>
     <li><a data-toggle="pill" href="#menu1" id="color">심리-색</a></li>
-    <li><a data-toggle="pill" href="#menu2" id="htp">심리-HTP</a></li>
-    <li><a data-toggle="pill" href="#menu3" id="quiz">퀴즈</a></li>
+    <li><a data-toggle="pill" href="#menu2" id="htp1">심리-HTP-h</a></li>
+    <li><a data-toggle="pill" href="#menu3" id="htp2">심리-HTP-t</a></li>
+    <li><a data-toggle="pill" href="#menu4" id="htp3">심리-HTP-p</a></li>
+    <li><a data-toggle="pill" href="#menu5" id="quiz">퀴즈</a></li>
   </ul>
 </div>
   <div class="tab-content">
@@ -258,10 +272,10 @@ function clear(){
     </div>
     
     <div id="menu2">
-      <h3>심리-HTP</h3>
+      <h3>심리-HTP-h</h3>
 		<div class="row">
 		    <div class="col-sm-12">
-		    	<h5>심리-HTP</h5>  
+		    	<h5>심리-HTP-h</h5>  
 		    </div>
 		  </div>
 		  <hr>
@@ -278,6 +292,46 @@ function clear(){
     </div>
     
     <div id="menu3">
+      <h3>심리-HTP-t</h3>
+		<div class="row">
+		    <div class="col-sm-12">
+		    	<h5>심리-HTP-t</h5>  
+		    </div>
+		  </div>
+		  <hr>
+		  <div class="row">
+		  	<div class="col-md-4" style="width: 500px;">
+		  		<img alt="myAvatar" src="../resources/img/avatar/face/face01.png" id="face">
+		    </div>
+		  	<div class="panel panel-warning" style="height:250px;width: 400px;float:left;">
+		      <div class="panel-heading" id="htpLabel">htp</div>
+		      <div class="panel-body" id="htpSpecific"></div>
+		    </div>
+		  </div>
+		  <hr>
+    </div>
+    
+    <div id="menu4">
+      <h3>심리-HTP-p</h3>
+		<div class="row">
+		    <div class="col-sm-12">
+		    	<h5>심리-HTP-p</h5>  
+		    </div>
+		  </div>
+		  <hr>
+		  <div class="row">
+		  	<div class="col-md-4" style="width: 500px;">
+		  		<img alt="myAvatar" src="../resources/img/avatar/face/face01.png" id="face">
+		    </div>
+		  	<div class="panel panel-warning" style="height:250px;width: 400px;float:left;">
+		      <div class="panel-heading" id="htpLabel">htp</div>
+		      <div class="panel-body" id="htpSpecific"></div>
+		    </div>
+		  </div>
+		  <hr>
+    </div>
+    
+    <div id="menu5">
       <h3>퀴즈</h3>
 		<div class="row">
 		    <div class="col-sm-12">
