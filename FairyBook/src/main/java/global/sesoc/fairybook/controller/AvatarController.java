@@ -154,8 +154,7 @@ public class AvatarController {
 	 */
 	@RequestMapping(value = "saveAvatar", method = RequestMethod.POST)
 	public String saveAvatar(Avatar avatar, HttpSession session) {
-		session.setAttribute("selectionNum", 1);
-		avatar.setSelectionNum((int) session.getAttribute("selectionNum"));
+		avatar.setSelectionNum((int) session.getAttribute("myselectionNum"));
 		logger.debug(avatar.toString());
 		int result = 0;
 		result = dao.saveAvatar(avatar);
