@@ -213,6 +213,7 @@ function updateOrder(state){ //addToCart,makeOrder
 <td>제목</td>
 <td>${order.title}</td>
 </tr>
+<c:if test="${userType == 'parent'}">
 <tr>
 <td>가격</td>
 <td><span id="bookCost">5000</span></td>
@@ -226,10 +227,14 @@ function updateOrder(state){ //addToCart,makeOrder
 <span id="expectedCost"></span>
 </td>
 </tr>
+</c:if>
+<c:if test="${userType == 'child' }">
+<tr></tr><tr></tr>
+</c:if>
 <tr>
 <td>
 <input type="button" value="표지 만들기" onclick="location.href='makeCover?ordernum=${order.ordernum}'">
-<input type="button" class="dropdown" value="예전 표지 가져오기" <%-- onclick="location.href='getPreBookCover?selectionnum=${order.selectionnum}'" --%>>
+<input type="button" class="dropdown" value="예전 표지 가져오기">
 <span class="dropdown-content"></span>
 </td>
 <c:if test="${userType == 'parent'}">

@@ -62,9 +62,15 @@ td{
 			</h3>
 			<h6 class="w3-opacity">${story.endDate}</h6>
 			<button class="w3-button w3-red w3-margin-bottom" onclick="location.href='../menu/storySlide?selectionNum=${story.selectionNum}'">감상</button>
+			<button class="w3-button w3-red w3-margin-bottom" onclick="location.href='../analysis/storyAnalysis'">결과보기</button>
 			<form action="../orderBook/order" method="post">
 				<input type="hidden" class="orderSelectionnum" name="selectionnum" value="1">
+				<c:if test="${userType == 'parent'}">
 				<button type="submit" class="w3-button w3-yellow w3-margin-bottom">책으로 주문하기</button>
+				</c:if>
+				<c:if test="${userType == 'child'}">
+				<button type="submit" class="w3-button w3-yellow w3-margin-bottom">책표지 만들기</button>
+				</c:if>
 			</form>
 		</div>
 	</td>
