@@ -2,6 +2,8 @@ package global.sesoc.fairybook.controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +36,11 @@ public class AnalysisController {
 	 * @return
 	 */
 	@RequestMapping(value="storyAnalysis", method=RequestMethod.GET)
-	public String analysisPage(){
+	public String analysisPage(int selectionNum, HttpSession session){
+		session.setAttribute("selectionNum", selectionNum);
+		
+		System.out.println("세션에 selectionNum : " + selectionNum + "저장됨.");
+		
 		return "story/storyAnalysis";
 	}
 	
