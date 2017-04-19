@@ -263,5 +263,6 @@ function updateOrder(state){ //addToCart,makeOrder
 <!--Footer  -->
 <c:import url="../main/mainFooter.jsp"></c:import>
 
+
 </body>
 </html> 

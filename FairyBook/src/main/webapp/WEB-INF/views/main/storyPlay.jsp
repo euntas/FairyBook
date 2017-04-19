@@ -59,6 +59,8 @@ td{
 				<c:when test="${story.storyNum==4}">동물의 왕국</c:when>
 			</c:choose>
 			
+			
+			
 			</h3>
 			<h6 class="w3-opacity">${story.endDate}</h6>
 			<button class="w3-button w3-red w3-margin-bottom" onclick="location.href='../menu/storySlide?selectionNum=${story.selectionNum}'">감상</button>
