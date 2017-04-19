@@ -25,7 +25,20 @@ img{
 	z-index: 99;
 }
 </style>
+<script>
+$(document).ready(function(){
+	$('#menu').on('mouseenter', showMenu);
+	$('#menu').on('mouseleave', hideMenu);
+});
 
+function showMenu(){
+	
+}
+
+function hideMenu(){
+	
+}
+</script>
 
 </head>
 
@@ -39,24 +52,6 @@ img{
 			<img src="../resources/img/scene/scene${slide}.jpg">
 		</c:if>
 	</c:forEach>
-<!--     <img src="../resources/img/scene/scene01.jpg">
-    <img src="../resources/img/scene/scene04.jpg">
-    <img src="../resources/img/scene/scene05.jpg">    
-    <img src="../resources/img/scene/scene06.jpg">
-    <img src="../resources/img/scene/scene07.jpg">
-    <img src="../resources/img/scene/scene08.jpg">
-    <img src="../resources/img/scene/scene09.jpg">
-    <img src="../resources/img/scene/scene10.jpg">
-    <img src="../resources/img/scene/scene11.jpg">
-    <img src="../resources/img/scene/scene12.jpg">
-    <img src="../resources/img/scene/scene13.jpg">
-    <img src="../resources/img/scene/scene14.jpg">
-    <img src="../resources/img/scene/scene15.jpg">
-    <img src="../resources/img/scene/scene16.jpg">
-    <img src="../resources/img/scene/scene17.jpg">
-    <img src="../resources/img/scene/scene18.jpg">
-    <img src="../resources/img/scene/scene45.jpg">
-    <img src="../resources/img/scene/scene46.jpg"> -->
   </div>  
 </body>
 

@@ -119,8 +119,7 @@ public class HouseController {
 	@ResponseBody
 	@RequestMapping(value = "saveHouse", method = RequestMethod.POST)
 	public int save(House house, HttpSession session) {
-		session.setAttribute("selectionNum", 1);
-		house.setSelectionNum((int) session.getAttribute("selectionNum"));
+		house.setSelectionNum((int) session.getAttribute("myselectionNum"));
 		logger.debug(house.toString());
 		int result = 0;
 		System.out.println(house);

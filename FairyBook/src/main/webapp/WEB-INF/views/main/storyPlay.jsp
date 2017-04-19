@@ -61,9 +61,9 @@ td{
 			
 			</h3>
 			<h6 class="w3-opacity">${story.endDate}</h6>
-			<button class="w3-button w3-red w3-margin-bottom" onclick="location.href='../menu/storySlide?selectionNum=${story.selectionNum}'">감상</button>
 			<form action="../orderBook/order" method="post">
-				<input type="hidden" class="orderSelectionnum" name="selectionnum" value="1">
+				<input type="button" class="w3-button w3-red w3-margin-bottom" onclick="location.href='../menu/storySlide?selectionNum=${story.selectionNum}'" value="감상">
+				<input type="hidden" class="orderSelectionnum" name="selectionnum" value="${story.selectionNum}">
 				<button type="submit" class="w3-button w3-yellow w3-margin-bottom">책으로 주문하기</button>
 			</form>
 		</div>
