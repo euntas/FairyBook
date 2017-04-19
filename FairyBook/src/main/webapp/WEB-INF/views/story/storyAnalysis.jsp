@@ -65,6 +65,8 @@ for (var i = 0; i < countArray.length; i++) {
 	}
 }
 
+
+
 $(function(){
 	clear();
 	home(); //처음 열면 home화면 on active
@@ -152,14 +154,63 @@ function bringAvatar(){
 function showAvatar(r){
 	var input = '';
 	var analysis = '';
+	
 	for (var i = 0; i < r.length; i++) {
 		console.log(r[i].path);
 		console.log(r[i].name.substring(0,3));
-		input += '<img src="'+r[i].path+'" style="position: absolute;"/>';
+		input += '<img src="'+r[i].path+'" style="position: absolute;" usemap="#002"/>';
 		analysis += r[i].analysis+'<br>';
 	}
-	$('#showAvatar').html(input);
+	
+	/*아바타 심리 결과를 위한 정보*/
+	 // 아바타 항목 위치 좌표 정보. 배열 순서는 다음과 같다. (얼굴 , 코, 입 ...)
+	 var avatarArray = ['12,15,285,58', '24,134,269,263'];
+	
+	//항목 누르는 곳 설정
+	input += '<map name="002">';
+	for( var j=0; j<r.length; j++){
+		var strName = r[j].name;
+		if(strName.indexOf('hair') != -1){
+			alert('머리');
+			input += '<area shape="rect" coords="12,15,285,58" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+		}
+		
+		if(strName.indexOf('face') != -1){
+			//alert('얼굴');
+			//input += '<area shape="rect" coords="24,134,269,263" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+		}
+		
+		if(strName.indexOf('eye') != -1){
+			alert('눈');
+			input += '<area shape="rect" coords="80,139,108,168" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+			input += '<area shape="rect" coords="195,137,219,169" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+		}
+				
+		if(strName.indexOf('nose') != -1){
+			alert('코');
+			input += '<area shape="rect" coords="127,146,165,186" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+		}
+		
+		if(strName.indexOf('mouth') != -1){
+			alert('입');
+			input += '<area shape="rect" coords="96,200,198,241" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+		}
+		
+		if(strName.indexOf('ear') != -1){
+			alert('귀');
+			input += '<area shape="rect" coords="5,151,48,215" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+			input += '<area shape="rect" coords="253,148,280,210" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+		}
+		
+	}
+	input += '</map>';
+	
+	
+	$('.showAvatar').html(input);
 	$('#htpSpecific').html(analysis);
+	
+	// 디폴트로 텍스트 란에는 얼굴 설명을 넣어 놓는다.
+	$('#htpSpecific4').html(r[0].analysis);
 }
 
 //활성화 tab페이지 초기화
@@ -168,6 +219,17 @@ function clear(){
 	$('#home,#menu1,#menu2,#menu3,#menu4,#menu5').attr('class','');
 	$('#home,#menu1,#menu2,#menu3,#menu4,#menu5').attr('class','tab-pane fade');
 }
+
+// 각 항목(머리, 얼굴 등) 눌렀을 때 강조
+function point(analysis){
+	alert(analysis);
+	$('#htpSpecific4').html(analysis);
+}
+	
+	
+// =======================================
+
+
 </script>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -220,7 +282,7 @@ function clear(){
 		  <hr>
 		  <div class="row">
 		  	<div class="col-md-4" style="width: 500px;">
-		  		<div id="showAvatar" style="position: relative;"></div>
+		  		<div id="showAvatar1" class="showAvatar" style="position: relative;"></div>
 		    </div>
 		  	<div class="panel panel-warning" style="padding: 10px;width: 400px;float:left;">
 		      <div class="panel-heading" id="htpLabel">htp</div>
@@ -321,11 +383,11 @@ function clear(){
 		  <hr>
 		  <div class="row">
 		  	<div class="col-md-4" style="width: 500px;">
-		  		<img alt="myAvatar" src="../resources/img/avatar/face/face01.png" id="face">
+		  		<div id="showAvatar2" class="showAvatar" style="position: relative;"></div>
 		    </div>
 		  	<div class="panel panel-warning" style="height:250px;width: 400px;float:left;">
 		      <div class="panel-heading" id="htpLabel">htp</div>
-		      <div class="panel-body" id="htpSpecific"></div>
+		      <div class="panel-body" id="htpSpecific4"></div>
 		    </div>
 		  </div>
 		  <hr>
