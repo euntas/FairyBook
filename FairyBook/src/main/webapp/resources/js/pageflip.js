@@ -11,7 +11,6 @@ var myStoryNum;
 
 // myStoryNum 변수에 값을 넣어준다.
 function setMyStoryNum(storyNum){
-	alert(storyNum + '으로 초기화 해줌');
 	myStoryNum = storyNum;
 }
 //================================
@@ -223,8 +222,6 @@ RocketPageFlip.prototype.flip = function(page) {
 	        data: {pageNum: pageflip.options.current},
 	        dataType:'json',
 	        success: function(){
-	        	alert("플립 성공 들어옴");
-	        	alert('selectionDetail 생성1');
 	        },
 	        error: function(e){
 	        	alert("플립 실패 들어옴");
@@ -283,7 +280,6 @@ RocketPageFlip.prototype.next = function() {
         	
         	// 1번 씬에서 4번 씬으로 넘어가는 중간에 아바타 페이지로 가야한다.
         	if(nextSceneNum == 4){
-        		alert('아바타 화면으로 이동');
         		console.log('아바타 화면으로 이동');
         		location.href = "../objectMaker/avatar";
         		return;
@@ -291,7 +287,6 @@ RocketPageFlip.prototype.next = function() {
         	
         	// 46번 씬에서 16번 씬으로 넘어가는 중간에 과자집 색칠 페이지로 가야한다.
         	if(nextSceneNum == 16){
-        		alert('과자집 색칠 화면으로 이동');
         		console.log('과자집 색칠 화면으로 이동');
         		location.href = "../objectMaker/etc";
         		return;
@@ -306,7 +301,6 @@ RocketPageFlip.prototype.next = function() {
 	    	        data: {pageNum: pageflip.options.current, answerNum: 1},
 	    	        dataType: 'json',
 	    	        success: function(){
-	    	        	alert('selectiondetail 업데이트(다음 눌렀을 때)--');
 	    	        	
 	    	        	// 다음 씬 번호를 이용해 실제 다음 페이지 번호를 읽어온다.
 			        	$.ajax({
@@ -315,7 +309,6 @@ RocketPageFlip.prototype.next = function() {
 	        		        data: {currentSceneNum: nextSceneNum},
 	        		        dataType: 'json',
 	        		        success: function(nextPageNum){
-	        		        	alert("다음 눌렀을때! 다음은 " + nextSceneNum + '번 씬, ' + nextPageNum +  '번 페이지로 이동합니다.');
 	        		        	// 다음페이지로 이동한다.
 	        		        	pageflip.flip(nextPageNum);     
 	        		        	
@@ -336,8 +329,6 @@ RocketPageFlip.prototype.next = function() {
         	
         	// 지금 씬이 마지막 페이지일 때
         	else{
-        		
-    			alert('else 여기로 옴 : ' + location.href);
     			
     			// 종료 화면으로 이동
     			$.ajax({
@@ -392,7 +383,6 @@ function quizLoading(){
 			
 			// 해당 씬에 퀴즈가 있을 때
 			if(currentQuiz.quizNum != -1){
-				alert("퀴즈로딩 성공 들어옴 if");
 				// '다음' 버튼을 숨긴다.
 				$('.pageflip').find('a.flip-directional.flip-next').hide();
 				
@@ -404,7 +394,6 @@ function quizLoading(){
 			
 			// 해당 씬에 퀴즈가 없을 때
 			else{
-				alert("퀴즈로딩 성공 들어옴 else");
 				// '다음' 버튼을 보이게 한다.
 				$('.pageflip').find('a.flip-directional.flip-next').show();
 				// 퀴즈 div의 내용을 지운다.
@@ -496,11 +485,19 @@ function writeAvatarDiv(){
 function writeQuizDiv(){
 	
 	// 퀴즈의 내용을 읽어 jsp의 퀴즈 div에 내용을 넣어준다.
-	var str = currentQuiz.question +"<br><br>";
-	str += "<myselection selnum='1'>" + currentQuiz.select1 + "</myselection><br>";
-	str += "<myselection selnum='2'>" + currentQuiz.select2 + "</myselection><br>";
-	str += "<myselection selnum='3'>" + currentQuiz.select3 + "</myselection><br>";
-	str += "<myselection selnum='4'>" + currentQuiz.select4 + "</myselection><br>";
+	var str = '';
+	
+	if(!(currentQuiz.question == '' || currentQuiz.question == null || currentQuiz.question == -1))
+		str = currentQuiz.question +"<br><br>";
+	
+	if(!(currentQuiz.select1 == '' || currentQuiz.select1 == null || currentQuiz.select1 == -1))
+		str += "<myselection selnum='1'>" + currentQuiz.select1 + "</myselection><br>";
+	if(!(currentQuiz.select2 == '' || currentQuiz.select2 == null || currentQuiz.select2 == -1))
+		str += "<myselection selnum='2'>" + currentQuiz.select2 + "</myselection><br>";
+	if(!(currentQuiz.select3 == '' || currentQuiz.select3 == null || currentQuiz.select3 == -1))
+		str += "<myselection selnum='3'>" + currentQuiz.select3 + "</myselection><br>";
+	if(!(currentQuiz.select4 == '' || currentQuiz.select4 == null || currentQuiz.select4 == -1))
+		str += "<myselection selnum='4'>" + currentQuiz.select4 + "</myselection><br>";
 	
 	$("#divForQuiz").html(str); 
 	
@@ -537,7 +534,6 @@ function writeQuizDiv(){
 		    	        data: {pageNum: pageflip.options.current, answerNum: selectNum},
 		    	        dataType: 'json',
 		    	        success: function(){
-		    	        	alert('selectiondetail 업데이트--');
 		    	        	
 		    	        	// 다음 씬 번호를 이용해 실제 다음 페이지 번호를 읽어온다.
 				        	$.ajax({
@@ -546,7 +542,6 @@ function writeQuizDiv(){
 		        		        data: {currentSceneNum: nextSceneNum},
 		        		        dataType: 'json',
 		        		        success: function(nextPageNum){
-		        		        	alert(selectNum + '을 선택했습니다. 다음은 ' + nextSceneNum + '번 씬, ' + nextPageNum +  '번 페이지로 이동합니다.');
 		        		        	// 다음페이지로 이동한다.
 		        		        	pageflip.flip(nextPageNum);     
 		        		        	
@@ -567,8 +562,6 @@ function writeQuizDiv(){
 	        	
 	        	// 지금 씬이 마지막 페이지일 때
 	        	else{
-	        		
-        			alert('else 여기로 옴 : ' + location.href);
         			
         			// 종료 화면으로 이동
         			$.ajax({
