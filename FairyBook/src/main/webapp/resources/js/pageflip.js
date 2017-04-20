@@ -463,14 +463,17 @@ function writeAvatarDiv(){
         success: function(avatarText){
         	
         	if(avatarText != ''){        		
-        		// 배경에 이미지 넣는다.
-        		var str = "<img src='./../resources/image/avatarBg.png'>";
+        		/*// 배경에 이미지 넣는다.
+        		var str = "<img src='./../resources/image/avatarBg2.png'>";
         		str += "<div class='mytext'><p>";
         		// 디비에서 읽어온 아바타 대사를 삽입.
         		str += avatarText;
         		str += "</p></div>";
         			
-        		$('#divForAvatar').html(str);        	
+        		$('#divForAvatar').html(str);        */	
+        		
+        		var str = "<img src=\'" + avatarText + "\'>";
+        		$('#divForAvatar').html(str); 
         	}
         	
         },
