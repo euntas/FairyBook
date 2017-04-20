@@ -177,7 +177,7 @@ function myFunc(id) {
 	<i class="fa fa-bars w3-button w3-white w3-hide-large w3-xlarge w3-margin-left w3-margin-top" onclick="w3_open()"></i>
 	<a href="javascript:void(0)" class="w3-hide-large w3-red w3-button w3-right w3-margin-top w3-margin-right" onclick="document.getElementById('id01').style.display='block'"><i class="fa fa-pencil"></i></a>
 	
-<<<<<<< HEAD
+
 	<div id="Borge" class="w3-container person">
 	  <br>
 	  <img src="./resources/image/smalltitle.png">
@@ -210,7 +210,7 @@ function myFunc(id) {
 	      </div>
 	    </div>
 	  </div>
-=======
+
 	<c:if test="${userType == 'child'}">
 		<div id="Borge" class="w3-container person">
 		  <br>
@@ -245,7 +245,7 @@ function myFunc(id) {
 		    </div>
 		  </div>
 	  </c:if>
->>>>>>> branch 'master' of https://github.com/euntas/FairyBook.git
+
 
 	  <div id="Borge" class="w3-container person">
 	  <br>
