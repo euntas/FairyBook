@@ -256,7 +256,6 @@ function myFunc(id) {
 	  </div>
 </div>
 </div>
-
 <!--Footer  -->
 <!--Add a navar  -->
 <nav class="navbar navbar-default">
