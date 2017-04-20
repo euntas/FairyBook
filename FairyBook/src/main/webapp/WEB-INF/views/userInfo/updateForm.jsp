@@ -421,6 +421,8 @@ function formcheck(){
 <div id="under">
 	<form enctype="multipart/form-data" action="update" method="post"
 		onsubmit="return formcheck()" class="form-inline">
+
+<div style="text-align: center; margin: auto;"><img src="../resources/img/account/update.png" style="width: 300px;height: 50px;"></div>
 <br>
 		<table style="margin: auto;">
 			<tr>
@@ -586,5 +588,28 @@ function formcheck(){
 		
 	</form>
 </div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="#">Me</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">WHO</a></li>
+        <li><a href="#">WHAT</a></li>
+        <li><a href="#">WHERE</a></li>
+      </ul>
+    </div>
+  </div>
+	<footer class="container-fluid bg-4 text-center">
+	  <p>Made By <a href="../">FairyBook.com</a></p> 
+	</footer>
+</nav>
+
 </body>
 </html>
