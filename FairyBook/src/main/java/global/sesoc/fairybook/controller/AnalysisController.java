@@ -1,6 +1,8 @@
 package global.sesoc.fairybook.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import global.sesoc.fairybook.dao.AnalysisDAO;
 import global.sesoc.fairybook.vo.Counselor;
 import global.sesoc.fairybook.vo.FBResource;
+import global.sesoc.fairybook.vo.SolvedQuiz;
 
 /**
  * 심리 분석 Controller
@@ -43,32 +46,53 @@ public class AnalysisController {
 		
 		return "story/storyAnalysis";
 	}
-	
+
 	/**
 	 * color에 대한 그래프
 	 * @param selectionNum
 	 */
 	@ResponseBody
 	@RequestMapping(value="colorGraph", method=RequestMethod.GET)
-	public void colorGraph(int selectionNum){
+	public Map<String, Object> colorGraph(int selectionNum){
+		Map<String, Object> result = new HashMap<>();
 		//colorcount테이블에서 selectionNum으로 colorname과 colorcount가져오기 colorcount내림차순으로
-		//이때 colorcount가 0인 것은 가져오지 않는다.
+		ArrayList<String> colorName = new ArrayList<>();
+		colorName = dao.getColorName();
+		result.put("colorName", colorName);
 		
+		logger.info("colorGraph");
+		Map<String, Integer> color = new HashMap<>();
+		Integer[] colorCount = new Integer[colorName.size()];
+		for (int i = 0; i < colorCount.length; i++) {
+			colorCount[i]=0;
+		}
+		color = dao.getColorData(selectionNum);
+		logger.info("color??:{}",color);
+		for (String key : color.keySet()) {
+			int value = Integer.parseInt(String.valueOf(color.get(key)));
+			colorCount[value]++;
+		}
+		logger.info("colorcount:{}",colorCount);
+		result.put("colorCount", colorCount);
 		//colorname, colorcount보내기 - 결과jsp로
+		return result;
 	}
 	
 	/**
 	 * color 심리분석
-	 * @param selectionNum
+	 * @param
 	 */
 	@ResponseBody
-	@RequestMapping(value="colorAnalysis", method=RequestMethod.GET)
-	public void colorAnalysis(int selectionNum){
+	@RequestMapping(value="colorAnalysis", method=RequestMethod.GET
+			,produces = "application/text; charset=utf8")
+	public String colorAnalysis(int colornum){
 		//colorcount테이블에서 selectionNum으로 colorname가져오기 colorcount내림차순으로
 		//fbresource테이블의 name컬럼과 colorname이 같을 때, fbresource테이블의 name, analysis가져와서 FBResource VO에 담기
-		
+		String analysis = "";
+		analysis = dao.getColorAnalysis(colornum);
+		logger.info("color analysis:{}",analysis);
 		//FBResource VO 결과 jsp에 전송
-		
+		return analysis;
 	}
 	
 	/**
@@ -118,6 +142,19 @@ public class AnalysisController {
 		FBResource fb = getAnalysis(resourcenum);
 		
 		//FBResource VO 결과 jsp에 전송
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="getQuizResult",method=RequestMethod.POST)
+	public ArrayList<SolvedQuiz> getQuizResult(int selectionNum){
+		logger.info("quizresult:{}",selectionNum);
+		ArrayList<SolvedQuiz> quizList = new ArrayList<>();
+		quizList = dao.getQuizResult(selectionNum);
+		for (SolvedQuiz solvedQuiz : quizList) {
+			logger.info("q:{}",solvedQuiz);
+		}
+		logger.info("??:{}",quizList);
+		return quizList;
 	}
 	
 	/**

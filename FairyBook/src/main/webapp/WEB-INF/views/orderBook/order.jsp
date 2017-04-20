@@ -145,7 +145,7 @@ function showCost(){
 	console.log(count);
 	var cost = parseInt($('#bookCost').html());
 	console.log(cost);
-	$('#expectedCost').html("총  " + count*cost);
+	$('#expectedCost').html("<br>총  " + count*cost);
 }
 
 //장바구니 또는 주문하기 버튼 눌렀을 때
@@ -181,13 +181,13 @@ function updateOrder(state){ //addToCart,makeOrder
 			type:'POST',
 			data: {ordernum: ordernum, price: totalcost,currentstate:state},
 			success: function(){
+				$('#confirmList').attr('value',ordernum);
+				$('#confirmOrderForm').submit();
 			},
 			error: function(e){
 				alert(JSON.stringify(e));
 			}
 		}); 
-		$('#confirmList').attr('value',ordernum);
-		$('#confirmOrderForm').submit();
 	}
 }
 </script>
@@ -203,15 +203,14 @@ function updateOrder(state){ //addToCart,makeOrder
 	
 <!--####################여기부터  -->
 
-<form>
+<form style="margin: 5%;">
 <input type="hidden" id="ordernum" value="${order.ordernum}">
-<table border="1">
-<tr>
-<td rowspan="4"><img class="cover" isDefault="${order.bookcover}" height="400px" alt="cover" src="getBookCover?ordernum=${order.ordernum}"></td>
+<table class="table" style="width: 80%">
+<tr class="warning">
+<td colspan="3" style="text-align:center;height:50px;font-size: 20px;">${order.title}</td>
 </tr>
 <tr>
-<td>제목</td>
-<td>${order.title}</td>
+<td rowspan="3" style="width:50%;text-align:right;"><img class="cover img-thumbnail" isDefault="${order.bookcover}" height="60%" alt="cover" src="getBookCover?ordernum=${order.ordernum}"></td>
 </tr>
 <c:if test="${userType == 'parent'}">
 <tr>
@@ -221,26 +220,27 @@ function updateOrder(state){ //addToCart,makeOrder
 <tr>
 <td>수량</td>
 <td>
-<span class="glyphicon glyphicon-plus-sign" id="countAdd"></span>
-<input id="orderCount" type="text" style="width:30px;">
 <span class="glyphicon glyphicon-minus-sign" id="countMinus"></span>
+<input id="orderCount" type="text" style="width:30px;">
+<span class="glyphicon glyphicon-plus-sign" id="countAdd"></span>
 <span id="expectedCost"></span>
 </td>
+<td></td>
 </tr>
 </c:if>
 <c:if test="${userType == 'child' }">
 <tr></tr><tr></tr>
 </c:if>
-<tr>
+<tr style="text-align:center;">
 <td>
-<input type="button" value="표지 만들기" onclick="location.href='makeCover?ordernum=${order.ordernum}'">
-<input type="button" class="dropdown" value="예전 표지 가져오기">
+<button type="button" class="btn btn-primary" onclick="location.href='makeCover?ordernum=${order.ordernum}'">표지 만들기</button>
+<button type="button" class="btn btn-default dropdown">예전 표지 가져오기</button>
 <span class="dropdown-content"></span>
 </td>
 <c:if test="${userType == 'parent'}">
 <td>
-<input type="button" value="장바구니에 담기" onclick="updateOrder('addToCart')">
-<input type="button" value="주문하기" onclick="updateOrder('makeOrder')">
+<button type="button" class="btn btn-warning" onclick="updateOrder('addToCart')">장바구니에 담기</button>
+<button type="button" class="btn btn-danger" onclick="updateOrder('makeOrder')">주문하기</button>
 </td>
 </c:if>
 </tr>

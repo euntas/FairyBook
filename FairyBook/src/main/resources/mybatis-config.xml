@@ -3,6 +3,9 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+<settings>
+      <setting name="callSettersOnNulls" value="true"/>
+  </settings>
 	<typeAliases>
 		<typeAlias type="global.sesoc.fairybook.vo.FBResource" alias="FBResource" />
 		<typeAlias type="global.sesoc.fairybook.vo.ETC" alias="ETC" />
@@ -21,7 +24,9 @@
 		<typeAlias type="global.sesoc.fairybook.vo.SelectionDetail" alias="SelectionDetail" />
 		<typeAlias type="global.sesoc.fairybook.vo.OrderBook" alias="OrderBook" />
 		<typeAlias type="global.sesoc.fairybook.vo.ConfirmedOrderInfo" alias="ConfirmedOrderInfo" />
+		<typeAlias type="global.sesoc.fairybook.vo.SolvedQuiz" alias="SolvedQuiz" />
 		<typeAlias type="java.util.Map" alias="Map" />
+		<typeAlias type="java.util.HashMap" alias="HashMap" />
 	</typeAliases>
 	
 	<mappers>
@@ -37,6 +42,7 @@
 		<mapper resource="mapper/ExcelMapper.xml"/>
 		<mapper resource="mapper/orderBookMapper.xml"/>
 	</mappers>
-	
-	
+
 </configuration>
+
+

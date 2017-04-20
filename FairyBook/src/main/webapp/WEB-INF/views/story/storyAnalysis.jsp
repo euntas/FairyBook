@@ -50,26 +50,22 @@
 <script>
 /* 색 결과를 위한 정보 */
 //색깔 배열
-var colorArray = ['red','blue','orange','purple','green'];
+var colorArray = [];
 //색깔별 count배열
-var countArray=[5,8,3,0,4];
+var countArray=[];
 //Morris.donut의 data속성에 집어넣을 값
 var data = [];
 //count가 0인 것을 제외한 color배열
 var existColor = [];
 var indexD = 0;
-for (var i = 0; i < countArray.length; i++) {
-	if (countArray[i] != 0) {
-		data[indexD] = {label: colorArray[i],value:countArray[i]};
-		existColor[indexD++] = colorArray[i];
-	}
-}
+
 
 
 
 $(function(){
+	getColorName();
 	clear();
-	home(); //처음 열면 home화면 on active
+	//home(); //처음 열면 home화면 on active
 	bringAvatar(); //아바타 불러오기
 	$('#all').on('click',home);
 	$('#color').on('click',menu1);
@@ -78,6 +74,33 @@ $(function(){
 	$('#htp3').on('click',menu4);
 	$('#quiz').on('click',menu5);
 })
+
+function getColorName(){
+	
+	$.ajax({
+		url:'colorGraph',
+		type:'GET',
+		data: {selectionNum: ${selectionNum}}, 
+		dataType:'json',
+		success:function(color){
+			colorArray = color.colorName;
+			console.log(colorArray);
+			countArray =color.colorCount;
+			console.log(countArray);
+			for (var i = 0; i < countArray.length; i++) {
+				if (countArray[i] != 0) {
+					data[indexD] = {label: colorArray[i],value:countArray[i]};
+					existColor[indexD++] = colorArray[i];
+				}
+			}
+			home();
+		},
+		error: function(e){
+			alert(JSON.stringify(e));
+		}
+	});
+		
+}
 
 function home(){
 	clear();
@@ -90,12 +113,28 @@ function home(){
 		        colors: existColor //set colors for each bar
 		      }).on('click', function (i, row) {  //click했을 때 row-i번째 줄의 {label:..,value:..}
 		      	  $('.colorLabel').html(row.label);
-		    	  $('.colorSpecific').html('설명설명설명');
+		    	  getAnalysis(i);
 		        });
 		//맨 처음에 선택될 index 지정
 		donut.select(1); 
 		$('.colorLabel').html(colorArray[1]);
-  	 	$('.colorSpecific').html('설명설명설명');
+  	 	getAnalysis(1);
+}
+
+function getAnalysis(i){
+	$.ajax({
+		url:'colorAnalysis',
+		data: {colornum: i},
+		dataType:'text',
+		success:function(a){
+			console.log(a);
+			$('.colorSpecific').html(a);
+		},
+		error: function(e){
+			alert(JSON.stringify(e));
+		}
+	});
+	
 }
 
 function menu1(){
@@ -108,13 +147,12 @@ function menu1(){
 		        colors: existColor
 		      }).on('click', function (i, row) {  //row-i번째 줄의 {label:..,value:..}
 		    	  $('.colorLabel').html(row.label);
-		    	  $('.colorSpecific').html('설명설명설명');
+		    	  getAnalysis(i);
 		        });
 		//맨 처음에 선택될 index 지정
 			donut.select(1); 
 			$('.colorLabel').html(colorArray[1]);
-	  	 	$('.colorSpecific').html('설명설명설명');
-	
+			getAnalysis(1);
 }
 
 function menu2(){
@@ -135,6 +173,7 @@ function menu4(){
 function menu5(){
 	clear();
 	$('#menu5').attr('class','on active');
+	getQuiz();
 }
 
 //내 아바타 가져오기
@@ -214,7 +253,7 @@ function showAvatar(r){
 	$('#htpSpecific').html(analysis);
 	
 	// 디폴트로 텍스트 란에는 얼굴 설명을 넣어 놓는다.
-	$('#htpSpecific4').html(r[0].analysis);
+	//$('#htpSpecific4').html(r[0].analysis);
 }
 
 //활성화 tab페이지 초기화
@@ -229,7 +268,41 @@ function point(analysis){
 	$('#htpSpecific4').html(analysis);
 }
 	
+//퀴즈 가져오기
+function getQuiz(){
+	alert('????????');	
+	$.ajax({
+		url:'getQuizResult',
+		type:'POST',
+		data: {selectionNum: ${selectionNum}}, 
+		dataType: 'json',
+		success: showQuiz,
+		error: function(e){
+			alert(JSON.stringify(e));
+		}
+	});
+}
+
+//화면에 quiz뿌려주기
+function showQuiz(list){
+	var input = "";
+	$.each(list,function(i,l){
+		input += '<div class="panel panel-warning" style="height:250px;width: 400px;float:left;">';
+		input += '<div class="panel-heading" class="quizLabel">'+l.question+'</div>';
+		input += '<div class="panel-body" class="quizSpecific">';
+		input += l.select1;
+		input += '<br>'+l.select2;
+		input += '<br>'+l.select3;
+		input += '<br>'+l.select4;
+		input += '</div>';
+		input += '<div>선택한 답:'+l.myanswer+'</div>';
+		input += '<div>정답:'+l.answer+'</div>';
+		input += '</div>';
+	});
 	
+	$('#quizPanel').html(input);
+}
+
 // =======================================
 
 
@@ -332,7 +405,7 @@ function point(analysis){
 		  </div>
 		  <hr>
 		  <div class="row" style="width: 500px; padding-left:100px;">
-		  	<button class="btn-default">다른 색 정보보기</button>
+		  	<button class="btn-default" onclick="">다른 색 정보보기</button>
 		  </div>
     </div>
     
@@ -404,7 +477,7 @@ function point(analysis){
 		    </div>
 		  </div>
 		  <hr>
-		  <div class="row">
+		  <div class="row" id="quizPanel">
 		  	<div class="col-md-4" style="width: 500px;">
 		    </div>
 		  	<div class="panel panel-warning" style="height:250px;width: 400px;float:left;">

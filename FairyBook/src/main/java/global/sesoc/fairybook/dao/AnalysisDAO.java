@@ -1,6 +1,8 @@
 package global.sesoc.fairybook.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import global.sesoc.fairybook.mapper.AnalysisMapper;
 import global.sesoc.fairybook.vo.Counselor;
 import global.sesoc.fairybook.vo.FBResource;
+import global.sesoc.fairybook.vo.SolvedQuiz;
 
 @Repository
 public class AnalysisDAO {
@@ -39,6 +42,34 @@ public class AnalysisDAO {
 		ArrayList<FBResource> result = new ArrayList<>();
 		AnalysisMapper mapper = sqlSession.getMapper(AnalysisMapper.class); 
 		result = mapper.avatarAnalysis(selectionNum);
+		return result;
+	}
+
+	public ArrayList<SolvedQuiz> getQuizResult(int selectionNum) {
+		ArrayList<SolvedQuiz> result = new ArrayList<>();
+		AnalysisMapper mapper = sqlSession.getMapper(AnalysisMapper.class); 
+		result = mapper.getQuizResult(selectionNum);
+		return result;
+	}
+
+	public Map<String, Integer> getColorData(int selectionNum) {
+		Map<String, Integer> result = new HashMap<>();
+		AnalysisMapper mapper = sqlSession.getMapper(AnalysisMapper.class); 
+		result = mapper.getColorData(selectionNum);
+		return result;
+	}
+
+	public ArrayList<String> getColorName() {
+		ArrayList<String> result = new ArrayList<>();
+		AnalysisMapper mapper = sqlSession.getMapper(AnalysisMapper.class); 
+		result = mapper.getColorName();
+		return result;
+	}
+
+	public String getColorAnalysis(int colornum) {
+		String result = "";
+		AnalysisMapper mapper = sqlSession.getMapper(AnalysisMapper.class); 
+		result = mapper.getColorAnalysis(colornum);
 		return result;
 	}
 }

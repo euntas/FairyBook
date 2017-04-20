@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
@@ -38,6 +38,50 @@ select * from counselor where country = #{country}
 	where f.resourcenum = m.body 
 		and m.body = c.resourcenum
 		and m.bodyColor = c.color
+</select>
+
+<select id="getColorData" parameterType="int" resultType="HashMap">
+	select
+		a.eyecolor,a.haircolor,a.bodycolor
+		,h.roofcolor,h.wallcolor
+		,e.selection1color,e.selection2color,e.selection3color,e.selection4color
+		,e.selection5color,e.selection6color,e.selection7color,e.selection8color
+		,e.selection9color,e.selection10color,e.selection11color,e.selection12color
+	from madeavatar a, madehouse h, etc e
+	where a.selectionnum = h.selectionnum
+	and h.selectionnum = e.selectionnum
+	and a.selectionnum = e.selectionnum
+	and e.selectionnum=#{selectionnum}
+	</select>
+
+<select id="getQuizResult" parameterType="int" resultType="SolvedQuiz">
+select
+	a.selectionnum as selectionnum
+	,q.quiznum as quiznum
+	,q.question as question
+	,q.select1 as select1
+	,q.select2 as select2
+	,nvl(q.select3,'') as select3
+	,nvl(q.select4,'') as select4
+	,q.answer as answer
+	,a.myanswer as myanswer
+from
+	quiz q
+	, scene s
+	,(select myanswer,scenenum,selectionnum from selectiondetail where selectionnum = #{selectionnum}) a 
+where s.quiznum = q.quiznum
+and a.scenenum= s.scenenum
+and s.scenenum in(select scenenum from selectiondetail where selectionnum = #{selectionnum})
+and q.answer is not null
+and q.answer != -1
+</select>
+
+<select id="getColorName" resultType="String">
+	select colorname from fbcolor order by colornum asc
+</select>
+
+<select id="getColorAnalysis" parameterType="int" resultType="String">
+	select coloranalysis from fbcolor where colornum = #{colornum}
 </select>
 
 </mapper>
