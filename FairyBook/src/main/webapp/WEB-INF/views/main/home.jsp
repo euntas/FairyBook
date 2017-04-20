@@ -267,6 +267,7 @@ function myFunc(id) {
 		  </div>
 	  </c:if>
 
+
 	  <div id="Borge" class="w3-container person">
 	  <br>
 	  <img src="./resources/image/smalltitle2.png">
