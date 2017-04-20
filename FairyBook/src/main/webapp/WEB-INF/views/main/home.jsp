@@ -196,7 +196,6 @@ function myFunc(id) {
 	      </div>
 	    </div>
 	    
-    백설공주
 	    <div class="w3-third w3-margin-bottom">
 	      <img src="./resources/image/snowwhitetitle.jpg" alt="Norway" style="width:100%">
 	      <div class="w3-container w3-white">
@@ -207,7 +206,6 @@ function myFunc(id) {
 	      </div>
 	    </div>
 	  
-	빨간 망토
 	    <div class="w3-third w3-margin-bottom">
 	      <img src="./resources/image/redhoodtitle.jpg" alt="Norway" style="width:100%">
 	      <div class="w3-container w3-white">
@@ -298,7 +296,6 @@ function myFunc(id) {
 	  </div>
 </div>
 </div>
-
 <!--Footer  -->
 <!--Add a navar  -->
 <nav class="navbar navbar-default">
