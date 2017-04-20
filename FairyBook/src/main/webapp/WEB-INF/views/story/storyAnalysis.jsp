@@ -168,43 +168,47 @@ function showAvatar(r){
 	
 	//항목 누르는 곳 설정
 	input += '<map name="002">';
+	
 	for( var j=0; j<r.length; j++){
 		var strName = r[j].name;
 		if(strName.indexOf('hair') != -1){
-			alert('머리');
 			input += '<area shape="rect" coords="12,15,285,58" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
 		}
 		
 		if(strName.indexOf('face') != -1){
-			//alert('얼굴');
-			//input += '<area shape="rect" coords="24,134,269,263" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+			input += '<area shape="poly" coords="68,151,121,154,118,193,85,206,145,255" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+			input += '<area shape="poly" coords="177,151,238,144,164,257,217,185,172,184" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
 		}
 		
 		if(strName.indexOf('eye') != -1){
-			alert('눈');
 			input += '<area shape="rect" coords="80,139,108,168" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
 			input += '<area shape="rect" coords="195,137,219,169" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
 		}
 				
 		if(strName.indexOf('nose') != -1){
-			alert('코');
 			input += '<area shape="rect" coords="127,146,165,186" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
 		}
 		
 		if(strName.indexOf('mouth') != -1){
-			alert('입');
 			input += '<area shape="rect" coords="96,200,198,241" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
 		}
 		
 		if(strName.indexOf('ear') != -1){
-			alert('귀');
 			input += '<area shape="rect" coords="5,151,48,215" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
 			input += '<area shape="rect" coords="253,148,280,210" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
 		}
 		
+		if(strName.indexOf('body') != -1){
+			
+		}
+		
+		if(strName.indexOf('neck') != -1){
+			
+		}
+		
 	}
-	input += '</map>';
 	
+	input += '</map>';
 	
 	$('.showAvatar').html(input);
 	$('#htpSpecific').html(analysis);
@@ -222,7 +226,6 @@ function clear(){
 
 // 각 항목(머리, 얼굴 등) 눌렀을 때 강조
 function point(analysis){
-	alert(analysis);
 	$('#htpSpecific4').html(analysis);
 }
 	
