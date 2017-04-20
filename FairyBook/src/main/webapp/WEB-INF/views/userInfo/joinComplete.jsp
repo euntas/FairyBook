@@ -23,7 +23,7 @@
 <!--배너  -->
 <nav class="navbar-fixed-top">
 <div class="container-fluid bg-2 text-center">
-  <a href='./'><img src="./resources/image/title.PNG"></a>
+  <a href='../'><img src="../resources/image/title.PNG"></a>
 </div>
 </nav>
 
