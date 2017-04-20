@@ -33,7 +33,8 @@ td{
 	
 
 <!--####################여기부터  -->
-<h1>동화 감상</h1>
+<br>
+<img src="../resources/image/show.png">  <hr>
 <table class="table-bordered table">
 	<tr>
 	<c:forEach var="story" items="${myStoryList}" varStatus="status">

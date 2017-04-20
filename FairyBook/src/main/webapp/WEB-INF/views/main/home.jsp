@@ -69,7 +69,7 @@ function myFunc(id) {
 <!--배너  -->
 <nav class="navbar-fixed-top">
 <div class="container-fluid bg-2 text-center">
-  <h1>Fairytale Book</h1>
+  <a href='./'><img src="./resources/image/title.PNG"></a>
 </div>
 </nav>
 
@@ -179,7 +179,7 @@ function myFunc(id) {
 	
 	<div id="Borge" class="w3-container person">
 	  <br>
-	  <h4>이 주의 업데이트</h4>
+	  <img src="./resources/image/smalltitle.png">
 	  <hr>
 	</div>
 	<!-- image -->
@@ -189,7 +189,7 @@ function myFunc(id) {
 	      <div class="w3-container w3-white">
 	        <h3>헨젤과 그레텔</h3>
 	        <h6 class="w3-opacity">2017.3.22</h6>
-	        <button class="w3-button w3-block w3-yellow w3-margin-bottom" onclick="location.href='story/storyTitle?storyNum=1'">Play</button>
+	       <button class="w3-button w3-block w3-yellow w3-margin-bottom" onclick="location.href='story/storyTitle?storyNum=1'">Play</button>
 	      </div>
 	    </div>
 	    <div class="w3-third w3-margin-bottom">
@@ -203,7 +203,7 @@ function myFunc(id) {
 	    <div class="w3-third w3-margin-bottom">
 	      <img src="./resources/image/redhoodtitle.jpg" alt="Norway" style="width:100%">
 	      <div class="w3-container w3-white">
-	        <h3>빨간모자</h3>
+	        <h3>빨간 망토</h3>
 	        <h6 class="w3-opacity">Please wait update</h6>
 	        <button class="w3-button w3-block w3-yellow w3-margin-bottom">Play</button>
 	      </div>
@@ -212,12 +212,12 @@ function myFunc(id) {
 
 	  <div id="Borge" class="w3-container person">
 	  <br>
-	  <h4>다른 어린이들의 동화</h4>
+	  <img src="./resources/image/smalltitle2.png">
 	  <hr>
 	  </div>
 	  <div class="w3-row-padding w3-padding-16">
 	    <div class="w3-third w3-margin-bottom">
-	      <img src="./resources/image/book.jpg" alt="Norway" style="width:100%">
+	      <img src="./resources/image/hansel.jpg" alt="Norway" style="width:100%">
 	      <div class="w3-container w3-white">
 	        <h3>헨젤과 그레텔</h3>
 	        <h6 class="w3-opacity">2017.3.22</h6>
@@ -225,18 +225,18 @@ function myFunc(id) {
 	      </div>
 	    </div>
 	    <div class="w3-third w3-margin-bottom">
-	      <img src="./resources/image/pp1.png" alt="Norway" style="width:100%">
+	      <img src="./resources/image/redhoodtitle.jpg" alt="Norway" style="width:100%">
 	      <div class="w3-container w3-white">
-	        <h3>Double Room</h3>
-	        <h6 class="w3-opacity">From $149</h6>
+	        <h3>빨간 망토</h3>
+	        <h6 class="w3-opacity">2017.3.31</h6>
 	        <button class="w3-button w3-block w3-green w3-margin-bottom">Play</button>
 	      </div>
 	    </div>
 	    <div class="w3-third w3-margin-bottom">
-	      <img src="./resources/image/pp3.jpg" alt="Norway" style="width:100%">
+	      <img src="./resources/image/redhoodtitle.jpg"" alt="Norway" style="width:100%">
 	      <div class="w3-container w3-white">
-	        <h3>Deluxe Room</h3>
-	        <h6 class="w3-opacity">From $199</h6>
+	        <h3>빨간 망토</h3>
+	        <h6 class="w3-opacity">2017.4.5</h6>
 	        <button class="w3-button w3-block w3-green w3-margin-bottom">Play</button>
 	      </div>
 	    </div>

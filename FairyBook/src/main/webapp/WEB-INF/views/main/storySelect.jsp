@@ -30,8 +30,7 @@
 <!-- 동화책 '헨젤과 그레텔'-->		
 <div id="Borge" class="w3-container person">
 	  <br>
-<h1>동화 선택</h1>
-	  <hr>
+<img src="../resources/image/storyselect.png">  <hr>
 	</div>
 	<!-- image -->
 	 <div class="w3-row-padding w3-padding-16">
@@ -46,18 +45,18 @@
 	    </div>
 	    
 	    <div class="w3-third w3-margin-bottom">
-	      <img src="../resources/image/update.jpg" alt="Norway" style="width:100%">
+	      <img src="../resources/image/snowwhitetitle.jpg" alt="Norway" style="width:100%">
 	      <div class="w3-container w3-white">
-	        <h3>coming soon</h3>
+	        <h3>백설공주</h3>
 	        <h6 class="w3-opacity">Please wait update</h6>
 	        <button class="w3-button w3-block w3-margin-bottom" disabled="disabled">업데이트를 기대하세요</button>
 	      </div>
 	    </div>
 	    
 	    <div class="w3-third w3-margin-bottom">
-	      <img src="../resources/image/cinderella.jpg" alt="Norway" style="width:100%">
+	      <img src="../resources/image/redhoodtitle.jpg" alt="Norway" style="width:100%">
 	      <div class="w3-container w3-white">
-	        <h3>coming soon</h3>
+	        <h3>빨간 망토</h3>
 	        <h6 class="w3-opacity">Please wait update</h6>
 	        <button class="w3-button w3-block w3-margin-bottom" disabled="disabled">업데이트를 기대하세요</button>
 	      </div>
