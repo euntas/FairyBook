@@ -18,7 +18,7 @@
 <!--배너  -->
 <nav class="navbar-fixed-top">
 <div class="container-fluid bg-2 text-center">
-  <h1 id="banner">Fairytale Book</h1>
+ <a href="../"><img src="../resources/image/title.PNG"></a>
 </div>
 </nav>
 

@@ -23,7 +23,7 @@
 <div class="w3-main" style="margin-left:230px;">
 	<i class="fa fa-bars w3-button w3-white w3-hide-large w3-xlarge w3-margin-left w3-margin-top" onclick="w3_open()"></i>
 <!--####################여기부터  -->
-<h1>상담 결과</h1>
+<img src="../resources/image/counselResult.png">  <hr>
 
 
 

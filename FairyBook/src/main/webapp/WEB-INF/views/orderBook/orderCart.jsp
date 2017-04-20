@@ -108,7 +108,7 @@ function deleteSelections(){
 	
 <!--####################여기부터  -->
 
-<h3>[장바구니 목록]</h3>
+<img src="../resources/image/orderCart.png">  <hr>
 <div id="cartList"></div>
 <input type="button" value="삭제" onclick="deleteSelections()">
 <input type="button" value="주문하기" onclick="orderSelections()">
