@@ -127,8 +127,8 @@
 	 #{ear},
 	 #{neck},
 	 #{body},
-	 #{hairColor},
 	 #{eyeColor},
+	 #{hairColor},
 	 #{bodyColor}
 	 ) 
 </insert>
