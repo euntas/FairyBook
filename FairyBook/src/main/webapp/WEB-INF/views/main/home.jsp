@@ -177,89 +177,51 @@ function myFunc(id) {
 	<i class="fa fa-bars w3-button w3-white w3-hide-large w3-xlarge w3-margin-left w3-margin-top" onclick="w3_open()"></i>
 	<a href="javascript:void(0)" class="w3-hide-large w3-red w3-button w3-right w3-margin-top w3-margin-right" onclick="document.getElementById('id01').style.display='block'"><i class="fa fa-pencil"></i></a>
 	
-<<<<<<< HEAD
-	<div id="Borge" class="w3-container person">
-	  <br>
-	  <img src="./resources/image/smalltitle.png">
-	  <hr>
-	</div>
-	<!-- image -->
-	
-	<!-- 헨젤과 그레텔 -->
-	 <div class="w3-row-padding w3-padding-16">
-	    <div class="w3-third w3-margin-bottom">
-	      <img src="./resources/image/hansel.jpg" alt="Norway" style="width:100%">
-	      <div class="w3-container w3-white">
-	      <br>
-	  <img src="./resources/image/hanseltitle.png">
-	        <h6 class="w3-opacity">2017.3.22</h6>
-	       <button class="w3-button w3-block w3-pink w3-margin-bottom" onclick="location.href='story/storyTitle?storyNum=1'">Play</button>
-	      </div>
-	    </div>
-	    
-    <!-- 백설공주 -->
-	    <div class="w3-third w3-margin-bottom">
-	      <img src="./resources/image/snowwhitetitle.jpg" alt="Norway" style="width:100%">
-	      <div class="w3-container w3-white">
-	      <br>
-	  <img src="./resources/image/whitesnowtitle.png">
-	        <h6 class="w3-opacity">Please wait update</h6>
-	        <button class="w3-button w3-block w3-pink w3-margin-bottom" onclick="location.href='util/snsTest'">SNS-Test</button>
-	      </div>
-	    </div>
-	  
-	<!-- 빨간 망토 -->
-	    <div class="w3-third w3-margin-bottom">
-	      <img src="./resources/image/redhoodtitle.jpg" alt="Norway" style="width:100%">
-	      <div class="w3-container w3-white">
-	        <br>
-	  <img src="./resources/image/redhoodtitle.png">
-	        <h6 class="w3-opacity">Please wait update</h6>
-	        <button class="w3-button w3-block w3-pink w3-margin-bottom">Play</button>
-	      </div>
-	    </div>
-	  </div>
+
+
 	<c:if test="${userType == 'child'}">
-=======
-	<c:if test="${userType == 'child'}">
->>>>>>> branch 'master' of https://github.com/euntas/FairyBook.git
 		<div id="Borge" class="w3-container person">
 		  <br>
 		  <img src="./resources/image/smalltitle.png">
 		  <hr>
 		</div>
 		<!-- image -->
+		
+		<!-- 헨젤과 그레텔 -->
 		 <div class="w3-row-padding w3-padding-16">
 		    <div class="w3-third w3-margin-bottom">
 		      <img src="./resources/image/hansel.jpg" alt="Norway" style="width:100%">
 		      <div class="w3-container w3-white">
-		        <h3>헨젤과 그레텔</h3>
+		      <br>
+		  <img src="./resources/image/hanseltitle.png">
 		        <h6 class="w3-opacity">2017.3.22</h6>
-		       <button class="w3-button w3-block w3-yellow w3-margin-bottom" onclick="location.href='story/storyTitle?storyNum=1'">Play</button>
+		       <button class="w3-button w3-block w3-pink w3-margin-bottom" onclick="location.href='story/storyTitle?storyNum=1'">Play</button>
 		      </div>
 		    </div>
+		    
+	    <!-- 백설공주 -->
 		    <div class="w3-third w3-margin-bottom">
 		      <img src="./resources/image/snowwhitetitle.jpg" alt="Norway" style="width:100%">
 		      <div class="w3-container w3-white">
-		        <h3>백설공주</h3>
+		      <br>
+		  <img src="./resources/image/whitesnowtitle.png">
 		        <h6 class="w3-opacity">Please wait update</h6>
-		        <button class="w3-button w3-block w3-yellow w3-margin-bottom" onclick="location.href='util/snsTest'">SNS-Test</button>
+		        <button class="w3-button w3-block w3-pink w3-margin-bottom" onclick="location.href='util/snsTest'">SNS-Test</button>
 		      </div>
 		    </div>
+		  
+		<!-- 빨간 망토 -->
 		    <div class="w3-third w3-margin-bottom">
 		      <img src="./resources/image/redhoodtitle.jpg" alt="Norway" style="width:100%">
 		      <div class="w3-container w3-white">
-		        <h3>빨간 망토</h3>
+		        <br>
+		  <img src="./resources/image/redhoodtitle.png">
 		        <h6 class="w3-opacity">Please wait update</h6>
-		        <button class="w3-button w3-block w3-yellow w3-margin-bottom">Play</button>
+		        <button class="w3-button w3-block w3-pink w3-margin-bottom">Play</button>
 		      </div>
 		    </div>
 		  </div>
-<<<<<<< HEAD
-	  </c:if>
-=======
 	</c:if>
->>>>>>> branch 'master' of https://github.com/euntas/FairyBook.git
 
 	  <div id="Borge" class="w3-container person">
 	  <br>
