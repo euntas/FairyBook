@@ -120,10 +120,10 @@ function sendMail123(email){
 <!--배너  -->
 <nav class="navbar-fixed-top">
 <div class="container-fluid bg-2 text-center">
-    <h1 onclick="location.href='/fairybook/'"
-  	style="cursor: pointer;">Fairytale Book</h1>
+  <a href='./'><img src="./resources/image/title.PNG"></a>
 </div>
 </nav>
+
 <div id="under">
 <div id="container">
 
