@@ -436,49 +436,55 @@ function formcheck(){
 <!--배너  -->
 <nav class="navbar-fixed-top">
 <div class="container-fluid bg-2 text-center">
-  <h1 onclick="location.href='/fairybook/'"
-  style="cursor: pointer;">Fairytale Book</h1>
+  <a href='../'><img src="../resources/image/title.PNG"></a>
 </div>
 </nav>
 
 <div id="under">
 	<form enctype="multipart/form-data" action="join" method="post"
 		onsubmit="return formcheck()" class="form-inline">
-<br>
-		<table style="margin: auto; width:auto;" cellpadding="20px">
+
+		<h1 style="font-family: fantasy; text-align: center;">[ 회원가입 ]</h1>
+		<br>
+		<table style="margin: auto; width:auto;">
 			<tr>
 				<td class="firstRow">ID</td>
 				<td class="secondRow"><input type="text" id="id" name="id"
 					style="width: 220px;" onkeyup="formSubmit1()" class="form-control">
 					<div id="checkedId"></div></td>
 			</tr>
+			<tr style="height: 5px;"></tr>
 			<tr>
 				<td class="firstRow">닉네임</td>
 				<td class="secondRow"><input type="text" id="cnickName"
 					name="cnickName" style="width: 220px;" onkeyup="formSubmit2()" class="form-control">
 					<div id="checkedcNick"></div></td>
 			</tr>
+			<tr style="height: 5px;"></tr>
 			<tr>
-				<td rowspan="2" class="firstRow">아이용 비밀번호</td>
+				<td rowspan="3" class="firstRow">아이용 비밀번호</td>
 				<td class="secondRow"><input type="password" id="password1"
 					name="password1" style="width: 220px;"
 					onkeyup="formSubmit4()" class="form-control">
 				<div id="checkedcPw1"></div></td>
 			</tr>
+			<tr style="height: 5px;"></tr>
 			<tr>
 				<td class="secondRow"><input type="password"
 					id="password1check" name="password1check" style="width: 220px;"
 					onkeyup="formSubmit5()" class="form-control">
 				<div id="checkedcPw2"></div></td>
 			</tr>
+			<tr style="height: 5px;"></tr>
 			<tr>
-				<td rowspan="2" class="firstRow">보호자용 비밀번호</td>
+				<td rowspan="3" class="firstRow">보호자용 비밀번호</td>
 				<td class="secondRow"><input type="password" id="password2"
 					name="password2" style="width: 220px;"
 					onkeyup="formSubmit6()" class="form-control">
 				<div id="checkedpPw1"></div></td>
 				
 			</tr>
+			<tr style="height: 5px;"></tr>
 			<tr>
 				<td class="secondRow"><input type="password"
 					id="password2check" name="password2check" style="width: 220px;"
@@ -486,12 +492,14 @@ function formcheck(){
 				<div id="checkedpPw2"></div></td>
 				
 			</tr>
+			<tr style="height: 5px;"></tr>
 			<tr>
 				<td class="firstRow">아이 이름</td>
 				<td class="secondRow"><input type="text" id="cName"
 					name="cName" style="width: 220px;" class="form-control"></td>
 				
 			</tr>
+			<tr style="height: 5px;"></tr>
 			<tr>
 				<td class="firstRow">아이 생일</td>
 				<td class="secondRow"><select id="cBirthYear" name="cBirthYear">
@@ -522,12 +530,14 @@ function formcheck(){
 				</select>일</td>
 		
 			</tr>
+			<tr style="height: 5px;"></tr>
 			<tr>
 				<td class="firstRow">보호자 이름</td>
 				<td class="secondRow"><input type="text" id="pName"
 					name="pName" style="width: 220px;" class="form-control"></td>
 			
 			</tr>
+			<tr style="height: 5px;"></tr>
 			<tr>
 				<td class="firstRow">보호자 닉네임</td>
 				<td class="secondRow"><input type="text" id="pnickName"
@@ -535,6 +545,7 @@ function formcheck(){
 					<div id="checkedpNick"></div></td>
 				
 			</tr>
+			<tr style="height: 5px;"></tr>
 			<tr>
 				<td class="firstRow">이메일</td>
 				<td class="secondRow" align="left"><input type="text" id="email"
@@ -558,6 +569,7 @@ function formcheck(){
 				<div id="checkedEmail"></div></td>
 			
 			</tr>
+			<tr style="height: 5px;"></tr>
 			<tr>
 				
 				<td class="firstRow">전화번호</td>
@@ -574,12 +586,14 @@ function formcheck(){
 					&nbsp;&nbsp;-&nbsp;&nbsp;<input type="text" id="phone3" name="phone3" style="width: 75px;" class="form-control"></td>
 				
 			</tr>
+			<tr style="height: 5px;"></tr>
 			<tr>
 				<td class="firstRow">주소</td>
 				<td class="secondRow"><input type="text" id="address"
 					name="address" style="width: 450px;" class="form-control"></td>
 				
 			</tr>
+			<tr style="height: 5px;"></tr>
 			<tr>
 				<td class="firstRow">사진 업로드</td>
 				<td class="secondRow"><input type="file" name="upload"

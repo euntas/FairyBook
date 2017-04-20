@@ -78,8 +78,6 @@
 						        data: {pageNum: pageflip.options.current},
 						        dataType:'json',
 						        success: function(){
-						        	alert('첫번째 씬 saveDetail에 저장 완료');
-						        	alert('init 함수 안의 sceneLoadig 안의 success  안의 saveSD 의 성공 ㅎㅎ....');
 						        },
 						        error: function(e){
 						        	alert('init 함수 안의 sceneLoadig 안의 success  안의 saveSD 의 실패 ㅎㅎ....');
