@@ -151,8 +151,11 @@ function detailWithColor(resourceList){
 
 //칼라 버튼을 눌렀을 때
 function colorbtn(){
+	// fullName => hair02ColorRed
 	var fullName = $(this).attr('id');
+	// name => hair02
 	var name = $(this).attr('id').split('Color')[0];
+	// color => Red
 	var color = $(this).attr('id').split('Color')[1];
 	
 	$.ajax({
@@ -161,6 +164,7 @@ function colorbtn(){
 		data: {name:name, color:color},
 		dataType: 'text',
 		success: function(str){
+			// hair
 			$('#'+name.slice(0, -2)).attr('src', str);
 			$('#'+name.slice(0, -2)).attr('name', fullName);
 		},
