@@ -274,7 +274,8 @@ function myFunc(id) {
 	    <div class="w3-third w3-margin-bottom">
 	      <img src="./resources/image/hansel.jpg" alt="Norway" style="width:100%">
 	      <div class="w3-container w3-white">
-	        <h3>헨젤과 그레텔</h3>
+	      <br>
+	        <img src="./resources/image/hanseltitle.png">
 	        <h6 class="w3-opacity">2017.3.22</h6>
 	        <button class="w3-button w3-block w3-green w3-margin-bottom">Play</button>
 	      </div>
@@ -282,7 +283,8 @@ function myFunc(id) {
 	    <div class="w3-third w3-margin-bottom">
 	      <img src="./resources/image/redhoodtitle.jpg" alt="Norway" style="width:100%">
 	      <div class="w3-container w3-white">
-	        <h3>빨간 망토</h3>
+	      <br>
+	        <img src="./resources/image/redhoodtitle.png">
 	        <h6 class="w3-opacity">2017.3.31</h6>
 	        <button class="w3-button w3-block w3-green w3-margin-bottom">Play</button>
 	      </div>
@@ -290,7 +292,8 @@ function myFunc(id) {
 	    <div class="w3-third w3-margin-bottom">
 	      <img src="./resources/image/redhoodtitle.jpg"" alt="Norway" style="width:100%">
 	      <div class="w3-container w3-white">
-	        <h3>빨간 망토</h3>
+	      <br>
+	        <img src="./resources/image/redhoodtitle.png">
 	        <h6 class="w3-opacity">2017.4.5</h6>
 	        <button class="w3-button w3-block w3-green w3-margin-bottom">Play</button>
 	      </div>
