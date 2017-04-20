@@ -89,7 +89,7 @@ function findPW(){
 </nav>
 
 <div id="under" style="text-align: center; margin: auto;">
-<h1 style="font-family: fantasy; ">[ ID/비밀번호 찾기 ]</h1>
+<div style="text-align: center; margin: auto;"><img src="../resources/img/account/findInfo.png" style="width: 300px;height: 50px;"></div>
 <br>
 <p>1. 아이디 찾기 (이메일과 매치되는 아이디를 바로 알려드립니다.)</p>
 <table style="margin: auto;">
@@ -128,5 +128,28 @@ function findPW(){
 <input type="button" value="로그인 하기" onclick="location.href='login'" class="btn btn-info">
 
 </div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="#">Me</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">WHO</a></li>
+        <li><a href="#">WHAT</a></li>
+        <li><a href="#">WHERE</a></li>
+      </ul>
+    </div>
+  </div>
+	<footer class="container-fluid bg-4 text-center">
+	  <p>Made By <a href="../">FairyBook.com</a></p> 
+	</footer>
+</nav>
+
 </body>
 </html>
