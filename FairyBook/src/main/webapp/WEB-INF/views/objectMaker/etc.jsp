@@ -193,8 +193,6 @@ function save(){
 				        data: {pageNum: 13},
 				        dataType:'json',
 				        success: function(){
-				        	alert("플립 성공 들어옴");
-				        	alert('selectionDetail 생성====');
 				        	location.href='../story/storyStart?storyNum=1';
 				        },
 				        error: function(e){
@@ -239,7 +237,6 @@ function save(){
 		                  data: {pageNum: 13, answerNum: 1},
 		                  dataType: 'json',
 		                  success: function(){
-		                     alert('selectiondetail (16번 씬 - 페이지번호(13)) 업데이트');
 		                     location.href='../story/storyStart?storyNum=1';
 		                  },
 		                  error: function(e){
