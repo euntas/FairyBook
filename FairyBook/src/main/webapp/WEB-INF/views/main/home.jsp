@@ -115,6 +115,8 @@ function myFunc(id) {
   
 </nav>
 </c:if> --%>
+
+
 <!--부모 로그인했을때  -->
 <c:if test="${userType == 'parent'}">
 <nav class="w3-sidebar w3-bar-block w3-collapse w3-white w3-animate-left w3-card-2" style="z-index:3;width:220px;" id="mySidebar">
