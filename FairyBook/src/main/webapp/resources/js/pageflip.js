@@ -91,7 +91,8 @@ RocketPageFlip.prototype.buildNavigation = function() {
 		});*/
 		
 		next = $('<a>')
-		.html(this.options.nextText)
+		//.html(this.options.nextText)
+		.html('<img src="../resources/img/util/storyNextBtn.png">')
 		.addClass('flip-directional flip-next')
 		.attr('href', '#')
 		.click(function(e){
