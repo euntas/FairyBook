@@ -96,7 +96,7 @@ function myFunc(id) {
 <!--로그인 했을 때  -->
 <c:if test="${loginUser != null }">
 <!--아이로그인  -->
-<c:if test="${userType == 'child'}">
+<%-- <c:if test="${userType == 'child'}">
 <nav class="w3-sidebar w3-bar-block w3-collapse w3-white w3-animate-left w3-card-2" style="z-index:3;width:220px;" id="mySidebar">
   <div class="container-fluid bg-1">
   <h3>${loginUser.cnickName}</h3>
@@ -114,7 +114,7 @@ function myFunc(id) {
   <a href="quiz/quizList" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>문제풀기</a>
   
 </nav>
-</c:if>
+</c:if> --%>
 <!--부모 로그인했을때  -->
 <c:if test="${userType == 'parent'}">
 <nav class="w3-sidebar w3-bar-block w3-collapse w3-white w3-animate-left w3-card-2" style="z-index:3;width:220px;" id="mySidebar">
