@@ -26,7 +26,7 @@
 
 동화 종료 화면 입니다.
 
-<img alt="동화 종료 그림 나와야" src="./../resources/img/avatar/background.jpg">
+<img alt="동화 종료 그림 나와야" src="./../resources/img/theEnd.jpg" style="width: 100%">
 
 <!--여기까지###########################  -->
 
