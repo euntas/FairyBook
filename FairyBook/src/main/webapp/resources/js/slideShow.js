@@ -2,6 +2,7 @@ window.addEventListener('load', slideShow, false);
 
 function slideShow() {
   
+  // 이미지 눌러도 넘어갈 수 있게끔 한다
   $(document).ready(function(){
     $('img').on('click', transitionSlides);
   });
@@ -42,8 +43,9 @@ function slideShow() {
   
   initializeSlideShowMarkup();
   
-  globals.wrapperObject.addEventListener('click', toggleSlideShow, false); // If the user clicks a slide show image, it toggles the slide show on and off.
+  //globals.wrapperObject.addEventListener('click', toggleSlideShow, false); // If the user clicks a slide show image, it toggles the slide show on and off.
   
+  // 버튼 누르면 플레이 / 스탑 바뀐다
   if (globals.buttonObject) {
     globals.buttonObject.addEventListener('click', toggleSlideShow, false); // This callback is used to toggle the slide show on and off.
   } 
@@ -108,7 +110,10 @@ function slideShow() {
     globals.slideImages[0].style.opacity = 1; // Make the first slide visible.
         
     if (globals.buttonObject) {
-      globals.buttonObject.textContent = globals.buttonStopText;
+      $('#slideShowButton').css('background-color','rgba(0,0,0,0)');
+      $('#slideShowButton').css('background-image',"url('../resources/img/util/pausebtn.png')");
+      $('#slideShowButton').css('background-repeat','no-repeat');
+      $('#slideShowButton').css('background-size','100% 100%');
     }
   } // initializeSlideShowMarkup
   
@@ -164,13 +169,19 @@ function slideShow() {
     if (globals.slideShowRunning) {
       haltSlideShow();
       if (globals.buttonObject) { 
-        globals.buttonObject.textContent = globals.buttonStartText; 
+        $('#slideShowButton').css('background-color','rgba(0,0,0,0)');
+        $('#slideShowButton').css('background-image',"url('../resources/img/util/playbtn.png')");
+        $('#slideShowButton').css('background-repeat','no-repeat');
+        $('#slideShowButton').css('background-size','100% 100%');
       }
     }
     else {
       startSlideShow();
       if (globals.buttonObject) { 
-        globals.buttonObject.textContent = globals.buttonStopText; 
+        $('#slideShowButton').css('background-color','rgba(0,0,0,0)');
+        $('#slideShowButton').css('background-image',"url('../resources/img/util/pausebtn.png')");
+        $('#slideShowButton').css('background-repeat','no-repeat');
+        $('#slideShowButton').css('background-size','100% 100%');
       }            
     }
     globals.slideShowRunning = !(globals.slideShowRunning);
@@ -182,10 +193,11 @@ function slideShow() {
     var currentSlide = globals.slideImages[globals.slideIndex];
     
     ++(globals.slideIndex);
+    
     if (globals.slideIndex >= globals.slideImages.length) {
       clearInterval(globals.slideShowID);
       alert('마지막 페이지입니다!');
-      globals.slideIndex = 0;
+      history.go(-1);
     }
     
     var nextSlide = globals.slideImages[globals.slideIndex];
@@ -209,7 +221,7 @@ function slideShow() {
         currentSlide.style.opacity = 0;
         nextSlide.style.opacity = 1; 
         clearInterval(fadeActiveSlidesID);
-      }        
+      }
     } // fadeActiveSlides
   } // transitionSlides
   
