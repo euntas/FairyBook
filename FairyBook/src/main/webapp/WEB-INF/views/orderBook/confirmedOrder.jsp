@@ -56,7 +56,7 @@ function printList(list){
 	<i class="fa fa-bars w3-button w3-white w3-hide-large w3-xlarge w3-margin-left w3-margin-top" onclick="w3_open()"></i>
 	
 <!--####################여기부터  -->
-<h3>[주문내역]</h3>
+<img src="../resources/image/confirmorder.png">  <hr>
 <div id="cList"></div>
 
 

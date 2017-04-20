@@ -120,14 +120,15 @@ function sendMail123(email){
 <!--배너  -->
 <nav class="navbar-fixed-top">
 <div class="container-fluid bg-2 text-center">
-    <h1 onclick="location.href='/fairybook/'"
-  	style="cursor: pointer;">Fairytale Book</h1>
+  <a href='../'><img src="../resources/image/title.PNG"></a>
 </div>
 </nav>
+
 <div id="under">
 <div id="container">
 
-<h1 style="text-align: center;">[상담 연결]</h1>
+<div style="text-align: center; margin: auto;"><img src="../resources/img/account/connection.png" style="width: 150px;height: 50px;"></div>
+<br>
 <p style="text-align: center;">지역을 선택하세요.</p>
 <span><div style="text-align:center; margin:auto;">
 <select id="region">

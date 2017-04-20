@@ -23,8 +23,7 @@
 <!--배너  -->
 <nav class="navbar-fixed-top">
 <div class="container-fluid bg-2 text-center">
-  <h1 onclick="location.href='/fairybook/'"
-  style="cursor: pointer;">Fairytale Book</h1>
+  <a href='../'><img src="../resources/image/title.PNG"></a>
 </div>
 </nav>
 
@@ -35,5 +34,28 @@
 	<input type="button" value="메인으로" onclick="location.href='/fairybook/'">
 </p>
 </div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="#">Me</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">WHO</a></li>
+        <li><a href="#">WHAT</a></li>
+        <li><a href="#">WHERE</a></li>
+      </ul>
+    </div>
+  </div>
+	<footer class="container-fluid bg-4 text-center">
+	  <p>Made By <a href="../">FairyBook.com</a></p> 
+	</footer>
+</nav>
+
 </body>
 </html>

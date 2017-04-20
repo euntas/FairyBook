@@ -25,13 +25,12 @@
 <!--배너  -->
 <nav class="navbar-fixed-top">
 <div class="container-fluid bg-2 text-center">
-  <h1 onclick="location.href='/fairybook/'"
-  style="cursor: pointer;">Fairytale Book</h1>
+  <a href='../'><img src="../resources/image/title.PNG"></a>
 </div>
 </nav>
 
 <div id="under">
-<h1  style="text-align: center;">[ 회원정보 ]</h1>
+<div style="text-align: center; margin: auto;"><img src="../resources/img/account/info.png" style="width: 150px;height: 50px;"></div>
 <br>
 	
 		<table style="margin:auto; border: 1px solid black; width: 40%; height:350px;">
@@ -110,5 +109,28 @@
 		
 
 </div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="#">Me</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">WHO</a></li>
+        <li><a href="#">WHAT</a></li>
+        <li><a href="#">WHERE</a></li>
+      </ul>
+    </div>
+  </div>
+	<footer class="container-fluid bg-4 text-center">
+	  <p>Made By <a href="../">FairyBook.com</a></p> 
+	</footer>
+</nav>
+
 </body>
 </html>
