@@ -96,7 +96,7 @@ function myFunc(id) {
 <!--로그인 했을 때  -->
 <c:if test="${loginUser != null }">
 <!--아이로그인  -->
-<%-- <c:if test="${userType == 'child'}">
+<c:if test="${userType == 'child'}">
 <nav class="w3-sidebar w3-bar-block w3-collapse w3-white w3-animate-left w3-card-2" style="z-index:3;width:220px;" id="mySidebar">
   <div class="container-fluid bg-1">
   <h3>${loginUser.cnickName}</h3>
@@ -114,9 +114,7 @@ function myFunc(id) {
   <a href="quiz/quizList" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>문제풀기</a>
   
 </nav>
-</c:if> --%>
-
-
+</c:if>
 <!--부모 로그인했을때  -->
 <c:if test="${userType == 'parent'}">
 <nav class="w3-sidebar w3-bar-block w3-collapse w3-white w3-animate-left w3-card-2" style="z-index:3;width:220px;" id="mySidebar">
@@ -179,14 +177,14 @@ function myFunc(id) {
 	<i class="fa fa-bars w3-button w3-white w3-hide-large w3-xlarge w3-margin-left w3-margin-top" onclick="w3_open()"></i>
 	<a href="javascript:void(0)" class="w3-hide-large w3-red w3-button w3-right w3-margin-top w3-margin-right" onclick="document.getElementById('id01').style.display='block'"><i class="fa fa-pencil"></i></a>
 	
-	<div id="Borge" class="w3-container person">
+	<!-- <div id="Borge" class="w3-container person">
 	  <br>
 	  <img src="./resources/image/smalltitle.png">
 	  <hr>
 	</div>
-	<!-- image -->
+	image
 	
-	 <!-- 헨젤과 그레텔 -->
+	 헨젤과 그레텔
 	 <div class="w3-row-padding w3-padding-16">
 	    <div class="w3-third w3-margin-bottom">
 	      <img src="./resources/image/hansel.jpg" alt="Norway" style="width:100%">
@@ -198,6 +196,7 @@ function myFunc(id) {
 	      </div>
 	    </div>
 	    
+    백설공주
 	    <div class="w3-third w3-margin-bottom">
 	      <img src="./resources/image/snowwhitetitle.jpg" alt="Norway" style="width:100%">
 	      <div class="w3-container w3-white">
@@ -208,6 +207,7 @@ function myFunc(id) {
 	      </div>
 	    </div>
 	  
+	빨간 망토
 	    <div class="w3-third w3-margin-bottom">
 	      <img src="./resources/image/redhoodtitle.jpg" alt="Norway" style="width:100%">
 	      <div class="w3-container w3-white">
@@ -217,7 +217,7 @@ function myFunc(id) {
 	        <button class="w3-button w3-block w3-pink w3-margin-bottom">Play</button>
 	      </div>
 	    </div>
-	  </div>
+	  </div> -->
 
 
 	<c:if test="${userType == 'child'}">
@@ -298,6 +298,7 @@ function myFunc(id) {
 	  </div>
 </div>
 </div>
+
 <!--Footer  -->
 <!--Add a navar  -->
 <nav class="navbar navbar-default">
