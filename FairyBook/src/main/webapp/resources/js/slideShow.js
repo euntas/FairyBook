@@ -1,11 +1,12 @@
 window.addEventListener('load', slideShow, false);
 
 function slideShow() {
-  
+	
   // 이미지 눌러도 넘어갈 수 있게끔 한다
   $(document).ready(function(){
 	  
     $('img').on('click', transitionSlides);
+    
   });
 	
 	
@@ -28,6 +29,12 @@ function slideShow() {
   
   /* MAIN *************************************************************************************************/
   
+ /* if (!globals.slideShowRunning){
+	  $('#slideShowImages').css("visibility", "hidden");
+	  $('#loadingImg').css("visibility", "visible");
+  }*/
+  
+ 
   initializeGlobals();  
   
   if ( insufficientSlideShowMarkup() ) {
@@ -50,8 +57,11 @@ function slideShow() {
   if (globals.buttonObject) {
 	  globals.buttonObject.addEventListener('click', toggleSlideShow, false); // This callback is used to toggle the slide show on and off.
   }
-  
- startSlideShow();	  
+
+  setTimeout(function(){
+	  startSlideShow();	  	  
+  }, 3000);
+
 
   
   /* FUNCTIONS ********************************************************************************************/

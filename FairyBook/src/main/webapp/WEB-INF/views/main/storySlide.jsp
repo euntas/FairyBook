@@ -36,11 +36,16 @@ img{
 </style>
 <script>
 $(document).ready(function(){
+	
+	$('#slideShowImages').css("visibility", "hidden");
+	$('#loadingImg').css("visibility", "visible");
+	  
 	$('#menu').on('mouseenter', showMenu);
 	$('#menu').on('mouseleave', hideMenu);
     $('#replayButton').css('background-image',"url('../resources/img/util/replaybtn.png')");
     $('#homeButton').css('background-image',"url('../resources/img/util/homebtn.png')");
     $('#musicButton').css('background-image',"url('../resources/img/util/musicbtn.png')");
+    
 });
 
 function showMenu(){
