@@ -34,6 +34,7 @@ td{
 
 <!--####################여기부터  -->
 <br>
+
 <img src="../resources/image/show.png">  <hr>
 <table class="table-bordered table">
 	<tr>
