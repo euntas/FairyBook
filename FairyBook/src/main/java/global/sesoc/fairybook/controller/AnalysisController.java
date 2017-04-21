@@ -70,9 +70,10 @@ public class AnalysisController {
 		logger.info("color??:{}",color);
 		for (String key : color.keySet()) {
 			int value = Integer.parseInt(String.valueOf(color.get(key)));
-			colorCount[value]++;
+			if (value > -1) {
+				colorCount[value]++;
+			}
 		}
-		logger.info("colorcount:{}",colorCount);
 		result.put("colorCount", colorCount);
 		//colorname, colorcount보내기 - 결과jsp로
 		return result;
@@ -102,9 +103,7 @@ public class AnalysisController {
 	@ResponseBody
 	@RequestMapping(value="avatarAnalysis", method=RequestMethod.GET)
 	public ArrayList<FBResource> avatarAnalysis(int selectionNum){
-		//selectionNum으로 MADEAVATAR테이블에서 resourcenum가져오기
-		int resourcenum = 0;
-		//resourcenum 이용해서 fbresource테이블의 name, analysis가져와서 FBResource VO에 담기
+		//fbresource테이블의 name, analysis가져와서 FBResource VO에 담기
 		ArrayList<FBResource> resources = new ArrayList<>();
 		resources = dao.avatarAnalysis(selectionNum);
 		for (FBResource fbResource : resources) {
@@ -120,13 +119,12 @@ public class AnalysisController {
 	 */
 	@ResponseBody
 	@RequestMapping(value="houseAnalysis", method=RequestMethod.GET)
-	public void houseAnalysis(int selectionNum){
-		//selectionNum으로 MADEHOUSER테이블에서 resourcenum가져오기
-		int resourcenum = 0;
-		//resourcenum 이용해서 fbresource테이블의 name, analysis가져와서 FBResource VO에 담기
-		FBResource fb = getAnalysis(resourcenum);
-		
+	public ArrayList<FBResource> houseAnalysis(int selectionNum){
+		//fbresource테이블의 name, analysis가져와서 FBResource VO에 담기
+		ArrayList<FBResource> resources = new ArrayList<>();
+		resources = dao.houseAnalysis(selectionNum);
 		//FBResource VO 결과 jsp에 전송
+		return resources;
 	}
 	
 	/**

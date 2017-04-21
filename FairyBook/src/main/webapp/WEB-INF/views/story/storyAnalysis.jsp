@@ -25,12 +25,12 @@
 	margin-left: 10%;
 	z-index: 0;
 }
-.nav-pills {
+#mainNav {
   overflow: hidden;
   background-color: #333;
   width: 200%;
 }
-.nav-pills a {
+#mainNav a {
   float: left;
   display: block;
   color: #f2f2f2;
@@ -45,11 +45,17 @@
 	width:100%;
 }
 
+#allColorAnalysis{
+	width: 700px;
+	height: 500px;
+	padding: 10%;
+	background-color:rgb(255,255,196);
+}
 </style>
 
 <script>
 /* 색 결과를 위한 정보 */
-//색깔 배열
+//색깔 이름 배열
 var colorArray = [];
 //색깔별 count배열
 var countArray=[];
@@ -84,12 +90,10 @@ function getColorName(){
 		dataType:'json',
 		success:function(color){
 			colorArray = color.colorName;
-			console.log(colorArray);
 			countArray =color.colorCount;
-			console.log(countArray);
 			for (var i = 0; i < countArray.length; i++) {
 				if (countArray[i] != 0) {
-					data[indexD] = {label: colorArray[i],value:countArray[i]};
+					data[indexD] = {label: colorArray[i],value:countArray[i],num:i};
 					existColor[indexD++] = colorArray[i];
 				}
 			}
@@ -113,27 +117,50 @@ function home(){
 		        colors: existColor //set colors for each bar
 		      }).on('click', function (i, row) {  //click했을 때 row-i번째 줄의 {label:..,value:..}
 		      	  $('.colorLabel').html(row.label);
-		    	  getAnalysis(i);
+		    	  $('.colorSpecific').html(getAnalysis(row.num));
 		        });
 		//맨 처음에 선택될 index 지정
 		donut.select(1); 
-		$('.colorLabel').html(colorArray[1]);
-  	 	getAnalysis(1);
+		$('.colorLabel').html(existColor[1]);
+  	 	$('.colorSpecific').html(getAnalysis(data[1].num));
 }
 
+
+function allColor(){
+	var input = "<div id='allColorAnalysis'>";
+	input += '<div class="col-md-3">';
+	input += '<ul class="nav nav-pills nav-stacked">';
+	$.each(colorArray,function(i,c){
+		input += '<li><a data-toggle="pill" onclick="eachColor(';
+		input += "'"+i+"'";
+		input += ')">'+c+'</a></li>';
+	});
+ 	input += '</ul></div>';
+ 	input += '<div class="tab-content">';
+    input += '<span id="eachColor"></span>';
+ 	input += '</div>';
+ 	input += '</div>';
+	
+	
+	
+	$('#allColor').html(input);
+}
+
+function eachColor(i){
+	var a = getAnalysis(i);
+	console.log(a);
+	$('#eachColor').html(getAnalysis(i));
+}
 function getAnalysis(i){
-	$.ajax({
+	return $.ajax({
 		url:'colorAnalysis',
-		data: {colornum: i},
+		data: {colornum:i},
 		dataType:'text',
-		success:function(a){
-			console.log(a);
-			$('.colorSpecific').html(a);
-		},
 		error: function(e){
 			alert(JSON.stringify(e));
-		}
-	});
+		},
+		async: false
+	}).responseText; 
 	
 }
 
@@ -147,17 +174,36 @@ function menu1(){
 		        colors: existColor
 		      }).on('click', function (i, row) {  //row-i번째 줄의 {label:..,value:..}
 		    	  $('.colorLabel').html(row.label);
-		    	  getAnalysis(i);
+		    	  $('.colorSpecific').html(getAnalysis(row.num));
 		        });
 		//맨 처음에 선택될 index 지정
 			donut.select(1); 
-			$('.colorLabel').html(colorArray[1]);
-			getAnalysis(1);
+			$('.colorLabel').html(existColor[1]);
+			$('.colorSpecific').html(getAnalysis(data[1].num));
 }
 
 function menu2(){
 	clear();
 	$('#menu2').attr('class','on active');
+	$.ajax({
+		url: 'houseAnalysis',
+		type: 'GET',
+		data: {selectionNum: ${selectionNum}}, 
+		dataType: 'json',
+		success: showHouse,
+		error: function(e){
+			alert(JSON.stringify(e));
+		}
+	});
+}
+
+function showHouse(house){
+	var img = "";
+	$.each(house,function(i,h){
+		img += '<img src="'+h.path+'"/>';
+	});
+	
+	$('#showHouse').html(img);
 }
 
 function menu3(){
@@ -303,6 +349,7 @@ function showQuiz(list){
 	$('#quizPanel').html(input);
 }
 
+
 // =======================================
 
 
@@ -320,7 +367,7 @@ function showQuiz(list){
 
 <div class="container-fluid">
 <div class="f-nav">
-<ul class="nav nav-pills">
+<ul class="nav nav-pills" id="mainNav">
     <li class="active"><a data-toggle="pill" href="#home" id="all">전체</a></li>
     <li><a data-toggle="pill" href="#menu1" id="color">심리-색</a></li>
     <li><a data-toggle="pill" href="#menu2" id="htp1">심리-HTP-h</a></li>
@@ -395,17 +442,19 @@ function showQuiz(list){
 		    <div class="col-md-4" style="width: 500px;">
 		        <div id="colorGraph" style="height: 250px;"></div>
 		    </div>
-	        <div class="panel panel-warning" style="height:250px;width: 400px;float:left;">
+	        <div class="panel panel-warning" style="height:400px;width: 400px;float:left;">
 		      <div class="panel-heading colorLabel"></div>
 		      <div class="panel-body colorSpecific"></div>
 		    </div>
 		  </div>
+		  <br>
 		  <div style="width: 900px; height: 50px; padding: 20px; border: 1px solid black;">
 		  	색채검사는 ....................................................
 		  </div>
 		  <hr>
 		  <div class="row" style="width: 500px; padding-left:100px;">
-		  	<button class="btn-default" onclick="">다른 색 정보보기</button>
+		  	<button class="btn-default" onclick="allColor();">다른 색 정보보기</button>
+		  	<div id="allColor"></div>
 		  </div>
     </div>
     
@@ -418,12 +467,11 @@ function showQuiz(list){
 		  </div>
 		  <hr>
 		  <div class="row">
-		  	<div class="col-md-4" style="width: 500px;">
-		  		<img alt="myAvatar" src="../resources/img/avatar/face/face01.png" id="face">
+		  	<div class="col-md-4" style="width: 500px;" id="showHouse">
 		    </div>
 		  	<div class="panel panel-warning" style="height:250px;width: 400px;float:left;">
 		      <div class="panel-heading" id="htpLabel">htp</div>
-		      <div class="panel-body" id="htpSpecific"></div>
+		      <div class="panel-body" id="htpSpecificH"></div>
 		    </div>
 		  </div>
 		  <hr>

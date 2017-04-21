@@ -72,4 +72,11 @@ public class AnalysisDAO {
 		result = mapper.getColorAnalysis(colornum);
 		return result;
 	}
+
+	public ArrayList<FBResource> houseAnalysis(int selectionNum) {
+		ArrayList<FBResource> result = new ArrayList<>();
+		AnalysisMapper mapper = sqlSession.getMapper(AnalysisMapper.class); 
+		result = mapper.houseAnalysis(selectionNum);
+		return result;
+	}
 }
