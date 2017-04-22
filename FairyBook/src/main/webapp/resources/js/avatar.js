@@ -204,7 +204,7 @@ function draw(){
 			count += 1;
 		}
 	}
-	if(count == 8){
+	if(count == 7){
 		$('#savebtn').css('display','block');
 		$('#savebtn').on('click',save);
 	}
