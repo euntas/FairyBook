@@ -25,8 +25,6 @@ public interface AvatarMapper {
 	
 	public ArrayList<FBResource> readEar();
 	
-	public ArrayList<FBResource> readNeck();
-	
 	public ArrayList<FBResource> readBody();
 	
 	public String readColor(HashMap<String, String> map);

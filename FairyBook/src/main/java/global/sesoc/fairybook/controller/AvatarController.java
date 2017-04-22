@@ -112,18 +112,6 @@ public class AvatarController {
 	}	
 	
 	/**
-	 * 목 부르기 버튼을 눌렀을시
-	 * @return 목 이미지 경로가 담긴 arrayList
-	 */
-	@ResponseBody
-	@RequestMapping(value = "callNeck", method = RequestMethod.GET)
-	public ArrayList<FBResource> callNeck() {
-		ArrayList<FBResource> neckList = dao.readNeck();
-		logger.debug(neckList.toString());
-		return neckList;
-	}	
-	
-	/**
 	 * 몸 부르기 버튼을 눌렀을시
 	 * @return 몸 이미지 경로가 담긴 arrayList
 	 */

@@ -8,7 +8,6 @@ $(document).ready(function(){
 	$('#nosebtn').on('click', callNose);
 	$('#mouthbtn').on('click', callMouth);
 	$('#earbtn').on('click', callEar);
-	$('#neckbtn').on('click', callNeck);
 	$('#bodybtn').on('click', callBody);
 });
 
@@ -81,19 +80,6 @@ function callMouth(){
 function callEar(){
 	$.ajax({
 		url: 'callEar',
-		type: 'GET',
-		dataType: 'json',
-		success: detailWithoutColor,
-		error: function(e){
-			alert(JSON.stringify(e));
-		}
-	});
-}
-
-//목 불러오기
-function callNeck(){
-	$.ajax({
-		url: 'callNeck',
 		type: 'GET',
 		dataType: 'json',
 		success: detailWithoutColor,
@@ -178,7 +164,7 @@ function colorbtn(){
 //디테일에서 선택하면 아바타가 그려진다
 function draw(){
 	var avatar = $('#avatar').html();
-	var arr = ['face', 'nose', 'mouth', 'ear', 'neck', 'hair','eye','body'];
+	var arr = ['face', 'nose', 'mouth', 'ear', 'hair','eye','body'];
 	var colorObject = ['hair','eye','body'];
 	for(var i in arr){
 		if($(this).attr('name').indexOf(arr[i])!=-1){
@@ -228,7 +214,7 @@ function draw(){
 //내가 선택한 이미지를 강조해준다
 function checkSelection(){
 	var avatar = $('#avatar').html();
-	var arr = ['face', 'hair', 'eye', 'nose', 'mouth', 'ear', 'neck', 'body'];
+	var arr = ['face', 'hair', 'eye', 'nose', 'mouth', 'ear', 'body'];
 	//일단 전체에 아무것도 없게 만들고
 	$('#items img').css('border','none');
 	for(var i in arr){
@@ -258,7 +244,6 @@ function save(){
 	var nose = $('#nose').attr('num');
 	var mouth = $('#mouth').attr('num');
 	var ear = $('#ear').attr('num');
-	var neck = $('#neck').attr('num');
 	var body = $('#body').attr('num');
 	var hairColor = $('#hair').attr('name').split('Color')[1];
 	var eyeColor = $('#eye').attr('name').split('Color')[1];
@@ -280,7 +265,7 @@ function save(){
 	$.ajax({
 		url: 'saveAvatar',
 		type: 'POST',
-		data: {face:face,hair:hair,eye:eye,nose:nose,mouth:mouth,ear:ear,neck:neck,body:body,hairColor:hairColor,eyeColor:eyeColor,bodyColor:bodyColor},
+		data: {face:face,hair:hair,eye:eye,nose:nose,mouth:mouth,ear:ear,body:body,hairColor:hairColor,eyeColor:eyeColor,bodyColor:bodyColor},
 		success: function(){
 			alert('저장 완료!');
 			location.href='house';

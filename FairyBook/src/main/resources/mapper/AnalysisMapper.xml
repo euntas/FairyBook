@@ -19,7 +19,7 @@ select * from counselor where country = #{country}
 <select id="avatarAnalysis" parameterType="int" resultType="FBResource">
 	select f.resourcenum, f.analysis, f.path, f.name
 	from fbresource f, madeavatar m
-	where f.resourcenum in(m.face, m.nose, m.mouth, m.ear, m.neck) and m.selectionnum = #{selectionNum}
+	where f.resourcenum in(m.face, m.nose, m.mouth, m.ear) and m.selectionnum = #{selectionNum}
 	union
 	select f.resourcenum, f.analysis, c.path, c.name
 	from fbresource f, resourcecolor c, (select * from madeavatar where selectionnum = #{selectionNum}) m

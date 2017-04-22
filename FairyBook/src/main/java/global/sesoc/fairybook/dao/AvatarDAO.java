@@ -90,17 +90,6 @@ public class AvatarDAO {
 	}
 	
 	/**
-	 * 목 부르기 버튼을 눌렀을시
-	 * @return 목 이미지 경로가 담긴 arrayList
-	 */
-	public ArrayList<FBResource> readNeck(){
-		ArrayList<FBResource> neckList = null;
-		AvatarMapper mapper = sqlSession.getMapper(AvatarMapper.class); 
-		neckList = mapper.readNeck();
-		return neckList;
-	}
-	
-	/**
 	 * 몸 부르기 버튼을 눌렀을시
 	 * @return 몸 이미지 경로가 담긴 arrayList
 	 */

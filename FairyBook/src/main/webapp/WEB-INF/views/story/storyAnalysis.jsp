@@ -287,10 +287,6 @@ function showAvatar(r){
 			
 		}
 		
-		if(strName.indexOf('neck') != -1){
-			
-		}
-		
 	}
 	
 	input += '</map>';

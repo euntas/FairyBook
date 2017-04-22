@@ -15,7 +15,6 @@ public class Avatar {
 	private int nose;
 	private int mouth;
 	private int ear;
-	private int neck;
 	private int body;
 	private int hairColor;
 	private int eyeColor;
@@ -25,7 +24,7 @@ public class Avatar {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Avatar(int selectionNum, int face, int hair, int eye, int nose, int mouth, int ear, int neck, int body,
+	public Avatar(int selectionNum, int face, int hair, int eye, int nose, int mouth, int ear, int body,
 			int hairColor, int eyeColor, int bodyColor) {
 		super();
 		this.selectionNum = selectionNum;
@@ -35,7 +34,6 @@ public class Avatar {
 		this.nose = nose;
 		this.mouth = mouth;
 		this.ear = ear;
-		this.neck = neck;
 		this.body = body;
 		this.hairColor = hairColor;
 		this.eyeColor = eyeColor;
@@ -98,14 +96,6 @@ public class Avatar {
 		this.ear = ear;
 	}
 
-	public int getNeck() {
-		return neck;
-	}
-
-	public void setNeck(int neck) {
-		this.neck = neck;
-	}
-
 	public int getBody() {
 		return body;
 	}
@@ -141,7 +131,7 @@ public class Avatar {
 	@Override
 	public String toString() {
 		return "Avatar [selectionNum=" + selectionNum + ", face=" + face + ", hair=" + hair + ", eye=" + eye + ", nose="
-				+ nose + ", mouth=" + mouth + ", ear=" + ear + ", neck=" + neck + ", body=" + body + ", hairColor="
+				+ nose + ", mouth=" + mouth + ", ear=" + ear + ", body=" + body + ", hairColor="
 				+ hairColor + ", eyeColor=" + eyeColor + ", bodyColor=" + bodyColor + "]";
 	}
 	
