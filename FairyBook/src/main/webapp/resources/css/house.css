@@ -31,7 +31,7 @@ img{
 #door{
 	position: absolute;
 	left: 48%;
-	top: 18%;
+	top: 20%;
 	z-index: 2;
 }
 
@@ -39,7 +39,7 @@ img{
 #window{
 	position: absolute;
 	left: 48%;
-	top: 40%;
+	top: 20%;
 	z-index: 3;
 }
 
@@ -47,15 +47,15 @@ img{
 #chimney{
 	position: absolute;
 	left: 48%;
-	top: 45%;
+	top: 20%;
 	z-index: 4;
 }
 
 /* 집의 마당이미지 */
 #yard{
 	position: absolute;
-	left: 48%;
-	top: 50%;
+	left: 68%;
+	top: 20%;
 	z-index: 5;
 }
 
