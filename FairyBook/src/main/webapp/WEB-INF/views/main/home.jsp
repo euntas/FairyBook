@@ -118,6 +118,53 @@ $(function(){
 		$("#confirmorder").attr('src',"./resources/image/icon/confirmorder.png");
 	});
 	
+	
+	//login mouseover 이벤트
+	$('#login').on('mouseover',function(){
+		$('#login').css('cursor', 'pointer');
+		$("#login").attr('src',"./resources/image/icon/loginbt1.png");
+	});
+	
+	//login mouseout 이벤트
+	$('#login').on('mouseout',function(){
+		$("#login").attr('src',"./resources/image/icon/loginbt.png");
+	}); 
+	
+	//join mouseover 이벤트
+	$('#join').on('mouseover',function(){
+		$('#join').css('cursor', 'pointer');	
+		$("#join").attr('src',"./resources/image/icon/joinbt1.png");
+	});
+	
+	//join mouseout 이벤트
+	$('#join').on('mouseout',function(){
+		$("#join").attr('src',"./resources/image/icon/joinbt.png");
+	});
+	
+	//logout 커서 이벤트
+	$('#logout').on('mouseover',function(){
+		$('#logout').css('cursor', 'pointer');
+		$("#logout").attr('src',"./resources/image/icon/logoutbt1.png");
+
+	});
+	
+	//logout mouseout 이벤트
+	$('#logout').on('mouseout',function(){
+		$("#logout").attr('src',"./resources/image/icon/logoutbt.png");
+	});
+	
+	//update 커서 이벤트
+	$('#update').on('mouseover',function(){
+		$('#update').css('cursor', 'pointer');
+		$("#update").attr('src',"./resources/image/icon/userinfobt1.png");
+
+	});
+	
+	//update mouseout 이벤트
+	$('#update').on('mouseout',function(){
+		$("#update").attr('src',"./resources/image/icon/userinfobt.png");
+	});
+	
 });
 
 function w3_open() {
@@ -143,34 +190,41 @@ function myFunc(id) {
 
 </script>
 
-
-
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
 <!--상단, 사이드 메뉴  -->
 <!--배너  -->
 <nav class="navbar-fixed-top">
-<div class="container-fluid bg-2 text-center">
-  <a href='./'><img src="./resources/image/title.PNG"></a>
+<div class="container-fluid bg-2 text-center" style="background-image: url('./resources/image/icon/banner.png');height: 102px">
+ <a href="./"><img src="./resources/image/icon/bannertitle.png"></a>
 </div>
 </nav>
 
+
 <div id="under">
-<!-- Side Navigation -->
 <!--로그인하지 않았을 때  -->
 <c:if test="${loginUser == null }">
-<nav class="w3-sidebar w3-bar-block w3-collapse w3-white w3-card-2" style="z-index:3;width:220px;" id="mySidebar">
-  <div class="container-fluid bg-1">
-  <h3>로그인 하세요</h3>
-  <center><img src="./resources/image/pp3.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"></center><br><!--circle image  -->
-  <button type="button" id="login" class="btn btn-success">LOGIN</button>
-  <button type="button" id="join" class="btn btn-warning">JOIN</button>
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-card-2" style="z-index:3;width:220px;background-image: url('./resources/image/icon/menubar.png');" id="mySidebar">
+<div style="background-image: url('./resources/image/icon/userbar.png');">
+  
+ <center>
+  <img src="./resources/image/icon/pleaselogin.png"><br>
+  <img src="./resources/image/pp3.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"><br><!--circle image  -->
+<!--   <button type="button" id="login" class="btn btn-success"><img src="./resources/image/icon/loginbt.png"></button>
+ -->  
+<!--  <button type="button" id="join" class="btn btn-warning"><img src="./resources/image/icon/joinbt.png"></button>
+ -->   
+ <img src="./resources/image/icon/loginbt.png" id="login">
+ <img src="./resources/image/icon/joinbt.png" id="join">
+  
+  </center>
   <br><br>
+  
   </div>
   <a href="javascript:void(0)" onclick="w3_close()" title="Close Sidemenu" 
   class="w3-bar-item w3-button w3-hide-large w3-large">Close <i class="fa fa-remove"></i></a>
-  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-dark-grey w3-button w3-hover-black w3-left-align" onclick="document.getElementById('id01').style.display='block'">New Message <i class="w3-padding-left fa fa-pencil"></i></a>
-  
+<!--   <a href="javascript:void(0)" class="w3-bar-item w3-button w3-dark-grey w3-button w3-hover-black w3-left-align" onclick="document.getElementById('id01').style.display='block'">New Message <i class="w3-padding-left fa fa-pencil"></i></a>
+ -->  
   <!-- <a href="menu/storySelect" class="w3-bar-item w3-button"><i class="fa fa-paper-plane w3-padding-right"></i>동화선택</a>
   <a href="menu/storyPlay" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>동화감상</a> -->
 <a href="menu/storySelect"><img src="./resources/image/icon/storyselect.png" id="storyselect"></a>
@@ -183,18 +237,22 @@ function myFunc(id) {
 <c:if test="${loginUser != null }">
 <!--아이로그인  -->
 <c:if test="${userType == 'child'}">
-<nav class="w3-sidebar w3-bar-block w3-collapse w3-white w3-animate-left w3-card-2" style="z-index:3;width:220px;" id="mySidebar">
-  <div class="container-fluid bg-1">
-  <h3>${loginUser.cnickName}</h3>
-  <center><img src="./resources/image/yo.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"></center><br><!--circle image  -->
-  <button type="button" id="update" class="btn btn-success">개인정보</button>
-  <button type="button" id="logout" class="btn btn-warning">LOGOUT</button>
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card-2" style="z-index:3;width:220px;background-image: url('./resources/image/icon/menubar.png');" id="mySidebar">
+<div style="background-image: url('./resources/image/icon/userbar.png');">
+  <center>
+  <h5>${loginUser.cnickName}</h5>
+  <img src="./resources/image/yo.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"><br><!--circle image  -->
+ <!--  <button type="button" id="update" class="btn btn-success">개인정보</button>
+  <button type="button" id="logout" class="btn btn-warning">LOGOUT</button> -->
+  <img src="./resources/image/icon/userinfobt.png" id="update">
+ <img src="./resources/image/icon/logoutbt.png" id="logout">
+  </center>
   <br><br>
   </div>
   <a href="javascript:void(0)" onclick="w3_close()" title="Close Sidemenu" 
   class="w3-bar-item w3-button w3-hide-large w3-large">Close <i class="fa fa-remove"></i></a>
-  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-dark-grey w3-button w3-hover-black w3-left-align" onclick="document.getElementById('id01').style.display='block'">New Message <i class="w3-padding-left fa fa-pencil"></i></a>
-  
+<!--   <a href="javascript:void(0)" class="w3-bar-item w3-button w3-dark-grey w3-button w3-hover-black w3-left-align" onclick="document.getElementById('id01').style.display='block'">New Message <i class="w3-padding-left fa fa-pencil"></i></a>
+ -->  
  <!-- <a href="menu/storySelect" class="w3-bar-item w3-button"><i class="fa fa-paper-plane w3-padding-right"></i>동화선택</a>
  <a href="menu/storyPlay" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>동화감상</a>
  <a href="quiz/quizList" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>문제풀기</a>
@@ -209,18 +267,22 @@ function myFunc(id) {
 </c:if>
 <!--부모 로그인했을때  -->
 <c:if test="${userType == 'parent'}">
-<nav class="w3-sidebar w3-bar-block w3-collapse w3-white w3-animate-left w3-card-2" style="z-index:3;width:220px;" id="mySidebar">
-  <div class="container-fluid bg-1">
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card-2" style="z-index:3;width:220px;background-image: url('./resources/image/icon/menubar.png');" id="mySidebar">
+<div style="background-image: url('./resources/image/icon/userbar.png');">
+  <center>
   <h3>${loginUser.pnickName}</h3>
-  <center><img src="./resources/image/pp4.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"></center><br><!--circle image  -->
-  <button type="button" id="update" class="btn btn-success">개인정보</button>
-  <button type="button" id="logout" class="btn btn-warning">LOGOUT</button>
+  <img src="./resources/image/pp4.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"><br><!--circle image  -->
+  <!-- <button type="button" id="update" class="btn btn-success">개인정보</button>
+  <button type="button" id="logout" class="btn btn-warning">LOGOUT</button> -->
+  <img src="./resources/image/icon/userinfobt.png" id="update">
+ <img src="./resources/image/icon/logoutbt.png" id="logout">
+  </center>
   <br><br>
   </div>
   <a href="javascript:void(0)" onclick="w3_close()" title="Close Sidemenu" 
   class="w3-bar-item w3-button w3-hide-large w3-large">Close <i class="fa fa-remove"></i></a>
-  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-dark-grey w3-button w3-hover-black w3-left-align" onclick="document.getElementById('id01').style.display='block'">New Message <i class="w3-padding-left fa fa-pencil"></i></a>
-  
+<!--   <a href="javascript:void(0)" class="w3-bar-item w3-button w3-dark-grey w3-button w3-hover-black w3-left-align" onclick="document.getElementById('id01').style.display='block'">New Message <i class="w3-padding-left fa fa-pencil"></i></a>
+ -->  
   <!-- <a href="menu/myChildStory" class="w3-bar-item w3-button"><i class="fa fa-paper-plane w3-padding-right"></i>내 아이 동화 목록</a>
   <a href="pboard/listForm" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>게시판</a>
   <a href="menu/counselResult" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>상담요청 결과보기</a>
