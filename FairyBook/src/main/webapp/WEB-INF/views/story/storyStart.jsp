@@ -157,6 +157,10 @@
 	</div>
 	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene18.jpg') no-repeat center center;  background-size: 100%;">
 	</div>
+	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene19.jpg') no-repeat center center;  background-size: 100%;">
+	</div>
+	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene20.jpg') no-repeat center center;  background-size: 100%;">
+	</div>
 	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene21.jpg') no-repeat center center;  background-size: 100%;">
 	</div>
 	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene22.jpg') no-repeat center center;  background-size: 100%;">
@@ -199,6 +203,10 @@
 	</div>
 	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene41.jpg') no-repeat center center;  background-size: 100%;">
 	</div>
+	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene42.jpg') no-repeat center center;  background-size: 100%;">
+	</div>
+	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene43.jpg') no-repeat center center;  background-size: 100%;">
+	</div>
 	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene44.jpg') no-repeat center center;  background-size: 100%;">
 	</div>
 	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene45.jpg') no-repeat center center;  background-size: 100%;">
@@ -207,7 +215,9 @@
 	</div>
 	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene47.jpg') no-repeat center center;  background-size: 100%;">
 	</div>
-	<div class="page" style="background: #82BDC4 url('./../resources/img/5.jpg') no-repeat center center">
+	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene48.jpg') no-repeat center center;  background-size: 100%;">
+	</div>
+	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene49.jpg') no-repeat center center;  background-size: 100%;">
 	</div>
 </div>
 

@@ -77,18 +77,6 @@
 		name like '%EAR%'
 </select>
 
-<!-- DB에서 목 자료의 경로를 가져옵니다 -->
-<select id="readNeck" resultType="FBResource">
-	select
-		resourcenum, name, analysis, path
-	from
-		fbresource
-	where
-		name like '%neck%'
-	or
-		name like '%NECK%'
-</select>
-
 <!-- DB에서 몸 자료의 경로를 가져옵니다 -->
 <select id="readBody" resultType="FBResource">
 	select
@@ -125,7 +113,6 @@
 	 #{nose},
 	 #{mouth},
 	 #{ear},
-	 #{neck},
 	 #{body},
 	 #{eyeColor},
 	 #{hairColor},

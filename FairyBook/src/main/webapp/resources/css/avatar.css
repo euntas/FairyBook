@@ -24,7 +24,7 @@ img{
 	position: absolute;
 	left: 48%;
 	top: 20%;
-	z-index: 1;
+	z-index: 3;
 }
 
 /* 아바타의 헤어이미지 */
@@ -32,7 +32,7 @@ img{
 	position: absolute;
 	left: 48%;
 	top: 20%;
-	z-index: 2;
+	z-index: 1;
 }
 
 /* 아바타의 눈이미지 */
@@ -40,7 +40,7 @@ img{
 	position: absolute;
 	left: 48%;
 	top: 20%;
-	z-index: 3;
+	z-index: 4;
 }
 
 /* 아바타의 코이미지 */
@@ -48,7 +48,7 @@ img{
 	position: absolute;
 	left: 48%;
 	top: 20%;
-	z-index: 4;
+	z-index: 5;
 }
 
 /* 아바타의 입이미지 */
@@ -56,7 +56,7 @@ img{
 	position: absolute;
 	left: 48%;
 	top: 20%;
-	z-index: 5;
+	z-index: 6;
 }
 
 /* 아바타의 귀이미지 */
@@ -64,23 +64,15 @@ img{
 	position: absolute;
 	left: 48%;
 	top: 20%;
-	z-index: 5;
-}
-
-/* 아바타의 목이미지 */
-#neck{
-	position: absolute;
-	left: 50%;
-	top: 55%;
-	z-index: 6;
+	z-index: 2;
 }
 
 /* 아바타의 몸이미지 */
 #body{
 	position: absolute;
-	left: 50%;
-	top: 60%;
-	z-index: 7;
+	left: 48%;
+	top: 20%;
+	z-index: 2;
 }
 
 /*아바타의 신체부위 선택하는 영역*/
@@ -140,7 +132,7 @@ img{
 /* 대분류 버튼 클래스 */
 .category{
 	margin: 0px;
-	width : 12.5%;
+	width : 14.28%;
 	height: 99%;
 
 }

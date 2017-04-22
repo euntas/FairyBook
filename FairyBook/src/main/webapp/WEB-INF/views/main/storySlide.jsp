@@ -36,11 +36,16 @@ img{
 </style>
 <script>
 $(document).ready(function(){
+	
+	$('#slideShowImages').css("visibility", "hidden");
+	$('#loadingImg').css("visibility", "visible");
+	  
 	$('#menu').on('mouseenter', showMenu);
 	$('#menu').on('mouseleave', hideMenu);
     $('#replayButton').css('background-image',"url('../resources/img/util/replaybtn.png')");
     $('#homeButton').css('background-image',"url('../resources/img/util/homebtn.png')");
     $('#musicButton').css('background-image',"url('../resources/img/util/musicbtn.png')");
+    
 });
 
 function showMenu(){
@@ -68,6 +73,9 @@ function music(){
 </head>
 <body>
 <audio src="../resources/bgm/bgm.mp3" autoplay="autoplay" loop="loop" id="music"></audio>
+
+<img id="loadingImg" alt="로딩이미지" src="../resources/img/util/loadingIcon.gif"> <hr>
+
 	<div id="slideShowImages">
 	<c:forEach var="slide" items="${slideList}">
 		<c:if test="${slide<10}">

@@ -40,7 +40,7 @@
 
 <!-- 아바타 신체부위 선택하는 대분류 div태그 -->
 <div id="category">
-<input id="facebtn" class="category" type="button" value="얼굴"><input id="hairbtn" class="category" type="button" value="헤어"><input id="eyebtn" class="category" type="button" value="눈"><input id="nosebtn" class="category" type="button" value="코"><input id="mouthbtn" class="category" type="button" value="입"><input id="earbtn" class="category" type="button" value="귀"><input id="neckbtn" class="category" type="button" value="목"><input id="bodybtn" class="category" type="button" value="몸">
+<input id="facebtn" class="category" type="button" value="얼굴"><input id="hairbtn" class="category" type="button" value="헤어"><input id="eyebtn" class="category" type="button" value="눈"><input id="nosebtn" class="category" type="button" value="코"><input id="mouthbtn" class="category" type="button" value="입"><input id="earbtn" class="category" type="button" value="귀"><input id="bodybtn" class="category" type="button" value="몸">
 </div>
 
 <!-- 실제로 쓸 신체부위 선택하는 소분류 div태그 -->

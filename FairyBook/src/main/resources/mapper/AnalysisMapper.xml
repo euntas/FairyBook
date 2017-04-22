@@ -19,7 +19,7 @@ select * from counselor where country = #{country}
 <select id="avatarAnalysis" parameterType="int" resultType="FBResource">
 	select f.resourcenum, f.analysis, f.path, f.name
 	from fbresource f, madeavatar m
-	where f.resourcenum in(m.face, m.nose, m.mouth, m.ear, m.neck) and m.selectionnum = #{selectionNum}
+	where f.resourcenum in(m.face, m.nose, m.mouth, m.ear) and m.selectionnum = #{selectionNum}
 	union
 	select f.resourcenum, f.analysis, c.path, c.name
 	from fbresource f, resourcecolor c, (select * from madeavatar where selectionnum = #{selectionNum}) m
@@ -38,6 +38,24 @@ select * from counselor where country = #{country}
 	where f.resourcenum = m.body 
 		and m.body = c.resourcenum
 		and m.bodyColor = c.color
+</select>
+
+<select id="houseAnalysis" parameterType="int" resultType="FBResource">
+	select f.resourcenum, f.analysis, f.path, f.name
+	from fbresource f, madehouse m
+	where f.resourcenum in(m.door, m.window, m.chimney, m.yard) and m.selectionnum = #{selectionNum}
+	union
+	select f.resourcenum, f.analysis, c.path, c.name
+	from fbresource f, resourcecolor c, (select * from madehouse where selectionnum = #{selectionNum}) m
+	where f.resourcenum = m.roof 
+		and m.roof = c.resourcenum
+		and m.roofColor = c.color
+	union
+	select f.resourcenum, f.analysis, c.path, c.name
+	from fbresource f, resourcecolor c, (select * from madehouse where selectionnum = #{selectionNum}) m
+	where f.resourcenum = m.wall 
+		and m.wall = c.resourcenum
+		and m.wallColor = c.color
 </select>
 
 <select id="getColorData" parameterType="int" resultType="HashMap">

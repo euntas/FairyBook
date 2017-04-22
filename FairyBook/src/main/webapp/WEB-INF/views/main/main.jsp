@@ -13,6 +13,112 @@
 <link href='https://fonts.googleapis.com/css?family=RobotoDraft' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<script>
+$(function(){
+	//profile사진 경로 설정
+	$('#profile').attr('src','./resources/image/yo.jpg')
+
+	//login버튼 이벤트
+	$('#login').on('click',function(){
+		location.href='id/login';
+	});
+	//join버튼 이벤트
+	$('#join').on('click',function(){
+		location.href='id/join';
+	});
+	//logout버튼 이벤트
+	$('#logout').on('click',function(){
+		if(confirm('로그아웃 하시겠습니까?'))
+			location.href='id/logout';
+	});
+	$('#update').on('click',function(){
+		location.href='id/userInfo';
+	});
+	
+	
+	//동화 선택 버튼 마우스오버
+	$('#storyselect').on('mouseover',function(){
+		$("#storyselect").attr('src',"../resources/image/icon/storyselect1.png");
+	});
+	
+	//동화 선택 버튼 마우스아웃
+	$('#storyselect').on('mouseout',function(){
+		$("#storyselect").attr('src',"../resources/image/icon/storyselect.png");
+	});
+	
+	//동화 감상 버튼 마우스오버
+	$('#storyplay').on('mouseover',function(){
+		$("#storyplay").attr('src',"../resources/image/icon/storyplay1.png");
+	});
+	
+	//동화 감상 버튼 마우스아웃
+	$('#storyplay').on('mouseout',function(){
+		$("#storyplay").attr('src',"../resources/image/icon/storyplay.png");
+	});
+	
+	//퀴즈 풀기 버튼 마우스오버
+	$('#quizlist').on('mouseover',function(){
+		$("#quizlist").attr('src',"../resources/image/icon/quizlist2.PNG");
+	});
+	
+	//퀴즈 풀기 감상 버튼 마우스아웃
+	$('#quizlist').on('mouseout',function(){
+		$("#quizlist").attr('src',"../resources/image/icon/quizlist.png");
+	});
+	
+	//내 아이 동화목록 버튼 마우스오버
+	$('#mychildstory').on('mouseover',function(){
+		$("#mychildstory").attr('src',"../resources/image/icon/mychildstory1.png");
+	});
+	
+	//내 아이 동화목록 버튼 마우스아웃
+	$('#mychildstory').on('mouseout',function(){
+		$("#mychildstory").attr('src',"../resources/image/icon/mychildstory.png");
+	});
+	
+	//게시판 버튼 마우스오버
+	$('#board').on('mouseover',function(){
+		$("#board").attr('src',"../resources/image/icon/board1.PNG");
+	});
+	
+	//게시판 버튼 마우스아웃
+	$('#board').on('mouseout',function(){
+		$("#board").attr('src',"../resources/image/icon/board.png");
+	});
+	
+	//상담 결과 보기 버튼 마우스오버
+	$('#counselresult').on('mouseover',function(){
+		$("#counselresult").attr('src',"../resources/image/icon/counselresult1.png");
+	});
+	
+	//상담 결과 보기 버튼 마우스아웃
+	$('#counselresult').on('mouseout',function(){
+		$("#counselresult").attr('src',"../resources/image/icon/counselresult.png");
+	});
+	
+	//장바구니 목록 버튼 마우스오버
+	$('#ordercart').on('mouseover',function(){
+		$("#ordercart").attr('src',"../resources/image/icon/ordercart1.png");
+	});
+	
+	//장바구니 목록 버튼 마우스아웃
+	$('#ordercart').on('mouseout',function(){
+		$("#ordercart").attr('src',"../resources/image/icon/ordercart.png");
+	});
+	
+	//주문 내역 버튼 마우스오버
+	$('#confirmorder').on('mouseover',function(){
+		$("#confirmorder").attr('src',"../resources/image/icon/confirmorder1.png");
+	});
+	
+	//주문 내역 버튼 마우스아웃
+	$('#confirmorder').on('mouseout',function(){
+		$("#confirmorder").attr('src',"../resources/image/icon/confirmorder.png");
+	});
+	
+});
+</script>
+
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
 <!--배너  -->
@@ -38,8 +144,13 @@
   class="w3-bar-item w3-button w3-hide-large w3-large">Close <i class="fa fa-remove"></i></a>
   <a href="javascript:void(0)" class="w3-bar-item w3-button w3-dark-grey w3-button w3-hover-black w3-left-align" onclick="document.getElementById('id01').style.display='block'">New Message <i class="w3-padding-left fa fa-pencil"></i></a>
   
-  <a href="../menu/storySelect" class="w3-bar-item w3-button"><i class="fa fa-paper-plane w3-padding-right"></i>동화선택</a>
+  <!-- <a href="../menu/storySelect" class="w3-bar-item w3-button"><i class="fa fa-paper-plane w3-padding-right"></i>동화선택</a>
   <a href="../menu/storyPlay" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>동화감상</a>
+ -->
+ <a href="../menu/storySelect"><img src="../resources/image/icon/storyselect.png" id="storyselect"></a>
+ <br><br>
+<a href="../menu/storyPlay"><img src="../resources/image/icon/storyplay.png" id="storyplay"></a>
+ <br><br>
 </nav>
 </c:if>
 <!--로그인 했을 때  -->
@@ -58,10 +169,16 @@
   class="w3-bar-item w3-button w3-hide-large w3-large">Close <i class="fa fa-remove"></i></a>
   <a href="javascript:void(0)" class="w3-bar-item w3-button w3-dark-grey w3-button w3-hover-black w3-left-align" onclick="document.getElementById('id01').style.display='block'">New Message <i class="w3-padding-left fa fa-pencil"></i></a>
   
-  <a href="../menu/storySelect" class="w3-bar-item w3-button"><i class="fa fa-paper-plane w3-padding-right"></i>동화선택</a>
+  <!-- <a href="../menu/storySelect" class="w3-bar-item w3-button"><i class="fa fa-paper-plane w3-padding-right"></i>동화선택</a>
   <a href="../menu/storyPlay" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>동화감상</a>
   <a href="../quiz/quizList" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>문제풀기</a>
-  
+   -->
+   <a href="../menu/storySelect"><img src="../resources/image/icon/storyselect.png" id="storyselect"></a>
+ <br><br>
+ <a href="../menu/storyPlay"><img src="../resources/image/icon/storyplay.png" id="storyplay"></a>
+ <br><br>
+ <a href="../quiz/quizList"><img src="../resources/image/icon/quizlist.png" id="quizlist"></a>
+ 
   
 </nav>
 </c:if>
@@ -79,11 +196,21 @@
   class="w3-bar-item w3-button w3-hide-large w3-large">Close <i class="fa fa-remove"></i></a>
   <a href="javascript:void(0)" class="w3-bar-item w3-button w3-dark-grey w3-button w3-hover-black w3-left-align" onclick="document.getElementById('id01').style.display='block'">New Message <i class="w3-padding-left fa fa-pencil"></i></a>
   
-  <a href="../menu/myChildStory" class="w3-bar-item w3-button"><i class="fa fa-paper-plane w3-padding-right"></i>내 아이 동화 목록</a>
+  <!-- <a href="../menu/myChildStory" class="w3-bar-item w3-button"><i class="fa fa-paper-plane w3-padding-right"></i>내 아이 동화 목록</a>
   <a href="../pboard/listForm" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>게시판</a>
   <a href="../menu/counselResult" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>상담요청 결과보기</a>
   <a href="../orderBook/orderCart" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>장바구니</a>
   <a href="../orderBook/confirmOrder" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>주문내역</a>
+   -->
+   <a href="../menu/myChildStory"><img src="../resources/image/icon/mychildstory.png" id="mychildstory"></a>
+  <br><br>
+  <a href="../pboard/listForm"><img src="../resources/image/icon/board.png" id="board"></a>
+  <br><br>
+  <a href="../menu/counselResult"><img src="../resources/image/icon/counselresult.png" id="counselresult"></a>
+  <br><br>
+  <a href="../orderBook/orderCart"><img src="../resources/image/icon/ordercart.png" id="ordercart"></a>
+  <br><br>	
+  <a href="../orderBook/confirmOrder"><img src="../resources/image/icon/confirmorder.png" id="confirmorder"></a>
   
   
 </nav>

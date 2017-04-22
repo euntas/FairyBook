@@ -1,10 +1,12 @@
 window.addEventListener('load', slideShow, false);
 
 function slideShow() {
-  
+	
   // 이미지 눌러도 넘어갈 수 있게끔 한다
   $(document).ready(function(){
+	  
     $('img').on('click', transitionSlides);
+    
   });
 	
 	
@@ -27,16 +29,22 @@ function slideShow() {
   
   /* MAIN *************************************************************************************************/
   
+ /* if (!globals.slideShowRunning){
+	  $('#slideShowImages').css("visibility", "hidden");
+	  $('#loadingImg').css("visibility", "visible");
+  }*/
+  
+ 
   initializeGlobals();  
   
   if ( insufficientSlideShowMarkup() ) {
-    return; // Insufficient slide show markup - exit now.
+	  return; // Insufficient slide show markup - exit now.
   }
- 
-   // Assert: there's at least one slide image.
- 
+  
+  // Assert: there's at least one slide image.
+  
   if (globals.slideImages.length == 1) {
-    return; // The solo slide image is already being displayed - exit now.
+	  return; // The solo slide image is already being displayed - exit now.
   }
   
   // Assert: there's at least two slide images.
@@ -47,14 +55,18 @@ function slideShow() {
   
   // 버튼 누르면 플레이 / 스탑 바뀐다
   if (globals.buttonObject) {
-    globals.buttonObject.addEventListener('click', toggleSlideShow, false); // This callback is used to toggle the slide show on and off.
-  } 
-  
-  startSlideShow();
+	  globals.buttonObject.addEventListener('click', toggleSlideShow, false); // This callback is used to toggle the slide show on and off.
+  }
+
+  setTimeout(function(){
+	  startSlideShow();	  	  
+  }, 3000);
+
+
   
   /* FUNCTIONS ********************************************************************************************/
   
-  function initializeGlobals() {   
+  function initializeGlobals() {  
     globals.wrapperObject = (document.getElementById(globals.wrapperID) ? document.getElementById(globals.wrapperID) : null);
     globals.buttonObject = (document.getElementById(globals.buttonID) ? document.getElementById(globals.buttonID) : null);   
     
@@ -154,6 +166,10 @@ function slideShow() {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   function startSlideShow() {
+	  console.log('스타트');
+	  $('#slideShowImages').css("visibility", "visible");
+	  $('#loadingImg').css("visibility", "hidden");
+	  
     globals.slideShowID = setInterval(transitionSlides, globals.slideDelay);                
   } // startSlideShow
 

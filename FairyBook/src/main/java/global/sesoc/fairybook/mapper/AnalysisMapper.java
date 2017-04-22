@@ -25,4 +25,6 @@ public interface AnalysisMapper {
 
 	public String getColorAnalysis(int colornum);
 
+	public ArrayList<FBResource> houseAnalysis(int selectionNum);
+
 }
