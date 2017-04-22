@@ -287,6 +287,8 @@ public class OrderBookController {
 			ob.setCurrentstate(b.getCurrentstate());
 		}else if(price == 0){
 			ob.setPrice(b.getPrice());
+		}else if(bookcover.equals("")){
+			ob.setBookcover(b.getBookcover());
 		}
 		int result = dao.updateOrder(ob);
 		logger.info("update result:{}",ob);

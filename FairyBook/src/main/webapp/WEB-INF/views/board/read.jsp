@@ -213,12 +213,6 @@
     	<label class="control-label">${board.hit}</label>
   	</div>
     <textarea id="content" class="form-control" style="height:300px" value="${board.content}" readonly="readonly">${board.content}</textarea>
-	<div class="form-group w3-margin-top w3-margin-bottom">
-    	<label class="col-sm-2 control-label">첨부파일</label>
-   		<div class="col-sm-5">
-    	<input id="file" type="file">
-    	</div>
-  	</div>
     <div class="w3-section">
       <a class="w3-button" id="list">목록 </a> 
     <c:if test="${loginUser.id == board.id}">

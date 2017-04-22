@@ -248,7 +248,7 @@ function showAvatar(r){
 	}
 	
 	/*아바타 심리 결과를 위한 정보*/
-	 // 아바타 항목 위치 좌표 정보. 배열 순서는 다음과 같다. (얼굴 , 코, 입 ...)
+	// 아바타 항목 위치 좌표 정보. 배열 순서는 다음과 같다. (얼굴 , 코, 입 ...)
 	 var avatarArray = ['12,15,285,58', '24,134,269,263'];
 	
 	//항목 누르는 곳 설정
@@ -329,16 +329,25 @@ function getQuiz(){
 function showQuiz(list){
 	var input = "";
 	$.each(list,function(i,l){
-		input += '<div class="panel panel-warning" style="height:250px;width: 400px;float:left;">';
-		input += '<div class="panel-heading" class="quizLabel">'+l.question+'</div>';
-		input += '<div class="panel-body" class="quizSpecific">';
+		input += '<div style="padding:5px;height:250px;width: 400px;float:left;">';
+		input += '<div class="w3-card-2">';/*  style="height:250px;width: 400px;float:left;" */
+		input += '<header class="w3-container w3-light-blue">';
+		input += '<h4 id="quizLabel">'+l.question+'</h4>';
+		input += '</header>';
+		input += '<div class="w3-container" id="quizSpecific">';
 		input += l.select1;
 		input += '<br>'+l.select2;
 		input += '<br>'+l.select3;
 		input += '<br>'+l.select4;
 		input += '</div>';
-		input += '<div>선택한 답:'+l.myanswer+'</div>';
-		input += '<div>정답:'+l.answer+'</div>';
+		input += '<footer class="w3-container w3-light-grey">';
+		if (l.myanswer == l.answer) {
+			input += '<span style="color:blue;">선택한 답:'+l.myanswer+'</span><br>';
+		}else{
+			input += '<span style="color:red;">선택한 답:'+l.myanswer+'</span><br>';
+		}
+		input += '정답:'+l.answer+'</footer>';
+		input += '</div>';
 		input += '</div>';
 	});
 	
@@ -521,23 +530,16 @@ function showQuiz(list){
 		    </div>
 		  </div>
 		  <hr>
-		  <div class="row" id="quizPanel">
-		  	<div class="col-md-4" style="width: 500px;">
-		    </div>
-		  	<div class="panel panel-warning" style="height:250px;width: 400px;float:left;">
-		      <div class="panel-heading" id="quizLabel">문제</div>
-		      <div class="panel-body" id="quizSpecific">답</div>
-		    </div>
-		  </div>
+		  <div class="card-deck" id="quizPanel"></div>
 		  <hr>
     </div>
     
   </div>
   
   
+  
+  
 </div>
-
-
 
 
 <!--여기까지###########################  -->
