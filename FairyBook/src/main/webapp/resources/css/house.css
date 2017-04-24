@@ -22,49 +22,49 @@ img{
 /* 집의 지붕이미지 */
 #roof{
 	position: absolute;
-	left: 48%;
-	top: 20%;
-	z-index: 1;
+	left: 38%;
+	top: 22%;
+	z-index: 2;
 }
 
 /* 집의 문이미지 */
 #door{
 	position: absolute;
-	left: 48%;
-	top: 20%;
-	z-index: 2;
+	left: 38%;
+	top: 22%;
+	z-index: 3;
 }
 
 /* 집의 창문이미지 */
 #window{
 	position: absolute;
-	left: 48%;
-	top: 20%;
-	z-index: 3;
+	left: 38%;
+	top: 22%;
+	z-index: 4;
 }
 
 /* 집의 굴뚝이미지 */
 #chimney{
 	position: absolute;
-	left: 48%;
-	top: 20%;
-	z-index: 4;
+	left: 38%;
+	top: 22%;
+	z-index: 5;
 }
 
 /* 집의 마당이미지 */
 #yard{
 	position: absolute;
 	left: 68%;
-	top: 20%;
-	z-index: 5;
+	top: 22%;
+	z-index: 6;
 }
 
 /* 집의 벽이미지 */
 #wall{
 	position: absolute;
-	left: 48%;
-	top: 45%;
-	z-index: 5;
+	left: 38%;
+	top: 22%;
+	z-index: 1;
 }
 
 /*집의 부위 선택하는 영역*/
