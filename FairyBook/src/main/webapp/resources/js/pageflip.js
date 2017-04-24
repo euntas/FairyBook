@@ -8,10 +8,11 @@
 //==============================
 // 현재 스토리 번호 저장 위함
 var myStoryNum;
-
+var mySelectionNum;
 // myStoryNum 변수에 값을 넣어준다.
-function setMyStoryNum(storyNum){
+function setMyStoryNum(storyNum, selectionNum){
 	myStoryNum = storyNum;
+	mySelectionNum = selectionNum;
 }
 //================================
 
@@ -23,7 +24,7 @@ RocketPageFlip = function(selector, options){
 			navigation: true, // show pagination
 			directionalNav: true, // show prev/next navigation buttons
 			prevText: 'prev', // text for prev button
-			nextText: '다음' // text for next button
+			nextText: '<img src="../resources/img/util/storyNextBtn2.png">' // text for next button
 	};
 	
 	this.rotating = false;
@@ -91,8 +92,8 @@ RocketPageFlip.prototype.buildNavigation = function() {
 		});*/
 		
 		next = $('<a>')
-		//.html(this.options.nextText)
-		.html('<img src="../resources/img/util/storyNextBtn.png">')
+		.html(this.options.nextText)
+		//.html('<img src="../resources/img/util/storyNextBtn2.png">')
 		.addClass('flip-directional flip-next')
 		.attr('href', '#')
 		.click(function(e){
@@ -233,6 +234,9 @@ RocketPageFlip.prototype.flip = function(page) {
 	 // 퀴즈 버튼과 퀴즈 내용 초기화
 	 $("#divForQuizBtn").html('');
 	 $("#divForQuiz").html(''); 
+	 
+	 // 아바타 내용 지우기
+	 $("#showAvatar").html('');
 	 
 	 // 퀴즈 로딩
 	 quizLoading();
@@ -402,7 +406,7 @@ function quizLoading(){
 				$("#divForQuiz").html(''); 
 				
 				setTimeout(function(){
-					writeAvatarDiv();
+					writeAvatarDiv(mySelectionNum);
 				}, 1000);
 			}
         },
@@ -415,7 +419,7 @@ function quizLoading(){
 			$("#divForQuiz").html(''); 
 			
 			setTimeout(function(){
-				writeAvatarDiv();
+				writeAvatarDiv(mySelectionNum);
 			}, 1000);
         }
     });
@@ -423,7 +427,7 @@ function quizLoading(){
 
 // 이미지 버튼을 만든다. 이 버튼을 누르면 퀴즈가 나옴.
 function writePreBtnForQuizDiv(){
-	var str = "<img src='./../resources/image/hiyoko.png'>";
+	var str = "<img src='./../resources/image/click.png'>";
 	
 	// 1초 후에 버튼이 생기게 한다.
 	setTimeout(function(){
@@ -434,7 +438,7 @@ function writePreBtnForQuizDiv(){
 			$(this).attr('src', './../resources/image/farian_move.gif');
 		});
 		$("#divForQuizBtn img").mouseout(function(){
-			$(this).attr('src', './../resources/image/hiyoko.png');
+			$(this).attr('src', './../resources/image/click.png');
 		});
 		
 		// 클릭 이벤트를 설정한다.
@@ -444,7 +448,7 @@ function writePreBtnForQuizDiv(){
 			// 퀴즈의 내용을 보인다.
 			writeQuizDiv();
 			// 아바타 말의 내용을 보인다.
-			writeAvatarDiv();
+			writeAvatarDiv(mySelectionNum);
 		});
 		
     }, 1000);
@@ -452,10 +456,15 @@ function writePreBtnForQuizDiv(){
 }
 
 // 아바타 말 내용을 쓰는 함수
-function writeAvatarDiv(){
+function writeAvatarDiv(mySelectionNum){
 	
 	// 아바타 말을 지운다.
 	$('#divForAvatar').html('');
+	
+	// 아바타 그림을 지운다.
+	$('.showAvatar').html('');
+	
+	console.log("셀렉넘 : " + mySelectionNum);
 	
 	$.ajax({
         url:'getAvatarText',
@@ -476,6 +485,21 @@ function writeAvatarDiv(){
         		
         		var str = "<img src=\'" + avatarText + "\'>";
         		$('#divForAvatar').html(str); 
+        		
+        		// 현재 페이지가 0번(아바타 생성 전 페이지)가 아니면 실행하라.
+        		if(pageflip.options.current != 0){		
+        			// 아바타 그림 가져오기
+        			$.ajax({
+        				url: '../analysis/avatarAnalysis',
+        				type: 'GET',
+        				data: { selectionNum: mySelectionNum }, 
+        				dataType: 'json',
+        				success: showAvatar,
+        				error: function(e){
+        					alert(JSON.stringify(e));
+        				}
+        			});
+        		}
         	}
         	
         },
@@ -486,6 +510,41 @@ function writeAvatarDiv(){
 	
 }
 
+function showAvatar(r){
+	var input = '';
+	var analysis = '';
+	
+	for (var i = 0; i < r.length; i++) {
+		console.log(r[i].path);
+		
+		var zindex = -1;
+		
+		if(r[i].name.indexOf('hair') != -1){
+			zindex = 101;
+		}
+		if(r[i].name.indexOf('ear') != -1 || r[i].name.indexOf('body') != -1){
+			zindex = 102;
+		}
+		if(r[i].name.indexOf('face') != -1){
+			zindex = 103;
+		}
+		if(r[i].name.indexOf('eye') != -1){
+			zindex = 104;
+		}
+		if(r[i].name.indexOf('nose') != -1){
+			zindex = 105;
+		}
+		if(r[i].name.indexOf('mouth') != -1){
+			zindex = 106;
+		}
+		
+		input += '<img src="'+r[i].path+'" style="position: absolute; width: auto; height: 100%; z-index:' + zindex + ' ;"/>';
+		analysis += r[i].analysis+'<br>';
+	}
+	
+	$('.showAvatar').html(input);
+}
+
 // 퀴즈의 내용을 쓰는 함수
 function writeQuizDiv(){
 	
@@ -493,7 +552,7 @@ function writeQuizDiv(){
 	var str = '';
 	
 	if(!(currentQuiz.question == '' || currentQuiz.question == null || currentQuiz.question == -1))
-		str = currentQuiz.question +"<br><br>";
+		str = "<br>" + currentQuiz.question +"<br><br>";
 	
 	if(!(currentQuiz.select1 == '' || currentQuiz.select1 == null || currentQuiz.select1 == -1))
 		str += "<myselection selnum='1'>" + currentQuiz.select1 + "</myselection><br>";
@@ -502,7 +561,7 @@ function writeQuizDiv(){
 	if(!(currentQuiz.select3 == '' || currentQuiz.select3 == null || currentQuiz.select3 == -1))
 		str += "<myselection selnum='3'>" + currentQuiz.select3 + "</myselection><br>";
 	if(!(currentQuiz.select4 == '' || currentQuiz.select4 == null || currentQuiz.select4 == -1))
-		str += "<myselection selnum='4'>" + currentQuiz.select4 + "</myselection><br>";
+		str += "<myselection selnum='4'>" + currentQuiz.select4 + "</myselection><br><br>";
 	
 	$("#divForQuiz").html(str); 
 	

@@ -96,6 +96,7 @@ function draw(){
 	etc += '<area shape="rect" coords="517,259,563,305" onclick="point(12)" target="_blank">';
 	etc += '</map>';
 	
+	
 	$('#etc').html(etc);
 	$('#resetbtn').on('click', reset);
 	$('#savebtn').on('click', save);
@@ -126,7 +127,7 @@ function colorbtn(){
 	var currentNum = $('#currentObject').attr('num');
 	var storyNum = ${storyNum};
 	var color = $(this).attr('id');
-	var colorNum = ['Black', 'Red', 'Oragne', 'Yellow', 'Green', 'Blue', 'Purple', 'White', 'Gray'];	
+	var colorNum = ['Black', 'Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Purple', 'White', 'Gray'];	
 	
 	if(etc.indexOf('currentObject')==-1){
 		alert('색칠할 대상을 먼저 선택해 주세요!');
@@ -211,7 +212,7 @@ function save(){
 			return;
 		}
 	}else{
-		if(confirm('확실합니까?')){
+		if(confirm('저장하시겠습니까?')){
 			$.ajax({
 				url: 'saveETC',
 				type: 'POST',

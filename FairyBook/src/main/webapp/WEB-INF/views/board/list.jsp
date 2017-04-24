@@ -144,7 +144,7 @@
 <!--상단, 사이드 메뉴  -->
 <c:import url="../main/main.jsp"></c:import>
 <!-- Page content -->
-<div class="w3-main" style="margin-left:230px;">
+<div class="w3-main" style="margin-left:230px;height:1000px;">
 	<i class="fa fa-bars w3-button w3-white w3-hide-large w3-xlarge w3-margin-left w3-margin-top" onclick="w3_open()"></i>
 <!--####################여기부터  -->
 <div class="container">

@@ -52,6 +52,7 @@
 
 <title>Insert title here</title>
 </head>
+
 <body style="height: 100%">
 <div style="min-height: 100%;">
 <div id="container" style="{padding-bottom:1em}">

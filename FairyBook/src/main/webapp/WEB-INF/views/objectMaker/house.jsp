@@ -40,7 +40,7 @@
 
 <!-- 집 부위 선택하는 대분류 div태그 -->
 <div id="category">
-<input id="roofbtn" class="category" type="button" value="지붕"><input id="doorbtn" class="category" type="button" value="문"><input id="windowbtn" class="category" type="button" value="창문"><input id="chimneybtn" class="category" type="button" value="굴뚝"><input id="yardbtn" class="category" type="button" value="마당"><input id="wallbtn" class="category" type="button" value="벽">
+<input id="wallbtn" class="category" type="button" value="벽"><input id="roofbtn" class="category" type="button" value="지붕"><input id="doorbtn" class="category" type="button" value="문"><input id="windowbtn" class="category" type="button" value="창문"><input id="chimneybtn" class="category" type="button" value="굴뚝"><input id="yardbtn" class="category" type="button" value="마당">
 </div>
 
 <!-- 실제로 쓸 부위 선택하는 소분류 div태그 -->

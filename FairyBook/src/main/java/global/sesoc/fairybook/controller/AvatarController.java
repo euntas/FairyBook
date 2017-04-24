@@ -140,17 +140,14 @@ public class AvatarController {
 	 * 지금까지 선택한 아바타의 정보를 저장
 	 * @return 올바르게 저장되면 house페이지로 이동, 아니면 다시 avatar페이지로 돌아감
 	 */
+	@ResponseBody
 	@RequestMapping(value = "saveAvatar", method = RequestMethod.POST)
-	public String saveAvatar(Avatar avatar, HttpSession session) {
+	public int saveAvatar(Avatar avatar, HttpSession session) {
 		avatar.setSelectionNum((int) session.getAttribute("myselectionNum"));
 		logger.debug(avatar.toString());
 		int result = 0;
 		result = dao.saveAvatar(avatar);
-		if(result==1){
-			return "redirect:house";
-		}else{
-			return "avatar";
-		}
+		return result;
 	}
 	
 	
