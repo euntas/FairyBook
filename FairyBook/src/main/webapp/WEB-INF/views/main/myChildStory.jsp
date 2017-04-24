@@ -63,7 +63,7 @@ td{
 				<button class="w3-button w3-red" onclick="location.href='../menu/storySlide?selectionNum=${story.selectionNum}'">감상</button>
 				<button class="w3-button w3-green" onclick="location.href='../analysis/storyAnalysis?selectionNum=${story.selectionNum}'">결과보기</button>
 			<form action="../orderBook/order" method="post">
-				<input type="hidden" class="orderSelectionnum" name="selectionnum" value="1">
+				<input type="hidden" class="orderSelectionnum" name="selectionnum" value="${story.selectionNum}">
 				<button type="submit" class="w3-button w3-yellow" style="margin-top: 3px;">책으로 주문하기</button>
 			</form>
 		</div>
