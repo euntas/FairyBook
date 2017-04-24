@@ -61,8 +61,6 @@
 	<div id="footer">
 
 
-
-
 <nav class="navbar navbar-default " >
 	<footer class="container-fluid bg-4 text-center" style="position: absolute;
 bottom: 0;
