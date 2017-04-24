@@ -23,7 +23,7 @@
 
 <!--Add a navar  -->
 <div id="footer">
-<nav class="navbar">
+<!-- <nav class="navbar">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -41,7 +41,7 @@
       </ul>
     </div>
   </div>
-</nav>
+</nav> -->
 
 <footer class="container-fluid bg-4 text-center">
   <p>Made By <a href="./../">FairyBook.com</a></p> 
