@@ -75,6 +75,9 @@ public class ETCController {
 		logger.debug(etc.toString());
 		int result = 0;
 		result = dao.saveETC(etc);
+		
+		System.out.println("저장되었을까요?? -- saveetc : " + result);
+		
 		return result;
 	}
 }

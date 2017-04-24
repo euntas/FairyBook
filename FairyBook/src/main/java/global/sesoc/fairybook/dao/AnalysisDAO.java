@@ -79,4 +79,9 @@ public class AnalysisDAO {
 		result = mapper.houseAnalysis(selectionNum);
 		return result;
 	}
+
+	public FBResource treeAnalysis(int selectionNum) {
+		AnalysisMapper mapper = sqlSession.getMapper(AnalysisMapper.class); 
+		return mapper.treeAnalysis(selectionNum);
+	}
 }

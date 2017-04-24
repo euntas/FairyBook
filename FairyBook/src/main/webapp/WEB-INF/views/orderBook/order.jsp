@@ -149,16 +149,18 @@ function showCost(){
 }
 
 //장바구니 또는 주문하기 버튼 눌렀을 때
-function updateOrder(state){ //addToCart,makeOrder
+function updateOrder(state){ //addToCart,makeOrder,thumbnail
 	if ($('.cover').attr('isDefault') == 'default') {
 		alert('표지를 만들어주세요');
 		return;
 	}
 	console.log(state);
 	var ordernum = $('#ordernum').val();
-	var cost = $('#bookCost').html();
-	var count = $('#orderCount').val();
-	var totalcost = parseInt(cost)*parseInt(count);
+	if (state != 'thumbnail') {
+		var cost = $('#bookCost').html();
+		var count = $('#orderCount').val();
+		var totalcost = parseInt(cost)*parseInt(count);
+	}
 	$.ajax({
 		url:'updateOrder'
 		,type: 'POST'
@@ -188,6 +190,8 @@ function updateOrder(state){ //addToCart,makeOrder
 				alert(JSON.stringify(e));
 			}
 		}); 
+	}else{
+		location.href="../menu/storyPlay";
 	}
 }
 </script>
@@ -210,7 +214,9 @@ function updateOrder(state){ //addToCart,makeOrder
 <td colspan="3" style="text-align:center;height:50px;font-size: 20px;">${order.title}</td>
 </tr>
 <tr>
-<td rowspan="3" style="width:50%;text-align:right;"><img class="cover img-thumbnail" isDefault="${order.bookcover}" height="60%" alt="cover" src="getBookCover?ordernum=${order.ordernum}"></td>
+<td rowspan="3" style="width:50%;text-align:right;">
+	<center><img class="cover img-thumbnail" isDefault="${order.bookcover}" height="60%" alt="cover" src="getBookCover?ordernum=${order.ordernum}"></center>
+</td>
 </tr>
 <c:if test="${userType == 'parent'}">
 <tr>
@@ -235,6 +241,7 @@ function updateOrder(state){ //addToCart,makeOrder
 <td>
 <button type="button" class="btn btn-primary" onclick="location.href='makeCover?ordernum=${order.ordernum}'">표지 만들기</button>
 <button type="button" class="btn btn-default dropdown">예전 표지 가져오기</button>
+<button type="button" class="btn btn-warning" onclick="updateOrder('thumbnail')">저장하기</button>
 <span class="dropdown-content"></span>
 </td>
 <c:if test="${userType == 'parent'}">

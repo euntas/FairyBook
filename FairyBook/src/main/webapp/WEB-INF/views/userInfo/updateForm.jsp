@@ -16,6 +16,36 @@
 <link href='https://fonts.googleapis.com/css?family=RobotoDraft' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+  
+  <style>
+	  .bg-1 { 
+	    background-color: #1abc9c; /* Green */
+	    color: #ffffff;
+	    margin-top: 8%;
+		}
+		
+		.container-fluid {//패딩
+		    padding-top: 50px;
+		    padding-bottom: 50px;
+		}
+		.navbar {
+		    padding-top: 15px;
+		    padding-bottom: 15px;
+		    border: 0;
+		    border-radius: 0;
+		    margin-bottom: 0;
+		    font-size: 12px;
+		    letter-spacing: 5px;
+		}
+		
+		.navbar-nav li a:hover {
+		    color: #1abc9c !important;
+		}
+		.bg-4 { 
+		    background-color: #2f2f2f;
+		    color: #ffffff;
+		}
+	</style>
 <!--적용 자바스크립트와 스타일  -->
 <link rel="stylesheet" href="../resources/css/joinForm.css">
 <script>
@@ -24,9 +54,9 @@
 		if(confirm('정말 삭제 하시겠습니까?'))
 			location.href='delete';
 	});
-	$('#counsel').on('click',function(){
+	$('#updatesubmit').click(function(){
 		
-			location.href='../analysis/counsel';
+		$( "#updateform" ).submit();
 	});
 	
 	});
@@ -38,6 +68,10 @@ alert('${errorMsg}');
 
 
 $(document).ready(function() {
+	$('#updatesubmit').css('cursor', 'pointer');
+	$('#userDelete').css('cursor', 'pointer');
+	
+	
 	
 	var cBirth = '<c:out value="${update.cBirth}"/>';
 	console.log("ready");
@@ -421,7 +455,7 @@ function formcheck(){
 
 <div id="under">
 	<form enctype="multipart/form-data" action="update" method="post"
-		onsubmit="return formcheck()" class="form-inline">
+		onsubmit="return formcheck()" class="form-inline" id="updateform">
 
 <div style="text-align: center; margin: auto;"><img src="../resources/img/account/update.png" style="width: 300px;height: 50px;"></div>
 <br>
@@ -576,40 +610,26 @@ function formcheck(){
 		<br>
 		<div style="text-align: center;">
 				
-				<input type="submit" value="수정하기"
-				class="btn btn-info">&nbsp; 
-				<input type="button" value="삭제하기" id="userDelete"
-				class="btn btn-info">&nbsp;
-				<input type="button" value="상담하기" id="counsel"
-				class="btn btn-info">&nbsp;  
-					<input type="button" value="취소"
-					onclick="location.href='/fairybook/'" class="btn btn-info">
+				<img src="../resources/img/account/updatebutton.png" id="updatesubmit">
+				&nbsp;
+				<img src="../resources/img/account/deletebutton.png" id="userDelete">
+				&nbsp;
+				<a href="../"><img src="../resources/img/account/cancelbutton.png"></a>
+					
 			</div>
 		
 		
 	</form>
 </div>
+<!--Add a navar  -->
 <nav class="navbar navbar-default navbar-fixed-bottom">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span> 
-      </button>
-      <a class="navbar-brand" href="#">Me</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">WHO</a></li>
-        <li><a href="#">WHAT</a></li>
-        <li><a href="#">WHERE</a></li>
-      </ul>
-    </div>
-  </div>
-	<footer class="container-fluid bg-4 text-center">
+	<footer class="container-fluid bg-4 text-center" 
+style="position: absolute;
+width: 100%;
+height: 100%;">
 	  <p>Made By <a href="../">FairyBook.com</a></p> 
 	</footer>
+	 
 </nav>
 
 </body>

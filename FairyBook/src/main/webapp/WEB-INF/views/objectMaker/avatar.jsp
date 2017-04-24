@@ -30,17 +30,17 @@
 	
 <!-- 만들어진 아바타가 보이는 div 태그 -->
 <div id="avatar">
-<input type="button" value="초기화" id="resetbtn">
+<input type="button" id="resetbtn">
 
 	<!-- 저장버튼 및 초기화버튼이 보이는 div태그 -->
 	<div id="saveArea">
-	<input type="button" value="저장" id="savebtn">
+	<input type="button" id="savebtn">
 	</div>
 </div>
 
 <!-- 아바타 신체부위 선택하는 대분류 div태그 -->
 <div id="category">
-<input id="facebtn" class="category" type="button" value="얼굴"><input id="hairbtn" class="category" type="button" value="헤어"><input id="eyebtn" class="category" type="button" value="눈"><input id="nosebtn" class="category" type="button" value="코"><input id="mouthbtn" class="category" type="button" value="입"><input id="earbtn" class="category" type="button" value="귀"><input id="bodybtn" class="category" type="button" value="몸">
+<input id="facebtn" class="category" type="button"><input id="hairbtn" class="category" type="button"><input id="eyebtn" class="category" type="button"><input id="nosebtn" class="category" type="button"><input id="mouthbtn" class="category" type="button"><input id="earbtn" class="category" type="button"><input id="bodybtn" class="category" type="button">
 </div>
 
 <!-- 실제로 쓸 신체부위 선택하는 소분류 div태그 -->

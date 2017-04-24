@@ -14,6 +14,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!--적용 자바스크립트와 스타일  -->
+<style>
+tr:hover{
+	cursor:pointer;
+}
+</style>
+
 <script>
 	$(function(){
 		bringList(1); //처음엔 page : 1
@@ -185,7 +191,14 @@
 </div>
 
 <!--Footer  -->
+
+<!--Footer  --><div style="position: absolute;
+bottom:0;
+width: 100%;
+height: 30%;">
+<!--Footer  -->
 <c:import url="../main/mainFooter.jsp"></c:import>
+</div>
 
 </body>
 </html> 
