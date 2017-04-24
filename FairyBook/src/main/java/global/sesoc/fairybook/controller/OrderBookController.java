@@ -311,6 +311,7 @@ public class OrderBookController {
 	@RequestMapping(value="cartList",method=RequestMethod.GET)
 	public ArrayList<OrderBook> cartList(@SessionAttribute("loginUser") StoryMaker maker){
 		String id = maker.getId();
+		logger.info("장바구니:{}",id);
 		ArrayList<OrderBook> cart = new ArrayList<>();
 		cart = dao.cartList(id);
 		for (OrderBook orderBook : cart) {

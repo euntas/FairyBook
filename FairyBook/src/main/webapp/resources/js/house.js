@@ -238,10 +238,10 @@ function save(){
 		}
 	}
 	if(roofColor == null){
-		roofColor = 7;
+		roofColor = 0;
 	}
 	if(wallColor == null){
-		wallColor = 7;
+		wallColor = 0;
 	}
 	
 	$.ajax({

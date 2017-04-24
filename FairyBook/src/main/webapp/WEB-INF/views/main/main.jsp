@@ -171,7 +171,7 @@ $(function(){
 
 <!--배너  -->
 <nav class="navbar-fixed-top">
-<div class="container-fluid bg-2 text-center" style="background-image: url('../resources/image/icon/banner.png');height: 102px">
+<div class="container-fluid bg-2 text-center" style="background-image: url('../resources/image/icon/banner.png');height: 100px">
  <a href="../"><img src="../resources/image/icon/bannertitle.png"></a>
 </div>
 </nav>
@@ -210,7 +210,7 @@ $(function(){
 <div style="background-image: url('../resources/image/icon/userbar.png');">
   <center>
   <h3>${loginUser.cnickName}</h3>
-  <img src="./../resources/image/yo.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"><br><!--circle image  -->
+  <img src="../resources/image/yo.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"><br><!--circle image  -->
   <img src="../resources/image/icon/userinfobt.png" id="update">
  <img src="../resources/image/icon/logoutbt.png" id="logout">
   </center>
