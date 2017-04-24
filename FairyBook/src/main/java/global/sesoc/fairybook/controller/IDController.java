@@ -258,7 +258,7 @@ public class IDController {
 		session.removeAttribute("info");
 		logger.info("update:{}",maker);
 		session.setAttribute("loginUser", maker);
-		return "redirect:userInfo/userInfo";
+		return "redirect:userInfo";
 	}
 	
 	/**
