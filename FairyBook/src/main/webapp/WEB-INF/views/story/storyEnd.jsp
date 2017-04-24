@@ -24,8 +24,6 @@
 
 <!--####################여기부터  -->
 
-동화 종료 화면 입니다.
-
 <img alt="동화 종료 그림 나와야" src="./../resources/img/theEnd.jpg" style="width: 100%">
 
 <!--여기까지###########################  -->
@@ -34,9 +32,6 @@
 
 <!--Footer  -->
 <c:import url="../main/mainFooter.jsp"></c:import>
-
-
-<!-- Go to www.addthis.com/dashboard to customize your tools --> 
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58e45cf68c351e8d"></script> 
+ 
 </body>
 </html> 

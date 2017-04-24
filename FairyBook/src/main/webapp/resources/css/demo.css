@@ -118,7 +118,8 @@ body, html, .full {
 	color: #333;
 	background-color: #E8FFFF;
 	text-decoration: none;
-	opacity: 0.5;
+	/* opacity: 0.5; */
+	background-color: rgba( 255, 255, 255, 0.5 );
 	position: fixed;
 	top: 50%;
 	right: 15%;
@@ -141,8 +142,8 @@ body, html, .full {
 	text-decoration: none;
 	opacity: 0.8; */
 	position: fixed;
-	top: 40%;
-	right: 40%;
+	top: 15%;
+	right: 0%;
 	width: 200px;
 	z-index: 99;
 	vertical-align: middle;
@@ -151,6 +152,13 @@ body, html, .full {
               transition: all 0.25s;
 	border-radius: 20%;
 	margin: 0.2%;
+}
+
+.showAvatar{
+	height: auto;
+	z-index: 99; 
+	right: 82%;
+	top: 65%;
 }
 
 /*

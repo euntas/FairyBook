@@ -24,9 +24,10 @@
 			// 가장 처음 씬과 문제를 가져온다.
 			var pageNum = pageflip.options.current;
 			var myStoryNum = ${currentStoryNum};
+			var mySelectionNum =${myselectionNum};
 			
 			// pageflip.js 페이지에 있는 myStoryNum 변수를 초기화해준다.
-			setMyStoryNum(myStoryNum);
+			setMyStoryNum(myStoryNum, mySelectionNum);
 			
 			//기존 진행 중 씬이 있을 경우
 			if( ${firstPageNum != 0}){
@@ -99,6 +100,7 @@
 		    
 
 		}
+		
 
 </script>
 
@@ -119,6 +121,9 @@
 	<!-- 실제 질문 내용 나오는 부분 -->
 	<div id="divForQuiz" class="fixed">
 	</div>
+	
+	<!-- 아바타 그림 나오는 부분 -->
+	<div id="showAvatar" class="showAvatar" style="position: absolute; height: 200px; width: 200px; top: 65%;"></div>
 	
 	<!-- 아바타 내용 나오는 부분 -->
 	<div id="divForAvatar" class="myimage">
@@ -240,6 +245,6 @@
 </script>
 
 <!-- Go to www.addthis.com/dashboard to customize your tools --> 
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58e45cf68c351e8d"></script> 
+<!-- <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58e45cf68c351e8d"></script>  -->
 </body>
 </html> 

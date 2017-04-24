@@ -95,4 +95,8 @@ function music(){
 <button class="btn" id="musicButton" onclick="javascript:music()"></button>
 </div>
 
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58e45cf68c351e8d"></script>
+
+
 </html>
