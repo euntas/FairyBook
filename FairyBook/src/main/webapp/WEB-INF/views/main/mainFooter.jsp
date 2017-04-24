@@ -49,7 +49,6 @@
 <script src="./resources/js/main.js"></script>
 <link rel="stylesheet" href="./resources/css/main.css">
 
-
 <title>Insert title here</title>
 </head>
 
