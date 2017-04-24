@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
 <link href='https://fonts.googleapis.com/css?family=RobotoDraft' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+ 
 <!--적용 자바스크립트와 스타일  -->
 <link rel="stylesheet" href="./resources/css/main.css">
 <script>
@@ -190,18 +190,18 @@ function myFunc(id) {
 
 </script>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="50">
+<body data-spy="scroll" data-target=".navbar" data-offset="50" style="height: 100%;">
 
 <!--상단, 사이드 메뉴  -->
 <!--배너  -->
 <nav class="navbar-fixed-top">
-<div class="container-fluid bg-2 text-center" style="background-image: url('./resources/image/icon/banner.png');height: 102px">
+<div class="container-fluid bg-2 text-center" style="background-image: url('./resources/image/icon/banner.png');width: 100%;height: 100px;">
  <a href="./"><img src="./resources/image/icon/bannertitle.png"></a>
 </div>
 </nav>
 
 
-<div id="under">
+<div id="under" style="min-height: 100%;">
 <!--로그인하지 않았을 때  -->
 <c:if test="${loginUser == null }">
 <nav class="w3-sidebar w3-bar-block w3-collapse w3-card-2" style="z-index:3;width:220px;background-image: url('./resources/image/icon/menubar.png');" id="mySidebar">
@@ -468,30 +468,12 @@ function myFunc(id) {
 
 <!--Footer  -->
 <!--Add a navar  -->
-<nav class="navbar navbar-default">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span> 
-      </button>
-      <a class="navbar-brand" href="#">Me</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">WHO</a></li>
-        <li><a href="#">WHAT</a></li>
-        <li><a href="#">WHERE</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-
-<footer class="container-fluid bg-4 text-center">
-  <p>Made By <a href="./">FairyBook.com</a></p> 
-</footer>
-
+<div style="position: absolute;
+bottom:0;
+width: 100%;
+height: 30%;">
+<!--Footer  -->
+<c:import url="mainFooter.jsp"></c:import>
+</div>
 </body>
 </html> 

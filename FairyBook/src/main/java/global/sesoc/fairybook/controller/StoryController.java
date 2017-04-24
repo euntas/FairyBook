@@ -129,6 +129,7 @@ public class StoryController {
 	public Quiz quizLoading(HttpSession session, int pageNum, Model model) {
 		int storyNum = (int) session.getAttribute("currentStoryNum");
 		int sceneNum = dao.getSceneNumByPageNum(storyNum, pageNum);
+		int selectionNum = (int) session.getAttribute("myselectionNum");
 		System.out.println("스토리넘버: " + storyNum + ", 씬넘버: " + sceneNum);
 		Scene scene = dao.getScene(storyNum, sceneNum); 
 		System.out.println("읽어온 씬: " + scene);
@@ -137,7 +138,31 @@ public class StoryController {
 		
 		// 해당 씬의 퀴즈를 가져온다 (퀴즈 번호가 -1일 경우 퀴즈가 없는 것으로 간주)
 		if(scene.getQuizNum() != -1){
-			quiz = dao.getQuiz(scene.getQuizNum());			
+			quiz = dao.getQuiz(scene.getQuizNum());	
+			
+			// 헨젤과 그레텔에서 27번 씬일 때일 때, 13번 씬에서 선택한 선택지확인후 조작
+			if(storyNum == 1 && sceneNum == 27){
+				SelectionDetail sd = dao.getSelectionDetailBySceneNum(selectionNum, 13);
+				int answerAt13 = sd.getMyAnswer();
+				
+				if(answerAt13 == 1){
+					quiz.setSelect2(null);
+					quiz.setSelect3(null);
+				}
+				else if(answerAt13 == 2){
+					quiz.setSelect1(null);
+					quiz.setSelect3(null);
+				}
+				else if(answerAt13 == 3){
+					quiz.setSelect1(null);
+					quiz.setSelect2(null);
+				}
+				else if(answerAt13 == 4){
+					quiz.setSelect1(null);
+					quiz.setSelect2(null);
+					quiz.setSelect3(null);
+				}
+			}
 		}
 		
 		return quiz;
@@ -246,24 +271,6 @@ public class StoryController {
 					}
 					
 					System.out.println("8번일때 들어옴, answerAt6:" + answerAt6 );
-				}
-				
-				// 현재가 27번 씬(지불하기)일 때, 13번 씬에서 저금통(1번)or 인형(2번)을 선택했을 때 30번 씬으로, 소지품x(4번)은 31번으로, 지갑(3번)일 때 28번으로 간다.
-				if(selectionDetail.get(i).getSceneNum() == currentSceneNum && currentSceneNum == 27){
-					if(answerAt13 == 1 || answerAt13 == 2){
-						nextSceneNum = 30;
-						break;
-					}
-					
-					else if(answerAt13 == 4){
-						nextSceneNum = 31;
-						break;
-					}
-					
-					else if(answerAt13 == 3){
-						nextSceneNum = 28;
-						break;
-					}
 				}
 			}	
 			

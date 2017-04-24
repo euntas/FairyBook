@@ -103,11 +103,11 @@
         .pageflip .flip-part.flip-reverse .side.side-back .page {
           margin-left: -100%; }
   .pageflip a.flip-directional {
-    height: 30px;
+    height: 0px;
     line-height: 30px;
     position: absolute;
     margin-top: -15px;
-    top: 90%;
+    top: 15%;
     z-index: 30;
     background: #fff;
     color: #333;
@@ -121,17 +121,18 @@
     /*커서 바꾸기*/
     cursor: url(http://postfiles9.naver.net/MjAxNzAzMjhfMjY0/MDAxNDkwNjYyMTYyMTE4.bCGt0pjpam6jrn7YyvKpRaoCHx1CbRsmS23hIdkmQ40g.s8ATCxA34KfiheIts97FQHgpOE2q1YD9mmF95aD_W8Eg.PNG.tavstaus/farian.png?type=w3), pointer;
     /* cursor: url(http://gfmarket.phinf.naver.net/sally_special/original_1.png?type=p50_50), pointer;  */
-      opacity: 0.8; }
+      opacity: 1; }
     .pageflip a.flip-directional.flip-next {
+    background-color: rgba(255, 255, 255, 0.5);
       right: 10px; }
     .pageflip a.flip-directional.flip-prev {
       left: 10px; }
   .pageflip a.flip-directional {
-    height: 30px;
+    height: 0px;
     line-height: 30px;
     position: absolute;
     margin-top: -15px;
-    top: 85%;
+    top: 15%;
     background: #fff;
     color: #333;
     padding: 0 10px;
@@ -144,6 +145,7 @@
     .pageflip a.flip-directional:hover {
       opacity: 0.8; }
     .pageflip a.flip-directional.flip-next {
+    background-color: rgba(255, 255, 255, 0.5);
       right: 10px; }
     .pageflip a.flip-directional.flip-prev {
       left: 10px; }

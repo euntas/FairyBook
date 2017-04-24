@@ -14,7 +14,35 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
 <link href='https://fonts.googleapis.com/css?family=RobotoDraft' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+ <style>
+	  .bg-1 { 
+	    background-color: #1abc9c; /* Green */
+	    color: #ffffff;
+	    margin-top: 8%;
+		}
+		
+		.container-fluid {//패딩
+		    padding-top: 50px;
+		    padding-bottom: 50px;
+		}
+		.navbar {
+		    padding-top: 15px;
+		    padding-bottom: 15px;
+		    border: 0;
+		    border-radius: 0;
+		    margin-bottom: 0;
+		    font-size: 12px;
+		    letter-spacing: 5px;
+		}
+		
+		.navbar-nav li a:hover {
+		    color: #1abc9c !important;
+		}
+		.bg-4 { 
+		    background-color: #2f2f2f;
+		    color: #ffffff;
+		}
+	</style>
 <!--적용 자바스크립트와 스타일  -->
 <link rel="stylesheet" href="../resources/css/joinForm.css">
 <script>
@@ -24,7 +52,10 @@ alert('${errorMsg}');
 
 
 $(document).ready(function() {
-	
+	$('#joinsubmit').css('cursor', 'pointer');
+	$('#joinsubmit').click(function() {
+		  $( "#joinform" ).submit();
+	});
 });
 
 function formSubmit1() {
@@ -429,7 +460,7 @@ function formcheck(){
 }
 </script>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="50">
+<body data-spy="scroll" data-target=".navbar" data-offset="50"  style="background-image: url('../resources/img/account/back4.png'); background-repeat: no-repeat; background-size: cover;">
 
 
 
@@ -444,9 +475,10 @@ function formcheck(){
 
 <div id="under">
 	<form enctype="multipart/form-data" action="join" method="post"
-		onsubmit="return formcheck()" class="form-inline">
+		onsubmit="return formcheck()" class="form-inline" id="joinform">
 
-		<div style="text-align: center; margin: auto;"><img src="../resources/img/account/Join.png" style="width: 150px;height: 50px;"></div>
+		<div style="text-align: center; margin: auto;">
+		<img src="../resources/img/account/Join.png" style="width: 150px;height: 50px;"></div>
 		<br>
 		<table style="margin: auto; width:auto;">
 			<tr>
@@ -606,14 +638,12 @@ function formcheck(){
 
 		</table>
 		<br>
-		<div style="text-align: center;">
-				<input
-					type="submit" value="가입하기" class="btn btn-info"> 
-					&nbsp;<input type="button" value="취소"
-					onclick="location.href='/fairybook/'" class="btn btn-info">
+		<div style="text-align: center; margin: auto;">
+				<img src="../resources/img/account/joinbutton.png" id="joinsubmit">
+					&nbsp;<a href="../"><img src="../resources/img/account/cancelbutton.png"></a>
 			</div>
 	</form>
 </div>
-
+<br>
 </body>
 </html>
