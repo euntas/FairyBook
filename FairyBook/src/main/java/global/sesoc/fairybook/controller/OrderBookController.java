@@ -162,6 +162,21 @@ public class OrderBookController {
 	}
 	
 	/**
+	 * 표지 만들 resources 가져오기
+	 * @param ordernum
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value="getCoverResources",method=RequestMethod.GET)
+	public ArrayList<Map<String, String>> getCoverResources(int ordernum){
+		ArrayList<Map<String, String>> data = new ArrayList<>();
+		logger.info("cover resources:{}",ordernum);
+		data = dao.getCoverResources(ordernum);
+		logger.info("cover resources map:{}",data);
+		return data;
+	}
+	
+	/**
 	 * 표지 파일로 저장&DB저장
 	 * @param request
 	 * @param maker
@@ -267,7 +282,7 @@ public class OrderBookController {
 	 * 주문하기 또는 장바구니 담기
 	 * @param ordernum
 	 * @param price
-	 * @param currentstate 'addToCart','makeOrder'
+	 * @param currentstate 'addToCart','makeOrder','thumbnail'
 	 */
 	@ResponseBody
 	@RequestMapping(value="updateOrder",method=RequestMethod.POST)

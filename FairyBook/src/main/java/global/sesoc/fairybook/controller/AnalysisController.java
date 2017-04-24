@@ -127,6 +127,14 @@ public class AnalysisController {
 		return resources;
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="treeAnalysis",method=RequestMethod.GET)
+	public FBResource treeAnalysis(int selectionNum){
+		FBResource tree = dao.treeAnalysis(selectionNum);
+		logger.info("tree:{}",tree);
+		return tree;
+	}
+	
 	/**
 	 * etc 심리분석
 	 * @param selectionNum

@@ -5,6 +5,18 @@
 <!--책표지 만들기 및 주문 mapper: 이지나  -->
 <mapper namespace="global.sesoc.fairybook.mapper.OrderBookMapper">
  
+<select id="getCoverResources" parameterType="int" resultType="HashMap">
+	select 
+		type, path
+	from coverresources
+	where
+		storynum=(
+			select storynum from myselection where selectionnum=(
+					select selectionnum from orderbook where ordernum=#{ordernum}
+				)
+		)
+</select>
+
 <insert id="saveOrder" parameterType="OrderBook">
 	insert into 
 		orderbook
@@ -156,7 +168,7 @@
 						selectionnum = #{selectionnum}
 					)
 			and 
-				id='ryan'
+				id=#{id}
 		)
 	and
 		bookcover != 'default'
