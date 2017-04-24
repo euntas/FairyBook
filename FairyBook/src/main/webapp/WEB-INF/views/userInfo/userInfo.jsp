@@ -36,13 +36,84 @@
 		    color: #ffffff;
 		}
 	</style>
+	
+	<style>
+	
+		
+@import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
+	
+	th {font-family: 'Jeju Hallasan', serif;}
+	td {font-family: 'Jeju Hallasan', serif;}
+	</style>
+	
+	<style>
+	@font-face {
+  font-family: 'LotteMartHappy';
+  font-style: normal;
+  font-weight: 400;
+  src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'LotteMartHappy';
+  font-style: normal;
+  font-weight: 700;
+  src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyBold.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyBold.woff') format('woff');
+}
+
+.lottemarthappy * {
+ font-family: 'LotteMartHappy', sans-serif;
+}
+
+.normal {
+ font-style: normal;
+}
+
+.w250 {
+ font-weight: 250;
+}
+
+.w300 {
+ font-weight: 300;
+}
+
+.w350 {
+ font-weight: 350;
+}
+
+.w400 {
+ font-weight: 400;
+}
+
+.w500 {
+ font-weight: 500;
+}
+
+.w700 {
+ font-weight: 700;
+}
+
+.w800 {
+ font-weight: 800;
+}
+
+.w900 {
+ font-weight: 900;
+}
+
+li span {
+ line-height: 1.8;
+ font-size: 1.3em;
+}
+	</style>
 <!--적용 자바스크립트와 스타일  -->
 <link rel="stylesheet" href="../resources/css/joinForm.css">
 
 
 <title>userInfo</title>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="50" style="height: 100%">
+<body data-spy="scroll" data-target=".navbar" data-offset="50" style="height: 100%; background-image: url('../resources/img/account/back4.png'); background-repeat: no-repeat; background-size: cover;">
+
 
 
 
@@ -55,64 +126,65 @@
 
 
 <div id="under">
+<br>
 <div style="text-align: center; margin: auto;"><img src="../resources/img/account/info.png" style="width: 150px;height: 50px;"></div>
 <br>
 	
-		<table style="margin:auto; border: 1px solid black; width: 40%; height:350px;">
+		<table style="margin:auto; background-color:#B4E5FF; opacity:20%; border-radius:20px; width: 40%; height:350px;">
 			<tr>
-				<td class="firstRow">ID</td>
+				<th class="firstRow">ID</th>
 				<td class="secondRow">
 				<span id="id">${info.id}</span></td>
 			</tr>
 			<tr>
-				<td class="firstRow">닉네임</td>
+				<th class="firstRow">닉네임</th>
 				<td class="secondRow">
 				${info.cnickName}</td>
 			</tr>
 			<tr>
-				<td class="firstRow">아이 이름</td>
+				<th class="firstRow">아이 이름</th>
 				<td class="secondRow">
 				${info.cName}</td>				
 			</tr>
 			<tr>
-				<td class="firstRow">아이 생일</td>
+				<th class="firstRow">아이 생일</th>
 				<td class="secondRow">
 				${info.cBirth}
 				</td>
 		
 			</tr>
 			<tr>
-				<td class="firstRow">보호자 이름</td>
+				<th class="firstRow">보호자 이름</th>
 				<td class="secondRow">${info.pName}</td>
 			
 			</tr>
 			<tr>
-				<td class="firstRow">보호자 닉네임</td>
+				<th class="firstRow">보호자 닉네임</th>
 				<td class="secondRow">${info.pnickName}
 				</td>
 				
 			</tr>
 			<tr>
-				<td class="firstRow">이메일</td>
+				<th class="firstRow">이메일</th>
 				<td class="secondRow">${info.email}
 				</td>
 			
 			</tr>
 			<tr>
-				<td class="firstRow">전화번호</td>
+				<th class="firstRow">전화번호</th>
 				<td class="secondRow">
 				${info.phone}
 				</td>
 			</tr>
 			<tr>
-				<td class="firstRow">주소</td>
+				<th class="firstRow">주소</th>
 				<td class="secondRow">${info.address}
 				</td>
 				
 			</tr>
 			<c:if test="${info.originalProfile!=null }">
 			<tr>
-				<td class="firstRow">사진</td>
+				<th class="firstRow">사진</th>
 				<td class="secondRow">
 				${info.originalProfile}
 				</td>
