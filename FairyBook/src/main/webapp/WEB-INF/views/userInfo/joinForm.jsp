@@ -435,10 +435,12 @@ function formcheck(){
 
 <!--배너  -->
 <nav class="navbar-fixed-top">
-<div class="container-fluid bg-2 text-center">
-  <a href='../'><img src="../resources/image/title.PNG"></a>
+<div class="container-fluid bg-2 text-center" style="background-image: url('../resources/image/icon/banner.png');height: 102px">
+ <a href="../"><img src="../resources/image/icon/bannertitle.png"></a>
 </div>
 </nav>
+
+
 
 <div id="under">
 	<form enctype="multipart/form-data" action="join" method="post"

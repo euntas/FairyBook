@@ -83,10 +83,12 @@ function findPW(){
 
 <!--배너  -->
 <nav class="navbar-fixed-top">
-<div class="container-fluid bg-2 text-center">
-  <a href='../'><img src="../resources/image/title.PNG"></a>
+<div class="container-fluid bg-2 text-center" style="background-image: url('../resources/image/icon/banner.png');height: 102px">
+ <a href="../"><img src="../resources/image/icon/bannertitle.png"></a>
 </div>
 </nav>
+
+
 
 <div id="under" style="text-align: center; margin: auto;">
 <div style="text-align: center; margin: auto;"><img src="../resources/img/account/findInfo.png" style="width: 300px;height: 50px;"></div>
