@@ -43,6 +43,7 @@
 <input id="facebtn" class="category" type="button"><input id="hairbtn" class="category" type="button"><input id="eyebtn" class="category" type="button"><input id="nosebtn" class="category" type="button"><input id="mouthbtn" class="category" type="button"><input id="earbtn" class="category" type="button"><input id="bodybtn" class="category" type="button">
 </div>
 
+
 <!-- 실제로 쓸 신체부위 선택하는 소분류 div태그 -->
 <div id="detail">
 만들 부위를 선택해 주세요
