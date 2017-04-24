@@ -96,6 +96,7 @@ function draw(){
 	etc += '<area shape="rect" coords="517,259,563,305" onclick="point(12)" target="_blank">';
 	etc += '</map>';
 	
+	
 	$('#etc').html(etc);
 	$('#resetbtn').on('click', reset);
 	$('#savebtn').on('click', save);
