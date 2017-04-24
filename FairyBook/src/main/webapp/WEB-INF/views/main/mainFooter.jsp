@@ -46,8 +46,8 @@
 		}
 	</style>
 <!--적용 자바스크립트와 스타일  -->
-<script src="./../resources/js/main.js"></script>
-<link rel="stylesheet" href="./../resources/css/main.css">
+<script src="./resources/js/main.js"></script>
+<link rel="stylesheet" href="./resources/css/main.css">
 
 
 <title>Insert title here</title>
