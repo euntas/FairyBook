@@ -10,7 +10,35 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
 <link href='https://fonts.googleapis.com/css?family=RobotoDraft' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+ <style>
+	  .bg-1 { 
+	    background-color: #1abc9c; /* Green */
+	    color: #ffffff;
+	    margin-top: 8%;
+		}
+		
+		.container-fluid {//패딩
+		    padding-top: 50px;
+		    padding-bottom: 50px;
+		}
+		.navbar {
+		    padding-top: 15px;
+		    padding-bottom: 15px;
+		    border: 0;
+		    border-radius: 0;
+		    margin-bottom: 0;
+		    font-size: 12px;
+		    letter-spacing: 5px;
+		}
+		
+		.navbar-nav li a:hover {
+		    color: #1abc9c !important;
+		}
+		.bg-4 { 
+		    background-color: #2f2f2f;
+		    color: #ffffff;
+		}
+	</style>
 <!--적용 자바스크립트와 스타일  -->
 <link rel="stylesheet" href="../resources/css/joinForm.css">
 
@@ -34,30 +62,17 @@
 <h1 style="font-family: fantasy; ">FAIRY BOOK</h1>
 <h2 style="font-family: fantasy; font-stretch: inherit;">가입을 환영합니다.</h2>
 <p>
-	<input type="button" value="로그인" onclick="location.href='login'" class="btn btn-info"> &nbsp;
-	<input type="button" value="메인으로" onclick="location.href='/fairybook/'" class="btn btn-info">
-
+	<a href="login"><img src="../resources/img/account/loginbutton.png"></a>
+	&nbsp;
+	<a href="../"><img src="../resources/img/account/tomainbutton.png"></a>
 </p>
 </div>
+<!--Add a navar  -->
 <nav class="navbar navbar-default navbar-fixed-bottom">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span> 
-      </button>
-      <a class="navbar-brand" href="#">Me</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">WHO</a></li>
-        <li><a href="#">WHAT</a></li>
-        <li><a href="#">WHERE</a></li>
-      </ul>
-    </div>
-  </div>
-	<footer class="container-fluid bg-4 text-center">
+	<footer class="container-fluid bg-4 text-center" 
+style="position: absolute;
+width: 100%;
+height: 100%;">
 	  <p>Made By <a href="../">FairyBook.com</a></p> 
 	</footer>
 </nav>

@@ -15,7 +15,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "RobotoDraft", "Roboto", sans-serif;}
 	    text-align:center;
 		}
 .bg-2 { 
-		    background-color: rgb(255,255,70); /* yellow */
+		    background-color: rgba(0,0,0,0); /* yellow */
 		    color: rgb(0,76,112);
 		    padding-top: 20px;
 		    padding-bottom: 20px;
@@ -34,7 +34,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "RobotoDraft", "Roboto", sans-serif;}
 		}
 #footer{
 	position: relative;
-	bottom: 0;
+	bottom: 0px;
 	left: 0;
 	right: 0;
 }

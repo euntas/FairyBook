@@ -14,6 +14,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!--적용 자바스크립트와 스타일  -->
+<style>
+tr:hover{
+	cursor:pointer;
+}
+</style>
+
 <script>
 	$(function(){
 		bringList(1); //처음엔 page : 1
@@ -144,7 +150,7 @@
 <!--상단, 사이드 메뉴  -->
 <c:import url="../main/main.jsp"></c:import>
 <!-- Page content -->
-<div class="w3-main" style="margin-left:230px;">
+<div class="w3-main" style="margin-left:230px;height:1000px;">
 	<i class="fa fa-bars w3-button w3-white w3-hide-large w3-xlarge w3-margin-left w3-margin-top" onclick="w3_open()"></i>
 <!--####################여기부터  -->
 <div class="container">
@@ -185,7 +191,14 @@
 </div>
 
 <!--Footer  -->
+
+<!--Footer  --><div style="position: absolute;
+bottom:0;
+width: 100%;
+height: 30%;">
+<!--Footer  -->
 <c:import url="../main/mainFooter.jsp"></c:import>
+</div>
 
 </body>
 </html> 

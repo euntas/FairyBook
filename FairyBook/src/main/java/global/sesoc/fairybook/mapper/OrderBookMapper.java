@@ -35,4 +35,6 @@ public interface OrderBookMapper {
 
 	public int insertConfirmedOrder(Map<String, Object> data); //주문완료 시 주문내역에 저장하기
 
+	public ArrayList<Map<String, String>> getCoverResources(int ordernum);
+
 }

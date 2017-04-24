@@ -27,4 +27,6 @@ public interface AnalysisMapper {
 
 	public ArrayList<FBResource> houseAnalysis(int selectionNum);
 
+	public FBResource treeAnalysis(int selectionNum);
+
 }

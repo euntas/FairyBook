@@ -15,9 +15,6 @@
 
 <script>
 
-function alerty(){
-	alert('힝');
-}
 </script>
 
 <!--적용 자바스크립트와 스타일  -->

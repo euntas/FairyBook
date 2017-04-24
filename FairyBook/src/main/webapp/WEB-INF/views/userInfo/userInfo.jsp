@@ -11,14 +11,38 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
 <link href='https://fonts.googleapis.com/css?family=RobotoDraft' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+ 
+  <style>
+	
+		.container-fluid {//패딩
+		    padding-top: 50px;
+		    padding-bottom: 50px;
+		}
+		.navbar {
+		    padding-top: 15px;
+		    padding-bottom: 15px;
+		    border: 0;
+		    border-radius: 0;
+		    margin-bottom: 0;
+		    font-size: 12px;
+		    letter-spacing: 5px;
+		}
+		
+		.navbar-nav li a:hover {
+		    color: #1abc9c !important;
+		}
+		.bg-4 { 
+		    background-color: #2f2f2f;
+		    color: #ffffff;
+		}
+	</style>
 <!--적용 자바스크립트와 스타일  -->
 <link rel="stylesheet" href="../resources/css/joinForm.css">
 
 
 <title>userInfo</title>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="50">
+<body data-spy="scroll" data-target=".navbar" data-offset="50" style="height: 100%">
 
 
 
@@ -100,35 +124,21 @@
 			<br>
 				<div style="text-align: center;">
 				<c:if test="${userType == 'parent'}">
-				<input type="button" value="수정하기" onclick="location.href='update'" class="btn btn-info"> 
+				<a href="update"><img src="../resources/img/account/updatebutton.png"></a>
 				
 				</c:if>
-					<input type="button" value="메인으로"
-					onclick="location.href='/fairybook/'" class="btn btn-info"></div>
+					<a href="../"><img src="../resources/img/account/tomainbutton.png"></a></div>
 			
 
 		
 
 </div>
-<nav class="navbar navbar-default navbar-fixed-bottom">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span> 
-      </button>
-      <a class="navbar-brand" href="#">Me</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">WHO</a></li>
-        <li><a href="#">WHAT</a></li>
-        <li><a href="#">WHERE</a></li>
-      </ul>
-    </div>
-  </div>
-	<footer class="container-fluid bg-4 text-center">
+<!--Add a navar  -->
+<nav class="navbar navbar-default navbar-fixed-bottom" style="position: absolute;
+bottom:0;
+width: 100%;
+height: 5%;">
+	<footer class="container-fluid bg-4 text-center" >
 	  <p>Made By <a href="../">FairyBook.com</a></p> 
 	</footer>
 </nav>

@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-  <title>Bootstrap Theme Simply Me</title>
+  <title>로그인</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -12,7 +12,7 @@
   
   <style>
 	  .bg-1 { 
-	    background-color: #1abc9c; /* Green */
+	    
 	    color: #ffffff;
 	    margin-top: 8%;
 		}
@@ -43,8 +43,10 @@
 	<script>
 		$(function(){
 			//login버튼 이벤트
+			$('#login').css('cursor', 'pointer');
 			$('#login').on('click',login);
 			//home버튼 이벤트
+			$('#home').css('cursor', 'pointer');
 			$('#home').on('click',function(){
 				location.href = "../../fairybook";
 			});
@@ -100,8 +102,13 @@
 	</script>
 </head>
 <body class="container-fluid bg-1 text-center">
+<nav class="navbar-fixed-top">
+<div class="container-fluid bg-2 text-center" style="background-image: url('../resources/image/icon/banner.png');height: 102px">
+ <a href="../"><img src="../resources/image/icon/bannertitle.png"></a>
+</div>
+</nav>
 <div class="container-fluid bg-1 text-center">
-  <h3>Who Am I?</h3>
+  
   <img src="../resources/image/pc.jpg" alt="img" class="img-responsive img-circle" style="display:inline"><br><br> <!--circle image  -->
   <!-- 아이디,패스워드 입력란 -->
    <center>
@@ -115,8 +122,8 @@
   </div><br>
   </center>
   <!--버튼 및 링크  -->
-  <button type="button" id="login" class="btn btn-success">LOGIN</button>
-  <button type="button" id="home" class="btn btn-warning">HOME</button>
+  <img src="../resources/img/account/loginbutton.png" id="login">
+  <img src="../resources/img/account/tomainbutton.png" id="home">
   <p><b><a href="findMyInfo">ID/패스워드 찾기</a></b> 
   <b><a href="join">회원가입</a></b></p>
 </div>
@@ -124,24 +131,10 @@
 
 <!--Add a navar  -->
 <nav class="navbar navbar-default navbar-fixed-bottom">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span> 
-      </button>
-      <a class="navbar-brand" href="#">Me</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">WHO</a></li>
-        <li><a href="#">WHAT</a></li>
-        <li><a href="#">WHERE</a></li>
-      </ul>
-    </div>
-  </div>
-	<footer class="container-fluid bg-4 text-center">
+	<footer class="container-fluid bg-4 text-center" 
+style="position: absolute;
+width: 100%;
+height: 50%;">
 	  <p>Made By <a href="../">FairyBook.com</a></p> 
 	</footer>
 </nav>
