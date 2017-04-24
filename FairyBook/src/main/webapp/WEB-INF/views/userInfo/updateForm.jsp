@@ -441,7 +441,8 @@ function formcheck(){
 }
 </script>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="50">
+<body data-spy="scroll" data-target=".navbar" data-offset="50" style="background-image: url('../resources/img/account/back4.png'); background-repeat: no-repeat; background-size: cover;">
+
 
 
 
