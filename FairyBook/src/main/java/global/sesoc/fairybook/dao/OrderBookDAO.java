@@ -1,6 +1,7 @@
 package global.sesoc.fairybook.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -135,6 +136,13 @@ public class OrderBookDAO {
 		int result = 0;
 		OrderBookMapper mapper = sqlSession.getMapper(OrderBookMapper.class);
 		result = mapper.insertConfirmedOrder(data);
+		return result;
+	}
+
+	public ArrayList<Map<String, String>> getCoverResources(int ordernum) {
+		ArrayList<Map<String, String>> result = new ArrayList<>();
+		OrderBookMapper mapper = sqlSession.getMapper(OrderBookMapper.class);
+		result = mapper.getCoverResources(ordernum);
 		return result;
 	}
 

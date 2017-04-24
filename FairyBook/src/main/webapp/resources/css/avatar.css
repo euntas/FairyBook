@@ -7,7 +7,7 @@
 	width : auto;
 	height: 500px;
 	border: 1px solid black;
-	background-image: url("../img/avatar/background.jpg");
+	background-image: url("../img/avatar/background.png");
 	background-size: 100% 100%; 
 	background-repeat: no-repeat;
 	background-color: rgba( 255, 255, 255, 0.8 );
@@ -23,7 +23,7 @@ img{
 #face{
 	position: absolute;
 	left: 48%;
-	top: 20%;
+	top: 30%;
 	z-index: 3;
 }
 
@@ -31,7 +31,7 @@ img{
 #hair{
 	position: absolute;
 	left: 48%;
-	top: 20%;
+	top: 30%;
 	z-index: 1;
 }
 
@@ -39,7 +39,7 @@ img{
 #eye{
 	position: absolute;
 	left: 48%;
-	top: 20%;
+	top: 30%;
 	z-index: 4;
 }
 
@@ -47,7 +47,7 @@ img{
 #nose{
 	position: absolute;
 	left: 48%;
-	top: 20%;
+	top: 30%;
 	z-index: 5;
 }
 
@@ -55,7 +55,7 @@ img{
 #mouth{
 	position: absolute;
 	left: 48%;
-	top: 20%;
+	top: 30%;
 	z-index: 6;
 }
 
@@ -63,7 +63,7 @@ img{
 #ear{
 	position: absolute;
 	left: 48%;
-	top: 20%;
+	top: 30%;
 	z-index: 2;
 }
 
@@ -71,7 +71,7 @@ img{
 #body{
 	position: absolute;
 	left: 48%;
-	top: 20%;
+	top: 30%;
 	z-index: 2;
 }
 
@@ -83,6 +83,63 @@ img{
 	border: 1px solid black;
 	top: 60%;
 }
+
+/* 얼굴 버튼 */
+#facebtn{
+	background-image:url('../img/util/facebtn.png');
+	background-color: rgba(0,0,0,0);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+/* 헤어 버튼 */
+#hairbtn{
+	background-image:url('../img/util/hairbtn.png');
+	background-color: rgba(0,0,0,0);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+/* 눈 버튼 */
+#eyebtn{
+	background-image:url('../img/util/eyebtn.png');
+	background-color: rgba(0,0,0,0);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+/* 코 버튼 */
+#nosebtn{
+	background-image:url('../img/util/nosebtn.png');
+	background-color: rgba(0,0,0,0);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+/* 입 버튼 */
+#mouthbtn{
+	background-image:url('../img/util/mouthbtn.png');
+	background-color: rgba(0,0,0,0);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+/* 귀 버튼 */
+#earbtn{
+	background-image:url('../img/util/earbtn.png');
+	background-color: rgba(0,0,0,0);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+/* 몸 버튼 */
+#bodybtn{
+	background-image:url('../img/util/bodybtn.png');
+	background-color: rgba(0,0,0,0);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
 
 /* 해당 신체부위의 디테일 선택하는 영역 */
 #detail{
@@ -96,8 +153,8 @@ img{
 /* 저장버튼이 있는 영역 */
 #saveArea{
 	margin: 0px;
-	width : 15%;
-	height: 15%;
+	width : 100px;
+	height: 100px;
 	float: right;
 }
 /* 저장 버튼 */
@@ -105,19 +162,27 @@ img{
 	width : 99%;
 	height: 99%;
 	display: none;
+	background-image:url('../img/util/savebtn.png');
+	background-color: rgba(0,0,0,0);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
 }
 
 /* 리셋 버튼 */
 #resetbtn{
-	width : 15%;
-	height: 15%;
+	width : 100px;
+	height: 100px;
+	background-image:url('../img/util/resetbtn.png');
+	background-color: rgba(0,0,0,0);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
 }
 
 
 /* 색 선택하는 영역 */
 #color{
 	margin: 0px;
-	width : 29%;
+	width : 25%;
 	height: 150px;
 	float: right;
 }
@@ -127,6 +192,9 @@ img{
 	margin: 0px;
 	width : 33.3%;
 	height: 33.3%;
+	background-color: rgba(0,0,0,0);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
 }
 
 /* 대분류 버튼 클래스 */
@@ -134,7 +202,6 @@ img{
 	margin: 0px;
 	width : 14.28%;
 	height: 99%;
-
 }
 
 /* db에서 가져온 그림들 */
@@ -142,49 +209,4 @@ img{
 	margin: 0px;
 	width : 100px;
 	height: 100px;
-}
-
-/* 빨강버튼 */
-#red{
-	background-color: red;
-}
-
-/* 주황버튼 */
-#orange{
-	background-color: orange;
-}
-
-/* 노랑버튼 */
-#yellow{
-	background-color: yellow;
-}
-
-/* 초록버튼 */
-#green{
-	background-color: green;
-}
-
-/* 파랑버튼 */
-#blue{
-	background-color: blue;
-}
-
-/* 보라버튼 */
-#purple{
-	background-color: purple;
-}
-
-/* 흰색버튼 */
-#white{
-	background-color: white;
-}
-
-/* 회색버튼 */
-#gray{
-	background-color: gray;
-}
-
-/* 검정버튼 */
-#black{
-	background-color: black;
 }

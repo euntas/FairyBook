@@ -42,6 +42,7 @@
 	      </div>
 	    </div>
 	    
+	    
 	    <div class="w3-third w3-margin-bottom">
 	      <img src="../resources/image/snowwhitetitle.jpg" alt="Norway" style="width:100%">
 	      <div class="w3-container w3-white">
@@ -65,7 +66,12 @@
 </div>
 
 <!--Footer  -->
+<div style="position: absolute;
+bottom:0;
+width: 100%;
+height: 30%;">
+<!--Footer  -->
 <c:import url="../main/mainFooter.jsp"></c:import>
-
+</div>
 </body>
 </html> 

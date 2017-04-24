@@ -182,15 +182,15 @@ function draw(){
 	var color = '';
 	for(var i in colorObject){
 		if($(this).attr('name').indexOf(colorObject[i])!=-1){
-			color += '<input id="'+$(this).attr('name')+'ColorRed" class="color" type="button" style="background-color: red;">';
-			color += '<input id="'+$(this).attr('name')+'ColorOrange" class="color" type="button" style="background-color: orange;">';
-			color += '<input id="'+$(this).attr('name')+'ColorYellow" class="color" type="button" style="background-color: yellow;"><br>';
-			color += '<input id="'+$(this).attr('name')+'ColorGreen" class="color" type="button" style="background-color: green;">';
-			color += '<input id="'+$(this).attr('name')+'ColorBlue" class="color" type="button" style="background-color: blue;">';
-			color += '<input id="'+$(this).attr('name')+'ColorPurple" class="color" type="button" style="background-color: purple;"><br>';
-			color += '<input id="'+$(this).attr('name')+'ColorWhite" class="color" type="button" style="background-color: white;">';
-			color += '<input id="'+$(this).attr('name')+'ColorGray" class="color" type="button" style="background-color: gray;">';
-			color += '<input id="'+$(this).attr('name')+'ColorBlack" class="color" type="button" style="background-color: black;">';
+			color += '<input id="'+$(this).attr('name')+'ColorRed" class="color" type="button" style="background-image:url(\'../resources/img/util/redbtn.png\'">';
+			color += '<input id="'+$(this).attr('name')+'ColorOrange" class="color" type="button" style="background-image:url(\'../resources/img/util/orangebtn.png\'">';
+			color += '<input id="'+$(this).attr('name')+'ColorYellow" class="color" type="button" style="background-image:url(\'../resources/img/util/yellowbtn.png\'">';
+			color += '<input id="'+$(this).attr('name')+'ColorGreen" class="color" type="button" style="background-image:url(\'../resources/img/util/greenbtn.png\'">';
+			color += '<input id="'+$(this).attr('name')+'ColorBlue" class="color" type="button" style="background-image:url(\'../resources/img/util/bluebtn.png\'">';
+			color += '<input id="'+$(this).attr('name')+'ColorPurple" class="color" type="button" style="background-image:url(\'../resources/img/util/purplebtn.png\'">';
+			color += '<input id="'+$(this).attr('name')+'ColorWhite" class="color" type="button" style="background-image:url(\'../resources/img/util/whitebtn.png\'">';
+			color += '<input id="'+$(this).attr('name')+'ColorGray" class="color" type="button" style="background-image:url(\'../resources/img/util/graybtn.png\'">';
+			color += '<input id="'+$(this).attr('name')+'ColorBlack" class="color" type="button" style="background-image:url(\'../resources/img/util/blackbtn.png\'">';
 		}
 	}
 	$('#color').html(color);
@@ -232,7 +232,7 @@ function checkSelection(){
 
 //reset버튼을 누르면 그리던 아바타를 초기화한다
 function reset(){
-	var avatar = '<input type="button" value="초기화" id="reset">';
+	var avatar = '<input type="button" id="resetbtn">';
 	$('#avatar').html(avatar);
 }
 

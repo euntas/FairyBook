@@ -26,7 +26,6 @@
 		<typeAlias type="global.sesoc.fairybook.vo.OrderBook" alias="OrderBook" />
 		<typeAlias type="global.sesoc.fairybook.vo.ConfirmedOrderInfo" alias="ConfirmedOrderInfo" />
 		<typeAlias type="global.sesoc.fairybook.vo.SolvedQuiz" alias="SolvedQuiz" />
-		<typeAlias type="java.util.Map" alias="Map" />
 		<typeAlias type="java.util.HashMap" alias="HashMap" />
 	</typeAliases>
 	

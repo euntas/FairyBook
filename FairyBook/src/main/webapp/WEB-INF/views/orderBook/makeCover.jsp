@@ -53,20 +53,37 @@ canvas{
 		init();
 	});
 	
-	//사진 불러오기
 	function init(){
+		$.ajax({
+			url:'getCoverResources',
+			type:'GET',
+			data:{ordernum:${ordernum}},
+			dataType:'json',
+			success: coverResources,
+			error: function(e){
+				alert(JSON.stringify(e));
+			}
+		});
+	}
+	
+	//사진 불러오기
+	function coverResources(paths){
 		var bg = "<div class='well well-sm'>원하는 배경을 클릭하세요!</div>";
-		bg += "<img src='../resources/img/bg1.jpg' width='200px' sel='bg'> "
-		bg += "<img src='../resources/img/bg2.jpg' width='200px' sel='bg'> "
-		$('#cover_bg').html(bg);
 		var ch = "<div class='well well-sm'>원하는 캐릭터를 클릭한 후 드래그해보세요!</div>";
-		ch += "<img src='../resources/img/book/gretel1.png' width='200px' sel='ch'>";
-		ch += "<img src='../resources/img/book/hansel.png' width='200px' sel='ch'>";
-		ch += "<img src='../resources/img/book/hiyoko.png' width='200px' sel='ch'>";
-		ch += "<img src='../resources/img/book/yo.jpg' width='200px' sel='ch'>";
-		$('#cover_ch').html(ch);
 		var tt = "<div class='well well-sm'>원하는 타이틀을 클릭하세요!</div>";
-		tt += "<img src='../resources/img/book/title1.png' width='200px' sel='tt'>";
+		$.each(paths,function(i,p){
+			console.log(p.TYPE);
+			if (p.TYPE == 'background') {
+				console.log(p.PATH);
+				bg += "<img src='"+p.PATH+"' width='200px' sel='bg'> ";
+			}else if(p.TYPE == 'title'){
+				tt += "<img src='"+p.PATH+"' width='200px' height='auto' sel='tt'> ";
+			}else if(p.TYPE == 'character'){
+				ch += "<img src='"+p.PATH+"' width='200px' sel='ch'> ";
+			}
+		});
+		$('#cover_bg').html(bg);
+		$('#cover_ch').html(ch);
 		$('#cover_tt').html(tt);
 		$('img').on('click',selected);
 	}
