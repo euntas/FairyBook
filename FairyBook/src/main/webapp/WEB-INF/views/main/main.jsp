@@ -230,7 +230,6 @@ $(function(){
  <a href="../menu/storyPlay"><img src="../resources/image/icon/storyplay.png" id="storyplay"></a>
  <br><br>
  <a href="../quiz/quizList"><img src="../resources/image/icon/quizlist.png" id="quizlist"></a>
- 
   
 </nav>
 </c:if>
