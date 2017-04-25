@@ -256,8 +256,6 @@ function save(){
                 data: {pageNum: 1},
                 dataType:'json',
                 success: function(){
-                   alert("플립 성공 들어옴");
-                   alert('selectionDetail 생성====');
                    location.href='../story/storyStart?storyNum=1';
                 },
                 error: function(e){
