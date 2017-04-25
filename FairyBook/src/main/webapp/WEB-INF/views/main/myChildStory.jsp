@@ -60,6 +60,7 @@ td{
 				<c:when test="${story.storyNum==3}">빨간 마스크</c:when>
 			</c:choose>
 			
+			
 			</h3>
 			<h6 class="w3-opacity">${story.endDate}</h6>
 				<button class="w3-button w3-red" onclick="location.href='../menu/storySlide?selectionNum=${story.selectionNum}'">감상</button>
