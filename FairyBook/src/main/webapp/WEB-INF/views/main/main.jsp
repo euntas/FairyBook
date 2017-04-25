@@ -230,7 +230,6 @@ $(function(){
  <a href="../menu/storyPlay"><img src="../resources/image/icon/storyplay.png" id="storyplay"></a>
  <br><br>
  <a href="../quiz/quizList"><img src="../resources/image/icon/quizlist.png" id="quizlist"></a>
- 
   
 </nav>
 </c:if>
@@ -245,6 +244,8 @@ $(function(){
  <img src="../resources/image/icon/logoutbt.png" id="logout">
   </center>
   <br><br>
+  
+  
   </div>
   <a href="javascript:void(0)" onclick="w3_close()" title="Close Sidemenu" 
   class="w3-bar-item w3-button w3-hide-large w3-large">Close <i class="fa fa-remove"></i></a>
