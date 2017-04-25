@@ -74,6 +74,7 @@ img[id*='wall']{
 </style>
 
 <script>
+var selectionNum = ${selectionNum};
 /* 색 결과를 위한 정보 */
 //색깔 이름 배열
 var colorArray = [];
@@ -102,7 +103,7 @@ function getColorName(){
 	$.ajax({
 		url:'colorGraph',
 		type:'GET',
-		data: {selectionNum: ${selectionNum}}, 
+		data: {selectionNum: selectionNum}, 
 		dataType:'json',
 		success:function(color){
 			colorArray = color.colorName;
@@ -132,9 +133,7 @@ function allColor(){
 	input += '<div class="col-md-3">';
 	input += '<ul class="nav nav-pills nav-stacked">';
 	$.each(colorArray,function(i,c){
-		input += '<li><a data-toggle="pill" onclick="eachColor(';
-		input += "'"+i+"'";
-		input += ')">'+c+'</a></li>';
+		input += '<li><a data-toggle="pill" onclick="eachColor(\''+i+'\')">'+c+'</a></li>';
 	});
  	input += '</ul></div>';
  	input += '<div class="tab-content">';
@@ -155,6 +154,7 @@ function eachColor(i){
 function getAnalysis(i){
 	return $.ajax({
 		url:'colorAnalysis',
+		type:'GET',
 		data: {colornum:i},
 		dataType:'text',
 		error: function(e){
@@ -189,7 +189,7 @@ function menu2(){
 	$.ajax({
 		url: 'houseAnalysis',
 		type: 'GET',
-		data: {selectionNum: ${selectionNum}}, 
+		data: {selectionNum: selectionNum}, 
 		dataType: 'json',
 		success: showHouse,
 		error: function(e){
@@ -222,8 +222,7 @@ function showHouse(house){
 			input += '<area shape="rect" coords="214,146,245,300" onclick="housePoint(\'' + house[i].analysis + '\')" target="_blank">';
 		} 
 		if(strName.indexOf('chimney') != -1){
-			console.log(house[i].analysis);
-			input += '<area shape="rect" coords="165,60,194,84" onclick="housePoint(\'' + house[i].analysis + '\')" target="_blank">';
+	         input += '<area shape="rect" coords="162,60,196,88" onclick="housePoint(\'' + house[i].analysis + '\')" target="_blank">';
 		}
 		if(strName.indexOf('door01') != -1){
 			input += '<area shape="rect" coords="180,252,208,300" onclick="housePoint(\'' + house[i].analysis + '\')" target="_blank">';
@@ -249,7 +248,7 @@ function showHouse(house){
 		if(strName.indexOf('window04') != -1){
 			input += '<area shape="rect" coords="74,181,131,212" onclick="housePoint(\'' + house[i].analysis + '\')" target="_blank">';
 		}
-	}
+	}//for
 	
 	$('#showHouse').html(input);
 }
@@ -265,7 +264,7 @@ function menu3(){
 	$.ajax({
 		url:'treeAnalysis',
 		type:'GET',
-		data: {selectionNum: ${selectionNum}}, 
+		data: {selectionNum: selectionNum}, 
 		dataType: 'json',
 		success: showTree,
 		error: function(e){
@@ -277,7 +276,6 @@ function menu3(){
 function showTree(tree){
 	var image = '<img src="'+tree.path+'">';
 	var analysis = tree.analysis;
-	
 	$('#showTree').html(image);
 	$('#htpSpecificT').html(analysis);
 }
@@ -299,7 +297,7 @@ function bringAvatar(){
 	$.ajax({
 		url: 'avatarAnalysis',
 		type: 'GET',
-		data: {selectionNum: ${selectionNum}}, 
+		data: {selectionNum: selectionNum}, 
 		dataType: 'json',
 		success: showAvatar,
 		error: function(e){
@@ -371,11 +369,12 @@ function point(analysis){
 	
 //퀴즈 가져오기
 function getQuiz(){
+	
 	alert('????????');	
 	$.ajax({
 		url:'getQuizResult',
 		type:'POST',
-		data: {selectionNum: ${selectionNum}}, 
+		data: {selectionNum: selectionNum}, 
 		dataType: 'json',
 		success: showQuiz,
 		error: function(e){
@@ -412,8 +411,6 @@ function showQuiz(list){
 	
 	$('#quizPanel').html(input);
 }
-
-
 
 </script>
 
@@ -558,7 +555,7 @@ function showQuiz(list){
 </div>
 
 <!--Footer  -->
-<div style="position: absolute;bottom:0;width: 100%;height: 30%;">
+<div style="position: absolute;width: 100%;height: 30%;">
 <c:import url="../main/mainFooter.jsp"></c:import>
 </div>
 
