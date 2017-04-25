@@ -16,7 +16,7 @@
 <!--적용 자바스크립트와 스타일  -->
 
 
-<body data-spy="scroll" data-target=".navbar" data-offset="50">
+<body data-spy="scroll" data-target=".navbar" data-offset="50" style="height: 100%;">
 
 	
 
@@ -72,7 +72,11 @@
 </div>
 
 <!--Footer  -->
+<div style="position: absolute;
+bottom:0;
+width: 100%;
+height: 30%;">
 <c:import url="mainFooter.jsp"></c:import>
-
+</div>
 </body>
 </html> 

@@ -468,12 +468,60 @@ function myFunc(id) {
 
 <!--Footer  -->
 <!--Add a navar  -->
-<div style="position: absolute;
+<div style="position: relative;
 bottom:0;
 width: 100%;
 height: 30%;">
 <!--Footer  -->
-<c:import url="mainFooter.jsp"></c:import>
+<style>
+	  .bg-1 { 
+	    background-color: #1abc9c; /* Green */
+	    color: #ffffff;
+	    margin-top: 8%;
+		}
+		
+		.container-fluid {//패딩
+		    padding-top: 50px;
+		    padding-bottom: 50px;
+		}
+		.navbar {
+		    padding-top: 15px;
+		    padding-bottom: 15px;
+		    border: 0;
+		    border-radius: 0;
+		    margin-bottom: 0;
+		    font-size: 12px;
+		    letter-spacing: 5px;
+		}
+		
+		.navbar-nav li a:hover {
+		    color: #1abc9c !important;
+		}
+		.bg-4 { 
+		    background-color: #2f2f2f;
+		    color: #ffffff;
+		}
+</style>
+
+<div style="min-height: 100%;">
+<div id="container" style="{padding-bottom:1em}">
+		
+	</div></div>
+	
+	<div id="footer">
+
+
+<nav class="navbar navbar-default " >
+	<footer class="container-fluid bg-4 text-center" style="position: absolute;
+bottom: 0;
+width: 100%;
+height: 30%;"
+> 
+	  <p>Made By <a href="../">FairyBook.com</a></p> 
+	</footer>
+</nav>
+	</div>
+
 </div>
 </body>
 </html> 
