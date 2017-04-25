@@ -145,12 +145,12 @@ tr:hover{
 	}
 </script>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="50">
+<body data-spy="scroll" data-target=".navbar" data-offset="50" style="height: 100%;">
 
 <!--상단, 사이드 메뉴  -->
 <c:import url="../main/main.jsp"></c:import>
 <!-- Page content -->
-<div class="w3-main" style="margin-left:230px;height:1000px;">
+<div class="w3-main" style="margin-left:230px; min-height: 100%;">
 	<i class="fa fa-bars w3-button w3-white w3-hide-large w3-xlarge w3-margin-left w3-margin-top" onclick="w3_open()"></i>
 <!--####################여기부터  -->
 <div class="container">

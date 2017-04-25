@@ -98,7 +98,7 @@ function deleteSelections(){
 }
 </script>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="50">
+<body data-spy="scroll" data-target=".navbar" data-offset="50" style="height: 100%;">
 
 <!--상단, 사이드 메뉴  -->
 <c:import url="../main/main.jsp"></c:import>
@@ -122,7 +122,11 @@ function deleteSelections(){
 </div>
 
 <!--Footer  -->
+<div style="position: absolute;
+bottom:0;
+width: 100%;
+height: 30%;">
 <c:import url="../main/mainFooter.jsp"></c:import>
-
+</div>
 </body>
 </html> 
