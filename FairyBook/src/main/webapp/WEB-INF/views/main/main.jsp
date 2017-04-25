@@ -16,23 +16,23 @@
 <script>
 $(function(){
 	//profile사진 경로 설정
-	$('#profile').attr('src','./resources/image/yo.jpg')
+	$('#profile').attr('src','../resources/image/yo.jpg')
 
 	//login버튼 이벤트
 	$('#login').on('click',function(){
-		location.href='id/login';
+		location.href='./id/login';
 	});
 	//join버튼 이벤트
 	$('#join').on('click',function(){
-		location.href='id/join';
+		location.href='./id/join';
 	});
 	//logout버튼 이벤트
 	$('#logout').on('click',function(){
 		if(confirm('로그아웃 하시겠습니까?'))
-			location.href='id/logout';
+			location.href='./id/logout';
 	});
 	$('#update').on('click',function(){
-		location.href='id/userInfo';
+		location.href='./id/userInfo';
 	});
 	
 	
