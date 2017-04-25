@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <title>StoryAnalysis</title>
@@ -15,8 +15,16 @@
 <link href='https://fonts.googleapis.com/css?family=RobotoDraft' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+
 <!--적용 자바스크립트와 스타일  -->
 <style>
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+.hanna{
+	font-family: 'Hanna', serif;
+}
+body{
+	height:100%;
+}
 .morris-hover{position:absolute;z-index:1000}.morris-hover.morris-default-style{border-radius:10px;padding:6px;color:#666;background:rgba(255,255,255,0.8);border:solid 2px rgba(230,230,230,0.8);font-family:sans-serif;font-size:12px;text-align:center}.morris-hover.morris-default-style .morris-hover-row-label{font-weight:bold;margin:0.25em 0}
 .morris-hover.morris-default-style .morris-hover-point{white-space:nowrap;margin:0.1em 0}
 
@@ -210,14 +218,6 @@ function menu2(){
 }
 
 function showHouse(house){
-	/* var img = "";
-	$.each(house,function(i,h){
-		img += '<img src="'+h.path+'"/>';
-	});
-	
-	$('#showHouse').html(img); */
-	///////////////////////////
-	
 	var input = '';
 	var analysis = '';
 	
@@ -463,18 +463,18 @@ function showQuiz(list){
 <div class="container-fluid">
 <div class="f-nav">
 <ul class="nav nav-pills" id="mainNav">
-    <li class="active"><a data-toggle="pill" href="#home" id="all">전체</a></li>
-    <li><a data-toggle="pill" href="#menu1" id="color">심리-색</a></li>
-    <li><a data-toggle="pill" href="#menu2" id="htp1">심리-HTP-h</a></li>
-    <li><a data-toggle="pill" href="#menu3" id="htp2">심리-HTP-t</a></li>
-    <li><a data-toggle="pill" href="#menu4" id="htp3">심리-HTP-p</a></li>
-    <li><a data-toggle="pill" href="#menu5" id="quiz">퀴즈</a></li>
+    <li class="active"><a data-toggle="pill" href="#home" id="all" class="hanna">전체</a></li>
+    <li><a data-toggle="pill" href="#menu1" id="color" class="hanna">심리-색</a></li>
+    <li><a data-toggle="pill" href="#menu2" id="htp1" class="hanna">심리-HTP-h</a></li>
+    <li><a data-toggle="pill" href="#menu3" id="htp2" class="hanna">심리-HTP-t</a></li>
+    <li><a data-toggle="pill" href="#menu4" id="htp3" class="hanna">심리-HTP-p</a></li>
+    <li><a data-toggle="pill" href="#menu5" id="quiz" class="hanna">퀴즈</a></li>
   </ul>
 </div>
   <div class="tab-content">
     <div id="home">
     	<div  class="row col-sm-12">
-    		
+    		<img alt="htp" src="../resources/img/htp.png" style="width:100%;height:auto;">
     	
     	</div>
     	<!-- <div class="row col-sm-12"><h3>종합 결과</h3><hr></div>
@@ -534,7 +534,7 @@ function showQuiz(list){
     <div id="menu1">
 		<div class="row">
 		    <div class="col-sm-12">
-		    	<h5>심리-색</h5>  
+		    	<h5 class="hanna">심리-색</h5>  
 		    </div>
 		  </div>
 		  <hr>
@@ -565,7 +565,7 @@ function showQuiz(list){
       <h3>심리-HTP-h</h3>
 		<div class="row">
 		    <div class="col-sm-12">
-		    	<h5>심리-HTP-h 외부와의 소통을 말해주는 ‘집’</h5>  
+		    	<h5 class="hanna">심리-HTP-h 외부와의 소통을 말해주는 ‘집’</h5>  
 		    </div>
 		  </div>
 		  <hr>
@@ -586,7 +586,7 @@ function showQuiz(list){
       <h3>심리-HTP-t</h3>
 		<div class="row">
 		    <div class="col-sm-12">
-		    	<h5>심리-HTP-t 아이 자신과 마음 상태를 말해주는 ‘나무’</h5>  
+		    	<h5 class="hanna">심리-HTP-t 아이 자신과 마음 상태를 말해주는 ‘나무’</h5>  
 		    </div>
 		  </div>
 		  <hr>
@@ -594,8 +594,8 @@ function showQuiz(list){
 		  	<div class="col-md-4" style="width: 500px;" id="showTree">
 		    </div>
 		  	<div class="panel panel-warning" style="height:250px;width: 400px;float:left;">
-		      <div class="panel-heading" id="htpLabel">Tree</div>
-		      <div class="panel-body" id="htpSpecificT"></div>
+		      <div class="panel-heading hanna" id="htpLabel">Tree</div>
+		      <div class="panel-body hanna" id="htpSpecificT"></div>
 		    </div>
 		  </div>
 		  <center><button onclick="location.href='../analysis/counsel'">상담하기</button></center>
@@ -607,7 +607,7 @@ function showQuiz(list){
       <h3>심리-HTP-p</h3>
 		<div class="row">
 		    <div class="col-sm-12">
-		    	<h5>심리-HTP-p 성격이나 감정, 주변 환경에 대해 말해주는 ‘사람’</h5>  
+		    	<h5 class="hanna">심리-HTP-p 성격이나 감정, 주변 환경에 대해 말해주는 ‘사람’</h5>  
 		    </div>
 		  </div>
 		  <hr>
@@ -616,8 +616,8 @@ function showQuiz(list){
 		  		<div id="showAvatar2" class="showAvatar" style="position: relative;"></div>
 		    </div>
 		  	<div class="panel panel-warning" style="height:250px;width: 400px;float:left;">
-		      <div class="panel-heading" id="htpLabel">htp</div>
-		      <div class="panel-body" id="htpSpecific4"></div>
+		      <div class="panel-heading hanna" id="htpLabel">htp</div>
+		      <div class="panel-body hanna" id="htpSpecific4"></div>
 		    </div>
 		  </div>
 		  <center><button onclick="location.href='../analysis/counsel'">상담하기</button></center>
@@ -629,11 +629,11 @@ function showQuiz(list){
       <h3>퀴즈</h3>
 		<div class="row">
 		    <div class="col-sm-12">
-		    	<h5>QUIZ</h5>  
+		    	<h5 class="hanna">QUIZ</h5>  
 		    </div>
 		  </div>
 		  <hr>
-		  <div class="card-deck" id="quizPanel"></div>
+		  <div class="card-deck hanna" id="quizPanel"></div>
 		  <hr>
     </div>
     
@@ -653,7 +653,12 @@ function showQuiz(list){
 </div>
 
 <!--Footer  -->
+<div style="position: absolute;
+bottom:0;
+width: 100%;
+height: 30%;">
 <c:import url="../main/mainFooter.jsp"></c:import>
+</div>
 
 </body>
 </html> 
