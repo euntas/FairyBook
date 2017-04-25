@@ -46,7 +46,7 @@
 		}
 	</style>
 <!--적용 자바스크립트와 스타일  -->
-<script src="../resources/js/main.js"></script>
+<!-- <script src="../resources/js/main.js"></script> -->
 <link rel="stylesheet" href="../resources/css/main.css">
 
 <title>Insert title here</title>
@@ -58,7 +58,7 @@
 		
 	</div></div>
 	
-	<div id="footer">
+<div id="footer">
 
 
 <nav class="navbar navbar-default " >
@@ -70,7 +70,7 @@ height: 30%;"
 	  <p>Made By <a href="../">FairyBook.com</a></p> 
 	</footer>
 </nav>
-	</div>
+</div>
 
 </body>
 </html>
