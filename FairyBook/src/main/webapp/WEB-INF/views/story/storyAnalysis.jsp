@@ -473,6 +473,10 @@ function showQuiz(list){
 </div>
   <div class="tab-content">
     <div id="home">
+    	<div  class="row col-sm-12">
+    		
+    	
+    	</div>
     	<!-- <div class="row col-sm-12"><h3>종합 결과</h3><hr></div>
     	색
 		   <div class="row">
@@ -561,7 +565,7 @@ function showQuiz(list){
       <h3>심리-HTP-h</h3>
 		<div class="row">
 		    <div class="col-sm-12">
-		    	<h5>심리-HTP-h</h5>  
+		    	<h5>심리-HTP-h 외부와의 소통을 말해주는 ‘집’</h5>  
 		    </div>
 		  </div>
 		  <hr>
@@ -582,7 +586,7 @@ function showQuiz(list){
       <h3>심리-HTP-t</h3>
 		<div class="row">
 		    <div class="col-sm-12">
-		    	<h5>심리-HTP-t</h5>  
+		    	<h5>심리-HTP-t 아이 자신과 마음 상태를 말해주는 ‘나무’</h5>  
 		    </div>
 		  </div>
 		  <hr>
@@ -603,7 +607,7 @@ function showQuiz(list){
       <h3>심리-HTP-p</h3>
 		<div class="row">
 		    <div class="col-sm-12">
-		    	<h5>심리-HTP-p</h5>  
+		    	<h5>심리-HTP-p 성격이나 감정, 주변 환경에 대해 말해주는 ‘사람’</h5>  
 		    </div>
 		  </div>
 		  <hr>
