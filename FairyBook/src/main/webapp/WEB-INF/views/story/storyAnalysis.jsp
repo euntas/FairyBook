@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
@@ -17,16 +16,17 @@
 
 
 <!--적용 자바스크립트와 스타일  -->
-<style>
+<style type="text/css">
 @import url(//fonts.googleapis.com/earlyaccess/hanna.css);
 .hanna{
-	font-family: 'Hanna', serif;
+	font-family: 'Hanna', fantasy;
 }
 body{
 	height:100%;
 }
-.morris-hover{position:absolute;z-index:1000}.morris-hover.morris-default-style{border-radius:10px;padding:6px;color:#666;background:rgba(255,255,255,0.8);border:solid 2px rgba(230,230,230,0.8);font-family:sans-serif;font-size:12px;text-align:center}.morris-hover.morris-default-style .morris-hover-row-label{font-weight:bold;margin:0.25em 0}
-.morris-hover.morris-default-style .morris-hover-point{white-space:nowrap;margin:0.1em 0}
+
+.morris-hover{position:absolute;z-index:1000;}.morris-hover.morris-default-style{border-radius:10px;padding:6px;color:#666;background:rgba(255,255,255,0.8);border:solid 2px rgba(230,230,230,0.8);font-family:sans-serif;font-size:12px;text-align:center;}.morris-hover.morris-default-style .morris-hover-row-label{font-weight:bold;margin:0.25em 0;}
+.morris-hover.morris-default-style .morris-hover-point{white-space:nowrap;margin:0.1em 0;}
 
 #face{
 	left: 20%;
@@ -85,9 +85,6 @@ var data = [];
 var existColor = [];
 var indexD = 0;
 
-
-
-
 $(function(){
 	getColorName();
 	clear();
@@ -99,10 +96,9 @@ $(function(){
 	$('#htp2').on('click',menu3);
 	$('#htp3').on('click',menu4);
 	$('#quiz').on('click',menu5);
-})
+});
 
 function getColorName(){
-	
 	$.ajax({
 		url:'colorGraph',
 		type:'GET',
@@ -116,33 +112,18 @@ function getColorName(){
 					data[indexD] = {label: colorArray[i],value:countArray[i],num:i};
 					existColor[indexD++] = colorArray[i];
 				}
-			}
+			}//for
 			home();
 		},
 		error: function(e){
 			alert(JSON.stringify(e));
 		}
 	});
-		
 }
 
 function home(){
 	clear();
 	$('#home').attr('class','on active');
-	/* $('#colorGraphH').html('');
-		var donut =  Morris.Donut({
-		        element: 'colorGraphH', //id
-		        data: data,
-		        hideHover: 'auto',
-		        colors: existColor //set colors for each bar
-		      }).on('click', function (i, row) {  //click했을 때 row-i번째 줄의 {label:..,value:..}
-		      	  $('.colorLabel').html(row.label);
-		    	  $('.colorSpecific').html(getAnalysis(row.num));
-		        });
-		//맨 처음에 선택될 index 지정
-		donut.select(1); 
-		$('.colorLabel').html(existColor[1]);
-  	 	$('.colorSpecific').html(getAnalysis(data[1].num)); */
 }
 
 
@@ -236,11 +217,13 @@ function showHouse(house){
 			input += '<area shape="poly" coords="97,83,50,175,250,175,200,87" onclick="housePoint(\'' + house[i].analysis + '\')" target="_blank">';
 		}
 		if(strName.indexOf('wall') != -1){
+			console.log(house[i].analysis);
 			input += '<area shape="rect" coords="50,154,75,300" onclick="housePoint(\'' + house[i].analysis + '\')" target="_blank">';
 			input += '<area shape="rect" coords="214,146,245,300" onclick="housePoint(\'' + house[i].analysis + '\')" target="_blank">';
 		} 
 		if(strName.indexOf('chimney') != -1){
-			input += '<area shape="rect" coords="162,60,196,88" onclick="housePoint(\'' + house[i].analysis + '\')" target="_blank">';
+			console.log(house[i].analysis);
+			input += '<area shape="rect" coords="165,60,194,84" onclick="housePoint(\'' + house[i].analysis + '\')" target="_blank">';
 		}
 		if(strName.indexOf('door01') != -1){
 			input += '<area shape="rect" coords="180,252,208,300" onclick="housePoint(\'' + house[i].analysis + '\')" target="_blank">';
@@ -325,67 +308,51 @@ function bringAvatar(){
 	});
 }
 
+
 function showAvatar(r){
-	var input = '';
-	var analysis = '';
-	
-	for (var i = 0; i < r.length; i++) {
-		
-		console.log(r[i].path);
-		console.log(r[i].name.substring(0,3));
-		input += '<img src="'+r[i].path+'" id="'+r[i].name+'" style="position: absolute;" usemap="#002"/>';
-		analysis += r[i].analysis+'<br>';
-	}
-	
-	/*아바타 심리 결과를 위한 정보*/
-	// 아바타 항목 위치 좌표 정보. 배열 순서는 다음과 같다. (얼굴 , 코, 입 ...)
-	 var avatarArray = ['12,15,285,58', '24,134,269,263'];
-	
-	//항목 누르는 곳 설정
-	input += '<map name="002">';
-	
-	for( var j=0; j<r.length; j++){
-		var strName = r[j].name;
-		if(strName.indexOf('hair') != -1){
-			input += '<area shape="rect" coords="81,30,227,80" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
-		}
-		
-		if(strName.indexOf('face') != -1){
-			input += '<area shape="poly" coords="66,140,118,110,87,167" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
-			input += '<area shape="poly" coords="173,140,231,110,216,153" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
-		}
-		
-		if(strName.indexOf('eye') != -1){
-			input += '<area shape="rect" coords="97,100,126,125" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
-			input += '<area shape="rect" coords="160,100,190,125" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
-		}
-				
-		if(strName.indexOf('nose') != -1){
-			input += '<area shape="rect" coords="140,140,165,160" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
-		}
-		
-		if(strName.indexOf('mouth') != -1){
-			input += '<area shape="rect" coords="123,169,177,179" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
-		}
-		
-		if(strName.indexOf('ear') != -1){
-			input += '<area shape="rect" coords="39,115,55,158" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
-			input += '<area shape="rect" coords="243,115,258,156" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
-		}
-		
-		if(strName.indexOf('body') != -1){
-			
-		}
-		
-	}
-	
-	input += '</map>';
-	
-	$('.showAvatar').html(input);
-	$('#htpSpecific').html(analysis);
-	
-	// 디폴트로 텍스트 란에는 얼굴 설명을 넣어 놓는다.
-	//$('#htpSpecific4').html(r[0].analysis);
+   var input = '';
+   
+   for (var i = 0; i < r.length; i++) {
+      
+      input += '<img src="'+r[i].path+'" id="'+r[i].name+'" style="position: absolute;" usemap="#002"/>';
+   }//for
+   
+   //항목 누르는 곳 설정
+   input += '<map id="002" name="002">';
+   
+   for( var j=0; j<r.length; j++){
+      var strName = r[j].name;
+      if(strName.indexOf('hair') != -1){
+         input += '<area shape="rect" coords="80,40,220,70" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+      }
+      if(strName.indexOf('face') != -1){
+         input += '<area shape="poly" coords="83,136,104,141,98,160" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+         input += '<area shape="poly" coords="190,142,218,142,204,161" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+      }
+      if(strName.indexOf('eye') != -1){
+         input += '<area shape="rect" coords="102,104,126,124" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+         input += '<area shape="rect" coords="167,104,201,124" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+      }
+      if(strName.indexOf('nose') != -1){
+         input += '<area shape="rect" coords="141,138,160,155" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+      }
+      if(strName.indexOf('mouth') != -1){
+         input += '<area shape="rect" coords="123,172,172,187" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+      }
+      if(strName.indexOf('ear') != -1){
+    	  input += '<area shape="rect" coords="48,131,66,162" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+          input += '<area shape="rect" coords="241,131,250,162" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+      }
+      
+      if(strName.indexOf('body') != -1){
+    	  input += '<area shape="rect" coords="129,223,172,268" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+      }
+      
+   }//for
+   
+   input += '</map>';
+   
+   $('#showAvatar2').html(input);
 }
 
 //활성화 tab페이지 초기화
@@ -397,6 +364,8 @@ function clear(){
 
 // 각 항목(머리, 얼굴 등) 눌렀을 때 강조
 function point(analysis){
+	console.log(analysis);
+	$('#htpSpecific4').html('');
 	$('#htpSpecific4').html(analysis);
 }
 	
@@ -445,8 +414,6 @@ function showQuiz(list){
 }
 
 
-// =======================================
-
 
 </script>
 
@@ -461,80 +428,28 @@ function showQuiz(list){
 <!--####################여기부터  -->
 
 <div class="container-fluid">
-<div class="f-nav">
-<ul class="nav nav-pills" id="mainNav">
-    <li class="active"><a data-toggle="pill" href="#home" id="all" class="hanna">전체</a></li>
-    <li><a data-toggle="pill" href="#menu1" id="color" class="hanna">심리-색</a></li>
-    <li><a data-toggle="pill" href="#menu2" id="htp1" class="hanna">심리-HTP-h</a></li>
-    <li><a data-toggle="pill" href="#menu3" id="htp2" class="hanna">심리-HTP-t</a></li>
-    <li><a data-toggle="pill" href="#menu4" id="htp3" class="hanna">심리-HTP-p</a></li>
-    <li><a data-toggle="pill" href="#menu5" id="quiz" class="hanna">퀴즈</a></li>
-  </ul>
-</div>
+	<div class="f-nav">
+	<ul class="nav nav-pills" id="mainNav">
+	    <li class="active"><a data-toggle="pill" href="#home" id="all" class="hanna">전체</a></li>
+	    <li><a data-toggle="pill" href="#menu1" id="color" class="hanna">심리-색</a></li>
+	    <li><a data-toggle="pill" href="#menu2" id="htp1" class="hanna">심리-HTP-h</a></li>
+	    <li><a data-toggle="pill" href="#menu3" id="htp2" class="hanna">심리-HTP-t</a></li>
+	    <li><a data-toggle="pill" href="#menu4" id="htp3" class="hanna">심리-HTP-p</a></li>
+	    <li><a data-toggle="pill" href="#menu5" id="quiz" class="hanna">퀴즈</a></li>
+	  </ul>
+	</div>
   <div class="tab-content">
-    <div id="home">
+    <div style="padding-top:5%;" id="home">
     	<div  class="row col-sm-12">
     		<img alt="htp" src="../resources/img/htp.png" style="width:100%;height:auto;">
-    	
     	</div>
-    	<!-- <div class="row col-sm-12"><h3>종합 결과</h3><hr></div>
-    	색
-		   <div class="row">
-		    <div class="col-sm-12">
-		    	<h5>심리-색</h5>  
-		    </div>
-		  </div>
-		  <hr>
-		  <div class="row">
-		    <div class="col-md-4" style="width: 500px;">
-		        <div id="colorGraphH" style="height: 250px;"></div>
-		    </div>
-	        <div class="panel panel-warning" style="height:250px;width: 400px;float:left;">
-		      <div class="panel-heading colorLabel"></div>
-		      <div class="panel-body colorSpecific"></div>
-		    </div>
-		  </div>
-		  <hr>
-		  htp
-		  <div class="row">
-		    <div class="col-sm-12">
-		    	<h5>심리-HTP</h5>  
-		    </div>
-		  </div>
-		  <hr>
-		  <div class="row">
-		  	<div class="col-md-4" style="width: 500px;">
-		  		<div id="showAvatar1" class="showAvatar" style="position: relative;"></div>
-		    </div>
-		  	<div class="panel panel-warning" style="padding: 10px;width: 400px;float:left;">
-		      <div class="panel-heading" id="htpLabel">htp</div>
-		      <div class="panel-body" id="htpSpecific"></div>
-		    </div>
-		  </div>
-		  <hr>
-		  quiz
-		  <div class="row">
-		    <div class="col-sm-12">
-		    	<h5>QUIZ</h5>  
-		    </div>
-		  </div>
-		  <hr>
-		  <div class="row">
-		  	<div class="col-md-4" style="width: 500px;">
-		    </div>
-		  	<div class="panel panel-warning" style="height:250px;width: 400px;float:left;">
-		      <div class="panel-heading" id="quizLabel">문제</div>
-		      <div class="panel-body" id="quizSpecific">답</div>
-		    </div>
-		  </div>
-		  <hr> -->
     </div>
     
     <!-- COLOR -->
-    <div id="menu1">
-		<div class="row">
+    <div style="padding-top:5%;" id="menu1">
+		  <div class="row">
 		    <div class="col-sm-12">
-		    	<h5 class="hanna">심리-색</h5>  
+		    	<h3 class="hanna">심리-색</h3>  
 		    </div>
 		  </div>
 		  <hr>
@@ -561,11 +476,10 @@ function showQuiz(list){
     </div>
     
     <!-- HOUSE -->
-    <div id="menu2">
-      <h3>심리-HTP-h</h3>
+    <div style="padding-top:5%;" id="menu2">
 		<div class="row">
 		    <div class="col-sm-12">
-		    	<h5 class="hanna">심리-HTP-h 외부와의 소통을 말해주는 ‘집’</h5>  
+		    	<h3 class="hanna">심리-HTP-h 외부와의 소통을 말해주는 ‘집’</h3>  
 		    </div>
 		  </div>
 		  <hr>
@@ -582,11 +496,10 @@ function showQuiz(list){
     </div>
     
     <!-- TREE -->
-    <div id="menu3">
-      <h3>심리-HTP-t</h3>
+    <div style="padding-top:5%;" id="menu3">
 		<div class="row">
 		    <div class="col-sm-12">
-		    	<h5 class="hanna">심리-HTP-t 아이 자신과 마음 상태를 말해주는 ‘나무’</h5>  
+		    	<h3 class="hanna">심리-HTP-t 아이 자신과 마음 상태를 말해주는 ‘나무’</h3>  
 		    </div>
 		  </div>
 		  <hr>
@@ -603,11 +516,10 @@ function showQuiz(list){
     </div>
     
     <!-- AVATAR -->
-    <div id="menu4">
-      <h3>심리-HTP-p</h3>
+    <div style="padding-top:5%;" id="menu4">
 		<div class="row">
 		    <div class="col-sm-12">
-		    	<h5 class="hanna">심리-HTP-p 성격이나 감정, 주변 환경에 대해 말해주는 ‘사람’</h5>  
+		    	<h3 class="hanna">심리-HTP-p 성격이나 감정, 주변 환경에 대해 말해주는 ‘사람’</h3>  
 		    </div>
 		  </div>
 		  <hr>
@@ -625,11 +537,10 @@ function showQuiz(list){
     </div>
     
     <!--QUIZ  -->
-    <div id="menu5">
-      <h3>퀴즈</h3>
+    <div style="padding-top:5%;" id="menu5">
 		<div class="row">
 		    <div class="col-sm-12">
-		    	<h5 class="hanna">QUIZ</h5>  
+		    	<h3 class="hanna">QUIZ</h3>  
 		    </div>
 		  </div>
 		  <hr>
@@ -639,12 +550,6 @@ function showQuiz(list){
     
   </div>
   
-  <br>
-  
-  
-  
-  
-  
 </div>
 
 
@@ -653,10 +558,7 @@ function showQuiz(list){
 </div>
 
 <!--Footer  -->
-<div style="position: absolute;
-bottom:0;
-width: 100%;
-height: 30%;">
+<div style="position: absolute;bottom:0;width: 100%;height: 30%;">
 <c:import url="../main/mainFooter.jsp"></c:import>
 </div>
 
