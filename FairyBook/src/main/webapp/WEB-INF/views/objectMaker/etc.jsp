@@ -40,7 +40,7 @@
 
 <!-- 색깔 선택하는 div태그 -->
 <div id="category">
-<input id="Red" class="category" type="button" value="빨강"><input id="Orange" class="category" type="button" value="주황"><input id="Yellow" class="category" type="button" value="노랑"><input id="Green" class="category" type="button" value="초록"><input id="Blue" class="category" type="button" value="파랑"><input id="Purple" class="category" type="button" value="보라"><input id="White" class="category" type="button" value="하양"><input id="Gray" class="category" type="button" value="회색"><input id="Black" class="category" type="button" value="검정">
+<input id="Red" class="category" type="button"><input id="Orange" class="category" type="button"><input id="Yellow" class="category" type="button"><input id="Green" class="category" type="button"><input id="Blue" class="category" type="button"><input id="Purple" class="category" type="button"><input id="White" class="category" type="button"><input id="Gray" class="category" type="button"><input id="Black" class="category" type="button">
 </div>
 
 <script>
