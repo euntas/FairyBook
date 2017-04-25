@@ -23,12 +23,12 @@ td{
 <!--적용 자바스크립트와 스타일  -->
 
 
-<body data-spy="scroll" data-target=".navbar" data-offset="50" style="height: 100%;">
+<body data-spy="scroll" data-target=".navbar" data-offset="50" style="height: 100%; ">
 
 <!--상단, 사이드 메뉴  -->
 <c:import url="main.jsp"></c:import>
 <!-- Page content -->
-<div class="w3-main" style="margin-left:230px;">
+<div class="w3-main" style="margin-left:230px; min-height: 100%;">
 	<i class="fa fa-bars w3-button w3-white w3-hide-large w3-xlarge w3-margin-left w3-margin-top" onclick="w3_open()"></i>
 	
 
