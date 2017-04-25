@@ -21,7 +21,7 @@ var RocketPageFlip;
 RocketPageFlip = function(selector, options){
 	var defaultOptions = {
 			current: 0, // page to display
-			navigation: true, // show pagination
+			navigation: false, // show pagination
 			directionalNav: true, // show prev/next navigation buttons
 			prevText: 'prev', // text for prev button
 			nextText: '<img src="../resources/img/util/storyNextBtn2.png">' // text for next button
@@ -314,7 +314,7 @@ RocketPageFlip.prototype.next = function() {
 	        		        data: {currentSceneNum: nextSceneNum},
 	        		        dataType: 'json',
 	        		        success: function(nextPageNum){
-	        		        	alert('다음 페이지번호:' + nextPageNum + ' 씬 번호: ' + nextSceneNum);
+	        		        	console.log('다음 페이지번호:' + nextPageNum + ' 씬 번호: ' + nextSceneNum);
 	        		        	// 다음페이지로 이동한다.
 	        		        	pageflip.flip(nextPageNum);     
 	        		        	

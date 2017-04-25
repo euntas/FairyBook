@@ -31,7 +31,7 @@
 			
 			//기존 진행 중 씬이 있을 경우
 			if( ${firstPageNum != 0}){
-				alert('기존 진행중 씬이 있는 경우');
+				console.log('기존 진행중 씬이 있는 경우');
 				pageNum = ${firstPageNum};
 				
 				/* // 다음 씬 번호를 이용해 실제 다음 페이지 번호를 읽어온다.
@@ -54,7 +54,7 @@
 				
 			}
 			else{
-				alert('기존 진행중 씬이 없는 경우');				
+				console.log('기존 진행중 씬이 없는 경우');				
 				init(${currentStoryNum}, pageNum);
 			}
 		});
@@ -89,8 +89,6 @@
 						quizLoading();
 						
 					}
-
-					
 
 		        },
 		        error: function(e){
