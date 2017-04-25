@@ -46,7 +46,10 @@ td{
 		<img src="../resources/image/hiyoko.png" alt="Norway" style="width:auto; height: 200px;"><br>
 	</c:if>
 	<c:if test="${story.storyNum==1}">
-		<img src="../resources/image/pc.jpg" alt="Norway" style="width:auto; height: 200px;"><br>
+		<img src="../resources/image/hansel.jpg" alt="Norway" style="width:auto; height: 200px;"><br>
+	</c:if>
+	<c:if test="${story.storyNum==2}">
+		<img src="../resources/image/snowwhitetitle.png" alt="Norway" style="width:auto; height: 200px;"><br>
 	</c:if>
 	</a>
 	<!-- 여기까지 썸네일 -->

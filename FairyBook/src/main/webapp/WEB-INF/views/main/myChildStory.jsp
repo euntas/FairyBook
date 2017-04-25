@@ -44,18 +44,20 @@ td{
 		<img src="../resources/image/hiyoko.png" alt="Norway" style="width:auto; height: 200px;"><br>
 	</c:if>
 	<c:if test="${story.storyNum==1}">
-		<img src="../resources/image/pc.jpg" alt="Norway" style="width:auto; height: 200px;"><br>
+		<img src="../resources/image/hansel.jpg" alt="Norway" style="width:auto; height: 200px;"><br>
+	</c:if>
+	<c:if test="${story.storyNum==2}">
+		<img src="../resources/image/snowwhitetitle.png" alt="Norway" style="width:auto; height: 200px;"><br>
 	</c:if>
 	</a>
 	<!-- 여기까지 썸네일 -->
 		<div class="w3-container w3-white">
 			<h3>
 			<c:choose>
-				<c:when test="${story.storyNum==0}">끔찍한 테스트</c:when>
+				<c:when test="${story.storyNum==0}">노랑이의 모험</c:when>
 				<c:when test="${story.storyNum==1}">헨젤과 그레텔</c:when>			
-				<c:when test="${story.storyNum==2}">쉰데렐라</c:when>
-				<c:when test="${story.storyNum==3}">뱃살공주</c:when>
-				<c:when test="${story.storyNum==4}">동물의 왕국</c:when>
+				<c:when test="${story.storyNum==2}">백설공주</c:when>
+				<c:when test="${story.storyNum==3}">빨간 마스크</c:when>
 			</c:choose>
 			
 			</h3>
