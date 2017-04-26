@@ -21,9 +21,6 @@
 .hanna{
 	font-family: 'Hanna', fantasy;
 }
-body{
-	height:100%;
-}
 
 .morris-hover{position:absolute;z-index:1000;}.morris-hover.morris-default-style{border-radius:10px;padding:6px;color:#666;background:rgba(255,255,255,0.8);border:solid 2px rgba(230,230,230,0.8);font-family:sans-serif;font-size:12px;text-align:center;}.morris-hover.morris-default-style .morris-hover-row-label{font-weight:bold;margin:0.25em 0;}
 .morris-hover.morris-default-style .morris-hover-point{white-space:nowrap;margin:0.1em 0;}
@@ -70,6 +67,12 @@ img[id*='roof']{
 }
 img[id*='wall']{
 	z-index: -2;
+}
+img[id*='chimney']{
+	z-index: 2;
+}
+area{
+display:block;border:1px solid black;
 }
 </style>
 
@@ -414,7 +417,7 @@ function showQuiz(list){
 
 </script>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="50">
+<body data-spy="scroll" data-target=".navbar" data-offset="50" style="height:100%;">
 
 <!--상단, 사이드 메뉴  -->
 <c:import url="../main/main.jsp"></c:import>
