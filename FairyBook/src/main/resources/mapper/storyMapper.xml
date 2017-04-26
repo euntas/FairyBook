@@ -124,6 +124,8 @@
 		selectiondetail
 	where
 		selectionNum = #{selectionNum}
+	order by 
+			inputDate 
 </select>
 
 <select id="getSelectionDetailBySceneNum" resultType="SelectionDetail" parameterType="map">
