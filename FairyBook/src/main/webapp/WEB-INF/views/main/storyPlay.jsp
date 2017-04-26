@@ -94,7 +94,7 @@ td{
 </div>
 
 <!--Footer  -->
-<div style="position: absolute;
+<div style="position: fixed;
 bottom:0;
 width: 100%;
 height: auto;">
