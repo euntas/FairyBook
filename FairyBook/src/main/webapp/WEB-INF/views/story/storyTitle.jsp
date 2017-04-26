@@ -79,10 +79,6 @@
 <!--여기까지###########################  -->
 
 </div>
-<<<<<<< HEAD
-
-
-=======
 <div style="position: absolute;
 bottom:0;
 width: 100%;
@@ -90,6 +86,5 @@ height: auto;">
 <!--Footer  -->
 <c:import url="../main/mainFooter.jsp"></c:import>
 </div>
->>>>>>> branch 'master' of https://github.com/euntas/FairyBook.git
 </body>
 </html> 
