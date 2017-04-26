@@ -417,7 +417,6 @@ function showQuiz(list){
 </script>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50" style="height:100%;">
-
 <!--상단, 사이드 메뉴  -->
 <c:import url="../main/main.jsp"></c:import>
 <!-- Page content -->
@@ -427,6 +426,9 @@ function showQuiz(list){
 <!--####################여기부터  -->
 
 <div class="container-fluid">
+
+<input type="button" value="pdf" onclick="location.href='convertPage'">
+
 	<div class="f-nav">
 	<ul class="nav nav-pills" id="mainNav">
 	    <li class="active"><a data-toggle="pill" href="#home" id="all" class="hanna">전체</a></li>
