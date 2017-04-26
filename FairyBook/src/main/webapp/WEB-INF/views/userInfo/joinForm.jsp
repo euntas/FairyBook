@@ -674,6 +674,8 @@ function formcheck(){
 			</div>
 	</form>
 </div>
+<!--Add a navar  -->
+
 <br>
 </body>
 </html>

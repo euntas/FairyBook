@@ -671,16 +671,7 @@ function formcheck(){
 		
 	</form>
 </div>
-<!--Add a navar  -->
-<nav class="navbar navbar-default navbar-fixed-bottom">
-	<footer class="container-fluid bg-4 text-center" 
-style="position: absolute;
-width: 100%;
-height: 100%;">
-	  <p>Made By <a href="../">FairyBook.com</a></p> 
-	</footer>
-	 
-</nav>
+
 
 </body>
 </html>
