@@ -70,7 +70,7 @@
 	<footer class="container-fluid bg-4 text-center" 
 style="position: absolute;
 width: 100%;
-height: 100%;">
+height: auto;">
 	  <p>Made By <a href="../">FairyBook.com</a></p> 
 	</footer>
 </nav>

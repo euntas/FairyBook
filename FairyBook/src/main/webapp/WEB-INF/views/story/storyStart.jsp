@@ -232,7 +232,7 @@
 <!--Footer  -->
 <div style="position: absolute;
 width: 100%;
-height: 30%;">
+height: auto;">
 <c:import url="../main/mainFooter.jsp"></c:import>
 </div>
 

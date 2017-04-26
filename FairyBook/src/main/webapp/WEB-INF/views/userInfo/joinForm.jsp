@@ -43,18 +43,10 @@
 		    color: #ffffff;
 		}
 		.firstRow{
-		width:22%;
+		width:23%;
 		}
 	</style>
-	<style>
-	
-		
-@import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
-	
-	th {font-family: 'Jeju Hallasan', serif;}
-	td {font-family: 'Jeju Hallasan', serif;}
-	</style>
-	
+
 	
 
 <!--적용 자바스크립트와 스타일  -->
@@ -510,7 +502,7 @@ function formcheck(){
 		<div style="text-align: center; margin: auto;">
 		<img src="../resources/img/account/Join.png" style="width: 150px;height: 50px;"></div>
 		<br>
-		<table style="margin: auto; background-color:#B4E5FF; opacity:20%; border-radius:20px; width:46%;">
+		<table style="margin: auto; background-color:#B4E5FF; opacity:20%; border-radius:20px; width:48%;">
 			<tr>
 				<th class="firstRow">&nbsp;&nbsp;&nbsp;ID</th>
 				<td class="secondRow"><input type="text" id="id" name="id"
@@ -674,6 +666,8 @@ function formcheck(){
 			</div>
 	</form>
 </div>
+<!--Add a navar  -->
+
 <br>
 </body>
 </html>
