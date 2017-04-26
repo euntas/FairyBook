@@ -273,7 +273,7 @@ function updateOrder(state){ //addToCart,makeOrder,thumbnail
 </div>
 
 <!--Footer  -->
-<div style="position: absolute;
+<div style="position: relative;
 bottom:0;
 width: 100%;
 height: auto;">
