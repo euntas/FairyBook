@@ -100,7 +100,8 @@ var accessToken;
   }
   
   function myWrite(){
-	  FB.api('/me/feed', 'post', { message: '글써라!!!!'});
+	  FB.api('/me/feed', 'post', { 
+		  message: '여기로 가시오 : http://localhost:8888/fairybook/menu/storySlide?selectionNum=327'});
   }
   
   function myVideoWrite(){
@@ -132,12 +133,11 @@ var accessToken;
 	  FB.ui(
 			  {
 			    method: 'feed',
-			    name: 'testing',
-			    link: 'http://www.facebook.com',
-			    picture: 'http://img.youtube.com/vi/1CE6W5BubQo/0.jpg',
+			    name: '내 애가 이렇게 잘해요',
+			    link: 'www.naver.com',
+			    picture: 'http://postfiles9.naver.net/MjAxNzAzMjhfMjY0/MDAxNDkwNjYyMTYyMTE4.bCGt0pjpam6jrn7YyvKpRaoCHx1CbRsmS23hIdkmQ40g.s8ATCxA34KfiheIts97FQHgpOE2q1YD9mmF95aD_W8Eg.PNG.tavstaus/farian.png?type=w3',
 			    //caption: '',
-			    description: '',
-			    source: 'https://www.youtube.com/v/1CE6W5BubQo?version=3&autohide=1&autoplay=1'
+			    description: '설명입니다.'
 			  });
 	  
   }

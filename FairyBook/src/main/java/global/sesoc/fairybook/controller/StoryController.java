@@ -143,7 +143,20 @@ public class StoryController {
 			// 헨젤과 그레텔에서 27번 씬일 때일 때, 13번 씬에서 선택한 선택지확인후 조작
 			if(storyNum == 1 && sceneNum == 27){
 				SelectionDetail sd = dao.getSelectionDetailBySceneNum(selectionNum, 13);
-				int answerAt13 = sd.getMyAnswer();
+				int answerAt13 = -1;
+				try{
+					answerAt13 = sd.getMyAnswer();
+				} catch (Exception e) {
+					System.out.println("sd는 : " + sd);
+				}
+				
+				System.out.println("sd는 : " + sd + " , answerat14 : " + answerAt13);
+				
+				if(answerAt13 == -1){
+					quiz.setSelect1(null);
+					quiz.setSelect2(null);
+					quiz.setSelect3(null);
+				}
 				
 				if(answerAt13 == 1){
 					quiz.setSelect2(null);
@@ -162,6 +175,7 @@ public class StoryController {
 					quiz.setSelect2(null);
 					quiz.setSelect3(null);
 				}
+				
 			}
 		}
 		
