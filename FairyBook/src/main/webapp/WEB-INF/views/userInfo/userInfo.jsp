@@ -15,8 +15,8 @@
   <style>
 	
 		.container-fluid {//패딩
-		    padding-top: 50px;
-		    padding-bottom: 50px;
+		    padding-top: 10px;
+		    padding-bottom: 10px;
 		}
 		.navbar {
 		    padding-top: 15px;
@@ -205,15 +205,17 @@ li span {
 		
 
 </div>
-<!--Add a navar  -->
-<nav class="navbar navbar-default navbar-fixed-bottom" style="position: absolute;
+<!--Add a navar  --><nav class="navbar navbar-default navbar-fixed-bottom" >
+<div style="position: fixed;
 bottom:0;
 width: 100%;
 height: auto;">
+
 	<footer class="container-fluid bg-4 text-center" >
 	  <p>Made By <a href="../">FairyBook.com</a></p> 
 	</footer>
-</nav>
 
+</div>
+</nav>
 </body>
 </html>
