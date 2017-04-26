@@ -59,17 +59,17 @@
 img[id*='face']{
 	z-index: -1;
 }
-img[id*='hair']{
+img[id*='body']{
 	z-index: -2;
+}
+img[id*='hair']{
+	z-index: -3;
 }
 img[id*='roof']{
 	z-index: -1;
 }
 img[id*='wall']{
 	z-index: -2;
-}
-img[id*='chimney']{
-	z-index: 2;
 }
 area{
 display:block;border:1px solid black;
