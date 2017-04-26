@@ -395,10 +395,10 @@ function showQuiz(list){
 		input += '<h4 id="quizLabel" class="hanna">'+l.question+'</h4>';
 		input += '</header>';
 		input += '<div class="w3-container" id="quizSpecific">';
-		input += l.select1;
-		input += '<br>'+l.select2;
-		input += '<br>'+l.select3;
-		input += '<br>'+l.select4;
+		input += '①'+l.select1;
+		input += '<br>②'+l.select2;
+		input += '<br>③'+l.select3;
+		input += '<br>④'+l.select4;
 		input += '</div>';
 		input += '<footer class="w3-container w3-light-grey">';
 		if (l.myanswer == l.answer) {
