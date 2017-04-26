@@ -86,12 +86,12 @@
 
 
 
-<body data-spy="scroll" data-target=".navbar" data-offset="50" class="hanna">
+<body data-spy="scroll" data-target=".navbar" data-offset="50" style="height: 100%;"class="hanna">
 
 <!--상단, 사이드 메뉴  -->
 <c:import url="../main/main.jsp"></c:import>
 <!-- Page content -->
-<div class="w3-main" style="margin-left:230px;">
+<div class="w3-main" style="margin-left:230px; min-height: 90%;">
 	<i class="fa fa-bars w3-button w3-white w3-hide-large w3-xlarge w3-margin-left w3-margin-top" onclick="w3_open()"></i>
 	
 <!--####################여기부터  -->
@@ -112,14 +112,20 @@
 </nav>
 
 
-<div id='quizda'></div>
+<div id='quizda' style="min-height: 100%;"></div>
 
 <!--여기까지###########################  -->
 </div>
-
-
+<br>
+<br>
+<br>
+<div style="position:fixed;
+overflow:auto;
+bottom:0;
+width: 100%;
+height: auto;">
 <!--Footer  -->
 <c:import url="../main/mainFooter.jsp"></c:import>
-
+</div>
 </body>
 </html> 
