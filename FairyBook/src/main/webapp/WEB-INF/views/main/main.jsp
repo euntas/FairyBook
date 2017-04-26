@@ -184,11 +184,14 @@ $(function(){
 <div style="background-image: url('../resources/image/icon/userbar.png');">
   <center>
   <img src="../resources/image/icon/pleaselogin.png">
-  <img id="profile" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"><br><!--circle image  -->
+  <img src="../resources/image/pp3.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"><br><!--circle image  -->
   <img src="../resources/image/icon/loginbt.png" id="login">
  <img src="../resources/image/icon/joinbt.png" id="join">
   </center>
   <br><br>
+  
+  
+  
   </div>
   <a href="javascript:void(0)" onclick="w3_close()" title="Close Sidemenu" 
   class="w3-bar-item w3-button w3-hide-large w3-large">Close <i class="fa fa-remove"></i></a>

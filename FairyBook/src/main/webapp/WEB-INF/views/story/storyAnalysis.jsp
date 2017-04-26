@@ -59,17 +59,17 @@
 img[id*='face']{
 	z-index: -1;
 }
-img[id*='hair']{
+img[id*='body']{
 	z-index: -2;
+}
+img[id*='hair']{
+	z-index: -3;
 }
 img[id*='roof']{
 	z-index: -1;
 }
 img[id*='wall']{
 	z-index: -2;
-}
-img[id*='chimney']{
-	z-index: 2;
 }
 area{
 display:block;border:1px solid black;
@@ -201,63 +201,68 @@ function menu2(){
 	});
 }
 
+var analysis = new Array();
+
 function showHouse(house){
 	var input = '';
-	var analysis = '';
 	
 	for (var i = 0; i < house.length; i++) {
-		
-		console.log(house[i].path);
-		console.log(house[i].name.substring(0,3));
-		input += '<img src="'+house[i].path+'" id="'+house[i].name+'" style="position: absolute;" usemap="#houseMap"/>';
-		analysis += house[i].analysis+'<br>';
+		if(i == house.length -1){
+			input += '<img src="'+house[i].path+'" id="'+house[i].name+'" style="position: absolute;" usemap="#houseMap"/>';
+		}else{
+			input += '<img src="'+house[i].path+'" id="'+house[i].name+'" style="position: absolute;"/>';
+		}
+		analysis[i] = house[i].analysis;
+		//가져오는 순서 - 지붕, 창문, 굴뚝, 벽, 문
 	}
 	
-	input += '<map id="houseMap" name="houseMap">';
+	input += '<map name="houseMap">';
+	
 	for (var i = 0; i < house.length; i++) {
 		var strName = house[i].name;
 		if(strName.indexOf('roof') != -1){
-			input += '<area shape="poly" coords="97,83,50,175,250,175,200,87" onclick="housePoint(\'' + house[i].analysis + '\')" target="_blank">';
+			input += '<area shape="poly" coords="97,83,50,175,250,175,200,87" onclick="housePoint(\'' + i + '\')" target="_blank">';
 		}
 		if(strName.indexOf('wall') != -1){
-			console.log(house[i].analysis);
-			input += '<area shape="rect" coords="50,154,75,300" onclick="housePoint(\'' + house[i].analysis + '\')" target="_blank">';
-			input += '<area shape="rect" coords="214,146,245,300" onclick="housePoint(\'' + house[i].analysis + '\')" target="_blank">';
+			input += '<area shape="rect" coords="50,154,75,300" onclick="housePoint(\'' + i + '\')" target="_blank">';
+			input += '<area shape="rect" coords="214,146,245,300" onclick="housePoint(\'' + i + '\')" target="_blank">';
 		} 
 		if(strName.indexOf('chimney') != -1){
-	         input += '<area shape="rect" coords="162,60,196,88" onclick="housePoint(\'' + house[i].analysis + '\')" target="_blank">';
+	         input += '<area shape="rect" coords="162,60,196,88" onclick="housePoint(\'' + i + '\')" target="_blank">';
 		}
 		if(strName.indexOf('door01') != -1){
-			input += '<area shape="rect" coords="180,252,208,300" onclick="housePoint(\'' + house[i].analysis + '\')" target="_blank">';
+			input += '<area shape="rect" coords="180,252,208,300" onclick="housePoint(\'' + i + '\')" target="_blank">';
 		}
 		if(strName.indexOf('door02') != -1 || strName.indexOf('door04') != -1){
-			input += '<area shape="rect" coords="165,218,211,300" onclick="housePoint(\'' + house[i].analysis + '\')" target="_blank">';
+			input += '<area shape="rect" coords="165,218,211,300" onclick="housePoint(\'' + i + '\')" target="_blank">';
 		}
 		if(strName.indexOf('door03') != -1){
-			input += '<area shape="rect" coords="157,175,230,300" onclick="housePoint(\'' + house[i].analysis + '\')" target="_blank">';
+			input += '<area shape="rect" coords="157,175,230,300" onclick="housePoint(\'' + i + '\')" target="_blank">';
 		}
 		if(strName.indexOf('door05') != -1){
-			input += '<area shape="rect" coords="84,217,215,300" onclick="housePoint(\'' + house[i].analysis + '\')" target="_blank">';
+			input += '<area shape="rect" coords="84,217,215,300" onclick="housePoint(\'' + i + '\')" target="_blank">';
 		}
 		if(strName.indexOf('window01') != -1){
-			input += '<area shape="rect" coords="130,177,172,212" onclick="housePoint(\'' + house[i].analysis + '\')" target="_blank">';
+			input += '<area shape="rect" coords="130,177,172,212" onclick="housePoint(\'' + i + '\')" target="_blank">';
 		}
 		if(strName.indexOf('window02') != -1){
-			input += '<area shape="rect" coords="130,102,170,133" onclick="housePoint(\'' + house[i].analysis + '\')" target="_blank">';
+			input += '<area shape="rect" coords="130,102,170,133" onclick="housePoint(\'' + i + '\')" target="_blank">';
 		}
 		if(strName.indexOf('window03') != -1){
-			input += '<area shape="rect" coords="57,181,210,215" onclick="housePoint(\'' + house[i].analysis + '\')" target="_blank">';
+			input += '<area shape="rect" coords="57,181,210,215" onclick="housePoint(\'' + i + '\')" target="_blank">';
 		}
 		if(strName.indexOf('window04') != -1){
-			input += '<area shape="rect" coords="74,181,131,212" onclick="housePoint(\'' + house[i].analysis + '\')" target="_blank">';
+			input += '<area shape="rect" coords="74,181,131,212" onclick="housePoint(\'' + i + '\')" target="_blank">';
 		}
 	}//for
 	
 	$('#showHouse').html(input);
 }
 
-function housePoint(analysis){
-	$('#htpSpecificH').html(analysis);
+function housePoint(i){
+	console.log(analysis[i]);
+	alert(analysis[i]);
+	$('#htpSpecificH').html(analysis[i]);
 }
 
 //Tree
@@ -314,43 +319,45 @@ function showAvatar(r){
    var input = '';
    
    for (var i = 0; i < r.length; i++) {
-      
-      input += '<img src="'+r[i].path+'" id="'+r[i].name+'" style="position: absolute;" usemap="#002"/>';
+		if(i == r.length -1){
+      		input += '<img src="'+r[i].path+'" id="'+r[i].name+'" style="position: absolute;" usemap="#002"/>';
+		}else{
+      		input += '<img src="'+r[i].path+'" id="'+r[i].name+'" style="position: absolute;"/>';
+		}
+		analysis[i] = r[i].analysis;
    }//for
    
    //항목 누르는 곳 설정
-   input += '<map id="002" name="002">';
+   input += '<map name="002">';
    
-   for( var j=0; j<r.length; j++){
+   for(var j=0; j<r.length; j++){
       var strName = r[j].name;
       if(strName.indexOf('hair') != -1){
-         input += '<area shape="rect" coords="80,40,220,70" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+         input += '<area shape="rect" coords="80,40,220,70" onclick="point(\'' + j + '\')" target="_blank">';
       }
       if(strName.indexOf('face') != -1){
-         input += '<area shape="poly" coords="83,136,104,141,98,160" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
-         input += '<area shape="poly" coords="190,142,218,142,204,161" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+         input += '<area shape="poly" coords="83,136,104,141,98,160" onclick="point(\'' + j + '\')" target="_blank">';
+         input += '<area shape="poly" coords="190,142,218,142,204,161" onclick="point(\'' + j + '\')" target="_blank">';
       }
       if(strName.indexOf('eye') != -1){
-         input += '<area shape="rect" coords="102,104,126,124" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
-         input += '<area shape="rect" coords="167,104,201,124" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+         input += '<area shape="rect" coords="102,104,126,124" onclick="point(\'' + j + '\')" target="_blank">';
+         input += '<area shape="rect" coords="167,104,201,124" onclick="point(\'' + j + '\')" target="_blank">';
       }
       if(strName.indexOf('nose') != -1){
-         input += '<area shape="rect" coords="141,138,160,155" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+         input += '<area shape="rect" coords="141,138,160,155" onclick="point(\'' + j + '\')" target="_blank">';
       }
       if(strName.indexOf('mouth') != -1){
-         input += '<area shape="rect" coords="123,172,172,187" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+         input += '<area shape="rect" coords="123,172,172,187" onclick="point(\'' + j + '\')" target="_blank">';
       }
       if(strName.indexOf('ear') != -1){
-    	  input += '<area shape="rect" coords="48,131,66,162" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
-          input += '<area shape="rect" coords="241,131,250,162" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+    	  input += '<area shape="rect" coords="48,131,66,162" onclick="point(\'' + j + '\')" target="_blank">';
+          input += '<area shape="rect" coords="241,131,250,162" onclick="point(\'' + j + '\')" target="_blank">';
       }
-      
       if(strName.indexOf('body') != -1){
-    	  input += '<area shape="rect" coords="129,223,172,268" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+    	  input += '<area shape="rect" coords="129,223,172,268" onclick="point(\'' + j + '\')" target="_blank">';
       }
       
    }//for
-   
    input += '</map>';
    
    $('#showAvatar2').html(input);
@@ -364,10 +371,11 @@ function clear(){
 }
 
 // 각 항목(머리, 얼굴 등) 눌렀을 때 강조
-function point(analysis){
-	console.log(analysis);
+function point(i){
+	console.log(analysis[i]);
+	alert(analysis[i]);
 	$('#htpSpecific4').html('');
-	$('#htpSpecific4').html(analysis);
+	$('#htpSpecific4').html(analysis[i]);
 }
 	
 //퀴즈 가져오기

@@ -45,6 +45,17 @@
 		    background-color: #2f2f2f;
 		    color: #ffffff;
 		}
+		.firstRow{
+		width:22%;
+		}
+	</style>
+		<style>
+	
+		
+@import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
+	
+	th {font-family: 'Jeju Hallasan', serif;}
+	td {font-family: 'Jeju Hallasan', serif;}
 	</style>
 <!--적용 자바스크립트와 스타일  -->
 <link rel="stylesheet" href="../resources/css/joinForm.css">
@@ -137,9 +148,11 @@ function formSubmit2() {
 	}
 	if(cNick==ucNick){
 		$('#checkedcNick').html('변경되지않았습니다.');
+		return false;
 	}
-	if(cNick.length<2||cNick.length>8){
-		$('#checkedcNick').html('닉네임은 두글자 이상 여덟글자 이하로 입력해주세요.');
+	if(cNick.length<2||cNick.length>6){
+		$('#checkedcNick').html('닉네임은 두글자 이상 여섯글자 이하로 입력해주세요.');
+		return false;
 	}
 	
 	$.ajax({
@@ -196,8 +209,9 @@ function formSubmit3() {
 	
 
 	
-	if(pNick.length<2||pNick.length>8){
-		$('#checkedpNick').html('닉네임은 두글자 이상 여덟글자 이하로 입력해주세요.');
+	if(pNick.length<2||pNick.length>6){
+		$('#checkedpNick').html('닉네임은 두글자 이상 여섯글자 이하로 입력해주세요.');
+		return false;
 	}
 	
 	$.ajax({
@@ -417,9 +431,25 @@ function formcheck(){
 	var phone2 = $('#phone2').val();
 	var phone3 = $('#phone3').val();
 	var address = $('#address').val();
+	var cNick = $('#cnickName').val();
+	var pNick = $('#pnickName').val();
+	var cpw = $('#password1').val();
+	var pw = $('#password2').val();
 	
 	if(emailCom=="선택"){
 		alert('이메일을 올바르게 입력해주세요.');
+		return false;
+	}
+	
+	if(pNick.length<2||pNick.length>6){
+		alert('닉네임은 두글자 이상 여섯글자 이하로 입력해주세요.');
+		return false;
+	}
+	
+
+	
+	if(cNick.length<2||cNick.length>6){
+		alert('닉네임은 두글자 이상 여섯글자 이하로 입력해주세요.');
 		return false;
 	}
 	
@@ -437,6 +467,12 @@ function formcheck(){
 		alert('주소를 입력해주세요.');
 		return false;
 	}
+	
+	if(cpw==pw){
+		alert('아이용 비밀번호와 다르게 입력해주세요.');
+		return false;
+	}
+	
 	return true;
 }
 </script>
@@ -460,23 +496,25 @@ function formcheck(){
 
 <div style="text-align: center; margin: auto;"><img src="../resources/img/account/update.png" style="width: 300px;height: 50px;"></div>
 <br>
-		<table style="margin: auto;">
+		<table style="margin: auto; background-color:#B4E5FF; opacity:20%; border-radius:20px; width:46%;">
 			<tr>
-				<td class="firstRow">ID</td>
+				<th class="firstRow">&nbsp;&nbsp;&nbsp;ID</th>
 				<td class="secondRow">
 				${update.id}
 				<input type="hidden" id="id" name="id" value="${update.id}"></td>
 			</tr>
+			<tr style="height: 5px;"></tr>
 			<tr>
-				<td class="firstRow">닉네임</td>
+				<th class="firstRow">&nbsp;&nbsp;&nbsp;닉네임</th>
 				<td class="secondRow"><input type="text" id="cnickName"
 					name="cnickName" style="width: 220px;" 
 					value="${update.cnickName }" onkeyup="formSubmit2()"
 					class="form-control">
 					<div id="checkedcNick"></div></td>
 			</tr>
+			<tr style="height: 5px;"></tr>
 			<tr>
-				<td rowspan="2" class="firstRow">아이용 비밀번호</td>
+				<th rowspan="3" class="firstRow">&nbsp;&nbsp;&nbsp;아이용 비밀번호</th>
 				<td class="secondRow">
 				<input type="password" id="password1"
 				name="password1" value="${update.password1}"
@@ -485,6 +523,7 @@ function formcheck(){
 					class="form-control">
 				<div id="checkedcPw1"></div></td>
 			</tr>
+			<tr style="height: 5px;"></tr>
 			<tr>
 				<td class="secondRow"><input type="password"
 					id="password1check" name="password1check" 
@@ -493,8 +532,9 @@ function formcheck(){
 					class="form-control">
 				<div id="checkedcPw2"></div></td>
 			</tr>
+			<tr style="height: 5px;"></tr>
 			<tr>
-				<td rowspan="2" class="firstRow">보호자용 비밀번호</td>
+				<th rowspan="3" class="firstRow">&nbsp;&nbsp;&nbsp;보호자용 비밀번호</th>
 				<td class="secondRow"><input type="password" id="password2"
 					name="password2" value="${update.password2 }"
 					style="width: 220px;"
@@ -503,6 +543,7 @@ function formcheck(){
 				<div id="checkedpPw1"></div></td>
 				
 			</tr>
+			<tr style="height: 5px;"></tr>
 			<tr>
 				<td class="secondRow"><input type="password"
 					id="password2check" name="password2check"
@@ -512,8 +553,9 @@ function formcheck(){
 				<div id="checkedpPw2"></div></td>
 				
 			</tr>
+			<tr style="height: 5px;"></tr>
 			<tr>
-				<td class="firstRow">아이 이름</td>
+				<th class="firstRow">&nbsp;&nbsp;&nbsp;아이 이름</th>
 				<td class="secondRow"><input type="text" id="cName"
 					name="cName" 
 					value="${update.cName }"
@@ -521,8 +563,9 @@ function formcheck(){
 					class="form-control"></td>
 				
 			</tr>
+			<tr style="height: 5px;"></tr>
 			<tr>
-				<td class="firstRow">아이 생일</td>
+				<th class="firstRow">&nbsp;&nbsp;&nbsp;아이 생일</th>
 				<td class="secondRow">
 				<span id="cBirthYear"></span>년 &nbsp; 
 				<span id="cBirthMonth"></span>월 &nbsp;
@@ -531,16 +574,18 @@ function formcheck(){
 				</td>
 		
 			</tr>
+			<tr style="height: 5px;"></tr>
 			<tr>
-				<td class="firstRow">보호자 이름</td>
+				<th class="firstRow">&nbsp;&nbsp;&nbsp;보호자 이름</th>
 				<td class="secondRow"><input type="text" id="pName"
 					name="pName" 
 					value="${update.pName}" style="width: 220px;"
 					class="form-control"></td>
 			
 			</tr>
+			<tr style="height: 5px;"></tr>
 			<tr>
-				<td class="firstRow">보호자 닉네임</td>
+				<th class="firstRow">&nbsp;&nbsp;&nbsp;보호자 닉네임</th>
 				<td class="secondRow"><input type="text" id="pnickName"
 					name="pnickName" style="width: 220px;" 
 					value="${update.pnickName}" onkeyup="formSubmit3()"
@@ -548,8 +593,9 @@ function formcheck(){
 					<div id="checkedpNick"></div></td>
 				
 			</tr>
+			<tr style="height: 5px;"></tr>
 			<tr>
-				<td class="firstRow">이메일</td>
+				<th class="firstRow">&nbsp;&nbsp;&nbsp;이메일</th>
 				<td class="secondRow"><input type="text" id="email"
 					name="email" style="width: 150px;"
 					
@@ -575,8 +621,9 @@ function formcheck(){
 				<div id="checkedEmail"></div></td>
 			
 			</tr>
+			<tr style="height: 5px;"></tr>
 			<tr>
-				<td class="firstRow">전화번호</td>
+				<th class="firstRow">&nbsp;&nbsp;&nbsp;전화번호</th>
 				<td class="secondRow"><select id="phone1" name="phone1"
 					style="width: 80px;"
 					class="form-control">
@@ -593,15 +640,17 @@ function formcheck(){
 					class="form-control"></td>
 				
 			</tr>
+			<tr style="height: 5px;"></tr>
 			<tr>
-				<td class="firstRow">주소</td>
+				<th class="firstRow">&nbsp;&nbsp;&nbsp;주소</th>
 				<td class="secondRow"><input type="text" id="address"
 					name="address" value="${update.address}" style="width: 450px;"
 					class="form-control"></td>
 				
 			</tr>
+			<tr style="height: 5px;"></tr>
 			<tr>
-				<td class="firstRow">사진 업로드</td>
+				<th class="firstRow">&nbsp;&nbsp;&nbsp;사진 업로드</th>
 				<td class="secondRow"><input type="file" name="upload"
 					id="upload" multiple="multiple"></td>
 				
