@@ -271,7 +271,7 @@ function updateOrder(state){ //addToCart,makeOrder,thumbnail
 <div style="position: absolute;
 bottom:0;
 width: 100%;
-height: 10%;">
+height: auto;">
 <c:import url="../main/mainFooter.jsp"></c:import>
 </div>
 
