@@ -16,6 +16,7 @@
 <!--적용 자바스크립트와 스타일  -->
 <link rel="stylesheet" href="./resources/css/main.css">
 <script>
+
 $(function(){
 	//profile사진 경로 설정
 	$('#profile').attr('src','./resources/image/yo.jpg')
@@ -471,7 +472,7 @@ function myFunc(id) {
 <div style="position: relative;
 bottom:0;
 width: 100%;
-height: 30%;">
+height: auto;">
 <!--Footer  -->
 <style>
 	  .bg-1 { 
@@ -515,7 +516,7 @@ height: 30%;">
 	<footer class="container-fluid bg-4 text-center" style="position: absolute;
 bottom: 0;
 width: 100%;
-height: 30%;"
+height: auto;"
 > 
 	  <p>Made By <a href="../">FairyBook.com</a></p> 
 	</footer>

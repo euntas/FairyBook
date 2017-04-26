@@ -209,7 +209,7 @@ li span {
 <nav class="navbar navbar-default navbar-fixed-bottom" style="position: absolute;
 bottom:0;
 width: 100%;
-height: 5%;">
+height: auto;">
 	<footer class="container-fluid bg-4 text-center" >
 	  <p>Made By <a href="../">FairyBook.com</a></p> 
 	</footer>

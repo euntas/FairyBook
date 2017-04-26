@@ -72,7 +72,7 @@
 <input type="hidden" id="storyNum" value="${currentStoryNum}">
 
 <div class="text-center">
-<img alt="title" src="./../resources/image/book.jpg" style="height:700px;"><br>
+<img alt="title" src="./../resources/image/hansel.jpg" style="height:500px;"><br><br>
 <button type="button" class="btn btn-primary btn-lg" id="start">Start</button>
 </div>
 
