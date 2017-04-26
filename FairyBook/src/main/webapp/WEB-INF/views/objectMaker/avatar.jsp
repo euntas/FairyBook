@@ -45,7 +45,7 @@
 
 <!-- 실제로 쓸 신체부위 선택하는 소분류 div태그 -->
 <div id="detail">
-만들 부위를 선택해 주세요
+<img src="../resources/img/util/selectbtn.png">
 	<span id="color">
 	</span>
 	

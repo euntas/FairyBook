@@ -30,22 +30,22 @@
 	
 <!-- 만들어진 집이 보이는 div 태그 -->
 <div id="house">
-<input type="button" value="초기화" id="resetbtn">
+<input type="button" id="resetbtn">
 
 	<!-- 저장버튼 및 초기화버튼이 보이는 div태그 -->
 	<div id="saveArea">
-	<input type="button" value="저장" id="savebtn">
+	<input type="button" id="savebtn">
 	</div>
 </div>
 
 <!-- 집 부위 선택하는 대분류 div태그 -->
 <div id="category">
-<input id="wallbtn" class="category" type="button" value="벽"><input id="roofbtn" class="category" type="button" value="지붕"><input id="doorbtn" class="category" type="button" value="문"><input id="windowbtn" class="category" type="button" value="창문"><input id="chimneybtn" class="category" type="button" value="굴뚝"><input id="yardbtn" class="category" type="button" value="마당">
+<input id="wallbtn" class="category" type="button"><input id="roofbtn" class="category" type="button"><input id="doorbtn" class="category" type="button"><input id="windowbtn" class="category" type="button"><input id="chimneybtn" class="category" type="button"><input id="yardbtn" class="category" type="button">
 </div>
 
 <!-- 실제로 쓸 부위 선택하는 소분류 div태그 -->
 <div id="detail">
-만들 부위를 선택해 주세요
+<img src="../resources/img/util/selectbtn.png">
 	<span id="color">
 	</span>
 
