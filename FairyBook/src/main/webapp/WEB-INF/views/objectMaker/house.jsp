@@ -19,6 +19,62 @@
 <script src="../resources/js/house.js"></script>
 
 <!--적용 자바스크립트와 스타일  -->
+<script>
+
+//save버튼을 누르면 완성된 집을 DB에 저장한다
+function save(){
+	var roof = $('#roof').attr('num');
+	var door = $('#door').attr('num');
+	var window = $('#window').attr('num');
+	var chimney = $('#chimney').attr('num');
+	var yard = $('#yard').attr('num');
+	var wall = $('#wall').attr('num');
+	var roofColor = $('#roof').attr('name').split('Color')[1];
+	var wallColor = $('#wall').attr('name').split('Color')[1];
+	
+	var arr = ['Black', 'Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Purple','White','Gray'];
+	for(var i in arr){
+		if(roofColor == arr[i]){
+			roofColor = i;
+		}
+		if(wallColor == arr[i]){
+			wallColor = i;
+		}
+	}
+	if(roofColor == null){
+		roofColor = 0;
+	}
+	if(wallColor == null){
+		wallColor = 0;
+	}
+	
+	$.ajax({
+		url: 'saveHouse',
+		type: 'POST',
+		data: {roof:roof,door:door,window:window,chimney:chimney,yard:yard,wall:wall,roofColor:roofColor,wallColor:wallColor},
+		success: function(){
+			alert('저장완료!');
+			$.ajax({
+              url:'../story/saveSD',
+              type:'GET',
+              data: {pageNum: 1},
+              dataType:'json',
+              success: function(){
+                 location.href='../story/storyStart?storyNum=1';
+              },
+              error: function(e){
+                 alert("플립 실패 들어옴");
+                  alert(JSON.stringify(e));
+              }
+          });
+		},
+		error: function(e){
+			alert(JSON.stringify(e));
+		}
+	});
+}
+</script>
+
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
