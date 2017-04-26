@@ -46,17 +46,10 @@
 		    color: #ffffff;
 		}
 		.firstRow{
-		width:22%;
+		width:23%;
 		}
 	</style>
-		<style>
-	
-		
-@import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
-	
-	th {font-family: 'Jeju Hallasan', serif;}
-	td {font-family: 'Jeju Hallasan', serif;}
-	</style>
+
 <!--적용 자바스크립트와 스타일  -->
 <link rel="stylesheet" href="../resources/css/joinForm.css">
 <script>
@@ -496,7 +489,7 @@ function formcheck(){
 
 <div style="text-align: center; margin: auto;"><img src="../resources/img/account/update.png" style="width: 300px;height: 50px;"></div>
 <br>
-		<table style="margin: auto; background-color:#B4E5FF; opacity:20%; border-radius:20px; width:46%;">
+		<table style="margin: auto; background-color:#B4E5FF; opacity:20%; border-radius:20px; width:48%;">
 			<tr>
 				<th class="firstRow">&nbsp;&nbsp;&nbsp;ID</th>
 				<td class="secondRow">
@@ -515,10 +508,10 @@ function formcheck(){
 			<tr style="height: 5px;"></tr>
 			<tr>
 				<th rowspan="3" class="firstRow">&nbsp;&nbsp;&nbsp;아이용 비밀번호</th>
-				<td class="secondRow">
+				<td class="secondRow" style="font: normal;"">
 				<input type="password" id="password1"
 				name="password1" value="${update.password1}"
-					style="width: 220px;"
+					style="width: 220px; 
 					onkeyup="formSubmit4()"
 					class="form-control">
 				<div id="checkedcPw1"></div></td>
@@ -671,16 +664,7 @@ function formcheck(){
 		
 	</form>
 </div>
-<!--Add a navar  -->
-<nav class="navbar navbar-default navbar-fixed-bottom">
-	<footer class="container-fluid bg-4 text-center" 
-style="position: absolute;
-width: 100%;
-height: 100%;">
-	  <p>Made By <a href="../">FairyBook.com</a></p> 
-	</footer>
-	 
-</nav>
+
 
 </body>
 </html>

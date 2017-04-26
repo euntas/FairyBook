@@ -13,14 +13,38 @@
 <link href='https://fonts.googleapis.com/css?family=RobotoDraft' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  
+ <style>
+	  .bg-1 { 
+	    background-color: #1abc9c; /* Green */
+	    color: #ffffff;
+	    margin-top: 8%;
+		}
+		
+		.container-fluid {//패딩
+		    padding-top: 10px;
+		    padding-bottom: 10px;
+		}
+		.navbar {
+		    padding-top: 15px;
+		   
+		    border: 0;
+		    border-radius: 0;
+		    margin-bottom: 0;
+		    font-size: 12px;
+		    letter-spacing: 5px;
+		}
+		
+		.navbar-nav li a:hover {
+		    color: #1abc9c !important;
+		}
+		.bg-4 { 
+		    background-color: #2f2f2f;
+		    color: #ffffff;
+		}
+</style>
 <!--적용 자바스크립트와 스타일  -->
 <link rel="stylesheet" href="./resources/css/main.css">
 <script>
-
-var width = screen.width;
-var height = screen.height;
-
-alert("고객의 해상도는 " + width + " X " + height + " 입니다.");
 
 $(function(){
 	//profile사진 경로 설정
@@ -196,7 +220,7 @@ function myFunc(id) {
 
 </script>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="50" style="height: 100%;">
+<body data-spy="scroll" data-target=".navbar" data-offset="50" style="height: 100%; position: relative;">
 
 <!--상단, 사이드 메뉴  -->
 <!--배너  -->
@@ -474,59 +498,26 @@ function myFunc(id) {
 
 <!--Footer  -->
 <!--Add a navar  -->
-<div style="position: relative;
+
+
+<div style="
 bottom:0;
 width: 100%;
-height: 30%;">
+height: auto;">
 <!--Footer  -->
-<style>
-	  .bg-1 { 
-	    background-color: #1abc9c; /* Green */
-	    color: #ffffff;
-	    margin-top: 8%;
-		}
-		
-		.container-fluid {//패딩
-		    padding-top: 50px;
-		    padding-bottom: 50px;
-		}
-		.navbar {
-		    padding-top: 15px;
-		    padding-bottom: 15px;
-		    border: 0;
-		    border-radius: 0;
-		    margin-bottom: 0;
-		    font-size: 12px;
-		    letter-spacing: 5px;
-		}
-		
-		.navbar-nav li a:hover {
-		    color: #1abc9c !important;
-		}
-		.bg-4 { 
-		    background-color: #2f2f2f;
-		    color: #ffffff;
-		}
-</style>
-
-<div style="min-height: 100%;">
-<div id="container" style="{padding-bottom:1em}">
-		
-	</div></div>
-	
-	<div id="footer">
-
 
 <nav class="navbar navbar-default " >
 	<footer class="container-fluid bg-4 text-center" style="position: absolute;
+overflow:auto;
 bottom: 0;
 width: 100%;
-height: 30%;"
-> 
-	  <p>Made By <a href="../">FairyBook.com</a></p> 
+"> 
+	
+	  <p>Made By <a href="../">FairyBook.com</a></p>
+	  <p>Copyright ⓒJOKABURG All Rights Reserved</p>
 	</footer>
 </nav>
-	</div>
+	
 
 </div>
 </body>

@@ -15,6 +15,11 @@
 
 <!--적용 자바스크립트와 스타일  -->
 <style>
+/*글씨체  */
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+.hanna{
+	font-family: 'Hanna', fantasy;
+}
 .dropdown-content{
 	display: none;
     position: absolute;
@@ -197,7 +202,7 @@ function updateOrder(state){ //addToCart,makeOrder,thumbnail
 </script>
 
 
-<body data-spy="scroll" data-target=".navbar" data-offset="50" style="height: 100%;">
+<body data-spy="scroll" data-target=".navbar" data-offset="50" style="height: 100%;" class="hanna">
 
 <!--상단, 사이드 메뉴  -->
 <c:import url="../main/main.jsp"></c:import>
@@ -211,7 +216,7 @@ function updateOrder(state){ //addToCart,makeOrder,thumbnail
 <input type="hidden" id="ordernum" value="${order.ordernum}">
 <table class="table" style="width: 80%">
 <tr class="warning">
-<td colspan="3" style="text-align:center;height:50px;font-size: 20px;">${order.title}</td>
+<td colspan="3" class="hanna" style="text-align:center;height:50px;font-size: 20px;">${order.title}</td>
 </tr>
 <tr>
 <td rowspan="3" style="width:50%;text-align:right;">
@@ -269,8 +274,9 @@ function updateOrder(state){ //addToCart,makeOrder,thumbnail
 
 <!--Footer  -->
 <div style="position: absolute;
+bottom:0;
 width: 100%;
-height: 30%;">
+height: auto;">
 <c:import url="../main/mainFooter.jsp"></c:import>
 </div>
 

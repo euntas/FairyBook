@@ -74,7 +74,7 @@ function music(){
 <body>
 <audio src="../resources/bgm/bgm.mp3" autoplay="autoplay" loop="loop" id="music"></audio>
 
-<img id="loadingImg" alt="로딩이미지" src="../resources/img/util/loadingIcon.gif"> <hr>
+<img id="loadingImg" alt="로딩이미지" src="../resources/img/util/loadingIcon.gif">
 
 	<div id="slideShowImages">
 	<c:forEach var="slide" items="${slideList}">

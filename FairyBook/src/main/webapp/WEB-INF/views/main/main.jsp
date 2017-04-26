@@ -16,7 +16,7 @@
 <script>
 $(function(){
 	//profile사진 경로 설정
-	$('#profile').attr('src','../resources/image/yo.jpg')
+	$('#profile').attr('src','../resources/image/yo.jpg');
 
 	//login버튼 이벤트
 	$('#login').on('click',function(){

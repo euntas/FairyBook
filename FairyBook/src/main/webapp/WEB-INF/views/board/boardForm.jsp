@@ -14,6 +14,13 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!--적용 자바스크립트와 스타일  -->
+<style>
+/*글씨체  */
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+.hanna{
+	font-family: 'Hanna', fantasy;
+}
+</style>
 <script src="//cloud.tinymce.com/stable/tinymce.min.js"></script>
 <script>
 tinyMCE.init({ 
@@ -59,7 +66,7 @@ tinyMCE.init({
 
 </script>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="50" style="height: 100%;">
+<body data-spy="scroll" data-target=".navbar" data-offset="50" style="height: 100%;" class="hanna">
 
 <!--상단, 사이드 메뉴  -->
 <c:import url="../main/main.jsp"></c:import>
@@ -99,7 +106,7 @@ tinyMCE.init({
 <!--Footer  --><div style="position: absolute;
 bottom:0;
 width: 100%;
-height: 30%;">
+height: auto;">
 <!--Footer  -->
 <c:import url="../main/mainFooter.jsp"></c:import>
 </div>

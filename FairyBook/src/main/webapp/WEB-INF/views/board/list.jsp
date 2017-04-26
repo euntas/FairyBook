@@ -15,6 +15,11 @@
 
 <!--적용 자바스크립트와 스타일  -->
 <style>
+/*글씨체  */
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+.hanna{
+	font-family: 'Hanna', fantasy;
+}
 tr:hover{
 	cursor:pointer;
 }
@@ -145,7 +150,7 @@ tr:hover{
 	}
 </script>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="50" style="height: 100%;">
+<body data-spy="scroll" data-target=".navbar" data-offset="50" style="height: 100%;" class="hanna">
 
 <!--상단, 사이드 메뉴  -->
 <c:import url="../main/main.jsp"></c:import>
@@ -195,7 +200,7 @@ tr:hover{
 <!--Footer  --><div style="position: absolute;
 bottom:0;
 width: 100%;
-height: 30%;">
+height: auto;">
 <!--Footer  -->
 <c:import url="../main/mainFooter.jsp"></c:import>
 </div>
