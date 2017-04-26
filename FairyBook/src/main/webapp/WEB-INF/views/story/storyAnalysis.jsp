@@ -395,10 +395,10 @@ function showQuiz(list){
 		input += '<h4 id="quizLabel" class="hanna">'+l.question+'</h4>';
 		input += '</header>';
 		input += '<div class="w3-container" id="quizSpecific">';
-		input += l.select1;
-		input += '<br>'+l.select2;
-		input += '<br>'+l.select3;
-		input += '<br>'+l.select4;
+		input += '①'+l.select1;
+		input += '<br>②'+l.select2;
+		input += '<br>③'+l.select3;
+		input += '<br>④'+l.select4;
 		input += '</div>';
 		input += '<footer class="w3-container w3-light-grey">';
 		if (l.myanswer == l.answer) {
@@ -417,7 +417,6 @@ function showQuiz(list){
 </script>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50" style="height:100%;">
-
 <!--상단, 사이드 메뉴  -->
 <c:import url="../main/main.jsp"></c:import>
 <!-- Page content -->
@@ -427,6 +426,9 @@ function showQuiz(list){
 <!--####################여기부터  -->
 
 <div class="container-fluid">
+
+<input type="button" value="pdf" onclick="location.href='convertPage'">
+
 	<div class="f-nav">
 	<ul class="nav nav-pills" id="mainNav">
 	    <li class="active"><a data-toggle="pill" href="#home" id="all" class="hanna">전체</a></li>
