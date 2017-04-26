@@ -137,9 +137,11 @@ function formSubmit2() {
 	}
 	if(cNick==ucNick){
 		$('#checkedcNick').html('변경되지않았습니다.');
+		return false;
 	}
-	if(cNick.length<2||cNick.length>8){
-		$('#checkedcNick').html('닉네임은 두글자 이상 여덟글자 이하로 입력해주세요.');
+	if(cNick.length<2||cNick.length>6){
+		$('#checkedcNick').html('닉네임은 두글자 이상 여섯글자 이하로 입력해주세요.');
+		return false;
 	}
 	
 	$.ajax({
@@ -196,8 +198,9 @@ function formSubmit3() {
 	
 
 	
-	if(pNick.length<2||pNick.length>8){
-		$('#checkedpNick').html('닉네임은 두글자 이상 여덟글자 이하로 입력해주세요.');
+	if(pNick.length<2||pNick.length>6){
+		$('#checkedpNick').html('닉네임은 두글자 이상 여섯글자 이하로 입력해주세요.');
+		return false;
 	}
 	
 	$.ajax({
@@ -417,9 +420,25 @@ function formcheck(){
 	var phone2 = $('#phone2').val();
 	var phone3 = $('#phone3').val();
 	var address = $('#address').val();
+	var cNick = $('#cnickName').val();
+	var pNick = $('#pnickName').val();
+	var cpw = $('#password1').val();
+	var pw = $('#password2').val();
 	
 	if(emailCom=="선택"){
 		alert('이메일을 올바르게 입력해주세요.');
+		return false;
+	}
+	
+	if(pNick.length<2||pNick.length>6){
+		alert('닉네임은 두글자 이상 여섯글자 이하로 입력해주세요.');
+		return false;
+	}
+	
+
+	
+	if(cNick.length<2||cNick.length>6){
+		alert('닉네임은 두글자 이상 여섯글자 이하로 입력해주세요.');
 		return false;
 	}
 	
@@ -437,6 +456,12 @@ function formcheck(){
 		alert('주소를 입력해주세요.');
 		return false;
 	}
+	
+	if(cpw==pw){
+		alert('아이용 비밀번호와 다르게 입력해주세요.');
+		return false;
+	}
+	
 	return true;
 }
 </script>
