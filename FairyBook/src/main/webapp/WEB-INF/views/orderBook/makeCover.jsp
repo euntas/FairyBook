@@ -21,9 +21,15 @@
 <link rel="stylesheet" href="../resources/css/main.css">
 
 <style type="text/css">
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+.hanna{
+	font-family: 'Hanna', fantasy;
+}
+#makeCoverContainer{
+	padding-left: 17%;
+}
 #cover{
-	margin-top: 50px;
-	margin-left: 50px;
+	
      border : 1px solid gray;
      display : inline-block;
      height : 600px;
@@ -34,7 +40,6 @@
 #itemsForC{
 	overflow-y:scroll;
 	margin-top: 50px;
-	margin-right: 50px;
 	 border-radius : 7px;
      border : 5px solid gray;
      display : inline-block;
@@ -49,7 +54,155 @@ canvas{
 </style>
 
 <script>
+
 	$(function(){
+		//profile사진 경로 설정
+		$('#profile').attr('src','../resources/image/yo.jpg');
+
+		//login버튼 이벤트
+		$('#login').on('click',function(){
+			location.href='../id/login';
+		});
+		//join버튼 이벤트
+		$('#join').on('click',function(){
+			location.href='../id/join';
+		});
+		//logout버튼 이벤트
+		$('#logout').on('click',function(){
+			if(confirm('로그아웃 하시겠습니까?'))
+				location.href='../id/logout';
+		});
+		$('#update').on('click',function(){
+			location.href='../id/userInfo';
+		});
+		
+		
+		//동화 선택 버튼 마우스오버
+		$('#storyselect').on('mouseover',function(){
+			$("#storyselect").attr('src',"../resources/image/icon/storyselect1.png");
+		});
+		
+		//동화 선택 버튼 마우스아웃
+		$('#storyselect').on('mouseout',function(){
+			$("#storyselect").attr('src',"../resources/image/icon/storyselect.png");
+		});
+		
+		//동화 감상 버튼 마우스오버
+		$('#storyplay').on('mouseover',function(){
+			$("#storyplay").attr('src',"../resources/image/icon/storyplay1.png");
+		});
+		
+		//동화 감상 버튼 마우스아웃
+		$('#storyplay').on('mouseout',function(){
+			$("#storyplay").attr('src',"../resources/image/icon/storyplay.png");
+		});
+		
+		//퀴즈 풀기 버튼 마우스오버
+		$('#quizlist').on('mouseover',function(){
+			$("#quizlist").attr('src',"../resources/image/icon/quizlist1.PNG");
+		});
+		
+		//퀴즈 풀기 감상 버튼 마우스아웃
+		$('#quizlist').on('mouseout',function(){
+			$("#quizlist").attr('src',"../resources/image/icon/quizlist.png");
+		});
+		
+		//내 아이 동화목록 버튼 마우스오버
+		$('#mychildstory').on('mouseover',function(){
+			$("#mychildstory").attr('src',"../resources/image/icon/mychildstory1.png");
+		});
+		
+		//내 아이 동화목록 버튼 마우스아웃
+		$('#mychildstory').on('mouseout',function(){
+			$("#mychildstory").attr('src',"../resources/image/icon/mychildstory.png");
+		});
+		
+		//게시판 버튼 마우스오버
+		$('#board').on('mouseover',function(){
+			$("#board").attr('src',"../resources/image/icon/board1.PNG");
+		});
+		
+		//게시판 버튼 마우스아웃
+		$('#board').on('mouseout',function(){
+			$("#board").attr('src',"../resources/image/icon/board.png");
+		});
+		
+		//상담 결과 보기 버튼 마우스오버
+		$('#counselresult').on('mouseover',function(){
+			$("#counselresult").attr('src',"../resources/image/icon/counselresult1.png");
+		});
+		
+		//상담 결과 보기 버튼 마우스아웃
+		$('#counselresult').on('mouseout',function(){
+			$("#counselresult").attr('src',"../resources/image/icon/counselresult.png");
+		});
+		
+		//장바구니 목록 버튼 마우스오버
+		$('#ordercart').on('mouseover',function(){
+			$("#ordercart").attr('src',"../resources/image/icon/ordercart1.png");
+		});
+		
+		//장바구니 목록 버튼 마우스아웃
+		$('#ordercart').on('mouseout',function(){
+			$("#ordercart").attr('src',"../resources/image/icon/ordercart.png");
+		});
+		
+		//주문 내역 버튼 마우스오버
+		$('#confirmorder').on('mouseover',function(){
+			$("#confirmorder").attr('src',"../resources/image/icon/confirmorder1.png");
+		});
+		
+		//주문 내역 버튼 마우스아웃
+		$('#confirmorder').on('mouseout',function(){
+			$("#confirmorder").attr('src',"../resources/image/icon/confirmorder.png");
+		});
+		
+		
+		//login mouseover 이벤트
+		$('#login').on('mouseover',function(){
+			$('#login').css('cursor', 'pointer');
+			$("#login").attr('src',"../resources/image/icon/loginbt1.png");
+		});
+		
+		//login mouseout 이벤트
+		$('#login').on('mouseout',function(){
+			$("#login").attr('src',"../resources/image/icon/loginbt.png");
+		}); 
+		
+		//join mouseover 이벤트
+		$('#join').on('mouseover',function(){
+			$('#join').css('cursor', 'pointer');	
+			$("#join").attr('src',"../resources/image/icon/joinbt1.png");
+		});
+		
+		//join mouseout 이벤트
+		$('#join').on('mouseout',function(){
+			$("#join").attr('src',"../resources/image/icon/joinbt.png");
+		});
+		
+		//logout 커서 이벤트
+		$('#logout').on('mouseover',function(){
+			$('#logout').css('cursor', 'pointer');
+			$("#logout").attr('src',"../resources/image/icon/logoutbt1.png");
+
+		});
+		
+		//logout mouseout 이벤트
+		$('#logout').on('mouseout',function(){
+			$("#logout").attr('src',"../resources/image/icon/logoutbt.png");
+		});
+		
+		//update 커서 이벤트
+		$('#update').on('mouseover',function(){
+			$('#update').css('cursor', 'pointer');
+			$("#update").attr('src',"../resources/image/icon/userinfobt1.png");
+
+		});
+		
+		//update mouseout 이벤트
+		$('#update').on('mouseout',function(){
+			$("#update").attr('src',"../resources/image/icon/userinfobt.png");
+		});
 		init();
 	});
 	
@@ -68,9 +221,9 @@ canvas{
 	
 	//사진 불러오기
 	function coverResources(paths){
-		var bg = "<div class='well well-sm'>원하는 배경을 클릭하세요!</div>";
-		var ch = "<div class='well well-sm'>원하는 캐릭터를 클릭한 후 드래그해보세요!</div>";
-		var tt = "<div class='well well-sm'>원하는 타이틀을 클릭하세요!</div>";
+		var bg = "<div class='well well-sm hanna'>원하는 배경을 클릭하세요!</div>";
+		var ch = "<div class='well well-sm hanna'>원하는 캐릭터를 클릭한 후 드래그해보세요!</div>";
+		var tt = "<div class='well well-sm hanna'>원하는 타이틀을 클릭하세요!</div>";
 		$.each(paths,function(i,p){
 			console.log(p.TYPE);
 			if (p.TYPE == 'background') {
@@ -136,7 +289,7 @@ canvas{
 	
 	function capture() {
         $("canvas").remove();
-        html2canvas($(".container"), {
+        html2canvas($("#cover"), {
               onrendered: function(canvas) {
                 document.body.appendChild(canvas);
                 
@@ -173,13 +326,10 @@ canvas{
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
-<!--상단, 사이드 메뉴  -->
-<%-- <c:import url="../main/main.jsp"></c:import> --%>
-
 <!--배너  -->
 <nav class="navbar-fixed-top">
-<div class="container-fluid bg-2 text-center">
-  <h1 id="banner">Fairytale Book</h1>
+<div style="background-image: url('../resources/image/icon/banner.png');width: 100%;height: 100px;">
+ <center><a href="../"><img src="../resources/image/icon/bannertitle.png" style="margin-top: 15px;"></a></center>
 </div>
 </nav>
 
@@ -187,64 +337,94 @@ canvas{
 <!-- Side Navigation -->
 <!--로그인하지 않았을 때  -->
 <c:if test="${loginUser == null }">
-<nav class="w3-sidebar w3-bar-block w3-collapse w3-white w3-animate-left w3-card-2" style="z-index:3;width:220px;" id="mySidebar">
-  <div class="container-fluid bg-1">
-  <h3>로그인 하세요</h3>
-  <center><img id="profile" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"></center><br><!--circle image  -->
-  <button type="button" id="login" class="btn btn-success">LOGIN</button>
-  <button type="button" id="join" class="btn btn-warning">JOIN</button>
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card-2" style="z-index:3;width:220px;background-image: url('../resources/image/icon/menubar.png');" id="mySidebar">
+<div style="background-image: url('../resources/image/icon/userbar.png');">
+  <center>
+  <img src="../resources/image/icon/pleaselogin.png">
+  <img src="../resources/image/pp3.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"><br><!--circle image  -->
+  <img src="../resources/image/icon/loginbt.png" id="login">
+ <img src="../resources/image/icon/joinbt.png" id="join">
+  </center>
   <br><br>
+  
+  
+  
   </div>
   <a href="javascript:void(0)" onclick="w3_close()" title="Close Sidemenu" 
   class="w3-bar-item w3-button w3-hide-large w3-large">Close <i class="fa fa-remove"></i></a>
-  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-dark-grey w3-button w3-hover-black w3-left-align" onclick="document.getElementById('id01').style.display='block'">New Message <i class="w3-padding-left fa fa-pencil"></i></a>
   
-  <a href="../menu/storySelect" class="w3-bar-item w3-button"><i class="fa fa-paper-plane w3-padding-right"></i>동화선택</a>
+  <!-- <a href="../menu/storySelect" class="w3-bar-item w3-button"><i class="fa fa-paper-plane w3-padding-right"></i>동화선택</a>
   <a href="../menu/storyPlay" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>동화감상</a>
+ -->
+ <a href="../menu/storySelect"><img src="../resources/image/icon/storyselect.png" id="storyselect"></a>
+ <br><br>
+<a href="../menu/storyPlay"><img src="../resources/image/icon/storyplay.png" id="storyplay"></a>
+ <br><br>
 </nav>
 </c:if>
 <!--로그인 했을 때  -->
 <c:if test="${loginUser != null }">
 <!--아이로그인  -->
 <c:if test="${userType == 'child'}"> <!--w3-animate-left   -->
-<nav class="w3-sidebar w3-bar-block w3-collapse w3-white w3-card-2" style="z-index:3;width:220px;" id="mySidebar">
-  <div class="container-fluid bg-1">
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card-2" style="z-index:3;width:220px;background-image: url('../resources/image/icon/menubar.png');" id="mySidebar">
+<div style="background-image: url('../resources/image/icon/userbar.png');">
+  <center>
   <h3>${loginUser.cnickName}</h3>
-  <center><img src="./../resources/image/yo.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"></center><br><!--circle image  -->
-  <button type="button" id="update" class="btn btn-success">개인정보</button>
-  <button type="button" id="logout" class="btn btn-warning">LOGOUT</button>
+  <img src="../resources/image/yo.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"><br><!--circle image  -->
+  <img src="../resources/image/icon/userinfobt.png" id="update">
+ <img src="../resources/image/icon/logoutbt.png" id="logout">
+  </center>
   <br><br>
   </div>
   <a href="javascript:void(0)" onclick="w3_close()" title="Close Sidemenu" 
   class="w3-bar-item w3-button w3-hide-large w3-large">Close <i class="fa fa-remove"></i></a>
-  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-dark-grey w3-button w3-hover-black w3-left-align" onclick="document.getElementById('id01').style.display='block'">New Message <i class="w3-padding-left fa fa-pencil"></i></a>
   
-  <a href="../menu/storySelect" class="w3-bar-item w3-button"><i class="fa fa-paper-plane w3-padding-right"></i>동화선택</a>
+  
+  
+  <!-- <a href="../menu/storySelect" class="w3-bar-item w3-button"><i class="fa fa-paper-plane w3-padding-right"></i>동화선택</a>
   <a href="../menu/storyPlay" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>동화감상</a>
   <a href="../quiz/quizList" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>문제풀기</a>
-  
+   -->
+   <a href="../menu/storySelect"><img src="../resources/image/icon/storyselect.png" id="storyselect"></a>
+ <br><br>
+ <a href="../menu/storyPlay"><img src="../resources/image/icon/storyplay.png" id="storyplay"></a>
+ <br><br>
+ <a href="../quiz/quizList"><img src="../resources/image/icon/quizlist.png" id="quizlist"></a>
   
 </nav>
 </c:if>
 <!--부모 로그인했을때  -->
 <c:if test="${userType == 'parent'}">
-<nav class="w3-sidebar w3-bar-block w3-collapse w3-white <!-- w3-animate-left --> w3-card-2" style="z-index:3;width:220px;" id="mySidebar">
-  <div class="container-fluid bg-1">
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card-2" style="z-index:3;width:220px;background-image: url('../resources/image/icon/menubar.png');" id="mySidebar">
+<div style="background-image: url('../resources/image/icon/userbar.png');">
+  <center>
   <h3>${loginUser.pnickName}</h3>
-  <center><img src="./../resources/image/pp4.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"></center><br><!--circle image  -->
-  <button type="button" id="update" class="btn btn-success">개인정보</button>
-  <button type="button" id="logout" class="btn btn-warning">LOGOUT</button>
+  <img src="./../resources/image/pp4.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"><br><!--circle image  -->
+   <img src="../resources/image/icon/userinfobt.png" id="update">
+ <img src="../resources/image/icon/logoutbt.png" id="logout">
+  </center>
   <br><br>
+  
+  
   </div>
   <a href="javascript:void(0)" onclick="w3_close()" title="Close Sidemenu" 
   class="w3-bar-item w3-button w3-hide-large w3-large">Close <i class="fa fa-remove"></i></a>
-  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-dark-grey w3-button w3-hover-black w3-left-align" onclick="document.getElementById('id01').style.display='block'">New Message <i class="w3-padding-left fa fa-pencil"></i></a>
   
-  <a href="../menu/myChildStory" class="w3-bar-item w3-button"><i class="fa fa-paper-plane w3-padding-right"></i>내 아이 동화 목록</a>
+  <!-- <a href="../menu/myChildStory" class="w3-bar-item w3-button"><i class="fa fa-paper-plane w3-padding-right"></i>내 아이 동화 목록</a>
   <a href="../pboard/listForm" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>게시판</a>
   <a href="../menu/counselResult" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>상담요청 결과보기</a>
   <a href="../orderBook/orderCart" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>장바구니</a>
   <a href="../orderBook/confirmOrder" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>주문내역</a>
+   -->
+   <a href="../menu/myChildStory"><img src="../resources/image/icon/mychildstory.png" id="mychildstory"></a>
+  <br><br>
+  <a href="../pboard/listForm"><img src="../resources/image/icon/board.png" id="board"></a>
+  <br><br>
+  <a href="../menu/counselResult"><img src="../resources/image/icon/counselresult.png" id="counselresult"></a>
+  <br><br>
+  <a href="../orderBook/orderCart"><img src="../resources/image/icon/ordercart.png" id="ordercart"></a>
+  <br><br>	
+  <a href="../orderBook/confirmOrder"><img src="../resources/image/icon/confirmorder.png" id="confirmorder"></a>
   
   
 </nav>
@@ -278,27 +458,21 @@ canvas{
 <!-- Overlay effect when opening the side navigation on small screens -->
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="Close Sidemenu" id="myOverlay"></div>
 
+</div>
 
-
-
-<!-- Page content -->
-<div class="w3-main" style="margin-left:230px;">
-	<i class="fa fa-bars w3-button w3-white w3-hide-large w3-xlarge w3-margin-left w3-margin-top" onclick="w3_open()"></i>
-	
 
 <!--####################여기부터  -->
-
-<h1>[ 표지 꾸미기 ]</h1>
+<div class="container" id="makeCoverContainer">
+<h1 class="hanna">[ 표지 꾸미기 ]</h1>
 <!--꾸밀 표지  -->
 <div class="container" id="cover"></div>
 
 <!--꾸밀 아이템  -->
 <div class="container" id="itemsForC">
 	<ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#cover_bg" onclick="javascript:init();">배경</a></li>
-    <li><a data-toggle="tab" href="#cover_tt" onclick="init();">타이틀</a></li>
-    <li><a data-toggle="tab" href="#cover_ch" onclick="javascript:init();">캐릭터</a></li>
-    <li><a data-toggle="tab" href="#menu3" onclick="init();">Menu 3</a></li>
+    <li class="active"><a data-toggle="tab" class="hanna" href="#cover_bg" onclick="javascript:init();">배경</a></li>
+    <li><a data-toggle="tab" class="hanna" href="#cover_tt" onclick="init();">타이틀</a></li>
+    <li><a data-toggle="tab" class="hanna" href="#cover_ch" onclick="javascript:init();">캐릭터</a></li>
  	 </ul>
   <div class="tab-content">
     <div id="cover_bg" class="tab-pane fade in active"></div>
@@ -312,7 +486,7 @@ canvas{
 
 <!--표지 완성 확인 버튼  -->
 <div style="padding-left:35%;">
-<button type="button" class="btn btn-success" id="makeCover" onclick="capture();">저장하기</button>
+<button type="button" class="btn btn-success hanna" id="makeCover" onclick="capture();">저장하기</button>
 </div>
 
 <!-- 생성된 표지 -->
@@ -320,9 +494,10 @@ canvas{
 <input type="hidden" name="imgSrc" id="imgSrc" />
 <input type="hidden" name="ordernum" id="ordernum" value="${ordernum}"/>
 </form>
-<!--여기까지###########################  -->
 
 </div>
+<!--여기까지###########################  -->
+
 
 <!--Footer  -->
 <%-- <c:import url="../main/mainFooter.jsp"></c:import> --%>

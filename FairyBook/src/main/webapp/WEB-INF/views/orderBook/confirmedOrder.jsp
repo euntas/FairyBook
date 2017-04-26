@@ -14,6 +14,13 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!--적용 자바스크립트와 스타일  -->
+<style>
+/*글씨체  */
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+.hanna{
+	font-family: 'Hanna', fantasy;
+}
+</style>
 <script>
 $(function(){
 	$.ajax({
@@ -28,7 +35,7 @@ $(function(){
 });
 
 function printList(list){
-	var input='<table class="table table-striped table-hover">';
+	var input='<table class="table table-hover">';
 	input+='<thead><tr>';
 	input+='<th>주문번호</th><th>책표지</th><th colspan="2">주문정보</th>';
 	input+='</tr></thead>';
@@ -47,7 +54,7 @@ function printList(list){
 }
 </script>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="50" style="height: 100%;">
+<body data-spy="scroll" data-target=".navbar" data-offset="50" style="height: 100%;" class="hanna">
 
 <!--상단, 사이드 메뉴  -->
 <c:import url="../main/main.jsp"></c:import>

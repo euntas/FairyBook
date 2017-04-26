@@ -107,18 +107,19 @@ public class OrderBookController {
 	 * @return 경로
 	 */
 	@ResponseBody
-	@RequestMapping(value="getLastBookCover") //selectionnum
+	@RequestMapping(value="getLastBookCover",method=RequestMethod.GET) //selectionnum
 	public ArrayList<Integer> getLastBookCover(int selectionnum
 			,@SessionAttribute("loginUser") StoryMaker maker
 			){
 		logger.info("bookcovers selectionnum:{}",selectionnum);
 		String id=maker.getId();
-		selectionnum = 1; //지워야
+		logger.info("bookcovers id:{}",id);
 		ArrayList<Integer> bookcovers = new ArrayList<>();
 		Map<String, Object> data = new HashMap<>();
 		data.put("selectionnum", selectionnum);
 		data.put("id", id);
 		bookcovers = dao.lastBookCover(data);
+		
 		return bookcovers;
 	}
 	
