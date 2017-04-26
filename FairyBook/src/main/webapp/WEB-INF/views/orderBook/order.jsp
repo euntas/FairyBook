@@ -269,7 +269,6 @@ function updateOrder(state){ //addToCart,makeOrder,thumbnail
 
 <!--Footer  -->
 <div style="position: absolute;
-bottom:0;
 width: 100%;
 height: 30%;">
 <c:import url="../main/mainFooter.jsp"></c:import>
