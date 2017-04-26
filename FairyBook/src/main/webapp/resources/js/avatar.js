@@ -232,7 +232,11 @@ function checkSelection(){
 
 //reset버튼을 누르면 그리던 아바타를 초기화한다
 function reset(){
-	var avatar = '<input type="button" id="resetbtn">';
+	var avatar = ''
+	avatar += '<input type="button" id="resetbtn">';
+	avatar += '<div id="saveArea">';
+	avatar += '<input type="button" id="savebtn">';
+	avatar += '</div>';
 	$('#avatar').html(avatar);
 }
 
