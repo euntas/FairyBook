@@ -66,7 +66,7 @@
 	<footer class="container-fluid bg-4 text-center" style="position: absolute;
 bottom: 0;
 width: 100%;
-height: 30%;"
+height: auto;"
 > 
 	  <p>Made By <a href="../">FairyBook.com</a></p> 
 	</footer>
