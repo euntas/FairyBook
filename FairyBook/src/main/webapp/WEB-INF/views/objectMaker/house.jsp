@@ -21,7 +21,6 @@
 <!--적용 자바스크립트와 스타일  -->
 <script>
 
-
 //save버튼을 누르면 완성된 집을 DB에 저장한다
 function save(){
 	var roof = $('#roof').attr('num');
