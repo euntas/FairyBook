@@ -102,7 +102,7 @@
 
 </script>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="50" style="height: 100%;">
+<body data-spy="scroll" data-target=".navbar" data-offset="50" >
 
 <!--상단, 사이드 메뉴  -->
 <c:import url="../main/main.jsp"></c:import>
@@ -227,15 +227,7 @@
 
 <!--여기까지###########################  -->
 
-</div>
 
-<!--Footer  -->
-<div style="position: absolute;
-bottom:0;
-width: 100%;
-height: auto;">
-<c:import url="../main/mainFooter.jsp"></c:import>
-</div>
 
 <!-- 로켓페이지플립 사용 위한 파일 js -->
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -248,5 +240,14 @@ height: auto;">
 
 <!-- Go to www.addthis.com/dashboard to customize your tools --> 
 <!-- <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58e45cf68c351e8d"></script>  -->
+
+<div style="position: absolute;
+bottom:0;
+width: 100%;
+height: auto;">
+<!--Footer  -->
+<c:import url="../main/mainFooter.jsp"></c:import>
+</div>
+
 </body>
 </html> 
