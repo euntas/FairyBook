@@ -78,6 +78,20 @@ td{
        'Thanks for logging in, ' + response.name + '!'; */
    });
  }
+ 
+ // 실제 글 올리는 함수
+ function myWrite(){
+	  FB.ui(
+			  {
+			    method: 'feed',
+			    name: '내 애가 이렇게 잘해요',
+			    link: 'www.naver.com',
+			    picture: 'http://postfiles9.naver.net/MjAxNzAzMjhfMjY0/MDAxNDkwNjYyMTYyMTE4.bCGt0pjpam6jrn7YyvKpRaoCHx1CbRsmS23hIdkmQ40g.s8ATCxA34KfiheIts97FQHgpOE2q1YD9mmF95aD_W8Eg.PNG.tavstaus/farian.png?type=w3',
+			    //caption: '',
+			    description: '설명입니다.'
+			  });
+	  
+ }
 </script>
 
 <!--적용 자바스크립트와 스타일  -->
@@ -125,7 +139,7 @@ td{
 			<h6 class="w3-opacity">${story.endDate}</h6>
 				<button class="w3-button w3-red" onclick="location.href='../menu/storySlide?selectionNum=${story.selectionNum}'">감상</button>
 				<button class="w3-button w3-green" onclick="location.href='../analysis/storyAnalysis?selectionNum=${story.selectionNum}'">결과보기</button><br>
-				<button class="w3-button w3-blue" style="margin-top: 3px; onclick="">공유</button>
+				<button class="w3-button w3-blue" style="margin-top: 3px;" onclick="javascript:myWrite()">공유</button>
 			<form action="../orderBook/order" method="post" style="display: inline;">
 				<input type="hidden" class="orderSelectionnum" name="selectionnum" value="${story.selectionNum}">
 				<button type="submit" class="w3-button w3-yellow" style="margin-top: 3px;">주문하기</button>
