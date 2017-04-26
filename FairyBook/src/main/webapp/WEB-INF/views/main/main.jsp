@@ -191,6 +191,7 @@ $(function(){
   <br><br>
   
   
+  
   </div>
   <a href="javascript:void(0)" onclick="w3_close()" title="Close Sidemenu" 
   class="w3-bar-item w3-button w3-hide-large w3-large">Close <i class="fa fa-remove"></i></a>
