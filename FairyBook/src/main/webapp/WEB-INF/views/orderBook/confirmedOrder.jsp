@@ -35,7 +35,7 @@ $(function(){
 });
 
 function printList(list){
-	var input='<table class="table table-striped table-hover">';
+	var input='<table class="table table-hover">';
 	input+='<thead><tr>';
 	input+='<th>주문번호</th><th>책표지</th><th colspan="2">주문정보</th>';
 	input+='</tr></thead>';
