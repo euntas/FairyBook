@@ -333,7 +333,12 @@ function showAvatar(r){
 		
 		console.log(r[i].path);
 		console.log(r[i].name.substring(0,3));
-		input += '<img src="'+r[i].path+'" id="'+r[i].name+'" style="position: absolute;" usemap="#002"/>';
+
+		if(i==r.length-1){
+			input += '<img src="'+r[i].path+'" id="'+r[i].name+'" style="position: absolute;" usemap="#022"/>';
+		}else{
+			input += '<img src="'+r[i].path+'" id="'+r[i].name+'" style="position: absolute;"/>';
+		}
 		analysis += r[i].analysis+'<br>';
 	}
 	
@@ -342,39 +347,42 @@ function showAvatar(r){
 	 var avatarArray = ['12,15,285,58', '24,134,269,263'];
 	
 	//항목 누르는 곳 설정
-	input += '<map name="002">';
+	input += '<map name="022" id="022">';
 	
 	for( var j=0; j<r.length; j++){
 		var strName = r[j].name;
+		
 		if(strName.indexOf('hair') != -1){
-			input += '<area shape="rect" coords="81,30,227,80" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+			input += '<area shape="rect" coords="99,39,219,73" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
 		}
 		
 		if(strName.indexOf('face') != -1){
-			input += '<area shape="poly" coords="66,140,118,110,87,167" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
-			input += '<area shape="poly" coords="173,140,231,110,216,153" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+			/* input += '<area shape="rect" coords="81,133,98,179" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+			input += '<area shape="rect" coords="202,131,220,173" onclick="point(\'' + r[j].analysis + '\')" target="_blank">'; */
+			 input += '<area shape="poly" coords="66,140,118,110,87,167" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+	         input += '<area shape="poly" coords="173,140,231,110,216,153" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
 		}
 		
 		if(strName.indexOf('eye') != -1){
-			input += '<area shape="rect" coords="97,100,126,125" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
-			input += '<area shape="rect" coords="160,100,190,125" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+			input += '<area shape="rect" coords="105,114,119,132" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+			input += '<area shape="rect" coords="176,116,187,130" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
 		}
 				
 		if(strName.indexOf('nose') != -1){
-			input += '<area shape="rect" coords="140,140,165,160" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+			input += '<area shape="rect" coords="141,138,153,158" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
 		}
 		
 		if(strName.indexOf('mouth') != -1){
-			input += '<area shape="rect" coords="123,169,177,179" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+			input += '<area shape="rect" coords="123,165,173,178" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
 		}
 		
 		if(strName.indexOf('ear') != -1){
-			input += '<area shape="rect" coords="39,115,55,158" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
-			input += '<area shape="rect" coords="243,115,258,156" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+			input += '<area shape="rect" coords="45,125,73,163" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+			input += '<area shape="rect" coords="230,126,246,164" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
 		}
 		
 		if(strName.indexOf('body') != -1){
-			
+			input += '<area shape="rect" coords="129,223,172,268" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
 		}
 		
 	}
