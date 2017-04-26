@@ -71,9 +71,6 @@ img[id*='roof']{
 img[id*='wall']{
 	z-index: -2;
 }
-area{
-display:block;border:1px solid black;
-}
 </style>
 
 <script>
@@ -201,63 +198,66 @@ function menu2(){
 	});
 }
 
+var analysis = new Array();
+var houseName = ['지붕','문','벽','지붕','창문'];
+
 function showHouse(house){
 	var input = '';
-	var analysis = '';
 	
 	for (var i = 0; i < house.length; i++) {
-		
-		console.log(house[i].path);
-		console.log(house[i].name.substring(0,3));
-		input += '<img src="'+house[i].path+'" id="'+house[i].name+'" style="position: absolute;" usemap="#houseMap"/>';
-		analysis += house[i].analysis+'<br>';
+		if(i == house.length -1){
+			input += '<img src="'+house[i].path+'" id="'+house[i].name+'" style="position: absolute;" usemap="#houseMap"/>';
+		}else{
+			input += '<img src="'+house[i].path+'" id="'+house[i].name+'" style="position: absolute;"/>';
+		}
+		analysis[i] = house[i].analysis;
+		//가져오는 순서 - 지붕, 창문, 굴뚝, 벽, 문
 	}
 	
-	input += '<map id="houseMap" name="houseMap">';
-	for (var i = 0; i < house.length; i++) {
-		var strName = house[i].name;
-		if(strName.indexOf('roof') != -1){
-			input += '<area shape="poly" coords="97,83,50,175,250,175,200,87" onclick="housePoint(\'' + house[i].analysis + '\')" target="_blank">';
+	input += '<map name="houseMap">';
+	
+	$.each(house,function(i,h){
+		console.log(h.name);
+		if (h.name.indexOf('chimney')!=-1) {
+			input+='<area alt="chimney" shape="rect" coords="163,60,194,85" onclick="housePoint(\''+i+'\')">';
 		}
-		if(strName.indexOf('wall') != -1){
-			console.log(house[i].analysis);
-			input += '<area shape="rect" coords="50,154,75,300" onclick="housePoint(\'' + house[i].analysis + '\')" target="_blank">';
-			input += '<area shape="rect" coords="214,146,245,300" onclick="housePoint(\'' + house[i].analysis + '\')" target="_blank">';
-		} 
-		if(strName.indexOf('chimney') != -1){
-	         input += '<area shape="rect" coords="162,60,196,88" onclick="housePoint(\'' + house[i].analysis + '\')" target="_blank">';
+		else if(h.name.indexOf('roof')!=-1){
+			input+='<area alt="roof" shape="poly" coords="98,92,82,144,130,144,130,92" onclick="housePoint(\''+i+'\')">';
+			input+='<area alt="roof" shape="poly" coords="170,92,170,144,242,142,198,92" onclick="housePoint(\''+i+'\')">';
 		}
-		if(strName.indexOf('door01') != -1){
-			input += '<area shape="rect" coords="180,252,208,300" onclick="housePoint(\'' + house[i].analysis + '\')" target="_blank">';
+		else if(h.name.indexOf('door01')!=-1){
+			input+='<area alt="door" shape="rect" coords="180,253,205,299" onclick="housePoint(\''+i+'\')">';
 		}
-		if(strName.indexOf('door02') != -1 || strName.indexOf('door04') != -1){
-			input += '<area shape="rect" coords="165,218,211,300" onclick="housePoint(\'' + house[i].analysis + '\')" target="_blank">';
+		else if(h.name.indexOf('door02')!=-1||h.name.indexOf('door04')!=-1){
+			input+='<area alt="door" shape="rect" coords="169,220,209,299" onclick="housePoint(\''+i+'\')">';
 		}
-		if(strName.indexOf('door03') != -1){
-			input += '<area shape="rect" coords="157,175,230,300" onclick="housePoint(\'' + house[i].analysis + '\')" target="_blank">';
+		else if(h.name.indexOf('door03')!=-1){
+			input+='<area alt="door" shape="rect" coords="259,279,225,299" onclick="housePoint(\''+i+'\')">';
 		}
-		if(strName.indexOf('door05') != -1){
-			input += '<area shape="rect" coords="84,217,215,300" onclick="housePoint(\'' + house[i].analysis + '\')" target="_blank">';
+		else if(h.name.indexOf('door05')!=-1){
+			input+='<area alt="door" shape="rect" coords="88,220,210,299" onclick="housePoint(\''+i+'\')">';
 		}
-		if(strName.indexOf('window01') != -1){
-			input += '<area shape="rect" coords="130,177,172,212" onclick="housePoint(\'' + house[i].analysis + '\')" target="_blank">';
+		else if(h.name.indexOf('window01')!=-1){
+			input+='<area alt="window" shape="rect" coords="88,282,124,210" onclick="housePoint(\''+i+'\')">';
 		}
-		if(strName.indexOf('window02') != -1){
-			input += '<area shape="rect" coords="130,102,170,133" onclick="housePoint(\'' + house[i].analysis + '\')" target="_blank">';
+		else if(h.name.indexOf('window02')!=-1){
+			input+='<area alt="window" shape="rect" coords="132,104,168,131" onclick="housePoint(\''+i+'\')">';
 		}
-		if(strName.indexOf('window03') != -1){
-			input += '<area shape="rect" coords="57,181,210,215" onclick="housePoint(\'' + house[i].analysis + '\')" target="_blank">';
+		else if(h.name.indexOf('window03')!=-1){
+			input+='<area alt="window" shape="rect" coords="60,182,206,211" onclick="housePoint(\''+i+'\')">';
 		}
-		if(strName.indexOf('window04') != -1){
-			input += '<area shape="rect" coords="74,181,131,212" onclick="housePoint(\'' + house[i].analysis + '\')" target="_blank">';
+		else if(h.name.indexOf('window04')!=-1){
+			input+='<area alt="window" shape="rect" coords="77,187,127,211" onclick="housePoint(\''+i+'\')">';
 		}
-	}//for
+	});
 	
 	$('#showHouse').html(input);
 }
 
-function housePoint(analysis){
-	$('#htpSpecificH').html(analysis);
+function housePoint(i){
+	console.log(name[i]);
+	$('#htpLabelH').html(houseName[i]);
+	$('#htpSpecificH').html(analysis[i]);
 }
 
 //Tree
@@ -314,46 +314,52 @@ function showAvatar(r){
    var input = '';
    
    for (var i = 0; i < r.length; i++) {
-      
-      input += '<img src="'+r[i].path+'" id="'+r[i].name+'" style="position: absolute;" usemap="#002"/>';
+	   console.log(r[i].name);
+		if(i == r.length -1){
+      		input += '<img src="'+r[i].path+'" id="'+r[i].name+'" style="position: absolute;" usemap="#002"/>';
+		}else{
+      		input += '<img src="'+r[i].path+'" id="'+r[i].name+'" style="position: absolute;"/>';
+		}
+		analysis[i] = r[i].analysis;
    }//for
    
    //항목 누르는 곳 설정
-   input += '<map id="002" name="002">';
+   input += '<map name="002">';
    
-   for( var j=0; j<r.length; j++){
-      var strName = r[j].name;
-      if(strName.indexOf('hair') != -1){
-         input += '<area shape="rect" coords="80,40,220,70" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
-      }
-      if(strName.indexOf('face') != -1){
-         input += '<area shape="poly" coords="83,136,104,141,98,160" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
-         input += '<area shape="poly" coords="190,142,218,142,204,161" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
-      }
-      if(strName.indexOf('eye') != -1){
-         input += '<area shape="rect" coords="102,104,126,124" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
-         input += '<area shape="rect" coords="167,104,201,124" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
-      }
-      if(strName.indexOf('nose') != -1){
-         input += '<area shape="rect" coords="141,138,160,155" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
-      }
-      if(strName.indexOf('mouth') != -1){
-         input += '<area shape="rect" coords="123,172,172,187" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
-      }
-      if(strName.indexOf('ear') != -1){
-    	  input += '<area shape="rect" coords="48,131,66,162" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
-          input += '<area shape="rect" coords="241,131,250,162" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
-      }
-      
-      if(strName.indexOf('body') != -1){
-    	  input += '<area shape="rect" coords="129,223,172,268" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
-      }
-      
-   }//for
-   
+   $.each(r,function(i,a){
+		if (a.name.indexOf('ear')!=-1) {
+			input+='<area alt="ear" shape="rect" coords="38,121,59,158" onclick="avatarPoint(\''+i+'\')">';
+			input+='<area alt="ear" shape="rect" coords="241,121,253,160" onclick="avatarPoint(\''+i+'\')">';
+		}
+		if (a.name.indexOf('face')!=-1) {
+			input+='<area alt="face" shape="poly" coords="72,122,68,142,87,160,120,156,122,136,87,135,84,112" onclick="avatarPoint(\''+i+'\')">';
+			input+='<area alt="face" shape="poly" coords="212,106,211,132,177,140,174,154,216,155,232,127" onclick="avatarPoint(\''+i+'\')">';
+		}
+		if (a.name.indexOf('eye')!=-1) {
+			input+='<area alt="eye" shape="rect" coords="109,110,122,135" onclick="avatarPoint(\''+i+'\')">';
+			input+='<area alt="eye" shape="rect" coords="169,110,190,135" onclick="avatarPoint(\''+i+'\')">';
+		}
+		if (a.name.indexOf('mouth')!=-1) {
+			input+='<area alt="mouth" shape="rect" coords="115,163,180,177" onclick="avatarPoint(\''+i+'\')">';
+		}
+		if (a.name.indexOf('nose')!=-1) {
+			input+='<area alt="nose" shape="rect" coords="135,138,153,159" onclick="avatarPoint(\''+i+'\')">';
+		}
+		if (a.name.indexOf('hair')!=-1) {
+			input+='<area alt="hair" shape="poly" coords="51,85,104,69,194,67,246,88,218,42,148,17,79,85,46" onclick="avatarPoint(\''+i+'\')">';
+		}
+	});
    input += '</map>';
    
    $('#showAvatar2').html(input);
+}
+
+var avatarName = ['눈','코','입','머리','얼굴','몸','귀'];
+// 각 항목(머리, 얼굴 등) 눌렀을 때 강조
+function avatarPoint(i){
+	$('#htpLabelA').html(avatarName[i]);
+	$('#htpSpecific4').html('');
+	$('#htpSpecific4').html(analysis[i]);
 }
 
 //활성화 tab페이지 초기화
@@ -361,13 +367,6 @@ function clear(){
 	window.scrollTo(0,0);
 	$('#home,#menu1,#menu2,#menu3,#menu4,#menu5').attr('class','');
 	$('#home,#menu1,#menu2,#menu3,#menu4,#menu5').attr('class','tab-pane fade');
-}
-
-// 각 항목(머리, 얼굴 등) 눌렀을 때 강조
-function point(analysis){
-	console.log(analysis);
-	$('#htpSpecific4').html('');
-	$('#htpSpecific4').html(analysis);
 }
 	
 //퀴즈 가져오기
@@ -393,7 +392,7 @@ function showQuiz(list){
 		input += '<div style="padding:5px;height:250px;width: 400px;float:left;">';
 		input += '<div class="w3-card-2">';/*  style="height:250px;width: 400px;float:left;" */
 		input += '<header class="w3-container w3-light-blue">';
-		input += '<h4 id="quizLabel">'+l.question+'</h4>';
+		input += '<h4 id="quizLabel" class="hanna">'+l.question+'</h4>';
 		input += '</header>';
 		input += '<div class="w3-container" id="quizSpecific">';
 		input += l.select1;
@@ -458,8 +457,8 @@ function showQuiz(list){
 		        <div id="colorGraph" style="height: 250px;"></div>
 		    </div>
 	        <div class="panel panel-warning" style="height:400px;width: 400px;float:left;">
-		      <div class="panel-heading colorLabel"></div>
-		      <div class="panel-body colorSpecific"></div>
+		      <div class="panel-heading colorLabel hanna"></div>
+		      <div class="panel-body colorSpecific hanna"></div>
 		    </div>
 		  </div>
 		  <br>
@@ -487,8 +486,8 @@ function showQuiz(list){
 		  	<div class="col-md-4" style="width: 500px;" id="showHouse">
 		    </div>
 		  	<div class="panel panel-warning" style="height:250px;width: 400px;float:left;">
-		      <div class="panel-heading" id="htpLabel">htp</div>
-		      <div class="panel-body" id="htpSpecificH"></div>
+		      <div class="panel-heading hanna" id="htpLabelH"></div>
+		      <div class="panel-body hanna" id="htpSpecificH"></div>
 		    </div>
 		  </div>
 		   <center><button onclick="location.href='../analysis/counsel'">상담하기</button></center>
@@ -528,7 +527,7 @@ function showQuiz(list){
 		  		<div id="showAvatar2" class="showAvatar" style="position: relative;"></div>
 		    </div>
 		  	<div class="panel panel-warning" style="height:250px;width: 400px;float:left;">
-		      <div class="panel-heading hanna" id="htpLabel">htp</div>
+		      <div class="panel-heading hanna" id="htpLabelA"></div>
 		      <div class="panel-body hanna" id="htpSpecific4"></div>
 		    </div>
 		  </div>
