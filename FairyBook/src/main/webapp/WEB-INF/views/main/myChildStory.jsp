@@ -34,8 +34,8 @@ td{
      accessToken = response.authResponse.accessToken;
      testAPI();
    } else {
-     document.getElementById('status').innerHTML = 'Please log ' +
-       'into this app.';
+     console.log('Please log ' +
+       'into this app.');
    }
  }
 
@@ -48,7 +48,7 @@ td{
 
  window.fbAsyncInit = function() {
  FB.init({
-   appId      : '176801956172556',
+   appId      : '176801416172610',
    cookie     : true,  // enable cookies to allow the server to access 
                        // the session
    oauth: true,
@@ -80,7 +80,9 @@ td{
  }
  
  // 실제 글 올리는 함수
- function myWrite(){
+ function myWrite(storyNum, selectionNum){
+	 var str = '동화는 ' + storyNum + ' 이고 셀렉션넘버는 ' + selectionNum + '입니다.';
+	 
 	  FB.ui(
 			  {
 			    method: 'feed',
@@ -88,7 +90,7 @@ td{
 			    link: 'www.naver.com',
 			    picture: 'http://postfiles9.naver.net/MjAxNzAzMjhfMjY0/MDAxNDkwNjYyMTYyMTE4.bCGt0pjpam6jrn7YyvKpRaoCHx1CbRsmS23hIdkmQ40g.s8ATCxA34KfiheIts97FQHgpOE2q1YD9mmF95aD_W8Eg.PNG.tavstaus/farian.png?type=w3',
 			    //caption: '',
-			    description: '설명입니다.'
+			    description: str
 			  });
 	  
  }
@@ -139,7 +141,7 @@ td{
 			<h6 class="w3-opacity">${story.endDate}</h6>
 				<button class="w3-button w3-red" onclick="location.href='../menu/storySlide?selectionNum=${story.selectionNum}'">감상</button>
 				<button class="w3-button w3-green" onclick="location.href='../analysis/storyAnalysis?selectionNum=${story.selectionNum}'">결과보기</button><br>
-				<button class="w3-button w3-blue" style="margin-top: 3px;" onclick="javascript:myWrite()">공유</button>
+				<button class="w3-button w3-blue" style="margin-top: 3px;" onclick="javascript:myWrite(${story.storyNum}, ${story.selectionNum })">공유</button>
 			<form action="../orderBook/order" method="post" style="display: inline;">
 				<input type="hidden" class="orderSelectionnum" name="selectionnum" value="${story.selectionNum}">
 				<button type="submit" class="w3-button w3-yellow" style="margin-top: 3px;">주문하기</button>
