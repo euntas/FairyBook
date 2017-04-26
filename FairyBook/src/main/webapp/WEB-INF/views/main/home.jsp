@@ -46,11 +46,6 @@
 <link rel="stylesheet" href="./resources/css/main.css">
 <script>
 
-var width = screen.width;
-var height = screen.height;
-
-alert("고객의 해상도는 " + width + " X " + height + " 입니다.");
-
 $(function(){
 	//profile사진 경로 설정
 	$('#profile').attr('src','./resources/image/yo.jpg')
