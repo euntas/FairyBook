@@ -311,6 +311,76 @@ function bringAvatar(){
 
 
 function showAvatar(r){
+<<<<<<< HEAD
+	var input = '';
+	var analysis = '';
+	
+	for (var i = 0; i < r.length; i++) {
+		
+		console.log(r[i].path);
+		console.log(r[i].name.substring(0,3));
+
+		if(i==r.length-1){
+			input += '<img src="'+r[i].path+'" id="'+r[i].name+'" style="position: absolute;" usemap="#022"/>';
+		}else{
+			input += '<img src="'+r[i].path+'" id="'+r[i].name+'" style="position: absolute;"/>';
+		}
+		analysis += r[i].analysis+'<br>';
+	}
+	
+	/*아바타 심리 결과를 위한 정보*/
+	// 아바타 항목 위치 좌표 정보. 배열 순서는 다음과 같다. (얼굴 , 코, 입 ...)
+	 var avatarArray = ['12,15,285,58', '24,134,269,263'];
+	
+	//항목 누르는 곳 설정
+	input += '<map name="022" id="022">';
+	
+	for( var j=0; j<r.length; j++){
+		var strName = r[j].name;
+		
+		if(strName.indexOf('hair') != -1){
+			input += '<area shape="rect" coords="99,39,219,73" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+		}
+		
+		if(strName.indexOf('face') != -1){
+			/* input += '<area shape="rect" coords="81,133,98,179" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+			input += '<area shape="rect" coords="202,131,220,173" onclick="point(\'' + r[j].analysis + '\')" target="_blank">'; */
+			 input += '<area shape="poly" coords="66,140,118,110,87,167" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+	         input += '<area shape="poly" coords="173,140,231,110,216,153" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+		}
+		
+		if(strName.indexOf('eye') != -1){
+			input += '<area shape="rect" coords="105,114,119,132" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+			input += '<area shape="rect" coords="176,116,187,130" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+		}
+				
+		if(strName.indexOf('nose') != -1){
+			input += '<area shape="rect" coords="141,138,153,158" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+		}
+		
+		if(strName.indexOf('mouth') != -1){
+			input += '<area shape="rect" coords="123,165,173,178" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+		}
+		
+		if(strName.indexOf('ear') != -1){
+			input += '<area shape="rect" coords="45,125,73,163" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+			input += '<area shape="rect" coords="230,126,246,164" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+		}
+		
+		if(strName.indexOf('body') != -1){
+			input += '<area shape="rect" coords="129,223,172,268" onclick="point(\'' + r[j].analysis + '\')" target="_blank">';
+		}
+		
+	}
+	
+	input += '</map>';
+	
+	$('.showAvatar').html(input);
+	$('#htpSpecific').html(analysis);
+	
+	// 디폴트로 텍스트 란에는 얼굴 설명을 넣어 놓는다.
+	//$('#htpSpecific4').html(r[0].analysis);
+=======
    var input = '';
    
    for (var i = 0; i < r.length; i++) {
@@ -354,6 +424,7 @@ function showAvatar(r){
    input += '</map>';
    
    $('#showAvatar2').html(input);
+>>>>>>> branch 'master' of https://github.com/euntas/FairyBook.git
 }
 
 //활성화 tab페이지 초기화
