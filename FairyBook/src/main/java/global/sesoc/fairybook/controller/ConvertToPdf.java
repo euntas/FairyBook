@@ -1,16 +1,25 @@
 package global.sesoc.fairybook.controller;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.UUID;
 
+import org.apache.commons.codec.binary.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.Document;
@@ -20,6 +29,7 @@ import com.itextpdf.text.PageSize;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import global.sesoc.fairybook.dao.SlideDAO;
+import global.sesoc.fairybook.util.FileService;
 
 @RequestMapping("analysis")
 @Controller
@@ -63,13 +73,38 @@ public class ConvertToPdf {
 				img.scalePercent(scaler);
 			}
 			d.add(img);
-			//Image i = Image.getInstance(uploadPath+integer+".jpg");
 		}
-		/*Image img = Image.getInstance(uploadPath+"1.jpg");
-		Image img1 = Image.getInstance(uploadPath+"2.jpg");*/
-		/*d.add(img);
-		d.add(img1);*/
 		d.close();
+		
+		
+		
+		File file = new File(uploadPath+"TEST.pdf");
+		FileInputStream in = new FileInputStream(file);
+		ByteArrayOutputStream bout = new ByteArrayOutputStream();
+		
+		byte[] by = new byte[(int)file.length()];
+		int len = 0;
+		
+		while( (len=in.read(by)) != -1)
+			bout.write(by, 0, len);
+		// 최종적인  byte[]로....   
+              
+		bout.close();
+		in.close();
+		
+		
+		String name=  UUID.randomUUID().toString()+".pdf";
+		Path path = Paths.get(uploadPath+name);
+		String contentType = "application/pdf";
+		MultipartFile mf = new MockMultipartFile(name, name, contentType, by);
+		if (!mf.isEmpty()) {
+			String savedFile = FileService.saveFile(mf, uploadPath);
+			//db에 넣어줄 path
+			//coverPath = savedFile;
+			
+		}
 	}
-
+    
 }
+	
+
