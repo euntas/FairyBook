@@ -50,7 +50,7 @@ public class ConvertToPdfController {
 	
 	//책 표지 저장 경로
 	private final String downloadPath = "/Users/kita/git/FairyBook/FairyBook/src/main/webapp/resources/img/scene/"; //파일 업로드 경로
-	private final String uploadPath = "/Users/kita/git/FairyBook/FairyBook/src/main/webapp/resources/pdf/"; //파일 업로드 경로
+	private final String uploadPath = "/Users/kita/git/FairyBook/FairyBook/src/main/webapp/resources/"; //파일 업로드 경로
 			
 	
 	@RequestMapping(value="convertPage")
