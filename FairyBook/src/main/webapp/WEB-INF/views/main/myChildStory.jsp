@@ -94,6 +94,20 @@ td{
 			  });
 	  
  }
+ 
+ function downloadPDF(){
+		var num=$('#selectionnum').val();
+		$.ajax({
+			url:'../pdf/imgToPdf',
+			data:{selectionnum:num},
+			success:function(){
+				location.href='../pdf/download?selectionnum='+num;
+			},
+			fail:function(){
+				alert('download fail');
+			}
+		});
+	}
 </script>
 
 <!--적용 자바스크립트와 스타일  -->
@@ -143,9 +157,10 @@ td{
 				<button class="w3-button w3-green" onclick="location.href='../analysis/storyAnalysis?selectionNum=${story.selectionNum}'">결과보기</button><br>
 				<button class="w3-button w3-blue" style="margin-top: 3px;" onclick="javascript:myWrite(${story.storyNum}, ${story.selectionNum })">공유</button>
 			<form action="../orderBook/order" method="post" style="display: inline;">
-				<input type="hidden" class="orderSelectionnum" name="selectionnum" value="${story.selectionNum}">
+				<input type="hidden" class="orderSelectionnum" name="selectionnum" id="selectionnum" value="${story.selectionNum}">
 				<button type="submit" class="w3-button w3-yellow" style="margin-top: 3px;">주문하기</button>
 			</form>
+			<button onclick="javascript:downloadPDF();">PDF저장</button>
 		</div>
 	</td>
 	<c:if test="${status.count%3==0}">

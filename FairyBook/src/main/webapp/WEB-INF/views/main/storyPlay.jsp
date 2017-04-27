@@ -21,6 +21,21 @@ td{
 </style>
 
 <!--적용 자바스크립트와 스타일  -->
+<script type="text/javascript">
+function downloadPDF(){
+	var num=$('#selectionnum').val();
+	$.ajax({
+		url:'../pdf/imgToPdf',
+		data:{selectionnum:num},
+		success:function(){
+			location.href='../pdf/download?selectionnum='+num;
+		},
+		fail:function(){
+			alert('download fail');
+		}
+	});
+}
+</script>
 
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50" style="height: 100%; margin: 0;">
@@ -76,6 +91,7 @@ td{
 				<button type="submit" class="w3-button w3-yellow w3-margin-bottom">책표지 만들기</button>
 				</c:if>
 			</form>
+				<button onclick="javascript:downloadPDF();">PDF저장</button>
 		</div>
 	</td>
 	<c:if test="${status.count%3==0}">
