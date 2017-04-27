@@ -14,6 +14,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
+/*글씨체  */
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+.hanna{
+	font-family: 'Hanna', fantasy;
+}
+
 td{
 	text-align: center;
 }
@@ -113,7 +119,7 @@ td{
 <!--적용 자바스크립트와 스타일  -->
 
 
-<body data-spy="scroll" data-target=".navbar" data-offset="50" style="height: 100%;">
+<body data-spy="scroll" data-target=".navbar" data-offset="50" style="height: 100%;" class="hanna">
 
 <!--상단, 사이드 메뉴  -->
 <c:import url="main.jsp"></c:import>
@@ -142,7 +148,7 @@ td{
 	</a>
 	<!-- 여기까지 썸네일 -->
 		<div class="w3-container w3-white">
-			<h3>
+			<h3 class="hanna">
 			<c:choose>
 				<c:when test="${story.storyNum==0}">노랑이의 모험</c:when>
 				<c:when test="${story.storyNum==1}">헨젤과 그레텔</c:when>			

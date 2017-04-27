@@ -14,6 +14,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
+/*글씨체  */
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+.hanna{
+	font-family: 'Hanna', fantasy;
+}
+
 td{
 	text-align: center;
 }
@@ -38,7 +44,7 @@ function downloadPDF(){
 </script>
 
 
-<body data-spy="scroll" data-target=".navbar" data-offset="50" style="height: 100%; margin: 0;">
+<body data-spy="scroll" data-target=".navbar" data-offset="50" style="height: 100%; margin: 0;" class="hanna">
 
 <!--상단, 사이드 메뉴  -->
 <c:import url="main.jsp"></c:import>
@@ -70,7 +76,7 @@ function downloadPDF(){
 	<!-- 여기까지 썸네일 -->
 	
 		<div class="w3-container w3-white">
-			<h3>
+			<h3 class="hanna">
 			<c:choose>
 				<c:when test="${story.storyNum==0}">끔찍한 테스트</c:when>
 				<c:when test="${story.storyNum==1}">헨젤과 그레텔</c:when>			
