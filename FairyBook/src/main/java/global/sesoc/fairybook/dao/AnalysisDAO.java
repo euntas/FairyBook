@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import global.sesoc.fairybook.mapper.AnalysisMapper;
 import global.sesoc.fairybook.vo.Counselor;
+import global.sesoc.fairybook.vo.ETC;
 import global.sesoc.fairybook.vo.FBResource;
 import global.sesoc.fairybook.vo.SolvedQuiz;
 
@@ -83,5 +84,10 @@ public class AnalysisDAO {
 	public FBResource treeAnalysis(int selectionNum) {
 		AnalysisMapper mapper = sqlSession.getMapper(AnalysisMapper.class); 
 		return mapper.treeAnalysis(selectionNum);
+	}
+	
+	public ETC getETC(int selectionNum){
+		AnalysisMapper mapper = sqlSession.getMapper(AnalysisMapper.class); 
+		return mapper.getETC(selectionNum);
 	}
 }

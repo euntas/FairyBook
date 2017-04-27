@@ -118,4 +118,8 @@ and q.answer != -1
 	select coloranalysis from fbcolor where colornum = #{colornum}
 </select>
 
+<select id="getETC" parameterType="int" resultType="ETC">
+	select * from ETC where selectionNum = #{selectionNum}
+</select>
+
 </mapper>

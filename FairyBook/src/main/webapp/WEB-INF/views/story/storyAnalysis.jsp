@@ -97,7 +97,24 @@ $(function(){
 	$('#htp2').on('click',menu3);
 	$('#htp3').on('click',menu4);
 	$('#quiz').on('click',menu5);
+	
+	getETCPattern();
 });
+
+function getETCPattern(){
+	$.ajax({
+		url:'etcPatternAnalysis',
+		type:'GET',
+		data: {selectionNum: selectionNum}, 
+		dataType:'json',
+		success:function(result){
+			console.log(result);
+		},
+		error: function(e){
+			alert("etc문제임" + "num:" + selectionNum +" " + JSON.stringify(e));
+		}
+	});
+}
 
 function getColorName(){
 	$.ajax({
