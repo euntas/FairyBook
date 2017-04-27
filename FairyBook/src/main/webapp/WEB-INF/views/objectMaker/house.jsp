@@ -57,6 +57,7 @@ function save(){
 			$.ajax({
               url:'../story/saveSD',
               type:'GET',
+              async: false,
               data: {pageNum: 1},
               dataType:'json',
               success: function(){

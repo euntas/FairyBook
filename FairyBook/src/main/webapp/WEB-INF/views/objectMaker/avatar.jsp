@@ -50,6 +50,7 @@ function save(){
 	$.ajax({
 		url: 'saveAvatar',
 		type: 'POST',
+		async: false,
 		data: {face:face,hair:hair,eye:eye,nose:nose,mouth:mouth,ear:ear,body:body,hairColor:hairColor,eyeColor:eyeColor,bodyColor:bodyColor},
 		success: function(){
 			alert('저장 완료!');
