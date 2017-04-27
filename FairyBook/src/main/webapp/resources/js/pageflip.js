@@ -555,11 +555,19 @@ function writeQuizDiv(){
 		str = "<br>" + currentQuiz.question +"<br><br>";
 	
 	if(!(currentQuiz.select1 == '' || currentQuiz.select1 == null || currentQuiz.select1 == -1))
-		str += "<myselection selnum='1'>" + currentQuiz.select1 + "</myselection><br>";
+		if(currentQuiz.quizNum == 22){
+			str += "<myselection selnum='1'>" + currentQuiz.select1 + "</myselection>";
+		}else{
+			str += "<myselection selnum='1'>" + currentQuiz.select1 + "</myselection><br>";
+		}
 	if(!(currentQuiz.select2 == '' || currentQuiz.select2 == null || currentQuiz.select2 == -1))
 		str += "<myselection selnum='2'>" + currentQuiz.select2 + "</myselection><br>";
 	if(!(currentQuiz.select3 == '' || currentQuiz.select3 == null || currentQuiz.select3 == -1))
-		str += "<myselection selnum='3'>" + currentQuiz.select3 + "</myselection><br>";
+		if(currentQuiz.quizNum == 22){
+			str += "<myselection selnum='3'>" + currentQuiz.select3 + "</myselection>";
+		}else{
+			str += "<myselection selnum='3'>" + currentQuiz.select3 + "</myselection><br>";
+		}
 	if(!(currentQuiz.select4 == '' || currentQuiz.select4 == null || currentQuiz.select4 == -1))
 		str += "<myselection selnum='4'>" + currentQuiz.select4 + "</myselection><br><br>";
 	

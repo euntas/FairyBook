@@ -64,8 +64,8 @@ function save(){
                  location.href='../story/storyStart?storyNum=1';
               },
               error: function(e){
-                 alert("플립 실패 들어옴");
-                  alert(JSON.stringify(e));
+/*                  alert("플립 실패 들어옴");
+                 alert(JSON.stringify(e)); */
               }
           });
 		},
