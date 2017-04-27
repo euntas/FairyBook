@@ -43,15 +43,19 @@ function printCartList(orders){
 	input+='<thead><tr>';
 	input+='<th>확인</th><th>주문번호</th><th>책표지</th><th>책제목</th><th>가격</th>';
 	input+='</tr></thead>';
-	$.each(orders,function(i,o){
-		input += '<tr>';
-		input += '<td><input type="checkbox" class="selectionCart" price="'+o.price+'" value="'+o.ordernum+'"></td>';
-		input += '<td>'+o.ordernum+'</td>';
-		input += '<td><img width="100px" src="getBookCover?ordernum='+o.ordernum+'"></td>';
-		input += '<td>'+o.title+'</td>';
-		input += '<td>'+o.price+'(수량: '+(o.price/5000)+')'+'</td>';
-		input += '</tr>';
-	});
+	if (orders == '') {
+		input += '<tr><td colspan="5" class="text-center">장바구니에 내역이 없습니다.</td></tr>';
+	}else{
+		$.each(orders,function(i,o){
+			input += '<tr>';
+			input += '<td><input type="checkbox" class="selectionCart" price="'+o.price+'" value="'+o.ordernum+'"></td>';
+			input += '<td>'+o.ordernum+'</td>';
+			input += '<td><img width="100px" src="getBookCover?ordernum='+o.ordernum+'"></td>';
+			input += '<td>'+o.title+'</td>';
+			input += '<td>'+o.price+'(수량: '+(o.price/5000)+')'+'</td>';
+			input += '</tr>';
+		});
+	}
 	$('#cartList').html(input);
 }
 
