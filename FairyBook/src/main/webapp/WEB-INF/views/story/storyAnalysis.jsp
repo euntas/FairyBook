@@ -71,6 +71,9 @@ img[id*='roof']{
 img[id*='wall']{
 	z-index: -2;
 }
+img[id*='door']{
+	z-index: 5;
+} 
 </style>
 
 <script>
@@ -216,17 +219,13 @@ function menu2(){
 }
 
 var analysis = new Array();
-var houseName = ['지붕','문','벽','지붕','창문'];
+var houseName = ['지붕','벽','굴뚝','문','창문'];
 
 function showHouse(house){
 	var input = '';
 	
 	for (var i = 0; i < house.length; i++) {
-		if(i == house.length -1){
-			input += '<img src="'+house[i].path+'" id="'+house[i].name+'" style="position: absolute;" usemap="#houseMap"/>';
-		}else{
-			input += '<img src="'+house[i].path+'" id="'+house[i].name+'" style="position: absolute;"/>';
-		}
+		input += '<img src="'+house[i].path+'" id="'+house[i].name+'" style="position: absolute;" usemap="#houseMap"/>';
 		analysis[i] = house[i].analysis;
 		//가져오는 순서 - 지붕, 창문, 굴뚝, 벽, 문
 	}
@@ -245,11 +244,11 @@ function showHouse(house){
 		else if(h.name.indexOf('door01')!=-1){
 			input+='<area alt="door" shape="rect" coords="180,253,205,299" onclick="housePoint(\''+i+'\')">';
 		}
-		else if(h.name.indexOf('door02')!=-1||h.name.indexOf('door04')!=-1){
+		else if(h.name.indexOf('door02')!=-1 || h.name.indexOf('door04')!=-1){
 			input+='<area alt="door" shape="rect" coords="169,220,209,299" onclick="housePoint(\''+i+'\')">';
 		}
 		else if(h.name.indexOf('door03')!=-1){
-			input+='<area alt="door" shape="rect" coords="259,279,225,299" onclick="housePoint(\''+i+'\')">';
+			input+='<area alt="door" shape="rect" coords="161,177,227,299" onclick="housePoint(\''+i+'\')">';
 		}
 		else if(h.name.indexOf('door05')!=-1){
 			input+='<area alt="door" shape="rect" coords="88,220,210,299" onclick="housePoint(\''+i+'\')">';
