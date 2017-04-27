@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import global.sesoc.fairybook.vo.Counselor;
+import global.sesoc.fairybook.vo.ETC;
 import global.sesoc.fairybook.vo.FBResource;
 import global.sesoc.fairybook.vo.SolvedQuiz;
 
@@ -28,5 +29,7 @@ public interface AnalysisMapper {
 	public ArrayList<FBResource> houseAnalysis(int selectionNum);
 
 	public FBResource treeAnalysis(int selectionNum);
+	
+	public ETC getETC(int selectionNum);
 
 }
