@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import global.sesoc.fairybook.dao.AnalysisDAO;
+import global.sesoc.fairybook.dao.ETCDAO;
 import global.sesoc.fairybook.vo.Counselor;
+import global.sesoc.fairybook.vo.ETC;
 import global.sesoc.fairybook.vo.FBResource;
 import global.sesoc.fairybook.vo.SolvedQuiz;
 
@@ -34,6 +36,7 @@ public class AnalysisController {
 	
 	@Autowired
 	AnalysisDAO dao;
+	
 	/**
 	 * 결과 페이지로 이동
 	 * @return
@@ -94,6 +97,73 @@ public class AnalysisController {
 		logger.info("color analysis:{}",analysis);
 		//FBResource VO 결과 jsp에 전송
 		return analysis;
+	}
+	
+	/**
+	 * etc 심리분석 - j, p 결과
+	 * @param selectionNum
+	 */
+	@ResponseBody
+	@RequestMapping(value="etcPatternAnalysis", method=RequestMethod.GET)
+	public int etcPatternAnalysis(int selectionNum){
+		logger.info("함수 들어옴");
+		String result = "j"; // 디폴트 j. 패턴에 해당하면 'p'를 반환.
+		int temp = 0;
+		
+		/*int pattern[][][] = {
+				{{1, 1, 1}, {1, 1, 1}, {1, 1, 1}, {1, 1, 1}},
+				{{1, 1, 1}, {0, 0, 0}, {1, 1, 1}, {0, 0, 0}},
+				{{0, 0, 0}, {1, 1, 1}, {0, 0, 0}, {1, 1, 1}},
+				{{1, 0, 1}, {1, 0, 1}, {1, 0, 1}, {1, 0, 1}},
+				{{0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}},
+				{{1, 0, 1}, {0, 1, 0}, {1, 0, 1}, {0, 1, 0}},
+				{{0, 1, 0}, {1, 0, 1}, {0, 1, 0}, {1, 0, 1}}
+		};*/
+				
+		ETC etc = dao.getETC(selectionNum);
+	
+		int mySel[][] = {
+				{etc.getSelection1Color(), etc.getSelection2Color(), etc.getSelection3Color()}, 
+				{etc.getSelection4Color(), etc.getSelection5Color(), etc.getSelection6Color()}, 
+				{etc.getSelection7Color(), etc.getSelection8Color(), etc.getSelection9Color()},
+				{etc.getSelection10Color(), etc.getSelection11Color(), etc.getSelection12Color()}
+		};
+		
+		int flag = 1;
+		
+		for(int i=0; i<4; i++){
+			if(checkArr(mySel[i][0], mySel[i][1], mySel[i][2]) == 0){
+				flag = 0; 
+				break;
+			}
+		}
+		
+		if(flag == 1){
+			if(mySel[0][0] == mySel[2][0] && mySel[0][1] == mySel[2][1] && mySel[0][2] == mySel[2][2]
+					&& mySel[1][0] == mySel[3][0] && mySel[1][1] == mySel[3][1] && mySel[1][2] == mySel[3][2]){
+				result = "p";
+			}
+		}
+		
+		logger.info("마이셀: " + mySel + " flag: " + flag + "result: " + result);
+		
+		if(result.equals("p"))
+			temp = 1;
+			
+		
+		return temp;
+	}
+	
+	public int checkArr(int a, int b, int c){
+		int result = 0;
+		
+		if(a == b && b== c)
+			result = 1;
+		
+		if(a == c && a != b)
+			result = 1;
+		
+		return result;
 	}
 	
 	/**
