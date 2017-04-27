@@ -440,8 +440,8 @@ function myFunc(id) {
             <div class="w3-container w3-white">
             <br>
         <img src="./resources/image/whitesnowtitle.png">
-              <h6 class="w3-opacity">Please wait update</h6>
-              <button class="w3-button w3-block w3-pink w3-margin-bottom" onclick="location.href='util/snsTest'">SNS-Test</button>
+              <h6 class="w3-opacity">2017.4.27</h6>
+              <button class="w3-button w3-block w3-pink w3-margin-bottom" onclick="location.href='story/storyTitle?storyNum=2'">Play</button>
             </div>
           </div>
         

@@ -61,7 +61,7 @@ function save(){
               data: {pageNum: 1},
               dataType:'json',
               success: function(){
-                 location.href='../story/storyStart?storyNum=1';
+                 location.href='../story/storyStart?storyNum=' + ${currentStoryNum};
               },
               error: function(e){
 /*                  alert("플립 실패 들어옴");
@@ -70,7 +70,7 @@ function save(){
           });
 		},
 		error: function(e){
-			alert(JSON.stringify(e));
+			/* alert(JSON.stringify(e)); */
 		}
 	});
 }
