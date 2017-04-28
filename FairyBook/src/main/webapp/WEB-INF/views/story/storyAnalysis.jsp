@@ -219,7 +219,7 @@ function menu2(){
 }
 
 var analysis = new Array();
-var houseName = ['지붕','벽','굴뚝','문','창문'];
+var houseName = new Array();
 
 function showHouse(house){
 	var input = '';
@@ -235,34 +235,44 @@ function showHouse(house){
 	$.each(house,function(i,h){
 		console.log(h.name);
 		if (h.name.indexOf('chimney')!=-1) {
+			houseName[i] = '굴뚝';
 			input+='<area alt="chimney" shape="rect" coords="163,60,194,85" onclick="housePoint(\''+i+'\')">';
 		}
 		else if(h.name.indexOf('roof')!=-1){
+			houseName[i] = '지붕';
 			input+='<area alt="roof" shape="poly" coords="98,92,82,144,130,144,130,92" onclick="housePoint(\''+i+'\')">';
 			input+='<area alt="roof" shape="poly" coords="170,92,170,144,242,142,198,92" onclick="housePoint(\''+i+'\')">';
 		}
 		else if(h.name.indexOf('door01')!=-1){
+			houseName[i] = '문';
 			input+='<area alt="door" shape="rect" coords="180,253,205,299" onclick="housePoint(\''+i+'\')">';
 		}
 		else if(h.name.indexOf('door02')!=-1 || h.name.indexOf('door04')!=-1){
+			houseName[i] = '문';
 			input+='<area alt="door" shape="rect" coords="169,220,209,299" onclick="housePoint(\''+i+'\')">';
 		}
 		else if(h.name.indexOf('door03')!=-1){
+			houseName[i] = '문';
 			input+='<area alt="door" shape="rect" coords="161,177,227,299" onclick="housePoint(\''+i+'\')">';
 		}
 		else if(h.name.indexOf('door05')!=-1){
+			houseName[i] = '문';
 			input+='<area alt="door" shape="rect" coords="88,220,210,299" onclick="housePoint(\''+i+'\')">';
 		}
 		else if(h.name.indexOf('window01')!=-1){
+			houseName[i] = '창문';
 			input+='<area alt="window" shape="rect" coords="88,282,124,210" onclick="housePoint(\''+i+'\')">';
 		}
 		else if(h.name.indexOf('window02')!=-1){
+			houseName[i] = '창문';
 			input+='<area alt="window" shape="rect" coords="132,104,168,131" onclick="housePoint(\''+i+'\')">';
 		}
 		else if(h.name.indexOf('window03')!=-1){
+			houseName[i] = '창문';
 			input+='<area alt="window" shape="rect" coords="60,182,206,211" onclick="housePoint(\''+i+'\')">';
 		}
 		else if(h.name.indexOf('window04')!=-1){
+			houseName[i] = '창문';
 			input+='<area alt="window" shape="rect" coords="77,187,127,211" onclick="housePoint(\''+i+'\')">';
 		}
 	});
@@ -327,10 +337,12 @@ function bringAvatar(){
 }
 
 
+var avatarName = new Array();;
 function showAvatar(r){
    var input = '';
    
    for (var i = 0; i < r.length; i++) {
+	   console.log(r[i].name);
 		if(i == r.length -1){
       		input += '<img src="'+r[i].path+'" id="'+r[i].name+'" style="position: absolute;" usemap="#002"/>';
 		}else{
@@ -342,26 +354,34 @@ function showAvatar(r){
    //항목 누르는 곳 설정
    input += '<map name="002">';
    
+   
+   
    $.each(r,function(i,a){
 		if (a.name.indexOf('ear')!=-1) {
+			avatarName[i] = '귀';
 			input+='<area alt="ear" shape="rect" coords="38,121,59,158" onclick="avatarPoint(\''+i+'\')">';
 			input+='<area alt="ear" shape="rect" coords="241,121,253,160" onclick="avatarPoint(\''+i+'\')">';
 		}
 		if (a.name.indexOf('face')!=-1) {
+			avatarName[i] = '얼굴';
 			input+='<area alt="face" shape="poly" coords="72,122,68,142,87,160,120,156,122,136,87,135,84,112" onclick="avatarPoint(\''+i+'\')">';
 			input+='<area alt="face" shape="poly" coords="212,106,211,132,177,140,174,154,216,155,232,127" onclick="avatarPoint(\''+i+'\')">';
 		}
 		if (a.name.indexOf('eye')!=-1) {
+			avatarName[i] = '눈';
 			input+='<area alt="eye" shape="rect" coords="109,110,122,135" onclick="avatarPoint(\''+i+'\')">';
 			input+='<area alt="eye" shape="rect" coords="169,110,190,135" onclick="avatarPoint(\''+i+'\')">';
 		}
 		if (a.name.indexOf('mouth')!=-1) {
+			avatarName[i] = '입';
 			input+='<area alt="mouth" shape="rect" coords="115,163,180,177" onclick="avatarPoint(\''+i+'\')">';
 		}
 		if (a.name.indexOf('nose')!=-1) {
+			avatarName[i] = '코';
 			input+='<area alt="nose" shape="rect" coords="135,138,153,159" onclick="avatarPoint(\''+i+'\')">';
 		}
 		if (a.name.indexOf('hair')!=-1) {
+			avatarName[i] = '머리';
 			input+='<area alt="hair" shape="poly" coords="51,85,104,69,194,67,246,88,218,42,148,17,79,85,46" onclick="avatarPoint(\''+i+'\')">';
 		}
 	});
@@ -370,7 +390,7 @@ function showAvatar(r){
    $('#showAvatar2').html(input);
 }
 
-var avatarName = ['눈','코','입','머리','얼굴','몸','귀'];
+
 // 각 항목(머리, 얼굴 등) 눌렀을 때 강조
 function avatarPoint(i){
 	$('#htpLabelA').html(avatarName[i]);
@@ -442,8 +462,6 @@ function showQuiz(list){
 <!--####################여기부터  -->
 
 <div class="container-fluid">
-
-<input type="button" value="pdf" onclick="location.href='convertPage'">
 
 	<div class="f-nav">
 	<ul class="nav nav-pills" id="mainNav">
