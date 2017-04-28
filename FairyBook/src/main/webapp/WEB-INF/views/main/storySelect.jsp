@@ -48,8 +48,8 @@
 	      <img src="../resources/image/snowwhitetitle.jpg" alt="Norway" style="width:100%">
 	      <div class="w3-container w3-white">
 	        <h3>백설공주</h3>
-	        <h6 class="w3-opacity">Please wait update</h6>
-	        <button class="w3-button w3-block w3-margin-bottom" disabled="disabled">업데이트를 기대하세요</button>
+	        <h6 class="w3-opacity">2017.4.27</h6>
+	        <button class="w3-button w3-block w3-margin-bottom" onclick="location.href='../story/storyTitle?storyNum=2'">Play</button>
 	      </div>
 	    </div>
 	    
