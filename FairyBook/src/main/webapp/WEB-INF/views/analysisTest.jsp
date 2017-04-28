@@ -11,7 +11,7 @@
 <script src="resources/jqplot/jquery.jqplot.min.js"></script>
 
 <script src="resources/jqplot/plugins/jqplot.pieRenderer.min.js"></script>
-
+<link rel="shortcut icon" type="image/x-icon" href="../resources/img/favicon.ico">
 <script>
  $(function(){
 	 $.jqplot ('graph', [[['첫번째', 50], ['두번째', 22], ['세번째', 38], ['네번째', 30]]], //[항목, 수치]
