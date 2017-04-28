@@ -50,12 +50,22 @@
 	width:100%;
 }
 
+.colorLblwhite{
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+a[class*='colorLbl']{
+	font-size:120%;
+}
 #allColorAnalysis{
 	width: 700px;
 	height: 500px;
-	padding: 10%;
+	padding: 5%;
 	background-color:rgb(255,255,196);
 }
+#eachColor{
+	
+}
+
 img[id*='face']{
 	z-index: -1;
 }
@@ -153,7 +163,7 @@ function allColor(){
 	input += '<div class="col-md-3">';
 	input += '<ul class="nav nav-pills nav-stacked">';
 	$.each(colorArray,function(i,c){
-		input += '<li><a data-toggle="pill" onclick="eachColor(\''+i+'\')">'+c+'</a></li>';
+		input += '<li><a class="colorLbl'+c+'" data-toggle="pill" onclick="eachColor(\''+i+'\')" style="color:'+c+';">'+c+'</a></li>';
 	});
  	input += '</ul></div>';
  	input += '<div class="tab-content">';
@@ -279,6 +289,7 @@ function showHouse(house){
 	
 	$('#showHouse').html(input);
 }
+
 
 function housePoint(i){
 	console.log(name[i]);
@@ -452,7 +463,7 @@ function showQuiz(list){
 
 </script>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="50" style="height:100%;">
+<body data-spy="scroll" data-target=".navbar" data-offset="50" style="height:100%;" class="hanna">
 <!--상단, 사이드 메뉴  -->
 <c:import url="../main/main.jsp"></c:import>
 <!-- Page content -->
@@ -478,19 +489,23 @@ function showQuiz(list){
     	<div  class="row col-sm-12">
     		<img alt="htp" src="../resources/img/htp.png" style="width:100%;height:auto;">
     	</div>
+    	<div  class="row col-sm-12">
+    		<img alt="explain" src="../resources/img/colorExplain.png" width="100%" height="auto">
+    	</div>
     </div>
     
     <!-- COLOR -->
     <div style="padding-top:5%;" id="menu1">
 		  <div class="row">
 		    <div class="col-sm-12">
-		    	<h3 class="hanna">심리-색</h3>  
+		    	<h3 class="hanna">색채 심리 검사</h3>  
 		    </div>
 		  </div>
 		  <hr>
 		  <div class="row">
 		    <div class="col-md-4" style="width: 500px;">
-		        <div id="colorGraph" style="height: 250px;"></div>
+		        <div id="colorGraph" style="height: 250px;"></div><br>
+			  	<center><button class="btn btn-info" onclick="allColor();">다른 색 정보보기</button></center>
 		    </div>
 	        <div class="panel panel-warning" style="height:400px;width: 400px;float:left;">
 		      <div class="panel-heading colorLabel hanna"></div>
@@ -498,15 +513,12 @@ function showQuiz(list){
 		    </div>
 		  </div>
 		  <br>
-		  <div style="width: 900px; height: 50px; padding: 20px; border: 1px solid black;">
-		  	색채검사는 ....................................................
-		  </div>
+		  	
 		  <hr>
 		  <div class="row" style="width: 500px; padding-left:100px;">
-		  	<button class="btn-default" onclick="allColor();">다른 색 정보보기</button>
 		  	<div id="allColor"></div>
 		  </div>
-		  <center><button onclick="location.href='../analysis/counsel'">상담하기</button></center>
+		  <center><button class="btn btn-warning" onclick="location.href='../analysis/counsel'">상담하기</button></center>
 		<hr>
     </div>
     
@@ -514,7 +526,7 @@ function showQuiz(list){
     <div style="padding-top:5%;" id="menu2">
 		<div class="row">
 		    <div class="col-sm-12">
-		    	<h3 class="hanna">심리-HTP-h 외부와의 소통을 말해주는 ‘집’</h3>  
+		    	<h3 class="hanna">HTP - 외부와의 소통을 말해주는 ‘집’</h3>  
 		    </div>
 		  </div>
 		  <hr>
@@ -526,7 +538,7 @@ function showQuiz(list){
 		      <div class="panel-body hanna" id="htpSpecificH"></div>
 		    </div>
 		  </div>
-		   <center><button onclick="location.href='../analysis/counsel'">상담하기</button></center>
+		   <center><button class="btn btn-warning" onclick="location.href='../analysis/counsel'">상담하기</button></center>
 		  <hr>
     </div>
     
@@ -534,7 +546,7 @@ function showQuiz(list){
     <div style="padding-top:5%;" id="menu3">
 		<div class="row">
 		    <div class="col-sm-12">
-		    	<h3 class="hanna">심리-HTP-t 아이 자신과 마음 상태를 말해주는 ‘나무’</h3>  
+		    	<h3 class="hanna">HTP - 아이 자신과 마음 상태를 말해주는 ‘나무’</h3>  
 		    </div>
 		  </div>
 		  <hr>
@@ -546,7 +558,7 @@ function showQuiz(list){
 		      <div class="panel-body hanna" id="htpSpecificT"></div>
 		    </div>
 		  </div>
-		  <center><button onclick="location.href='../analysis/counsel'">상담하기</button></center>
+		  <center><button class="btn btn-warning" onclick="location.href='../analysis/counsel'">상담하기</button></center>
 		  <hr>
     </div>
     
@@ -554,7 +566,7 @@ function showQuiz(list){
     <div style="padding-top:5%;" id="menu4">
 		<div class="row">
 		    <div class="col-sm-12">
-		    	<h3 class="hanna">심리-HTP-p 성격이나 감정, 주변 환경에 대해 말해주는 ‘사람’</h3>  
+		    	<h3 class="hanna">HTP - 성격이나 감정, 주변 환경에 대해 말해주는 ‘사람’</h3>  
 		    </div>
 		  </div>
 		  <hr>
@@ -567,8 +579,9 @@ function showQuiz(list){
 		      <div class="panel-body hanna" id="htpSpecific4"></div>
 		    </div>
 		  </div>
-		  <center><button onclick="location.href='../analysis/counsel'">상담하기</button></center>
+		  <br>
 		  <hr>
+		  <button class="btn btn-warning pull-right" onclick="location.href='../analysis/counsel'">상담하기</button>
     </div>
     
     <!--QUIZ  -->
