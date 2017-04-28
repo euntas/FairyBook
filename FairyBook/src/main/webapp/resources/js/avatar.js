@@ -9,6 +9,11 @@ $(document).ready(function(){
 	$('#mouthbtn').on('click', callMouth);
 	$('#earbtn').on('click', callEar);
 	$('#bodybtn').on('click', callBody);
+	//화면 사이즈에 맞게 크기 조절
+	var screen1 = $(window).height();
+	$("html").css("height", screen1);
+	$("#bodytag").css("height", screen1);
+	$("#bodytag").css("margin", "0px");
 });
 
 //얼굴 불러오기

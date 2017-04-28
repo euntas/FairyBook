@@ -6,7 +6,14 @@ $(document).ready(function(){
 	$('#chimneybtn').on('click', callChimney);
 	$('#yardbtn').on('click', callYard);
 	$('#wallbtn').on('click', callWall);
+	
+	//화면 사이즈에 맞게 크기 조절
+	var screen1 = $(window).height();
+	$("html").css("height", screen1);
+	$("#bodytag").css("height", screen1);
+	$("#bodytag").css("margin", "0px");
 });
+
 
 //지붕 불러오기
 function callRoof(){
@@ -213,6 +220,10 @@ function checkSelection(){
 
 //reset버튼을 누르면 그리던 집을 초기화한다
 function reset(){
-	var house = '<input type="button" value="초기화" id="reset">';
+	var house = ''
+	house += '<input type="button" id="resetbtn">';
+	house += '<div id="saveArea">';
+	house += '<input type="button" id="savebtn">';
+	house += '</div>';
 	$('#house').html(house);
 }

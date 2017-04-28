@@ -5,7 +5,7 @@
 #avatar{
 	margin: 0px;
 	width : auto;
-	height: 500px;
+	height: 60%;
 	border: 1px solid black;
 	background-image: url("../img/avatar/background.png");
 	background-size: 100% 100%; 
@@ -22,56 +22,56 @@ img{
 /* 아바타의 얼굴이미지 */
 #face{
 	position: absolute;
-	left: 48%;
-	top: 30%;
+	left: 38%;
+	top: 10%;
 	z-index: 3;
 }
 
 /* 아바타의 헤어이미지 */
 #hair{
 	position: absolute;
-	left: 48%;
-	top: 30%;
+	left: 38%;
+	top: 10%;
 	z-index: 1;
 }
 
 /* 아바타의 눈이미지 */
 #eye{
 	position: absolute;
-	left: 48%;
-	top: 30%;
+	left: 38%;
+	top: 10%;
 	z-index: 4;
 }
 
 /* 아바타의 코이미지 */
 #nose{
 	position: absolute;
-	left: 48%;
-	top: 30%;
+	left: 38%;
+	top: 10%;
 	z-index: 5;
 }
 
 /* 아바타의 입이미지 */
 #mouth{
 	position: absolute;
-	left: 48%;
-	top: 30%;
+	left: 38%;
+	top: 10%;
 	z-index: 6;
 }
 
 /* 아바타의 귀이미지 */
 #ear{
 	position: absolute;
-	left: 48%;
-	top: 30%;
+	left: 38%;
+	top: 10%;
 	z-index: 2;
 }
 
 /* 아바타의 몸이미지 */
 #body{
 	position: absolute;
-	left: 48%;
-	top: 30%;
+	left: 38%;
+	top: 10%;
 	z-index: 2;
 }
 
@@ -79,9 +79,10 @@ img{
 #category{
 	margin: 0px;
 	width : auto;
-	height: 100px;
+	height: 20%;
 	border: 1px solid black;
 	top: 60%;
+	z-index: 3;
 }
 
 /* 얼굴 버튼 */
@@ -145,9 +146,9 @@ img{
 #detail{
 	margin: 0px;
 	width : auto;
-	height: 157px;
+	height: 20%;
 	border: 1px solid black;
-	top: 400px;
+	top: 80%;
 }
 
 /* 저장버튼이 있는 영역 */
@@ -182,8 +183,8 @@ img{
 /* 색 선택하는 영역 */
 #color{
 	margin: 0px;
-	width : 25%;
-	height: 150px;
+	width : 30%;
+	height: 100%;
 	float: right;
 }
 
