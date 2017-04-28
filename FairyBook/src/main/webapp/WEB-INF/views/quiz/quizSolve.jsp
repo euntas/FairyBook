@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
 <link href='https://fonts.googleapis.com/css?family=RobotoDraft' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+<link rel="shortcut icon" type="image/x-icon" href="../resources/img/favicon.ico">
 <!--적용 자바스크립트와 스타일  -->
 <style>
 @import url(//fonts.googleapis.com/earlyaccess/hanna.css);

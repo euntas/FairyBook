@@ -8,6 +8,7 @@
 <title>Slide Show</title>
 <script src="../resources/js/slideShow.js"></script>
 <script src="../resources/js/jquery-3.1.1.js"></script>
+<link rel="shortcut icon" type="image/x-icon" href="../resources/img/favicon.ico">
 <style>
 img{
 	position: absolute;

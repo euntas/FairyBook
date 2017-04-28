@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
 <link href='https://fonts.googleapis.com/css?family=RobotoDraft' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+<link rel="shortcut icon" type="image/x-icon" href="../resources/img/favicon.ico">
 <script>
 $(function(){
 	//profile사진 경로 설정
@@ -171,12 +171,13 @@ $(function(){
 
 <!--배너  -->
 <nav class="navbar-fixed-top">
-<div style="background-image: url('../resources/image/icon/banner.png');width: 100%;height: 100px;">
+<div style="background-image: url('../resources/image/icon/banner.jpg');width: 100%;height: 100px;">
  <center><a href="../"><img src="../resources/image/icon/bannertitle.png" style="margin-top: 15px;"></a></center>
 </div>
 </nav>
 
-<div id="under">
+
+<div id="under" style="z-index: -99; min-height: 100%;background-image: url('../resources/image/icon/backg.png');width:100%"> 
 <!-- Side Navigation -->
 <!--로그인하지 않았을 때  -->
 <c:if test="${loginUser == null }">
