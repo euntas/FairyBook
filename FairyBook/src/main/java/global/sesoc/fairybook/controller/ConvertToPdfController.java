@@ -2,6 +2,7 @@ package global.sesoc.fairybook.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -9,6 +10,8 @@ import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.ServletOutputStream;
@@ -26,13 +29,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Font;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfWriter;
 
+import global.sesoc.fairybook.dao.AnalysisDAO;
 import global.sesoc.fairybook.dao.OrderBookDAO;
 import global.sesoc.fairybook.dao.SlideDAO;
 import global.sesoc.fairybook.util.FileService;
+import global.sesoc.fairybook.vo.FBResource;
 
 @RequestMapping("pdf")
 @Controller
@@ -45,6 +53,9 @@ public class ConvertToPdfController {
 	
 	@Autowired
 	OrderBookDAO oDao;
+	
+	@Autowired
+	AnalysisDAO aDao;
 	
 	String fileName;
 	
@@ -115,6 +126,160 @@ public class ConvertToPdfController {
 		}*/
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="analysisToPdf")
+	public void analysisToPdf(int selectionNum, HttpServletResponse response) 
+							throws DocumentException, IOException{
+		String title = "심리검사결과";
+		String name=  UUID.randomUUID().toString();
+		fileName = title+name;
+		
+		BaseFont objBaseFont = BaseFont.createFont("/Users/kita/git/FairyBook/FairyBook/src/main/webapp/resources/font/malgun.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+		Font objfont = new Font(objBaseFont, 12);
+		Font titlefont = new Font(objBaseFont, 33);
+		Font subtitlefont = new Font(objBaseFont, 20);
+		Font partfont = new Font(objBaseFont, 15);
+		Font whitespacefont = new Font(objBaseFont, 5);
+		ArrayList<FBResource> avatarResources = new ArrayList<>();
+		avatarResources = aDao.avatarAnalysis(selectionNum);
+		
+		ArrayList<FBResource> houseResources = new ArrayList<>();
+		houseResources = aDao.houseAnalysis(selectionNum);
+		
+		FBResource treeResources = aDao.treeAnalysis(selectionNum);
+		
+		Map<String, Object> result = new HashMap<>();
+		//colorcount테이블에서 selectionNum으로 colorname과 colorcount가져오기 colorcount내림차순으로
+		ArrayList<String> colorName = new ArrayList<>();
+		colorName = aDao.getColorName();
+		result.put("colorName", colorName);
+		
+		logger.info("colorGraph");
+		Map<String, Integer> color = new HashMap<>();
+		Integer[] colorCount = new Integer[colorName.size()];
+		for (int i = 0; i < colorCount.length; i++) {
+			colorCount[i]=0;
+		}
+		color = aDao.getColorData(selectionNum);
+		logger.info("color??:{}",color);
+		for (String key : color.keySet()) {
+			int value = Integer.parseInt(String.valueOf(color.get(key)));
+			if (value > -1) {
+				colorCount[value]++;
+			}
+		}
+		result.put("colorCount", colorCount);
+		
+		
+		
+		int indentation = 0;
+		Document d = new Document(PageSize.A4.rotate(),30F,30F,30F,30F);
+		PdfWriter.getInstance(d, new FileOutputStream(uploadPath+fileName+".pdf"));
+		d.open(); //3508,2480
+		float scaler = ((d.getPageSize().getWidth() - d.leftMargin()
+	               - d.rightMargin() - indentation) / 3508) * 100;
+		
+		d.add(new Paragraph("색채 테스트 검사결과", titlefont));
+		d.add(new Paragraph("\n", subtitlefont));
+		for(String key: color.keySet()){
+			d.add(new Paragraph(key, objfont));
+		}
+		
+		d.add(new Paragraph("HTP테스트 검사결과", titlefont));
+		d.add(new Paragraph("\n", subtitlefont));
+		d.add(new Paragraph("아바타 검사결과", subtitlefont));
+		d.add(new Paragraph("\n", whitespacefont));
+		for(FBResource resource : avatarResources){
+			String avatarName = resource.getName();
+			String analysis = resource.getAnalysis();
+			String part = avatarName.substring(0, 2);
+			logger.info(part);
+			switch (part) {
+			case "mo":
+				d.add(new Paragraph("입", partfont));
+				d.add(new Paragraph(analysis, objfont));
+				d.add(new Paragraph("\n", objfont));
+				break;
+			case "ha":
+				d.add(new Paragraph("머리", partfont));
+				d.add(new Paragraph(analysis, objfont));
+				d.add(new Paragraph("\n", objfont));
+				break;
+			case "fa":
+				d.add(new Paragraph("얼굴", partfont));
+				d.add(new Paragraph(analysis, objfont));
+				d.add(new Paragraph("\n", objfont));
+				break;
+			case "bo":
+				break;
+			case "ea":
+				d.add(new Paragraph("귀", partfont));
+				d.add(new Paragraph(analysis, objfont));
+				d.add(new Paragraph("\n", objfont));
+				break;
+			case "ey":
+				d.add(new Paragraph("눈", partfont));
+				d.add(new Paragraph(analysis, objfont));
+				d.add(new Paragraph("\n", objfont));
+				break;
+			case "no":
+				d.add(new Paragraph("코", partfont));
+				d.add(new Paragraph(analysis, objfont));
+				d.add(new Paragraph("\n", subtitlefont));
+				break;
+			default:
+				break;
+			}
+			
+		
+		}
+		
+		d.add(new Paragraph("집 검사결과", subtitlefont));
+		d.add(new Paragraph("\n", whitespacefont));
+		for(FBResource resource: houseResources){
+			String houseName = resource.getName();
+			String analysis = resource.getAnalysis();
+			
+			String part = houseName.substring(0, 2);
+			
+			switch (part) {
+			case "ro":
+				d.add(new Paragraph("지붕", partfont));
+				d.add(new Paragraph(analysis, objfont));
+				d.add(new Paragraph("\n", objfont));
+				break;
+			case "do":
+				d.add(new Paragraph("문", partfont));
+				d.add(new Paragraph(analysis, objfont));
+				d.add(new Paragraph("\n", objfont));
+				break;
+			case "ch":
+				d.add(new Paragraph("굴뚝", partfont));
+				d.add(new Paragraph(analysis, objfont));
+				d.add(new Paragraph("\n", objfont));
+				break;
+			case "wi":
+				d.add(new Paragraph("창문", partfont));
+				d.add(new Paragraph(analysis, objfont));
+				d.add(new Paragraph("\n", subtitlefont));
+				break;
+
+			default:
+				break;
+			}
+			
+		}
+		d.add(new Paragraph("나무 검사결과", subtitlefont));
+		d.add(new Paragraph("\n", whitespacefont));
+		String treeAnalysis = treeResources.getAnalysis();
+		d.add(new Paragraph(treeAnalysis, objfont));
+		
+		
+		d.close();
+	
+		
+	}
+	
 	@RequestMapping(value="download",method=RequestMethod.GET)
 	public String download(int selectionnum,HttpServletResponse response) throws IOException{
 		logger.info("down selectionnum:{}",selectionnum);
@@ -136,6 +301,9 @@ public class ConvertToPdfController {
 		
 		return null;
 	}
+	
+	
+	
     
 }
 	
