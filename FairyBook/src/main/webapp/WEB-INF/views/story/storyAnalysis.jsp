@@ -290,6 +290,7 @@ function showHouse(house){
 	$('#showHouse').html(input);
 }
 
+
 function housePoint(i){
 	console.log(name[i]);
 	$('#htpLabelH').html(houseName[i]);
