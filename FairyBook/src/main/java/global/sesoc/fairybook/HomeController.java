@@ -34,7 +34,7 @@ public class HomeController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
+	public String home(Locale locale, Model model, HttpSession session) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 
 		Date date = new Date();
@@ -43,6 +43,17 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 
 		model.addAttribute("serverTime", formattedDate);
+		
+		StoryMaker user = (StoryMaker) session.getAttribute("loginUser");
+		if(user==null){
+			// 이제 여기다가 로긴 안했을때 처리
+		}
+		else{
+			String id = user.getId();
+			ArrayList<MySelection> myStoryList = null;
+			myStoryList = dao.getMyStoryList(id);
+			model.addAttribute("myStoryList", myStoryList);			
+		}
 
 		return "main/home";
 	}

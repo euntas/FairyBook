@@ -63,21 +63,50 @@ a[class*='colorLbl']{
 	background-color:rgb(255,255,196);
 }
 
+img[id*='eye']{
+	z-index: 4;
+}
+
+img[id*='nose']{
+	z-index: 4;
+}
+
+img[id*='mouth']{
+	z-index: 4;
+}
+
+img[id*='ear']{
+	z-index: 4;
+}
+
 img[id*='face']{
-	z-index: -1;
+	z-index: 3;
 }
+
 img[id*='body']{
-	z-index: -2;
+	z-index: 2;
 }
+
 img[id*='hair']{
-	z-index: -3;
+	z-index: 1;
 }
+
+img[id*='chimney']{
+	z-index: 4;
+}
+
+img[id*='window']{
+	z-index: 4;
+}
+
 img[id*='roof']{
-	z-index: -1;
+	z-index: 3;
 }
+
 img[id*='wall']{
-	z-index: -2;
+	z-index: 2;
 }
+
 img[id*='door']{
 	z-index: 5;
 } 
@@ -462,6 +491,20 @@ function showQuiz(list){
 	$('#quizPanel').html(input);
 }
 
+function downloadPDF(){
+	
+	$.ajax({
+		url:'../pdf/analysisToPdf',
+		data:{selectionNum:selectionNum},
+		success:function(){
+			location.href='../pdf/download?selectionnum='+selectionNum;
+		},
+		fail:function(){
+			alert('download fail');
+		}
+	});
+}
+
 </script>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50" style="height:100%;" class="hanna">
@@ -539,7 +582,9 @@ function showQuiz(list){
 		      <div class="panel-body hanna" id="htpSpecificH"></div>
 		    </div>
 		  </div>
-		   <center><button class="btn btn-warning" onclick="location.href='../analysis/counsel'">상담하기</button></center>
+		   <center>
+		   <button class="btn btn-warning" onclick="javascript:downloadPDF();">상담결과저장</button>
+		   <button class="btn btn-warning" onclick="location.href='../analysis/counsel'">상담하기</button></center>
 		  <hr>
     </div>
     
@@ -559,7 +604,9 @@ function showQuiz(list){
 		      <div class="panel-body hanna" id="htpSpecificT"></div>
 		    </div>
 		  </div>
-		  <center><button class="btn btn-warning" onclick="location.href='../analysis/counsel'">상담하기</button></center>
+		  <center>
+		  <button class="btn btn-warning" onclick="javascript:downloadPDF();">상담결과저장</button>
+		  <button class="btn btn-warning" onclick="location.href='../analysis/counsel'">상담하기</button></center>
 		  <hr>
     </div>
     
@@ -582,7 +629,10 @@ function showQuiz(list){
 		  </div>
 		  <br>
 		  <hr>
-		  <button class="btn btn-warning pull-right" onclick="location.href='../analysis/counsel'">상담하기</button>
+		 <center>
+		  <button class="btn btn-warning" onclick="javascript:downloadPDF();">상담결과저장</button>&nbsp;&nbsp;
+		  <button class="btn btn-warning" onclick="location.href='../analysis/counsel'">상담하기</button></center>
+		  <hr>
     </div>
     
     <!--QUIZ  -->
@@ -607,7 +657,7 @@ function showQuiz(list){
 </div>
 
 <!--Footer  -->
-<div style="position: absolute;width: 100%;height: 30%;">
+<div style="position: fixed; bottom:0; width:100%; height: auto;">
 <c:import url="../main/mainFooter.jsp"></c:import>
 </div>
 

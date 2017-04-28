@@ -14,6 +14,17 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  
  <style>
+ 
+	/*글씨체  */
+	@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+	.hanna{
+		font-family: 'Hanna', fantasy;
+	}
+	
+	td{
+		text-align: center;
+	}
+
      .bg-1 { 
        background-color: #1abc9c; /* Green */
        color: #ffffff;
@@ -48,7 +59,7 @@
 
 $(function(){
    //profile사진 경로 설정
-   $('#profile').attr('src','./resources/image/yo.jpg')
+   $('#profile').attr('src','./resources/image/yo.jpg');
 
    //login버튼 이벤트
    $('#login').on('click',function(){
@@ -225,13 +236,13 @@ function myFunc(id) {
 <!--상단, 사이드 메뉴  -->
 <!--배너  -->
 <nav class="navbar-fixed-top">
-<div style="background-image: url('./resources/image/icon/banner.png');width: 100%;height: 100px;">
+<div style="background-image: url('./resources/image/icon/banner.jpg');width: 100%;height: 100px;">
  <center><a href="./"><img src="./resources/image/icon/bannertitle.png" style="margin-top: 15px;"></a></center>
 </div>
 </nav>
 
 
-<div id="under" style="min-height: 100%;">
+<div id="under" style="min-height: 100%;background-image: url('./resources/image/icon/backg.png');width: 100%">
 <!--로그인하지 않았을 때  -->
 <c:if test="${loginUser == null }">
 <nav class="w3-sidebar w3-bar-block w3-collapse w3-card-2" style="z-index:3;width:220px;background-image: url('./resources/image/icon/menubar.png');" id="mySidebar">
@@ -458,6 +469,60 @@ function myFunc(id) {
         </div>
      </c:if>
 
+	<c:if test="${userType == 'parent'}">
+		<img src="./resources/image/mychildstory.png">  <hr>
+		
+		<table class="table-bordered table">
+			<tr>
+			<c:forEach var="story" items="${myStoryList}" varStatus="status">
+			<c:if test="${status.index < 3 }">
+			<td>
+			<!-- 여기엔 썸네일이 들어간다 -->
+			<a href="storySlide?selectionNum=${story.selectionNum}">
+			<c:if test="${story.storyNum==0}">
+				<img src="./resources/image/hiyoko.png" alt="Norway" style="width:auto; height: 200px;"><br>
+			</c:if>
+			<c:if test="${story.storyNum==1}">
+				<img src="./resources/image/hansel.jpg" alt="헨젤과그레텔" style="width:auto; height: 200px;"><br>
+			</c:if>
+			<c:if test="${story.storyNum==2}">
+				<img src="./resources/image/snowwhitetitle.jpg" alt="백설공주" style="width:auto; height: 200px;"><br>
+			</c:if>
+			</a>
+			<!-- 여기까지 썸네일 -->
+				<div class="w3-container w3-white">
+					<h3 class="hanna">
+					<c:choose>
+						<c:when test="${story.storyNum==0}">노랑이의 모험</c:when>
+						<c:when test="${story.storyNum==1}">헨젤과 그레텔</c:when>			
+						<c:when test="${story.storyNum==2}">백설공주</c:when>
+						<c:when test="${story.storyNum==3}">빨간 마스크</c:when>
+					</c:choose>
+					
+					
+					</h3>
+					<h6 class="w3-opacity">${story.endDate}</h6>
+						<button class="w3-button w3-red" onclick="location.href='./menu/storySlide?selectionNum=${story.selectionNum}'">감상</button>
+						<button class="w3-button w3-green" onclick="location.href='./analysis/storyAnalysis?selectionNum=${story.selectionNum}'">결과보기</button><br>
+						<button class="w3-button w3-blue" style="margin-top: 3px;" onclick="javascript:myWrite(${story.storyNum}, ${story.selectionNum })">공유</button>
+					<form action="./orderBook/order" method="post" style="display: inline;">
+						<input type="hidden" class="orderSelectionnum" name="selectionnum" id="selectionnum" value="${story.selectionNum}">
+						<button type="submit" class="w3-button w3-yellow" style="margin-top: 3px;">주문하기</button>
+					</form>
+					<button onclick="javascript:downloadPDF();">PDF저장</button>
+				</div>
+			</td>
+			<c:if test="${status.count%3==0}">
+				</tr>
+				<tr>	
+			</c:if>
+			<c:if test="${status.last}">
+				</tr>
+			</c:if>
+			</c:if>
+		</c:forEach>
+		</table>
+	</c:if>
 
      <div id="Borge" class="w3-container person">
      <br>
