@@ -343,6 +343,8 @@ function showAvatar(r){
    //항목 누르는 곳 설정
    input += '<map name="002">';
    
+   
+   
    $.each(r,function(i,a){
 		if (a.name.indexOf('ear')!=-1) {
 			input+='<area alt="ear" shape="rect" coords="38,121,59,158" onclick="avatarPoint(\''+i+'\')">';
