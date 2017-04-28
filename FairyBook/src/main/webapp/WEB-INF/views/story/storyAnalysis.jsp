@@ -390,6 +390,7 @@ function showAvatar(r){
    $('#showAvatar2').html(input);
 }
 
+
 // 각 항목(머리, 얼굴 등) 눌렀을 때 강조
 function avatarPoint(i){
 	$('#htpLabelA').html(avatarName[i]);
