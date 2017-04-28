@@ -33,23 +33,6 @@
 			if( ${firstPageNum != 0}){
 				console.log('기존 진행중 씬이 있는 경우');
 				pageNum = ${firstPageNum};
-				
-				/* // 다음 씬 번호를 이용해 실제 다음 페이지 번호를 읽어온다.
-	        	$.ajax({
-    		        url:'getPageNum',
-    		        type:'GET',
-    		        data: {currentSceneNum: sceneNum},
-    		        dataType: 'json',
-    		        success: function(pageNum){
-    		        	alert(pageNum +  '번 페이지로 이동합니다.');
-    		        	// 다음페이지로 이동한다.
-    		        	pageflip.flip(pageNum);        		        	
-    		        },
-    		        error: function(e){
-    		            alert('start에서 페이지 번호 읽어오기 실패' + JSON.stringify(e));
-    		        }
-    		    }); */
-    		    
     		    pageflip.flip(pageNum);
 				
 			}
@@ -128,100 +111,34 @@
 	</div>
 	
 	<!-- 책 내용 부분 -->
-	<div class="page page-current" style="background: #209657 url('./../resources/img/scene/scene01.jpg') no-repeat center center; background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0387A5 url('./../resources/img/scene/scene04.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #A5C8CB url('./../resources/img/scene/scene05.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene06.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene07.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene08.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene09.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene10.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene11.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene12.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene13.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene14.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene15.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene16.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene17.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene18.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene19.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene20.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene21.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene22.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene23.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene24.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene25.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene26.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene27.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene28.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene29.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene30.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene31.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene32.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene33.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene34.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene35.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene36.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene37.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene38.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene39.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene40.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene41.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene42.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene43.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene44.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene45.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene46.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene47.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene48.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
-	<div class="page" style="background: #0B0B0B url('./../resources/img/scene/scene49.jpg') no-repeat center center;  background-size: 100%;">
-	</div>
+	
+	<!-- 헨젤과 그레텔 -->
+	<c:if test="${currentStoryNum == 1}">
+		<div class="page page-current" style="background: #209657 url('./../resources/img/scene/scene01.jpg') no-repeat center center; background-size: 100%;">
+		</div>
+		<c:forEach var="i" begin="4" end="9">		
+			<div class="page" style="background: #A5C8CB url('./../resources/img/scene/scene0${i}.jpg') no-repeat center center;  background-size: 100%;">
+			</div>
+		</c:forEach>
+		<c:forEach var="i" begin="10" end="49">		
+			<div class="page" style="background: #A5C8CB url('./../resources/img/scene/scene${i}.jpg') no-repeat center center;  background-size: 100%;">
+			</div>
+		</c:forEach>
+	</c:if>
+	
+	<!-- 백설공주 -->
+	<c:if test="${currentStoryNum == 2}">
+		<div class="page page-current" style="background: #209657 url('./../resources/img/sceneWhite/scene01.jpg') no-repeat center center; background-size: 100%;">
+		</div>
+		<c:forEach var="i" begin="2" end="9">		
+			<div class="page" style="background: #0387A5 url('./../resources/img/sceneWhite/scene0${i}.jpg') no-repeat center center;  background-size: 100%;">
+			</div>
+		</c:forEach>
+		<c:forEach var="i" begin="10" end="26">		
+			<div class="page" style="background: #0387A5 url('./../resources/img/sceneWhite/scene${i}.jpg') no-repeat center center;  background-size: 100%;">
+			</div>
+		</c:forEach>
+	</c:if>
 </div>
 
 

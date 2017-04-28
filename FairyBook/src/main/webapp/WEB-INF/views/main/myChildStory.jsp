@@ -14,6 +14,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
+/*글씨체  */
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+.hanna{
+	font-family: 'Hanna', fantasy;
+}
+
 td{
 	text-align: center;
 }
@@ -94,12 +100,26 @@ td{
 			  });
 	  
  }
+ 
+ function downloadPDF(){
+		var num=$('#selectionnum').val();
+		$.ajax({
+			url:'../pdf/imgToPdf',
+			data:{selectionnum:num},
+			success:function(){
+				location.href='../pdf/download?selectionnum='+num;
+			},
+			fail:function(){
+				alert('download fail');
+			}
+		});
+	}
 </script>
 
 <!--적용 자바스크립트와 스타일  -->
 
 
-<body data-spy="scroll" data-target=".navbar" data-offset="50" style="height: 100%;">
+<body data-spy="scroll" data-target=".navbar" data-offset="50" style="height: 100%;" class="hanna">
 
 <!--상단, 사이드 메뉴  -->
 <c:import url="main.jsp"></c:import>
@@ -123,12 +143,12 @@ td{
 		<img src="../resources/image/hansel.jpg" alt="Norway" style="width:auto; height: 200px;"><br>
 	</c:if>
 	<c:if test="${story.storyNum==2}">
-		<img src="../resources/image/snowwhitetitle.png" alt="Norway" style="width:auto; height: 200px;"><br>
+		<img src="../resources/image/snowwhitetitle.jpg" alt="Norway" style="width:auto; height: 200px;"><br>
 	</c:if>
 	</a>
 	<!-- 여기까지 썸네일 -->
 		<div class="w3-container w3-white">
-			<h3>
+			<h3 class="hanna">
 			<c:choose>
 				<c:when test="${story.storyNum==0}">노랑이의 모험</c:when>
 				<c:when test="${story.storyNum==1}">헨젤과 그레텔</c:when>			
@@ -143,9 +163,10 @@ td{
 				<button class="w3-button w3-green" onclick="location.href='../analysis/storyAnalysis?selectionNum=${story.selectionNum}'">결과보기</button><br>
 				<button class="w3-button w3-blue" style="margin-top: 3px;" onclick="javascript:myWrite(${story.storyNum}, ${story.selectionNum })">공유</button>
 			<form action="../orderBook/order" method="post" style="display: inline;">
-				<input type="hidden" class="orderSelectionnum" name="selectionnum" value="${story.selectionNum}">
+				<input type="hidden" class="orderSelectionnum" name="selectionnum" id="selectionnum" value="${story.selectionNum}">
 				<button type="submit" class="w3-button w3-yellow" style="margin-top: 3px;">주문하기</button>
 			</form>
+			<button onclick="javascript:downloadPDF();">PDF저장</button>
 		</div>
 	</td>
 	<c:if test="${status.count%3==0}">

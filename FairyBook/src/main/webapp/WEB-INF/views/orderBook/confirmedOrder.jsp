@@ -39,17 +39,21 @@ function printList(list){
 	input+='<thead><tr>';
 	input+='<th>주문번호</th><th>책표지</th><th colspan="2">주문정보</th>';
 	input+='</tr></thead>';
-	$.each(list,function(i,o){
-		input += '<tr>';
-		input += '<td rowspan="2">'+o.ordernum+'</td>';
-		input += '<td rowspan="2"><img width="100px" src="getBookCover?ordernum='+o.ordernum+'"></td>';
-		input += '<td>책제목:'+o.title+'</td>';
-		input += '<td>수취인: '+o.receiver+'</td>';
-		input += '</tr><tr>'
-		input += '<td>주소: '+o.address+'</td>';
-		input += '<td>전화번호: '+o.phone+'</td>';
-		input += '</tr>';
-	});
+	if (list == '') {
+		input += '<tr><td colspan="4" class="text-center">주문 내역이 없습니다.</td></tr>';
+	}else{
+		$.each(list,function(i,o){
+			input += '<tr>';
+			input += '<td rowspan="2">'+o.ordernum+'</td>';
+			input += '<td rowspan="2"><img width="100px" src="getBookCover?ordernum='+o.ordernum+'"></td>';
+			input += '<td>책제목:'+o.title+'</td>';
+			input += '<td>수취인: '+o.receiver+'</td>';
+			input += '</tr><tr>'
+			input += '<td>주소: '+o.address+'</td>';
+			input += '<td>전화번호: '+o.phone+'</td>';
+			input += '</tr>';
+		});
+	}
 	$('#cList').html(input);
 }
 </script>
