@@ -181,9 +181,9 @@ public class ConvertToPdfController {
 		
 		d.add(new Paragraph("색채 테스트 검사결과", titlefont));
 		d.add(new Paragraph("\n", subtitlefont));
-		for(String key: color.keySet()){
-			d.add(new Paragraph(key, objfont));
-		}
+//		for(String key: color.keySet()){
+//			d.add(new Paragraph(color.get(key), objfont));
+//		}
 		
 		d.add(new Paragraph("HTP테스트 검사결과", titlefont));
 		d.add(new Paragraph("\n", subtitlefont));
