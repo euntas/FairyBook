@@ -46,6 +46,7 @@
 </script>
 </head>
 <body style='text-align: center; background-color: #ffff80;'>
+<form action="sendMail" method="post" enctype="multipart/form-data">
 <br>
 	<table style="margin: auto;">
 		<tr>
@@ -61,21 +62,26 @@
 				style="width: 280px;"
 				class="form-control"></td>
 		</tr>
-
+		
 		<tr>
 			<th colspan="2" style="text-align: left; height: 30px;">내&nbsp;&nbsp;&nbsp; 용
 			
 		</tr>
 		<tr>
-			<td colspan="2"><textarea rows="20" cols="50" id="content" class="form-control"></textarea></td>
+			<td colspan="2"><textarea rows="18" cols="50" id="content" class="form-control"></textarea></td>
 		</tr>
-
+		<tr style="height: 10px;"></tr>
+		<tr>
+		 <th>파일</th><td><input type="file"></td>
+		</tr>
+		<tr style="height: 10px;"></tr>
 		<tr>
 			<td colspan="2" style="height: 50px;"><input type="button" value="보내기" id="send" class="btn btn-info">&nbsp;<input
 				type="button" value="취소하기" onclick="javascript:window.close()" class="btn btn-warning"></td>
 		</tr>
 
 	</table>
+</form>
 </body>
 
 </html>
