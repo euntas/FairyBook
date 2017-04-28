@@ -49,7 +49,7 @@
 	      <div class="w3-container w3-white">
 	        <h3>백설공주</h3>
 	        <h6 class="w3-opacity">2017.4.27</h6>
-	        <button class="w3-button w3-block w3-margin-bottom" onclick="location.href='../story/storyTitle?storyNum=2'">Play</button>
+	        <button class="w3-button w3-block w3-yellow w3-margin-bottom" onclick="location.href='../story/storyTitle?storyNum=2'">Play</button>
 	      </div>
 	    </div>
 	    
