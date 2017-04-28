@@ -331,6 +331,7 @@ function showAvatar(r){
    var input = '';
    
    for (var i = 0; i < r.length; i++) {
+	   console.log(r[i].name);
 		if(i == r.length -1){
       		input += '<img src="'+r[i].path+'" id="'+r[i].name+'" style="position: absolute;" usemap="#002"/>';
 		}else{
