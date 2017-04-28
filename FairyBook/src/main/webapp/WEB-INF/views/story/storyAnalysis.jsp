@@ -62,9 +62,6 @@ a[class*='colorLbl']{
 	padding: 5%;
 	background-color:rgb(255,255,196);
 }
-#eachColor{
-	
-}
 
 img[id*='face']{
 	z-index: -1;
@@ -159,14 +156,14 @@ function home(){
 
 
 function allColor(){
-	var input = "<div id='allColorAnalysis'>";
+	var input = '<div id="allColorAnalysis" style="display:table;">';
 	input += '<div class="col-md-3">';
 	input += '<ul class="nav nav-pills nav-stacked">';
 	$.each(colorArray,function(i,c){
-		input += '<li><a class="colorLbl'+c+'" data-toggle="pill" onclick="eachColor(\''+i+'\')" style="color:'+c+';">'+c+'</a></li>';
+		input += '<li><a class="colorLbl'+c+'" onclick="eachColor(\''+i+'\')" style="color:'+c+';width:100%;">'+c+'</a></li>';
 	});
  	input += '</ul></div>';
- 	input += '<div class="tab-content">';
+ 	input += '<div class="tab-content" style="display:table-cell;vertical-align:middle;">';
     input += '<span id="eachColor"></span>';
  	input += '</div>';
  	input += '</div>';
@@ -177,6 +174,7 @@ function allColor(){
 }
 
 function eachColor(i){
+	$(this).css('background-color', '#333');
 	var a = getAnalysis(i);
 	console.log(a);
 	$('#eachColor').html(getAnalysis(i));
@@ -288,6 +286,8 @@ function showHouse(house){
 	});
 	
 	$('#showHouse').html(input);
+	$('#htpLabelH').html(houseName[0]);
+	$('#htpSpecificH').html(analysis[0]);
 }
 
 
@@ -399,13 +399,14 @@ function showAvatar(r){
    input += '</map>';
    
    $('#showAvatar2').html(input);
+	$('#htpLabelA').html(avatarName[0]);
+	$('#htpSpecific4').html(analysis[0]);
 }
 
 
 // 각 항목(머리, 얼굴 등) 눌렀을 때 강조
 function avatarPoint(i){
 	$('#htpLabelA').html(avatarName[i]);
-	$('#htpSpecific4').html('');
 	$('#htpSpecific4').html(analysis[i]);
 }
 
