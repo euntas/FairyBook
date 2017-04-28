@@ -114,7 +114,7 @@
     padding: 0 10px;
     border-radius: 5px;
     text-decoration: none;
-    opacity: 0.2;
+    opacity: 0.5;
     -webkit-transition: opacity 0.25s;
             transition: opacity 0.25s; }
     .pageflip a.flip-directional:hover {
