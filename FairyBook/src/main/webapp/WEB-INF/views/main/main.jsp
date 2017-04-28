@@ -176,7 +176,7 @@ $(function(){
 </div>
 </nav>
 
-<div id="under" style="min-height: 100%;background-image: url('../resources/image/icon/backg.png');width: 100%">
+<div id="under" style="background-image: url('../resources/image/icon/backg.png');">
 <!-- Side Navigation -->
 <!--로그인하지 않았을 때  -->
 <c:if test="${loginUser == null }">
