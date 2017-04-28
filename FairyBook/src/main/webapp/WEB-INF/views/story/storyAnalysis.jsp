@@ -66,21 +66,50 @@ a[class*='colorLbl']{
 	
 }
 
+img[id*='eye']{
+	z-index: 4;
+}
+
+img[id*='nose']{
+	z-index: 4;
+}
+
+img[id*='mouth']{
+	z-index: 4;
+}
+
+img[id*='ear']{
+	z-index: 4;
+}
+
 img[id*='face']{
-	z-index: -1;
+	z-index: 3;
 }
+
 img[id*='body']{
-	z-index: -2;
+	z-index: 2;
 }
+
 img[id*='hair']{
-	z-index: -3;
+	z-index: 1;
 }
+
+img[id*='chimney']{
+	z-index: 4;
+}
+
+img[id*='window']{
+	z-index: 4;
+}
+
 img[id*='roof']{
-	z-index: -1;
+	z-index: 3;
 }
+
 img[id*='wall']{
-	z-index: -2;
+	z-index: 2;
 }
+
 img[id*='door']{
 	z-index: 5;
 } 

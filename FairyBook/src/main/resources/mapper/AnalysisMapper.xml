@@ -98,12 +98,14 @@ select
 	,nvl(q.select3,'') as select3
 	,nvl(q.select4,'') as select4
 	,q.answer as answer
+	,q.division as division
 	,a.myanswer as myanswer
 from
 	quiz q
 	, scene s
 	,(select myanswer,scenenum,selectionnum from selectiondetail where selectionnum = #{selectionnum}) a 
 where s.quiznum = q.quiznum
+and q.division = 1
 and a.scenenum= s.scenenum
 and s.scenenum in(select scenenum from selectiondetail where selectionnum = #{selectionnum})
 and q.answer is not null

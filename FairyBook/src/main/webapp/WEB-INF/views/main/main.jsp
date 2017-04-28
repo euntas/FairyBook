@@ -176,7 +176,12 @@ $(function(){
 </div>
 </nav>
 
+<<<<<<< HEAD
 <div id="under" style="background-image: url('../resources/image/icon/backg.png');">
+=======
+
+<div id="under" style="z-index: -99; min-height: 100%;background-image: url('../resources/image/icon/backg.png');width: 100%"> 
+>>>>>>> branch 'master' of https://github.com/euntas/FairyBook.git
 <!-- Side Navigation -->
 <!--로그인하지 않았을 때  -->
 <c:if test="${loginUser == null }">
