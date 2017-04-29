@@ -126,7 +126,7 @@ and q.answer != -1
 
 <insert id="insertForMBTI" parameterType="map">
 	insert into MBTI(selectionNum, EI, SN, TF, JP)
-	values(#{selectionNum}, ,#{EI}, #{SN}, #{TF}, #{JP})
+	values(#{selectionNum}, #{EI}, #{SN}, #{TF}, #{JP})
 </insert>
 
 <select id="getMBTI" parameterType="int" resultType="MBTI">
