@@ -7,6 +7,7 @@ import java.util.Map;
 import global.sesoc.fairybook.vo.Counselor;
 import global.sesoc.fairybook.vo.ETC;
 import global.sesoc.fairybook.vo.FBResource;
+import global.sesoc.fairybook.vo.MBTI;
 import global.sesoc.fairybook.vo.SolvedQuiz;
 
 public interface AnalysisMapper {
@@ -31,5 +32,8 @@ public interface AnalysisMapper {
 	public FBResource treeAnalysis(int selectionNum);
 	
 	public ETC getETC(int selectionNum);
-
+	
+	public int insertJPForMBTI(HashMap<String, Object> myinfo);
+	
+	public MBTI getMBTI(int selectionNum);
 }

@@ -427,7 +427,7 @@ function quizLoading(){
 
 // 이미지 버튼을 만든다. 이 버튼을 누르면 퀴즈가 나옴.
 function writePreBtnForQuizDiv(){
-	var str = "<img src='./../resources/image/click.png'>";
+	var str = "<img src='./../resources/image/mouseClick.png'>";
 	
 	// 1초 후에 버튼이 생기게 한다.
 	setTimeout(function(){

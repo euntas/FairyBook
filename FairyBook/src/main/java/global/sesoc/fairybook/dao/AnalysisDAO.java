@@ -12,6 +12,7 @@ import global.sesoc.fairybook.mapper.AnalysisMapper;
 import global.sesoc.fairybook.vo.Counselor;
 import global.sesoc.fairybook.vo.ETC;
 import global.sesoc.fairybook.vo.FBResource;
+import global.sesoc.fairybook.vo.MBTI;
 import global.sesoc.fairybook.vo.SolvedQuiz;
 
 @Repository
@@ -89,5 +90,22 @@ public class AnalysisDAO {
 	public ETC getETC(int selectionNum){
 		AnalysisMapper mapper = sqlSession.getMapper(AnalysisMapper.class); 
 		return mapper.getETC(selectionNum);
+	}
+	
+	// mbti 테이블에 j,p 항목을 넣는다.
+	public int insertJPForMBTI(int selectionNum, String element){
+		AnalysisMapper mapper = sqlSession.getMapper(AnalysisMapper.class);
+		
+		HashMap<String, Object> myinfo = new HashMap<>();
+		myinfo.put("selectionNum", selectionNum);
+		myinfo.put("JP", element);
+		
+		return mapper.insertJPForMBTI(myinfo);
+	}
+	
+	public MBTI getMBTI(int selectionNum){
+		AnalysisMapper mapper = sqlSession.getMapper(AnalysisMapper.class);
+		
+		return mapper.getMBTI(selectionNum);
 	}
 }
