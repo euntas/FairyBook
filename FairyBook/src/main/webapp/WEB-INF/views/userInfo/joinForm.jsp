@@ -497,7 +497,7 @@ function formcheck(){
 
 
 <div id="under">
-	<form enctype="multipart/form-data" action="join" method="post"
+	<form action="join" method="post"
 		onsubmit="return formcheck()" class="form-inline" id="joinform">
 
 		<div style="text-align: center; margin: auto;">
@@ -648,13 +648,6 @@ function formcheck(){
 				<th class="firstRow">&nbsp;&nbsp;&nbsp;주소</th>
 				<td class="secondRow"><input type="text" id="address"
 					name="address" style="width: 450px;" class="form-control"></td>
-				
-			</tr>
-			<tr style="height: 5px;"></tr>
-			<tr>
-				<th class="firstRow">&nbsp;&nbsp;&nbsp;사진 업로드</th>
-				<td class="secondRow"><input type="file" name="upload"
-					id="upload" multiple="multiple"></td>
 				
 			</tr>
 			

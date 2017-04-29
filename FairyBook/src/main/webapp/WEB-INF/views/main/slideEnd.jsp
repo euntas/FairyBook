@@ -3,7 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
-<title>Story Play</title>
+<title>Slide End</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -54,8 +54,6 @@ function downloadPDF(){
 	
 
 <!--####################여기부터  -->
-<br>
-
 <img src="../resources/image/show.png">  <hr>
 <table class="table-bordered table">
 	<tr>

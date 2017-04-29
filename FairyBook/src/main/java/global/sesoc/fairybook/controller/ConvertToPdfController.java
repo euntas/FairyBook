@@ -181,9 +181,69 @@ public class ConvertToPdfController {
 		
 		d.add(new Paragraph("색채 테스트 검사결과", titlefont));
 		d.add(new Paragraph("\n", subtitlefont));
-//		for(String key: color.keySet()){
-//			d.add(new Paragraph(color.get(key), objfont));
-//		}
+		
+		for(int i=0; i<colorName.size(); i++){
+			String eachColorName = colorName.get(i);
+			String col = eachColorName.substring(0, 3);
+			double total = color.size();
+			double eachColor = colorCount[i];
+			String colorAnalysis2 = aDao.getColorAnalysis(i);
+			String colorAnalysis1 = colorAnalysis2.replace("<br>&nbsp", " ");
+			String colorAnalysis = colorAnalysis1.replace("&nbsp", " ");
+			String percentage = String.valueOf(Math.round(eachColor/total*1000)/10.0);
+			logger.info("test : "+percentage);
+			
+			switch (col) {
+			case "bla":
+				d.add(new Paragraph("검정 ("+percentage+"%)", partfont));
+				d.add(new Paragraph(colorAnalysis, objfont));
+				d.add(new Paragraph("\n", objfont));
+				break;
+			case "red":
+				d.add(new Paragraph("빨강 ("+percentage+"%)", partfont));
+				d.add(new Paragraph(colorAnalysis, objfont));
+				d.add(new Paragraph("\n", objfont));
+				break;
+			case "ora":
+				d.add(new Paragraph("주황 ("+percentage+"%)", partfont));
+				d.add(new Paragraph(colorAnalysis, objfont));
+				d.add(new Paragraph("\n", objfont));
+				break;
+			case "yel":
+				d.add(new Paragraph("노랑 ("+percentage+"%)", partfont));
+				d.add(new Paragraph(colorAnalysis, objfont));
+				d.add(new Paragraph("\n", objfont));
+				break;
+			case "gre":
+				d.add(new Paragraph("초록 ("+percentage+"%)", partfont));
+				d.add(new Paragraph(colorAnalysis, objfont));
+				d.add(new Paragraph("\n", objfont));
+				break;
+			case "blu":
+				d.add(new Paragraph("파랑 ("+percentage+"%)", partfont));
+				d.add(new Paragraph(colorAnalysis, objfont));
+				d.add(new Paragraph("\n", objfont));
+				break;
+			case "pur":
+				d.add(new Paragraph("보라 ("+percentage+"%)", partfont));
+				d.add(new Paragraph(colorAnalysis, objfont));
+				d.add(new Paragraph("\n", objfont));
+				break;
+			case "whi":
+				d.add(new Paragraph("흰색 ("+percentage+"%)", partfont));
+				d.add(new Paragraph(colorAnalysis, objfont));
+				d.add(new Paragraph("\n", objfont));
+				break;
+			case "gra":
+				d.add(new Paragraph("회색 ("+percentage+"%)", partfont));
+				d.add(new Paragraph(colorAnalysis, objfont));
+				d.add(new Paragraph("\n", subtitlefont));
+				break;
+			default:
+				break;
+			}
+			
+		}
 		
 		d.add(new Paragraph("HTP테스트 검사결과", titlefont));
 		d.add(new Paragraph("\n", subtitlefont));

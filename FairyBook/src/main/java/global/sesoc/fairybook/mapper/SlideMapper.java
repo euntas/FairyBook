@@ -11,5 +11,5 @@ public interface SlideMapper {
 	
 	public ArrayList<Integer> getSlide(int selectionNum);
 
-	
+	public int getLastScene(int selectionNum);
 }

@@ -144,28 +144,24 @@
 	
 	<!-- 헨젤과 그레텔 -->
 	<c:if test="${currentStoryNum == 1}">
-		<div class="page page-current" style="background: #209657 url('./../resources/img/scene/scene01.jpg') no-repeat center center; background-size: 100% 90%;">
+		<div class="page page-current" style="background: #209657 url('./../resources/img/scene1/scene01.jpg') no-repeat center center; background-size: 100% 90%;">
 		</div>
 		<c:forEach var="i" begin="4" end="9">		
-			<div class="page" style="background: #A5C8CB url('./../resources/img/scene/scene0${i}.jpg') no-repeat center center;  background-size: 100% 90%;">
+			<div class="page" style="background: #A5C8CB url('./../resources/img/scene1/scene0${i}.jpg') no-repeat center center;  background-size: 100% 90%;">
 			</div>
 		</c:forEach>
 		<c:forEach var="i" begin="10" end="49">		
-			<div class="page" style="background: #A5C8CB url('./../resources/img/scene/scene${i}.jpg') no-repeat center center;  background-size: 100% 90%;">
+			<div class="page" style="background: #A5C8CB url('./../resources/img/scene1/scene${i}.jpg') no-repeat center center;  background-size: 100% 90%;">
 			</div>
 		</c:forEach>
 	</c:if>
 	
 	<!-- 백설공주 -->
 	<c:if test="${currentStoryNum == 2}">
-		<div class="page page-current" style="background: #209657 url('./../resources/img/sceneWhite/scene01.jpg') no-repeat center center; background-size: 100% 90%;">
+		<div class="page page-current" style="background: #209657 url('./../resources/img/scene2/scene50.jpg') no-repeat center center; background-size: 100% 90%;">
 		</div>
-		<c:forEach var="i" begin="2" end="9">		
-			<div class="page" style="background: #0387A5 url('./../resources/img/sceneWhite/scene0${i}.jpg') no-repeat center center;  background-size: 100% 90%;">
-			</div>
-		</c:forEach>
-		<c:forEach var="i" begin="10" end="26">		
-			<div class="page" style="background: #0387A5 url('./../resources/img/sceneWhite/scene${i}.jpg') no-repeat center center;  background-size: 100% 90%;">
+		<c:forEach var="i" begin="51" end="75">		
+			<div class="page" style="background: #0387A5 url('./../resources/img/scene2/scene${i}.jpg') no-repeat center center;  background-size: 100% 90%;">
 			</div>
 		</c:forEach>
 	</c:if>
