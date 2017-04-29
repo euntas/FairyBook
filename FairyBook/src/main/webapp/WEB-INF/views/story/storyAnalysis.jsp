@@ -543,6 +543,8 @@ function downloadPDF(){
     	<div  class="row col-sm-12">
     		<img alt="explain" src="../resources/img/explain.png" style="width:100%;height:auto;">
     	</div>
+    	
+    	
     </div>
     
     <!-- COLOR -->
