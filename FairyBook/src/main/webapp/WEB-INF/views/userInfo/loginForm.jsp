@@ -110,7 +110,7 @@
 </nav>
 <div class="container-fluid bg-1 text-center">
   
-  <img src="../resources/image/pc.jpg" alt="img" class="img-responsive img-circle" style="display:inline"><br><br> <!--circle image  -->
+  <img src="../resources/image/bear.png" alt="img" class="img-responsive" style="display:inline"><br><br> <!--circle image  -->
   <!-- 아이디,패스워드 입력란 -->
    <center>
    <div class="input-group col-xs-4">
