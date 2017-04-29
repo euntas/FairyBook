@@ -64,13 +64,13 @@ function downloadPDF(){
 	<!-- 여기엔 썸네일이 들어간다 -->
 	<a href="storySlide?selectionNum=${story.selectionNum}">
 	<c:if test="${story.storyNum==0}">
-		<img src="../resources/image/hiyoko.png" alt="Norway" style="width:auto; height: 200px;"><br>
+		<img src="../resources/image/hiyoko.png" alt="Norway" style="width:100%;"><br>
 	</c:if>
 	<c:if test="${story.storyNum==1}">
-		<img src="../resources/image/hansel.jpg" alt="Norway" style="width:auto; height: 200px;"><br>
+		<img src="../resources/image/hansel.jpg" alt="Norway" style="width:100%;"><br>
 	</c:if>
 	<c:if test="${story.storyNum==2}">
-		<img src="../resources/image/snowwhitetitle.png" alt="Norway" style="width:auto; height: 200px;"><br>
+		<img src="../resources/image/snowwhitetitle.jpg" alt="Norway" style="width:100%;"><br>
 	</c:if>
 	</a>
 	<!-- 여기까지 썸네일 -->
@@ -78,10 +78,10 @@ function downloadPDF(){
 		<div class="w3-container w3-white">
 			<h3 class="hanna">
 			<c:choose>
-				<c:when test="${story.storyNum==0}">끔찍한 테스트</c:when>
+				<c:when test="${story.storyNum==0}">노랑이의 모험</c:when>
 				<c:when test="${story.storyNum==1}">헨젤과 그레텔</c:when>			
-				<c:when test="${story.storyNum==2}">쉰데렐라</c:when>
-				<c:when test="${story.storyNum==3}">뱃살공주</c:when>
+				<c:when test="${story.storyNum==2}">백설공주</c:when>
+				<c:when test="${story.storyNum==3}">빨간모자</c:when>
 				<c:when test="${story.storyNum==4}">동물의 왕국</c:when>
 			</c:choose>
 			
@@ -97,7 +97,7 @@ function downloadPDF(){
 				<button type="submit" class="w3-button w3-yellow w3-margin-bottom">책표지 만들기</button>
 				</c:if>
 			</form>
-				<button onclick="javascript:downloadPDF();">PDF저장</button>
+				<button class="w3-button w3-purple w3-margin-bottom" onclick="javascript:downloadPDF();">PDF저장</button>
 		</div>
 	</td>
 	<c:if test="${status.count%3==0}">

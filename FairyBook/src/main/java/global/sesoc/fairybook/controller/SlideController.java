@@ -48,16 +48,17 @@ public class SlideController {
 		ArrayList<MySelection> myStoryList = null;
 		myStoryList = dao.getMyStoryList(id);
 		model.addAttribute("myStoryList", myStoryList);
-		return "slide/storyPlay";
+		return "main/storyPlay";
 	}
 	
 	
-	@RequestMapping(value = "storySlide", method = RequestMethod.GET)
-	public String storyStart(HttpSession session, int selectionNum, Model model) {
+	@RequestMapping(value = "storySlide", method = RequestMethod.POST)
+	public String storySlide(HttpSession session, int selectionNum, int storyNum, Model model) {
 		ArrayList<Integer> slideList = null;
 		slideList = dao.getSlide(selectionNum);
 		model.addAttribute("slideList", slideList);
-		return "slide/storySlide";
+		model.addAttribute("storyNum", storyNum);
+		return "main/storySlide";
 	}
 }
 
