@@ -48,16 +48,32 @@ public class SlideController {
 		ArrayList<MySelection> myStoryList = null;
 		myStoryList = dao.getMyStoryList(id);
 		model.addAttribute("myStoryList", myStoryList);
-		return "slide/storyPlay";
+		return "main/storyPlay";
 	}
 	
-	
-	@RequestMapping(value = "storySlide", method = RequestMethod.GET)
-	public String storyStart(HttpSession session, int selectionNum, Model model) {
+	/**
+	 * 실제로 슬라이드 쇼를 진행한다
+	 */
+	@RequestMapping(value = "storySlide", method = RequestMethod.POST)
+	public String storySlide(int selectionNum, int storyNum, Model model) {
 		ArrayList<Integer> slideList = null;
 		slideList = dao.getSlide(selectionNum);
 		model.addAttribute("slideList", slideList);
-		return "slide/storySlide";
+		model.addAttribute("selectionNum", selectionNum);
+		model.addAttribute("storyNum", storyNum);
+		return "main/storySlide";
+	}
+	
+	/**
+	 * 슬라이드 쇼가 끝났을 때 결과, 공유, 주문, PDF저장 할 수 있는 페이지로 이동한다
+	 */
+	@RequestMapping(value = "slideEnd", method = RequestMethod.POST)
+	public String slideEnd(int selectionNum, int storyNum, Model model) {
+		model.addAttribute("selectionNum", selectionNum);
+		model.addAttribute("storyNum", storyNum);
+		int lastScene = dao.getLastScene(selectionNum);
+		model.addAttribute("lastScene", lastScene);
+		return "main/slideEnd";
 	}
 }
 

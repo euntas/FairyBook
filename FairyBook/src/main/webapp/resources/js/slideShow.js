@@ -212,8 +212,7 @@ function slideShow() {
     
     if (globals.slideIndex >= globals.slideImages.length) {
       clearInterval(globals.slideShowID);
-      alert('마지막 페이지입니다!');
-      history.go(-1);
+      storyEnd();
     }
     
     var nextSlide = globals.slideImages[globals.slideIndex];

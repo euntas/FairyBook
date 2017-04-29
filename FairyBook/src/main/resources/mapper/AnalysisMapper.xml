@@ -124,4 +124,13 @@ and q.answer != -1
 	select * from ETC where selectionNum = #{selectionNum}
 </select>
 
+<insert id="insertForMBTI" parameterType="map">
+	insert into MBTI(selectionNum, EI, SN, TF, JP)
+	values(#{selectionNum}, #{EI}, #{SN}, #{TF}, #{JP})
+</insert>
+
+<select id="getMBTI" parameterType="int" resultType="MBTI">
+	select * from MBTI where selectionNum = #{selectionNum}
+</select>
+
 </mapper>

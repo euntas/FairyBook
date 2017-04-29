@@ -28,6 +28,19 @@
 	order by
 		inputdate 
 </select>
-	
+
+<select id="getLastScene" resultType="int" parameterType="int">
+	select
+		scenenum
+	from
+		selectiondetail
+	where
+		selectionnum = #{selectionNum}
+	and
+		inputdate = 
+			(select max(inputdate)
+			from selectiondetail
+			where selectionNum = #{selectionNum})
+</select>
 
 </mapper>

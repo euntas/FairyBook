@@ -19,7 +19,7 @@ img{
 #menu{
 	position: absolute;
 	width: 59%;
-	height: 19%;
+	height: 10%;
 	top: 80%;
 	left: 21%;
 	opacity: 0;
@@ -68,6 +68,10 @@ function music(){
 	}
 }
 
+function storyEnd(){
+	var form = document.getElementById("form");
+	form.submit();
+}
 
 </script>
 
@@ -77,15 +81,27 @@ function music(){
 
 <img id="loadingImg" alt="로딩이미지" src="../resources/img/util/loadingIcon.gif">
 
-	<div id="slideShowImages">
-	<c:forEach var="slide" items="${slideList}">
-		<c:if test="${slide<10}">
-			<img src="../resources/img/scene/scene0${slide}.jpg">
-		</c:if>
-		<c:if test="${slide>=10}">
-			<img src="../resources/img/scene/scene${slide}.jpg">
-		</c:if>
-	</c:forEach>
+<div id="slideShowImages">
+	<c:if test="${storyNum==1}">
+		<c:forEach var="slide" items="${slideList}">
+			<c:if test="${slide<10}">
+				<img src="../resources/img/scene1/scene0${slide}.jpg">
+			</c:if>
+			<c:if test="${slide>=10}">
+				<img src="../resources/img/scene1/scene${slide}.jpg">
+			</c:if>
+		</c:forEach>
+	</c:if>
+	<c:if test="${storyNum==2}">
+		<c:forEach var="slide" items="${slideList}">
+			<c:if test="${slide<10}">
+				<img src="../resources/img/scene2/scene0${slide}.jpg">
+			</c:if>
+			<c:if test="${slide>=10}">
+				<img src="../resources/img/scene2/scene${slide}.jpg">
+			</c:if>
+		</c:forEach>
+	</c:if>
   </div>  
 </body>
 
@@ -96,8 +112,10 @@ function music(){
 <button class="btn" id="musicButton" onclick="javascript:music()"></button>
 </div>
 
-<!-- Go to www.addthis.com/dashboard to customize your tools --> 
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58e45cf68c351e8d"></script>
+<form id="form" method="post" action="slideEnd">
+	<input type="hidden" name="storyNum" value="${storyNum}">
+	<input type="hidden" name="selectionNum" value="${selectionNum}">
+</form>
 
 
 </html>

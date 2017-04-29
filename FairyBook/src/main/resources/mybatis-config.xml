@@ -18,6 +18,7 @@
 		<typeAlias type="global.sesoc.fairybook.vo.PReply" alias="PReply" />
 		<typeAlias type="global.sesoc.fairybook.vo.Quiz" alias="Quiz" />
 		<typeAlias type="global.sesoc.fairybook.vo.Scene" alias="Scene" />
+		<typeAlias type="global.sesoc.fairybook.vo.MBTI" alias="MBTI" />
 		<typeAlias type="global.sesoc.fairybook.vo.StoryMaker" alias="StoryMaker" />
 		<typeAlias type="global.sesoc.fairybook.vo.Counselor" alias="Counselor" />
 		<typeAlias type="global.sesoc.fairybook.util.PoiForData" alias="PoiForData" />	
@@ -27,8 +28,10 @@
 		<typeAlias type="global.sesoc.fairybook.vo.ConfirmedOrderInfo" alias="ConfirmedOrderInfo" />
 		<typeAlias type="global.sesoc.fairybook.vo.SolvedQuiz" alias="SolvedQuiz" />
 		<typeAlias type="java.util.HashMap" alias="HashMap" />
+		<typeAlias type="java.util.Map" alias="map" />
 	</typeAliases>
 	
+
 	<mappers>
 		<mapper resource="mapper/AnalysisMapper.xml" />
 		<mapper resource="mapper/IDMapper.xml" />

@@ -3,7 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
-<title>My Child's Story</title>
+<title>slideEnd</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -132,55 +132,30 @@ td{
 <img src="../resources/image/mychildstory.png">  <hr>
 <table class="table-bordered table">
 	<tr>
-	<c:forEach var="story" items="${myStoryList}" varStatus="status">
 	<td>
-	<!-- 여기엔 썸네일이 들어간다 -->
-	<a href="storySlide?selectionNum=${story.selectionNum}">
-	<c:if test="${story.storyNum==0}">
-		<img src="../resources/image/hiyoko.png" alt="노랑이의 모험" style="width:100%;"><br>
-	</c:if>
-	<c:if test="${story.storyNum==1}">
-		<img src="../resources/image/hansel.jpg" alt="헨젤과그레텔" style="width:100%;"><br>
-	</c:if>
-	<c:if test="${story.storyNum==2}">
-		<img src="../resources/image/snowwhitetitle.jpg" alt="백설공주" style="width:100%;"><br>
-	</c:if>
-	</a>
+	<!-- 여기엔 엔딩페이지가 들어간다 -->
+	<img src="../resources/img/scene${storyNum}/scene${lastScene}.jpg" alt="Norway" style="width:100%;"><br>
 	<!-- 여기까지 썸네일 -->
-		<div class="w3-container w3-white">
-			<h3 class="hanna">
-			<c:choose>
-				<c:when test="${story.storyNum==0}">노랑이의 모험</c:when>
-				<c:when test="${story.storyNum==1}">헨젤과 그레텔</c:when>			
-				<c:when test="${story.storyNum==2}">백설공주</c:when>
-				<c:when test="${story.storyNum==3}">빨간모자</c:when>
-				<c:when test="${story.storyNum==4}">동물의 왕국</c:when>
-			</c:choose>
-			
-			</h3>
-			<h6 class="w3-opacity">${story.endDate}</h6>
-			<form action="../slide/storySlide" method="post" style="display: inline;">
-				<button type="submit" class="w3-button w3-red">감상</button>
-				<input type="hidden" name="selectionNum" id="selectionNum" value="${story.selectionNum}">
-				<input type="hidden" name="storyNum" id="storyNum" value="${story.storyNum}">
-			</form>
-				<button class="w3-button w3-green" onclick="location.href='../analysis/storyAnalysis?selectionNum=${story.selectionNum}'">결과보기</button><br>
-				<button class="w3-button w3-blue" style="margin-top: 3px;" onclick="javascript:myWrite(${story.storyNum}, ${story.selectionNum })">공유</button>
-			<form action="../orderBook/order" method="post" style="display: inline;">
-				<input type="hidden" class="orderSelectionnum" name="selectionnum" id="selectionnum" value="${story.selectionNum}">
-				<button type="submit" class="w3-button w3-yellow" style="margin-top: 3px;">주문하기</button>
-			</form>
-			<button class="w3-button w3-purple" onclick="javascript:downloadPDF();">PDF저장</button>
-		</div>
+	<div class="w3-container w3-white">
+		<h3 class="hanna">
+		
+		</h3>
+		<form action="../slide/storySlide" method="post" style="display: inline;">
+			<button type="submit" class="w3-button w3-red">감상</button>
+			<input type="hidden" name="selectionNum" id="selectionNum" value="${story.selectionNum}">
+			<input type="hidden" name="storyNum" id="storyNum" value="${story.storyNum}">
+		</form>
+		<form action="../orderBook/order" method="post" style="display: inline;">
+			<input type="hidden" class="orderSelectionnum" name="selectionnum" id="selectionnum" value="${story.selectionNum}">
+			<button type="submit" class="w3-button w3-yellow" style="margin-top: 3px;">주문하기</button>
+		</form>
+			<button class="w3-button w3-purple w3-margin-bottom" onclick="javascript:downloadPDF();">PDF저장</button>
+	</div>
 	</td>
-	<c:if test="${status.count%3==0}">
-		</tr>
-		<tr>	
-	</c:if>
-	<c:if test="${status.last}">
-		</tr>
-	</c:if>
-</c:forEach>
+	<td>
+	
+	</td>
+	</tr>
 </table>
 <!--여기까지###########################  -->
 

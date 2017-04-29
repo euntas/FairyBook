@@ -514,6 +514,8 @@ function showAvatar(r){
 	var input = '';
 	var analysis = '';
 	
+	input += '<img src="./../resources/img/avatarExplain/avatarBG.png" style="position: absolute; width: 110%; height: auto; z-index:100; top: 1%"/>';
+	
 	for (var i = 0; i < r.length; i++) {
 		console.log(r[i].path);
 		
@@ -597,6 +599,7 @@ function writeQuizDiv(){
 	        data: {currentPageNum: pageflip.options.current, answerNum: $(this).attr('selnum')},
 	        dataType: 'json',
 	        success: function(nextSceneNum){
+	        	
 	        	// 지금 씬이 마지막 페이지가 아닐 때.
 	        	if(nextSceneNum != -1){
 		        	// selectiondetail 테이블에 update 해 주어야 함.
@@ -606,6 +609,13 @@ function writeQuizDiv(){
 		    	        data: {pageNum: pageflip.options.current, answerNum: selectNum},
 		    	        dataType: 'json',
 		    	        success: function(){
+		    	        	
+		    	        	// 1번 씬에서 4번 씬으로 넘어가는 중간에 아바타 페이지로 가야한다.
+		    	        	if(nextSceneNum == 4){
+		    	        		console.log('아바타 화면으로 이동');
+		    	        		location.href = "../objectMaker/avatar";
+		    	        		return;
+		    	        	}
 		    	        	
 		    	        	// 다음 씬 번호를 이용해 실제 다음 페이지 번호를 읽어온다.
 				        	$.ajax({

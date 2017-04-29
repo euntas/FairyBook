@@ -72,7 +72,12 @@
 <input type="hidden" id="storyNum" value="${currentStoryNum}">
 
 <div class="text-center">
+<c:if test="${currentStoryNum == 1}">
 <img alt="title" src="./../resources/image/hansel.jpg" style="height:500px;"><br><br>
+</c:if>
+<c:if test="${currentStoryNum == 2}">
+<img alt="title" src="./../resources/image/snowwhitetitle.jpg" style="height:500px;"><br><br>
+</c:if>
 <button type="button" class="btn btn-primary btn-lg" id="start">Start</button>
 </div>
 
