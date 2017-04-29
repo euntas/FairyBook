@@ -31,6 +31,7 @@
 		<typeAlias type="java.util.Map" alias="map" />
 	</typeAliases>
 	
+
 	<mappers>
 		<mapper resource="mapper/AnalysisMapper.xml" />
 		<mapper resource="mapper/IDMapper.xml" />
