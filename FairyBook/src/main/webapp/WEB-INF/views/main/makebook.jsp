@@ -8,7 +8,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
-
+<link rel="shortcut icon" type="image/x-icon" href="../resources/img/favicon.ico">
 <!-- 표지 캡쳐 -->
 <script>
 	function capture() { 

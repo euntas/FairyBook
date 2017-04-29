@@ -19,7 +19,7 @@
 <!-- 로켓페이지플립 사용 위한 파일 css -->
 <link rel="stylesheet" href="./../resources/css/demo.css">
 <link rel="stylesheet" href="./../resources/css/pageflip.css">
- 
+<link rel="shortcut icon" type="image/x-icon" href="../resources/img/favicon.ico">
  <!-- 로켓페이지플립 사용 위한 파일 js -->
 <script src="./../resources/js/pageflip.js"></script>
 <script src="./../resources/js/demo.js"></script>

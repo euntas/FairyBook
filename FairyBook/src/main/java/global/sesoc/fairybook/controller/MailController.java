@@ -1,6 +1,10 @@
 package global.sesoc.fairybook.controller;
 
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
+import javax.mail.BodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeUtility;
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -54,7 +58,7 @@ public class MailController {
 	 * @return
 	 */
 	@RequestMapping(value = "sendMail", method=RequestMethod.POST)
-	public String sendMail(String receiver, String title, String content) {
+	public String sendMail(String receiver, String title, String content, String fileName) {
 		String setfrom = "scit32c1@gmail.com";         
 		
 		try {
@@ -63,8 +67,18 @@ public class MailController {
 			messageHelper.setTo(receiver);
 			messageHelper.setText(content);
 			messageHelper.setFrom(setfrom);
-			messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
-			mailSender.send(message);
+			messageHelper.setSubject(title); // 메일제목은 생략이 가능하다.
+			
+		
+       
+			String filePath= "/Users/kita/Downloads/"+fileName;
+			
+			logger.info(filePath);
+            DataSource dataSource = new FileDataSource(filePath);
+            messageHelper.addAttachment(fileName, dataSource);
+            mailSender.send(message);
+
+			
 		} catch (Exception e) {
 			System.out.println(e);
 		}

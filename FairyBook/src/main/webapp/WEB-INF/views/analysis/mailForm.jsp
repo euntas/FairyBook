@@ -7,7 +7,7 @@
 <title>상담메일보내기</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+<link rel="shortcut icon" type="image/x-icon" href="../resources/img/favicon.ico">
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 
@@ -24,14 +24,18 @@
 		var receiver = $('#receiver').val();
 		var title = $('#title').val();
 		var content = $('#content').val();
-
+		var fileValue = $("#file").val().split("\\");
+		var fileName = fileValue[fileValue.length-1];
+	
+	
 		$.ajax({
 			url : 'sendMail',
 			type : 'POST',
 			data : {
 				receiver : receiver,
 				title : title,
-				content : content
+				content : content,
+				fileName : fileName
 			},
 			success : function(data) {
 				alert('전송되었습니다.');
@@ -42,11 +46,13 @@
 				alert(JSON.stringify(e));
 			}
 		});
+		
 	}
+	
 </script>
 </head>
 <body style='text-align: center; background-color: #ffff80;'>
-<form action="sendMail" method="post" enctype="multipart/form-data">
+<form action="sendMail" id="mailForm" method="post" enctype="multipart/form-data">
 <br>
 	<table style="margin: auto;">
 		<tr>
@@ -72,7 +78,7 @@
 		</tr>
 		<tr style="height: 10px;"></tr>
 		<tr>
-		 <th>파일</th><td><input type="file"></td>
+		 <th>파일</th><td><input type="file" id="file"></td>
 		</tr>
 		<tr style="height: 10px;"></tr>
 		<tr>

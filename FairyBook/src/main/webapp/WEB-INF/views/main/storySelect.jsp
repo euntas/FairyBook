@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
 <link href='https://fonts.googleapis.com/css?family=RobotoDraft' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+<link rel="shortcut icon" type="image/x-icon" href="../resources/img/favicon.ico">
 <!--적용 자바스크립트와 스타일  -->
 
 
@@ -48,8 +48,8 @@
 	      <img src="../resources/image/snowwhitetitle.jpg" alt="Norway" style="width:100%">
 	      <div class="w3-container w3-white">
 	        <h3>백설공주</h3>
-	        <h6 class="w3-opacity">Please wait update</h6>
-	        <button class="w3-button w3-block w3-margin-bottom" disabled="disabled">업데이트를 기대하세요</button>
+	        <h6 class="w3-opacity">2017.4.27</h6>
+	        <button class="w3-button w3-block w3-yellow w3-margin-bottom" onclick="location.href='../story/storyTitle?storyNum=2'">Play</button>
 	      </div>
 	    </div>
 	    
