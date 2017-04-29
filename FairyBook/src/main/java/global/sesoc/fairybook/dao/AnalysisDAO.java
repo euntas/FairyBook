@@ -93,14 +93,17 @@ public class AnalysisDAO {
 	}
 	
 	// mbti 테이블에 j,p 항목을 넣는다.
-	public int insertJPForMBTI(int selectionNum, String element){
+	public int insertForMBTI(int selectionNum, MBTI mbti){
 		AnalysisMapper mapper = sqlSession.getMapper(AnalysisMapper.class);
 		
 		HashMap<String, Object> myinfo = new HashMap<>();
 		myinfo.put("selectionNum", selectionNum);
-		myinfo.put("JP", element);
+		myinfo.put("JP", mbti.getJP());
+		myinfo.put("SN", mbti.getSN());
+		myinfo.put("TF", mbti.getTF());
+		myinfo.put("EI", mbti.getEI());
 		
-		return mapper.insertJPForMBTI(myinfo);
+		return mapper.insertForMBTI(myinfo);
 	}
 	
 	public MBTI getMBTI(int selectionNum){

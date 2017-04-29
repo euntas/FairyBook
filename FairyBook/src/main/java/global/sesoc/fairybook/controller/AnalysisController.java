@@ -17,10 +17,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import global.sesoc.fairybook.dao.AnalysisDAO;
 import global.sesoc.fairybook.dao.ETCDAO;
+import global.sesoc.fairybook.dao.StoryDAO;
 import global.sesoc.fairybook.vo.Counselor;
 import global.sesoc.fairybook.vo.ETC;
 import global.sesoc.fairybook.vo.FBResource;
 import global.sesoc.fairybook.vo.MBTI;
+import global.sesoc.fairybook.vo.SelectionDetail;
 import global.sesoc.fairybook.vo.SolvedQuiz;
 
 /**
@@ -37,6 +39,9 @@ public class AnalysisController {
 	
 	@Autowired
 	AnalysisDAO dao;
+	
+	@Autowired
+	StoryDAO storyDao;
 	
 	/**
 	 * 결과 페이지로 이동
@@ -108,7 +113,48 @@ public class AnalysisController {
 	@RequestMapping(value="etcPatternAnalysis", method=RequestMethod.GET)
 	public int etcPatternAnalysis(int selectionNum){
 		logger.info("함수 들어옴");
-		String result = "j"; // 디폴트 j. 패턴에 해당하면 'p'를 반환.
+		
+		MBTI result = new MBTI();
+		ArrayList<SelectionDetail> selectionDetail = storyDao.getSelectionDetail(selectionNum);
+		
+		// EI, SN, TF 분석 ==================================
+		
+		for (SelectionDetail sd : selectionDetail) {
+			// EI 분석
+			if(sd.getSceneNum() == 1){
+				if(sd.getMyAnswer() == 1 || sd.getMyAnswer() == 3){
+					result.setEI("e");
+				}
+				else{
+					result.setEI("i");
+				}
+			}
+			
+			// SN 분석
+			if(sd.getSceneNum() == 45){
+				if(sd.getMyAnswer() == 2){
+					result.setSN("s");
+				}
+				else{
+					result.setSN("n");
+				}
+			}
+			
+			// TF 분석
+			if(sd.getSceneNum() == 17 || sd.getSelectionNum() == 21){
+				if(sd.getMyAnswer() == 1){
+					result.setTF("f");
+				}
+				else{
+					result.setTF("t");
+				}
+			}
+		}
+		
+		//=============================================
+		
+		//JP 분석 ======================================
+		String resultJP = "j"; // 디폴트 j. 패턴에 해당하면 'p'를 반환.
 		int temp = 0;
 		
 		/*int pattern[][][] = {
@@ -142,17 +188,20 @@ public class AnalysisController {
 		if(flag == 1){
 			if(mySel[0][0] == mySel[2][0] && mySel[0][1] == mySel[2][1] && mySel[0][2] == mySel[2][2]
 					&& mySel[1][0] == mySel[3][0] && mySel[1][1] == mySel[3][1] && mySel[1][2] == mySel[3][2]){
-				result = "p";
+				resultJP = "p";
 			}
 		}
 		
 		logger.info("마이셀: " + mySel + " flag: " + flag + "result: " + result);
 		
-		if(result.equals("p"))
+		if(resultJP.equals("p"))
 			temp = 1;
 		
-		dao.insertJPForMBTI(selectionNum, result);
-			
+		result.setJP(resultJP);
+		
+		//===================================
+		dao.insertForMBTI(selectionNum, result);
+		
 		
 		return temp;
 	}
