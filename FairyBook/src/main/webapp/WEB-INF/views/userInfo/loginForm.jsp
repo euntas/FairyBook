@@ -101,10 +101,10 @@
 		}
 	</script>
 </head>
-<body class="container-fluid bg-1 text-center">
+<body class="container-fluid bg-1 text-center" style="background-image: url('../resources/image/icon/backg.png');">
 <!--배너  -->
 <nav class="navbar-fixed-top">
-<div style="background-image: url('../resources/image/icon/banner.png');width: 100%;height: 100px;">
+<div style="background-image: url('../resources/image/icon/banner.jpg');width: 100%;height: 100px;">
  <center><a href="../"><img src="../resources/image/icon/bannertitle.png" style="margin-top: 15px;margin-right: 17px"></a></center>
 </div>
 </nav>
