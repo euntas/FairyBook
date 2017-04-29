@@ -50,7 +50,7 @@ tr:hover{
 		var list = result.list;
 		var input='<table class="table table-striped table-hover">';
 		input+='<thead><tr>';
-		input+='<th>글번호</th><th>제목</th><th>작성자</th><th>조회수</th><th>작성일</th>';
+		input+='<th style="width:10%;">글번호</th><th style="width:40%;">제목</th><th style="width:15%;">작성자</th><th style="width:10%;">조회수</th><th>작성일</th>';
 		input+='</tr></thead>';
 		$.each(list, function(i,b){
 			input+='<tr class="select" num="'+b.boardnum+'">';
