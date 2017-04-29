@@ -62,9 +62,6 @@ a[class*='colorLbl']{
 	padding: 5%;
 	background-color:rgb(255,255,196);
 }
-#eachColor{
-	
-}
 
 img[id*='eye']{
 	z-index: 4;
@@ -133,12 +130,12 @@ $(function(){
 	clear();
 	home(); //처음 열면 home화면 on active
 	
-	$('#all').on('click',home);
-	$('#color').on('click',menu1);
-	$('#htp1').on('click',menu2);
-	$('#htp2').on('click',menu3);
-	$('#htp3').on('click',menu4);
-	$('#quiz').on('click',menu5);
+	$('#all').on('click',home); 	//home탭
+	$('#color').on('click',menu1);	//menu1탭
+	$('#htp1').on('click',menu2);	//menu2탭
+	$('#htp2').on('click',menu3);	//menu3탭
+	$('#htp3').on('click',menu4);	//menu4탭
+	$('#quiz').on('click',menu5);	//menu5탭
 	
 	getETCPattern();
 });
@@ -188,24 +185,28 @@ function home(){
 
 
 function allColor(){
-	var input = "<div id='allColorAnalysis'>";
+	var input = '<div id="allColorAnalysis" style="display:table;">';
+	input += '<div class="glyphicon glyphicon-remove" id="cancelACA"></div><br>';
 	input += '<div class="col-md-3">';
 	input += '<ul class="nav nav-pills nav-stacked">';
 	$.each(colorArray,function(i,c){
-		input += '<li><a class="colorLbl'+c+'" data-toggle="pill" onclick="eachColor(\''+i+'\')" style="color:'+c+';">'+c+'</a></li>';
+		input += '<li><a class="colorLbl'+c+'" onclick="eachColor(\''+i+'\')" style="color:'+c+';width:100%;">'+c+'</a></li>';
 	});
  	input += '</ul></div>';
- 	input += '<div class="tab-content">';
+ 	input += '<div class="tab-content" style="display:table-cell;vertical-align:middle;">';
     input += '<span id="eachColor"></span>';
  	input += '</div>';
  	input += '</div>';
 	
-	
-	
-	$('#allColor').html(input);
+ 	$('#allColor').html(input);
+ 	
+	$('#cancelACA').on('click',function(){
+		$('#allColorAnalysis').css('display','none');
+	});
 }
 
 function eachColor(i){
+	$(this).css('background-color', '#333');
 	var a = getAnalysis(i);
 	console.log(a);
 	$('#eachColor').html(getAnalysis(i));
@@ -317,6 +318,8 @@ function showHouse(house){
 	});
 	
 	$('#showHouse').html(input);
+	$('#htpLabelH').html(houseName[0]);
+	$('#htpSpecificH').html(analysis[0]);
 }
 
 
@@ -428,13 +431,14 @@ function showAvatar(r){
    input += '</map>';
    
    $('#showAvatar2').html(input);
+	$('#htpLabelA').html(avatarName[0]);
+	$('#htpSpecific4').html(analysis[0]);
 }
 
 
 // 각 항목(머리, 얼굴 등) 눌렀을 때 강조
 function avatarPoint(i){
 	$('#htpLabelA').html(avatarName[i]);
-	$('#htpSpecific4').html('');
 	$('#htpSpecific4').html(analysis[i]);
 }
 
@@ -447,8 +451,6 @@ function clear(){
 	
 //퀴즈 가져오기
 function getQuiz(){
-	
-	alert('????????');	
 	$.ajax({
 		url:'getQuizResult',
 		type:'POST',
@@ -528,7 +530,7 @@ function downloadPDF(){
 	  </ul>
 	</div>
   <div class="tab-content">
-    <div style="padding-top:5%;" id="home">
+    <div style="padding-top:5%;padding-bottom:50%;" id="home">
     	<div  class="row col-sm-12">
     		<img alt="htp" src="../resources/img/htp.png" style="width:100%;height:auto;">
     	</div>
@@ -573,14 +575,14 @@ function downloadPDF(){
 		    </div>
 		  </div>
 		  <hr>
-		  <div class="row">
-		  	<div class="col-md-4" style="width: 500px;" id="showHouse">
-		    </div>
-		  	<div class="panel panel-warning" style="height:250px;width: 400px;float:left;">
+		  <div class="row" style="display:table;">
+		  	<div class="col-md-4" style="width: 500px;display:table-cell;vertical-align:middle;padding-left:10%;" id="showHouse"></div>
+		  	<div class="panel panel-warning" style="height:250px;width: 400px;float:left;display:table-cell;vertical-align:middle;">
 		      <div class="panel-heading hanna" id="htpLabelH"></div>
 		      <div class="panel-body hanna" id="htpSpecificH"></div>
 		    </div>
 		  </div>
+		  <br><hr>
 		   <center>
 		   <button class="btn btn-warning" onclick="javascript:downloadPDF();">상담결과저장</button>
 		   <button class="btn btn-warning" onclick="location.href='../analysis/counsel'">상담하기</button></center>
@@ -596,13 +598,13 @@ function downloadPDF(){
 		  </div>
 		  <hr>
 		  <div class="row">
-		  	<div class="col-md-4" style="width: 500px;" id="showTree">
-		    </div>
+		  	<div class="col-md-4" style="width: 500px;padding-left:10%;" id="showTree"></div>
 		  	<div class="panel panel-warning" style="height:250px;width: 400px;float:left;">
 		      <div class="panel-heading hanna" id="htpLabel">Tree</div>
 		      <div class="panel-body hanna" id="htpSpecificT"></div>
 		    </div>
 		  </div>
+		  <br><hr>
 		  <center>
 		  <button class="btn btn-warning" onclick="javascript:downloadPDF();">상담결과저장</button>
 		  <button class="btn btn-warning" onclick="location.href='../analysis/counsel'">상담하기</button></center>
@@ -619,8 +621,8 @@ function downloadPDF(){
 		  <hr>
 		  <div class="row">
 		  	<div class="col-md-4" style="width: 500px;">
-		  		<div id="showAvatar2" class="showAvatar" style="position: relative;"></div>
-		    </div>
+		  		<div id="showAvatar2" class="showAvatar" style="position: relative;padding-left:15%;"></div>
+		 	</div>
 		  	<div class="panel panel-warning" style="height:250px;width: 400px;float:left;">
 		      <div class="panel-heading hanna" id="htpLabelA"></div>
 		      <div class="panel-body hanna" id="htpSpecific4"></div>
