@@ -282,7 +282,7 @@ function myFunc(id) {
 <div style="background-image: url('./resources/image/icon/userbar.png');">
   <center>
   <h5>${loginUser.cnickName}</h5>
-  <img src="./resources/image/yo.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"><br><!--circle image  -->
+  <img src="./resources/img/pinkunicorn.png" alt="img" style="width: 150px;background-color: white;" class="img-responsive img-circle" style="display:inline-block;"><br><!--circle image  -->
  <!--  <button type="button" id="update" class="btn btn-success">개인정보</button>
   <button type="button" id="logout" class="btn btn-warning">LOGOUT</button> -->
   <img src="./resources/image/icon/userinfobt.png" id="update">
@@ -312,7 +312,7 @@ function myFunc(id) {
 <div style="background-image: url('./resources/image/icon/userbar.png');">
   <center>
   <h3>${loginUser.pnickName}</h3>
-  <img src="./resources/image/pp4.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"><br><!--circle image  -->
+  <img src="./resources/img/yellowunicorn.png" alt="img" style="width: 150px;background-color: white;" class="img-responsive img-circle" style="display:inline-block;"><br><!--circle image  -->
   <!-- <button type="button" id="update" class="btn btn-success">개인정보</button>
   <button type="button" id="logout" class="btn btn-warning">LOGOUT</button> -->
   <img src="./resources/image/icon/userinfobt.png" id="update">

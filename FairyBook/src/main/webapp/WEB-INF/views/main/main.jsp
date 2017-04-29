@@ -214,7 +214,7 @@ $(function(){
 <div style="background-image: url('../resources/image/icon/userbar.png');">
   <center>
   <h3>${loginUser.cnickName}</h3>
-  <img src="../resources/image/yo.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"><br><!--circle image  -->
+  <img src="../resources/img/pinkunicorn.png" alt="img" style="width: 150px;background-color: white;" class="img-responsive img-circle" style="display:inline-block;"><br><!--circle image  -->
   <img src="../resources/image/icon/userinfobt.png" id="update">
  <img src="../resources/image/icon/logoutbt.png" id="logout">
   </center>
@@ -243,7 +243,7 @@ $(function(){
 <div style="background-image: url('../resources/image/icon/userbar.png');">
   <center>
   <h3>${loginUser.pnickName}</h3>
-  <img src="./../resources/image/pp4.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"><br><!--circle image  -->
+  <img src="./../resources/img/yellowunicorn.png" alt="img" style="width: 150px;background-color: white;" class="img-responsive img-circle" style="display:inline-block;"><br><!--circle image  -->
    <img src="../resources/image/icon/userinfobt.png" id="update">
  <img src="../resources/image/icon/logoutbt.png" id="logout">
   </center>
