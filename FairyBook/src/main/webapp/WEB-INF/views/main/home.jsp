@@ -470,9 +470,49 @@ function myFunc(id) {
      </c:if>
 
 	<c:if test="${userType == 'parent'}">
+		<div id="Borge" class="w3-container person">
+     	<br>
 		<img src="./resources/image/mychildstory.png">  <hr>
-		
-		<table class="table-bordered table">
+		<hr>
+     	</div>
+     	
+     	<div class="w3-row-padding w3-padding-16">
+     		<c:forEach var="story" items="${myStoryList}" varStatus="status">
+			<c:if test="${status.index < 3 }">
+	     		<div class="w3-third w3-margin-bottom">
+				<c:if test="${story.storyNum==0}">
+		        	<img src="./resources/image/hiyoko.png" alt="Norway" style="width:100%">
+				</c:if>
+				<c:if test="${story.storyNum==1}">
+		        	<img src="./resources/image/hansel.jpg" alt="Norway" style="width:100%">
+				</c:if>
+				<c:if test="${story.storyNum==2}">
+		        	<img src="./resources/image/snowwhitetitle.jpg" alt="Norway" style="width:100%">
+				</c:if>
+		         <div class="w3-container w3-white">
+		         <br>
+		        <c:if test="${story.storyNum==0}">
+		           <img src="./resources/image/hanseltitle.png">
+		           <h6 class="w3-opacity">2017.3.22</h6>
+		           <button class="w3-button w3-block w3-red w3-margin-bottom" onclick="location.href='./menu/myChildStory'">더보기</button>
+		        </c:if>
+		        <c:if test="${story.storyNum==1}">
+		           <img src="./resources/image/hanseltitle.png">
+		           <h6 class="w3-opacity">2017.3.22</h6>
+		           <button class="w3-button w3-block w3-red w3-margin-bottom" onclick="location.href='./menu/myChildStory'">더보기</button>
+		        </c:if>
+		        <c:if test="${story.storyNum==2}">
+		           <img src="./resources/image/hanseltitle.png">
+		           <h6 class="w3-opacity">2017.3.22</h6>
+		           <button class="w3-button w3-block w3-red w3-margin-bottom" onclick="location.href='./menu/myChildStory'">더보기</button>
+		        </c:if>
+		         </div>
+		       	</div>
+		     </c:if>
+		     </c:forEach>
+     	</div>
+     	
+		<%-- <table class="table-bordered table">
 			<tr>
 			<c:forEach var="story" items="${myStoryList}" varStatus="status">
 			<c:if test="${status.index < 3 }">
@@ -514,7 +554,7 @@ function myFunc(id) {
 			</c:if>
 			</c:if>
 		</c:forEach>
-		</table>
+		</table> --%>
 	</c:if>
 
      <div id="Borge" class="w3-container person">

@@ -64,7 +64,7 @@
 <!--상단, 사이드 메뉴  -->
 <c:import url="../main/main.jsp"></c:import>
 <!-- Page content -->
-<div class="w3-main" style="margin-left:230px;">
+<div class="w3-main" style="margin-left:15%;;margin-top: 7%;">
 
 <!--####################여기부터  -->
 

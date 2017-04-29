@@ -13,6 +13,10 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  <link rel="shortcut icon" type="image/x-icon" href="../resources/img/favicon.ico">
   <style>
+  @import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+.hanna{
+	font-family: 'Hanna', fantasy;
+}
 	
 		.container-fluid {//패딩
 		    padding-top: 10px;
@@ -35,84 +39,24 @@
 		    background-color: #2f2f2f;
 		    color: #ffffff;
 		}
-	</style>
-	
-	<style>
-	
 		
-@import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
-	
-	th {font-family: 'Jeju Hallasan', serif;}
-	td {font-family: 'Jeju Hallasan', serif;}
+		table{
+			font-size: 18px;
+		}
+
+		.firstRow{
+			padding-left: 10%;
+		}
 	</style>
 	
-	<style>
-	@font-face {
-  font-family: 'LotteMartHappy';
-  font-style: normal;
-  font-weight: 400;
-  src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'LotteMartHappy';
-  font-style: normal;
-  font-weight: 700;
-  src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyBold.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyBold.woff') format('woff');
-}
-
-.lottemarthappy * {
- font-family: 'LotteMartHappy', sans-serif;
-}
-
-.normal {
- font-style: normal;
-}
-
-.w250 {
- font-weight: 250;
-}
-
-.w300 {
- font-weight: 300;
-}
-
-.w350 {
- font-weight: 350;
-}
-
-.w400 {
- font-weight: 400;
-}
-
-.w500 {
- font-weight: 500;
-}
-
-.w700 {
- font-weight: 700;
-}
-
-.w800 {
- font-weight: 800;
-}
-
-.w900 {
- font-weight: 900;
-}
-
-li span {
- line-height: 1.8;
- font-size: 1.3em;
-}
-	</style>
+	
 <!--적용 자바스크립트와 스타일  -->
 <link rel="stylesheet" href="../resources/css/joinForm.css">
 
 
 <title>userInfo</title>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="50" style="height: 100%; background-image: url('../resources/img/account/back4.png'); background-repeat: no-repeat; background-size: cover;">
+<body class="hanna" data-spy="scroll" data-target=".navbar" data-offset="50" style="height: 100%; background-image: url('../resources/img/account/back4.png'); background-repeat: no-repeat; background-size: cover;">
 
 
 

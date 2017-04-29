@@ -116,6 +116,7 @@ public class AnalysisController {
 		
 		MBTI result = new MBTI();
 		ArrayList<SelectionDetail> selectionDetail = storyDao.getSelectionDetail(selectionNum);
+		result.setSelectionNum(selectionNum);
 		
 		// EI, SN, TF 분석 ==================================
 		
@@ -141,12 +142,18 @@ public class AnalysisController {
 			}
 			
 			// TF 분석
-			if(sd.getSceneNum() == 17 || sd.getSelectionNum() == 21){
+			
+			result.setTF("t");
+			
+			if(sd.getSceneNum() == 17){
 				if(sd.getMyAnswer() == 1){
 					result.setTF("f");
 				}
-				else{
-					result.setTF("t");
+			}
+			
+			if(sd.getSelectionNum() == 21){
+				if(sd.getMyAnswer() == 1){
+					result.setTF("f");
 				}
 			}
 		}
@@ -192,12 +199,13 @@ public class AnalysisController {
 			}
 		}
 		
+		result.setJP(resultJP);
+		
 		logger.info("마이셀: " + mySel + " flag: " + flag + "result: " + result);
 		
 		if(resultJP.equals("p"))
 			temp = 1;
 		
-		result.setJP(resultJP);
 		
 		//===================================
 		dao.insertForMBTI(selectionNum, result);
