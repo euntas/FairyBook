@@ -18,6 +18,7 @@
 @import url(//fonts.googleapis.com/earlyaccess/hanna.css);
 .hanna{
 	font-family: 'Hanna', fantasy;
+	font-size: 20px;
 }
 
 td{
@@ -105,9 +106,9 @@ td{
 		var num=$('#selectionnum').val();
 		$.ajax({
 			url:'../pdf/imgToPdf',
-			data:{selectionnum:num},
+			data:{selectionNum:num},
 			success:function(){
-				location.href='../pdf/download?selectionnum='+num;
+				location.href='../pdf/download?selectionNum='+num;
 			},
 			fail:function(){
 				alert('download fail');
@@ -129,33 +130,58 @@ td{
 	
 
 <!--####################여기부터  -->
-<img src="../resources/image/mychildstory.png">  <hr>
+<img src="../resources/image/show.png">  <hr>
+
+<h1 class="hanna">Ending#1 행복한 백설공주</h1>
 <table class="table-bordered table">
 	<tr>
-	<td>
+	<td style="width:60%">
 	<!-- 여기엔 엔딩페이지가 들어간다 -->
 	<img src="../resources/img/scene${storyNum}/scene${lastScene}.jpg" alt="Norway" style="width:100%;"><br>
 	<!-- 여기까지 썸네일 -->
-	<div class="w3-container w3-white">
-		<h3 class="hanna">
-		
-		</h3>
-		<form action="../slide/storySlide" method="post" style="display: inline;">
-			<button type="submit" class="w3-button w3-red">감상</button>
-			<input type="hidden" name="selectionNum" id="selectionNum" value="${story.selectionNum}">
-			<input type="hidden" name="storyNum" id="storyNum" value="${story.storyNum}">
-		</form>
-		<form action="../orderBook/order" method="post" style="display: inline;">
-			<input type="hidden" class="orderSelectionnum" name="selectionnum" id="selectionnum" value="${story.selectionNum}">
-			<button type="submit" class="w3-button w3-yellow" style="margin-top: 3px;">주문하기</button>
-		</form>
-			<button class="w3-button w3-purple w3-margin-bottom" onclick="javascript:downloadPDF();">PDF저장</button>
-	</div>
 	</td>
-	<td>
-	
+	<td style="width:40%">
+	<div>
+	<br>
+	이 이야기가 즐거우셨나요?<br>
+	FairyBook에서 더 많은 동화를 만나보세요!<br>
+	같은 동화라도 여러분의 선택에 따라서<br>
+	다양한 이야기를 만날 수 있습니다!<br>
+	<br>
+	이 이야기가 마음에 들었나요?<br>
+	이야기의 표지를 직접 만들어보세요!<br>
+	PDF파일로 다운로드 받으세요!<br>
+	언제든지 내가 만든 이야기를 볼 수 있습니다!<br>
+	</div> 
 	</td>
 	</tr>
+	<tr>
+	<td colspan="2">
+	<div>
+<c:if test="${loginUser != null }">
+<!-- 아이로그인  -->
+	<c:if test="${userType == 'child'}">
+		<button class="w3-button w3-green" onclick="location.href='../menu/storySelect'">다른 동화 진행</button>
+		<button class="w3-button w3-blue" onclick="javascript:myWrite(${storyNum}, ${selectionNum })">공유하기</button>
+		<form action="../orderBook/order" method="post" style="display: inline;">
+			<input type="hidden" class="orderSelectionnum" name="selectionnum" id="selectionnum" value="${selectionNum}">
+			<button type="submit" class="w3-button w3-yellow" >표지 만들기</button>
+		</form>
+		<button class="w3-button w3-purple" onclick="javascript:downloadPDF();">PDF로 저장하기</button>
+	</c:if>
+<!-- 부모로그인 -->
+	<c:if test="${userType == 'parent'}">
+		<button class="w3-button w3-green" onclick="location.href='../analysis/storyAnalysis?selectionNum=${selectionNum}'">결과보기</button>
+		<button class="w3-button w3-blue" onclick="javascript:myWrite(${storyNum}, ${selectionNum })">공유하기</button>
+		<form action="../orderBook/order" method="post" style="display: inline;">
+			<input type="hidden" class="orderSelectionnum" name="selectionnum" id="selectionnum" value="${selectionNum}">
+			<button type="submit" class="w3-button w3-yellow" >책으로 주문하기</button>
+		</form>
+		<button class="w3-button w3-purple" onclick="javascript:downloadPDF();">PDF로 저장하기</button>
+	</c:if>
+</c:if>
+	</div>
+	</td>
 </table>
 <!--여기까지###########################  -->
 

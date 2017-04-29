@@ -26,98 +26,7 @@ td{
 
 </style>
 
-<script>
-/**
- * sns 공유를 위한 페북 로긴과정
- */
- var accessToken;
- 
- function statusChangeCallback(response) {
-   console.log('statusChangeCallback');
-   console.log(response);
-  
-   if (response.status === 'connected') {
-     accessToken = response.authResponse.accessToken;
-     testAPI();
-   } else {
-     console.log('Please log ' +
-       'into this app.');
-   }
- }
-
- function checkLoginState() {
-   FB.getLoginStatus(function(response) {
-     statusChangeCallback(response);
-     accessToken = response.authResponse.accessToken;
-   });
- }
-
- window.fbAsyncInit = function() {
- FB.init({
-   appId      : '176801416172610',
-   cookie     : true,  // enable cookies to allow the server to access 
-                       // the session
-   oauth: true,
-   xfbml      : true,  // parse social plugins on this page
-   version    : 'v2.8' // use graph api version 2.8
- });
-
- FB.getLoginStatus(function(response) {
-   statusChangeCallback(response);
- });
-
- };
- 
- (function(d, s, id) {
-   var js, fjs = d.getElementsByTagName(s)[0];
-   if (d.getElementById(id)) return;
-   js = d.createElement(s); js.id = id;
-   js.src = "//connect.facebook.net/en_US/sdk.js";
-   fjs.parentNode.insertBefore(js, fjs);
- }(document, 'script', 'facebook-jssdk'));
-
- function testAPI() {
-   console.log('Welcome!  Fetching your information.... ');
-   FB.api('/me', function(response) {
-     console.log('Successful login for: ' + response.name);/* 
-     document.getElementById('status').innerHTML =
-       'Thanks for logging in, ' + response.name + '!'; */
-   });
- }
- 
- // 실제 글 올리는 함수
- function myWrite(storyNum, selectionNum){
-	 var str = '동화는 ' + storyNum + ' 이고 셀렉션넘버는 ' + selectionNum + '입니다.';
-	 
-	  FB.ui(
-			  {
-			    method: 'feed',
-			    name: '내 애가 이렇게 잘해요',
-			    link: 'www.naver.com',
-			    picture: 'http://postfiles9.naver.net/MjAxNzAzMjhfMjY0/MDAxNDkwNjYyMTYyMTE4.bCGt0pjpam6jrn7YyvKpRaoCHx1CbRsmS23hIdkmQ40g.s8ATCxA34KfiheIts97FQHgpOE2q1YD9mmF95aD_W8Eg.PNG.tavstaus/farian.png?type=w3',
-			    //caption: '',
-			    description: str
-			  });
-	  
- }
- 
- function downloadPDF(){
-		var num=$('#selectionnum').val();
-		$.ajax({
-			url:'../pdf/imgToPdf',
-			data:{selectionnum:num},
-			success:function(){
-				location.href='../pdf/download?selectionnum='+num;
-			},
-			fail:function(){
-				alert('download fail');
-			}
-		});
-	}
-</script>
-
 <!--적용 자바스크립트와 스타일  -->
-
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50" style="height: 100%;" class="hanna">
 
@@ -159,18 +68,11 @@ td{
 			
 			</h3>
 			<h6 class="w3-opacity">${story.endDate}</h6>
-			<form action="../slide/storySlide" method="post" style="display: inline;">
-				<button type="submit" class="w3-button w3-red">감상</button>
+			<form action="../slide/storySlide" method="post" style="display: inline; width: 100%;">
+				<button type="submit" class="w3-button w3-red">감상하기</button>
 				<input type="hidden" name="selectionNum" id="selectionNum" value="${story.selectionNum}">
 				<input type="hidden" name="storyNum" id="storyNum" value="${story.storyNum}">
 			</form>
-				<button class="w3-button w3-green" onclick="location.href='../analysis/storyAnalysis?selectionNum=${story.selectionNum}'">결과보기</button><br>
-				<button class="w3-button w3-blue" style="margin-top: 3px;" onclick="javascript:myWrite(${story.storyNum}, ${story.selectionNum })">공유</button>
-			<form action="../orderBook/order" method="post" style="display: inline;">
-				<input type="hidden" class="orderSelectionnum" name="selectionnum" id="selectionnum" value="${story.selectionNum}">
-				<button type="submit" class="w3-button w3-yellow" style="margin-top: 3px;">주문하기</button>
-			</form>
-			<button class="w3-button w3-purple" onclick="javascript:downloadPDF();">PDF저장</button>
 		</div>
 	</td>
 	<c:if test="${status.count%3==0}">

@@ -26,24 +26,6 @@ td{
 
 </style>
 
-<!--적용 자바스크립트와 스타일  -->
-<script type="text/javascript">
-function downloadPDF(){
-	var num=$('#selectionnum').val();
-	$.ajax({
-		url:'../pdf/imgToPdf',
-		data:{selectionnum:num},
-		success:function(){
-			location.href='../pdf/download?selectionnum='+num;
-		},
-		fail:function(){
-			alert('download fail');
-		}
-	});
-}
-</script>
-
-
 <body data-spy="scroll" data-target=".navbar" data-offset="50" style="height: 100%; margin: 0;" class="hanna">
 
 <!--상단, 사이드 메뉴  -->
@@ -52,7 +34,6 @@ function downloadPDF(){
 <div class="w3-main" style="margin-left:230px; min-height: 100%; position: relative;">
 	<i class="fa fa-bars w3-button w3-white w3-hide-large w3-xlarge w3-margin-left w3-margin-top" onclick="w3_open()"></i>
 	
-
 <!--####################여기부터  -->
 <br>
 
@@ -88,15 +69,10 @@ function downloadPDF(){
 			</h3>
 			<h6 class="w3-opacity">${story.endDate}</h6>
 			<form action="../slide/storySlide" method="post" style="display: inline;">
-				<button type="submit" class="w3-button w3-red">감상</button>
+				<button type="submit" class="w3-button w3-red" style="margin-bottom:3px; width: 100%">감상하기</button>
 				<input type="hidden" name="selectionNum" id="selectionNum" value="${story.selectionNum}">
 				<input type="hidden" name="storyNum" id="storyNum" value="${story.storyNum}">
 			</form>
-			<form action="../orderBook/order" method="post" style="display: inline;">
-				<input type="hidden" class="orderSelectionnum" name="selectionnum" id="selectionnum" value="${story.selectionNum}">
-				<button type="submit" class="w3-button w3-yellow" style="margin-top: 3px;">주문하기</button>
-			</form>
-				<button class="w3-button w3-purple w3-margin-bottom" onclick="javascript:downloadPDF();">PDF저장</button>
 		</div>
 	</td>
 	<c:if test="${status.count%3==0}">

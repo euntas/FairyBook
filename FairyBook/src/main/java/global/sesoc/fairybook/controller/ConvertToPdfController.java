@@ -60,26 +60,32 @@ public class ConvertToPdfController {
 	String fileName;
 	
 	//책 표지 저장 경로
-	private final String downloadPath = "/Users/kita/git/FairyBook/FairyBook/src/main/webapp/resources/img/scene/"; //파일 업로드 경로
-	private final String uploadPath = "/Users/kita/git/FairyBook/FairyBook/src/main/webapp/resources/"; //파일 업로드 경로
+	private String downloadPath = "/Users/kita/git/FairyBook/FairyBook/src/main/webapp/resources/img/scene"; //파일 업로드 경로
+	private String uploadPath = "/Users/kita/git/FairyBook/FairyBook/src/main/webapp/resources/"; //파일 업로드 경로
 			
 	
 	@RequestMapping(value="convertPage")
 	public String convertPage(int selectionNum,Model model){
-		model.addAttribute("selectionnum", selectionNum);
+		model.addAttribute("selectionNum", selectionNum);
 		return "convertPage";
 	}
 	
 	@ResponseBody
 	@RequestMapping(value="imgToPdf")
-	public void imgToPdf(int selectionnum, HttpServletResponse response) throws MalformedURLException, IOException, DocumentException{
-		logger.info("convert selectionnum:{}",selectionnum);
-		String title = oDao.getStoryTitle(selectionnum);
+	public void imgToPdf(int selectionNum, HttpServletResponse response) throws MalformedURLException, IOException, DocumentException{
+		logger.info("convert selectionnum:{}",selectionNum);
+		String title = oDao.getStoryTitle(selectionNum);
 		String name=  UUID.randomUUID().toString();
 		fileName = title+name;
+		if(title.equals("헨젤과그레텔")){
+			downloadPath = downloadPath +"1/";
+		}else if(title.equals("백설공주")){
+			downloadPath = downloadPath +"2/";
+		}
+		
 		
 		ArrayList<Integer> scene = new ArrayList<>();
-		scene = dao.getSlide(selectionnum);
+		scene = dao.getSlide(selectionNum);
 		
 		int indentation = 0;
 		Document d = new Document(PageSize.A4.rotate(),0,0,0,0);
@@ -341,8 +347,8 @@ public class ConvertToPdfController {
 	}
 	
 	@RequestMapping(value="download",method=RequestMethod.GET)
-	public String download(int selectionnum,HttpServletResponse response) throws IOException{
-		logger.info("down selectionnum:{}",selectionnum);
+	public String download(int selectionNum,HttpServletResponse response) throws IOException{
+		logger.info("down selectionnum:{}",selectionNum);
 		
 		
 		response.setContentType("application/octet-stream; charset=UTF-8");
