@@ -30,7 +30,6 @@ public class SlideController {
 	@Autowired
 	SlideDAO dao;
 
-	
 	private static final Logger logger = LoggerFactory.getLogger(SlideController.class);
 	
 	/**
@@ -52,14 +51,28 @@ public class SlideController {
 		return "main/storyPlay";
 	}
 	
-	
+	/**
+	 * 실제로 슬라이드 쇼를 진행한다
+	 */
 	@RequestMapping(value = "storySlide", method = RequestMethod.POST)
-	public String storySlide(HttpSession session, int selectionNum, int storyNum, Model model) {
+	public String storySlide(int selectionNum, int storyNum, Model model) {
 		ArrayList<Integer> slideList = null;
 		slideList = dao.getSlide(selectionNum);
 		model.addAttribute("slideList", slideList);
+		model.addAttribute("selectionNum", selectionNum);
 		model.addAttribute("storyNum", storyNum);
 		return "main/storySlide";
+	}
+	
+	/**
+	 * 슬라이드 쇼가 끝났을 때 결과, 공유, 주문, PDF저장 할 수 있는 페이지로 이동한다
+	 */
+	@RequestMapping(value = "slideEnd", method = RequestMethod.POST)
+	public String slideEnd(int selectionNum, int storyNum, Model model) {
+		model.addAttribute("selectionNum", selectionNum);
+		model.addAttribute("storyNum", storyNum);
+		int lastScene = dao.getLastScene(selectionNum);
+		return "main/slideEnd";
 	}
 }
 

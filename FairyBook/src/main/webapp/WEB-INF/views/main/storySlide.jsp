@@ -19,7 +19,7 @@ img{
 #menu{
 	position: absolute;
 	width: 59%;
-	height: 19%;
+	height: 10%;
 	top: 80%;
 	left: 21%;
 	opacity: 0;
@@ -68,6 +68,11 @@ function music(){
 	}
 }
 
+function storyEnd(){
+	var form = document.getElementById("form");
+	form.submit();
+}
+
 </script>
 
 </head>
@@ -107,8 +112,10 @@ function music(){
 <button class="btn" id="musicButton" onclick="javascript:music()"></button>
 </div>
 
-<!-- Go to www.addthis.com/dashboard to customize your tools --> 
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58e45cf68c351e8d"></script>
+<form id="form" method="post" action="slideEnd">
+	<input type="hidden" name="storyNum" value="${storyNum}">
+	<input type="hidden" name="selectionNum" value="${selectionNum}">
+</form>
 
 
 </html>

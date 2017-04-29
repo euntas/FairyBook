@@ -28,6 +28,16 @@
 	order by
 		inputdate 
 </select>
-	
+
+<select id="getSlide" resultType="int" parameterType="int">
+	select
+		scenenum
+	from
+		selectiondetail
+	where
+		selectionnum = #{selectionNum}
+	order by
+		inputdate 
+</select>
 
 </mapper>
