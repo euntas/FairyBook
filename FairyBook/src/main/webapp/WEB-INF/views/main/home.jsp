@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
 <link href='https://fonts.googleapis.com/css?family=RobotoDraft' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
- <link rel="shortcut icon" type="image/x-icon" href="../resources/img/favicon.ico">
+ 
  <style>
  
 	/*글씨체  */
@@ -502,14 +502,7 @@ function myFunc(id) {
 					
 					</h3>
 					<h6 class="w3-opacity">${story.endDate}</h6>
-						<button class="w3-button w3-red" onclick="location.href='./menu/storySlide?selectionNum=${story.selectionNum}'">감상</button>
-						<button class="w3-button w3-green" onclick="location.href='./analysis/storyAnalysis?selectionNum=${story.selectionNum}'">결과보기</button><br>
-						<button class="w3-button w3-blue" style="margin-top: 3px;" onclick="javascript:myWrite(${story.storyNum}, ${story.selectionNum })">공유</button>
-					<form action="./orderBook/order" method="post" style="display: inline;">
-						<input type="hidden" class="orderSelectionnum" name="selectionnum" id="selectionnum" value="${story.selectionNum}">
-						<button type="submit" class="w3-button w3-yellow" style="margin-top: 3px;">주문하기</button>
-					</form>
-					<button onclick="javascript:downloadPDF();">PDF저장</button>
+						<button class="w3-button w3-red" onclick="location.href='./menu/storySlide?selectionNum=${story.selectionNum}'"></button>
 				</div>
 			</td>
 			<c:if test="${status.count%3==0}">
