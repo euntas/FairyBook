@@ -119,8 +119,8 @@ function sendMail123(email){
 
 <!--배너  -->
 <nav class="navbar-fixed-top">
-<div class="container-fluid bg-2 text-center">
-  <a href='../'><img src="../resources/image/title.PNG"></a>
+<div style="background-image: url('../resources/image/icon/banner.jpg');width: 100%;height: 100px;">
+ <center><a href="./"><img src="../resources/image/icon/bannertitle.png" style="margin-top: 15px;"></a></center>
 </div>
 </nav>
 
