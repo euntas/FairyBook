@@ -521,7 +521,7 @@ function downloadPDF(){
 
 	<div class="f-nav">
 	<ul class="nav nav-pills" id="mainNav">
-	    <li class="active"><a data-toggle="pill" href="#home" id="all" class="hanna">전체</a></li>
+	    <li class="active"><a data-toggle="pill" href="#home" id="all" class="hanna">심리검사 유형</a></li>
 	    <li><a data-toggle="pill" href="#menu1" id="color" class="hanna">심리-색</a></li>
 	    <li><a data-toggle="pill" href="#menu2" id="htp1" class="hanna">심리-HTP-h</a></li>
 	    <li><a data-toggle="pill" href="#menu3" id="htp2" class="hanna">심리-HTP-t</a></li>
@@ -531,12 +531,20 @@ function downloadPDF(){
 	</div>
   <div class="tab-content">
     <div style="padding-top:5%;padding-bottom:50%;" id="home">
-    	<div  class="row col-sm-12">
+    	<!-- <div  class="row col-sm-12">
     		<img alt="htp" src="../resources/img/htp.png" style="width:100%;height:auto;">
     	</div>
     	<div  class="row col-sm-12">
-    		<img alt="explain" src="../resources/img/colorExplain.png" width="100%" height="auto">
+    		<img alt="explain" src="../resources/img/colorExplain.png" style="width:100%;height:auto;">
     	</div>
+    	<div  class="row col-sm-12">
+    		<img alt="mbti" src="../resources/img/mbti.png" style="width:100%;height:auto;">
+    	</div> -->
+    	<div  class="row col-sm-12">
+    		<img alt="explain" src="../resources/img/explain.png" style="width:100%;height:auto;">
+    	</div>
+    	
+    	
     </div>
     
     <!-- COLOR -->
@@ -656,7 +664,7 @@ function downloadPDF(){
 <!--여기까지###########################  -->
 
 </div>
-
+<br><br>
 <!--Footer  -->
 <div style="position: fixed; bottom:0; width:100%; height: auto;">
 <c:import url="../main/mainFooter.jsp"></c:import>
