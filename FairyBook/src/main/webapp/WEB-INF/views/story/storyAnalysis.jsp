@@ -532,7 +532,7 @@ function downloadPDF(){
 
 	<div class="f-nav">
 	<ul class="nav nav-pills" id="mainNav">
-	    <li class="active"><a data-toggle="pill" href="#home" id="all" class="hanna">전체</a></li>
+	    <li class="active"><a data-toggle="pill" href="#home" id="all" class="hanna">심리검사 유형</a></li>
 	    <li><a data-toggle="pill" href="#menu1" id="color" class="hanna">심리-색</a></li>
 	    <li><a data-toggle="pill" href="#menu2" id="htp1" class="hanna">심리-HTP-h</a></li>
 	    <li><a data-toggle="pill" href="#menu3" id="htp2" class="hanna">심리-HTP-t</a></li>
@@ -542,12 +542,20 @@ function downloadPDF(){
 	</div>
   <div class="tab-content">
     <div style="padding-top:5%;padding-bottom:50%;" id="home">
-    	<div  class="row col-sm-12">
+    	<!-- <div  class="row col-sm-12">
     		<img alt="htp" src="../resources/img/htp.png" style="width:100%;height:auto;">
     	</div>
     	<div  class="row col-sm-12">
-    		<img alt="explain" src="../resources/img/colorExplain.png" width="100%" height="auto">
+    		<img alt="explain" src="../resources/img/colorExplain.png" style="width:100%;height:auto;">
     	</div>
+    	<div  class="row col-sm-12">
+    		<img alt="mbti" src="../resources/img/mbti.png" style="width:100%;height:auto;">
+    	</div> -->
+    	<div  class="row col-sm-12">
+    		<img alt="explain" src="../resources/img/explain.png" style="width:100%;height:auto;">
+    	</div>
+    	
+    	
     </div>
     
     <!-- COLOR -->
@@ -579,16 +587,16 @@ function downloadPDF(){
     </div>
     
     <!-- HOUSE -->
-    <div style="padding-top:5%;" id="menu2">
+    <div style="padding-top:10%;" id="menu2">
 		<div class="row">
 		    <div class="col-sm-12">
 		    	<h3 class="hanna">HTP - 외부와의 소통을 말해주는 ‘집’</h3>  
 		    </div>
 		  </div>
 		  <hr>
-		  <div class="row" style="display:table;">
-		  	<div class="col-md-4" style="width: 500px;display:table-cell;vertical-align:middle;padding-left:10%;" id="showHouse"></div>
-		  	<div class="panel panel-warning" style="height:250px;width: 400px;float:left;display:table-cell;vertical-align:middle;">
+		  <div class="row">
+		  	<div class="col-md-4" style="width: 500px;padding-left:10%;" id="showHouse"></div>
+		  	<div class="panel panel-warning" style="height:250px;width: 400px;float:left;margin-top:5%;">
 		      <div class="panel-heading hanna" id="htpLabelH"></div>
 		      <div class="panel-body hanna" id="htpSpecificH"></div>
 		    </div>
@@ -601,7 +609,7 @@ function downloadPDF(){
     </div>
     
     <!-- TREE -->
-    <div style="padding-top:5%;" id="menu3">
+    <div style="padding-top:10%;" id="menu3">
 		<div class="row">
 		    <div class="col-sm-12">
 		    	<h3 class="hanna">HTP - 아이 자신과 마음 상태를 말해주는 ‘나무’</h3>  
@@ -610,7 +618,7 @@ function downloadPDF(){
 		  <hr>
 		  <div class="row">
 		  	<div class="col-md-4" style="width: 500px;padding-left:10%;" id="showTree"></div>
-		  	<div class="panel panel-warning" style="height:250px;width: 400px;float:left;">
+		  	<div class="panel panel-warning" style="height:250px;width: 400px;float:left;margin-top:5%;">
 		      <div class="panel-heading hanna" id="htpLabel">Tree</div>
 		      <div class="panel-body hanna" id="htpSpecificT"></div>
 		    </div>
@@ -623,7 +631,7 @@ function downloadPDF(){
     </div>
     
     <!-- AVATAR -->
-    <div style="padding-top:5%;" id="menu4">
+    <div style="padding-top:10%;" id="menu4">
 		<div class="row">
 		    <div class="col-sm-12">
 		    	<h3 class="hanna">HTP - 성격이나 감정, 주변 환경에 대해 말해주는 ‘사람’</h3>  
@@ -634,7 +642,7 @@ function downloadPDF(){
 		  	<div class="col-md-4" style="width: 500px;">
 		  		<div id="showAvatar2" class="showAvatar" style="position: relative;padding-left:15%;"></div>
 		 	</div>
-		  	<div class="panel panel-warning" style="height:250px;width: 400px;float:left;">
+		  	<div class="panel panel-warning" style="height:250px;width: 400px;float:left;margin-top:5%;">
 		      <div class="panel-heading hanna" id="htpLabelA"></div>
 		      <div class="panel-body hanna" id="htpSpecific4"></div>
 		    </div>
@@ -648,7 +656,7 @@ function downloadPDF(){
     </div>
     
     <!--QUIZ  -->
-    <div style="padding-top:5%;" id="menu5">
+    <div style="padding-top:10%;" id="menu5">
 		<div class="row">
 		    <div class="col-sm-12">
 		    	<h3 class="hanna">QUIZ</h3>  
@@ -667,7 +675,7 @@ function downloadPDF(){
 <!--여기까지###########################  -->
 
 </div>
-
+<br><br>
 <!--Footer  -->
 <div style="position: fixed; bottom:0; width:100%; height: auto;">
 <c:import url="../main/mainFooter.jsp"></c:import>
