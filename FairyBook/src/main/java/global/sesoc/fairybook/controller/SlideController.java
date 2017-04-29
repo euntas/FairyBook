@@ -30,6 +30,7 @@ public class SlideController {
 	@Autowired
 	SlideDAO dao;
 
+	
 	private static final Logger logger = LoggerFactory.getLogger(SlideController.class);
 	
 	/**
