@@ -137,13 +137,13 @@ td{
 	<!-- 여기엔 썸네일이 들어간다 -->
 	<a href="storySlide?selectionNum=${story.selectionNum}">
 	<c:if test="${story.storyNum==0}">
-		<img src="../resources/image/hiyoko.png" alt="Norway" style="width:auto; height: 200px;"><br>
+		<img src="../resources/image/hiyoko.png" alt="노랑이의 모험" style="width:100%;"><br>
 	</c:if>
 	<c:if test="${story.storyNum==1}">
-		<img src="../resources/image/hansel.jpg" alt="헨젤과그레텔" style="width:auto; height: 200px;"><br>
+		<img src="../resources/image/hansel.jpg" alt="헨젤과그레텔" style="width:100%;"><br>
 	</c:if>
 	<c:if test="${story.storyNum==2}">
-		<img src="../resources/image/snowwhitetitle.jpg" alt="백설공주" style="width:auto; height: 200px;"><br>
+		<img src="../resources/image/snowwhitetitle.jpg" alt="백설공주" style="width:100%;"><br>
 	</c:if>
 	</a>
 	<!-- 여기까지 썸네일 -->
@@ -153,20 +153,24 @@ td{
 				<c:when test="${story.storyNum==0}">노랑이의 모험</c:when>
 				<c:when test="${story.storyNum==1}">헨젤과 그레텔</c:when>			
 				<c:when test="${story.storyNum==2}">백설공주</c:when>
-				<c:when test="${story.storyNum==3}">빨간 마스크</c:when>
+				<c:when test="${story.storyNum==3}">빨간모자</c:when>
+				<c:when test="${story.storyNum==4}">동물의 왕국</c:when>
 			</c:choose>
-			
 			
 			</h3>
 			<h6 class="w3-opacity">${story.endDate}</h6>
-				<button class="w3-button w3-red" onclick="location.href='../menu/storySlide?selectionNum=${story.selectionNum}'">감상</button>
+			<form action="../slide/storySlide" method="post" style="display: inline;">
+				<button type="submit" class="w3-button w3-red">감상</button>
+				<input type="hidden" name="selectionNum" id="selectionNum" value="${story.selectionNum}">
+				<input type="hidden" name="storyNum" id="storyNum" value="${story.storyNum}">
+			</form>
 				<button class="w3-button w3-green" onclick="location.href='../analysis/storyAnalysis?selectionNum=${story.selectionNum}'">결과보기</button><br>
 				<button class="w3-button w3-blue" style="margin-top: 3px;" onclick="javascript:myWrite(${story.storyNum}, ${story.selectionNum })">공유</button>
 			<form action="../orderBook/order" method="post" style="display: inline;">
 				<input type="hidden" class="orderSelectionnum" name="selectionnum" id="selectionnum" value="${story.selectionNum}">
 				<button type="submit" class="w3-button w3-yellow" style="margin-top: 3px;">주문하기</button>
 			</form>
-			<button onclick="javascript:downloadPDF();">PDF저장</button>
+			<button class="w3-button w3-purple" onclick="javascript:downloadPDF();">PDF저장</button>
 		</div>
 	</td>
 	<c:if test="${status.count%3==0}">
@@ -182,9 +186,9 @@ td{
 
 </div>
 
+
 <!--Footer  -->
-<div style="position: fixed;
-bottom:0;
+<div style="bottom:0;
 width: 100%;
 height: auto;">
 <c:import url="mainFooter.jsp"></c:import>

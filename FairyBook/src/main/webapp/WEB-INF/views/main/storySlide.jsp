@@ -68,7 +68,6 @@ function music(){
 	}
 }
 
-
 </script>
 
 </head>
@@ -77,15 +76,27 @@ function music(){
 
 <img id="loadingImg" alt="로딩이미지" src="../resources/img/util/loadingIcon.gif">
 
-	<div id="slideShowImages">
-	<c:forEach var="slide" items="${slideList}">
-		<c:if test="${slide<10}">
-			<img src="../resources/img/scene/scene0${slide}.jpg">
-		</c:if>
-		<c:if test="${slide>=10}">
-			<img src="../resources/img/scene/scene${slide}.jpg">
-		</c:if>
-	</c:forEach>
+<div id="slideShowImages">
+	<c:if test="${storyNum==1}">
+		<c:forEach var="slide" items="${slideList}">
+			<c:if test="${slide<10}">
+				<img src="../resources/img/scene1/scene0${slide}.jpg">
+			</c:if>
+			<c:if test="${slide>=10}">
+				<img src="../resources/img/scene1/scene${slide}.jpg">
+			</c:if>
+		</c:forEach>
+	</c:if>
+	<c:if test="${storyNum==2}">
+		<c:forEach var="slide" items="${slideList}">
+			<c:if test="${slide<10}">
+				<img src="../resources/img/scene2/scene0${slide}.jpg">
+			</c:if>
+			<c:if test="${slide>=10}">
+				<img src="../resources/img/scene2/scene${slide}.jpg">
+			</c:if>
+		</c:forEach>
+	</c:if>
   </div>  
 </body>
 

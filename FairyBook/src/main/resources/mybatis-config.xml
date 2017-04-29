@@ -18,6 +18,7 @@
 		<typeAlias type="global.sesoc.fairybook.vo.PReply" alias="PReply" />
 		<typeAlias type="global.sesoc.fairybook.vo.Quiz" alias="Quiz" />
 		<typeAlias type="global.sesoc.fairybook.vo.Scene" alias="Scene" />
+		<typeAlias type="global.sesoc.fairybook.vo.MBTI" alias="MBTI" />
 		<typeAlias type="global.sesoc.fairybook.vo.StoryMaker" alias="StoryMaker" />
 		<typeAlias type="global.sesoc.fairybook.vo.Counselor" alias="Counselor" />
 		<typeAlias type="global.sesoc.fairybook.util.PoiForData" alias="PoiForData" />	

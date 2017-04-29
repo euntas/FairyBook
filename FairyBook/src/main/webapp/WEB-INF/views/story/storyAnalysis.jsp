@@ -62,9 +62,6 @@ a[class*='colorLbl']{
 	padding: 5%;
 	background-color:rgb(255,255,196);
 }
-#eachColor{
-	
-}
 
 img[id*='eye']{
 	z-index: 4;
@@ -133,27 +130,38 @@ $(function(){
 	clear();
 	home(); //처음 열면 home화면 on active
 	
-	$('#all').on('click',home);
-	$('#color').on('click',menu1);
-	$('#htp1').on('click',menu2);
-	$('#htp2').on('click',menu3);
-	$('#htp3').on('click',menu4);
-	$('#quiz').on('click',menu5);
+	$('#all').on('click',home); 	//home탭
+	$('#color').on('click',menu1);	//menu1탭
+	$('#htp1').on('click',menu2);	//menu2탭
+	$('#htp2').on('click',menu3);	//menu3탭
+	$('#htp3').on('click',menu4);	//menu4탭
+	$('#quiz').on('click',menu5);	//menu5탭
 	
 	getETCPattern();
 });
 
 function getETCPattern(){
 	$.ajax({
-		url:'etcPatternAnalysis',
+		url:'getMBTI',
 		type:'GET',
 		data: {selectionNum: selectionNum}, 
 		dataType:'json',
 		success:function(result){
-			console.log(result);
+			console.log("JP 결과는 " + result.JP);
 		},
 		error: function(e){
-			alert("etc문제임" + "num:" + selectionNum +" " + JSON.stringify(e));
+			$.ajax({
+				url:'etcPatternAnalysis',
+				type:'GET',
+				data: {selectionNum: selectionNum}, 
+				dataType:'json',
+				success:function(result){
+					console.log("etc 패턴 들어와서 결과는 " + result);
+				},
+				error: function(e){
+					alert("etc문제임" + "num:" + selectionNum +" " + JSON.stringify(e));
+				}
+			});
 		}
 	});
 }
@@ -188,24 +196,28 @@ function home(){
 
 
 function allColor(){
-	var input = "<div id='allColorAnalysis'>";
+	var input = '<div id="allColorAnalysis" style="display:table;">';
+	input += '<div class="glyphicon glyphicon-remove" id="cancelACA"></div><br>';
 	input += '<div class="col-md-3">';
 	input += '<ul class="nav nav-pills nav-stacked">';
 	$.each(colorArray,function(i,c){
-		input += '<li><a class="colorLbl'+c+'" data-toggle="pill" onclick="eachColor(\''+i+'\')" style="color:'+c+';">'+c+'</a></li>';
+		input += '<li><a class="colorLbl'+c+'" onclick="eachColor(\''+i+'\')" style="color:'+c+';width:100%;">'+c+'</a></li>';
 	});
  	input += '</ul></div>';
- 	input += '<div class="tab-content">';
+ 	input += '<div class="tab-content" style="display:table-cell;vertical-align:middle;">';
     input += '<span id="eachColor"></span>';
  	input += '</div>';
  	input += '</div>';
 	
-	
-	
-	$('#allColor').html(input);
+ 	$('#allColor').html(input);
+ 	
+	$('#cancelACA').on('click',function(){
+		$('#allColorAnalysis').css('display','none');
+	});
 }
 
 function eachColor(i){
+	$(this).css('background-color', '#333');
 	var a = getAnalysis(i);
 	console.log(a);
 	$('#eachColor').html(getAnalysis(i));
@@ -317,6 +329,8 @@ function showHouse(house){
 	});
 	
 	$('#showHouse').html(input);
+	$('#htpLabelH').html(houseName[0]);
+	$('#htpSpecificH').html(analysis[0]);
 }
 
 
@@ -428,13 +442,14 @@ function showAvatar(r){
    input += '</map>';
    
    $('#showAvatar2').html(input);
+	$('#htpLabelA').html(avatarName[0]);
+	$('#htpSpecific4').html(analysis[0]);
 }
 
 
 // 각 항목(머리, 얼굴 등) 눌렀을 때 강조
 function avatarPoint(i){
 	$('#htpLabelA').html(avatarName[i]);
-	$('#htpSpecific4').html('');
 	$('#htpSpecific4').html(analysis[i]);
 }
 
@@ -447,8 +462,6 @@ function clear(){
 	
 //퀴즈 가져오기
 function getQuiz(){
-	
-	alert('????????');	
 	$.ajax({
 		url:'getQuizResult',
 		type:'POST',
@@ -519,7 +532,7 @@ function downloadPDF(){
 
 	<div class="f-nav">
 	<ul class="nav nav-pills" id="mainNav">
-	    <li class="active"><a data-toggle="pill" href="#home" id="all" class="hanna">전체</a></li>
+	    <li class="active"><a data-toggle="pill" href="#home" id="all" class="hanna">심리검사 유형</a></li>
 	    <li><a data-toggle="pill" href="#menu1" id="color" class="hanna">심리-색</a></li>
 	    <li><a data-toggle="pill" href="#menu2" id="htp1" class="hanna">심리-HTP-h</a></li>
 	    <li><a data-toggle="pill" href="#menu3" id="htp2" class="hanna">심리-HTP-t</a></li>
@@ -528,13 +541,21 @@ function downloadPDF(){
 	  </ul>
 	</div>
   <div class="tab-content">
-    <div style="padding-top:5%;" id="home">
-    	<div  class="row col-sm-12">
+    <div style="padding-top:5%;padding-bottom:50%;" id="home">
+    	<!-- <div  class="row col-sm-12">
     		<img alt="htp" src="../resources/img/htp.png" style="width:100%;height:auto;">
     	</div>
     	<div  class="row col-sm-12">
-    		<img alt="explain" src="../resources/img/colorExplain.png" width="100%" height="auto">
+    		<img alt="explain" src="../resources/img/colorExplain.png" style="width:100%;height:auto;">
     	</div>
+    	<div  class="row col-sm-12">
+    		<img alt="mbti" src="../resources/img/mbti.png" style="width:100%;height:auto;">
+    	</div> -->
+    	<div  class="row col-sm-12">
+    		<img alt="explain" src="../resources/img/explain.png" style="width:100%;height:auto;">
+    	</div>
+    	
+    	
     </div>
     
     <!-- COLOR -->
@@ -566,7 +587,7 @@ function downloadPDF(){
     </div>
     
     <!-- HOUSE -->
-    <div style="padding-top:5%;" id="menu2">
+    <div style="padding-top:10%;" id="menu2">
 		<div class="row">
 		    <div class="col-sm-12">
 		    	<h3 class="hanna">HTP - 외부와의 소통을 말해주는 ‘집’</h3>  
@@ -574,13 +595,13 @@ function downloadPDF(){
 		  </div>
 		  <hr>
 		  <div class="row">
-		  	<div class="col-md-4" style="width: 500px;" id="showHouse">
-		    </div>
-		  	<div class="panel panel-warning" style="height:250px;width: 400px;float:left;">
+		  	<div class="col-md-4" style="width: 500px;padding-left:10%;" id="showHouse"></div>
+		  	<div class="panel panel-warning" style="height:250px;width: 400px;float:left;margin-top:5%;">
 		      <div class="panel-heading hanna" id="htpLabelH"></div>
 		      <div class="panel-body hanna" id="htpSpecificH"></div>
 		    </div>
 		  </div>
+		  <br><hr>
 		   <center>
 		   <button class="btn btn-warning" onclick="javascript:downloadPDF();">상담결과저장</button>
 		   <button class="btn btn-warning" onclick="location.href='../analysis/counsel'">상담하기</button></center>
@@ -588,7 +609,7 @@ function downloadPDF(){
     </div>
     
     <!-- TREE -->
-    <div style="padding-top:5%;" id="menu3">
+    <div style="padding-top:10%;" id="menu3">
 		<div class="row">
 		    <div class="col-sm-12">
 		    	<h3 class="hanna">HTP - 아이 자신과 마음 상태를 말해주는 ‘나무’</h3>  
@@ -596,13 +617,13 @@ function downloadPDF(){
 		  </div>
 		  <hr>
 		  <div class="row">
-		  	<div class="col-md-4" style="width: 500px;" id="showTree">
-		    </div>
-		  	<div class="panel panel-warning" style="height:250px;width: 400px;float:left;">
+		  	<div class="col-md-4" style="width: 500px;padding-left:10%;" id="showTree"></div>
+		  	<div class="panel panel-warning" style="height:250px;width: 400px;float:left;margin-top:5%;">
 		      <div class="panel-heading hanna" id="htpLabel">Tree</div>
 		      <div class="panel-body hanna" id="htpSpecificT"></div>
 		    </div>
 		  </div>
+		  <br><hr>
 		  <center>
 		  <button class="btn btn-warning" onclick="javascript:downloadPDF();">상담결과저장</button>
 		  <button class="btn btn-warning" onclick="location.href='../analysis/counsel'">상담하기</button></center>
@@ -610,7 +631,7 @@ function downloadPDF(){
     </div>
     
     <!-- AVATAR -->
-    <div style="padding-top:5%;" id="menu4">
+    <div style="padding-top:10%;" id="menu4">
 		<div class="row">
 		    <div class="col-sm-12">
 		    	<h3 class="hanna">HTP - 성격이나 감정, 주변 환경에 대해 말해주는 ‘사람’</h3>  
@@ -619,9 +640,9 @@ function downloadPDF(){
 		  <hr>
 		  <div class="row">
 		  	<div class="col-md-4" style="width: 500px;">
-		  		<div id="showAvatar2" class="showAvatar" style="position: relative;"></div>
-		    </div>
-		  	<div class="panel panel-warning" style="height:250px;width: 400px;float:left;">
+		  		<div id="showAvatar2" class="showAvatar" style="position: relative;padding-left:15%;"></div>
+		 	</div>
+		  	<div class="panel panel-warning" style="height:250px;width: 400px;float:left;margin-top:5%;">
 		      <div class="panel-heading hanna" id="htpLabelA"></div>
 		      <div class="panel-body hanna" id="htpSpecific4"></div>
 		    </div>
@@ -635,7 +656,7 @@ function downloadPDF(){
     </div>
     
     <!--QUIZ  -->
-    <div style="padding-top:5%;" id="menu5">
+    <div style="padding-top:10%;" id="menu5">
 		<div class="row">
 		    <div class="col-sm-12">
 		    	<h3 class="hanna">QUIZ</h3>  
@@ -654,7 +675,7 @@ function downloadPDF(){
 <!--여기까지###########################  -->
 
 </div>
-
+<br><br>
 <!--Footer  -->
 <div style="position: fixed; bottom:0; width:100%; height: auto;">
 <c:import url="../main/mainFooter.jsp"></c:import>
