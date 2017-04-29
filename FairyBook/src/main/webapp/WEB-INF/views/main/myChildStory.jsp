@@ -183,8 +183,7 @@ td{
 </div>
 
 <!--Footer  -->
-<div style="position: fixed;
-bottom:0;
+<div style="bottom:0;
 width: 100%;
 height: auto;">
 <c:import url="mainFooter.jsp"></c:import>
