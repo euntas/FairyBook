@@ -20,6 +20,7 @@ import global.sesoc.fairybook.dao.ETCDAO;
 import global.sesoc.fairybook.vo.Counselor;
 import global.sesoc.fairybook.vo.ETC;
 import global.sesoc.fairybook.vo.FBResource;
+import global.sesoc.fairybook.vo.MBTI;
 import global.sesoc.fairybook.vo.SolvedQuiz;
 
 /**
@@ -149,9 +150,23 @@ public class AnalysisController {
 		
 		if(result.equals("p"))
 			temp = 1;
+		
+		dao.insertJPForMBTI(selectionNum, result);
 			
 		
 		return temp;
+	}
+	
+	/**
+	 * MBTI 가져오기
+	 * @param selectionNum
+	 */
+	@ResponseBody
+	@RequestMapping(value="getMBTI", method=RequestMethod.GET)
+	public MBTI getMBTI(int selectionNum){
+		MBTI mbti = dao.getMBTI(selectionNum);
+		logger.info("MBTI : " + mbti);
+		return mbti;
 	}
 	
 	public int checkArr(int a, int b, int c){

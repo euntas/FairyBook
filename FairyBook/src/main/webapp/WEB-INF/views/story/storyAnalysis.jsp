@@ -142,15 +142,26 @@ $(function(){
 
 function getETCPattern(){
 	$.ajax({
-		url:'etcPatternAnalysis',
+		url:'getMBTI',
 		type:'GET',
 		data: {selectionNum: selectionNum}, 
 		dataType:'json',
 		success:function(result){
-			console.log(result);
+			console.log("JP 결과는 " + result.JP);
 		},
 		error: function(e){
-			alert("etc문제임" + "num:" + selectionNum +" " + JSON.stringify(e));
+			$.ajax({
+				url:'etcPatternAnalysis',
+				type:'GET',
+				data: {selectionNum: selectionNum}, 
+				dataType:'json',
+				success:function(result){
+					console.log("etc 패턴 들어와서 결과는 " + result);
+				},
+				error: function(e){
+					alert("etc문제임" + "num:" + selectionNum +" " + JSON.stringify(e));
+				}
+			});
 		}
 	});
 }
