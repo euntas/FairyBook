@@ -1,6 +1,7 @@
 package global.sesoc.fairybook.mapper;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import global.sesoc.fairybook.vo.MySelection;
 
@@ -11,5 +12,5 @@ public interface SlideMapper {
 	
 	public ArrayList<Integer> getSlide(int selectionNum);
 
-	public int getLastScene(int selectionNum);
+	public HashMap<String, Object> getLastScene(int selectionNum);
 }

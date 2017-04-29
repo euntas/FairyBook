@@ -120,16 +120,10 @@ public class IDController {
 			String phone1, String phone2, String phone3, 
 			String email, String email2,
 			@ModelAttribute("storymaker") StoryMaker maker
-			, MultipartFile upload, Model model) {
+			, Model model) {
 		logger.debug("가입데이터 : {}", maker);	
 		//검증, DB저장
-		if (!upload.getOriginalFilename().equals("")) {
-			String savedFile = FileService.saveFile(upload, uploadPath);
-
-			// 원래 파일명과 저장된 파일명을 board객체에 담아 DB에 저장
-			maker.setOriginalProfile(upload.getOriginalFilename());
-			maker.setSavedProfile(savedFile);
-		}
+		
 		int result = 0;
 		
 		try{

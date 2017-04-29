@@ -1,6 +1,7 @@
 package global.sesoc.fairybook.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
 
@@ -71,8 +72,13 @@ public class SlideController {
 	public String slideEnd(int selectionNum, int storyNum, Model model) {
 		model.addAttribute("selectionNum", selectionNum);
 		model.addAttribute("storyNum", storyNum);
-		int lastScene = dao.getLastScene(selectionNum);
+		HashMap<String, Object> map = dao.getLastScene(selectionNum);
+		String lastScene = String.valueOf(map.get("SCENENUM"));
+		String endingNum = (String) map.get("STORYTEXT1");	
+		String endingText = (String) map.get("STORYTEXT2");
 		model.addAttribute("lastScene", lastScene);
+		model.addAttribute("endingNum", endingNum);
+		model.addAttribute("endingText", endingText);
 		return "main/slideEnd";
 	}
 }

@@ -29,18 +29,23 @@
 		inputdate 
 </select>
 
-<select id="getLastScene" resultType="int" parameterType="int">
+<select id="getLastScene" resultType="HashMap" parameterType="int">
 	select
-		scenenum
+		a.scenenum scenenum, s.storytext1 storytext1, s.storytext2 storytext2
 	from
-		selectiondetail
-	where
-		selectionnum = #{selectionNum}
-	and
-		inputdate = 
-			(select max(inputdate)
-			from selectiondetail
-			where selectionNum = #{selectionNum})
+		scene s, 
+		(select
+			scenenum
+		from
+			selectiondetail
+		where
+			selectionnum = #{selectionNum}
+		and
+			inputdate = 
+				(select max(inputdate)
+				from selectiondetail
+				where selectionNum = #{selectionNum})) a
+	where s.scenenum = a.scenenum
 </select>
 
 </mapper>

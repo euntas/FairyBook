@@ -40,8 +40,8 @@ public class SlideDAO {
 	}
 	
 	// 해당 셀렉션넘의 마지막 씬을 가져온다
-	public int getLastScene(int selectionNum){
-		int lastScene = 0;
+	public HashMap<String, Object> getLastScene(int selectionNum){
+		HashMap<String, Object> lastScene = new HashMap<>();
 		SlideMapper mapper = sqlSession.getMapper(SlideMapper.class);
 		lastScene = mapper.getLastScene(selectionNum);
 		return lastScene;
