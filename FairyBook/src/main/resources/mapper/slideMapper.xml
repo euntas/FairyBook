@@ -29,15 +29,18 @@
 		inputdate 
 </select>
 
-<select id="getSlide" resultType="int" parameterType="int">
+<select id="getLastScene" resultType="int" parameterType="int">
 	select
 		scenenum
 	from
 		selectiondetail
 	where
 		selectionnum = #{selectionNum}
-	order by
-		inputdate 
+	and
+		inputdate = 
+			(select max(inputdate)
+			from selectiondetail
+			where selectionNum = #{selectionNum})
 </select>
 
 </mapper>

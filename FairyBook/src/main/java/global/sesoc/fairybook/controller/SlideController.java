@@ -72,6 +72,7 @@ public class SlideController {
 		model.addAttribute("selectionNum", selectionNum);
 		model.addAttribute("storyNum", storyNum);
 		int lastScene = dao.getLastScene(selectionNum);
+		model.addAttribute("lastScene", lastScene);
 		return "main/slideEnd";
 	}
 }
