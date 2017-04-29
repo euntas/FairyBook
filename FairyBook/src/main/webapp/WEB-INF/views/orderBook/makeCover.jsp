@@ -335,42 +335,14 @@ canvas{
 
 <div id="under">
 <!-- Side Navigation -->
-<!--로그인하지 않았을 때  -->
-<c:if test="${loginUser == null }">
-<nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card-2" style="z-index:3;width:220px;background-image: url('../resources/image/icon/menubar.png');" id="mySidebar">
-<div style="background-image: url('../resources/image/icon/userbar.png');">
-  <center>
-  <img src="../resources/image/icon/pleaselogin.png">
-  <img src="../resources/image/pp3.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"><br><!--circle image  -->
-  <img src="../resources/image/icon/loginbt.png" id="login">
- <img src="../resources/image/icon/joinbt.png" id="join">
-  </center>
-  <br><br>
-  
-  
-  
-  </div>
-  <a href="javascript:void(0)" onclick="w3_close()" title="Close Sidemenu" 
-  class="w3-bar-item w3-button w3-hide-large w3-large">Close <i class="fa fa-remove"></i></a>
-  
-  <!-- <a href="../menu/storySelect" class="w3-bar-item w3-button"><i class="fa fa-paper-plane w3-padding-right"></i>동화선택</a>
-  <a href="../menu/storyPlay" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>동화감상</a>
- -->
- <a href="../menu/storySelect"><img src="../resources/image/icon/storyselect.png" id="storyselect"></a>
- <br><br>
-<a href="../menu/storyPlay"><img src="../resources/image/icon/storyplay.png" id="storyplay"></a>
- <br><br>
-</nav>
-</c:if>
-<!--로그인 했을 때  -->
-<c:if test="${loginUser != null }">
+
 <!--아이로그인  -->
 <c:if test="${userType == 'child'}"> <!--w3-animate-left   -->
 <nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card-2" style="z-index:3;width:220px;background-image: url('../resources/image/icon/menubar.png');" id="mySidebar">
 <div style="background-image: url('../resources/image/icon/userbar.png');">
   <center>
   <h3>${loginUser.cnickName}</h3>
-  <img src="../resources/image/yo.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"><br><!--circle image  -->
+  <img src="../resources/img/pinkunicorn.png" alt="img" style="width: 150px;background-color: white;" class="img-responsive img-circle" style="display:inline-block;"><br><!--circle image  -->
   <img src="../resources/image/icon/userinfobt.png" id="update">
  <img src="../resources/image/icon/logoutbt.png" id="logout">
   </center>
@@ -399,7 +371,7 @@ canvas{
 <div style="background-image: url('../resources/image/icon/userbar.png');">
   <center>
   <h3>${loginUser.pnickName}</h3>
-  <img src="./../resources/image/pp4.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"><br><!--circle image  -->
+  <img src="./../resources/img/yellowunicorn.png" alt="img" style="width: 150px;background-color: white;" class="img-responsive img-circle" style="display:inline-block;"><br><!--circle image  -->
    <img src="../resources/image/icon/userinfobt.png" id="update">
  <img src="../resources/image/icon/logoutbt.png" id="logout">
   </center>
@@ -428,7 +400,6 @@ canvas{
   
   
 </nav>
-</c:if>
 </c:if>
 
 <!-- Modal that pops up when you click on "New Message" -->
