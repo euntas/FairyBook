@@ -86,7 +86,7 @@ $(function(){
 		$("#board").attr('src',"../resources/image/icon/board.png");
 	});
 	
-	/* //상담 결과 보기 버튼 마우스오버
+	//상담 결과 보기 버튼 마우스오버
 	$('#counselresult').on('mouseover',function(){
 		$("#counselresult").attr('src',"../resources/image/icon/counselresult1.png");
 	});
@@ -94,7 +94,7 @@ $(function(){
 	//상담 결과 보기 버튼 마우스아웃
 	$('#counselresult').on('mouseout',function(){
 		$("#counselresult").attr('src',"../resources/image/icon/counselresult.png");
-	}); */
+	});
 	
 	//장바구니 목록 버튼 마우스오버
 	$('#ordercart').on('mouseover',function(){
@@ -214,7 +214,7 @@ $(function(){
 <div style="background-image: url('../resources/image/icon/userbar.png');">
   <center>
   <h3>${loginUser.cnickName}</h3>
-  <img src="../resources/image/yo.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"><br><!--circle image  -->
+  <img src="../resources/img/pinkunicorn.png" alt="img" style="width: 150px;background-color: white;" class="img-responsive img-circle" style="display:inline-block;"><br><!--circle image  -->
   <img src="../resources/image/icon/userinfobt.png" id="update">
  <img src="../resources/image/icon/logoutbt.png" id="logout">
   </center>
@@ -243,7 +243,7 @@ $(function(){
 <div style="background-image: url('../resources/image/icon/userbar.png');">
   <center>
   <h3>${loginUser.pnickName}</h3>
-  <img src="./../resources/image/pp4.jpg" alt="img" style="width: 150px;" class="img-responsive img-circle" style="display:inline-block;"><br><!--circle image  -->
+  <img src="./../resources/img/yellowunicorn.png" alt="img" style="width: 150px;background-color: white;" class="img-responsive img-circle" style="display:inline-block;"><br><!--circle image  -->
    <img src="../resources/image/icon/userinfobt.png" id="update">
  <img src="../resources/image/icon/logoutbt.png" id="logout">
   </center>
@@ -254,12 +254,18 @@ $(function(){
   <a href="javascript:void(0)" onclick="w3_close()" title="Close Sidemenu" 
   class="w3-bar-item w3-button w3-hide-large w3-large">Close <i class="fa fa-remove"></i></a>
   
-  <a href="../menu/myChildStory"><img src="../resources/image/icon/mychildstory.png" id="mychildstory"></a>
+  <!-- <a href="../menu/myChildStory" class="w3-bar-item w3-button"><i class="fa fa-paper-plane w3-padding-right"></i>내 아이 동화 목록</a>
+  <a href="../pboard/listForm" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>게시판</a>
+  <a href="../menu/counselResult" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>상담요청 결과보기</a>
+  <a href="../orderBook/orderCart" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>장바구니</a>
+  <a href="../orderBook/confirmOrder" class="w3-bar-item w3-button"><i class="fa fa-play-circle-o w3-padding-right" aria-hidden="true"></i>주문내역</a>
+   -->
+   <a href="../menu/myChildStory"><img src="../resources/image/icon/mychildstory.png" id="mychildstory"></a>
   <br><br>
   <a href="../pboard/listForm"><img src="../resources/image/icon/board.png" id="board"></a>
   <br><br>
-  <!-- <a href="../menu/counselResult"><img src="../resources/image/icon/counselresult.png" id="counselresult"></a>
-  <br><br> -->
+  <a href="../menu/counselResult"><img src="../resources/image/icon/counselresult.png" id="counselresult"></a>
+  <br><br>
   <a href="../orderBook/orderCart"><img src="../resources/image/icon/ordercart.png" id="ordercart"></a>
   <br><br>	
   <a href="../orderBook/confirmOrder"><img src="../resources/image/icon/confirmorder.png" id="confirmorder"></a>
