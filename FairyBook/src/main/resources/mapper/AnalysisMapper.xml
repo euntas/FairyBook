@@ -133,4 +133,7 @@ and q.answer != -1
 	select * from MBTI where selectionNum = #{selectionNum}
 </select>
 
+<select id="getMBTIAnalysis" parameterType="String" resultType="String">
+	select analysis from fbresource where name=#{result}
+</select>
 </mapper>

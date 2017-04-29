@@ -220,10 +220,28 @@ public class AnalysisController {
 	 */
 	@ResponseBody
 	@RequestMapping(value="getMBTI", method=RequestMethod.GET)
-	public MBTI getMBTI(int selectionNum){
+	public Map<String, String> getMBTI(int selectionNum){
 		MBTI mbti = dao.getMBTI(selectionNum);
 		logger.info("MBTI : " + mbti);
-		return mbti;
+		
+		String result = "";
+		result = mbti.getEI() + mbti.getSN() + mbti.getTF() + mbti.getJP();
+		result = result.toUpperCase();
+		
+		logger.info("mbti type:{}",result);
+		
+		String analysis = dao.getMBTIAnalysis(result);
+		logger.info("mbti analysis:{}",analysis);
+		
+		Map<String, String> mbtiData = new HashMap<>();
+		mbtiData.put("mbtiType", result);
+		mbtiData.put("mbtiAnalysis", analysis);
+		mbtiData.put("mbtiEI", mbti.getEI().toUpperCase());
+		mbtiData.put("mbtiSN", mbti.getSN().toUpperCase());
+		mbtiData.put("mbtiTF", mbti.getTF().toUpperCase());
+		mbtiData.put("mbtiJP", mbti.getJP().toUpperCase());
+		
+		return mbtiData;
 	}
 	
 	public int checkArr(int a, int b, int c){

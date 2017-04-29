@@ -22,7 +22,9 @@
 	font-family: 'Hanna', fantasy;
 }
 
-.morris-hover{position:absolute;z-index:1000;}.morris-hover.morris-default-style{border-radius:10px;padding:6px;color:#666;background:rgba(255,255,255,0.8);border:solid 2px rgba(230,230,230,0.8);font-family:sans-serif;font-size:12px;text-align:center;}.morris-hover.morris-default-style .morris-hover-row-label{font-weight:bold;margin:0.25em 0;}
+.morris-hover{position:absolute;z-index:1000;}
+.morris-hover.morris-default-style{border-radius:10px;padding:6px;color:#666;background:rgba(255,255,255,0.8);border:solid 2px rgba(230,230,230,0.8);font-family:sans-serif;font-size:12px;text-align:center;}
+.morris-hover.morris-default-style .morris-hover-row-label{font-weight:bold;margin:0.25em 0;}
 .morris-hover.morris-default-style .morris-hover-point{white-space:nowrap;margin:0.1em 0;}
 
 #face{
@@ -63,6 +65,14 @@ a[class*='colorLbl']{
 	background-color:rgb(255,255,196);
 }
 
+.alert{
+	width:50%;
+	font-size: 20px;
+	text-align:center;
+	margin: auto;
+	letter-spacing: 5px;
+}
+
 img[id*='eye']{
 	z-index: 4;
 }
@@ -76,7 +86,7 @@ img[id*='mouth']{
 }
 
 img[id*='ear']{
-	z-index: 4;
+	z-index: 2;
 }
 
 img[id*='face']{
@@ -132,6 +142,7 @@ $(function(){
 	
 	$('#all').on('click',home); 	//home탭
 	$('#color').on('click',menu1);	//menu1탭
+	$('#mbti').on('click',mbti);	//mbti탭
 	$('#htp1').on('click',menu2);	//menu2탭
 	$('#htp2').on('click',menu3);	//menu3탭
 	$('#htp3').on('click',menu4);	//menu4탭
@@ -140,23 +151,32 @@ $(function(){
 	getETCPattern();
 });
 
+
+//활성화 tab페이지 초기화
+function clear(){
+	window.scrollTo(0,0);
+	$('#home,#menu1,#menu6,#menu2,#menu3,#menu4,#menu5').attr('class','');
+	$('#home,#menu1,#menu6,#menu2,#menu3,#menu4,#menu5').attr('class','tab-pane fade');
+}
+
 function getETCPattern(){
 	$.ajax({
 		url:'getMBTI',
+		async: false,
 		type:'GET',
 		data: {selectionNum: selectionNum}, 
 		dataType:'json',
-		success:function(result){
-			console.log("JP 결과는 " + result.JP);
-		},
+		success:showMBTI,
 		error: function(e){
 			$.ajax({
 				url:'etcPatternAnalysis',
 				type:'GET',
+				async: false,
 				data: {selectionNum: selectionNum}, 
 				dataType:'json',
 				success:function(result){
-					console.log("etc 패턴 들어와서 결과는 " + result);
+					console.log("etc 패턴 들어와서 결과는 " + result.mbtiType);
+					console.log("etc 패턴 들어와서 결과는 " + result.mbtiAnalysis);
 				},
 				error: function(e){
 					alert("etc문제임" + "num:" + selectionNum +" " + JSON.stringify(e));
@@ -252,6 +272,24 @@ function menu1(){
 			donut.select(1); 
 			$('.colorLabel').html(existColor[1]);
 			$('.colorSpecific').html(getAnalysis(data[1].num));
+}
+
+function mbti(){
+	clear();
+	$('#mbti').attr('class','on active');
+	getETCPattern();
+}
+
+function showMBTI(result){
+	console.log("JP 결과는 " + result.JP);
+	console.log("etc 패턴 들어와서 결과는 " + result.mbtiType);
+	console.log("etc 패턴 들어와서 결과는 " + result.mbtiAnalysis);
+	$('#eiType').html(result.mbtiEI);
+	$('#snType').html(result.mbtiSN);
+	$('#tfType').html(result.mbtiTF);
+	$('#jpType').html(result.mbtiJP);
+	$('#mbtiType').html(result.mbtiType);
+	$('#mbtiAnalysis').html(result.mbtiAnalysis);
 }
 
 function menu2(){
@@ -453,12 +491,6 @@ function avatarPoint(i){
 	$('#htpSpecific4').html(analysis[i]);
 }
 
-//활성화 tab페이지 초기화
-function clear(){
-	window.scrollTo(0,0);
-	$('#home,#menu1,#menu2,#menu3,#menu4,#menu5').attr('class','');
-	$('#home,#menu1,#menu2,#menu3,#menu4,#menu5').attr('class','tab-pane fade');
-}
 	
 //퀴즈 가져오기
 function getQuiz(){
@@ -533,10 +565,11 @@ function downloadPDF(){
 	<div class="f-nav">
 	<ul class="nav nav-pills" id="mainNav">
 	    <li class="active"><a data-toggle="pill" href="#home" id="all" class="hanna">심리검사 유형</a></li>
-	    <li><a data-toggle="pill" href="#menu1" id="color" class="hanna">심리-색</a></li>
-	    <li><a data-toggle="pill" href="#menu2" id="htp1" class="hanna">심리-HTP-h</a></li>
-	    <li><a data-toggle="pill" href="#menu3" id="htp2" class="hanna">심리-HTP-t</a></li>
-	    <li><a data-toggle="pill" href="#menu4" id="htp3" class="hanna">심리-HTP-p</a></li>
+	    <li><a data-toggle="pill" href="#menu1" id="color" class="hanna">색채검사</a></li>
+	    <li><a data-toggle="pill" href="#menu6" id="mbti" class="hanna">MBTI</a></li>
+	    <li><a data-toggle="pill" href="#menu2" id="htp1" class="hanna">HTP-집</a></li>
+	    <li><a data-toggle="pill" href="#menu3" id="htp2" class="hanna">HTP-나무</a></li>
+	    <li><a data-toggle="pill" href="#menu4" id="htp3" class="hanna">HTP-사람</a></li>
 	    <li><a data-toggle="pill" href="#menu5" id="quiz" class="hanna">퀴즈</a></li>
 	  </ul>
 	</div>
@@ -575,6 +608,42 @@ function downloadPDF(){
 		      <div class="panel-heading colorLabel hanna"></div>
 		      <div class="panel-body colorSpecific hanna"></div>
 		    </div>
+		  </div>
+		  <br>
+		  	
+		  <hr>
+		  <div class="row" style="width: 500px; padding-left:100px;">
+		  	<div id="allColor"></div>
+		  </div>
+		  <center><button class="btn btn-warning" onclick="location.href='../analysis/counsel'">상담하기</button></center>
+		<hr>
+    </div>
+    
+    <!-- MBTI -->
+    <div style="padding-top:5%;" id="menu6">
+		  <div class="row">
+		    <div class="col-sm-12">
+		    	<h3 class="hanna">MBTI</h3>  
+		    </div>
+		  </div>
+		  <hr>
+		  <div class="row">
+		  	<div class="alert alert-warning">
+			  <strong>나의 에너지 방향은? </strong> <span class="glyphicon glyphicon-hand-right"></span> <span id="eiType"></span>
+			</div>
+		  	<div class="alert alert-warning">
+			  <strong>나의 인식기능은? </strong> <span class="glyphicon glyphicon-hand-right"></span> <span id="snType"></span>
+			</div>
+		  	<div class="alert alert-warning">
+			  <strong>나의 판단기능은? </strong> <span class="glyphicon glyphicon-hand-right"></span> <span id="tfType"></span>
+			</div>
+		  	<div class="alert alert-warning">
+			  <strong>나의 생활양식은? </strong> <span class="glyphicon glyphicon-hand-right"></span> <span id="jpType"></span>
+			</div>
+		  	<div class="alert alert-danger">
+			  <strong>검사결과 나의 성격유형은 </strong> <span class="glyphicon glyphicon-hand-right"></span> <span id="mbtiType"></span>
+			</div>
+		  	<div id="mbtiAnalysis" class="alert"></div>
 		  </div>
 		  <br>
 		  	

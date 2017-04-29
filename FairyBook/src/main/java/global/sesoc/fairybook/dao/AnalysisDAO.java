@@ -111,4 +111,12 @@ public class AnalysisDAO {
 		
 		return mapper.getMBTI(selectionNum);
 	}
+
+	//설명 가져오기
+	public String getMBTIAnalysis(String result) {
+		String analysis = "";
+		AnalysisMapper mapper = sqlSession.getMapper(AnalysisMapper.class);
+		analysis = mapper.getMBTIAnalysis(result);
+		return analysis;
+	}
 }
