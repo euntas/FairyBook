@@ -36,4 +36,6 @@ public interface AnalysisMapper {
 	public int insertForMBTI(HashMap<String, Object> myinfo);
 	
 	public MBTI getMBTI(int selectionNum);
+
+	public String getMBTIAnalysis(String result);
 }
