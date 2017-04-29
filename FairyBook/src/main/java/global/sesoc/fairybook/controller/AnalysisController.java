@@ -116,6 +116,7 @@ public class AnalysisController {
 		
 		MBTI result = new MBTI();
 		ArrayList<SelectionDetail> selectionDetail = storyDao.getSelectionDetail(selectionNum);
+		result.setSelectionNum(selectionNum);
 		
 		// EI, SN, TF 분석 ==================================
 		
