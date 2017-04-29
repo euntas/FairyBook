@@ -41,6 +41,7 @@ import global.sesoc.fairybook.dao.OrderBookDAO;
 import global.sesoc.fairybook.dao.SlideDAO;
 import global.sesoc.fairybook.util.FileService;
 import global.sesoc.fairybook.vo.FBResource;
+import global.sesoc.fairybook.vo.MBTI;
 
 @RequestMapping("pdf")
 @Controller
@@ -126,6 +127,12 @@ public class ConvertToPdfController {
 		}*/
 	}
 	
+	
+	/**
+	 * 심리분석결과를 PDF파일로 저장
+	 * @param selectionNum
+	 * 
+	 */
 	@ResponseBody
 	@RequestMapping(value="analysisToPdf")
 	public void analysisToPdf(int selectionNum, HttpServletResponse response) 
@@ -191,7 +198,7 @@ public class ConvertToPdfController {
 			String colorAnalysis1 = colorAnalysis2.replace("<br>&nbsp", " ");
 			String colorAnalysis = colorAnalysis1.replace("&nbsp", " ");
 			String percentage = String.valueOf(Math.round(eachColor/total*1000)/10.0);
-			logger.info("test : "+percentage);
+			
 			
 			switch (col) {
 			case "bla":
@@ -253,7 +260,7 @@ public class ConvertToPdfController {
 			String avatarName = resource.getName();
 			String analysis = resource.getAnalysis();
 			String part = avatarName.substring(0, 2);
-			logger.info(part);
+			
 			switch (part) {
 			case "mo":
 				d.add(new Paragraph("입", partfont));
@@ -333,6 +340,84 @@ public class ConvertToPdfController {
 		d.add(new Paragraph("\n", whitespacefont));
 		String treeAnalysis = treeResources.getAnalysis();
 		d.add(new Paragraph(treeAnalysis, objfont));
+		d.add(new Paragraph("\n", subtitlefont));
+		//MBTI 검사 결과
+		d.add(new Paragraph("MBTI테스트 검사결과", titlefont));
+		d.add(new Paragraph("\n", subtitlefont));
+		MBTI mbti = aDao.getMBTI(selectionNum);
+		String mbtiResult = mbti.getEI()+mbti.getSN()+mbti.getTF()+mbti.getJP();
+		mbtiResult = mbtiResult.toUpperCase();
+		switch (mbtiResult) {
+		case "ISTJ":
+			d.add(new Paragraph(mbtiResult+" 세상의 소금형", subtitlefont));
+			d.add(new Paragraph("\n", whitespacefont));
+			String mbtiAnalysis = String.valueOf(mbti);
+			d.add(new Paragraph(mbtiAnalysis, objfont));
+			break;
+		case "ISTP":
+			d.add(new Paragraph(mbtiResult+" 백과사전형", subtitlefont));
+			d.add(new Paragraph("\n", whitespacefont));
+			break;
+		case "ESTP":
+			d.add(new Paragraph(mbtiResult+" 수완좋은 활동가형", subtitlefont));
+			d.add(new Paragraph("\n", whitespacefont));
+			break;
+		case "ESTJ":
+			d.add(new Paragraph(mbtiResult+" 사업가형", subtitlefont));
+			d.add(new Paragraph("\n", whitespacefont));
+			break;
+		case "ISFJ":
+			d.add(new Paragraph(mbtiResult+" 임금 뒤편의 권력형", subtitlefont));
+			d.add(new Paragraph("\n", whitespacefont));
+			break;
+		case "ISFP":
+			d.add(new Paragraph(mbtiResult+" 성인군자형", subtitlefont));
+			d.add(new Paragraph("\n", whitespacefont));
+			break;
+		case "ESFP":
+			d.add(new Paragraph(mbtiResult+" 사교적인 유형", subtitlefont));
+			d.add(new Paragraph("\n", whitespacefont));
+			break;
+		case "ESFJ":
+			d.add(new Paragraph(mbtiResult+" 친선도모형", subtitlefont));
+			d.add(new Paragraph("\n", whitespacefont));
+			break;
+		case "INFJ":
+			d.add(new Paragraph(mbtiResult+" 예언자형", subtitlefont));
+			d.add(new Paragraph("\n", whitespacefont));
+			break;
+		case "INFP":
+			d.add(new Paragraph(mbtiResult+" 잔다르크형", subtitlefont));
+			d.add(new Paragraph("\n", whitespacefont));
+			break;
+		case "ENFP":
+			d.add(new Paragraph(mbtiResult+" 스파크형", subtitlefont));
+			d.add(new Paragraph("\n", whitespacefont));
+			break;
+		case "ENFJ":
+			d.add(new Paragraph(mbtiResult+" 언변능숙형", subtitlefont));
+			d.add(new Paragraph("\n", whitespacefont));
+			break;
+		case "INTJ":
+			d.add(new Paragraph(mbtiResult+" 과학자형", subtitlefont));
+			d.add(new Paragraph("\n", whitespacefont));
+			break;
+		case "INTP":
+			d.add(new Paragraph(mbtiResult+" 아이디어 뱅크형", subtitlefont));
+			d.add(new Paragraph("\n", whitespacefont));
+			break;
+		case "ENTP":
+			d.add(new Paragraph(mbtiResult+" 발명가형", subtitlefont));
+			d.add(new Paragraph("\n", whitespacefont));
+			break;
+		case "ENTJ":
+			d.add(new Paragraph(mbtiResult+" 지도자형", subtitlefont));
+			d.add(new Paragraph("\n", whitespacefont));
+			break;
+		default:
+			break;
+		}
+		
 		
 		
 		d.close();
