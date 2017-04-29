@@ -292,6 +292,24 @@ function showMBTI(result){
 	$('#mbtiAnalysis').html(result.mbtiAnalysis);
 }
 
+function mbtiIndicator(type){
+	alert('indicator');
+	$.ajax({
+		url:'mbtiIndicator',
+		data:{indicator:type},
+		type:'GET',
+		dataType:'json',
+		success:function(result){
+			
+		},
+		error: function(e){
+			alert(JSON.stringify(e));
+		}
+	});
+	
+}
+
+
 function menu2(){
 	clear();
 	$('#menu2').attr('class','on active');
@@ -306,6 +324,7 @@ function menu2(){
 		}
 	});
 }
+
 
 var analysis = new Array();
 var houseName = new Array();
@@ -628,16 +647,16 @@ function downloadPDF(){
 		  </div>
 		  <hr>
 		  <div class="row">
-		  	<div class="alert alert-warning">
-			  <strong>나의 에너지 방향은? </strong> <span class="glyphicon glyphicon-hand-right"></span> <span id="eiType"></span>
+		  	<div class="alert alert-warning" onclick="mbtiIndicator('EI')">
+			  <strong>나의 에너지 방향은? </strong> <span class="glyphicon glyphicon-hand-right"></span> <span onclick="mbtiIndicator('EI')" id="eiType"></span>
 			</div>
-		  	<div class="alert alert-warning">
+		  	<div class="alert alert-warning" onclick="mbtiIndicator('SN')">
 			  <strong>나의 인식기능은? </strong> <span class="glyphicon glyphicon-hand-right"></span> <span id="snType"></span>
 			</div>
-		  	<div class="alert alert-warning">
+		  	<div class="alert alert-warning" onclick="mbtiIndicator('TF')">
 			  <strong>나의 판단기능은? </strong> <span class="glyphicon glyphicon-hand-right"></span> <span id="tfType"></span>
 			</div>
-		  	<div class="alert alert-warning">
+		  	<div class="alert alert-warning" onclick="mbtiIndicator('JP')">
 			  <strong>나의 생활양식은? </strong> <span class="glyphicon glyphicon-hand-right"></span> <span id="jpType"></span>
 			</div>
 		  	<div class="alert alert-danger">

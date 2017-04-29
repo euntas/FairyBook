@@ -38,4 +38,5 @@ public interface AnalysisMapper {
 	public MBTI getMBTI(int selectionNum);
 
 	public String getMBTIAnalysis(String result);
+
 }
