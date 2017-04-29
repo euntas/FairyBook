@@ -2,6 +2,9 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
@@ -35,10 +38,11 @@ table {
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box; }
+          
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 16px;
+  font-family: 'Hanna', fantasy;
+  font-size: 32px;
   font-weight: 200;
   color: #333;
   background: #f3f6f9;
@@ -79,7 +83,8 @@ hr {
   padding: 20px; }
 
 pre, code {
-  font-family: "Deja-vu Sans Mono", Monaco, Menlo, Consolas, "Courier New", monospace;
+ // font-family: "Deja-vu Sans Mono", Monaco, Menlo, Consolas, "Courier New", monospace;
+ font-family: 'Hanna', fantasy;
   font-size: 13px;
   line-height: 17px;
   background: #ddd;
@@ -119,11 +124,11 @@ html, .full {
 	background-color: #E8FFFF;
 	text-decoration: none;
 	/* opacity: 0.5; */
-	background-color: rgba( 255, 255, 255, 0.5 );
+	background-color: rgba( 255, 255, 255, 0.8 );
 	position: fixed;
-	top: 50%;
+	top: 43%;
 	right: 15%;
-	width: 200px;
+	width: 450px;
 	z-index: 99;
 	vertical-align: middle;
       text-align: center;
@@ -142,9 +147,9 @@ html, .full {
 	text-decoration: none;
 	opacity: 0.8; */
 	position: fixed;
-	top: 15%;
+	top: 43%;
 	right: 0%;
-	width: 200px;
+	width: 450px;
 	z-index: 99;
 	vertical-align: middle;
       text-align: center;
