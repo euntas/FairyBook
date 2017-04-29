@@ -31,11 +31,19 @@ public class SlideDAO {
 		return myStoryList;
 	}
 	
-	
+	// 해당 셀렉션넘의 씬들을 모두 가져온다
 	public ArrayList<Integer> getSlide(int selectionNum){
 		ArrayList<Integer> slideList = null;
 		SlideMapper mapper = sqlSession.getMapper(SlideMapper.class);
 		slideList = mapper.getSlide(selectionNum);
 		return slideList;
+	}
+	
+	// 해당 셀렉션넘의 마지막 씬을 가져온다
+	public int getLastScene(int selectionNum){
+		int lastScene = 0;
+		SlideMapper mapper = sqlSession.getMapper(SlideMapper.class);
+		lastScene = mapper.getLastScene(selectionNum);
+		return lastScene;
 	}
 }
