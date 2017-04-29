@@ -33,7 +33,7 @@ public interface AnalysisMapper {
 	
 	public ETC getETC(int selectionNum);
 	
-	public int insertJPForMBTI(HashMap<String, Object> myinfo);
+	public int insertForMBTI(HashMap<String, Object> myinfo);
 	
 	public MBTI getMBTI(int selectionNum);
 }
