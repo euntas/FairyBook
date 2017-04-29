@@ -24,7 +24,7 @@
 
 <!--####################여기부터  -->
 
-<img alt="동화 종료 그림 나와야" src="./../resources/img/theEnd.jpg" style="width: 100%">
+<img alt="동화 종료 그림 나와야" src="./../resources/img/theEnd.jpg" style="width: 100%; height: 80%;">
 
 <a href="../" ><img alt="메인으로..." src="./../resources/img/util/backhome.png" style="top: 70%; right: 50%;"></a>
 
