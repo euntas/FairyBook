@@ -245,6 +245,15 @@ public class AnalysisController {
 	}
 	
 	@ResponseBody
+	@RequestMapping(value="getMBTIAnalysis", method=RequestMethod.GET
+			,produces="application/json;charset=UTF-8")
+	public String getMBTIAnalysis(String result){
+		String analysis = dao.getMBTIAnalysis(result);
+		logger.info("dd:{}",analysis);
+		return analysis;
+	}
+	
+	@ResponseBody
 	@RequestMapping(value="mbtiIndicator")
 	public ArrayList<String> mbtiIndicator(String indicator){
 		ArrayList<String> result = new ArrayList<>();
@@ -253,7 +262,6 @@ public class AnalysisController {
 		for (char c : i) {
 			String analysis = dao.getMBTIAnalysis(Character.toString(c));
 			result.add(analysis);
-			logger.info("indicator:{}",analysis);
 		}
 		
 		

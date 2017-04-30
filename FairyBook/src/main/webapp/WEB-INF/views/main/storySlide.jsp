@@ -115,6 +115,7 @@ function storyEnd(){
 <form id="form" method="post" action="slideEnd">
 	<input type="hidden" name="storyNum" value="${storyNum}">
 	<input type="hidden" name="selectionNum" value="${selectionNum}">
+	<input type="hidden" name="id" value="${id}">
 </form>
 
 

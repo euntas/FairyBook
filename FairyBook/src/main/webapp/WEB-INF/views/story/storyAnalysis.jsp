@@ -177,6 +177,7 @@ function getETCPattern(){
 				success:function(result){
 					console.log("etc 패턴 들어와서 결과는 " + result.mbtiType);
 					console.log("etc 패턴 들어와서 결과는 " + result.mbtiAnalysis);
+					showMBTI(result);
 				},
 				error: function(e){
 					alert("etc문제임" + "num:" + selectionNum +" " + JSON.stringify(e));
@@ -278,6 +279,7 @@ function mbti(){
 	clear();
 	$('#mbti').attr('class','on active');
 	getETCPattern();
+	mbtigraph();
 }
 
 function showMBTI(result){
@@ -290,17 +292,28 @@ function showMBTI(result){
 	$('#jpType').html(result.mbtiJP);
 	$('#mbtiType').html(result.mbtiType);
 	$('#mbtiAnalysis').html(result.mbtiAnalysis);
+	
 }
 
 function mbtiIndicator(type){
-	alert('indicator');
 	$.ajax({
 		url:'mbtiIndicator',
 		data:{indicator:type},
 		type:'GET',
 		dataType:'json',
 		success:function(result){
+			var input = '<table style="width:90%;background-color:rgba(204, 204, 255,0.5);" class="text-center">';
+			input += '<tr>';
+			$.each(result,function(i,r){
+				input += '<td style="">';
+				input += r;
+				input += '</td>';
+			});
+			input += '</tr>';
+			input += '</table>';
+			input += '<br>';
 			
+			$('#indicatorExplain').html(input);
 		},
 		error: function(e){
 			alert(JSON.stringify(e));
@@ -329,9 +342,11 @@ function menu2(){
 var analysis = new Array();
 var houseName = new Array();
 
-function getmbti(){
-	var path = "../resources/img/mbtigraph.png";
-	var input = '<img src="' + path + '"id="'+ 'mbti' +'" style="position: absolute;" usemap="#mbtiMap"/>';
+function mbtigraph(){
+/* 	var path = "../resources/img/mbtigraph.png";
+ */	
+ 	var input = ''; 
+	input += '<img src="' + "../resources/img/mbtigraph.png" + '"id="'+ 'mbti' +'"usemap="#mbtiMap"/>';
 
 	input += '<map name="mbtiMap">';
 	
@@ -351,17 +366,33 @@ function getmbti(){
 	input+='<area alt="mbti" shape="rect" coords="290,153,387,230" onclick="mbtilist(\'ENTP\')">';
 
 	input+='<area alt="mbti" shape="rect" coords="0,230,96,306" onclick="mbtilist(\'ESTJ\')">';
-	input+='<area alt="mbti" shape="rect" coords="96,153,193,306" onclick="mbtilist(\'ESFJ\')">';
-	input+='<area alt="mbti" shape="rect" coords="193,153,290,306" onclick="mbtilist(\'ENFJ\')">';
-	input+='<area alt="mbti" shape="rect" coords="290,153,387,306" onclick="mbtilist(\'ENTJ\')">';
-
-	$('mbtiAnalysis').html(input);
+	input+='<area alt="mbti" shape="rect" coords="96,230,193,306" onclick="mbtilist(\'ESFJ\')">';
+	input+='<area alt="mbti" shape="rect" coords="193,230,290,306" onclick="mbtilist(\'ENFJ\')">';
+	input+='<area alt="mbti" shape="rect" coords="290,230,387,306" onclick="mbtilist(\'ENTJ\')">';
+	
+	
+	
+	$('#mbtiPicture').html(input);
 	
 	
 }
 
-function mbtilist(){
-	
+function mbtilist(result){
+	$.ajax({
+		url: 'getMBTIAnalysis',
+		type: 'GET',
+		data: {result: result}, 
+		dataType: 'text',
+		success: showMBTIAnalysis,
+		error: function(e){
+			alert(JSON.stringify(e));
+		}
+	});
+}
+
+function showMBTIAnalysis(analysis){
+	$('#mbtiResult').css('background-color', 'rgba(204, 204, 255,0.5)');
+	$('#mbtiResult').html(analysis);
 }
 
 function showHouse(house){
@@ -404,7 +435,7 @@ function showHouse(house){
 		}
 		else if(h.name.indexOf('window01')!=-1){
 			houseName[i] = '창문';
-			input+='<area alt="window" shape="rect" coords="88,282,124,210" onclick="housePoint(\''+i+'\')">';
+			input+='<area alt="window" shape="rect" coords="88,183,125,208" onclick="housePoint(\''+i+'\')">';
 		}
 		else if(h.name.indexOf('window02')!=-1){
 			houseName[i] = '창문';
@@ -646,7 +677,7 @@ function downloadPDF(){
     </div>
     
     <!-- COLOR -->
-    <div style="padding-top:5%;" id="menu1">
+    <div style="padding-top:10%;" id="menu1">
 		  <div class="row">
 		    <div class="col-sm-12">
 		    	<h3 class="hanna">색채 심리 검사</h3>  
@@ -654,6 +685,9 @@ function downloadPDF(){
 		  </div>
 		  <hr>
 		  <div class="row">
+		    <div class="alert-info" style="width:250px;margin-left: 10%;text-align: center;">
+			  설명을 원하는 색을 클릭해주세요!
+			</div>
 		    <div class="col-md-4" style="width: 500px;">
 		        <div id="colorGraph" style="height: 250px;"></div><br>
 			  	<center><button class="btn btn-info" onclick="allColor();">다른 색 정보보기</button></center>
@@ -674,7 +708,7 @@ function downloadPDF(){
     </div>
     
     <!-- MBTI -->
-    <div style="padding-top:5%;" id="menu6">
+    <div style="padding-top:10%;" id="menu6">
 		  <div class="row">
 		    <div class="col-sm-12">
 		    	<h3 class="hanna">MBTI</h3>  
@@ -682,6 +716,9 @@ function downloadPDF(){
 		  </div>
 		  <hr>
 		  <div class="row">
+		  	<div class="alert alert-info">
+			  설명을 원하는 항목을 클릭해주세요!
+			</div>
 		  	<div class="alert alert-warning" onclick="mbtiIndicator('EI')">
 			  <strong>나의 에너지 방향은? </strong> <span class="glyphicon glyphicon-hand-right"></span> <span onclick="mbtiIndicator('EI')" id="eiType"></span>
 			</div>
@@ -694,21 +731,16 @@ function downloadPDF(){
 		  	<div class="alert alert-warning" onclick="mbtiIndicator('JP')">
 			  <strong>나의 생활양식은? </strong> <span class="glyphicon glyphicon-hand-right"></span> <span id="jpType"></span>
 			</div>
+			<div id="indicatorExplain" style="margin-left:7%;text-align: center;"></div>
 		  	<div class="alert alert-danger">
 			  <strong>검사결과 나의 성격유형은 </strong> <span class="glyphicon glyphicon-hand-right"></span> <span id="mbtiType"></span>
 			</div>
-		  	<div id="mbtiAnalysis" class="alert"></div>
+		  	<!-- <div id="mbtiAnalysis" style="background-color:rgba(204, 204, 255,0.5);" class="alert"></div> -->
 		  </div>
-		  <br>
-		  	
-		  <hr>
-		  <div class="row" style="width: 500px; padding-left:100px;">
-		  	<div id="allColor"></div>
-		  </div>
-		  <center><button class="btn btn-warning" onclick="location.href='../analysis/counsel'">상담하기</button></center>
-		<hr>
-    </div>
-    
+		  <div id="mbtiPicture" class="alert"></div>
+		  <div id="mbtiResult" class="alert"></div>
+ </div>
+								  
     <!-- HOUSE -->
     <div style="padding-top:10%;" id="menu2">
 		<div class="row">
@@ -718,6 +750,9 @@ function downloadPDF(){
 		  </div>
 		  <hr>
 		  <div class="row">
+		  <div class="alert-info" style="width:350px;margin-left: 10%;text-align: center;">
+			 설명을 원하는 부분을 클릭해주세요! (지붕,굴뚝,문,창문)
+			</div>
 		  	<div class="col-md-4" style="width: 500px;padding-left:10%;" id="showHouse"></div>
 		  	<div class="panel panel-warning" style="height:250px;width: 400px;float:left;margin-top:5%;">
 		      <div class="panel-heading hanna" id="htpLabelH"></div>
@@ -740,6 +775,9 @@ function downloadPDF(){
 		  </div>
 		  <hr>
 		  <div class="row">
+		  <div class="alert-info" style="width:350px;margin-left: 10%;text-align: center;">
+			 설명을 원하는 부분을 클릭해주세요! (지붕,굴뚝,문,창)
+			</div>
 		  	<div class="col-md-4" style="width: 500px;padding-left:10%;" id="showTree"></div>
 		  	<div class="panel panel-warning" style="height:250px;width: 400px;float:left;margin-top:5%;">
 		      <div class="panel-heading hanna" id="htpLabel">Tree</div>
@@ -762,6 +800,9 @@ function downloadPDF(){
 		  </div>
 		  <hr>
 		  <div class="row">
+		   <div class="alert-info" style="width:350px;margin-left: 10%;text-align: center;">
+			 설명을 원하는 부분을 클릭해주세요! (눈,코,입,귀,머리카락,얼굴)
+			</div>
 		  	<div class="col-md-4" style="width: 500px;">
 		  		<div id="showAvatar2" class="showAvatar" style="position: relative;padding-left:15%;"></div>
 		 	</div>
