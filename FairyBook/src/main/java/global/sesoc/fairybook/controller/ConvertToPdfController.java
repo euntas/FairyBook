@@ -353,72 +353,88 @@ public class ConvertToPdfController {
 		MBTI mbti = aDao.getMBTI(selectionNum);
 		String mbtiResult = mbti.getEI()+mbti.getSN()+mbti.getTF()+mbti.getJP();
 		mbtiResult = mbtiResult.toUpperCase();
+		String mbtiAnalysisResult = aDao.getMBTIAnalysis(mbtiResult);
+		logger.info("ABCDE"+mbtiAnalysisResult);
 		switch (mbtiResult) {
 		case "ISTJ":
 			d.add(new Paragraph(mbtiResult+" 세상의 소금형", subtitlefont));
 			d.add(new Paragraph("\n", whitespacefont));
-			String mbtiAnalysis = String.valueOf(mbti);
-			d.add(new Paragraph(mbtiAnalysis, objfont));
+			d.add(new Paragraph(mbtiAnalysisResult, objfont));
 			break;
 		case "ISTP":
 			d.add(new Paragraph(mbtiResult+" 백과사전형", subtitlefont));
 			d.add(new Paragraph("\n", whitespacefont));
+			d.add(new Paragraph(mbtiAnalysisResult, objfont));
 			break;
 		case "ESTP":
 			d.add(new Paragraph(mbtiResult+" 수완좋은 활동가형", subtitlefont));
 			d.add(new Paragraph("\n", whitespacefont));
+			d.add(new Paragraph(mbtiAnalysisResult, objfont));
 			break;
 		case "ESTJ":
 			d.add(new Paragraph(mbtiResult+" 사업가형", subtitlefont));
 			d.add(new Paragraph("\n", whitespacefont));
+			d.add(new Paragraph(mbtiAnalysisResult, objfont));
 			break;
 		case "ISFJ":
 			d.add(new Paragraph(mbtiResult+" 임금 뒤편의 권력형", subtitlefont));
 			d.add(new Paragraph("\n", whitespacefont));
+			d.add(new Paragraph(mbtiAnalysisResult, objfont));
 			break;
 		case "ISFP":
 			d.add(new Paragraph(mbtiResult+" 성인군자형", subtitlefont));
 			d.add(new Paragraph("\n", whitespacefont));
+			d.add(new Paragraph(mbtiAnalysisResult, objfont));
 			break;
 		case "ESFP":
 			d.add(new Paragraph(mbtiResult+" 사교적인 유형", subtitlefont));
 			d.add(new Paragraph("\n", whitespacefont));
+			d.add(new Paragraph(mbtiAnalysisResult, objfont));
 			break;
 		case "ESFJ":
 			d.add(new Paragraph(mbtiResult+" 친선도모형", subtitlefont));
 			d.add(new Paragraph("\n", whitespacefont));
+			d.add(new Paragraph(mbtiAnalysisResult, objfont));
 			break;
 		case "INFJ":
 			d.add(new Paragraph(mbtiResult+" 예언자형", subtitlefont));
 			d.add(new Paragraph("\n", whitespacefont));
+			d.add(new Paragraph(mbtiAnalysisResult, objfont));
 			break;
 		case "INFP":
 			d.add(new Paragraph(mbtiResult+" 잔다르크형", subtitlefont));
 			d.add(new Paragraph("\n", whitespacefont));
+			d.add(new Paragraph(mbtiAnalysisResult, objfont));
 			break;
 		case "ENFP":
 			d.add(new Paragraph(mbtiResult+" 스파크형", subtitlefont));
 			d.add(new Paragraph("\n", whitespacefont));
+			d.add(new Paragraph(mbtiAnalysisResult, objfont));
 			break;
 		case "ENFJ":
 			d.add(new Paragraph(mbtiResult+" 언변능숙형", subtitlefont));
 			d.add(new Paragraph("\n", whitespacefont));
+			d.add(new Paragraph(mbtiAnalysisResult, objfont));
 			break;
 		case "INTJ":
 			d.add(new Paragraph(mbtiResult+" 과학자형", subtitlefont));
 			d.add(new Paragraph("\n", whitespacefont));
+			d.add(new Paragraph(mbtiAnalysisResult, objfont));
 			break;
 		case "INTP":
 			d.add(new Paragraph(mbtiResult+" 아이디어 뱅크형", subtitlefont));
 			d.add(new Paragraph("\n", whitespacefont));
+			d.add(new Paragraph(mbtiAnalysisResult, objfont));
 			break;
 		case "ENTP":
 			d.add(new Paragraph(mbtiResult+" 발명가형", subtitlefont));
 			d.add(new Paragraph("\n", whitespacefont));
+			d.add(new Paragraph(mbtiAnalysisResult, objfont));
 			break;
 		case "ENTJ":
 			d.add(new Paragraph(mbtiResult+" 지도자형", subtitlefont));
 			d.add(new Paragraph("\n", whitespacefont));
+			d.add(new Paragraph(mbtiAnalysisResult, objfont));
 			break;
 		default:
 			break;

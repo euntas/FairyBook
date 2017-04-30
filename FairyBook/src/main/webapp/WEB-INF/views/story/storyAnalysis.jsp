@@ -626,7 +626,7 @@ function downloadPDF(){
 		url:'../pdf/analysisToPdf',
 		data:{selectionNum:selectionNum},
 		success:function(){
-			location.href='../pdf/download?selectionnum='+selectionNum;
+			location.href='../pdf/download?selectionNum='+selectionNum;
 		},
 		fail:function(){
 			alert('download fail');
