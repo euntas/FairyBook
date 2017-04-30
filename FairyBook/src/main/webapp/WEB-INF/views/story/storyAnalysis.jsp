@@ -310,6 +310,39 @@ function menu2(){
 var analysis = new Array();
 var houseName = new Array();
 
+function getmbti(){
+	var path = "../resources/img/mbtigraph.png";
+	var input = '<img src="' + path + '"id="'+ 'mbti' +'" style="position: absolute;" usemap="#mbtiMap"/>';
+
+	input += '<map name="mbtiMap">';
+	
+	input+='<area alt="mbti" shape="rect" coords="0,0,96,76" onclick="mbtilist(\'ISTJ\')">';
+	input+='<area alt="mbti" shape="rect" coords="96,0,193,76" onclick="mbtilist(\'ISFJ\')">';
+	input+='<area alt="mbti" shape="rect" coords="193,0,290,76" onclick="mbtilist(\'INFJ\')">';
+	input+='<area alt="mbti" shape="rect" coords="290,0,387,76" onclick="mbtilist(\'INTJ\')">';
+	
+	input+='<area alt="mbti" shape="rect" coords="0,76,96,153" onclick="mbtilist(\'ISTP\')">';
+	input+='<area alt="mbti" shape="rect" coords="96,76,193,153" onclick="mbtilist(\'ISFP\')">';
+	input+='<area alt="mbti" shape="rect" coords="193,76,290,153" onclick="mbtilist(\'INFP\')">';
+	input+='<area alt="mbti" shape="rect" coords="290,76,387,153" onclick="mbtilist(\'INTP\')">';
+	
+	input+='<area alt="mbti" shape="rect" coords="0,153,96,230" onclick="mbtilist(\'ESTP\')">';
+	input+='<area alt="mbti" shape="rect" coords="96,153,193,230" onclick="mbtilist(\'ESFP\')">';
+	input+='<area alt="mbti" shape="rect" coords="193,153,290,230" onclick="mbtilist(\'ENFP\')">';
+	input+='<area alt="mbti" shape="rect" coords="290,153,387,230" onclick="mbtilist(\'ENTP\')">';
+
+	input+='<area alt="mbti" shape="rect" coords="0,230,96,306" onclick="mbtilist(\'ESTJ\')">';
+	input+='<area alt="mbti" shape="rect" coords="96,153,193,306" onclick="mbtilist(\'ESFJ\')">';
+	input+='<area alt="mbti" shape="rect" coords="193,153,290,306" onclick="mbtilist(\'ENFJ\')">';
+	input+='<area alt="mbti" shape="rect" coords="290,153,387,306" onclick="mbtilist(\'ENTJ\')">';
+
+	$('mbtiAnalysis').html(input);
+}
+
+function mbtilist(){
+	
+}
+
 function showHouse(house){
 	var input = '';
 	
