@@ -707,6 +707,7 @@ function downloadPDF(){
 		<hr>
     </div>
     
+    
     <!-- MBTI -->
     <div style="padding-top:10%;" id="menu6">
 		  <div class="row">
