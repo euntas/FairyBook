@@ -72,6 +72,7 @@ td{
 				<button type="submit" class="w3-button w3-red" style="margin-bottom:3px; width: 100%">감상하기</button>
 				<input type="hidden" name="selectionNum" id="selectionNum" value="${story.selectionNum}">
 				<input type="hidden" name="storyNum" id="storyNum" value="${story.storyNum}">
+				<input type="hidden" name="id" id="id" value="${story.id}">
 			</form>
 		</div>
 	</td>

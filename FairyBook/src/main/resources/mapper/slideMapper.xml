@@ -18,6 +18,23 @@
 		enddate desc
 </select>
 
+<select id="getYourStoryList" resultType="MySelection" parameterType="string">
+	select 
+		selectionnum, id, storynum, startdate, enddate, finished
+	from
+		(select
+			selectionnum, id, storynum, startdate, enddate, finished
+		from
+			myselection
+		where 
+			id != #{id}
+		and
+			finished = 'Y'
+		order by
+			enddate desc)
+	where rownum &lt; 10
+</select>
+
 <select id="getSlide" resultType="int" parameterType="int">
 	select
 		scenenum

@@ -87,6 +87,25 @@ public class HomeController {
 		model.addAttribute("myStoryList", myStoryList);
 		return "main/storyPlay";
 	}
+	
+	/**
+	 * 다른 아이들의 동화를 가져온다
+	 * @param model 가져온 동화들을 담을 model
+	 * @param session 아이디를 가져올 session
+	 * @return slide/storyPlay.jsp 페이지로 이동
+	 */
+	@RequestMapping(value = "menu/otherChildren", method = RequestMethod.GET)
+	public String otherChildren(Model model, HttpSession session) {
+		StoryMaker user = (StoryMaker) session.getAttribute("loginUser");
+		if(user==null){
+			return "redirect:../id/login";
+		}
+		String id = user.getId();
+		ArrayList<MySelection> yourStoryList = null;
+		yourStoryList = dao.getYourStoryList(id);
+		model.addAttribute("yourStoryList", yourStoryList);
+		return "main/otherChildren";
+	}
 
 	/**
 	 * 동화 감상 슬라이드쇼 시작

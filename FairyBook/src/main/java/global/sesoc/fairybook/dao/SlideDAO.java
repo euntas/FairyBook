@@ -31,6 +31,14 @@ public class SlideDAO {
 		return myStoryList;
 	}
 	
+	//다른 아이의 동화를 누르면 다른 아이가 끝까지 진행한 동화들의 목록을 가져온다
+		public ArrayList<MySelection> getYourStoryList(String id){
+			ArrayList<MySelection> yourStoryList = null;
+			SlideMapper mapper = sqlSession.getMapper(SlideMapper.class);
+			yourStoryList = mapper.getYourStoryList(id);
+			return yourStoryList;
+		}
+	
 	// 해당 셀렉션넘의 씬들을 모두 가져온다
 	public ArrayList<Integer> getSlide(int selectionNum){
 		ArrayList<Integer> slideList = null;
