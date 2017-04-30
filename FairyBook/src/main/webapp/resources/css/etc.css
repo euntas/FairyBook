@@ -42,15 +42,26 @@ img{
 /* 저장버튼이 있는 영역 */
 #saveArea{
 	margin: 0px;
-	width : 100px;
+	width : 200px;
 	height: 100px;
 	float: right;
 }
 /* 저장 버튼 */
 #savebtn{
-	width : 99%;
+	width : 49%;
 	height: 99%;
 	background-image:url('../img/util/savebtn.gif');
+	background-color: rgba(0,0,0,0);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+/* 도움 버튼 */
+#helpbtn{
+	width : 49%;
+	height: 99%;
+	display: block;
+	background-image:url('../img/util/helpbtn.png');
 	background-color: rgba(0,0,0,0);
 	background-repeat: no-repeat;
 	background-size: 100% 100%;

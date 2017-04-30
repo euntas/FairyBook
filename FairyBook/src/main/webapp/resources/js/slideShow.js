@@ -210,6 +210,7 @@ function slideShow() {
     
     ++(globals.slideIndex);
     
+    // 동화가 끝났을 때
     if (globals.slideIndex >= globals.slideImages.length) {
       clearInterval(globals.slideShowID);
       storyEnd();

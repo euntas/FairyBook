@@ -65,11 +65,10 @@ td{
 				<c:when test="${story.storyNum==3}">빨간모자</c:when>
 				<c:when test="${story.storyNum==4}">동물의 왕국</c:when>
 			</c:choose>
-			
 			</h3>
 			<h6 class="w3-opacity">${story.endDate}</h6>
-			<form action="../slide/storySlide" method="post" style="display: inline; width: 100%;">
-				<button type="submit" class="w3-button w3-red">감상하기</button>
+			<form action="../slide/storySlide" method="post" style="display: inline;">
+				<button type="submit" class="w3-button w3-red" style="margin-bottom:3px; width: 100%">감상하기</button>
 				<input type="hidden" name="selectionNum" id="selectionNum" value="${story.selectionNum}">
 				<input type="hidden" name="storyNum" id="storyNum" value="${story.storyNum}">
 			</form>

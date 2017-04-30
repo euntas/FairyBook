@@ -150,5 +150,12 @@ public class AvatarController {
 		return result;
 	}
 	
+	/**
+	 * help 버튼을 눌렀을 때 
+	 */
+	@RequestMapping(value = "help", method = RequestMethod.GET)
+	public String help() {
+		return "objectMaker/help";
+	}
 	
 }

@@ -44,9 +44,9 @@
 			inputdate = 
 				(select max(inputdate)
 				from selectiondetail
-				where selectionNum = #{selectionNum}
-				and myanswer is null)) a
+				where selectionNum = #{selectionNum})) a
 	where s.scenenum = a.scenenum
+	and storytext1 is not null
 </select>
 
 </mapper>
