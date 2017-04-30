@@ -624,7 +624,7 @@ function writeQuizDiv(){
 		        		        data: {currentSceneNum: nextSceneNum},
 		        		        dataType: 'json',
 		        		        success: function(nextPageNum){
-		        		        	alert('다음 페이지번호:' + nextPageNum + ' 씬 번호: ' + nextSceneNum);
+		        		      /*  	alert('다음 페이지번호:' + nextPageNum + ' 씬 번호: ' + nextSceneNum);*/
 		        		        	// 다음페이지로 이동한다.
 		        		        	pageflip.flip(nextPageNum);     
 		        		        	
