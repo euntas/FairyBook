@@ -279,6 +279,7 @@ function mbti(){
 	clear();
 	$('#mbti').attr('class','on active');
 	getETCPattern();
+	mbtigraph();
 }
 
 function showMBTI(result){
@@ -291,7 +292,7 @@ function showMBTI(result){
 	$('#jpType').html(result.mbtiJP);
 	$('#mbtiType').html(result.mbtiType);
 	$('#mbtiAnalysis').html(result.mbtiAnalysis);
-	mbtigraph();
+	
 }
 
 function mbtiIndicator(type){
@@ -390,6 +391,7 @@ function mbtilist(result){
 }
 
 function showMBTIAnalysis(analysis){
+	$('#mbtiResult').css('background-color', 'rgba(204, 204, 255,0.5)');
 	$('#mbtiResult').html(analysis);
 }
 
@@ -712,7 +714,7 @@ function downloadPDF(){
 		  <hr>
 		  <div class="row">
 		  	<div class="alert alert-info">
-			  <strong>설명을 원하는 항목을 클릭해주세요!</strong>
+			  설명을 원하는 항목을 클릭해주세요!
 			</div>
 		  	<div class="alert alert-warning" onclick="mbtiIndicator('EI')">
 			  <strong>나의 에너지 방향은? </strong> <span class="glyphicon glyphicon-hand-right"></span> <span onclick="mbtiIndicator('EI')" id="eiType"></span>
@@ -733,20 +735,9 @@ function downloadPDF(){
 		  	<!-- <div id="mbtiAnalysis" style="background-color:rgba(204, 204, 255,0.5);" class="alert"></div> -->
 		  </div>
 		  <div id="mbtiPicture" class="alert"></div>
-		  </div>
 		  <div id="mbtiResult" class="alert"></div>
-		  </div>
+ </div>
 								  
-		  <br>
-		  	
-		  <hr>
-		  <div class="row" style="width: 500px; padding-left:100px;">
-		  	<div id="allColor"></div>
-		  </div>
-		  <center><button class="btn btn-warning" onclick="location.href='../analysis/counsel'">상담하기</button></center>
-		<hr>
-    </div>
-    
     <!-- HOUSE -->
     <div style="padding-top:10%;" id="menu2">
 		<div class="row">
