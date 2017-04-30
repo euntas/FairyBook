@@ -29,13 +29,14 @@
 	
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<!-- <mvc:mapping path="/board/**" /> -->
-			<mvc:mapping path="/pboard/listForm" />
-			<mvc:mapping path="/pboard/list" />
-			<mvc:mapping path="/pboard/delete" />
-			<mvc:mapping path="/pboard/update" />
-			<mvc:mapping path="/pboard/board" />
-			<mvc:mapping path="/pboard/read" />
+			<mvc:mapping path="/analysis/*" />
+			<mvc:mapping path="/story/*" />
+			<mvc:mapping path="/objectMaker/*" />
+			<mvc:mapping path="/slide/*" />
+			<mvc:mapping path="/pboard/*" />
+			<mvc:mapping path="/pdf/*" />
+			<mvc:mapping path="/orderBook/*" />
+			<mvc:mapping path="/quiz/*" />
 			<beans:ref bean="loginInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>

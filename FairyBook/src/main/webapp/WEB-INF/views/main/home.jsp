@@ -58,6 +58,8 @@
 <script>
 
 $(function(){
+	homeImage();
+	
    //profile사진 경로 설정
    $('#profile').attr('src','./resources/image/yo.jpg');
 
@@ -229,6 +231,19 @@ function myFunc(id) {
     }
 }
 
+function homeImage(){
+	var path = "./resources/img/homeNotLogin.png";
+	var input = '<img src="' + path + '"id="homeMap" style="position: absolute;" usemap="#homeMap"/>';
+
+	input += '<map name="homeMap">';
+	
+	input+='<area alt="login" shape="rect" coords="415, 752, 607, 813" onclick="location.href=\'./id/login\'">';
+	input+='<area alt="join" shape="rect" coords="626, 752, 818, 813" onclick="location.href=\'./id/join\'">';
+
+	$('#homeLoginJoin').html(input);
+	
+}
+
 </script>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50" style="height: 100%; position: relative;">
@@ -241,11 +256,19 @@ function myFunc(id) {
 </div>
 </nav>
 
+<!-- 로그인 안했을 때의 페이지 내용 -->
+<c:if test="${loginUser == null }">
+	<div id="homeLoginJoin" style="display: ; top: 70%; left: 25%;">
+	</div>
+</c:if>
 
-<div id="under" style="min-height: 100%;background-image: url('./resources/image/icon/backg.png');width: 100%">
+<!-- 로그인 했을 때 배경그림 -->
+<c:if test="${loginUser != null }">
+	<div id="under" style="min-height: 100%;background-image: url('./resources/image/icon/backg.png');width: 100%">
+</c:if>
 <!--로그인하지 않았을 때  -->
 <c:if test="${loginUser == null }">
-<nav class="w3-sidebar w3-bar-block w3-collapse w3-card-2" style="z-index:3;width:220px;background-image: url('./resources/image/icon/menubar.png');" id="mySidebar">
+<%-- <nav class="w3-sidebar w3-bar-block w3-collapse w3-card-2" style="z-index:3;width:220px;background-image: url('./resources/image/icon/menubar.png');" id="mySidebar">
 <div style="background-image: url('./resources/image/icon/userbar.png');">
   
  <center>
@@ -272,7 +295,7 @@ function myFunc(id) {
  <br><br>
 <a href="menu/storyPlay"><img src="./resources/image/icon/storyplay.png" id="storyplay"></a>
  <br><br>
-</nav>
+</nav> --%>
 </c:if>
 <!--로그인 했을 때  -->
 <c:if test="${loginUser != null }">
@@ -381,49 +404,6 @@ function myFunc(id) {
    </c:if>
    <i class="fa fa-bars w3-button w3-white w3-hide-large w3-xlarge w3-margin-left w3-margin-top" onclick="w3_open()"></i>
    <a href="javascript:void(0)" class="w3-hide-large w3-red w3-button w3-right w3-margin-top w3-margin-right" onclick="document.getElementById('id01').style.display='block'"><i class="fa fa-pencil"></i></a>
-   
-   <!-- <div id="Borge" class="w3-container person">
-     <br>
-     <img src="./resources/image/smalltitle.png">
-     <hr>
-   </div>
-   image
-   
-    헨젤과 그레텔
-    <div class="w3-row-padding w3-padding-16">
-       <div class="w3-third w3-margin-bottom">
-         <img src="./resources/image/hansel.jpg" alt="Norway" style="width:100%">
-         <div class="w3-container w3-white">
-         <br>
-     <img src="./resources/image/hanseltitle.png">
-           <h6 class="w3-opacity">2017.3.22</h6>
-          <button class="w3-button w3-block w3-pink w3-margin-bottom" onclick="location.href='story/storyTitle?storyNum=1'">Play</button>
-         </div>
-       </div>
-       
-    백설공주
-       <div class="w3-third w3-margin-bottom">
-         <img src="./resources/image/snowwhitetitle.jpg" alt="Norway" style="width:100%">
-         <div class="w3-container w3-white">
-         <br>
-     <img src="./resources/image/whitesnowtitle.png">
-           <h6 class="w3-opacity">Please wait update</h6>
-           <button class="w3-button w3-block w3-pink w3-margin-bottom" onclick="location.href='util/snsTest'">SNS-Test</button>
-         </div>
-       </div>
-     
-   빨간 망토
-       <div class="w3-third w3-margin-bottom">
-         <img src="./resources/image/redhoodtitle.jpg" alt="Norway" style="width:100%">
-         <div class="w3-container w3-white">
-           <br>
-     <img src="./resources/image/redhoodtitle.png">
-           <h6 class="w3-opacity">Please wait update</h6>
-           <button class="w3-button w3-block w3-pink w3-margin-bottom">Play</button>
-         </div>
-       </div>
-     </div> -->
-
 
    <c:if test="${userType == 'child'}">
       <div id="Borge" class="w3-container person">
@@ -511,52 +491,10 @@ function myFunc(id) {
 		     </c:if>
 		     </c:forEach>
      	</div>
-     	
-		<%-- <table class="table-bordered table">
-			<tr>
-			<c:forEach var="story" items="${myStoryList}" varStatus="status">
-			<c:if test="${status.index < 3 }">
-			<td>
-			<!-- 여기엔 썸네일이 들어간다 -->
-			<a href="storySlide?selectionNum=${story.selectionNum}">
-			<c:if test="${story.storyNum==0}">
-				<img src="./resources/image/hiyoko.png" alt="Norway" style="width:auto; height: 200px;"><br>
-			</c:if>
-			<c:if test="${story.storyNum==1}">
-				<img src="./resources/image/hansel.jpg" alt="헨젤과그레텔" style="width:auto; height: 200px;"><br>
-			</c:if>
-			<c:if test="${story.storyNum==2}">
-				<img src="./resources/image/snowwhitetitle.jpg" alt="백설공주" style="width:auto; height: 200px;"><br>
-			</c:if>
-			</a>
-			<!-- 여기까지 썸네일 -->
-				<div class="w3-container w3-white">
-					<h3 class="hanna">
-					<c:choose>
-						<c:when test="${story.storyNum==0}">노랑이의 모험</c:when>
-						<c:when test="${story.storyNum==1}">헨젤과 그레텔</c:when>			
-						<c:when test="${story.storyNum==2}">백설공주</c:when>
-						<c:when test="${story.storyNum==3}">빨간 마스크</c:when>
-					</c:choose>
-					
-					
-					</h3>
-					<h6 class="w3-opacity">${story.endDate}</h6>
-						<button class="w3-button w3-red" onclick="location.href='./menu/storySlide?selectionNum=${story.selectionNum}'"></button>
-				</div>
-			</td>
-			<c:if test="${status.count%3==0}">
-				</tr>
-				<tr>	
-			</c:if>
-			<c:if test="${status.last}">
-				</tr>
-			</c:if>
-			</c:if>
-		</c:forEach>
-		</table> --%>
 	</c:if>
-
+	
+	<!-- 로그인 된 상태일 때 다른 아이들의 동화 보이기  -->
+	<c:if test="${loginUser != null }">
      <div id="Borge" class="w3-container person">
      <br>
      <img src="./resources/image/smalltitle2.png">
@@ -591,6 +529,7 @@ function myFunc(id) {
          </div>
        </div>
      </div>
+    </c:if>
 </div>
 </div>
 
