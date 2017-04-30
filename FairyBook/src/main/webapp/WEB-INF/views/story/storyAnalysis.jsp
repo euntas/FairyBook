@@ -356,6 +356,8 @@ function getmbti(){
 	input+='<area alt="mbti" shape="rect" coords="290,153,387,306" onclick="mbtilist(\'ENTJ\')">';
 
 	$('mbtiAnalysis').html(input);
+	
+	
 }
 
 function mbtilist(){
