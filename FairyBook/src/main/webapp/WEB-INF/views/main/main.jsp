@@ -87,13 +87,13 @@ $(function(){
 	});
 	
 	//상담 결과 보기 버튼 마우스오버
-	$('#counselresult').on('mouseover',function(){
-		$("#counselresult").attr('src',"../resources/image/icon/counselresult1.png");
+	$('#otherChildren').on('mouseover',function(){
+		$("#otherChildren").attr('src',"../resources/image/icon/otherChildren1.png");
 	});
 	
 	//상담 결과 보기 버튼 마우스아웃
-	$('#counselresult').on('mouseout',function(){
-		$("#counselresult").attr('src',"../resources/image/icon/counselresult.png");
+	$('#otherChildren').on('mouseout',function(){
+		$("#otherChildren").attr('src',"../resources/image/icon/otherChildren.png");
 	});
 	
 	//장바구니 목록 버튼 마우스오버
@@ -234,7 +234,9 @@ $(function(){
  <a href="../menu/storyPlay"><img src="../resources/image/icon/storyplay.png" id="storyplay"></a>
  <br><br>
  <a href="../quiz/quizList"><img src="../resources/image/icon/quizlist.png" id="quizlist"></a>
-  
+ <br><br>
+ <a href="../menu/otherChildren"><img src="../resources/image/icon/otherChildren.png" id="otherChildren"></a>
+ 
 </nav>
 </c:if>
 <!--부모 로그인했을때  -->
@@ -263,8 +265,6 @@ $(function(){
    <a href="../menu/myChildStory"><img src="../resources/image/icon/mychildstory.png" id="mychildstory"></a>
   <br><br>
   <a href="../pboard/listForm"><img src="../resources/image/icon/board.png" id="board"></a>
-  <br><br>
-  <a href="../menu/counselResult"><img src="../resources/image/icon/counselresult.png" id="counselresult"></a>
   <br><br>
   <a href="../orderBook/orderCart"><img src="../resources/image/icon/ordercart.png" id="ordercart"></a>
   <br><br>	

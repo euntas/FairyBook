@@ -10,6 +10,8 @@ public interface SlideMapper {
 	//동화 감상을 누르면 내가 끝까지 진행한 동화들의 목록을 가져온다
 	public ArrayList<MySelection> getMyStoryList(String id);
 	
+	public ArrayList<MySelection> getYourStoryList(String id);
+	
 	public ArrayList<Integer> getSlide(int selectionNum);
 
 	public HashMap<String, Object> getLastScene(int selectionNum);

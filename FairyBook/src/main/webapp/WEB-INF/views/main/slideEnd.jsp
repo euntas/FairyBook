@@ -115,6 +115,8 @@ td{
 			}
 		});
 	}
+ 
+
 </script>
 
 <!--적용 자바스크립트와 스타일  -->
@@ -158,7 +160,7 @@ td{
 	<tr>
 	<td colspan="2">
 	<div>
-<c:if test="${loginUser != null }">
+<c:if test="${loginUser.id == id }">
 <!-- 아이로그인  -->
 	<c:if test="${userType == 'child'}">
 		<button class="w3-button w3-green" onclick="location.href='../menu/storySelect'">다른 동화 진행</button>
