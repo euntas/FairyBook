@@ -435,7 +435,7 @@ function showHouse(house){
 		}
 		else if(h.name.indexOf('window01')!=-1){
 			houseName[i] = '창문';
-			input+='<area alt="window" shape="rect" coords="88,282,124,210" onclick="housePoint(\''+i+'\')">';
+			input+='<area alt="window" shape="rect" coords="88,183,125,208" onclick="housePoint(\''+i+'\')">';
 		}
 		else if(h.name.indexOf('window02')!=-1){
 			houseName[i] = '창문';
