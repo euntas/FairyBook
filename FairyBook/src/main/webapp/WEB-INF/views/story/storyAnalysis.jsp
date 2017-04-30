@@ -677,7 +677,7 @@ function downloadPDF(){
     </div>
     
     <!-- COLOR -->
-    <div style="padding-top:5%;" id="menu1">
+    <div style="padding-top:10%;" id="menu1">
 		  <div class="row">
 		    <div class="col-sm-12">
 		    	<h3 class="hanna">색채 심리 검사</h3>  
@@ -685,6 +685,9 @@ function downloadPDF(){
 		  </div>
 		  <hr>
 		  <div class="row">
+		    <div class="alert-info" style="width:250px;margin-left: 10%;text-align: center;">
+			  설명을 원하는 색을 클릭해주세요!
+			</div>
 		    <div class="col-md-4" style="width: 500px;">
 		        <div id="colorGraph" style="height: 250px;"></div><br>
 			  	<center><button class="btn btn-info" onclick="allColor();">다른 색 정보보기</button></center>
@@ -705,7 +708,7 @@ function downloadPDF(){
     </div>
     
     <!-- MBTI -->
-    <div style="padding-top:5%;" id="menu6">
+    <div style="padding-top:10%;" id="menu6">
 		  <div class="row">
 		    <div class="col-sm-12">
 		    	<h3 class="hanna">MBTI</h3>  
@@ -747,6 +750,9 @@ function downloadPDF(){
 		  </div>
 		  <hr>
 		  <div class="row">
+		  <div class="alert-info" style="width:350px;margin-left: 10%;text-align: center;">
+			 설명을 원하는 부분을 클릭해주세요! (지붕,굴뚝,문,창문)
+			</div>
 		  	<div class="col-md-4" style="width: 500px;padding-left:10%;" id="showHouse"></div>
 		  	<div class="panel panel-warning" style="height:250px;width: 400px;float:left;margin-top:5%;">
 		      <div class="panel-heading hanna" id="htpLabelH"></div>
@@ -769,6 +775,9 @@ function downloadPDF(){
 		  </div>
 		  <hr>
 		  <div class="row">
+		  <div class="alert-info" style="width:350px;margin-left: 10%;text-align: center;">
+			 설명을 원하는 부분을 클릭해주세요! (지붕,굴뚝,문,창)
+			</div>
 		  	<div class="col-md-4" style="width: 500px;padding-left:10%;" id="showTree"></div>
 		  	<div class="panel panel-warning" style="height:250px;width: 400px;float:left;margin-top:5%;">
 		      <div class="panel-heading hanna" id="htpLabel">Tree</div>
@@ -791,6 +800,9 @@ function downloadPDF(){
 		  </div>
 		  <hr>
 		  <div class="row">
+		   <div class="alert-info" style="width:350px;margin-left: 10%;text-align: center;">
+			 설명을 원하는 부분을 클릭해주세요! (눈,코,입,귀,머리카락,얼굴)
+			</div>
 		  	<div class="col-md-4" style="width: 500px;">
 		  		<div id="showAvatar2" class="showAvatar" style="position: relative;padding-left:15%;"></div>
 		 	</div>
