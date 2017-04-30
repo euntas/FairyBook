@@ -29,6 +29,7 @@
 		<typeAlias type="global.sesoc.fairybook.vo.SolvedQuiz" alias="SolvedQuiz" />
 		<typeAlias type="java.util.HashMap" alias="HashMap" />
 		<typeAlias type="java.util.Map" alias="map" />
+		<typeAlias type="java.util.Map" alias="map" />
 	</typeAliases>
 	
 
