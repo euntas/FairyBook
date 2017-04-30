@@ -253,7 +253,6 @@ public class AnalysisController {
 		for (char c : i) {
 			String analysis = dao.getMBTIAnalysis(Character.toString(c));
 			result.add(analysis);
-			logger.info("indicator:{}",analysis);
 		}
 		
 		

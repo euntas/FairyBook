@@ -177,6 +177,7 @@ function getETCPattern(){
 				success:function(result){
 					console.log("etc 패턴 들어와서 결과는 " + result.mbtiType);
 					console.log("etc 패턴 들어와서 결과는 " + result.mbtiAnalysis);
+					showMBTI(result);
 				},
 				error: function(e){
 					alert("etc문제임" + "num:" + selectionNum +" " + JSON.stringify(e));
@@ -293,14 +294,24 @@ function showMBTI(result){
 }
 
 function mbtiIndicator(type){
-	alert('indicator');
 	$.ajax({
 		url:'mbtiIndicator',
 		data:{indicator:type},
 		type:'GET',
 		dataType:'json',
 		success:function(result){
+			var input = '<table style="width:90%;background-color:rgba(204, 204, 255,0.5);" class="text-center">';
+			input += '<tr>';
+			$.each(result,function(i,r){
+				input += '<td style="">';
+				input += r;
+				input += '</td>';
+			});
+			input += '</tr>';
+			input += '</table>';
+			input += '<br>';
 			
+			$('#indicatorExplain').html(input);
 		},
 		error: function(e){
 			alert(JSON.stringify(e));
@@ -682,6 +693,9 @@ function downloadPDF(){
 		  </div>
 		  <hr>
 		  <div class="row">
+		  	<div class="alert alert-info">
+			  <strong>설명을 원하는 항목을 클릭해주세요!</strong>
+			</div>
 		  	<div class="alert alert-warning" onclick="mbtiIndicator('EI')">
 			  <strong>나의 에너지 방향은? </strong> <span class="glyphicon glyphicon-hand-right"></span> <span onclick="mbtiIndicator('EI')" id="eiType"></span>
 			</div>
@@ -694,10 +708,11 @@ function downloadPDF(){
 		  	<div class="alert alert-warning" onclick="mbtiIndicator('JP')">
 			  <strong>나의 생활양식은? </strong> <span class="glyphicon glyphicon-hand-right"></span> <span id="jpType"></span>
 			</div>
+			<div id="indicatorExplain" style="margin-left:7%;text-align: center;"></div>
 		  	<div class="alert alert-danger">
 			  <strong>검사결과 나의 성격유형은 </strong> <span class="glyphicon glyphicon-hand-right"></span> <span id="mbtiType"></span>
 			</div>
-		  	<div id="mbtiAnalysis" class="alert"></div>
+		  	<!-- <div id="mbtiAnalysis" style="background-color:rgba(204, 204, 255,0.5);" class="alert"></div> -->
 		  </div>
 		  <br>
 		  	
