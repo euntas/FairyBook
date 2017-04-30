@@ -21,7 +21,7 @@
 <input type="button" id="resetbtn">
 	<!-- 저장버튼 및 초기화버튼이 보이는 div태그 -->
 	<div id="saveArea">
-	<input type="button" id="savebtn">
+	<input type="button" id="helpbtn" style="display: inline;"><input type="button" id="savebtn" style="display: inline;">
 	</div>
 </div>
 
@@ -43,6 +43,7 @@ $(document).ready(function(){
 	$('#Black').on('click', colorbtn);
 	$('#etc').css('background-image','url("../resources/img/etc/background${storyNum}.jpg")');
 	draw();
+	help();
 	//화면 사이즈에 맞게 크기 조절
 	var screen1 = $(window).height();
 	$("html").css("height", screen1);
@@ -92,6 +93,7 @@ function draw(){
 	$('#etc').html(etc);
 	$('#resetbtn').on('click', reset);
 	$('#savebtn').on('click', save);
+	$('#helpbtn').on('click', help);
 	resetValue = $('#etc').html();
 }
 
@@ -247,6 +249,23 @@ function save(){
 		}
 	}
 }
+
+//help 버튼을 누르면 도움말이 나온다
+function help(){
+	var cw = screen.availWidth;     //화면 넓이
+	var ch = screen.availHeight;    //화면 높이
+	var sw = 877;    //띄울 창의 넓이
+	var sh = 620;    //띄울 창의 높이
+	var ml = (cw-sw)/2;        //가운데 띄우기위한 창의 x위치
+	var mt = (ch-sh)/2;         //가운데 띄우기위한 창의 y위치
+	window.open("help","도움말",'width=877, height=620,top='+ mt +',left='+ ml +' loaction=no, toolbar=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no');
+}
+
+// opener가 누구인지 알려주는 함수
+function whoAreYou(){
+	return "etc";
+}
+
 
 </script>
 

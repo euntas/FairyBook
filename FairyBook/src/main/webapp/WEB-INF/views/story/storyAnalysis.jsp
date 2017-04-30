@@ -292,6 +292,24 @@ function showMBTI(result){
 	$('#mbtiAnalysis').html(result.mbtiAnalysis);
 }
 
+function mbtiIndicator(type){
+	alert('indicator');
+	$.ajax({
+		url:'mbtiIndicator',
+		data:{indicator:type},
+		type:'GET',
+		dataType:'json',
+		success:function(result){
+			
+		},
+		error: function(e){
+			alert(JSON.stringify(e));
+		}
+	});
+	
+}
+
+
 function menu2(){
 	clear();
 	$('#menu2').attr('class','on active');
@@ -307,8 +325,44 @@ function menu2(){
 	});
 }
 
+
 var analysis = new Array();
 var houseName = new Array();
+
+function getmbti(){
+	var path = "../resources/img/mbtigraph.png";
+	var input = '<img src="' + path + '"id="'+ 'mbti' +'" style="position: absolute;" usemap="#mbtiMap"/>';
+
+	input += '<map name="mbtiMap">';
+	
+	input+='<area alt="mbti" shape="rect" coords="0,0,96,76" onclick="mbtilist(\'ISTJ\')">';
+	input+='<area alt="mbti" shape="rect" coords="96,0,193,76" onclick="mbtilist(\'ISFJ\')">';
+	input+='<area alt="mbti" shape="rect" coords="193,0,290,76" onclick="mbtilist(\'INFJ\')">';
+	input+='<area alt="mbti" shape="rect" coords="290,0,387,76" onclick="mbtilist(\'INTJ\')">';
+	
+	input+='<area alt="mbti" shape="rect" coords="0,76,96,153" onclick="mbtilist(\'ISTP\')">';
+	input+='<area alt="mbti" shape="rect" coords="96,76,193,153" onclick="mbtilist(\'ISFP\')">';
+	input+='<area alt="mbti" shape="rect" coords="193,76,290,153" onclick="mbtilist(\'INFP\')">';
+	input+='<area alt="mbti" shape="rect" coords="290,76,387,153" onclick="mbtilist(\'INTP\')">';
+	
+	input+='<area alt="mbti" shape="rect" coords="0,153,96,230" onclick="mbtilist(\'ESTP\')">';
+	input+='<area alt="mbti" shape="rect" coords="96,153,193,230" onclick="mbtilist(\'ESFP\')">';
+	input+='<area alt="mbti" shape="rect" coords="193,153,290,230" onclick="mbtilist(\'ENFP\')">';
+	input+='<area alt="mbti" shape="rect" coords="290,153,387,230" onclick="mbtilist(\'ENTP\')">';
+
+	input+='<area alt="mbti" shape="rect" coords="0,230,96,306" onclick="mbtilist(\'ESTJ\')">';
+	input+='<area alt="mbti" shape="rect" coords="96,153,193,306" onclick="mbtilist(\'ESFJ\')">';
+	input+='<area alt="mbti" shape="rect" coords="193,153,290,306" onclick="mbtilist(\'ENFJ\')">';
+	input+='<area alt="mbti" shape="rect" coords="290,153,387,306" onclick="mbtilist(\'ENTJ\')">';
+
+	$('mbtiAnalysis').html(input);
+	
+	
+}
+
+function mbtilist(){
+	
+}
 
 function showHouse(house){
 	var input = '';
@@ -628,16 +682,16 @@ function downloadPDF(){
 		  </div>
 		  <hr>
 		  <div class="row">
-		  	<div class="alert alert-warning">
-			  <strong>나의 에너지 방향은? </strong> <span class="glyphicon glyphicon-hand-right"></span> <span id="eiType"></span>
+		  	<div class="alert alert-warning" onclick="mbtiIndicator('EI')">
+			  <strong>나의 에너지 방향은? </strong> <span class="glyphicon glyphicon-hand-right"></span> <span onclick="mbtiIndicator('EI')" id="eiType"></span>
 			</div>
-		  	<div class="alert alert-warning">
+		  	<div class="alert alert-warning" onclick="mbtiIndicator('SN')">
 			  <strong>나의 인식기능은? </strong> <span class="glyphicon glyphicon-hand-right"></span> <span id="snType"></span>
 			</div>
-		  	<div class="alert alert-warning">
+		  	<div class="alert alert-warning" onclick="mbtiIndicator('TF')">
 			  <strong>나의 판단기능은? </strong> <span class="glyphicon glyphicon-hand-right"></span> <span id="tfType"></span>
 			</div>
-		  	<div class="alert alert-warning">
+		  	<div class="alert alert-warning" onclick="mbtiIndicator('JP')">
 			  <strong>나의 생활양식은? </strong> <span class="glyphicon glyphicon-hand-right"></span> <span id="jpType"></span>
 			</div>
 		  	<div class="alert alert-danger">

@@ -79,6 +79,7 @@ function save(){
 	<!-- 저장버튼 및 초기화버튼이 보이는 div태그 -->
 	<div id="saveArea">
 	<input type="button" id="savebtn">
+	<input type="button" id="helpbtn">
 	</div>
 </div>
 

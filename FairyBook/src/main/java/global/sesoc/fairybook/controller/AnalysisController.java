@@ -244,6 +244,22 @@ public class AnalysisController {
 		return mbtiData;
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="mbtiIndicator")
+	public ArrayList<String> mbtiIndicator(String indicator){
+		ArrayList<String> result = new ArrayList<>();
+		char[] i = indicator.toCharArray();
+		
+		for (char c : i) {
+			String analysis = dao.getMBTIAnalysis(Character.toString(c));
+			result.add(analysis);
+			logger.info("indicator:{}",analysis);
+		}
+		
+		
+		return result;
+	}
+	
 	public int checkArr(int a, int b, int c){
 		int result = 0;
 		

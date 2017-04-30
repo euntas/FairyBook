@@ -6,12 +6,13 @@ $(document).ready(function(){
 	$('#chimneybtn').on('click', callChimney);
 	$('#yardbtn').on('click', callYard);
 	$('#wallbtn').on('click', callWall);
-	
+	$('#helpbtn').on('click', help);
 	//화면 사이즈에 맞게 크기 조절
 	var screen1 = $(window).height();
 	$("html").css("height", screen1);
 	$("#bodytag").css("height", screen1);
 	$("#bodytag").css("margin", "0px");
+	help();
 });
 
 
@@ -193,7 +194,14 @@ function draw(){
 	}
 	if(count == 6){
 		$('#savebtn').css('display','block');
+		$('#helpbtn').css('display','none');
 		$('#savebtn').on('click',save);
+		$('#helpbtn').on('click',help);
+	}else{
+		$('#savebtn').css('display','none');
+		$('#helpbtn').css('display','block');
+		$('#savebtn').on('click',save);
+		$('#helpbtn').on('click',help);
 	}
 	
 	checkSelection();
@@ -224,6 +232,23 @@ function reset(){
 	house += '<input type="button" id="resetbtn">';
 	house += '<div id="saveArea">';
 	house += '<input type="button" id="savebtn">';
+	house += '<input type="button" id="helpbtn">';
 	house += '</div>';
 	$('#house').html(house);
+}
+
+//help 버튼을 누르면 도움말이 나온다
+function help(){
+	var cw = screen.availWidth;     //화면 넓이
+	var ch = screen.availHeight;    //화면 높이
+	var sw = 877;    //띄울 창의 넓이
+	var sh = 620;    //띄울 창의 높이
+	var ml = (cw-sw)/2;        //가운데 띄우기위한 창의 x위치
+	var mt = (ch-sh)/2;         //가운데 띄우기위한 창의 y위치
+	window.open("help","도움말",'width=877, height=620,top='+ mt +',left='+ ml +' loaction=no, toolbar=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no');
+}
+
+// opener가 누구인지 알려주는 함수
+function whoAreYou(){
+	return "house";
 }

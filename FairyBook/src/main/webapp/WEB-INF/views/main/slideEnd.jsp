@@ -132,7 +132,7 @@ td{
 <!--####################여기부터  -->
 <img src="../resources/image/show.png">  <hr>
 
-<h1 class="hanna">Ending#1 행복한 백설공주</h1>
+<h1 class="hanna">${endingNum} &nbsp ${endingText}</h1>
 <table class="table-bordered table">
 	<tr>
 	<td style="width:60%">

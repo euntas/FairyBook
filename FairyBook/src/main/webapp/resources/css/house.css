@@ -113,6 +113,17 @@ img{
 	background-size: 100% 100%;
 }
 
+/* 도움 버튼 */
+#helpbtn{
+	width : 99%;
+	height: 99%;
+	display: block;
+	background-image:url('../img/util/helpbtn.png');
+	background-color: rgba(0,0,0,0);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
 /* 색 선택하는 영역 */
 #color{
 	margin: 0px;

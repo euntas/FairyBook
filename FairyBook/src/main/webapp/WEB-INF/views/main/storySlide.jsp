@@ -108,7 +108,7 @@ function storyEnd(){
 <div id="menu">
 <button class="btn" id="slideShowButton"></button>
 <button class="btn" id="replayButton" onclick="window.location.reload()"></button>
-<button class="btn" id="homeButton" onclick="history.go(-1)"></button>
+<button class="btn" id="homeButton" onclick="javascript:storyEnd()"></button>
 <button class="btn" id="musicButton" onclick="javascript:music()"></button>
 </div>
 

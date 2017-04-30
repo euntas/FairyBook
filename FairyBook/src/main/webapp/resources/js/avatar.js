@@ -9,11 +9,13 @@ $(document).ready(function(){
 	$('#mouthbtn').on('click', callMouth);
 	$('#earbtn').on('click', callEar);
 	$('#bodybtn').on('click', callBody);
+	$('#helpbtn').on('click', help);
 	//화면 사이즈에 맞게 크기 조절
 	var screen1 = $(window).height();
 	$("html").css("height", screen1);
 	$("#bodytag").css("height", screen1);
 	$("#bodytag").css("margin", "0px");
+	help();
 });
 
 //얼굴 불러오기
@@ -211,7 +213,14 @@ function draw(){
 	}
 	if(count == 7){
 		$('#savebtn').css('display','block');
+		$('#helpbtn').css('display','none');
 		$('#savebtn').on('click',save);
+		$('#helpbtn').on('click',help);
+	}else{
+		$('#savebtn').css('display','none');
+		$('#helpbtn').css('display','block');
+		$('#savebtn').on('click',save);
+		$('#helpbtn').on('click',help);
 	}
 	checkSelection();
 }
@@ -241,7 +250,64 @@ function reset(){
 	avatar += '<input type="button" id="resetbtn">';
 	avatar += '<div id="saveArea">';
 	avatar += '<input type="button" id="savebtn">';
+	avatar += '<input type="button" id="helpbtn">';
 	avatar += '</div>';
 	$('#avatar').html(avatar);
 }
 
+// save버튼을 누르면 완성된 아바타를 저장한다
+function save(){
+	var face = $('#face').attr('num');
+	var hair = $('#hair').attr('num');
+	var eye = $('#eye').attr('num');
+	var nose = $('#nose').attr('num');
+	var mouth = $('#mouth').attr('num');
+	var ear = $('#ear').attr('num');
+	var body = $('#body').attr('num');
+	var hairColor = $('#hair').attr('name').split('Color')[1];
+	var eyeColor = $('#eye').attr('name').split('Color')[1];
+	var bodyColor = $('#body').attr('name').split('Color')[1];
+	
+	var arr = ['Black', 'Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Purple','White','Gray'];
+		for(var i in arr){
+			if(hairColor == arr[i]){
+				hairColor = i;
+			}
+			if(eyeColor == arr[i]){
+				eyeColor = i;
+			}
+			if(bodyColor == arr[i]){
+				bodyColor = i;
+			}
+		}
+		
+	$.ajax({
+		url: 'saveAvatar',
+		type: 'POST',
+		async: false,
+		data: {face:face,hair:hair,eye:eye,nose:nose,mouth:mouth,ear:ear,body:body,hairColor:hairColor,eyeColor:eyeColor,bodyColor:bodyColor},
+		success: function(){
+			alert('저장 완료!');
+			location.href='house';
+		},
+		error: function(e){
+//			alert(JSON.stringify(e));
+		}
+	});
+}
+
+// help 버튼을 누르면 도움말이 나온다
+function help(){
+	var cw = screen.availWidth;     //화면 넓이
+	var ch = screen.availHeight;    //화면 높이
+	var sw = 877;    //띄울 창의 넓이
+	var sh = 620;    //띄울 창의 높이
+	var ml = (cw-sw)/2;        //가운데 띄우기위한 창의 x위치
+	var mt = (ch-sh)/2;         //가운데 띄우기위한 창의 y위치
+	window.open("help","도움말",'width=877, height=620,top='+ mt +',left='+ ml +' loaction=no, toolbar=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no');
+}
+
+// opener가 누구인지 알려주는 함수
+function whoAreYou(){
+	return "avatar";
+}
