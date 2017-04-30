@@ -290,6 +290,7 @@ function showMBTI(result){
 	$('#jpType').html(result.mbtiJP);
 	$('#mbtiType').html(result.mbtiType);
 	$('#mbtiAnalysis').html(result.mbtiAnalysis);
+	mbtigraph();
 }
 
 function mbtiIndicator(type){
@@ -329,9 +330,11 @@ function menu2(){
 var analysis = new Array();
 var houseName = new Array();
 
-function getmbti(){
-	var path = "../resources/img/mbtigraph.png";
-	var input = '<img src="' + path + '"id="'+ 'mbti' +'" style="position: absolute;" usemap="#mbtiMap"/>';
+function mbtigraph(){
+/* 	var path = "../resources/img/mbtigraph.png";
+ */	
+ 	var input = ''; 
+	input += '<img src="' + "../resources/img/mbtigraph.png" + '"id="'+ 'mbti' +'"usemap="#mbtiMap"/>';
 
 	input += '<map name="mbtiMap">';
 	
@@ -351,17 +354,32 @@ function getmbti(){
 	input+='<area alt="mbti" shape="rect" coords="290,153,387,230" onclick="mbtilist(\'ENTP\')">';
 
 	input+='<area alt="mbti" shape="rect" coords="0,230,96,306" onclick="mbtilist(\'ESTJ\')">';
-	input+='<area alt="mbti" shape="rect" coords="96,153,193,306" onclick="mbtilist(\'ESFJ\')">';
-	input+='<area alt="mbti" shape="rect" coords="193,153,290,306" onclick="mbtilist(\'ENFJ\')">';
-	input+='<area alt="mbti" shape="rect" coords="290,153,387,306" onclick="mbtilist(\'ENTJ\')">';
-
-	$('mbtiAnalysis').html(input);
+	input+='<area alt="mbti" shape="rect" coords="96,230,193,306" onclick="mbtilist(\'ESFJ\')">';
+	input+='<area alt="mbti" shape="rect" coords="193,230,290,306" onclick="mbtilist(\'ENFJ\')">';
+	input+='<area alt="mbti" shape="rect" coords="290,230,387,306" onclick="mbtilist(\'ENTJ\')">';
+	
+	
+	
+	$('#mbtiPicture').html(input);
 	
 	
 }
 
-function mbtilist(){
-	
+function mbtilist(result){
+	$.ajax({
+		url: 'getMBTIAnalysis',
+		type: 'GET',
+		data: {result: result}, 
+		dataType: 'text',
+		success: showMBTIAnalysis,
+		error: function(e){
+			alert(JSON.stringify(e));
+		}
+	});
+}
+
+function showMBTIAnalysis(analysis){
+	$('#mbtiResult').html(analysis);
 }
 
 function showHouse(house){
@@ -699,6 +717,11 @@ function downloadPDF(){
 			</div>
 		  	<div id="mbtiAnalysis" class="alert"></div>
 		  </div>
+		  <div id="mbtiPicture" class="alert"></div>
+		  </div>
+		  <div id="mbtiResult" class="alert"></div>
+		  </div>
+								  
 		  <br>
 		  	
 		  <hr>
