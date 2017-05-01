@@ -12,13 +12,14 @@ public class Quiz {
 	private String select3;		//퀴즈 선택지3
 	private String select4;		//퀴즈 선택지4
 	private int answer;			//퀴즈 정답
+	private int division;		// 0: 퀴즈 풀기에 안나옴 1: 퀴즈 풀기에 나옴
 	
 	public Quiz() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public Quiz(int quizNum, String question, String select1, String select2, String select3, String select4,
-			int answer) {
+			int answer, int division) {
 		super();
 		this.quizNum = quizNum;
 		this.question = question;
@@ -27,6 +28,7 @@ public class Quiz {
 		this.select3 = select3;
 		this.select4 = select4;
 		this.answer = answer;
+		this.division = division;
 	}
 
 	public int getQuizNum() {
@@ -84,12 +86,22 @@ public class Quiz {
 	public void setAnswer(int answer) {
 		this.answer = answer;
 	}
+	
+	
+
+	public int getDivision() {
+		return division;
+	}
+
+	public void setDivision(int division) {
+		this.division = division;
+	}
 
 	@Override
 	public String toString() {
 		return "Quiz [quizNum=" + quizNum + ", question=" + question + ", select1=" + select1 + ", select2=" + select2
-				+ ", select3=" + select3 + ", select4=" + select4 + ", answer=" + answer + "]";
+				+ ", select3=" + select3 + ", select4=" + select4 + ", answer=" + answer + ", division=" + division
+				+ "]";
 	}
-	
-	
+
 }
