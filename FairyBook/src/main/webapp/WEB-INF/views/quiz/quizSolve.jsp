@@ -13,6 +13,9 @@
 <link href='https://fonts.googleapis.com/css?family=RobotoDraft' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="shortcut icon" type="image/x-icon" href="../resources/img/favicon.ico">
+<link rel="stylesheet" href="../resources/css/alertify.core.css" />
+<link rel="stylesheet" href="../resources/css/alertify.default.css" id="toggleCSS" />
+<script src="../resources/js/alertify.min.js"></script>
 <!--적용 자바스크립트와 스타일  -->
 <style>
 @import url(//fonts.googleapis.com/earlyaccess/hanna.css);
@@ -26,7 +29,6 @@
 
 	// 회차 번호에 해당하는 퀴즈 불러오기
 	function select(selectionNum){
-		alert(selectionNum); 
 		$.ajax({
 			url:'quiz',
 			type: 'GET',
@@ -42,13 +44,13 @@
 	//정답 판독
 	function selection(answer, sele, i){
 		if (answer != sele) {
-			alert("정답은 " + answer+"입니다.");
+			alertify.alert("정답은 " + answer+"입니다.");
 			$('#answerda' + i).html("정답: " + answer); 
 			$('#answerda'+ i).css('background-color','#ff8566');
 		};
 	
+			alertify.alert("정답입니다.");
 		if (answer == sele) {
-			alert("정답입니다.");
 			$('#answerda' + i).html("정답: " + answer); 
 			$('#answerda'+ i).css('background-color','#99ff66');
 		};
@@ -105,8 +107,10 @@
     </div>
     <ul class="nav navbar-nav">
     <c:forEach var="list" items="${selectionList}" varStatus="status">
+    <c:if test="${list.storyNum == currentStoryNum}">
       <li><a href="javascript:select('${list.selectionNum}');">${status.count}회차</a></li>
-      </c:forEach>
+    </c:if>
+    </c:forEach>
     </ul>
   </div>
 </nav>

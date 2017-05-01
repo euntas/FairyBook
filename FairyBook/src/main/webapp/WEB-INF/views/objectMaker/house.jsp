@@ -10,6 +10,9 @@
 <script src="../resources/js/jquery-3.1.1.min.js"></script>
 <script src="../resources/js/jquery-3.1.1.js"></script>
 <script src="../resources/js/house.js"></script>
+<link rel="stylesheet" href="../resources/css/alertify.core.css" />
+<link rel="stylesheet" href="../resources/css/alertify.default.css" id="toggleCSS" />
+<script src="../resources/js/alertify.min.js"></script>
 
 <!--적용 자바스크립트와 스타일  -->
 <script>
@@ -41,29 +44,32 @@ function save(){
 		wallColor = 0;
 	}
 	
-	$.ajax({
-		url: 'saveHouse',
-		type: 'POST',
-		data: {roof:roof,door:door,window:window,chimney:chimney,yard:yard,wall:wall,roofColor:roofColor,wallColor:wallColor},
-		success: function(){
-			alert('저장완료!');
+	alertify.confirm('저장하시겠습니까?', function(e){
+		if(e){
 			$.ajax({
-              url:'../story/saveSD',
-              type:'GET',
-              async: false,
-              data: {pageNum: 1},
-              dataType:'json',
-              success: function(){
-                 location.href='../story/storyStart?storyNum=' + ${currentStoryNum};
-              },
-              error: function(e){
-/*                  alert("플립 실패 들어옴");
-                 alert(JSON.stringify(e)); */
-              }
-          });
-		},
-		error: function(e){
-			/* alert(JSON.stringify(e)); */
+				url: 'saveHouse',
+				type: 'POST',
+				data: {roof:roof,door:door,window:window,chimney:chimney,yard:yard,wall:wall,roofColor:roofColor,wallColor:wallColor},
+				success: function(){
+					$.ajax({
+		              url:'../story/saveSD',
+		              type:'GET',
+		              async: false,
+		              data: {pageNum: 1},
+		              dataType:'json',
+		              success: function(){
+		                 location.href='../story/storyStart?storyNum=' + ${currentStoryNum};
+		              },
+		              error: function(e){
+						alert("플립 실패 들어옴");
+		                alert(JSON.stringify(e)); 
+		              }
+		          });
+				},
+				error: function(e){
+					alert(JSON.stringify(e));
+				}
+			});	
 		}
 	});
 }
