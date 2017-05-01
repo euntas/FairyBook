@@ -9,6 +9,9 @@
 <link rel="shortcut icon" type="image/x-icon" href="../resources/img/favicon.ico">
 <script src="../resources/js/jquery-3.1.1.min.js"></script>
 <script src="../resources/js/jquery-3.1.1.js"></script>
+<link rel="stylesheet" href="../resources/css/alertify.core.css" />
+<link rel="stylesheet" href="../resources/css/alertify.default.css" id="toggleCSS" />
+<script src="../resources/js/alertify.min.js"></script>
 
 <!--적용 자바스크립트와 스타일  -->
 
@@ -162,91 +165,90 @@ function save(){
 		}
 	}
 	if(check >= 6){
-		if(confirm('색칠하지 않은 젤리가 많습니다! 그래도 저장하시겠습니까?')){
-			$.ajax({
-				url: 'saveETC',
-				type: 'POST',
-				data:
-				{selectionNum: selectionNum,
-				selection1Color:colors[0],
-				selection2Color:colors[1],
-				selection3Color:colors[2],
-				selection4Color:colors[3],
-				selection5Color:colors[4],
-				selection6Color:colors[5],
-				selection7Color:colors[6],
-				selection8Color:colors[7],
-				selection9Color:colors[8],
-				selection10Color:colors[9],
-				selection11Color:colors[10],
-				selection12Color:colors[11]
-				},
-				success: function(){
-					$.ajax({
-				        url:'../story/saveSD',
-				        type:'GET',
-				        data: {pageNum: 13},
-				        dataType:'json',
-				        success: function(){
-				        	location.href='../story/storyStart?storyNum=1';
-				        },
-				        error: function(e){
-				        	alert("플립 실패 들어옴");
-				            alert(JSON.stringify(e));
-				        }
-				    });
-					
-				},
-				error: function(e){
-					alert(JSON.stringify(e));
-				}
-			});
-		}
-		else{
-			return;
-		}
+		alertify.confirm('색칠하지 않은 젤리가 많습니다! 그래도 저장하시겠습니까?', function(e){
+			if(e){
+				$.ajax({
+					url: 'saveETC',
+					type: 'POST',
+					data:
+					{selectionNum: selectionNum,
+					selection1Color:colors[0],
+					selection2Color:colors[1],
+					selection3Color:colors[2],
+					selection4Color:colors[3],
+					selection5Color:colors[4],
+					selection6Color:colors[5],
+					selection7Color:colors[6],
+					selection8Color:colors[7],
+					selection9Color:colors[8],
+					selection10Color:colors[9],
+					selection11Color:colors[10],
+					selection12Color:colors[11]
+					},
+					success: function(){
+						$.ajax({
+					        url:'../story/saveSD',
+					        type:'GET',
+					        data: {pageNum: 13},
+					        dataType:'json',
+					        success: function(){
+					        	location.href='../story/storyStart?storyNum=1';
+					        },
+					        error: function(e){
+					        	alert("플립 실패 들어옴");
+					            alert(JSON.stringify(e));
+					        }
+					    });
+						
+					},
+					error: function(e){
+						alert(JSON.stringify(e));
+					}
+				});
+			}
+		});
+
 	}else{
-		if(confirm('저장하시겠습니까?')){
-			$.ajax({
-				url: 'saveETC',
-				type: 'POST',
-				data:
-				{selectionNum: selectionNum,
-				selection1Color:colors[0],
-				selection2Color:colors[1],
-				selection3Color:colors[2],
-				selection4Color:colors[3],
-				selection5Color:colors[4],
-				selection6Color:colors[5],
-				selection7Color:colors[6],
-				selection8Color:colors[7],
-				selection9Color:colors[8],
-				selection10Color:colors[9],
-				selection11Color:colors[10],
-				selection12Color:colors[11]
-				},
-				success: function(){
-					 $.ajax({
-		                  url:'../story/saveSD',
-		                  type:'GET',
-		                  data: {pageNum: 13, answerNum: 1},
-		                  dataType: 'json',
-		                  success: function(){
-		                     location.href='../story/storyStart?storyNum=1';
-		                  },
-		                  error: function(e){
-		                      alert(JSON.stringify(e));
-		                  }
-		              });
-				},
-				error: function(e){
-					alert(JSON.stringify(e));
-				}
-			});
-		}
-		else{
-			return;
-		}
+		alertify.confirm('저장하시겠습니까?', function(e){
+			if(e){
+				$.ajax({
+					url: 'saveETC',
+					type: 'POST',
+					data:
+					{selectionNum: selectionNum,
+					selection1Color:colors[0],
+					selection2Color:colors[1],
+					selection3Color:colors[2],
+					selection4Color:colors[3],
+					selection5Color:colors[4],
+					selection6Color:colors[5],
+					selection7Color:colors[6],
+					selection8Color:colors[7],
+					selection9Color:colors[8],
+					selection10Color:colors[9],
+					selection11Color:colors[10],
+					selection12Color:colors[11]
+					},
+					success: function(){
+						 $.ajax({
+			                  url:'../story/saveSD',
+			                  type:'GET',
+			                  data: {pageNum: 13, answerNum: 1},
+			                  dataType: 'json',
+			                  success: function(){
+			                     location.href='../story/storyStart?storyNum=1';
+			                  },
+			                  error: function(e){
+			                      alert(JSON.stringify(e));
+			                  }
+			              });
+					},
+					error: function(e){
+						alert(JSON.stringify(e));
+					}
+				});
+			}
+		});
 	}
 }
 

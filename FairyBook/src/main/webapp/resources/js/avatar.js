@@ -255,46 +255,6 @@ function reset(){
 	$('#avatar').html(avatar);
 }
 
-// save버튼을 누르면 완성된 아바타를 저장한다
-function save(){
-	var face = $('#face').attr('num');
-	var hair = $('#hair').attr('num');
-	var eye = $('#eye').attr('num');
-	var nose = $('#nose').attr('num');
-	var mouth = $('#mouth').attr('num');
-	var ear = $('#ear').attr('num');
-	var body = $('#body').attr('num');
-	var hairColor = $('#hair').attr('name').split('Color')[1];
-	var eyeColor = $('#eye').attr('name').split('Color')[1];
-	var bodyColor = $('#body').attr('name').split('Color')[1];
-	
-	var arr = ['Black', 'Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Purple','White','Gray'];
-		for(var i in arr){
-			if(hairColor == arr[i]){
-				hairColor = i;
-			}
-			if(eyeColor == arr[i]){
-				eyeColor = i;
-			}
-			if(bodyColor == arr[i]){
-				bodyColor = i;
-			}
-		}
-		
-	$.ajax({
-		url: 'saveAvatar',
-		type: 'POST',
-		async: false,
-		data: {face:face,hair:hair,eye:eye,nose:nose,mouth:mouth,ear:ear,body:body,hairColor:hairColor,eyeColor:eyeColor,bodyColor:bodyColor},
-		success: function(){
-			alert('저장 완료!');
-			location.href='house';
-		},
-		error: function(e){
-//			alert(JSON.stringify(e));
-		}
-	});
-}
 
 // help 버튼을 누르면 도움말이 나온다
 function help(){
