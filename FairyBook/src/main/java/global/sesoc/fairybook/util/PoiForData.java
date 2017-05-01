@@ -78,7 +78,7 @@ public class PoiForData {
 			String select4 = row.getCell(5).getStringCellValue(); 
 			int answer = (int) row.getCell(6).getNumericCellValue();
 			
-			listQuizData.add(new Quiz(quiznum, question, select1, select2, select3, select4, answer));
+			//listQuizData.add(new Quiz(quiznum, question, select1, select2, select3, select4, answer));
 			
 		}
 		
