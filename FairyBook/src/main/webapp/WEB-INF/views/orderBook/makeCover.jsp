@@ -336,7 +336,6 @@ canvas{
 <title>Make Cover</title>
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
-
 <!--배너  -->
 <nav class="navbar-fixed-top">
 <div style="background-image: url('../resources/image/icon/banner.png');width: 100%;height: 100px;">
@@ -344,7 +343,7 @@ canvas{
 </div>
 </nav>
 
-<div id="under">
+<div id="under" style="z-index: -99; min-height: 100%;background-image: url('../resources/image/icon/backg.png');width:100%"> 
 <!-- Side Navigation -->
 
 <!--아이로그인  -->
@@ -442,7 +441,7 @@ canvas{
 <!-- Overlay effect when opening the side navigation on small screens -->
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="Close Sidemenu" id="myOverlay"></div>
 
-</div>
+
 
 
 <!--####################여기부터  -->
@@ -482,6 +481,7 @@ canvas{
 </div>
 <!--여기까지###########################  -->
 
+</div>
 
 <!--Footer  -->
 <%-- <c:import url="../main/mainFooter.jsp"></c:import> --%>
