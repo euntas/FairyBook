@@ -44,7 +44,7 @@ function confirmOrder(){
 			success: function(){
 			},
 			error: function(e){
-				alert(JSON.stringify(e));
+				console.log(JSON.stringify(e));
 			}
 		});
 		$.ajax({
@@ -54,7 +54,7 @@ function confirmOrder(){
 			success: function(){
 				
 			}, error: function(e){
-				alert(JSON.stringify(e));
+				console.log(JSON.stringify(e));
 			}
 		});
 	}//for

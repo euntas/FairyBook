@@ -520,11 +520,8 @@ function showAvatar(r){
    
    for (var i = 0; i < r.length; i++) {
 	   console.log(r[i].name);
-		if(i == r.length -1){
-      		input += '<img src="'+r[i].path+'" id="'+r[i].name+'" style="position: absolute;" usemap="#002"/>';
-		}else{
-      		input += '<img src="'+r[i].path+'" id="'+r[i].name+'" style="position: absolute;"/>';
-		}
+       input += '<img src="'+r[i].path+'" id="'+r[i].name+'" style="position: absolute;" usemap="#002"/>';
+		
 		analysis[i] = r[i].analysis;
    }//for
    
@@ -776,9 +773,6 @@ function downloadPDF(){
 		  </div>
 		  <hr>
 		  <div class="row">
-		  <div class="alert-info" style="width:350px;margin-left: 10%;text-align: center;">
-			 설명을 원하는 부분을 클릭해주세요! (지붕,굴뚝,문,창)
-			</div>
 		  	<div class="col-md-4" style="width: 500px;padding-left:10%;" id="showTree"></div>
 		  	<div class="panel panel-warning" style="height:250px;width: 400px;float:left;margin-top:5%;">
 		      <div class="panel-heading hanna" id="htpLabel">Tree</div>
