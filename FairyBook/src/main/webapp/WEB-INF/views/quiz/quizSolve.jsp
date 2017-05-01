@@ -26,7 +26,6 @@
 
 	// 회차 번호에 해당하는 퀴즈 불러오기
 	function select(selectionNum){
-		alert(selectionNum); 
 		$.ajax({
 			url:'quiz',
 			type: 'GET',
