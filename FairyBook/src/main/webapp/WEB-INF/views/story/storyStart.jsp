@@ -53,6 +53,7 @@
 			else{
 				console.log('기존 진행중 씬이 없는 경우');				
 				init(${currentStoryNum}, pageNum);
+				help();
 			}
 		});
 		
@@ -96,6 +97,20 @@
 
 		}
 		
+		// help 버튼을 누르면 도움말이 나온다
+		function help(){
+			var cw = screen.availWidth;     //화면 넓이
+			var ch = screen.availHeight;    //화면 높이
+			var sw = 877;    //띄울 창의 넓이
+			var sh = 620;    //띄울 창의 높이
+			var ml = (cw-sw)/2;        //가운데 띄우기위한 창의 x위치
+			var mt = (ch-sh)/2;         //가운데 띄우기위한 창의 y위치
+			window.open("../objectMaker/help","도움말",'width=877, height=620,top='+ mt +',left='+ ml +' loaction=no, toolbar=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no');
+		}
+		
+		function whoAreYou(){
+			return "story";
+		}
 
 </script>
 
