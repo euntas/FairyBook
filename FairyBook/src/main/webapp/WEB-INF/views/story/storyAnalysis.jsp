@@ -626,7 +626,7 @@ function downloadPDF(){
 		url:'../pdf/analysisToPdf',
 		data:{selectionNum:selectionNum},
 		success:function(){
-			location.href='../pdf/download?selectionnum='+selectionNum;
+			location.href='../pdf/download?selectionNum='+selectionNum;
 		},
 		fail:function(){
 			alert('download fail');
@@ -707,6 +707,7 @@ function downloadPDF(){
 		<hr>
     </div>
     
+    
     <!-- MBTI -->
     <div style="padding-top:10%;" id="menu6">
 		  <div class="row">
@@ -716,7 +717,7 @@ function downloadPDF(){
 		  </div>
 		  <hr>
 		  <div class="row">
-		  	<div class="alert alert-info">
+		  	<div class="alert-info" style="width:50%;text-align:center;margin: auto;">
 			  설명을 원하는 항목을 클릭해주세요!
 			</div>
 		  	<div class="alert alert-warning" onclick="mbtiIndicator('EI')">
