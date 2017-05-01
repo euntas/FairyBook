@@ -203,7 +203,7 @@ public class OrderBookController {
         OrderBook ob = dao.getOrder(num);
         logger.info("save Cover ob:{}",ob);
         logger.info("save Cover bookcover:{}",ob.getBookcover());
-        FileService.deleteFile(uploadPath+"/"+ob.getBookcover()); //파일 삭제
+        //FileService.deleteFile(uploadPath+"/"+ob.getBookcover()); //파일 삭제
 		
         ModelAndView mav = new ModelAndView();
         mav.setViewName("jsonView");        
