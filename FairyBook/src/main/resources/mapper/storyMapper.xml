@@ -7,7 +7,7 @@
  
 <select id="getQuiz" resultType="Quiz" parameterType="int">
 	select
-		quiznum, question, select1, select2, select3, select4, answer
+		quiznum, question, select1, select2, select3, select4, answer, division
 	from
 		quiz
 	where

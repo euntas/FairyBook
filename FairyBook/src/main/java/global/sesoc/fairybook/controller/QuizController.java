@@ -99,7 +99,7 @@ public class QuizController {
 		for (Scene scene : sceneList) {
 			quiz = dao.getQuiz(scene.getQuizNum());
 			if (scene.getQuizNum() != -1) {
-				if (quiz.getAnswer() != -1) {
+				if (quiz.getDivision() == 1) {
 					quizList.add(quiz);
 				}
 			}

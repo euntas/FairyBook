@@ -107,8 +107,10 @@
     </div>
     <ul class="nav navbar-nav">
     <c:forEach var="list" items="${selectionList}" varStatus="status">
+    <c:if test="${list.storyNum == currentStoryNum}">
       <li><a href="javascript:select('${list.selectionNum}');">${status.count}회차</a></li>
-      </c:forEach>
+    </c:if>
+    </c:forEach>
     </ul>
   </div>
 </nav>
