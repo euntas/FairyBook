@@ -51,8 +51,11 @@ public class HomeController {
 		else{
 			String id = user.getId();
 			ArrayList<MySelection> myStoryList = null;
+			ArrayList<MySelection> yourStoryList = null;
 			myStoryList = dao.getMyStoryList(id);
+			yourStoryList = dao.getYourStoryList(id);
 			model.addAttribute("myStoryList", myStoryList);			
+			model.addAttribute("yourStoryList", yourStoryList);
 		}
 
 		return "main/home";

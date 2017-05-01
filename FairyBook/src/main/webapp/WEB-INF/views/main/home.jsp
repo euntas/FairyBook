@@ -361,6 +361,8 @@ function homeImage(){
   <a href="orderBook/orderCart"><img src="./resources/image/icon/ordercart.png" id="ordercart"></a>
   <br><br>   
   <a href="orderBook/confirmOrder"><img src="./resources/image/icon/confirmorder.png" id="confirmorder"></a>
+  <br><br>
+  <a href="menu/otherChildren"><img src="./resources/image/icon/otherChildren.png" id="otherChildren"></a>
   
 </nav>
 </c:if>
@@ -426,45 +428,56 @@ function homeImage(){
 	<c:if test="${userType == 'parent'}">
 		<div id="Borge" class="w3-container person">
      	<br>
-		<img src="./resources/image/mychildstory.png">  <hr>
-		<hr>
+		<img src="./resources/image/mychildstory.png">
      	</div>
      	
-     	<div class="w3-row-padding w3-padding-16">
-     		<c:forEach var="story" items="${myStoryList}" varStatus="status">
+     	<table class="table-bordered table">
+			<tr>
+			<c:forEach var="story" items="${myStoryList}" varStatus="status">
 			<c:if test="${status.index < 3 }">
-	     		<div class="w3-third w3-margin-bottom">
-				<c:if test="${story.storyNum==0}">
-		        	<img src="./resources/image/hiyoko.png" alt="Norway" style="width:100%">
-				</c:if>
-				<c:if test="${story.storyNum==1}">
-		        	<img src="./resources/image/hansel.jpg" alt="Norway" style="width:100%">
-				</c:if>
-				<c:if test="${story.storyNum==2}">
-		        	<img src="./resources/image/snowwhitetitle.jpg" alt="Norway" style="width:100%">
-				</c:if>
-		         <div class="w3-container w3-white">
-		         <br>
-		        <c:if test="${story.storyNum==0}">
-		           <img src="./resources/image/hanseltitle.png">
-		           <h6 class="w3-opacity">2017.3.22</h6>
-		           <button class="w3-button w3-block w3-red w3-margin-bottom" onclick="location.href='./menu/myChildStory'">더보기</button>
-		        </c:if>
-		        <c:if test="${story.storyNum==1}">
-		           <img src="./resources/image/hanseltitle.png">
-		           <h6 class="w3-opacity">2017.3.22</h6>
-		           <button class="w3-button w3-block w3-red w3-margin-bottom" onclick="location.href='./menu/myChildStory'">더보기</button>
-		        </c:if>
-		        <c:if test="${story.storyNum==2}">
-		           <img src="./resources/image/hanseltitle.png">
-		           <h6 class="w3-opacity">2017.3.22</h6>
-		           <button class="w3-button w3-block w3-red w3-margin-bottom" onclick="location.href='./menu/myChildStory'">더보기</button>
-		        </c:if>
-		         </div>
-		       	</div>
-		     </c:if>
-		     </c:forEach>
-     	</div>
+			<td>
+			<!-- 여기엔 썸네일이 들어간다 -->
+			<a href="storySlide?selectionNum=${story.selectionNum}">
+			<c:if test="${story.storyNum==0}">
+				<img src="./resources/image/hiyoko.png" alt="노랑이의 모험" style="width:100%;"><br>
+			</c:if>
+			<c:if test="${story.storyNum==1}">
+				<img src="./resources/image/hansel.jpg" alt="헨젤과그레텔" style="width:100%;"><br>
+			</c:if>
+			<c:if test="${story.storyNum==2}">
+				<img src="./resources/image/snowwhitetitle.jpg" alt="백설공주" style="width:100%;"><br>
+			</c:if>
+			</a>
+			<!-- 여기까지 썸네일 -->
+				<div class="w3-container w3-white">
+					<h3 class="hanna">
+					<c:choose>
+						<c:when test="${story.storyNum==0}">노랑이의 모험</c:when>
+						<c:when test="${story.storyNum==1}">헨젤과 그레텔</c:when>			
+						<c:when test="${story.storyNum==2}">백설공주</c:when>
+						<c:when test="${story.storyNum==3}">빨간모자</c:when>
+						<c:when test="${story.storyNum==4}">동물의 왕국</c:when>
+					</c:choose>
+					</h3>
+					<h6 class="w3-opacity">${story.endDate}</h6>
+					<form action="./slide/storySlide" method="post" style="display: inline;">
+						<button type="submit" class="w3-button w3-red" style="margin-bottom:3px; width: 100%">감상하기</button>
+						<input type="hidden" name="selectionNum" id="selectionNum" value="${story.selectionNum}">
+						<input type="hidden" name="storyNum" id="storyNum" value="${story.storyNum}">
+						<input type="hidden" name="id" id="id" value="${story.id}">
+					</form>
+				</div>
+			</td>
+			<c:if test="${status.count%3==0}">
+				</tr>
+				<tr>	
+			</c:if>
+			<c:if test="${status.last}">
+				</tr>
+			</c:if>
+			</c:if>
+		</c:forEach>
+		</table>
 	</c:if>
 	
 	<!-- 로그인 된 상태일 때 다른 아이들의 동화 보이기  -->
@@ -472,37 +485,56 @@ function homeImage(){
      <div id="Borge" class="w3-container person">
      <br>
      <img src="./resources/image/smalltitle2.png">
-     <hr>
      </div>
-     <div class="w3-row-padding w3-padding-16">
-       <div class="w3-third w3-margin-bottom">
-         <img src="./resources/image/hansel.jpg" alt="Norway" style="width:100%">
-         <div class="w3-container w3-white">
-         <br>
-           <img src="./resources/image/hanseltitle.png">
-           <h6 class="w3-opacity">2017.3.22</h6>
-           <button class="w3-button w3-block w3-green w3-margin-bottom">Play</button>
-         </div>
-       </div>
-       <div class="w3-third w3-margin-bottom">
-         <img src="./resources/image/redhoodtitle.jpg" alt="Norway" style="width:100%">
-         <div class="w3-container w3-white">
-         <br>
-           <img src="./resources/image/redhoodtitle.png">
-           <h6 class="w3-opacity">2017.3.31</h6>
-           <button class="w3-button w3-block w3-green w3-margin-bottom">Play</button>
-         </div>
-       </div>
-       <div class="w3-third w3-margin-bottom">
-         <img src="./resources/image/redhoodtitle.jpg"" alt="Norway" style="width:100%">
-         <div class="w3-container w3-white">
-         <br>
-           <img src="./resources/image/redhoodtitle.png">
-           <h6 class="w3-opacity">2017.4.5</h6>
-           <button class="w3-button w3-block w3-green w3-margin-bottom">Play</button>
-         </div>
-       </div>
-     </div>
+     <table class="table-bordered table">
+		<tr>
+		<c:forEach var="story" items="${yourStoryList}" varStatus="status">
+		<c:if test="${status.index < 3 }">
+		<td>
+		<!-- 여기엔 썸네일이 들어간다 -->
+		<a href="storySlide?selectionNum=${story.selectionNum}">
+		<c:if test="${story.storyNum==0}">
+			<img src="./resources/image/hiyoko.png" alt="노랑이의 모험" style="width:100%;"><br>
+		</c:if>
+		<c:if test="${story.storyNum==1}">
+			<img src="./resources/image/hansel.jpg" alt="헨젤과그레텔" style="width:100%;"><br>
+		</c:if>
+		<c:if test="${story.storyNum==2}">
+			<img src="./resources/image/snowwhitetitle.jpg" alt="백설공주" style="width:100%;"><br>
+		</c:if>
+		</a>
+		<!-- 여기까지 썸네일 -->
+			<div class="w3-container w3-white">
+				<h3 class="hanna">
+					${story.id}님의
+				<c:choose>
+					<c:when test="${story.storyNum==0}">노랑이의 모험</c:when>
+					<c:when test="${story.storyNum==1}">헨젤과 그레텔</c:when>			
+					<c:when test="${story.storyNum==2}">백설공주</c:when>
+					<c:when test="${story.storyNum==3}">빨간모자</c:when>
+					<c:when test="${story.storyNum==4}">동물의 왕국</c:when>
+				</c:choose>
+				</h3>
+				<h6 class="w3-opacity">${story.endDate}</h6>
+				<form action="./slide/storySlide" method="post" style="display: inline;">
+					<button type="submit" class="w3-button w3-red" style="margin-bottom:3px; width: 100%">감상하기</button>
+					<input type="hidden" name="selectionNum" id="selectionNum" value="${story.selectionNum}">
+					<input type="hidden" name="storyNum" id="storyNum" value="${story.storyNum}">
+					<input type="hidden" name="id" id="id" value="${story.id}">
+				</form>
+			</div>
+		</td>
+		<c:if test="${status.count%3==0}">
+			</tr>
+			<tr>	
+		</c:if>
+		<c:if test="${status.last}">
+			</tr>
+		</c:if>
+		</c:if>
+	</c:forEach>
+	</table>
+
     </c:if>
 </div>
 </div>
