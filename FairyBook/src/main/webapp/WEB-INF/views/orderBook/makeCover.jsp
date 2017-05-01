@@ -239,7 +239,7 @@ canvas{
 			console.log(p.TYPE);
 			if (p.TYPE == 'background') {
 				console.log(p.PATH);
-				bg += "<img src='"+p.PATH+"' width='200px' sel='bg'> ";
+				bg += "<img src='"+p.PATH+"' width='200px' height='300px' sel='bg'> ";
 			}else if(p.TYPE == 'title'){
 				tt += "<img src='"+p.PATH+"' width='200px' height='auto' sel='tt'> ";
 			}else if(p.TYPE == 'character'){
