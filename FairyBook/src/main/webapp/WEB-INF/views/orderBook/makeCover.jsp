@@ -214,7 +214,7 @@ canvas{
 			dataType:'json',
 			success: coverResources,
 			error: function(e){
-				alert(JSON.stringify(e));
+				console.log(JSON.stringify(e));
 			}
 		});
 	}
@@ -315,7 +315,7 @@ canvas{
             	 form.submit();
                  try{
                  }catch(e){                
-                     alert('server Error!!');
+                	 console.log('server Error!!');
                  }
              }
          }); //ajax
