@@ -641,13 +641,6 @@ function formcheck(){
 					class="form-control"></td>
 				
 			</tr>
-			<tr style="height: 5px;"></tr>
-			<tr>
-				<th class="firstRow">&nbsp;&nbsp;&nbsp;사진 업로드</th>
-				<td class="secondRow"><input type="file" name="upload"
-					id="upload" multiple="multiple"></td>
-				
-			</tr>
 			
 		</table>
 		<br>
