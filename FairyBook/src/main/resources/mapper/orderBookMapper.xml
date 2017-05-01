@@ -17,6 +17,14 @@
 		)
 </select>
 
+<delete id="removeDefault">
+	delete from orderbook 
+	where 
+		selectionnum=#{selectionnum}
+	and
+		currentstate='default'
+</delete>
+
 <insert id="saveOrder" parameterType="OrderBook">
 	insert into 
 		orderbook
@@ -54,6 +62,8 @@
 	and
 	<if test="selectionnum != -1">
 		o.selectionnum = #{selectionnum} 
+	and
+		o.orderdate = (select max(orderdate) from orderbook group by selectionnum having selectionnum=#{selectionnum})
 	and 
 		o.currentstate not in('addToCart','makeOrder','confirmedOrder')
 	</if>

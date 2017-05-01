@@ -247,7 +247,7 @@ function updateOrder(state){ //addToCart,makeOrder,thumbnail
 <button type="button" class="btn btn-primary" onclick="location.href='makeCover?ordernum=${order.ordernum}'">표지 만들기</button>
 <button type="button" class="btn btn-default dropdown">예전 표지 가져오기</button>
 <button type="button" class="btn btn-warning" onclick="updateOrder('thumbnail')">저장하기</button>
-<span class="dropdown-content"></span>
+<span class="dropdown-content" style="overflow-y:scroll;"></span>
 </td>
 <c:if test="${userType == 'parent'}">
 <td>

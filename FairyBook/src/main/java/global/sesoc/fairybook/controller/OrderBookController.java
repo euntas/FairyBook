@@ -69,6 +69,9 @@ public class OrderBookController {
 			){
 		logger.info("order selectionnum:{}",selectionnum);
 		logger.info("order ordernum:{}",ordernum);
+		if (selectionnum != -1) {
+			dao.removeDefault(selectionnum);
+		}
 		String id = maker.getId();
 		Map<String, Integer> num = new HashMap<>();
 		num.put("selectionnum", selectionnum);
@@ -86,14 +89,16 @@ public class OrderBookController {
 		//제목
 		String title = dao.getStoryTitle(selectionnum);
 		logger.info("title????????:{}",title);
+		ordernum = dao.setOrdernum();
+		logger.info("오더번호:{}",ordernum);
+		
 		if (orderBook == null) {
-			ordernum = dao.setOrdernum();
-			logger.info("오더번호:{}",ordernum);
 			OrderBook newob = new OrderBook(ordernum, selectionnum, title, id, "default", "default", "default", 0);
 			logger.info("order neworderbook: {}", newob);
-			dao.saveOrder(newob);
 			orderBook = newob;
 		}
+		orderBook.setOrdernum(ordernum);
+		dao.saveOrder(orderBook);
 		orderBook.setTitle(title);
 		logger.info("order orderbook: {}", orderBook);
 		
