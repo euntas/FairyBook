@@ -146,4 +146,9 @@ public class OrderBookDAO {
 		return result;
 	}
 
+	public void removeDefault(int selectionnum) {
+		OrderBookMapper mapper = sqlSession.getMapper(OrderBookMapper.class);
+		mapper.removeDefault(selectionnum);
+	}
+
 }

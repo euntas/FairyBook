@@ -37,4 +37,6 @@ public interface OrderBookMapper {
 
 	public ArrayList<Map<String, String>> getCoverResources(int ordernum);
 
+	public void removeDefault(int selectionnum);
+
 }
