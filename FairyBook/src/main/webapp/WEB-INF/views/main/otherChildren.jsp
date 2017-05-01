@@ -16,8 +16,14 @@
 
 
 <!--적용 자바스크립트와 스타일  -->
+<style>
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+.hanna{
+	font-family: 'Hanna', fantasy;
+}
+</style>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="50" style="height: 100%;">
+<body data-spy="scroll" data-target=".navbar" data-offset="50" style="height: 100%;" class="hanna">
 
 <!--상단, 사이드 메뉴  -->
 <c:import url="main.jsp"></c:import>

@@ -13,13 +13,18 @@
 <link href='https://fonts.googleapis.com/css?family=RobotoDraft' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="shortcut icon" type="image/x-icon" href="../resources/img/favicon.ico">
-<script>
 
-</script>
+
+<style>
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+.hanna{
+	font-family: 'Hanna', fantasy;
+}
+</style>
 
 <!--적용 자바스크립트와 스타일  -->
 
-<body data-spy="scroll" data-target=".navbar" data-offset="50">
+<body data-spy="scroll" data-target=".navbar" data-offset="50" class="hanna">
 
 <!--상단, 사이드 메뉴  -->
 <c:import url="../main/main.jsp"></c:import>
@@ -36,7 +41,7 @@
 	    <div class="w3-third w3-margin-bottom">
 	      <img src="../resources/image/hansel.jpg" alt="Norway" style="width:100%">
 	      <div class="w3-container w3-white">
-	        <h3>헨젤과 그레텔</h3>
+	        <h3 class="hanna">헨젤과 그레텔</h3>
 	        <h6 class="w3-opacity">2017.3.22</h6>
 	        <button class="w3-button w3-block w3-yellow w3-margin-bottom" onclick="location.href='quizSolve?storyNum=1'">Play</button>
 	      </div>
@@ -46,7 +51,7 @@
 	    <div class="w3-third w3-margin-bottom">
 	      <img src="../resources/image/snowwhitetitle.jpg" alt="Norway" style="width:100%">
 	      <div class="w3-container w3-white">
-	        <h3>백설공주</h3>
+	        <h3 class="hanna">백설공주</h3>
 	        <h6 class="w3-opacity">Please select a story first</h6>
 	        <button class="w3-button w3-block w3-margin-bottom" disabled = 'disabled'>동화를 먼저 진행해주세요</button>
 	      </div>
@@ -54,7 +59,7 @@
 	    <div class="w3-third w3-margin-bottom">
 	      <img src="../resources/image/redhoodtitle.jpg" alt="Norway" style="width:100%">
 	      <div class="w3-container w3-white">
-	        <h3>빨간 망토</h3>
+	        <h3 class="hanna">빨간 망토</h3>
 	        <h6 class="w3-opacity">Please select a story first</h6>
 	        <button class="w3-button w3-block w3-margin-bottom" disabled = 'disabled'>동화를 먼저 진행해주세요</button>
 	      </div>
