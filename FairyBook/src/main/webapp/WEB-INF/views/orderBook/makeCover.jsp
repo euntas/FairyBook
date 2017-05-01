@@ -203,6 +203,17 @@ canvas{
 		$('#update').on('mouseout',function(){
 			$("#update").attr('src',"../resources/image/icon/userinfobt.png");
 		});
+		
+		//상담 결과 보기 버튼 마우스오버
+		$('#otherChildren').on('mouseover',function(){
+			$("#otherChildren").attr('src',"../resources/image/icon/otherChildren1.png");
+		});
+		
+		//상담 결과 보기 버튼 마우스아웃
+		$('#otherChildren').on('mouseout',function(){
+			$("#otherChildren").attr('src',"../resources/image/icon/otherChildren.png");
+		});
+		
 		init();
 	});
 	
@@ -362,6 +373,8 @@ canvas{
  <a href="../menu/storyPlay"><img src="../resources/image/icon/storyplay.png" id="storyplay"></a>
  <br><br>
  <a href="../quiz/quizList"><img src="../resources/image/icon/quizlist.png" id="quizlist"></a>
+ <br><br>
+ <a href="../menu/otherChildren"><img src="../resources/image/icon/otherChildren.png" id="otherChildren"></a>
   
 </nav>
 </c:if>
