@@ -550,7 +550,7 @@ height: auto;">
 <!--Footer  -->
 
 <nav class="navbar navbar-default " >
-   <footer class="container-fluid bg-4 text-center" style="position: absolute;
+   <footer class="container-fluid bg-4 text-center" style="position: fixed;
 overflow:auto;
 bottom: 0;
 width: 100%;
