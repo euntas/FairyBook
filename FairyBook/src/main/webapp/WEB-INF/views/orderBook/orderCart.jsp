@@ -101,7 +101,7 @@ function deleteSelections(){
 					cartList();
 				},
 				error: function(e){
-					console.log(JSON.stringify(e));
+					alert(JSON.stringify(e));
 				}
 			});
 		}
