@@ -13,6 +13,9 @@
 <link href='https://fonts.googleapis.com/css?family=RobotoDraft' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="shortcut icon" type="image/x-icon" href="../resources/img/favicon.ico">
+<link rel="stylesheet" href="../resources/css/alertify.core.css" />
+<link rel="stylesheet" href="../resources/css/alertify.default.css" id="toggleCSS" />
+<script src="../resources/js/alertify.min.js"></script>
 <!--적용 자바스크립트와 스타일  -->
 <style>
 @import url(//fonts.googleapis.com/earlyaccess/hanna.css);
@@ -41,13 +44,13 @@
 	//정답 판독
 	function selection(answer, sele, i){
 		if (answer != sele) {
-			alert("정답은 " + answer+"입니다.");
+			alertify.alert("정답은 " + answer+"입니다.");
 			$('#answerda' + i).html("정답: " + answer); 
 			$('#answerda'+ i).css('background-color','#ff8566');
 		};
 	
+			alertify.alert("정답입니다.");
 		if (answer == sele) {
-			alert("정답입니다.");
 			$('#answerda' + i).html("정답: " + answer); 
 			$('#answerda'+ i).css('background-color','#99ff66');
 		};
