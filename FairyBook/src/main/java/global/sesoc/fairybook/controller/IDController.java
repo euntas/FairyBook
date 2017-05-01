@@ -221,18 +221,10 @@ public class IDController {
 			String phone1, String phone2, String phone3, 
 			String email, String email2,
 			StoryMaker maker
-			, MultipartFile upload
 			,Model model
 			,HttpSession session) {
 		logger.info("birth:{}",maker);
 		
-		if (!upload.getOriginalFilename().equals("")) {
-			String savedFile = FileService.saveFile(upload, uploadPath);
-
-			// 원래 파일명과 저장된 파일명을 board객체에 담아 DB에 저장
-			maker.setOriginalProfile(upload.getOriginalFilename());
-			maker.setSavedProfile(savedFile);
-		}
 		int result = 0;
 		try{
 		String phone = phone1 + "-" + phone2 + "-" + phone3;

@@ -59,7 +59,7 @@ function lastBookCover(){
 		dataType: 'json',
 		success: showDropdown,
 		error:function(e){
-			alert(JSON.stringify(e));
+			console.log(JSON.stringify(e));
 		}
 	});
 }
@@ -98,7 +98,7 @@ function selectCover(ordernum){
 			$('.cover').attr('isDefault','getBookCover?ordernum='+ordernum);
 		},
 		error:function(e){
-			alert(JSON.stringify(e));
+			console.log(JSON.stringify(e));
 		}
 	});
 }
@@ -173,7 +173,7 @@ function updateOrder(state){ //addToCart,makeOrder,thumbnail
 		,success: function(){
 		}
 		,error:function(e){
-			alert(JSON.stringify(e));
+			console.log(JSON.stringify(e));
 		}
 	}); 
 	if (state == 'addToCart') {
@@ -192,7 +192,7 @@ function updateOrder(state){ //addToCart,makeOrder,thumbnail
 				$('#confirmOrderForm').submit();
 			},
 			error: function(e){
-				alert(JSON.stringify(e));
+				console.log(JSON.stringify(e));
 			}
 		}); 
 	}else{

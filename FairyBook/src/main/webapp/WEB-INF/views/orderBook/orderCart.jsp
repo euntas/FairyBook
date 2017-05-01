@@ -33,7 +33,7 @@ function cartList(){
 		dataType:'json',
 		success: printCartList,
 		error: function(e){
-			alert(JSON.stringify(e));
+			console.log(JSON.stringify(e));
 		}
 	});
 }
@@ -72,7 +72,7 @@ function orderSelections(){
 				success: function(){
 				},
 				error: function(e){
-					alert(JSON.stringify(e));
+					console.log(JSON.stringify(e));
 				}
 			}); 
 		}

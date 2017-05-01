@@ -47,7 +47,7 @@
 	      <img src="../resources/image/snowwhitetitle.jpg" alt="Norway" style="width:100%">
 	      <div class="w3-container w3-white">
 	        <h3>백설공주</h3>
-	        <h6 class="w3-opacity">From $149</h6>
+	        <h6 class="w3-opacity">Please select a story first</h6>
 	        <button class="w3-button w3-block w3-margin-bottom" disabled = 'disabled'>동화를 먼저 진행해주세요</button>
 	      </div>
 	    </div>
@@ -55,7 +55,7 @@
 	      <img src="../resources/image/redhoodtitle.jpg" alt="Norway" style="width:100%">
 	      <div class="w3-container w3-white">
 	        <h3>빨간 망토</h3>
-	        <h6 class="w3-opacity">From $199</h6>
+	        <h6 class="w3-opacity">Please select a story first</h6>
 	        <button class="w3-button w3-block w3-margin-bottom" disabled = 'disabled'>동화를 먼저 진행해주세요</button>
 	      </div>
 	    </div>
