@@ -44,7 +44,7 @@ function confirmOrder(){
 			success: function(){
 			},
 			error: function(e){
-				alert(JSON.stringify(e));
+				console.log(JSON.stringify(e));
 			}
 		});
 		$.ajax({
@@ -54,7 +54,7 @@ function confirmOrder(){
 			success: function(){
 				
 			}, error: function(e){
-				alert(JSON.stringify(e));
+				console.log(JSON.stringify(e));
 			}
 		});
 	}//for
@@ -119,10 +119,14 @@ function confirmOrder(){
 <!--여기까지###########################  -->
 
 </div>
-
+<br>
+<br>
 <!--Footer  -->
-
+<div style="position: fixed;
+bottom:0;
+width: 100%;
+height: auto;">
 <c:import url="../main/mainFooter.jsp"></c:import>
-
+</div>
 </body>
 </html> 

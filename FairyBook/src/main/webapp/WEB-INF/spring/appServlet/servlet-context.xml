@@ -37,6 +37,7 @@
 			<mvc:mapping path="/pdf/*" />
 			<mvc:mapping path="/orderBook/*" />
 			<mvc:mapping path="/quiz/*" />
+			<mvc:mapping path="/menu/*" />
 			<beans:ref bean="loginInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
