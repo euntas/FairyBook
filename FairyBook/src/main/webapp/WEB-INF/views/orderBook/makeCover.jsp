@@ -203,6 +203,17 @@ canvas{
 		$('#update').on('mouseout',function(){
 			$("#update").attr('src',"../resources/image/icon/userinfobt.png");
 		});
+		
+		//상담 결과 보기 버튼 마우스오버
+		$('#otherChildren').on('mouseover',function(){
+			$("#otherChildren").attr('src',"../resources/image/icon/otherChildren1.png");
+		});
+		
+		//상담 결과 보기 버튼 마우스아웃
+		$('#otherChildren').on('mouseout',function(){
+			$("#otherChildren").attr('src',"../resources/image/icon/otherChildren.png");
+		});
+		
 		init();
 	});
 	
@@ -228,7 +239,7 @@ canvas{
 			console.log(p.TYPE);
 			if (p.TYPE == 'background') {
 				console.log(p.PATH);
-				bg += "<img src='"+p.PATH+"' width='200px' sel='bg'> ";
+				bg += "<img src='"+p.PATH+"' width='200px' height='300px' sel='bg'> ";
 			}else if(p.TYPE == 'title'){
 				tt += "<img src='"+p.PATH+"' width='200px' height='auto' sel='tt'> ";
 			}else if(p.TYPE == 'character'){
@@ -325,7 +336,6 @@ canvas{
 <title>Make Cover</title>
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
-
 <!--배너  -->
 <nav class="navbar-fixed-top">
 <div style="background-image: url('../resources/image/icon/banner.png');width: 100%;height: 100px;">
@@ -333,7 +343,7 @@ canvas{
 </div>
 </nav>
 
-<div id="under">
+<div id="under" style="z-index: -99; min-height: 100%;background-image: url('../resources/image/icon/backg.png');width:100%"> 
 <!-- Side Navigation -->
 
 <!--아이로그인  -->
@@ -362,6 +372,8 @@ canvas{
  <a href="../menu/storyPlay"><img src="../resources/image/icon/storyplay.png" id="storyplay"></a>
  <br><br>
  <a href="../quiz/quizList"><img src="../resources/image/icon/quizlist.png" id="quizlist"></a>
+ <br><br>
+ <a href="../menu/otherChildren"><img src="../resources/image/icon/otherChildren.png" id="otherChildren"></a>
   
 </nav>
 </c:if>
@@ -429,7 +441,7 @@ canvas{
 <!-- Overlay effect when opening the side navigation on small screens -->
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="Close Sidemenu" id="myOverlay"></div>
 
-</div>
+
 
 
 <!--####################여기부터  -->
@@ -469,6 +481,7 @@ canvas{
 </div>
 <!--여기까지###########################  -->
 
+</div>
 
 <!--Footer  -->
 <%-- <c:import url="../main/mainFooter.jsp"></c:import> --%>

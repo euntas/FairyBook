@@ -239,6 +239,7 @@ function reset(){
 
 //help 버튼을 누르면 도움말이 나온다
 function help(){
+	alertify.alert('당신의 집을 만들어 주세요!');
 	var cw = screen.availWidth;     //화면 넓이
 	var ch = screen.availHeight;    //화면 높이
 	var sw = 877;    //띄울 창의 넓이

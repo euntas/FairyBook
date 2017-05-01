@@ -12,6 +12,7 @@ var whosYourDaddy = window.opener.whoAreYou();
 var avatarPath =  "../resources/img/util/avatarHelp.jpg";
 var housePath = "../resources/img/util/houseHelp.jpg";
 var etcPath = "../resources/img/util/etcHelp.jpg";
+var storyPath = "../resources/img/util/storyHelp.png";
 
 $(document).ready(function(){
 	if(whosYourDaddy == 'avatar'){
@@ -20,6 +21,8 @@ $(document).ready(function(){
 		$("#help").attr("src", housePath);
 	}else if(whosYourDaddy == 'etc'){
 		$("#help").attr("src", etcPath);
+	}else if(whosYourDaddy == 'story'){
+		$("#help").attr("src", storyPath);
 	}
 })
 
