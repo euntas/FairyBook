@@ -239,7 +239,7 @@ canvas{
 			console.log(p.TYPE);
 			if (p.TYPE == 'background') {
 				console.log(p.PATH);
-				bg += "<img src='"+p.PATH+"' width='200px' sel='bg'> ";
+				bg += "<img src='"+p.PATH+"' width='200px' height='300px' sel='bg'> ";
 			}else if(p.TYPE == 'title'){
 				tt += "<img src='"+p.PATH+"' width='200px' height='auto' sel='tt'> ";
 			}else if(p.TYPE == 'character'){
@@ -262,11 +262,11 @@ canvas{
 		}else if(selectedImg.attr('sel') == 'tt'){ //제목
 			input += "<div class='selected ui-widget-content' style='display:inline-block;background-image: url("
 			input += '"'+selectedImg.attr('src')+'"';
-			input += ");width: 300px;height: 80px;border: 0px solid #c5c5c5;' onmouseover='javascript:editImg($(this))'></div>"; //onmouseover='javascript:editImg()'
+			input += ");width: 300px;height: 80px;border: 0px solid #c5c5c5;' onmouseover='javascript:editImg($(this))'></div>";
 		}else{ //캐릭터 일때
 			input += "<div class='selected ui-widget-content' style='display:inline-block;background-image: url("
 			input += '"'+selectedImg.attr('src')+'"';
-			input += ");width: 150px;height: 150px;border: 0px solid #c5c5c5;' onmouseover='javascript:editImg($(this))'></div>"; //onmouseover='javascript:editImg()'
+			input += ");width: 150px;height: 150px;border: 0px solid #c5c5c5;' onmouseover='javascript:editImg($(this))'></div>"; 
 		}
 		$('#cover').html(input);
 		$('.selected').css('background-color','transparent');
@@ -336,7 +336,6 @@ canvas{
 <title>Make Cover</title>
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
-
 <!--배너  -->
 <nav class="navbar-fixed-top">
 <div style="background-image: url('../resources/image/icon/banner.png');width: 100%;height: 100px;">
@@ -344,7 +343,7 @@ canvas{
 </div>
 </nav>
 
-<div id="under">
+<div id="under" style="z-index: -99; min-height: 100%;background-image: url('../resources/image/icon/backg.png');width:100%"> 
 <!-- Side Navigation -->
 
 <!--아이로그인  -->
@@ -442,7 +441,7 @@ canvas{
 <!-- Overlay effect when opening the side navigation on small screens -->
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="Close Sidemenu" id="myOverlay"></div>
 
-</div>
+
 
 
 <!--####################여기부터  -->
@@ -482,6 +481,7 @@ canvas{
 </div>
 <!--여기까지###########################  -->
 
+</div>
 
 <!--Footer  -->
 <%-- <c:import url="../main/mainFooter.jsp"></c:import> --%>

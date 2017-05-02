@@ -176,7 +176,6 @@ $(function(){
 </div>
 </nav>
 
-
 <div id="under" style="z-index: -99; min-height: 100%;background-image: url('../resources/image/icon/backg.png');width:100%"> 
 <!-- Side Navigation -->
 <!--로그인하지 않았을 때  -->
@@ -269,7 +268,9 @@ $(function(){
   <a href="../orderBook/orderCart"><img src="../resources/image/icon/ordercart.png" id="ordercart"></a>
   <br><br>	
   <a href="../orderBook/confirmOrder"><img src="../resources/image/icon/confirmorder.png" id="confirmorder"></a>
-  
+  <br><br>
+ <a href="../menu/otherChildren"><img src="../resources/image/icon/otherChildren.png" id="otherChildren"></a>
+ 
   
 </nav>
 </c:if>
