@@ -397,6 +397,7 @@ function showMBTIAnalysis(analysis){
 
 function showHouse(house){
 	var input = '';
+	var noElements = '';
 	
 	for (var i = 0; i < house.length; i++) {
 		input += '<img src="'+house[i].path+'" id="'+house[i].name+'" style="position: absolute;" usemap="#houseMap"/>';
@@ -408,14 +409,22 @@ function showHouse(house){
 	
 	$.each(house,function(i,h){
 		console.log(h.name);
-		if (h.name.indexOf('chimney')!=-1) {
+		if (h.name.indexOf('chimney01')!=-1 || h.name.indexOf('chimney02')!=-1 || h.name.indexOf('chimney03')!=-1 || h.name.indexOf('chimney04')!=-1){
 			houseName[i] = '굴뚝';
 			input+='<area alt="chimney" shape="rect" coords="163,60,194,85" onclick="housePoint(\''+i+'\')">';
+		}
+		else if(h.name.indexOf('chimney00')!=-1){
+			houseName[i] = '굴뚝';
+			noElements += '<a onclick="housePoint(\''+i+'\')">굴뚝 없음</a>  ';
 		}
 		else if(h.name.indexOf('roof')!=-1){
 			houseName[i] = '지붕';
 			input+='<area alt="roof" shape="poly" coords="98,92,82,144,130,144,130,92" onclick="housePoint(\''+i+'\')">';
 			input+='<area alt="roof" shape="poly" coords="170,92,170,144,242,142,198,92" onclick="housePoint(\''+i+'\')">';
+		}
+		else if(h.name.indexOf('door00')!=-1){
+			houseName[i] = '문';
+			noElements += '<a onclick="housePoint(\''+i+'\')">문 없음</a>  ';
 		}
 		else if(h.name.indexOf('door01')!=-1){
 			houseName[i] = '문';
@@ -432,6 +441,10 @@ function showHouse(house){
 		else if(h.name.indexOf('door05')!=-1){
 			houseName[i] = '문';
 			input+='<area alt="door" shape="rect" coords="88,220,210,299" onclick="housePoint(\''+i+'\')">';
+		}
+		else if(h.name.indexOf('window00')!=-1){
+			houseName[i] = '창문';
+			noElements += '<a onclick="housePoint(\''+i+'\')">창문 없음</a> ';
 		}
 		else if(h.name.indexOf('window01')!=-1){
 			houseName[i] = '창문';
@@ -450,6 +463,10 @@ function showHouse(house){
 			input+='<area alt="window" shape="rect" coords="77,187,127,211" onclick="housePoint(\''+i+'\')">';
 		}
 	});
+	
+	if (noElements != '') {
+		$('#noElementsH').html(noElements);
+	}
 	
 	$('#showHouse').html(input);
 	$('#htpLabelH').html(houseName[0]);
@@ -517,6 +534,7 @@ function bringAvatar(){
 var avatarName = new Array();;
 function showAvatar(r){
    var input = '';
+   var noElements = '';
    
    for (var i = 0; i < r.length; i++) {
 	   console.log(r[i].name);
@@ -533,8 +551,12 @@ function showAvatar(r){
    $.each(r,function(i,a){
 		if (a.name.indexOf('ear')!=-1) {
 			avatarName[i] = '귀';
-			input+='<area alt="ear" shape="rect" coords="38,121,59,158" onclick="avatarPoint(\''+i+'\')">';
 			input+='<area alt="ear" shape="rect" coords="241,121,253,160" onclick="avatarPoint(\''+i+'\')">';
+			input+='<area alt="ear" shape="rect" coords="38,121,59,158" onclick="avatarPoint(\''+i+'\')">';
+		}
+		if (a.name.indexOf('ear01')!=-1) {
+			avatarName[i] = '귀';
+			noElements += '<a onclick="avatarPoint(\''+i+'\')">귀 없음</a> ';
 		}
 		if (a.name.indexOf('face')!=-1) {
 			avatarName[i] = '얼굴';
@@ -554,12 +576,20 @@ function showAvatar(r){
 			avatarName[i] = '코';
 			input+='<area alt="nose" shape="rect" coords="135,138,153,159" onclick="avatarPoint(\''+i+'\')">';
 		}
+		if (a.name.indexOf('nose01')!=-1) {
+			avatarName[i] = '코';
+			noElements += '<a onclick="avatarPoint(\''+i+'\')">코 없음</a> ';
+		}
 		if (a.name.indexOf('hair')!=-1) {
 			avatarName[i] = '머리';
 			input+='<area alt="hair" shape="poly" coords="51,85,104,69,194,67,246,88,218,42,148,17,79,85,46" onclick="avatarPoint(\''+i+'\')">';
 		}
 	});
    input += '</map>';
+   
+   if (noElements!='') {
+		$('#noElementsA').html(noElements);
+	}
    
    $('#showAvatar2').html(input);
 	$('#htpLabelA').html(avatarName[0]);
@@ -748,7 +778,7 @@ function downloadPDF(){
 		  </div>
 		  <hr>
 		  <div class="row">
-		  <div class="alert-info" style="width:350px;margin-left: 10%;text-align: center;">
+		  	<div class="alert-info" style="width:350px;margin-left: 10%;text-align: center;">
 			 설명을 원하는 부분을 클릭해주세요! (지붕,굴뚝,문,창문)
 			</div>
 		  	<div class="col-md-4" style="width: 500px;padding-left:10%;" id="showHouse"></div>
@@ -757,6 +787,7 @@ function downloadPDF(){
 		      <div class="panel-body hanna" id="htpSpecificH"></div>
 		    </div>
 		  </div>
+		    <div id="noElementsH" style="width:350px;margin-left: 7%;text-align: center;color:red;"></div>
 		  <br><hr>
 		   <center>
 		   <button class="btn btn-warning" onclick="javascript:downloadPDF();">상담결과저장</button>
@@ -806,6 +837,7 @@ function downloadPDF(){
 		      <div class="panel-body hanna" id="htpSpecific4"></div>
 		    </div>
 		  </div>
+		    <div id="noElementsA" style="width:350px;margin-left: 5%;text-align: center;color:red;"></div>
 		  <br>
 		  <hr>
 		 <center>
