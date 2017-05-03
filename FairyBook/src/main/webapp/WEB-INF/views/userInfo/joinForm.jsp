@@ -506,28 +506,28 @@ function formcheck(){
 		<table style="margin: auto; background-color:#B4E5FF; opacity:20%; border-radius:20px; width:48%;">
 			<tr>
 				<th class="firstRow">&nbsp;&nbsp;&nbsp;ID</th>
-				<td class="secondRow"><input type="text" id="id" name="id"
+				<td class="secondRow"><input type="text" id="id" name="id" placeholder="4~10자"
 					style="width: 220px;" onkeyup="formSubmit1()" class="form-control">
 					<div id="checkedId"></div></td>
 			</tr>
 			<tr style="height: 5px;"></tr>
 			<tr>
 				<th class="firstRow">&nbsp;&nbsp;&nbsp;닉네임</th>
-				<td class="secondRow"><input type="text" id="cnickName"
+				<td class="secondRow"><input type="text" id="cnickName" placeholder="2~6자"
 					name="cnickName" style="width: 220px;" onkeyup="formSubmit2()" class="form-control">
 					<div id="checkedcNick"></div></td>
 			</tr>
 			<tr style="height: 5px;"></tr>
 			<tr>
 				<th rowspan="3" class="firstRow">&nbsp;&nbsp;&nbsp;아이용 비밀번호</th>
-				<td class="secondRow"><input type="password" id="password1"
+				<td class="secondRow"><input type="password" id="password1" placeholder="8~12자 아이용 비밀번호"
 					name="password1" style="width: 220px;"
 					onkeyup="formSubmit4()" class="form-control">
 				<div id="checkedcPw1"></div></td>
 			</tr>
 			<tr style="height: 5px;"></tr>
 			<tr>
-				<td class="secondRow"><input type="password"
+				<td class="secondRow"><input type="password" placeholder="아이용 비밀번호 확인"
 					id="password1check" name="password1check" style="width: 220px;"
 					onkeyup="formSubmit5()" class="form-control">
 				<div id="checkedcPw2"></div></td>
@@ -535,7 +535,7 @@ function formcheck(){
 			<tr style="height: 5px;"></tr>
 			<tr>
 				<th rowspan="3" class="firstRow">&nbsp;&nbsp;&nbsp;보호자용 비밀번호</th>
-				<td class="secondRow"><input type="password" id="password2"
+				<td class="secondRow"><input type="password" id="password2" placeholder="8~12자 보호자용 비밀번호"
 					name="password2" style="width: 220px;"
 					onkeyup="formSubmit6()" class="form-control">
 				<div id="checkedpPw1"></div></td>
@@ -543,7 +543,7 @@ function formcheck(){
 			</tr>
 			<tr style="height: 5px;"></tr>
 			<tr>
-				<td class="secondRow"><input type="password"
+				<td class="secondRow"><input type="password" placeholder="보호자용 비밀번호 확인"
 					id="password2check" name="password2check" style="width: 220px;"
 					onkeyup="formSubmit7()" class="form-control">
 				<div id="checkedpPw2"></div></td>
@@ -597,7 +597,7 @@ function formcheck(){
 			<tr style="height: 5px;"></tr>
 			<tr>
 				<th class="firstRow">&nbsp;&nbsp;&nbsp;보호자 닉네임</th>
-				<td class="secondRow"><input type="text" id="pnickName"
+				<td class="secondRow"><input type="text" id="pnickName" placeholder="2~6자"
 					name="pnickName" style="width: 220px;" onkeyup="formSubmit3()" class="form-control">
 					<div id="checkedpNick"></div></td>
 				

@@ -262,11 +262,11 @@ canvas{
 		}else if(selectedImg.attr('sel') == 'tt'){ //제목
 			input += "<div class='selected ui-widget-content' style='display:inline-block;background-image: url("
 			input += '"'+selectedImg.attr('src')+'"';
-			input += ");width: 300px;height: 80px;border: 0px solid #c5c5c5;' onmouseover='javascript:editImg($(this))'></div>"; //onmouseover='javascript:editImg()'
+			input += ");width: 300px;height: 80px;border: 0px solid #c5c5c5;' onmouseover='javascript:editImg($(this))'></div>";
 		}else{ //캐릭터 일때
 			input += "<div class='selected ui-widget-content' style='display:inline-block;background-image: url("
 			input += '"'+selectedImg.attr('src')+'"';
-			input += ");width: 150px;height: 150px;border: 0px solid #c5c5c5;' onmouseover='javascript:editImg($(this))'></div>"; //onmouseover='javascript:editImg()'
+			input += ");width: 150px;height: 150px;border: 0px solid #c5c5c5;' onmouseover='javascript:editImg($(this))'></div>"; 
 		}
 		$('#cover').html(input);
 		$('.selected').css('background-color','transparent');
@@ -465,7 +465,6 @@ canvas{
   </div>
 </div>
 <br>
-
 
 <!--표지 완성 확인 버튼  -->
 <div style="padding-left:35%;">
