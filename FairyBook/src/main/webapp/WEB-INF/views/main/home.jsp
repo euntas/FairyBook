@@ -539,6 +539,8 @@ function homeImage(){
 </div>
 </div>
 
+
+<c:if test="${loginUser != null }">
 <!--Footer  -->
 <!--Add a navar  -->
 
@@ -549,8 +551,9 @@ width: 100%;
 height: auto;">
 <!--Footer  -->
 
+<br><br>
 <nav class="navbar navbar-default " >
-   <footer class="container-fluid bg-4 text-center" style="position: fixed;
+   <footer class="container-fluid bg-4 text-center" style="position:fixed;
 overflow:auto;
 bottom: 0;
 width: 100%;
@@ -560,6 +563,7 @@ width: 100%;
      <p>Copyright ⓒJOKABURG All Rights Reserved</p>
    </footer>
 </nav>
+</c:if>
    
 
 </div>
