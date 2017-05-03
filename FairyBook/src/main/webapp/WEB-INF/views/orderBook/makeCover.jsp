@@ -466,7 +466,6 @@ canvas{
 </div>
 <br>
 
-
 <!--표지 완성 확인 버튼  -->
 <div style="padding-left:35%;">
 <button type="button" class="btn btn-success hanna" id="makeCover" onclick="capture();">저장하기</button>
