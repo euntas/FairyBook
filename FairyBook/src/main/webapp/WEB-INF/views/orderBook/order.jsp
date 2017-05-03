@@ -271,7 +271,7 @@ function updateOrder(state){ //addToCart,makeOrder,thumbnail
 <!--여기까지###########################  -->
 
 </div>
-
+<br><br>
 <!--Footer  -->
 <div style="position: fixed;
 bottom:0;
