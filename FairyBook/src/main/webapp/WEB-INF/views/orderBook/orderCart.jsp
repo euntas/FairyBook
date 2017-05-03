@@ -133,6 +133,7 @@ function deleteSelections(){
 </div>
 
 <!--Footer  -->
+<br><br><br>
 <div style="position: fixed;
 bottom:0;
 width: 100%;
