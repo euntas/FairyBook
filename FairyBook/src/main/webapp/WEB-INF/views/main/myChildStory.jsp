@@ -54,6 +54,9 @@ td{
 	<c:if test="${story.storyNum==2}">
 		<img src="../resources/image/snowwhitetitle.jpg" alt="백설공주" style="width:100%;"><br>
 	</c:if>
+	<c:if test="${story.storyNum==3}">
+		<img src="../resources/image/redhoodtitle.jpg" alt="Norway" style="width:100%;"><br>
+	</c:if>
 	</a>
 	<!-- 여기까지 썸네일 -->
 		<div class="w3-container w3-white">
