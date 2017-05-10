@@ -79,8 +79,8 @@
 						        success: function(){
 						        },
 						        error: function(e){
-						        	alert('init 함수 안의 sceneLoadig 안의 success  안의 saveSD 의 실패 ㅎㅎ....');
-						            alert(JSON.stringify(e));
+						        	//alert('init 함수 안의 sceneLoadig 안의 success  안의 saveSD 의 실패 ㅎㅎ....');
+						            //alert(JSON.stringify(e));
 						        }
 						    });
 					    	
@@ -90,7 +90,7 @@
 
 		        },
 		        error: function(e){
-		            alert(JSON.stringify(e));
+		           // alert(JSON.stringify(e));
 		        }
 		    });
 		    

@@ -67,7 +67,7 @@ function selectChange(){
 		}
 		,
 		error : function(e) {
-			alert(JSON.stringify(e));
+		//	alert(JSON.stringify(e));
 		}
 	});
 }
@@ -97,7 +97,7 @@ function selectChange1(){
 		}
 		,
 		error : function(e) {
-			alert(JSON.stringify(e));
+			//alert(JSON.stringify(e));
 		}
 	});
 }
