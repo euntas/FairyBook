@@ -141,7 +141,7 @@ function colorbtn(){
 			$('#selection'+currentNum).attr('num', colorNum.indexOf(color));
 		},
 		error: function(e){
-			alert(JSON.stringify(e));
+			//alert(JSON.stringify(e));
 		}
 	});
 }
@@ -195,14 +195,14 @@ function save(){
 					        	location.href='../story/storyStart?storyNum=1';
 					        },
 					        error: function(e){
-					        	alert("플립 실패 들어옴");
-					            alert(JSON.stringify(e));
+					        //	alert("플립 실패 들어옴");
+					           // alert(JSON.stringify(e));
 					        }
 					    });
 						
 					},
 					error: function(e){
-						alert(JSON.stringify(e));
+						//alert(JSON.stringify(e));
 					}
 				});
 			}
@@ -239,12 +239,12 @@ function save(){
 			                     location.href='../story/storyStart?storyNum=1';
 			                  },
 			                  error: function(e){
-			                      alert(JSON.stringify(e));
+			                    //  alert(JSON.stringify(e));
 			                  }
 			              });
 					},
 					error: function(e){
-						alert(JSON.stringify(e));
+					//	alert(JSON.stringify(e));
 					}
 				});
 			}

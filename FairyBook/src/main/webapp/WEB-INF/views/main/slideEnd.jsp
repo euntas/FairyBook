@@ -111,7 +111,7 @@ td{
 				location.href='../pdf/download?selectionNum='+num;
 			},
 			fail:function(){
-				alert('download fail');
+				//alert('download fail');
 			}
 		});
 	}

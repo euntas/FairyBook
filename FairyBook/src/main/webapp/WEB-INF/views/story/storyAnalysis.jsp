@@ -180,7 +180,7 @@ function getETCPattern(){
 					showMBTI(result);
 				},
 				error: function(e){
-					alert("etc문제임" + "num:" + selectionNum +" " + JSON.stringify(e));
+					//alert("etc문제임" + "num:" + selectionNum +" " + JSON.stringify(e));
 				}
 			});
 		}
@@ -205,7 +205,7 @@ function getColorName(){
 			home();
 		},
 		error: function(e){
-			alert(JSON.stringify(e));
+			//alert(JSON.stringify(e));
 		}
 	});
 }
@@ -250,7 +250,7 @@ function getAnalysis(i){
 		data: {colornum:i},
 		dataType:'text',
 		error: function(e){
-			alert(JSON.stringify(e));
+		//	alert(JSON.stringify(e));
 		},
 		async: false
 	}).responseText; 
@@ -316,7 +316,7 @@ function mbtiIndicator(type){
 			$('#indicatorExplain').html(input);
 		},
 		error: function(e){
-			alert(JSON.stringify(e));
+			//alert(JSON.stringify(e));
 		}
 	});
 	
@@ -333,7 +333,7 @@ function menu2(){
 		dataType: 'json',
 		success: showHouse,
 		error: function(e){
-			alert(JSON.stringify(e));
+			//alert(JSON.stringify(e));
 		}
 	});
 }
@@ -385,7 +385,7 @@ function mbtilist(result){
 		dataType: 'text',
 		success: showMBTIAnalysis,
 		error: function(e){
-			alert(JSON.stringify(e));
+			//alert(JSON.stringify(e));
 		}
 	});
 }
@@ -492,7 +492,7 @@ function menu3(){
 		dataType: 'json',
 		success: showTree,
 		error: function(e){
-			alert(JSON.stringify(e));
+			//alert(JSON.stringify(e));
 		}
 	});
 }
@@ -525,7 +525,7 @@ function bringAvatar(){
 		dataType: 'json',
 		success: showAvatar,
 		error: function(e){
-			alert(JSON.stringify(e));
+			//alert(JSON.stringify(e));
 		}
 	});
 }
@@ -613,7 +613,7 @@ function getQuiz(){
 		dataType: 'json',
 		success: showQuiz,
 		error: function(e){
-			alert(JSON.stringify(e));
+			//alert(JSON.stringify(e));
 		}
 	});
 }
@@ -656,7 +656,7 @@ function downloadPDF(){
 			location.href='../pdf/download?selectionNum='+selectionNum;
 		},
 		fail:function(){
-			alert('download fail');
+			//alert('download fail');
 		}
 	});
 }
