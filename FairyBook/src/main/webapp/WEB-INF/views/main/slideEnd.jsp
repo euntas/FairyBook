@@ -111,7 +111,7 @@ td{
 				location.href='../pdf/download?selectionNum='+num;
 			},
 			fail:function(){
-				alert('download fail');
+				//alert('download fail');
 			}
 		});
 	}
@@ -189,7 +189,7 @@ td{
 
 </div>
 
-
+<br><br>
 <!--Footer  -->
 <div style="bottom:0;
 width: 100%;

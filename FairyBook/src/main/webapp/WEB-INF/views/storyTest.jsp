@@ -79,7 +79,7 @@
 		        dataType:'json',
 		        success: outputForScene,
 		        error: function(e){
-		            alert(JSON.stringify(e));
+		        //    alert(JSON.stringify(e));
 		        }
 		    });
 		    
@@ -90,19 +90,19 @@
 		        data: {storyNum: 0, sceneNum: pageflip.options.current},
 		        success: outputForQuiz,
 		        error: function(e){
-		            alert(JSON.stringify(e));
+		         //   alert(JSON.stringify(e));
 		        }
 		    });
 		}
 		
 		function outputForScene(scene){
 			currentScene = scene;
-			alert('씬번호: ' + currentScene.sceneNum);					
+			//alert('씬번호: ' + currentScene.sceneNum);					
 		}
 		
 		function outputForQuiz(quiz){
 			currentQuiz = quiz;
-			alert('퀴즈 : ' + currentQuiz.quizNum );
+			//alert('퀴즈 : ' + currentQuiz.quizNum );
 			
 			$.ajax({
 		        url:'quizValidCheck',
@@ -111,19 +111,19 @@
 		        data: {storyNum: ${ currentStoryNum}, sceneNum: pageflip.options.current },
 		        success: outputForQuizValidCheck,
 		        error: function(e){
-		            alert(JSON.stringify(e));
+		           // alert(JSON.stringify(e));
 		        }
 		    }); 
 		}
 		
 		function outputForQuizValidCheck(check){
-			alert('check ' + check);
+			//alert('check ' + check);
 			if(check == 0){
-				alert('이 씬에서 퀴즈는 없습니다.');
+				//alert('이 씬에서 퀴즈는 없습니다.');
 			}
 			
 			else if(check == 1){
-				alert('퀴즈를 활성화 합니다.');
+				//alert('퀴즈를 활성화 합니다.');
 				
 				var str = currentQuiz.question +"<br><br>";
 				str += "<myselection selnum='1'>" + currentQuiz.select1 + "</myselection><br>";
@@ -136,16 +136,16 @@
 				$("myselection").click(function(){
 					
 					if($(this).attr('selnum') == '1'){
-						alert("1번을 선택했습니다.");
+						//alert("1번을 선택했습니다.");
 					}
 					else if($(this).attr('selnum') == '2'){
-			        	alert("2번을 선택했습니다.");
+			        	//alert("2번을 선택했습니다.");
 					}
 					else if($(this).attr('selnum') == '3'){
-			        	alert("3번을 선택했습니다.");
+			        	//alert("3번을 선택했습니다.");
 					}
 					else if($(this).attr('selnum') == '4'){
-			        	alert("4번을 선택했습니다.");
+			        	//alert("4번을 선택했습니다.");
 					}
 					
 					$.ajax({
@@ -154,7 +154,7 @@
 				        data: {currentSceneNum: pageflip.options.current, answerNum: $(this).attr('selnum')},
 				        dataType: 'json',
 				        success: function(nextSceneNum){
-				        	alert('다음은 ' + nextSceneNum + '번 페이지로 이동합니다.');
+				        //	alert('다음은 ' + nextSceneNum + '번 페이지로 이동합니다.');
 							pageflip.flip(nextSceneNum);
 							
 							$.ajax({
@@ -164,14 +164,14 @@
 						        data: {storyNum: 0, sceneNum: nextSceneNum},
 						        success: outputForQuiz,
 						        error: function(e){
-						            alert(JSON.stringify(e));
+						         //   alert(JSON.stringify(e));
 						        }
 						    });
 							
 							
 				        },
 				        error: function(e){
-				            alert(JSON.stringify(e));
+				          //  alert(JSON.stringify(e));
 				        }
 				    });
 			    }); 

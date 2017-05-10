@@ -32,9 +32,10 @@
 
 
 </div>
-
+<br><br>
 <!--Footer  -->
+<div style="position: fixed; bottom:0; width:100%; height: auto;">
 <c:import url="../main/mainFooter.jsp"></c:import>
- 
+ </div>
 </body>
 </html> 

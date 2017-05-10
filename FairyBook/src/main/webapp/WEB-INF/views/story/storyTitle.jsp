@@ -84,7 +84,8 @@
 <!--여기까지###########################  -->
 
 </div>
-<div style="position: absolute;
+<br><br>
+<div style="position: fixed;
 bottom:0;
 width: 100%;
 height: auto;">
