@@ -27,7 +27,6 @@ import global.sesoc.fairybook.vo.StoryMaker;
 /**
  * 게시판 컨트롤러
  * @author 이한건 170320 ver.1
- *
  */
 @Controller
 @RequestMapping("pboard")
