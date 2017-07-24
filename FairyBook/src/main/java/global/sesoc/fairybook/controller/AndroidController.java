@@ -56,7 +56,11 @@ public class AndroidController {
 			ArrayList<SolvedQuiz> quizList = new ArrayList<>();
 			quizList = quizDao.getQuizResult(selectionNum);
 			Gson gson = new Gson();
+			
+			
 			gson.toJson(quizList);
+			
+			
 			return gson;
 	}
 
