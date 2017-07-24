@@ -25,6 +25,7 @@ public class AndroidController {
 
 	@Autowired
 	IDDAO loginDao;
+	@Autowired
 	AnalysisDAO quizDao;
 	
 	private static final Logger logger = LoggerFactory.getLogger(StoryController.class);
@@ -67,6 +68,7 @@ public class AndroidController {
 			return gson;
 	}*/
 	
+	@ResponseBody
 	@RequestMapping(value="quiz", method=RequestMethod.POST)
 	public String quiz(@RequestBody JSONObject selectionStr) {
 		
@@ -75,12 +77,14 @@ public class AndroidController {
 		String str = selectionStr.get("selectionStr").toString();
 		
 		int selectionNum = Integer.parseInt(str);
+		
+		System.out.println("sn: " + selectionNum);
 			ArrayList<SolvedQuiz> quizList = new ArrayList<>();
-			quizList = quizDao.getQuizResult(selectionNum);
+			quizList = quizDao.getQuizResult(621);
 			
 			System.out.println("퀴즈리스트 갯수: " + quizList.size());
 			
-			return "도착함";
+			return "quizreturn";
 	}
 
 	
