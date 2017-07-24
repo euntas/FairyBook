@@ -1,5 +1,7 @@
 package global.sesoc.fairybook.controller;
 
+import java.util.ArrayList;
+
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,8 +13,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 
+import global.sesoc.fairybook.dao.AnalysisDAO;
 import global.sesoc.fairybook.dao.IDDAO;
+import global.sesoc.fairybook.vo.SolvedQuiz;
 
 @Controller
 @RequestMapping("app")
@@ -20,6 +25,7 @@ public class AndroidController {
 
 	@Autowired
 	IDDAO loginDao;
+	AnalysisDAO quizDao;
 	
 	private static final Logger logger = LoggerFactory.getLogger(StoryController.class);
 	
@@ -42,6 +48,16 @@ public class AndroidController {
 	    	return "true";
 	        
 	    return "false";
+	}
+	
+	@RequestMapping(value="quiz", method=RequestMethod.POST)
+	public Gson quiz(@RequestBody String selectionStr) {
+		int selectionNum = Integer.parseInt(selectionStr);
+			ArrayList<SolvedQuiz> quizList = new ArrayList<>();
+			quizList = quizDao.getQuizResult(selectionNum);
+			Gson gson = new Gson();
+			gson.toJson(quizList);
+			return gson;
 	}
 
 	
