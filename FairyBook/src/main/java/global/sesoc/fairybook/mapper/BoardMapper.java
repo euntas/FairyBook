@@ -25,4 +25,6 @@ public interface BoardMapper {
 
 	//게시글 수정
 	public int update(PBoard b);
+
+	public ArrayList<PBoard> getList();
 }

@@ -21,6 +21,22 @@
  	</insert>
 
 <!--게시글 목록 불러오기  -->
+	<!--app  -->
+	<select id="getList" resultType="PBoard">
+	select
+			boardnum
+			, id
+			, title
+			, content
+			, to_char(inputdate, 'yyyy/mm/dd') as inputdate 
+			, hit
+		from
+			pboard
+		order by
+			boardnum desc
+	</select>
+	
+	<!--web  -->
 	<select id="list" resultType="PBoard">
 		select
 			boardnum

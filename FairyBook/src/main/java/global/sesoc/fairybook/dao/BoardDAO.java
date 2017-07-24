@@ -65,5 +65,13 @@ public class BoardDAO {
 		result = mapper.update(b);
 		return result;
 	}
+
+	public ArrayList<PBoard> getList() {
+		// TODO Auto-generated method stub
+		ArrayList<PBoard> result = new ArrayList<>();
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		result = mapper.getList();
+		return result;
+	}
 	
 }
