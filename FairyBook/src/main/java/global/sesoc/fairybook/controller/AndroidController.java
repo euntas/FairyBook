@@ -2,6 +2,9 @@ package global.sesoc.fairybook.controller;
 
 import java.util.ArrayList;
 
+import org.apache.jasper.tagplugins.jstl.core.ForEach;
+import org.eclipse.jdt.internal.compiler.ast.ArrayAllocationExpression;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +20,8 @@ import com.google.gson.Gson;
 
 import global.sesoc.fairybook.dao.AnalysisDAO;
 import global.sesoc.fairybook.dao.IDDAO;
+import global.sesoc.fairybook.dao.SlideDAO;
+import global.sesoc.fairybook.vo.MySelection;
 import global.sesoc.fairybook.vo.SolvedQuiz;
 
 @Controller
@@ -27,6 +32,8 @@ public class AndroidController {
 	IDDAO loginDao;
 	@Autowired
 	AnalysisDAO quizDao;
+	@Autowired
+	SlideDAO slideDao;
 	
 	private static final Logger logger = LoggerFactory.getLogger(StoryController.class);
 	
@@ -85,6 +92,33 @@ public class AndroidController {
 			System.out.println("퀴즈리스트 갯수: " + quizList.size());
 			
 			return "quizreturn";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="getResultSelectionNum", method=RequestMethod.POST)
+	public String getResultSelectionNum(@RequestBody JSONObject loginId){
+		
+	    System.out.println("전송받은 문자열   = " + loginId.toString());
+	    
+	    String id = loginId.get("loginId").toString();
+	        
+	    System.out.println(" 읽은 test: " + id);
+	    
+	    /*ArrayList<MySelection> yourStoryList = null;
+		yourStoryList = slideDao.getYourStoryList(id);*/
+		
+		ArrayList<MySelection> ml = new ArrayList<>();
+		ml.add(new MySelection(1234, "user", 496, "sd", "ed", "y"));
+		ml.add(new MySelection(12345, "user2", 496, "sd2", "ed2", "y"));
+		ml.add(new MySelection(12346, "user3", 496, "sd3", "ed3", "y"));
+		
+		JSONObject jresult = new JSONObject();
+		String str = "returntest";
+		Gson gson = new Gson();
+		String result = gson.toJson(ml);
+		jresult.put(str, result);
+	        
+	    return result;
 	}
 
 	
