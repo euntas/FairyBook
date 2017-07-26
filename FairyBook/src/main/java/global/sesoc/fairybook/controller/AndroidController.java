@@ -58,23 +58,6 @@ public class AndroidController {
 	    return "false";
 	}
 	
-	/*@RequestMapping(value="quiz", method=RequestMethod.POST)
-	public Gson quiz(@RequestBody JSONObject selectionStr) {
-		
-		System.out.println(selectionStr);
-		
-		int selectionNum = Integer.parseInt(selectionStr);
-			ArrayList<SolvedQuiz> quizList = new ArrayList<>();
-			quizList = quizDao.getQuizResult(selectionNum);
-			Gson gson = new Gson();
-			
-			
-			gson.toJson(quizList);
-			System.out.println("퀴즈리스트 갯수: " + quizList.size());
-			
-			return gson;
-	}*/
-	
 	@ResponseBody
 	@RequestMapping(value="quiz", method=RequestMethod.POST, produces="application/json;charset=UTF-8")
 	public String quiz(@RequestBody JSONObject selectionStr) {
@@ -108,19 +91,14 @@ public class AndroidController {
 	        
 	    System.out.println(" 읽은 test: " + id);
 	    
-	    /*ArrayList<MySelection> yourStoryList = null;
-		yourStoryList = slideDao.getYourStoryList(id);*/
+	    ArrayList<MySelection> yourStoryList = null;
+		yourStoryList = slideDao.getMyStoryList(id);
 		
-		ArrayList<MySelection> ml = new ArrayList<>();
-		ml.add(new MySelection(1234, "user", 496, "sd", "ed", "y"));
-		ml.add(new MySelection(12345, "user2", 496, "sd2", "ed2", "y"));
-		ml.add(new MySelection(12346, "user3", 496, "sd3", "ed3", "y"));
+		/*ArrayList<MySelection> ml = new ArrayList<>();
+		ml.add(new MySelection(1234, "user", 496, "sd", "ed", "y"));*/
 		
-		JSONObject jresult = new JSONObject();
-		String str = "returntest";
 		Gson gson = new Gson();
-		String result = gson.toJson(ml);
-		jresult.put(str, result);
+		String result = gson.toJson(yourStoryList);
 	        
 	    return result;
 	}
