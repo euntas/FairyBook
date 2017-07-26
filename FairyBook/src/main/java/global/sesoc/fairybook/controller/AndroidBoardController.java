@@ -26,8 +26,9 @@ public class AndroidBoardController {
 	private static final Logger logger = LoggerFactory.getLogger(AndroidBoardController.class);
 	
 	@ResponseBody
-	@RequestMapping(value = "boardList", method = RequestMethod.POST)
+	@RequestMapping(value = "boardList", method = RequestMethod.POST, produces="application/json;charset=UTF-8")
 	public String getBoardList(){
+		System.out.println("Android Board List");
 		JSONObject jObject = new JSONObject();
 		JSONArray jArray = new JSONArray();
 		
