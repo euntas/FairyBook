@@ -4,185 +4,195 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="global.sesoc.fairybook.mapper.StoryMapper">
- 
-<select id="getQuiz" resultType="Quiz" parameterType="int">
-	select
-		quiznum, question, select1, select2, select3, select4, answer, division
-	from
+
+	<select id="getQuiz" resultType="Quiz" parameterType="int">
+		select
+		quiznum, question, select1, select2, select3, select4, answer,
+		division
+		from
 		quiz
-	where
+		where
 		quiznum = #{quiznum}
-</select>
+	</select>
 
-<select id="getScene" resultType="Scene" parameterType="map">
-	select
-		scenenum, storynum, quiznum, nextscene1, nextscene2, nextscene3, nextscene4, fbexplain, storytext1, storytext2
-	from 
+	<select id="getScene" resultType="Scene" parameterType="map">
+		select
+		scenenum, storynum, quiznum, nextscene1, nextscene2, nextscene3,
+		nextscene4, fbexplain, storytext1, storytext2
+		from
 		scene
-	where
+		where
 		storynum = #{storyNum} and scenenum = #{sceneNum}
-</select>
+	</select>
 
-<insert id = "insertFairytale" parameterType = "fairytale">
-	insert
-	into
+	<insert id="insertFairytale" parameterType="fairytale">
+		insert
+		into
 		fairytale
 		(
-			storynum,
-			storytitle
+		storynum,
+		storytitle
 		)
-	values
-	(
+		values
+		(
 		storynum_seq.nextval,
 		#{storyTitle}
-	)
-</insert>
+		)
+	</insert>
 
-<!-- selectionDatail 저장 -->
-<insert id = "saveSD" parameterType = "map">
-	insert 
-	into
-	selectionDetail
-	(
+	<!-- selectionDatail 저장 -->
+	<insert id="saveSD" parameterType="map">
+		insert
+		into
+		selectionDetail
+		(
 		selectionNum
 		,sceneNum
-	)
-	values
-	(
+		)
+		values
+		(
 		#{selectionNum}
 		,#{sceneNum}
-	)
-</insert>
+		)
+	</insert>
 
-<!-- Myselection 저장 -->
-<insert id = "insertMySelection" parameterType = "map">
-	insert
-	into
-	myselection
-	(
+	<!-- Myselection 저장 -->
+	<insert id="insertMySelection" parameterType="map">
+		insert
+		into
+		myselection
+		(
 		selectionNum
 		,id
 		,storynum
 		,startdate
 		,enddate
 		,finished
-	)
-	values
-	(
+		)
+		values
+		(
 		selectionnum_seq.nextval
 		, #{id}
 		, #{storyNum}
 		, sysdate
 		, null
-		, #{finished}
-	)
-</insert>
+		,
+		#{finished}
+		)
+	</insert>
 
-<select id="getSelectionNum" resultType="int" parameterType="map">
-	select
+	<select id="getSelectionNum" resultType="int" parameterType="map">
+		select
 		selectionNum
-	from
+		from
 		myselection
-	where
+		where
 		id = #{id}
 		and storyNum = #{storyNum}
-		and startdate = (select max(startdate) from myselection where id = #{id})
-		
-</select>
+		and startdate = (select
+		max(startdate) from myselection where id = #{id})
 
-<update id="updateSelectiondetail" parameterType="map">
-	update
+	</select>
+
+	<update id="updateSelectiondetail" parameterType="map">
+		update
 		selectiondetail
-	set
+		set
 		<if test="myAnswer != null">
 			myAnswer = #{myAnswer},
 		</if>
-		inputdate = sysdate	
-	where 
+		inputdate = sysdate
+		where
 		selectionnum = #{selectionnum}
-		and	sceneNum = #{sceneNum} 	
-</update>
+		and sceneNum = #{sceneNum}
+	</update>
 
-<select id="getLatestMySelection" resultType="MySelection" parameterType="map">
-	select * from (
-		select 
-			selectionNum, id, storyNum, startDate, endDate, finished
-		from 
-			myselection
-		where 
-			id = #{id} and storyNum = #{storyNum} and finished='N'
-		order by 
-			startDate desc
-	) where rownum=1
-	
-</select>
-
-<select id="getSelectionDetailAll" resultType="SelectionDetail" parameterType="int">
-	select
-		selectionNum, sceneNum, myAnswer, inputDate, item
-	from
-		selectiondetail
-	where
-		selectionNum = #{selectionNum}
-	order by 
-			inputDate 
-</select>
-
-<select id="getSelectionDetailBySceneNum" resultType="SelectionDetail" parameterType="map">
-	select
-		selectionNum, sceneNum, myAnswer, inputDate, item
-	from
-		selectiondetail
-	where
-		selectionNum = #{selectionNum} and scenenum = #{sceneNum}
-</select>
-
-<select id="getSelectionDetailByPageNum" resultType="SelectionDetail" parameterType="map">
-	select
-		selectionNum, sceneNum, myAnswer, inputDate, item
-	from
-		selectiondetail join pagelist using(scenenum)
-	where
-		selectionNum = #{selectionNum} and pagenum = #{pageNum}
-</select>
-
-<update id="updateFinished" parameterType="map">
-	update
+	<select id="getLatestMySelection" resultType="MySelection"
+		parameterType="map">
+		select * from (
+		select
+		selectionNum, id, storyNum, startDate, endDate, finished
+		from
 		myselection
-	set
+		where
+		id = #{id} and storyNum = #{storyNum} and finished='N'
+		order by
+		startDate desc
+		) where rownum=1
+
+	</select>
+
+	<select id="getSelectionDetailAll" resultType="SelectionDetail"
+		parameterType="int">
+		select
+		selectionNum, sceneNum, myAnswer, inputDate, item
+		from
+		selectiondetail
+		where
+		selectionNum = #{selectionNum}
+		order by
+		inputDate
+	</select>
+
+	<select id="getSelectionDetailBySceneNum" resultType="SelectionDetail"
+		parameterType="map">
+		select
+		selectionNum, sceneNum, myAnswer, inputDate, item
+		from
+		selectiondetail
+		where
+		selectionNum = #{selectionNum} and scenenum = #{sceneNum}
+	</select>
+
+	<select id="getSelectionDetailByPageNum" resultType="SelectionDetail"
+		parameterType="map">
+		select
+		selectionNum, sceneNum, myAnswer, inputDate, item
+		from
+		selectiondetail join pagelist using(scenenum)
+		where
+		selectionNum = #{selectionNum} and pagenum = #{pageNum}
+	</select>
+
+	<update id="updateFinished" parameterType="map">
+		update
+		myselection
+		set
 		enddate = sysdate,
 		finished='Y'
-	where
+		where
 		selectionNum = #{selectionNum}
 		and id = #{id}
 		and storyNum = #{storyNum}
-</update>
+	</update>
 
-<select id="getPageNum" parameterType="int" resultType="int">
-	select
+	<select id="getPageNum" parameterType="int" resultType="int">
+		select
 		pageNum
-	from
+		from
 		pageList
-	where
+		where
 		sceneNum = #{sceneNum}
-</select>
+	</select>
 
-<select id="getSceneNumByPageNum" parameterType="map" resultType="int">
-	select
+	<select id="getSceneNumByPageNum" parameterType="map"
+		resultType="int">
+		select
 		sceneNum
-	from
+		from
 		scene join pagelist using(scenenum)
-	where
+		where
 		pagenum = #{pageNum} and storynum = #{storyNum}
-</select>
+	</select>
 
-<select id="getSelectionNumListById" parameterType="String" resultType="MySelection">
-	select
+	<select id="getSelectionNumListById" parameterType="String"
+		resultType="MySelection">
+		select
 		*
-	from
+		from
 		myselection
-	where
+		where
 		id = #{id} and finished='Y'
-</select>
-	
+	</select>
+
 </mapper>

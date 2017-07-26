@@ -76,7 +76,7 @@ public class AndroidController {
 	}*/
 	
 	@ResponseBody
-	@RequestMapping(value="quiz", method=RequestMethod.POST)
+	@RequestMapping(value="quiz", method=RequestMethod.POST, produces="application/json;charset=UTF-8")
 	public String quiz(@RequestBody JSONObject selectionStr) {
 		
 		System.out.println(selectionStr);
@@ -87,11 +87,15 @@ public class AndroidController {
 		
 		System.out.println("sn: " + selectionNum);
 			ArrayList<SolvedQuiz> quizList = new ArrayList<>();
-			quizList = quizDao.getQuizResult(621);
+			quizList = quizDao.getQuizResult(selectionNum);
+			
+			Gson gson = new Gson();
+			String result = gson.toJson(quizList);
 			
 			System.out.println("퀴즈리스트 갯수: " + quizList.size());
 			
-			return "quizreturn";
+			System.out.println("111 " + result);
+			return result;
 	}
 	
 	@ResponseBody
