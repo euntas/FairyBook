@@ -66,9 +66,7 @@ public class AndroidBoardController {
 	@RequestMapping(value = "writeBoard", method = RequestMethod.POST)
 	public String writeBoard(@RequestBody String data) {
 
-			System.out.println("test : " +data);
-		
-	
+		System.out.println("test : " +data);
 	
 		return "true";
 	}
