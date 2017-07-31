@@ -1,6 +1,8 @@
 package global.sesoc.fairybook.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.jasper.tagplugins.jstl.core.ForEach;
 import org.eclipse.jdt.internal.compiler.ast.ArrayAllocationExpression;
@@ -21,6 +23,8 @@ import com.google.gson.Gson;
 import global.sesoc.fairybook.dao.AnalysisDAO;
 import global.sesoc.fairybook.dao.IDDAO;
 import global.sesoc.fairybook.dao.SlideDAO;
+import global.sesoc.fairybook.vo.FBResource;
+import global.sesoc.fairybook.vo.MBTI;
 import global.sesoc.fairybook.vo.MySelection;
 import global.sesoc.fairybook.vo.SolvedQuiz;
 
@@ -34,6 +38,8 @@ public class AndroidController {
 	AnalysisDAO quizDao;
 	@Autowired
 	SlideDAO slideDao;
+	@Autowired
+	AnalysisDAO analysisDao;
 	
 	private static final Logger logger = LoggerFactory.getLogger(StoryController.class);
 	
@@ -52,8 +58,11 @@ public class AndroidController {
 	    int result = loginDao.login(id, password);
 	    
 	    // 로그인 성공시 true, 실패시 false 반환
-	    if(result == 1 || result == 2)
+	    if(result == 2)
 	    	return "true";
+	    
+	    if(result == 1)
+	    	return "child";
 	        
 	    return "false";
 	}
@@ -101,6 +110,86 @@ public class AndroidController {
 		String result = gson.toJson(yourStoryList);
 	        
 	    return result;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="getMBTIResult", method=RequestMethod.POST, produces="application/json;charset=UTF-8")
+	public String getMBTIResult(@RequestBody JSONObject selectionNum){
+		MBTI mbti = analysisDao.getMBTI(Integer.parseInt(selectionNum.get("selectionNum").toString()));
+		logger.info("MBTI : " + mbti);
+		
+		String result = "";
+		result = mbti.getEI() + mbti.getSN() + mbti.getTF() + mbti.getJP();
+		result = result.toUpperCase();
+		
+		logger.info("mbti type:{}",result);
+		
+		String analysis = analysisDao.getMBTIAnalysis(result);
+		logger.info("mbti analysis:{}",analysis);
+		
+		Map<String, String> mbtiData = new HashMap<>();
+		mbtiData.put("mbtiType", result);
+		mbtiData.put("mbtiAnalysis", analysis);
+		
+		Gson gson = new Gson();
+		String mbtiResult = gson.toJson(mbtiData);
+		
+		return mbtiResult;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="getHTPTreeResult", method=RequestMethod.POST, produces="application/json;charset=UTF-8")
+	public String getHTPTreeResult(@RequestBody JSONObject selectionNum){
+		
+		FBResource htpTree = analysisDao.treeAnalysis(Integer.parseInt(selectionNum.get("selectionNum").toString()));
+		
+		Map<String, FBResource> htpTreeData = new HashMap<>();
+		htpTreeData.put("htpTree", htpTree);
+		
+		Gson gson = new Gson();
+		String htpTreeResult = gson.toJson(htpTreeData);
+		
+		return htpTreeResult;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="getColorResult", method=RequestMethod.POST, produces="application/json;charset=UTF-8")
+	public String getColorResult(@RequestBody JSONObject selectionNum){
+		
+		int selecNum = Integer.parseInt(selectionNum.get("selectionNum").toString());
+		
+		Map<String, Object> result = new HashMap<>();
+		//colorcount테이블에서 selectionNum으로 colorname과 colorcount가져오기 colorcount내림차순으로
+		ArrayList<String> colorName = new ArrayList<>();
+		colorName = analysisDao.getColorName();
+		result.put("colorName", colorName);
+		
+		logger.info("colorGraphAndoid");
+		Map<String, Integer> color = new HashMap<>();
+		Integer[] colorCount = new Integer[colorName.size()];
+		for (int i = 0; i < colorCount.length; i++) {
+			colorCount[i]=0;
+		}
+		
+		color = analysisDao.getColorData(selecNum);
+		logger.info("color??:{}",color);
+
+		String[] colorAnalysis = new String[colorName.size()];
+		
+		for (String key : color.keySet()) {
+			int value = Integer.parseInt(String.valueOf(color.get(key)));
+			if (value > -1) {
+				colorCount[value]++;
+				colorAnalysis[value] = analysisDao.getColorAnalysis(value);
+			}
+		}
+		
+		
+		
+		result.put("colorCount", colorCount);
+		
+		
+		return "";
 	}
 
 	
