@@ -186,6 +186,7 @@ public class AndroidController {
 		
 		
 		
+		
 		result.put("colorCount", colorCount);
 		
 		
