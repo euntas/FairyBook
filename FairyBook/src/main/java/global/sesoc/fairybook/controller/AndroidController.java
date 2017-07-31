@@ -58,6 +58,10 @@ public class AndroidController {
 	    return "false";
 	}
 	
+	public String getHTPPersonResult(){
+		return "true";
+	}
+	
 	@ResponseBody
 	@RequestMapping(value="quiz", method=RequestMethod.POST, produces="application/json;charset=UTF-8")
 	public String quiz(@RequestBody JSONObject selectionStr) {
