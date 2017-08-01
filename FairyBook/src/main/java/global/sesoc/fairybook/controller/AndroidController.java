@@ -185,12 +185,53 @@ public class AndroidController {
 		}
 		
 		
-		
-		
 		result.put("colorCount", colorCount);
+		result.put("colorAnalysis", colorAnalysis);
 		
 		
-		return "";
+		Gson gson = new Gson();
+		String colorResult = gson.toJson(result);
+		
+		logger.info(colorResult);
+		
+		return colorResult;
+	}
+			
+	@ResponseBody
+	@RequestMapping(value="getHouseResult", method=RequestMethod.POST, produces="application/json;charset=UTF-8")
+	public String getHouseResult(@RequestBody JSONObject selectionNum){
+		
+		ArrayList<FBResource> resources = new ArrayList<>();
+		resources = analysisDao.houseAnalysis(Integer.parseInt(selectionNum.get("selectionNum").toString()));
+		
+		Map<String, FBResource> houseData = new HashMap<>();
+
+		for (FBResource fbRes : resources) {
+		//	jo.put(fbRes.getName(), fbRes.getAnalysis());
+			if(fbRes.getName().startsWith("roof"))
+				houseData.put("roof", fbRes);
+			
+			else if(fbRes.getName().startsWith("wall"))
+				houseData.put("wall", fbRes);
+			
+			else if(fbRes.getName().startsWith("window"))
+				houseData.put("window", fbRes);
+			
+			else if(fbRes.getName().startsWith("chimney"))
+				houseData.put("chimney", fbRes);
+			
+			else if(fbRes.getName().startsWith("door"))
+				houseData.put("door", fbRes);
+			
+		}
+		
+		
+		Gson gson = new Gson();
+		String houseResult = gson.toJson(houseData);
+		
+		System.out.println(houseResult);
+		
+		return houseResult;
 	}
 
 	
