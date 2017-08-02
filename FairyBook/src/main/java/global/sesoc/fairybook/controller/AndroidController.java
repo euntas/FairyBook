@@ -237,6 +237,48 @@ public class AndroidController {
 		
 		return houseResult;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="getPersonResult", method=RequestMethod.POST, produces="application/json;charset=UTF-8")
+	public String getPersonResult(@RequestBody JSONObject selectionNum){
+		
+		ArrayList<FBResource> resources = new ArrayList<>();
+		
+		resources = analysisDao.avatarAnalysis(Integer.parseInt(selectionNum.get("selectionNum").toString()));
+		
+		StringBuilder sb = new StringBuilder();
+		
+		for (FBResource fbResource : resources) {
+			if(fbResource.getName().startsWith("eye")){
+				sb.append("눈 : " + fbResource.getAnalysis() + "\n");
+			}
+			
+			else if(fbResource.getName().startsWith("nose")){
+				sb.append("코 : " + fbResource.getAnalysis() + "\n");
+			}
+			
+			else if(fbResource.getName().startsWith("mouth")){
+				sb.append("입 : " + fbResource.getAnalysis() + "\n");
+			}
+			
+			else if(fbResource.getName().startsWith("ear")){
+				sb.append("귀 : " + fbResource.getAnalysis() + "\n");
+			}
+			
+			else if(fbResource.getName().startsWith("face")){
+				sb.append("얼굴 : " + fbResource.getAnalysis() + "\n");
+			}
+			
+			else if(fbResource.getName().startsWith("hair")){
+				sb.append("머리 : " + fbResource.getAnalysis() + "\n");
+			}
+		}
+		
+		return sb.toString();
+	}
+	
+	
+	
 
 	
 }
